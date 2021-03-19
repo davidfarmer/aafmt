@@ -1,0 +1,62 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Groups">
+  <title>Introduction to Groups<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <blockquote>
+      <q>There are more groups in heaven and earth, Horatio, than are dreamt of in your philosophy.</q>
+      Shakespeare, <em>Hamlet</em>, Act 1 Scene V (paraphrase by J. Hill)
+    </blockquote>
+    <blockquote>
+      <q>Groups tend to be more extreme than individuals.</q>
+      (Daniel Kahneman, 2002 Nobel Prize winner in Economics)
+    </blockquote>
+    <blockquote>
+      <q>I am rarely bored alone; I am often bored in groups.</q>
+      (Dr. Laurie Helgoe, psychologist)
+    </blockquote>
+    <p>
+      You may have noticed that we have been voyaging deeper and deeper into unfamiliar mathematical territory.
+      We're using more symbols and fewer numbers.
+      We introduce unfamiliar terminology and strange notation.
+      We deal with outlandish mathematical objects that are harder and harder to visualize.
+    </p>
+    <p>
+      Please rest assured that these elaborations have a practical purpose<fn>
+      (that is, besides tormenting math students)
+      </fn>.
+      We live in a complicated world,
+      and complicated mathematical structures are needed to describe it well.
+      However, underlying this confusing tangle of complicated structures are some deep commonalities.
+      The purpose of abstraction is to identify and characterize these commonalities.
+      In this way we can make connections between very different fields of mathematics,
+      and gain a much more holistic view of how things work together.
+    </p>
+    <p>
+      One of the commonalities that we have been
+      (more or less)
+      subtly emphasizing in the previous chapters is the ubiquity of <em>groups</em>,
+      together with related notions such as isomorphisms and subgroups.
+      Now that you've studies several specific groups
+      (such as <m>{\mathbb C}, {\mathbb Z}_n, D_n, S_n, A_n</m> and so on)
+      our hope is that from these examples you've begun to get a feel for how groups work,
+      and how one should think about groups in general.
+      In this chapter, we will study groups
+      <em>in the abstract</em>:
+      that is, we will describe properties that are common to <em>all</em> groups,
+      whether finite or infinite, commutative (abelian) or non-abelian,
+      and so on.
+    </p>
+    <p>
+      Thanks to Tom Judson for material used in this chapter.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Groups_FormalDefinition.ptx"/>
+  <xi:include  href="sec_Groups_Examples.ptx"/>
+  <xi:include  href="sec_Groups_GroupProperties.ptx"/>
+  <xi:include  href="subsec_Groups_GroupProperties_Subgroups.ptx"/>
+  <xi:include  href="sec_Groups_CyclicGroups.ptx"/>
+  <xi:include  href="sec_Groups_AdditionalExercises.ptx"/>
+  <xi:include  href="sec_Groups_Hints.ptx"/>
+</chapter>

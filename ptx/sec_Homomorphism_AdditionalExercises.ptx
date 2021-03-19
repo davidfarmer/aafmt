@@ -1,0 +1,46 @@
+<section xml:id="sec_Homomorphism_AdditionalExercises">
+  <title>Additional Exercises</title>
+  <ol>
+    <li>
+      <p>
+        Let <m>f : G \rightarrow H</m> be a homomorphism.
+        Show that <m>f</m> is one-to-one if and only if <m>f^{-1}(e') = \{ e \}</m>,
+        where <m>e</m> and <m>e'</m> are the identities of <m>G</m> and <m>H</m>,
+        respectively.
+      </p>
+    </li>
+    <li>
+      <p>
+        For <m>k \in {\mathbb Z}_n</m>,
+        define a map <m>f_k : {\mathbb Z}_n \rightarrow {\mathbb Z}_n</m> by <m>a \mapsto ka</m>.
+        Prove that <m>f_k</m> is a homomorphism.
+      </p>
+    </li>
+    <li xml:id="ex_Homomorphism_Ad1">
+      <p>
+        Show that a homomorphism defined on a cyclic group is completely determined by its action on the generator of the group. (*Hint*)
+      </p>
+    </li>
+    <li xml:id="ex_Homomorphism_Ad2">
+      <p>
+        Prove or disprove:
+        <m>{\mathbb Q} / {\mathbb Z} \cong {\mathbb Q}</m>. (*Hint*)
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>G</m> and <m>H</m> be groups,
+        and let <m>M</m> and <m>N</m> be normal subgroups of <m>G</m> and <m>H</m> respectively.
+        Let <m>f : G \rightarrow H</m> be a homomorphism which satisfies <m>f(M) \subset N</m>.
+        Show that <m>f</m> can be used to define a homomorphism <m>F : G/M \rightarrow H/N</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>f : G \rightarrow H</m> be a homomorphism that is onto.
+        Let <m>M</m> be a normal subgroup of <m>G</m> and suppose that <m>f(M) = N</m>.
+        Prove that <m>G/M \cong H/N</m>.
+      </p>
+    </li>
+  </ol>
+</section>

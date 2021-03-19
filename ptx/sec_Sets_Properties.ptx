@@ -1,0 +1,421 @@
+<section xml:id="sec_Sets_Properties">
+  <title>Properties of set operations <nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    Now that we have the basics out of the way,
+    let's look at the some of the properties of set operations.
+    The individual steps of the following proofs depend on <em>logic</em>;
+    and a rigorous treatment of these proofs would require that we introduce formal logic and its rules.
+    However, many of these logical rules are intuitive,
+    and it should be possible for you to follow the proofs even if you haven't studied mathematical logic.
+  </p>
+  <p>
+    First, we give two rather obvious
+    (but very useful)
+    properties of <m>\cup</m> and <m>\cap</m>:
+  </p>
+  <proposition xml:id="proposition_Sets_cupcapincl">
+    <statement>
+      <p>
+        Given any sets <m>A,B</m>, It is always true that
+        <me>
+          A \cap B \subset A \mathrm{~~~and~~~}A \subset A \cup B
+        </me>.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      The style of proof we'll use here is often described as
+      <em>element by element</em>,<idx><h>Element by element proof</h></idx> because the proofs make use of the definitions of <m>A\cap B</m> and <m>A\cup B</m> in terms of their elements.
+    </p>
+    <p>
+      First, suppose that <m>x</m> is an element of <m>A \cap B</m>. we then have:
+      <md>
+        <mrow>\amp x \in A \cap B \amp [\text{ supposition } ]</mrow>
+        <mrow>\implies \amp x \in A \text{ and }  x\in B \amp [\text{ def. of } \cap]</mrow>
+        <mrow>\implies \amp x \in A.\amp [\text{ logic } ]</mrow>
+      </md>
+    </p>
+    <p>
+      Since every element of <m>A \cap B</m> is an element of <m>A</m>,
+      it follows by the definition of <m>\subset</m> that <m>A \cap B \subset A</m>.
+    </p>
+    <exercise xml:id="exercise_Sets_23">
+      <statement>
+        <p>
+          Give a similar proof of the second part of <xref ref="proposition_Sets_cupcapincl">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+  </proof>
+  <p>
+    Many useful properties of set operations are summarized in the following multi-part proposition:
+  </p>
+  <proposition xml:id="proposition_Sets_sets_theorem_set_ops">
+    <statement>
+      <p>
+        Let <m>A</m>, <m>B</m>,
+        and <m>C</m> be subsets of a universal set <m>U</m>.
+        Then
+        <ol>
+          <li>
+            <p>
+              <m>A \cup A' = U</m> and <m>A \cap A' = \emptyset</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cup A = A</m>, <m>A \cap A = A</m>,
+              and <m>A \setminus A = \emptyset</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cup \emptyset = A</m> and <m>A \cap \emptyset = \emptyset</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cup U = U</m> and <m>A \cap U = A</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cup (B \cup C) = (A \cup B) \cup C</m> and <m>A \cap (B \cap C) = (A \cap B) \cap C</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cup B = B \cup A</m> and <m>A \cap B = B \cap A</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cup (B \cap C) = (A \cup B) \cap (A \cup C)</m> and <m>(B \cap C) \cup A = (B \cup A) \cap (C \cup A)</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cap (B \cup C) = (A \cap B) \cup (A \cap C)</m> and <m>(B \cup C) \cap A= (B \cap A) \cup (C \cap A)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      We'll prove parts (1), (2), (5),
+      and (7), and leave the rest to you!
+    </p>
+    <p>
+      (1) From our definitions we have:
+      <md>
+        <mrow>A \cup A' \amp  =  \{ x : x \in A \mathrm{~or~} x \in A' \}  \amp  [\text{ def. of }  \cup ]</mrow>
+        <mrow>\amp  =  \{ x : x \in A \mathrm{~or~} x \notin A \}  \amp  [\text{ def. of complement }  ]</mrow>
+      </md>
+    </p>
+    <p>
+      But every <m>x \in U</m> must satisfy either <m>x \in A</m> or <m>x \notin A</m>.
+      It follows that <m>A \cup A'</m> includes all elements of <m>U</m>;
+      so <m>A \cup A' = U</m>.
+    </p>
+    <p>
+      We also have
+      <md>
+        <mrow>A \cap A' \amp  =  \{ x : x \in A \text{ and }  x \in A' \}  \amp  [\text{ def. of }  \cap ]</mrow>
+        <mrow>\amp  =  \{ x : x \in A \text{ and }  x \notin A \}  \amp  [\text{ def. of complement }  ]</mrow>
+      </md>
+    </p>
+    <p>
+      But there is no element <m>x</m> that is both in <m>A</m> and not in <m>A</m>,
+      it follows that there are no elements in <m>A \cap A'</m>;
+      so <m>A \cap A' = \emptyset</m>.
+    </p>
+    <p>
+      (2) Observe that
+      <md>
+        <mrow>A \cup A \amp  =  \{ x : \mbox{ \(x \in A\) or \(x \in A\)}  \}    \amp  [\text{ def. of }  \cup]</mrow>
+        <mrow>\amp  =  \{ x : \mbox{ \(x \in A\)}  \}</mrow>
+        <mrow>\amp  =  A</mrow>
+      </md>
+      and
+      <md>
+        <mrow>A \cap A \amp  =  \{ x : \mbox{ \(x \in A\) and \(x \in A\)}  \}    \amp \text{ [def. of }  \cap]</mrow>
+        <mrow>\amp  =  \{ x : \mbox{ \(x \in A\)}   \}</mrow>
+        <mrow>\amp  =  A</mrow>
+      </md>.
+    </p>
+    <p>
+      Also,
+      <md>
+        <mrow>A \setminus A \amp = A \cap A'    \amp \mbox{ [def. of }  \setminus]</mrow>
+        <mrow>\amp = \emptyset.    \amp \mbox{ [by part 1] }</mrow>
+      </md>
+    </p>
+    <p>
+      (5) For sets <m>A</m>, <m>B</m>, and <m>C</m>,
+      <md>
+        <mrow>A \cup (B \cup C) \amp  = A \cup \{ x : \mbox{ \(x \in B\) or \(x \in C\)}  \}   \amp \text{ [def. of }  \cup]</mrow>
+        <mrow>\amp  = \{ x : \mbox{ \(x \in A\) or \(x \in B\) or \(x \in C\)}  \}    \amp \text{ [def. of }  \cup]</mrow>
+        <mrow>\amp  = \{ x : \mbox{ \(x \in A\) or \(x \in B\)}  \} \cup C    \amp \text{ [def. of }  \cup]</mrow>
+        <mrow>\amp  = (A \cup B) \cup C.    \amp \text{ [def. of }  \cup]</mrow>
+      </md>
+    </p>
+    <p>
+      A similar argument proves that <m>A \cap (B \cap C) = (A \cap B) \cap C</m>.
+    </p>
+    <p>
+      (7) We show that these two sets are equal by showing that:
+      <ol type="I">
+        <li>
+          <p>
+            Every element <m>x</m> in <m>A \cup (B \cap C)</m> is also an element of <m>(A \cup B) \cap (A \cup C)</m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            Every element <m>x</m> in <m>(A \cup B) \cap (A \cup C)</m> is also an element of <m>A \cup (B \cap C)</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      (It's actually a rather common strategy to prove that two sets are equal by showing that every element of one set is an element of the other set,
+      and vice versa.)
+    </p>
+    <p>
+      Let's begin by proving (I).
+      Take any element <m>x \in A \cup (B \cap C)</m>.
+      Then <m>x \in A</m> or <m>(x \in B \cap C)</m>,
+      by the definition of <m>\cup</m>.
+      We may therefore consider two cases: (i) <m>x \in A</m>,
+      or (ii) <m>x \in B \cap C</m>.
+      (Actually some <m>x</m>'s are included in both cases,
+      but that's not a problem.)
+    </p>
+    <p>
+      <em>Case i</em>: If <m>x \in A</m>,
+      the by <xref ref="proposition_Sets_cupcapincl">Proposition</xref>
+      we know <m>x \in A \cup B</m> and <m>x \in A \cup C</m>.
+      By the definition of <m>\cap</m>,
+      we then have <m>x \in (A \cup B) \cap (A \cup C)</m>.
+    </p>
+    <p>
+      <em>Case ii</em>: If <m>x \in B \cap C</m>,
+      then by <xref ref="proposition_Sets_cupcapincl">Proposition</xref>
+      we know <m>x \in B</m> and <m>x \in C</m>.
+      By <xref ref="proposition_Sets_cupcapincl">Proposition</xref>,
+      then <m>x \in A \cup B</m> and <m>x \in A \cup C</m>.
+      By the definition of <m>\cap</m>,
+      this means that <m>x \in (A \cup B) \cap (A \cup C)</m>.
+    </p>
+    <p>
+      This completes the proof of (I).
+      Now we'll prove (II).
+      Take any element <m>x \in (A \cup B) \cap (A \cup C)</m>.
+      Then we may consider two cases: (i) <m>x \in A</m>,
+      or (ii) <m>x \not\in A</m>.
+    </p>
+    <p>
+      <em>Case i</em>: If <m>x \in A</m>,
+      then by by <xref ref="proposition_Sets_cupcapincl">Proposition</xref>
+      it's also true that <m>x \in A \cup (B \cap C)</m>.
+    </p>
+    <p>
+      <em>Case ii</em>: Suppose <m>x \not\in A</m>.
+      Now, since <m>x \in (A \cup B) \cap (A \cup C)</m>,
+      by the definitions of <m>\cap</m> and <m>\cup</m> we know that
+      <m>(x \in A \text{ or } x \in B)</m> and <m>(x \in A \text{ or } x \in C)</m>.
+      But since <m>x \not\in A</m>,
+      it must be true that <m>x\in B</m>, and also <m>x\in C</m>.
+      By the definition of <m>\cap</m>,
+      this means that <m>x\in B \cap C</m>. by <xref ref="proposition_Sets_cupcapincl">Proposition</xref>,
+      we have that <m>x \in A \cup (B \cap C)</m>.
+      This completes the proof of (II), which completes the proof of (7).
+    </p>
+  </proof>
+  <exercise>
+    <statement>
+      <p>
+        Fill in the blanks in the following proof of <xref ref="proposition_Sets_sets_theorem_set_ops">Proposition</xref> part (3):
+      </p>
+      <p>
+        Observe that
+        <md>
+          <mrow>A \cup \emptyset \amp  =  \{ x : x \in A \mathrm{~or~}x \in \emptyset \}    \amp  [\text{ Def. of } \cup]</mrow>
+          <mrow>\amp  = \{ x : x \in \_\_\_\_\_\_\_ \}     \amp  [\emptyset \mathrm{~has~no~elements}]</mrow>
+          <mrow>\amp  =  A \amp  \text{ Def. of set } A</mrow>
+        </md>
+        and
+        <md>
+          <mrow>A \cap \emptyset \amp  =  \{ x : \mbox{ \(x \in \_\_\_\_\_\_\_\) and \(x \in \_\_\_\_\_\_\_\)}  \}     \amp  \_\_\_\_\_\_\_\_\_\_\_\_</mrow>
+          <mrow>\amp  =  \emptyset     \amp  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ </mrow>
+        </md>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Sets_26">
+    <statement>
+      <p>
+        Prove parts 4,6,8 of <xref ref="proposition_Sets_sets_theorem_set_ops">Proposition</xref>
+        using element-by-element proofs.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The following rules that govern the operations
+    <m>\cap, \cup</m> and <m>'</m> follow from the definitions of these operations:
+  </p>
+  <proposition xml:id="proposition_Sets_sets_de_morgan">
+    <statement>
+      <p>
+            <idx><h>De Morgan's laws for sets</h></idx>
+            <idx><h>Set operations</h><h>De Morgan's laws for sets</h></idx>(<em>De Morgan's Laws</em>) Let <m>A</m> and <m>B</m> be sets.
+        Then
+        <ol type="1">
+          <li>
+            <p>
+              <m>(A \cup B)' = A' \cap B'</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(A \cap B)' = A' \cup B'</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </proposition>
+  <p>
+    We will use the same strategy we used to prove <xref ref="proposition_Sets_sets_theorem_set_ops">Proposition</xref> part (7)-that is,
+    we show that sets are equal by showing they are subsets of each other.
+  </p>
+  <proof>
+    <p>
+      We'll prove (1), and leave (2) as an exercise.
+      The proof will show that the sets on the left and right sides of the equality in (1) are both subsets of each other.
+    </p>
+    <p>
+      First we show that <m>(A \cup B)' \subset A' \cap B'</m>.
+      Let <m>x \in (A \cup B)'</m>.
+      Then <m>x \notin A \cup B</m>.
+      So <m>x</m> is neither in <m>A</m> nor in <m>B</m>,
+      by the definition of <m>\cup</m>.
+      By the definition of <m>'</m>,
+      <m>x \in A'</m> and <m>x \in B'</m>.
+      Therefore, <m>x \in A' \cap B'</m> and we have <m>(A \cup B)' \subset A' \cap B'</m>.
+    </p>
+    <p>
+      To show the reverse inclusion,
+      suppose that <m>x \in A' \cap B'</m>.
+      Then <m>x \in A'</m> and <m>x \in B'</m>,
+      and so <m>x \notin A</m> and <m>x \notin B</m>.
+      Thus <m>x \notin A \cup B</m> and so <m>x \in (A \cup B)'</m>.
+    </p>
+  </proof>
+  <exercise xml:id="exercise_Sets_s27">
+    <statement>
+      <p>
+        Prove <xref ref="proposition_Sets_sets_de_morgan">Proposition</xref> part (2).
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    <xref ref="proposition_Sets_sets_theorem_set_ops">Proposition</xref>
+    and <xref ref="proposition_Sets_sets_de_morgan">Proposition</xref>
+    provide us with an arsenal of rules for set operations.
+    You should consider these as your
+    <q>rules of arithmetic</q>
+    for sets: just as you used arithmetic rules in high school to solve algebraic equations,
+    so now you can use these rules for set operations to solve set equations.
+    Here is an example of how to do this:
+  </p>
+  <example xml:id="example_Sets_other_relations">
+    <statement>
+      <p>
+        Prove that
+        <me>
+          ( A \setminus B) \cap (B \setminus A) = \emptyset
+        </me>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        To see that this is true, observe that
+        <md>
+          <mrow>( A \setminus B) \cap (B \setminus A) \amp  = ( A \cap B') \cap (B \cap A')   \amp  \mbox{[definition of }  \setminus]</mrow>
+          <mrow>\amp  = A \cap A' \cap B \cap B'    \amp \mbox{[by <xref ref="proposition_Sets_sets_theorem_set_ops">Proposition</xref> parts 5 and 6]}</mrow>
+          <mrow>\amp = \emptyset \cap \emptyset    \amp \mbox{[by <xref ref="proposition_Sets_sets_theorem_set_ops">Proposition</xref> part 1]}</mrow>
+          <mrow>\amp  = \emptyset</mrow>
+        </md>.
+      </p>
+    </proof>
+  </example>
+  <exercise xml:id="exercise_Sets_30">
+    <statement>
+      <p>
+        Prove the following statements by mimicking the style of proof in <xref ref="example_Sets_other_relations">Example</xref>;
+        that is use the definitions of <m>\cap, \cup, \setminus</m>,
+        and <m>'</m> as well as their properties listed in <xref ref="proposition_Sets_sets_theorem_set_ops">Proposition</xref>
+        and <xref ref="proposition_Sets_sets_de_morgan">Proposition</xref>.
+        This type of proof is called an
+        <q>algebraic</q>
+        proof.
+        Every time you use a property,
+        remember to give a reference!
+      </p>
+      <p>
+        (You may find it easiest to begin with the more complicated side of the equality,
+        and simplify until it agrees with the other side. if you make that work,
+        then start with the other side and simplify until the simplified versions of both sides finally agree.)
+        <ol type="a">
+          <li>
+            <p>
+              <m>(A \cap B) \setminus B = \emptyset</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(A \cup B) \setminus B = A \setminus B</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \setminus (B \cup C) = (A \setminus B) \setminus C</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(A \cap B) \setminus (B \cap C) = (A \cap B) \setminus (B \cap C)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A \cap (B \setminus C) = (A \cap B) \setminus (A \cap C)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(A \cup B \cup C) \cap D) = (A \cap D) \cup (B \cap D)\cup (C \cap D)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(A \cap B \cap C) \cup D = (A \cup D) \cap (B \cup D)\cap (C \cup D)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

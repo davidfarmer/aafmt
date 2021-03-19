@@ -1,0 +1,15 @@
+<section xml:id="sec_ExploringPolynomials_Hints">
+  <title>Hints for
+  <q>Polynomials and Matrices</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_ExploringPolynomials_phi_onto">Exercise</xref>: Look at the examples of
+    <m>M=\phi_m(p(x)</m> that we've computed so far,
+    and see how the first column of <m>M</m> relates to the coefficients of <m>p(x)</m>.
+  </p>
+  <p>
+    <xref ref="exercise_ExploringPolynomials_propPhi">Exercise</xref>: Use the distributive property,
+    exponent rules,
+    and the operation-preserving properties of <m>\phi</m>.
+  </p>
+</section>

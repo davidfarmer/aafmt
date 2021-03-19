@@ -1,0 +1,125 @@
+<section xml:id="sec_PolynomialCodes_CoefficientsInZ2">
+  <title>Polynomials with coefficients in <m>\mathbb{Z}_2</m></title>
+  <p>
+    We are used to polynomials with coefficients that are integers or real numbers.
+    But as we mentioned in the previous chapter,
+    it is also possible to have polynomials with coefficients from other number systems.
+    In this chapter,
+    we will be looking particularly at the the set of polynomials with coefficients in <m>\mathbb{Z}_2</m>:
+    this set is denoted by <m>\mathbb{Z}_2[x]</m>.
+    For a polynomial in <m>\mathbb{Z}_2[x]</m>,
+    all coefficients are either 0 or 1.
+  </p>
+  <example>
+    <statement>
+      <p>
+        The polynomials in <m>\mathbb{Z}_2[x]</m> are:
+        <ol type="">
+          <li>
+            <p>
+              The constant polynomials: 1 and 0 (there are only 2)
+            </p>
+          </li>
+          <li>
+            <p>
+              The linear polynomials: <m>x</m> and <m>x+1</m> (there are only 2)
+            </p>
+          </li>
+          <li>
+            <p>
+              The quadratic polynomials: <m>x^2, x^2+1, x^2 + x</m>,<m>x^2 + x+1</m>,
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        And so on for higher-degree polynomials.
+      </p>
+    </statement>
+  </example>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            How many different polynomials in <m>\mathbb{Z}_2[x]</m> have degree 3?
+          </p>
+        </li>
+        <li>
+          <p>
+            How many different polynomials in <m>\mathbb{Z}_2[x]</m> have degree 4?
+          </p>
+        </li>
+        <li>
+          <p>
+            How many different polynomials in
+            <m>\mathbb{Z}_2[x]</m> have degree <m>n</m>, where <m>n \ge 1</m>?
+            Make a guess.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove that your guess is correct (<em>Hint</em>: Use induction,
+            if you know how.
+            Otherwise, you can make a more informal argument.)
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    A polynomial in <m>\mathbb{Z}_2[x]</m> can also be represented as a
+    <term> binary n-tuple</term>
+        <idx><h>Binary <m>n</m>-tuple</h></idx>
+    (or binary vector) whose entries are 1's and 0's.
+    If the degree of the polynomial is <m>n</m>,
+    then there must be at least <m>n+1</m> entries in the tuple.
+  </p>
+  <example>
+    <statement>
+      <p>
+        The polynomial <m>f(x) = x^3 + x^2 + x</m> can be represented by the binary 4-tuple:
+        <m>(1~1~1~0)</m>.
+        It can also be represented by the 5-tuple
+        <m>(0~1~1~1~0)</m> or the 6-tuple <m>(0~0~1~1~1~0)</m>:
+        these representations may be useful when adding or subtracting polynomials,
+        as we'll see in a moment.
+      </p>
+    </statement>
+  </example>
+  <p>
+    Addition, subtraction and multiplication are best explained by examples.
+  </p>
+  <example>
+    <statement>
+      <p>
+        Let <m>f(x) = x^2 + x + 1</m> and
+        <m>g(x) = x^3   + x + 1</m> be polynomials in <m>\mathbb{Z}_2[x]</m>.
+        We may represent <m>f(x)</m> and <m>g(x)</m> by the 4-tuples
+        <m>(0~1~1~1)</m> and <m>(1~0~1~1)</m> respectively
+        (note that we have used <m>n</m>-tuples of the same length:
+        the length is determined by the highest degree of the two polynomials).
+        Adding the polynomials is the same as adding corresponding entries of the in mod 2.
+        It follows that the sum <m>f(x)+g(x)</m> is:
+        <me>
+          \left( ~(0\oplus 1)~~~(1\oplus 0)~~(1 \oplus 1)~~~(1 \oplus 1)~\right) = (1~~1~~0~~0)
+        </me>,
+        which corresponds to the polynomial <m>x^3   + x^2</m>.
+        (Actually, when we represent polynomials as <m>n</m>-tuples in this way,
+        polynomial addition is identical to addition in <m>\mathbb{Z}_2^n</m>,
+        where <m>\mathbb{Z}_2^n = \underbrace{\mathbb{Z}_2 \times \ldots \mathbb{Z}_2}_{n~\text{ times } }</m>.)
+      </p>
+      <p>
+        If on the other hand we take <m>f(x) - g(x)</m>,
+        we find that we get the same answer (Try it!).
+        This will <em>always</em> be the case,
+        because in <m>\mathbb{Z}_2</m> addition and subtraction are the
+        <em>same</em> operation.
+      </p>
+    </statement>
+  </example>
+  <p>
+    We will be using these polynomials to represent certain special types of codes,
+    as we shall see shortly.
+  </p>
+</section>

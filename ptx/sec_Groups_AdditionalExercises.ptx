@@ -1,0 +1,235 @@
+<section xml:id="sec_Groups_AdditionalExercises">
+  <title>Additional group and subgroup exercises</title>
+  <exercise>
+    <statement>
+      <p>
+        Write out Cayley tables for groups formed by the symmetries of a rectangle and for <m>({\mathbb Z}_4, +)</m>.
+        How many elements are in each group?
+        Are the groups the same?
+        Why or why not?
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Describe the symmetries of a rhombus and prove that the set of symmetries forms a group.
+        Give Cayley tables for both the symmetries of a rectangle and the symmetries of a rhombus.
+        Are the symmetries of a rectangle and those of a rhombus the same?
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Give a multiplication table for the group <m>U(12)</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove that the set of matrices of the form
+        <me>
+          \begin{pmatrix}1 \amp  x \amp  y \\ 0 \amp  1 \amp  z \\ 0 \amp  0 \amp  1 \end{pmatrix}
+        </me>
+        where <m>x,y,z \in \mathbb{C}</m> is a group under matrix multiplication.
+        This group, known as the <term>Heisenberg group</term>,
+            <idx><h>Group</h><h>Heisenberg</h></idx>
+        is important in quantum physics.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_Groups_quat">
+    <statement>
+      <p>
+        List all subgroups of the quaternion group <m>Q_8</m>. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove or disprove: <m>SL_2( {\mathbb Z} )</m>,
+        the set of <m>2 \times 2</m> matrices with integer entries and determinant one,
+        is a subgroup of <m>SL_2( {\mathbb R} )</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_eoc_31">
+    <statement>
+      <p>
+        Prove that the intersection of two subgroups of a group <m>G</m> is also a subgroup of <m>G</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove or disprove: If <m>H</m> and <m>K</m> are subgroups of a group <m>G</m>,
+        then <m>H \cup K</m> is a subgroup of <m>G</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove or disprove: If <m>H</m> and <m>K</m> are subgroups of a group <m>G</m>,
+        then <m>H K = \{hk : h \in H \text{ and } k \in K \}</m> is a subgroup of <m>G</m>.
+        What if <m>G</m> is abelian?
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>G</m> be a group.
+        Show that
+        <men xml:id="centerofagroup">
+          Z(G) = \{ x \in G : gx = xg \mbox{ for all <m>g \in G</m>} \}
+        </men>
+        is a subgroup of <m>G</m>.
+        This subgroup is called the <term> center</term>
+            <idx><h>Center</h><h>of a group</h></idx>
+        of <m>G</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Give an example of an infinite group in which every nontrivial subgroup is infinite.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove or disprove: Every nontrivial subgroup of an non-abelian group is non-abelian.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_eoc_11">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Recall the discussion of <xref ref="sec_Symmetry_UnexplainedMiracle">Section</xref>,
+            which explains how two apparently different groups can in fact be essentially the
+            <q>same</q>
+            group.
+            Find two groups of order eight that we have studied are not the
+            <q>same</q>
+            in this sense,
+            and explain why they can't be considered as examples of the
+            <q>same</q>
+            group.
+          </p>
+        </li>
+        <li>
+          <p>
+            Using the previous exercise
+            (which introduces <m>{\mathbb Z}_2^n</m>),
+            give an example of a third group that is not the
+            <q>same</q>
+            as the two groups you found in (a),
+            and explain why it is not the
+            <q>same</q>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Give a specific example of some group <m>G</m> and elements
+        <m>g,
+        h \in G</m> where <m>(gh)^n \neq g^nh^n</m>,
+        for some natural number <m>n</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>a</m> and <m>b</m> be elements in a group <m>G</m>.
+        Prove that <m>ab^na^{-1} = (aba^{-1})^n</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_eoc_15">
+    <statement>
+      <p>
+        Given a group <m>G</m> which includes elements <m>g_1,\ldots g_n</m>.
+        Prove that the inverse of <m>g _1 g_2 \cdots g_n</m> is <m>g_n^{-1} g_{n-1}^{-1} \cdots g_1^{-1}</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>U(n)</m> be the group of units in <m>{\mathbb Z}_n</m>.
+        If <m>n>2</m>, prove that there is an element
+        <m>k \in U(n)</m> such that <m>k^2 = 1</m> and <m>k \neq 1</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_eoc_evenInv">
+    <statement>
+      <p>
+        Show that if <m>G</m> is a finite group of even order,
+        then there is an <m>a \in G</m> such that <m>a</m> is not the identity and <m>a^2 = e</m>. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_eoc_abelian1">
+    <statement>
+      <p>
+        Let <m>G</m> be a group and suppose that
+        <m>(ab)^2 = a^2b^2</m> for all <m>a</m> and <m>b</m> in <m>G</m>.
+        Prove that <m>G</m> is an abelian group. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_eoc_abelian2">
+    <statement>
+      <p>
+        Show that if <m>a^2 = e</m> for all <m>a \in G</m>,
+        then <m>G</m> must be an abelian group. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_Groups_2elt">
+    <statement>
+      <p>
+        If <m>(xy)^2 = xy</m> for all <m>x</m> and <m>y</m> in <m>G \setminus {e}</m>,
+        prove that <m>G</m> must be abelian. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="ex_Groups_abelian_proof">
+    <statement>
+      <p>
+        If <m>xy = x^{-1} y^{-1}</m> for all <m>x</m> and <m>y</m> in <m>G \setminus {e}</m>,
+        prove that <m>G</m> must be abelian.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>H</m> be a subgroup of <m>G</m> and
+        <me>
+          N(H) = \{ g \in G : gh = hg \mbox{ for all \(h \in H\)}   \}
+        </me>.
+      </p>
+      <p>
+        Prove <m>N(H)</m> is a subgroup of <m>G</m>.
+        This subgroup is called the <term> normalizer</term>
+            <idx><h>Normalizer</h></idx>
+        of <m>H</m> in <m>G</m>.
+      </p>
+    </statement>
+  </exercise>
+</section>

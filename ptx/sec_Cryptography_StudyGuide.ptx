@@ -1,0 +1,168 @@
+<section xml:id="sec_Cryptography_StudyGuide">
+  <title>Study guide  for
+  <q>Applications (I): Introduction to Cryptography</q>
+  chapter</title>
+  <subsection>
+    <title><xref ref="sec_Cryptography_PrivateKey">Section</xref>, Private key cryptography</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Shift codes (monoalphabetic cryptosystem <mdash/> one-to-one substitution)
+          </p>
+        </li>
+        <li>
+          <p>
+            Affine codes (monoalphabetic cryptosystem <mdash/> one-to-one substitution)
+          </p>
+        </li>
+        <li>
+          <p>
+            Affine codes (polyalphabetic cryptosystem <mdash/> ciphertext represents more than one letter)
+          </p>
+        </li>
+        <li>
+          <p>
+            Modular matrix multiplication
+          </p>
+        </li>
+        <li>
+          <p>
+            Matrix inverses in <m>{\mathbb Z}_{n}</m>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Know how to encode and decode using the shift code method. ( <xref ref="exercise_Cryptography_encode1"></xref>,
+            <xref ref="exercise_Cryptography_decode1"></xref>,
+            <xref ref="exercise_Cryptography_plaintext1"></xref>,
+            <xref ref="exercise_Cryptography_plaintext2"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to find the decoding function when given a valid encoding affine function. ( <xref ref="exercise_Cryptography_affine1"></xref>,
+            <xref ref="exercise_Cryptography_affine2"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to solve modular matrix multiplication.
+            <xref ref="exercise_Cryptography_mod_mult"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to find matrix inverses in <m>{\mathbb Z}_{n}</m>,
+            when they exist.
+            <xref ref="exercise_Cryptography_minv"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_Cryptography_PublicKey">Section</xref>, Public key cryptography</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            RSA cryptosystem (more advanced encryption system:
+            uses modular exponentiation to encrypt and decrypt messages)
+          </p>
+        </li>
+        <li>
+          <p>
+            Binary expansion (like decimal expansion,
+            except it uses base 2 instead of base 10)
+          </p>
+        </li>
+        <li>
+          <p>
+            Identifying prime numbers by brute force (Euler totient function and sieve of Eratosthenes)
+          </p>
+        </li>
+        <li>
+          <p>
+            Identifying prime numbers by Fermat's test for primality (Fermat's factorization algorithm)
+          </p>
+        </li>
+        <li>
+          <p>
+            Pseudoprime numbers
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Key formulas</title>
+      <ol>
+        <li>
+          <p>
+            Fermat's factorization algorithm: If <m>n</m> is an odd composite number,
+            then <m>n = x^{2} - y^{2} = (x - y)(x + y)</m> for some <m>x</m> and <m>y</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Pseudoprime formula:
+            the odd number <m>n</m> is a pseudoprime base <m>b</m> if mod<m>(b^{n-1},n) = 1</m>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Compute binary expansion of exponent,
+            either by hand <xref ref="exercise_Cryptography_power"/> or by spreadsheet <xref ref="exercise_Cryptography_powerplus"/>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Using binary expansion of exponent to rapidly compute modular exponentials by spreadsheet. ( <xref ref="exercise_Cryptography_power"></xref>,
+            <xref ref="exercise_Cryptography_powerplus"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Given a base, encoding (decoding) key, and message,
+            encrypt (decrypt) RSA messages. ( <xref ref="exercise_Cryptography_RSA_E"></xref>,
+            <xref ref="exercise_Cryptography_RSA_D"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Given a base and encoding
+            (or decoding)
+            key, use brute force method by spreadsheet to find the corresponding decoding
+            (or encoding)
+            key.
+            <xref ref="exercise_Cryptography_brute"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Use Fermat's factoring method by spreadsheet to factor large numbers.
+            <xref ref="exercise_Cryptography_FermatSpreadsheet"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Determine if a number is pseudoprime relative to a given base.
+            <xref ref="exercise_Cryptography_prime_pseudo"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+</section>

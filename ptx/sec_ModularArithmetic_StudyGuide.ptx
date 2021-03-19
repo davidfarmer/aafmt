@@ -1,0 +1,370 @@
+<section xml:id="sec_ModularArithmetic_StudyGuide">
+  <title>Study guide  for
+  <q>Modular Arithmetic</q>
+  chapter</title>
+  <subsection>
+    <title><xref ref="sec_ModularArithmetic_Introduction">Section</xref>, Introductory examples</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Modular arithmetic
+          </p>
+        </li>
+        <li>
+          <p>
+            Modulus
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Be able to give the modulus involved in a practical problem involving
+            <q>cycles</q>. <xref ref="exercise_ModularArithmetic_modulus1"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_ModularArithmetic_ModEquiv">Section</xref>, Modular equivalence and modular arithmetic</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Net displacement
+          </p>
+        </li>
+        <li>
+          <p>
+            Modular equivalence:
+            two numbers are equivalent mod <m>m</m> if they have the same remainder under division by <m>m</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Modular equivalence
+            (alternative formulation):
+            Given <m>a, b, m \in \mathbb{Z}, \text{ then } \\ a \equiv b(\text{ mod } \, m) \mbox{ iff } \, m\mid(a-b)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Integers modulo <m>m</m> (these are the possible remainders of integers under division by <m>m</m>)
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Notation</title>
+      <ol>
+        <li>
+          <p>
+            <m>\in</m> means <sq>contained in</sq> or <sq>elements of</sq>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\equiv</m> means modular equivalence,
+            similar to equality, but not quite the same
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\,\mid</m> means <sq>divides</sq>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Determine whether or not two integers are equivalent modulo a given base.
+            <xref ref="exercise_ModularArithmetic_22"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_ModularArithmetic_ModularEquations">Section</xref>, Modular equations</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Application of modular arithmetic to UPC and ISBN codes
+          </p>
+        </li>
+        <li>
+          <p>
+            Transposition errors in scanning codes
+          </p>
+        </li>
+        <li>
+          <p>
+            Solving modular equations
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Key Formulas</title>
+      <ol>
+        <li>
+          <p>
+            Inner product of two tuples:
+            <m>(d_{1}, d_{2}, \dots, d_{k}) \cdot (w_{1}, w_{2}, \dots,
+            w_{k}) = d_{1} w_{1} + d_{2}w_{2} + \cdots + d_{k}w_{k}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            UPC check formula: <m>(d_{1}, d_{2}, d_{3}, d_{4}, \dots,
+            d_{12}) \cdot (3, 1, 3, 1, \dots, 1) \equiv 0 (\text{ mod } \, 10)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            ISBN formula: <m>(d_{1}, d_{2}, \dots,
+            d_{10}) \cdot (1, 2, \dots, 10) \equiv 0(\text{ mod } \, 11)</m> {(note <m>d_{10}</m> might have to be a 10 to make the inner product 0, <sq>X</sq> is used to represent 10).}
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Be able to validate UPC codes and find errors.
+            <xref ref="exercise_ModularArithmetic_UPCSymbols"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to validate ISBN codes and find errors.
+            <xref ref="exercise_ModularArithmetic_ISBNCodes"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to solve modular equations with small coefficients using trial and error. ( <xref ref="exercise_ModularArithmetic_mod_eq_1"></xref>,
+            <xref ref="exercise_ModularArithmetic_mod_eq_2"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            In modular equations,
+            replace coefficients with their remainders before solving. (<xref ref="example_ModularArithmetic_speed_up1">Example</xref>,
+            <xref ref="exercise_ModularArithmetic_modeq3"></xref>)
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_ModularArithmetic_IntegerModn">Section</xref>, The integers mod <m>n</m> (also known as <m>{\mathbb Z}_{n}</m>)</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Modular addition and multiplication
+          </p>
+        </li>
+        <li>
+          <p>
+            Cayley tables for addition and multiplication in <m>{\mathbb Z}_{n}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Closure properties of <m>{\mathbb Z}_{n}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Additive &amp;
+            multiplicative identities and inverses in <m>{\mathbb Z}_{n}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Commutative, associative, &amp;
+            distributive properties in <m>{\mathbb Z}_{n}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Definition of a group (a set with an operation that is closed,
+            associative,
+            has an identity, and all set elements have inverses)
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Key Formulas</title>
+      <ol>
+        <li>
+          <p>
+            Modular addition: <m>a,
+            b \in {\mathbb Z}_{n}\, \text{ then } \, a \oplus b = r\,\mbox{ iff } \, a + b = r + sn \, \text{ and } \, r \in {\mathbb Z}_{n}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Modular multiplication:
+            <m>a \odot b = r \, \mbox{ iff } \, a \cdot b = r + sn \, \text{ and } \, r \in {\mathbb Z}_{n}</m> {(note that = is used rather than <m>\equiv</m> in modular addition and multiplication equations,
+            since <m>a \oplus b</m> is defined as equal to the remainder for modular addition and modular multiplication.)}
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Be able to draw
+            <q>commutative diagrams</q>
+            that relate arithmetic in <m>{\mathbb Z}</m> to arithmetic in <m>{\mathbb Z}_{n}</m>.
+            <xref ref="exercise_ModularArithmetic_diagram"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove modular equivalence between arithmetic expressions involving integers and modular arithmetic expressions involving the integers' remainders. ( <xref ref="exercise_ModularArithmetic_ModPower"></xref>,
+            <xref ref="exercise_ModularArithmetic_ops"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Simplify expressions mod <m>n</m> by replacing terms in the expression with their remainders.
+            <xref ref="exercise_ModularArithmetic_prove"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Know how to tell whether a set is closed under a certain arithmetic operation.
+            <xref ref="exercise_ModularArithmetic_53"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Create tables for addition and multiplication mod <m>n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to find multiplicative inverses of elements in
+            <m>{\mathbb Z}_{n}</m>, or prove they have none.
+            <xref ref="exercise_ModularArithmetic_60"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Know the group properties by memory. (<xref ref="definition_ModularArithmetic_group">Definition</xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to show if elements of a given <m>{\mathbb Z}_{n}</m> are a group or not.
+            <xref ref="exercise_ModularArithmetic_64"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_ModularArithmetic_ModularDivision">Section</xref>, Modular division</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Greatest common divisors (gcd)
+          </p>
+        </li>
+        <li>
+          <p>
+            Euclidean algorithm for finding gcd
+          </p>
+        </li>
+        <li>
+          <p>
+            Computing gcd using spreadsheets
+          </p>
+        </li>
+        <li>
+          <p>
+            Diophantine equations: <m>a \cdot m + b \cdot n = c</m>,
+            where <m>a, b, c</m> are integers,
+            and <m>m</m> and <m>n</m> are assumed to have integer values.
+          </p>
+        </li>
+        <li>
+          <p>
+            Multiplicative inverse for modular arithmetic: If <m>a \in \mathbb{Z}_n</m>,
+            then <m>x \in \mathbb{Z}_n</m> is the multiplicative inverse of <m>a</m> in
+            <m>\mathbb{Z}_n</m> if <m>a \odot x = 1</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Chinese remainder theorem
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Key Formulas</title>
+      <ol>
+        <li>
+          <p>
+            Euclidean algorithm formulas:
+            <m>a = b \cdot q_{1} + r_{1}, b = r_{1} \cdot q_{2} + r_{2}, \\ r_{1} = r_{2} \cdot q_{3} + r_{3}, \dots</m>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Be able to find the greatest common divisor using the Euclidean algorithm.
+            <xref ref="exercise_ModularArithmetic_gcd"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to find all integer solutions to a Diophantine equation.
+            <xref ref="exercise_ModularArithmetic_dio1"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Know the four group properties by heart (closure, identity, inverse,
+            associative) and be able to tell from a Cayley table whether or not a certain set with a given operation is a group.
+            <xref ref="exercise_ModularArithmetic_90"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Solve pairs of congruences or show they have no common solution.<xref ref="exercise_ModularArithmetic_91"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+</section>

@@ -1,0 +1,118 @@
+<section xml:id="sec_Permutations_AdditionalExercises">
+  <title>Additional exercises</title>
+  <ol>
+    <li xml:id="ex_Permutations_Ad1">
+      <p>
+        Show that <m>A_{10}</m> contains an element of order 15. (*Hint*)
+      </p>
+    </li>
+    <li>
+      <p>
+        Does <m>A_8</m> contain an element of order 26?
+      </p>
+    </li>
+    <li>
+      <p>
+        Find an element of largest order in <m>S_n</m> for <m>n = 3, \ldots, 10</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        In <xref ref="ComplexNumbers">Chapter</xref>
+        we used the term <sq>non-abelian</sq> to describe groups in which not all elements commute.
+        To show that a group is non-abelian,
+        it's enough to find a single pair of elements <m>a,
+        b \in S_n</m> which do not commute
+        (that is, <m>ab \neq ba</m>).
+        <ol type="a">
+          <li>
+            <p>
+              Prove that <m>S_n</m> is non-abelian for every <m>n \geq 3</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>A_n</m> is non-abelian for every <m>n \geq 4</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that <m>D_n</m> is non-abelian for every <m>n \geq 3</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </li>
+    <li xml:id="ex_Permutations_Ad2">
+      <p>
+        Let <m>\sigma \in S_n</m>.
+        Prove that <m>\sigma</m> can be written as the product of at most <m>n-1</m> transpositions. (*Hint*)
+      </p>
+    </li>
+    <li xml:id="ex_Permutations_Ad3">
+      <p>
+        Let <m>\sigma \in S_n</m>.
+        If <m>\sigma</m> is not a cycle,
+        prove that <m>\sigma</m> can be written as the product of at most <m>n-2</m> transpositions. (*Hint*)
+      </p>
+    </li>
+    <li>
+      <p>
+        Prove that in <m>A_n</m> with <m>n \geq 3</m>,
+        any permutation is a product of cycles of length<nbsp/>3.
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>G</m> be a group and define a function
+        <m>f_g : G \rightarrow G</m> by <m>f_g(a) = g a</m>.
+        Prove that <m>f_g</m> is a permutation of <m>G</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        For <m>\alpha</m> and <m>\beta</m> in <m>S_n</m>,
+        we say that <m>\alpha</m> and <m>\beta</m> are
+        <term>conjugate permutations</term><idx><h>Permutations</h><h>conjugate</h></idx> if there exists an
+        <m>\sigma \in S_n</m> such that <m>\sigma \alpha \sigma^{-1} = \beta</m>.
+        Show that if <m>\alpha</m> and <m>\beta</m> are conjugate permutations,
+        and <m>\alpha \in A_n</m>, then also <m>\beta \in A_n</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>\tau = (a_1, a_2, \ldots,
+        a_k)</m> be a cycle of length <m>k</m>.
+        <ol>
+          <li>
+            <p>
+              Prove that if <m>\sigma</m> is any permutation,
+              then <m>\sigma \tau \sigma^{-1 }</m> can be expressed as:
+              <me>
+                \sigma \tau \sigma^{-1 } = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k))
+              </me>.
+              it follows that  <m>\sigma \tau \sigma^{-1 }</m> is also a cycle of length <m>k</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>\mu</m> be any cycle of length <m>k</m>.
+              Prove that there is a permutation <m>\sigma</m> such that <m>\sigma \tau \sigma^{-1 } = \mu</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using the notation of the previous exercise,
+              show that any two cycles of length <m>k</m> are conjugate.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </li>
+    <li>
+      <p>
+        Show that <m>\alpha^{-1} \beta^{-1} \alpha \beta</m> is an even permutation for all <m>\alpha, \beta \in S_n</m>.
+      </p>
+    </li>
+  </ol>
+</section>

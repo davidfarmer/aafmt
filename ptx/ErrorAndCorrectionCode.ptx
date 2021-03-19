@@ -1,0 +1,50 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="ErrorAndCorrectionCode">
+  <title>Error-Detecting and Correcting Codes<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <p>
+      In <xref ref="Cryptography">Chapter</xref> we looked at cryptography,
+      which is concerned with the encoding of information to make it secret.
+      But coding is used for other purposes as well.
+      When data is transmitted,
+      it is often subject to processes which may corrupt the data and produce transmission errors.
+      This situation arises in many areas of communications,
+      including radio, telephone, television,
+      computer communications, and even compact disc player technology.
+      In order to guarantee accurate communication, the data must be encoded
+      (before transmission)
+      and decoded
+      (after transmission)
+      so that transmission errors can be detected and, if possible,
+      corrected.
+      As you may imagine,
+      some of the world's leading high-tech companies are heavily involved in this area<ndash/>and breakthroughs can mean big bucks for the discoverers!
+    </p>
+    <p>
+      <em>Prerequisites</em>: In this chapter we will make extensive use of the group <m>\mathbb{Z}^{n}_{2}</m>,
+      which is the direct product of <m>n</m> copies of
+      <m>\mathbb{Z}_{2}</m> (direct products were introduced in <xref ref="sec_Isomorphism_DirectProductsClassificationAbelianGroups">Section</xref>.
+      The discussion of linear block codes
+      (<xref ref="sec_ErrorAndCorrectionCode_BlockCodes">Section</xref> and following)
+      uses concepts from linear algebra such as matrix,
+      vector, and matrix multiplication.
+      <xref ref="sec_ErrorAndCorrectionCode_EfficientDecoding">Section</xref>
+      uses some basic ideas about cosets,
+      which were introduced in <xref ref="Cosets">Chapter</xref>.
+    </p>
+    <p>
+      Thanks to Tom Judson for material used in this chapter.
+    </p>
+  </introduction>
+  <xi:include  href="sec_ErrorAndCorrectionCode_Definitions.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_BlockCodes.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_GroupCodes.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_LinearBlockCodes.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_EncodingBlockLinearCodes.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_EfficientDecoding.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_AdditionalCodingExercises.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_References.ptx"/>
+  <xi:include  href="sec_ErrorAndCorrectionCode_Hints.ptx"/>
+</chapter>

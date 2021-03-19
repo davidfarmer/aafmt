@@ -1,0 +1,45 @@
+<section xml:id="sec_Introduction_ToTheInstructor">
+  <title>To the instructor</title>
+  <p>
+    This book is not intended for budding mathematicians.
+    It was created for a math program in which most of the students in upper-level math classes are planning to become secondary school teachers.
+    For such students,
+    conventional abstract algebra texts are practically incomprehensible,
+    both in style and in content.
+    Faced with this situation,
+    we decided to create a book that our students could actually read for themselves.
+    In this way we have been able to dedicate class time to problem-solving and personal interaction rather than rehashing the same material in lecture format.
+  </p>
+  <p>
+    Admittedly it falls short of the typical syllabus for an upper-level abstract algebra class.
+    But what's the point of covering the syllabus,
+    if the students don't retain anything?
+    The unhappy fact is that many students at this level haven't yet mastered the important basic examples
+    (complex numbers, etc.)
+    that provide motivation,
+    so it's unrealistic to expect them to grasp abstractions if they don't even understand what's being abstractified.So instead we have dived deeply into basic examples<ndash/>and these are the just the basic examples that will be most useful to those who go on to a career in high school teaching.
+  </p>
+  <p>
+    The book is highly modular,
+    and chapters may be readily omitted if students are already familiar with the material.
+    Some chapters (
+    <q>Preliminaries</q>
+    and
+    <q>Sigma Notation</q>
+    ) are remedial.
+    Other chapters cover topics that are often covered in courses in discrete mathematics,
+    such as sets,
+    functions, and equivalence classes.
+    (Much of this material is taken from the Morris' book,
+    with some amplifications.)
+    We have found from experience that students need this re-exposure in order to gain the necessary facility with these concepts,
+    on which so much of the rest of the book is based.
+  </p>
+  <p>
+    Whenever possible we have introduced applications,
+    which may be omitted at the instructor's discretion.
+    However, we feel that it is critically important for preparing secondary teachers to be familiar with these applications.
+    They will remember these long after they have forgotten proofs they have learned,
+    and they may even be able to convey some of these ideas to their own students.
+  </p>
+</section>

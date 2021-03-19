@@ -1,0 +1,94 @@
+<section xml:id="sec_Induction_NonFormulaProofs">
+  <title>Non-formula induction proofs</title>
+  <p>
+    Below is a sample proof of the statement that any <m>n</m>-element set (i.e., any set with <m>n</m> elements) has <m>2^n</m> subsets.
+    This illustrates a case where the result we seek to prove is not a formula,
+    but a statement that must be expressed verbally,
+    and where the induction step requires some verbal explanation,
+    and not just a chain of equalities.
+    Additional practice problems follow below.
+  </p>
+  <proposition>
+    <statement>
+      <p>
+        For all <m>n\in\NN</m>, the following holds:
+        <me>
+          {\text{ Any \(n\)-element set has \(2^n\) subsets. } } \tag{\(P(n)\)}
+        </me>
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      (<em>By induction</em>):
+    </p>
+    <p>
+      <em>Base case:</em> Since any <m>1</m>-element set has <m>2</m> subsets,
+      namely the empty set and the set itself,
+      and <m>2^1=2</m>, the statement <m>P(n)</m> is true for <m>n=1</m>.
+    </p>
+    <p>
+      <em>Induction step:</em>
+      <ul>
+        <li>
+          <p>
+            Let <m>k\in\NN</m> be given and suppose <m>P(k)</m> is true,
+            i.e., that any <m>k</m>-element set has <m>2^k</m> subsets.
+            We seek to show that <m>P(k+1)</m> is true as well,
+            i.e., that any <m>(k+1)</m>-element set has <m>2^{k+1}</m> subsets.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>A</m> be a set with <m>k+1</m> elements.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>a</m> be an element of <m>A</m>, and let <m>A'=A-\{a\}</m>
+            (so that <m>A'</m> is a set with <m>k</m> elements).
+          </p>
+        </li>
+        <li>
+          <p>
+            We classify the subsets of <m>A</m> into two types: (I) subsets that do
+            <em>not</em> contain <m>a</m>,
+            and (II) subsets that do contain <m>a</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The subsets of type (I) are exactly the subsets of the set <m>A'</m>.
+            Since <m>A'</m> has <m>k</m> elements,
+            the induction hypothesis can be applied to this set and we conclude that there are <m>2^k</m> subsets of type (I).
+          </p>
+        </li>
+        <li>
+          <p>
+            The subsets of type (II) are exactly the sets of the form <m>B=B'\cup \{a\}</m>,
+            where <m>B'</m> is a subset of <m>A'</m>.
+            By the induction hypothesis there are <m>2^k</m> such sets <m>B'</m>,
+            and hence <m>2^k</m> subsets of type (II).
+          </p>
+        </li>
+        <li>
+          <p>
+            Since there are <m>2^k</m> subsets of each of the two types,
+            the total number of subsets of <m>A</m> is <m>2^k+2^k=2^{k+1}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Since <m>A</m> was an arbitrary <m>(k+1)</m>-element set,
+            we have proved that any <m>(k+1)</m>-element set has <m>2^{k+1}</m> subsets.
+            Thus <m>P(k+1)</m> is true, completing the induction step.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      <em>Conclusion:</em> By the principle of induction,
+      <m>P(n)</m> is true for all <m>n\in\NN</m>.
+    </p>
+  </proof>
+</section>

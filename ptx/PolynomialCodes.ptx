@@ -1,0 +1,6 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="PolynomialCodes">
+  <title>Polynomial Codes</title>
+  <xi:include  href="sec_PolynomialCodes_CoefficientsInZ2.ptx"/>
+  <xi:include  href="sec_PolynomialCodes_CyclicBinaryCodes.ptx"/>
+  <xi:include  href="sec_PolynomialCodes_DefinitionAndProperties.ptx"/>
+</chapter>

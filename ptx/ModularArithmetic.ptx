@@ -1,0 +1,29 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="ModularArithmetic">
+  <title>Modular Arithmetic</title>
+  <introduction>
+    <blockquote>
+      What goes up, must come down
+      Spinnin' wheel, got ta go round
+      Talkin' 'bout your troubles it's a cryin' sin
+      Ride a painted pony, Let the spinnin' wheel spin
+      <em>(Source:
+      <q>Spinnin' Wheel</q>, Blood, Sweat, and Tears)</em>
+    </blockquote>
+    <p>
+      Cycles are everywhere.
+      So are integers.
+      Modular arithmetic combines the two by wrapping the integers around a circle.
+    </p>
+    <p>
+      Thanks to Tom Judson for material used in this chapter.
+      David Weathers also contributed a section.
+    </p>
+  </introduction>
+  <xi:include  href="sec_ModularArithmetic_Introduction.ptx"/>
+  <xi:include  href="sec_ModularArithmetic_ModEquiv.ptx"/>
+  <xi:include  href="sec_ModularArithmetic_ModularEquations.ptx"/>
+  <xi:include  href="sec_ModularArithmetic_IntegerModn.ptx"/>
+  <xi:include  href="sec_ModularArithmetic_ModularDivision.ptx"/>
+  <xi:include  href="sec_ModularArithmetic_Hints.ptx"/>
+  <xi:include  href="sec_ModularArithmetic_StudyGuide.ptx"/>
+</chapter>

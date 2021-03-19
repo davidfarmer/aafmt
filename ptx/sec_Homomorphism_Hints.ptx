@@ -1,0 +1,27 @@
+<section xml:id="sec_Homomorphism_Hints">
+  <title>Hints for
+  <q>Homomorphism</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_Homomorphism_homo_GL2">Exercise</xref>(d): Use <xref ref="definition_Cosets_normal_alt">Definition</xref> from the Cosets chapter,
+    and the multiplicative property of determinants.
+  </p>
+  <p>
+    <xref ref="exercise_Homomorphism_hker">Exercise</xref>: Use Part<nbsp/>(d) of <xref ref="proposition_Homomorphism_HomorphismSubgroupProp">Proposition</xref>,
+    using <m>T=\{e\}</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Homomorphism_allhom">Exercise</xref>: The function <m>f</m> is completely determined by the value of <m>f(1)</m>.
+    For instance, if <m>f(1)=2</m>,
+    then the operation-preserving property implies that <m>f(n)=2n</m> for any integer <m>n</m> (Why?).
+  </p>
+  <p>
+    <em>Additional exercises:</em>
+  </p>
+  <p>
+    <xref ref="ex_Homomorphism_Ad1">Exercise</xref>: Use the operation-preserving property.
+  </p>
+  <p>
+    <xref ref="ex_Homomorphism_Ad2">Exercise</xref>: What is the order of <m>0.5 + \ZZ</m>?
+  </p>
+</section>

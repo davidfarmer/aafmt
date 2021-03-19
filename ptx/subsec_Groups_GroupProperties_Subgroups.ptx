@@ -1,0 +1,557 @@
+<section xml:id="subsec_Groups_GroupProperties_Subgroups">
+  <title>Subgroups<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    We first came across subgroups in the Permutations chapter.
+    We saw that <m>S_n</m>, the set of permutations on a set of n elements,
+    is a group under function composition.
+    Yet we also saw that the set of symmetries of an <m>n</m>-sided figure,
+    which is a subset of <m>S_n</m>,
+    is itself a group under function composition.
+    So a subgroup is a subset of a larger group that is itself a group under the same operation as the larger group.
+    Formally then:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {subgroup_defn} A <term>subgroup</term><idx><h>Subgroup</h><h>definition of</h></idx> <m>H</m> of a group
+        <m>(G,\circ)</m> is a subset <m>H</m> of <m>G</m> such that when the group operation of <m>G</m> is restricted to <m>H</m>,
+        <m>H</m> is a group in its own right.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    By definition, all subgroups are subsets:
+    but is the reverse true?
+        <idx><h>Subgroup</h><h>relation to subset</h></idx>
+    If not, what makes a sub<em>set</em> a sub<em>group</em>?
+    What special properties must subsets possess in order to qualify as subgroups?
+  </p>
+  <p>
+    The key to answering this question is the observation that any subset
+    <m>H \subset G</m> that is a subgroup of <m>G</m> must also be a group in its own right:
+    and we're already experts at deciding whether a set with a binary operation is a group:
+  </p>
+  <example xml:id="example_Groups_Z2subgroup">
+    <statement>
+      <p>
+        Consider the set of even integers <m>2{\mathbb Z} = \{ \ldots, -2, 0, 2, 4, \ldots \}</m>.
+        A more mathematically concise definition is:
+        <me>
+          2{\mathbb Z} = \{x \in {\mathbb Z} | x = 2n \mbox{ for some }  n \in {\mathbb Z} \}
+        </me>
+      </p>
+      <p>
+        <m>2{\mathbb Z}</m> is actually a subgroup of <m>{\mathbb Z}</m>,
+        under the operation of addition.
+        To show this,
+        according to the definition of subgroup we need to show:
+        <ol type="a">
+          <li>
+            <p>
+              <m>({\mathbb Z}, +)</m> is a group;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>2{\mathbb Z} \subset {\mathbb Z}</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(2{\mathbb Z}, +)</m> is a group.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Items (a) and (b) can be dispatched in short order.
+        From our work in Chapters 1 and 2, we know
+        <m>{\mathbb Z}</m> is a group under addition:
+        this takes care of (a).
+        For item (b), we have that any element
+        <m>m \in 2{\mathbb Z}</m> can be written as <m>m=2n</m>,
+        where <m>n \in {\mathbb Z}</m>:
+        hence <m>m \in {\mathbb Z}</m> also.
+      </p>
+      <p>
+        To show (c), we must verify all the group properties for
+        <m>2{\mathbb Z}</m> under the operation <m>+</m>:
+        <ul>
+          <li>
+            <p>
+              <em>(Closure)</em>: Given <m>x, y \in 2{\mathbb Z}</m>,
+              it follows <m>x = 2n</m> and <m>y = 2m</m> for some <m>n,
+              m \in {\mathbb Z}</m>.
+              Therefore
+              <me>
+                x + y = 2n + 2m = 2(n + m)
+              </me>
+              Since <m>{\mathbb Z}</m> is closed under <m>+</m>,
+              it follows <m>(n + m) \in {\mathbb Z}</m>,
+              so <m>2(n+m) \in 2{\mathbb Z}</m>.
+              Since <m>x</m> and <m>y</m> were arbitrary,
+              it follows that <m>2{\mathbb Z}</m> is closed under addition.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>(Associative)</em>: Suppose <m>w,
+              x, y \in 2{\mathbb Z}</m>.
+              Then <m>w, x, y</m> are integers,
+              and <m>w + (x + y) = (w + x) + y</m> by the associativity of <m>({\mathbb Z}, +)</m>.
+              Hence <m>2{\mathbb Z}</m> is associative under addition.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>(Identity)</em>: <m>0 \in 2{\mathbb Z}</m>,
+              since <m>2 \cdot 0 = 0</m>:
+              and for any <m>x \in 2{\mathbb Z}</m>, <m>0 + x = x + 0 = x</m>.
+              Hence <m>2{\mathbb Z}</m> has an identity under addition,
+              namely <m>0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>(Inverse)</em>: Given <m>x \in 2{\mathbb Z}</m>, where <m>x = 2n</m>,
+              <m>-x = -(2n) = 2(-n)</m>, [associative and commutative properties of
+              <m>{\mathbb Z}</m> under multiplication] and since <m>-n \in {\mathbb Z}</m>
+              (closure of <m>{\mathbb Z}</m> under multiplication)
+              it follows that <m>-x \in 2{\mathbb Z}</m>.
+              Now since <m>-x + x = x + (-x) = 0</m>,
+              it follows <m>\forall x \in 2{\mathbb Z}</m>,
+              <m>\exists x^{-1} \in 2{\mathbb Z}</m>,
+              namely <m>x^{-1} = -x</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        This completes the proof that
+        <m>2{\mathbb Z}</m> is a subgroup of <m>{\mathbb Z}</m> under addition.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_Groups_63">
+    <statement>
+      <p>
+        Given any fixed integer <m>m</m>, prove that
+        <me>
+          m{\mathbb Z} = \{ \ldots, -2m, -m,  0, m, 2m, \ldots \}
+        </me>
+        is a subgroup of <m>{\mathbb Z}</m> under the operation of addition.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Notice that by definition,
+    the operation used in the subgroup must be the <em>same</em>
+    operation that's used in the group it's contained in.
+    For example,
+    <m>{\mathbb R}^{\ast}</m> is not a subgroup of <m>{\mathbb R}</m>,
+    because <m>({\mathbb R}^{\ast}, +)</m> is not a group.
+  </p>
+  <exercise xml:id="exercise_Groups_64">
+    <statement>
+      <p>
+        Prove or disprove:
+        <ol type="a">
+          <li>
+            <p>
+              <m>GL_2({\mathbb R})</m> is a subgroup of <m>{\mathbb M}_2 ( {\mathbb R})</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>U(n)</m> is a subgroup of <m>{\mathbb Z}_n</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    We can make the task of proving subgroups a bit easier.
+    First notice that in <xref ref="example_Groups_Z2subgroup">Example</xref>,
+    <m>2{\mathbb Z}</m> was associative simply by virtue of the fact that it's contained in the group
+    <m>{\mathbb Z}</m> and has the same operation.
+    This will be true in general:
+    the associate property will always hold for any subset of a group <m>G</m> under that group's operation.
+    We may also make the following observation about identity elements:
+  </p>
+  <exercise xml:id="exercise_Groups_65">
+    <statement>
+      <p>
+        Prove the following: Suppose <m>G</m> is a group with identity element <m>e</m>,
+        and let <m>H</m> be a subgroup of <m>G</m> with identity element <m>f</m>.
+        Then <m>e=f</m>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The forgoing exercise and our observation about associativity lead to the following simplified subgroup criteria (which we state as a proposition):
+  </p>
+  <proposition xml:id="proposition_Groups_subgroup_prove">
+    <statement>
+      <p>
+        A subset <m>H</m> of a group <m>G</m> is a subgroup if and only if:
+        <idx><h>Subgroup</h><h>necessary conditions</h></idx>
+        <ol type="a">
+          <li>
+            <p>
+              The identity <m>e</m> of <m>G</m> is in <m>H</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>h_1, h_2 \in H</m>,
+              then <m>h_1h_2 \in H</m> (that is,
+              <m>H</m> is closed under the group operation),
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>h \in H</m>, then <m>h^{-1} \in H</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </proposition>
+  <exercise xml:id="exercise_Groups_T_subgroup">
+    <statement>
+      <p>
+        The set <m>{\mathbb T}</m> is defined as the subset of
+        <m>{\mathbb C}</m> whose elements all have a modulus of <m>1</m>; that is
+        <me>
+          {\mathbb T} = \{c \in {\mathbb C} :  | c | =1 \}
+        </me>
+        <ol type="a">
+          <li>
+            <p>
+              Using <xref ref="proposition_Groups_subgroup_prove">Proposition</xref> above,
+              prove that <m>{\mathbb T}</m> is a subgroup of <m>{\mathbb C}^{\ast}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is <m>| {\mathbb T} |</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove that <m>{\mathbb T}</m> is abelian.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_67">
+    <statement>
+      <p>
+        Let <m>H_4 = \{ 1, -1, i, -i \}</m>,
+        (these are the fourth roots of unity,
+        which we studied in <xref ref="subsec_ComplexNumbers_ComplexRoots_RootsOfUnity">Section</xref>).
+        <ol type="a">
+          <li>
+            <p>
+              Using <xref ref="proposition_Groups_subgroup_prove">Proposition</xref>,
+              prove that <m>H_4</m> is a subgroup of <m>{\mathbb T}</m>.
+              (<em>Note</em> you should first verify that <m>H_4</m> is a subset of <m>{\mathbb T}</m>.)
+            </p>
+          </li>
+          <li>
+            <p>
+              What is <m>| H_4 |</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove that <m>H_4</m> is abelian.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_68">
+    <statement>
+      <p>
+        Let's generalize the last exercise.
+        Suppose now that <m>H_n</m> is the set of
+        <em><m>n^{th}</m></em> roots of unity.
+        That is
+        <me>
+          H_n = \{z \in {\mathbb C} : z^n = 1\}
+        </me>
+        <ol type="a">
+          <li>
+            <p>
+              Prove that <m>H_n</m> is a subset of <m>{\mathbb T}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using <xref ref="proposition_Groups_subgroup_prove">Proposition</xref>,
+              prove that <m>H</m> is a subgroup of <m>{\mathbb T}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is <m>| H_n |</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove that <m>H_n</m> is abelian.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_69">
+    <statement>
+      <p>
+        Let <m>{\mathbb Q}^*</m> be defined in the following way:
+        <me>
+          {\mathbb Q}^* = \{ p/q : p, q \mbox{ are nonzero integers }  \}
+        </me>
+      </p>
+      <p>
+        In other words <m>{\mathbb Q}^*</m> is the set of non-zero rational numbers
+        (<m>{\mathbb Q}^* = {\mathbb Q} \setminus 0</m>).
+        <ol type="a">
+          <li>
+            <p>
+              Using <xref ref="proposition_Groups_subgroup_prove">Proposition</xref>,
+              prove that <m>{\mathbb Q}^*</m> is a subgroup of <m>{\mathbb R}^*</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove that <m>{\mathbb Q}^*</m> is abelian.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove that
+        <me>
+          G = \{ a + b \sqrt{2} : \mbox{\(a, b \in {\mathbb Q}\) and \(a\) and \(b\) are not both zero}   \}
+        </me>
+        is a subgroup of <m>{\mathbb R}^{\ast}</m> under the group operation of multiplication.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>G</m> be the group of
+        <m>2 \times 2</m> matrices under addition and
+        <me>
+          H = \left\{ \begin{pmatrix}a \amp  b \\ c \amp  d \end{pmatrix} : a + d = 0 \right\}
+        </me>.
+        <ol type="a">
+          <li>
+            <p>
+              Prove that <m>H</m> is a subgroup of <m>G</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove that <m>H</m> is abelian
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_70">
+    <statement>
+      <p>
+        We define <m>SL_2( {\mathbb R})</m> to be the set of
+        <m>2 \times 2</m> matrices of determinant one; that is, a matrix
+        <me>
+          A = \begin{pmatrix}a \amp  b \\ c \amp  d \end{pmatrix}
+        </me>
+        is in <m>SL_2( {\mathbb R})</m> exactly when <m>ad - bc = 1</m>.
+        We call this the <term>Special Linear Group</term>
+        <idx><h>Group</h><h>special linear <m>(SL_n(\mathbb{R}))</m></h></idx> .
+        <ol type="a">
+          <li>
+            <p>
+              Using <xref ref="proposition_Groups_subgroup_prove">Proposition</xref>,
+              prove that <m>SL_2( {\mathbb R})</m> is a subgroup of <m>GL_2( {\mathbb R})</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove that <m>SL_2( {\mathbb R})</m> is abelian.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>G</m> consist of the <m>2 \times 2</m> matrices of the form
+        <me>
+          \begin{pmatrix}\cos \theta \amp  -\sin \theta \\ \sin \theta \amp  \cos \theta \end{pmatrix}
+        </me>
+        where <m>\theta \in {\mathbb R}</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Prove that <m>G</m> is a subgroup of
+              <m>SL_2( {\mathbb R})</m>. (Recall your angle addition formulas from trigonometry!)
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove that <m>G</m> is abelian.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        (<m>G</m> is called the set of <m>2 \times 2</m>
+        <term>rotation matrices</term>.
+            <idx><h>Matrix</h><h>rotation</h></idx>
+        )
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    There is an alternative way to prove a subset <m>H</m> of <m>G</m> is a subgroup of <m>G</m> that can save some time.
+    It turns out that the three conditions in <xref ref="proposition_Groups_subgroup_prove">Proposition</xref>
+    can be combined into a single statement:
+  </p>
+  <proposition xml:id="proposition_Groups_subgroup_prove_2">
+    <statement>
+      <p>
+        Let <m>H</m> be a subset of a group <m>G</m>.
+        Then <m>H</m> is a subgroup of <m>G</m> if and only if <m>H \neq \emptyset</m>,
+        and whenever <m>g, h \in H</m> then <m>gh^{-1}</m> is in <m>H</m>.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      We first prove the
+      <q>if</q>
+      direction, so we assume <m>H</m> be a nonempty subset of <m>G</m> and whenever
+      <m>g,
+      h \in H</m> then <m>gh^{-1}</m> is in <m>H</m>.
+      <xref ref="proposition_Groups_subgroup_prove">Proposition</xref>
+      says that if <m>H</m> contains the identity and is closed under inverse and the group operation,
+      then <m>H</m> is a subgroup.
+      Let's prove these one by one.
+      First, since <m>H</m> is nonempty,
+      it contains some element <m>g</m>:
+      and letting <m>h=g</m> we obtain <m>gg^{-1} = e</m> is in <m>H</m>.
+      Second, since <m>e \in H</m> and <m>g \in H</m>,
+      then <m>eg^{-1} = g^{-1}</m> is also in <m>H</m>:
+      so <m>H</m> is closed under inverse.
+      Finally, let <m>g, h \in H</m>.
+      We must show that their product is also in <m>H</m>.
+      But we have already shown that <m>h \in H</m> implies that <m>h^{-1} \in H</m>, so that,
+      <m>g(h^{-1})^{-1} = gh \in H</m>.
+      We have established the three required conditions,
+      so we may conclude that <m>H</m> is a subgroup of <m>G</m>.
+    </p>
+    <p>
+      To prove the
+      <q>only if</q>
+      ' direction,
+      we may assume that <m>H</m> is a subgroup of <m>G</m>.
+      Given any elements <m>g,
+      h \in H</m>, we need to show that <m>gh^{-1} \in H</m>.
+      Since <m>h</m> is in <m>H</m>,
+      its inverse <m>h^{-1}</m> must also be in <m>H</m>.
+      Because of the closure of the group operation, <m>gh^{-1} \in H</m>.
+      This completes the proof.
+    </p>
+  </proof>
+  <example xml:id="example_Groups_prov">
+    <statement>
+      <p>
+        Using the proposition above,
+        let's re-prove that <m>{\mathbb T}</m> is a subgroup of <m>{\mathbb C}^{\ast}</m>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Based on the proposition, there are four things we need to show:
+        <ol type="a">
+          <li>
+            <p>
+              <m>{\mathbb C}^{\ast}</m> is a group;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>{\mathbb T} \neq \emptyset</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>{\mathbb T} \subset {\mathbb C}^{\ast}</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>x, y \in {\mathbb T}</m>,
+              <m>xy^{-1} \in {\mathbb T}</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Items (a), (b), and (c) we have shown before.
+        As to item (d),
+      </p>
+      <p>
+        <m>x, y \in {\mathbb T}</m>
+      </p>
+      <p>
+        <m>\implies |x|=1 \mbox{ and } |y|=1</m>
+      </p>
+      <p>
+        <m>\implies |xy^{-1}|= |x|\cdot|y^{-1}| = |x|/|y| = 1/1 = 1</m>
+      </p>
+      <p>
+        <m>\implies |xy^{-1}| \in {\mathbb T}</m>
+      </p>
+    </proof>
+  </example>
+  <exercise xml:id="exercise_Groups_73">
+    <statement>
+      <p>
+        Use <xref ref="proposition_Groups_subgroup_prove_2">Proposition</xref> to re-prove the following:
+        <ol type="a">
+          <li>
+            <p>
+              <m>{\mathbb Q}^*</m> is a subgroup of <m>{\mathbb R}^*</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>SL_2( {\mathbb R})</m> is a subgroup of <m>GL_2( {\mathbb R})</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

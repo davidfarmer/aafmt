@@ -1,0 +1,26 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="FurtherCryptography">
+  <title>Further Topics in Cryptography</title>
+  <introduction>
+    <p>
+      In this chapter we examine two specific topics in cryptography which are highly practical and are relatively recent developments: Diffie-Hellman key exchange
+      (originated by W. Diffie and M. Hellman in 1976)
+      and elliptic curve cryptography
+      (proposed by N. Koblitz and V. Miller in 1985).
+    </p>
+    <p>
+      <em>Prerequisites</em>: To understand this chapter,
+      the reader should be familiar with the material in <xref ref="ModularArithmetic">Chapters</xref>,
+      <xref ref="Functions"></xref>,
+      and <xref ref="Groups"></xref>.
+      We also make use of one important result from <xref ref="Isomorphism">Chapter</xref>,
+      but we only apply the result and don't make use of the proof itself.
+    </p>
+    <p>
+      This chapter is written by Moses Marmolejo, with revisions by C.T.
+    </p>
+  </introduction>
+  <xi:include  href="sec_FurtherCryptography_DiffieHellmanKeyExchange.ptx"/>
+  <xi:include  href="sec_FurtherCryptography_EllipticalCurve.ptx"/>
+  <xi:include  href="sec_FurtherCryptography_References.ptx"/>
+  <xi:include  href="sec_FurtherCryptography_Hints.ptx"/>
+</chapter>

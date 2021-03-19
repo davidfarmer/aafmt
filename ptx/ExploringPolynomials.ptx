@@ -1,0 +1,43 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="ExploringPolynomials">
+  <title>Exploration: Relating polynomials and matrices</title>
+  <introduction>
+    <p>
+      In the previous chapter,
+      we formally introduced the concept of
+      <em>isomorphism</em> as it relates to groups.
+      Intuitively,
+      two groups are isomorphic if any algebraic statement about one group is also true about the other,
+      just expressed in different symbology.
+      For example,
+      given that group a finite group <m>G</m> is isomorphic to group <m>H</m>,
+      it is then possible to obtain the Cayley table for <m>H</m> simply by making letter-for-letter substitutions in the Cayley table for <m>G</m>.
+    </p>
+    <p>
+      The concept of isomorphism applies to other mathematical structures besides groups.
+      A great deal of mathematics is concerned with showing that two apparently different mathematical structures are in fact the same,
+      just expressed in different terminology.
+      When the structures involved are rings, vector spaces,
+      etc., then we may talk about ring isomorphisms,
+      vector space isomorphisms, and so on.
+    </p>
+    <p>
+      In this chapter, we will give an example of a
+      <term>ring isomorphism</term>.
+      This isomorphism is quite important in
+      <term>digital signal processing</term>,is a key area of modern technology that powers our CD players,
+      cell phones,
+      wireless internet, and many other electronic devices.
+    </p>
+    <p>
+      To understand this chapter you will need some background in linear algebra.
+      In particular,
+      you will need to understand algebraic operations on vectors and matrices.
+      In the first section,
+      we'll give a brief review of some basic properties of vectors and vector spaces.
+    </p>
+  </introduction>
+  <xi:include  href="sec_ExploringPolynomials_DefiningVectorSpace.ptx"/>
+  <xi:include  href="sec_ExploringPolynomials_PolynomialsAreVectors.ptx"/>
+  <xi:include  href="sec_ExploringPolynomials_IdentifyingPolynomialsMatrices.ptx"/>
+  <xi:include  href="sec_ExploringPolynomials_Hints.ptx"/>
+</chapter>

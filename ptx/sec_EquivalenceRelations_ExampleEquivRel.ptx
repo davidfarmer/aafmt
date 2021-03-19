@@ -1,0 +1,438 @@
+<section xml:id="sec_EquivalenceRelations_ExampleEquivRel">
+  <title>Examples of equivalence relations</title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    Let's take a look at some examples of equivalence relations
+    (recall <xref ref="definition_EquivalenceRelations_equivalencerelation">Definition</xref>).
+    We will see shortly that they all have something in common.
+  </p>
+  <example xml:id="example_EquivalenceRelations_binrelsquare">
+    <statement>
+      <p>
+        Define a binary relation<nbsp/><m>\sim</m> on<nbsp/><m>\real</m> by
+        <m>x \sim y</m> iff <m>x^2 = y^2</m>.
+        Then <m>\sim</m> is an equivalence relation.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        We wish to show that <m>\sim</m> is reflexive,
+        symmetric, and transitive.
+      </p>
+      <p>
+        (reflexive) Given <m>x \in \real</m>,
+        we have <m>x^2 = x^2</m>, so <m>x \sim x</m>.
+      </p>
+      <p>
+        (symmetric) Given <m>x,y \in \real</m>,
+        such that <m>x \sim y</m>, we have <m>x^2 = y^2</m>.
+        Since equality is symmetric, this implies <m>y^2 = x^2</m>,
+        so <m>y \sim x</m>.
+      </p>
+      <p>
+        (transitive) Given <m>x,y,z \in \real</m>,
+        such that <m>x \sim y</m> and <m>y \sim z</m>,
+        we have <m>x^2 = y^2</m> and <m>y^2 = z^2</m>.
+        Therefore <m>x^2 = z^2</m>, since equality is transitive.
+        Hence <m>x \sim z</m>.
+      </p>
+    </proof>
+  </example>
+  <example xml:id="example_EquivalenceRelations_NxNEquivRelEg">
+    <statement>
+      <p>
+        Define a binary relation<nbsp/><m>\sim</m> on<nbsp/><m>\mathbb{N} \times \mathbb{N}</m> by
+        <m>(a_1,b_1) \sim (a_2,b_2)</m> iff <m>a_1 + b_2 = a_2 + b_1</m>.
+        Then <m>\sim</m> is an equivalence relation.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        We wish to show that <m>\sim</m> is reflexive,
+        symmetric, and transitive.
+      </p>
+      <p>
+        (reflexive) Given <m>(a,b) \in \mathbb{N} \times \mathbb{N}</m>,
+        we have <m>a + b = a + b</m>,
+        so <m>(a,b) \sim (a,b)</m>.
+      </p>
+      <p>
+        (symmetric) Given <m>(a_1,b_1) , (a_2,b_2) \in \mathbb{N} \times \mathbb{N}</m>,
+        such that <m>(a_1,b_1) \sim (a_2,b_2)</m>,
+        we have <m>a_1 +b_2 = a_2 + b_1</m>.
+        Since equality is symmetric,
+        this implies <m>a_2 + b_1 = a_1 + b_2</m>,
+        so <m>(a_2,b_2) \sim (a_1,b_1)</m>.
+      </p>
+      <p>
+        (transitive) Given <m>(a_1,b_1) , (a_2,b_2) , (a_3,b_3) \in \mathbb{N} \times \mathbb{N}</m>,
+        such that <m>(a_1,b_1) \sim (a_2,b_2)</m> and <m>(a_2,b_2) \sim (a_3,b_3)</m>, we have
+        <md>
+          <mrow>(a_1 + b_3) + (a_2 + b_2) \amp = (a_1 + b_2) + (a_2 + b_3) \amp \amp  \text{ (rearrange terms) }</mrow>
+          <mrow>\amp = (a_2 + b_1) + (a_2 + b_3) \amp \amp  (\,(a_1,b_1) \sim (a_2,b_2)\text{ and substitution } )</mrow>
+          <mrow>\amp = (a_2 + b_1) + (a_3 + b_2) \amp \amp  (\,(a_2,b_2) \sim (a_3,b_3)\text{ and substitution } )</mrow>
+          <mrow>\amp = (a_3 + b_1) + (a_2 + b_2) \amp \amp  \text{ (rearrange terms) }  </mrow>
+        </md>.
+      </p>
+      <p>
+        Subtracting <m>a_2 + b_2</m> from both sides of the equation,
+        we conclude that <m>a_1 + b_3 = a_3 + b_1</m>,
+        so <m>(a_1,b_1) \sim (a_3,b_3)</m>.
+      </p>
+    </proof>
+  </example>
+  <exercise xml:id="exercise_EquivalenceRelations_EquivRelShowEx">
+    <statement>
+      <p>
+        Show that each of these binary relations is an equivalence relation.
+        <ol type="a">
+          <li xml:id="EquivRelShowEx-x2min3x">
+            <p>
+              The binary relation <m>\sim</m> on <m>\real</m> defined by
+              <m>x \sim y</m> iff <m>x^2 - 3x = y^2 - 3y</m>.
+            </p>
+          </li>
+          <li xml:id="EquivRelShowEx-xminyinZ">
+            <p>
+              The binary relation <m>\sim</m> on <m>\real</m> defined by
+              <m>x \sim y</m> iff <m>x - y \in \integer</m>. (*Hint*)
+            </p>
+          </li>
+          <li xml:id="EquivRelShowEx-ab_ab">
+            <p>
+              The binary relation <m>\sim</m> on <m>\mathbb{N} \times \mathbb{N}</m> defined by
+              <m>(a_1,b_1) \sim (a_2,b_2)</m> iff <m>a_1 b_2 = a_2 b_1</m>. (*Hint*)
+            </p>
+          </li>
+          <li xml:id="EquivRelComplex1X">
+            <p>
+              The binary relation <m>\sim</m> on <m>\mathbb{C}</m> defined by
+              <m>z_1 \sim z_2</m> iff <m>|z_1|=|z_2|</m>.
+            </p>
+          </li>
+          <li xml:id="EquivRelComplex2">
+            <p>
+              The binary relation <m>\sim</m> on <m>\mathbb{C}</m> defined by
+              <m>z_1 \sim z_2</m> iff Re[<m>z_1</m>] = Re[<m>z_2</m>]. (Recall that Re[<m>z</m>] is the real part of <m>z</m>)
+            </p>
+          </li>
+          <li>
+            <p>
+              The binary relation <m>\sim</m> on the collection of all finite sets defined by
+              <me>
+                A \sim B  \text{ iff }  |A|=|B|  \text{  (that is, } A \text{ and }  B \text{ have the same number of elements) }
+              </me>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Equivalence relations are often defined in terms of <em>functions</em>.
+    For instance,
+    <xref ref="example_EquivalenceRelations_binrelsquare">Example</xref>
+    involves the function <m>f: \mathbb{R} \rightarrow \mathbb{R}</m> defined by <m>f(x)=x^2</m>,
+    and <m>x \sim y</m> if and only if <m>f(x) = f(y)</m>.
+    Similarly, <xref ref="exercise_EquivalenceRelations_EquivRelShowEx">Exercise</xref>
+    involves the function <m>g: \mathbb{R} \rightarrow \mathbb{R}</m> defined by <m>f(x)=x^2-3x</m>,
+    and <m>x \sim y</m> if and only if <m>g(x) = g(y)</m>.
+    Both of these cases follow the following pattern:
+    <me>
+      \mbox{Given a function \(f: A \rightarrow B\), define a binary relation on \(A\) by: \(a_1 \rel a_2\) iff \(f(a_1) = f(a_2)\).}
+    </me>
+  </p>
+  <p>
+    Other examples that we've seen also follow this same pattern:
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_pattern">
+    <statement>
+      <p>
+        Following the pattern that we've shown for <xref ref="example_EquivalenceRelations_binrelsquare">Example</xref>
+        and <xref ref="exercise_EquivalenceRelations_EquivRelShowEx">Exercise</xref>,
+        define the following equivalence relations in terms of functions.
+        <ol type="a">
+          <li>
+            <p>
+              <xref ref="exercise_EquivalenceRelations_EquivRelShowEx">Exercise</xref> part (d)
+            </p>
+          </li>
+          <li>
+            <p>
+              <xref ref="exercise_EquivalenceRelations_EquivRelShowEx">Exercise</xref> part (e)
+            </p>
+          </li>
+          <li>
+            <p>
+              The binary relation in <xref ref="example_EquivalenceRelations_NxNEquivRelEg">Example</xref>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The previous examples have all involved sets of numbers,
+    but we may see that the same thing happens even when we consider functions on other types of sets.
+  </p>
+  <example xml:id="example_EquivalenceRelations_MoreEquivRelEgs">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Every animal has only one species,
+            so <m>\var{Species}</m> is a function that is defined on the set of all animals.
+            The equivalence relation<nbsp/><m>\rel_S</m> of <xref ref="example_EquivalenceRelations_relfrompart1">Example</xref> can be characterized by
+            <me>
+              x \rel_S y  \iff  {\var Species}(x) = {\var Species}(y)
+            </me>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If we assume that every person has a given name,
+            then <m>\var{GivenName}</m> is a function on the set of all people.
+            Let <m>\rel_N</m> be the equivalence relation of <xref ref="exercise_EquivalenceRelations_relfrompart2">Exercise</xref> can be characterized by
+            <me>
+              x \rel_N y  \iff  {\var GivenName}(x) = {\var GivenName}(y)
+            </me>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </example>
+  <p>
+    We've given enough examples to (hopefully) convince you that functions always produce equivalence relations.
+    But examples are never enough!
+    The bottom line is that we need a proof<ndash/>and here it is.
+  </p>
+  <proposition xml:id="proposition_EquivalenceRelations_EquivRelFromFunc">
+    <statement>
+      <p>
+        Suppose <m>f \colon A \to B</m>.
+        If we define a binary relation<nbsp/><m>\sim</m> on<nbsp/><m>A</m> by
+        <me>
+          a_1 \sim a_2  \iff  f(a_1) = f(a_2)
+        </me>,
+        then <m>\sim</m> is an equivalence relation on <m>A</m>.
+      </p>
+    </statement>
+  </proposition>
+  <exercise xml:id="exercise_EquivalenceRelations_EquivRelFromFuncPfEx">
+    <statement>
+      <p>
+        Prove <xref ref="proposition_EquivalenceRelations_EquivRelFromFunc">Proposition</xref>:
+        that is, prove that the relation defined in the proposition is (a) reflexive, (b) symmetric,
+        and (c) transitive.
+        (If you like,
+        you may model your proof on the discussion prior to Exercise<nbsp/> <xref ref="example_EquivalenceRelations_relfrompart1">Example</xref>,
+        where we proved the three properties for binary relations arising from partitions.)
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Let's take a step back and take stock of where we are.
+    We've shown
+    (<xref ref="proposition_EquivalenceRelations_partbinrel">Proposition</xref>)
+    that any partition has an associated equivalence relation.
+    We've also shown
+    (<xref ref="proposition_EquivalenceRelations_EquivRelFromFunc">Proposition</xref>)
+    that any function has an associated equivalence relation.
+    Is there any relationship between these two facts?
+    Indeed, we'll see in subsequent discussions that partitions,
+    functions,
+    and equivalence relations are closely interrelated.
+    In the following exercise,
+    we'll show that any equivalence relation that comes from a partition also comes from a function.
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_partitionfunction">
+    <statement>
+      <p>
+        Given a set <m>A</m> and a partition <m>\mathcal{P}=\{A_1, A_2, A_3, \ldots\}</m> of <m>A</m>.
+        Let <m>\rel_\mathcal{P}</m> be the equivalence relation associated with the partition <m>\mathcal{P}</m>.
+        Now define a function <m>f:A \rightarrow \mathbb{N}</m> as follows:
+        <me>
+          f(a)= \begin{cases}1 \amp  \mbox{if \(a \in A_1\)}  \\ 2 \amp  \mbox{if \(a \in A_2\)}  \\ \vdots \amp  \vdots \\ n \amp  \mbox{if \(a \in A_n\)} \end{cases}
+        </me>
+      </p>
+      <p>
+        In general: <m>f(a)=j</m> iff <m>a \in A_j</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Show that <m>a \rel_\mathcal{P} b \iff f(a)=f(b)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>\rel_f</m> be the equivalence relation defined from <m>f</m> as in <xref ref="proposition_EquivalenceRelations_EquivRelFromFunc">Proposition</xref>.
+              Show that <m>\rel_\mathcal{P} = \rel_f</m> by showing that <m>a \rel_\mathcal{P} b \iff a \rel_f b</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_partitionfunction">Exercise</xref>
+    amounts to a proof of the following proposition.
+  </p>
+  <proposition xml:id="proposition_EquivalenceRelations_PartToFunc">
+    <statement>
+      <p>
+        Given a set <m>A</m> with partition <m>\mathcal{P}=\{A_1, A_2, A_3, \ldots \}</m>.
+        Let <m>\rel_{\mathcal{P}}</m> be the associated equivalence relation.
+        Then there exists a function
+        <m>f:A \rightarrow \mathbb{N}</m> with associated equivalence relation <m>\rel_f</m> such that <m>\rel_{\mathcal{P}} \, = \, \rel_{f}</m>.
+      </p>
+    </statement>
+  </proposition>
+  <p>
+    In other words, whenever we have a partition,
+    we can also define a function that gives us the same equivalence relation as the partition.<fn>
+    This statement is true,
+    but the proof in <xref ref="exercise_EquivalenceRelations_partitionfunction">Exercise</xref> isn't quite complete.
+    The reason is that we've assumed that the partition
+    <m>\mathcal{P}</m> is <term>countable</term>,
+    i.e. we can assign a unique natural number index to each set in <m>\mathcal{P}</m>.
+    There are many sets in mathematics that are <em>not</em> countable
+    (such as the real numbers).
+    To make a truly general proof,
+    we should specify an index set that may depend on the partition.
+    </fn>
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_realfunction">
+    <statement>
+      <p>
+        From the relation <m>\rel_R</m> in <xref ref="example_EquivalenceRelations_partition1">Examples</xref>(a) and <xref ref="example_EquivalenceRelations_relfrompart1"></xref>(a)
+        (the <m>\mathbb{Q}</m> and <m>\mathbb{I}</m> example)
+        define a function such that
+        <m>a_1 \sim a_2 \iff f(a_1) = f(a_2)</m> where <m>a_1, a_2 \in \mathbb{R}</m>.
+        (Note that we've already proved that <m>\rel_R</m> is an equivalence relation by a different proposition,
+        so this example is a particular case of <xref ref="proposition_EquivalenceRelations_PartToFunc">Proposition</xref>.)
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_partitionfunction">Exercise</xref> starts with a partition,
+    and constructs a function that gives the same equivalence relation as the partition.
+    We may go backwards as well:
+    starting with a function,
+    we may produce a partition with the same equivalence relation.
+    The following exercise gives an example of this.
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_66">
+    <statement>
+      <p>
+        Let <m>f\colon \{-3,-2,-1,0,1,2,3\} \to \mathbb{Z}</m> be defined by <m>f(x) = x^2</m>.
+        <ol type="a">
+          <li>
+            <p>
+              What is the range of <m>f</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              For every number <m>n</m> in the range of <m>f</m>,
+              find the set of all numbers in the domain of <m>f</m> that map to <m>n</m>.
+              Denote this set as <m>A_n</m>
+              (for example, if we let <m>n=0</m>,
+              then only 0 maps to 0, so <m>A_0 = 0</m>).
+              List the elements of <m>A_n</m> for each <m>n</m> in the range of <m>f</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that the sets <m>\{ A_n \}</m> that you listed in part (b) form a partition of the domain of <m>f</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              According to <xref ref="proposition_EquivalenceRelations_EquivRel-_Part">Proposition</xref>,
+              this partition produces an equivalence relation on the domain of <m>f</m>.
+              Draw a digraph that represents the equivalence relation.
+            </p>
+          </li>
+          <li>
+            <p>
+              We also know that the function <m>f</m> produces an equivalence relation on the domain of <m>f</m>,
+              as in <xref ref="proposition_EquivalenceRelations_EquivRelFromFunc">Proposition</xref>.
+              Draw a digraph that represents this equivalence relation.
+            </p>
+          </li>
+          <li>
+            <p>
+              What may you conclude from your results in (d) and (e)?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The following proposition generalizes the results of the previous exercise.
+  </p>
+  <proposition xml:id="proposition_EquivalenceRelations_FuncIsRange">
+    <statement>
+      <p>
+        Suppose <m>f:A \rightarrow B</m>.
+        For each <m>b \in \text{ Range } (f)</m> define a subset <m>A_b \subset A</m> as follows:
+        <me>
+          A_b:=\{a \in A \mid f(a)=b \}
+        </me>.
+      </p>
+      <p>
+        Then the collection of sets
+        <m>\mathcal{P} :=\{A_b \, |\, b \in B\}</m> form a partition of <m>A</m>.
+        Furthermore,
+        the equivalence relation <m>\sim_f</m> derived from <m>f</m> is identical to the equivalence relation
+        <m>\sim_{\mathcal{P}}</m> derived from <m>\mathcal{P}</m>:
+        that is, <m>a_1 \sim_f a_2 \iff a_1 \sim_{\mathcal{P}} a_2</m>.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      The proof is broken up into steps in the following exercise.
+    </p>
+    <exercise xml:id="exercise_EquivalenceRelations_Abdisjoint">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Given any <m>b \in \text{ Range } (f)</m>,
+              show that <m>A_b</m> is nonempty
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>b_1, b_2\in \text{ Range } (f)</m> with <m>b_1 \neq b_2</m>,
+              show that <m>A_{b_1}</m> and <m>A_{b_2}</m> are disjoint, i.e.
+              <m>A_{b_1} \cap A_{b_2}=\emptyset</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any <m>a \in A</m>,
+              show there exists a <m>b \in \text{ Range } (f)</m> such that <m>a \in A_b</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>\{A_b \, | \, b \in B\}</m> includes all of <m>A</m>;
+              that is, <m>A=\cup_{b \in B} A_b</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Verify that the (a)-(d) imply that
+              <m>\{A_b | b \in B\}</m> is a partition of <m>A</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </proof>
+</section>

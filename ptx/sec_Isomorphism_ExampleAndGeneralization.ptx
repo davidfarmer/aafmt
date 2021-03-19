@@ -1,0 +1,1244 @@
+<section xml:id="sec_Isomorphism_ExampleAndGeneralization">
+  <title>Examples and generalizations</title>
+  <subsection xml:id="subsec_Isomorphism_ExampleAndGeneralization_Examples">
+    <title>Examples of isomorphisms</title>
+    <p>
+      Now that we have a formal definition of what it means for two groups to be isomorphic,
+      let's look at some more examples,
+      in order to get a good feel for identifying groups that are isomorphic and those that aren't.
+    </p>
+    <p>
+      From high school and college algebra we are well familiar with the fact that when you multiply exponentials
+      (with the same bases),
+      the result of this operation is the same as if you had just kept the base and added the exponents.
+      This equivalence of operations is a telltale sign for identifying possible isomorphic groups.
+      The next two examples illustrate this observation.
+    </p>
+    <p>
+      For our first example,
+      we denote the set of integer powers of 2 as <m>2^{\mathbb Z}</m>, that is:
+      <me>
+        2^{\mathbb Z} \equiv \{\ldots, 2^{-2}, 2^{-1}, 2^0, 2^1, 2^2, \ldots\}
+      </me>.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Show that <m>2^{\mathbb Z}</m> with the operation of multiplication is a subgroup of <m>{\mathbb Q}^{\ast}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="example_Isomorphism_rational_isomorph">
+      <statement>
+        <p>
+          When elements of <m>2^{\mathbb Z}</m> are multiplied together,
+          their exponents add:
+          we know this from basic algebra.
+          This suggests there should be an isomorphism between
+          <m>{\mathbb Z}</m> and <m>2^{\mathbb Z}</m>.
+          In fact, we may define the function
+          <m>\phi: {\mathbb Z} \rightarrow 2^{\mathbb Z}</m> by <m>\phi( n ) = 2^n</m>.
+          To show that this is indeed an isomorphism,
+          by our definition we must show two things: (a) that the function preserves the operations of the respective groups;
+          and (b) that the function is a bijection:
+          <ol type="a">
+            <li>
+              <p>
+                We may compute
+                <me>
+                  \phi( m + n ) = 2^{m + n} = 2^m 2^n = \phi( m ) \phi( n )
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                By definition the function <m>\phi</m> is onto the subset
+                <m>\{2^n :n \in {\mathbb Z} \}</m> of <m>{\mathbb Q}^\ast</m>.
+                To show that the map is injective,
+                assume that <m>m \neq n</m>.
+                If we can show that <m>\phi(m) \neq \phi(n)</m>, then we are done.
+                Suppose that <m>m>n</m> and assume that <m>\phi(m) = \phi(n)</m>.
+                Then <m>2^m = 2^n</m> or <m>2^{m-n} = 1</m>,
+                which is impossible since <m>m-n>0</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          This completes the proof that <m>{\mathbb Z} \cong 2^{\mathbb Z}</m>.
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_Isomorphism_RealIsomorph">
+      <statement>
+        <p>
+          As in the previous example,
+          the real powers of <m>e</m> under multiplication acts exactly like addition of those real exponents.
+          This suggests that the function
+          <m>\psi(x)=e^x</m> is an isomorphism between an additive group and a multiplicative group.
+          The reader will complete this proof of this fact as an exercise.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Isomorphism_e_isomorph_proof">
+      <statement>
+        <p>
+          Define the function <m>\psi</m> by:
+          <m>\psi(x) = e^x</m> for <m>x \in \mathbb{R}</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Given that the domain of <m>\psi</m> is all real numbers,
+                what is the range of <m>\psi</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>\psi(x)</m> is a bijection between its domain and range.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find group operations on the domain and range of <m>\psi</m> such that <m>\psi(x)</m> preserves operations; i.e.
+                <m>\psi(x \cdot y) = \psi(x)\compose \psi(y)</m>,
+                where <m>\cdot</m> and <m>\compose</m> are the group operations on the domain and range,respectively.
+                Verify that <m>\psi</m> does indeed preserve operations for these two operations.
+              </p>
+            </li>
+            <li>
+              <p>
+                Now that we know <m>\psi(x)</m> is an isomorphism,
+                what can we conclude about
+                <m>({\mathbb R}^+,\cdot)</m> and <m>({\mathbb R},+)</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_ln_isomorph_proof">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              What is the largest possible domain and range of the natural logarithm function <m>\ln(x)</m>? (Consider only real logarithms,and not complex-valued logarithms or logarithms of complex numbers.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Using the previous exercise,
+              the relation between natural logarithm and exponential function,
+              as well as a result from earlier in this chapter,
+              show that the natural logarithm function is an isomorphism.
+              What are the two isomorphic groups?
+            </p>
+          </li>
+          <li>
+            <p>
+              Using the fact that <m>\log_{10}(x) = \ln(x) / \ln(10)</m>,
+              show that the base 10 logarithm function is also an isomorphism.
+              What are the two isomorphic groups?
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any two positive real numbers (<m>a</m> and <m>b</m>) in scientific notation that are accurate to 3 decimal places,
+              show how you may estimate <m>ab</m> using addition and a table containing the base 10 logarithms of all integers from 100 to 999.
+              For example,
+              how would you compute the product <m>(1.75 \times 10^{15})(9.53 \times 10^{-27}</m>?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac1">
+      <statement>
+        <p>
+          Prove that <m>{\mathbb Z} \cong n{\mathbb Z}</m>,
+          for every nonzero integer <m>n</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac2">
+      <statement>
+        <p>
+          Prove that <m>{\mathbb C}^\ast</m> is isomorphic to the subgroup of
+          <m>GL_2( {\mathbb R} )</m> consisting of all matrices of the form (<m>a</m> and <m>b</m> are real numbers)
+          <me>
+            \begin{pmatrix}a \amp  b \\ -b \amp  a \end{pmatrix}
+          </me>
+        </p>
+        <p>,
+          where <m>a^2 + b^2 \neq 0</m>.
+        </p>
+        <p>
+          (In your proof,
+          you should verify that this set of matrices is indeed a subgroup of <m>GL_2( {\mathbb R} )</m>:
+          in other words, check that the determinant is never zero,
+          when <m>a^2 + b^2 \neq 0</m>.)
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="example_Isomorphism_nonisom">
+      <statement>
+        <p>
+          Consider the groups <m>{\mathbb Z}_8</m> and <m>{\mathbb Z}_{12}</m>.
+          Can you tell right away that there can't be an isomorphism between them?
+          Remember, an isomorphism is a one-to-one and onto function:
+          but since <m>|{\mathbb Z}_{12}|>|{\mathbb Z}_{8}|</m> there is no onto function from
+          <m>{\mathbb Z}_8</m> to <m>{\mathbb Z}_{12}</m>,
+          and so they can't be isomorphic to each other.
+          Similarly it can be shown that any two finite groups that have differing numbers of elements can't be isomorphic to each other.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Let's look at some more examples where Cayley tables can help determine isomorphism.
+    </p>
+    <example xml:id="example_Isomorphism_Cayley_noniso">
+      <statement>
+        <p>
+          The following are the Cayley tables for <m>{\mathbb Z}_4</m> and <m>U(5)</m>.
+        </p>
+        <table xml:id="Z4_add_table2">
+          <title>Cayley table for <m>{\mathbb Z}_4</m></title>
+          <tabular>
+            <row>
+              <cell><m>\oplus</m></cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>0</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>3</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+            </row>
+          </tabular>
+        </table>
+        <table xml:id="U5_table">
+          <title>Cayley table for <m>U(5)</m></title>
+          <tabular>
+            <row>
+              <cell><m>\odot</m></cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>2</cell>
+              <cell>4</cell>
+              <cell>1</cell>
+              <cell>3</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>3</cell>
+              <cell>1</cell>
+              <cell>4</cell>
+              <cell>2</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>4</cell>
+              <cell>3</cell>
+              <cell>2</cell>
+              <cell>1</cell>
+            </row>
+          </tabular>
+        </table>
+        <p>
+          Notice that the main diagonals
+          (left to right)
+          of the Cayley tables seem to have a different pattern.
+          The main diagonal for <m>{\mathbb Z}_4</m> is the alternating sequence,
+          <m>0, 2, 0, 2</m>,
+          while the main diagonal of <m>U(5)</m> is the non-alternating sequence <m>1, 4, 4, 1</m>.
+          It appears at first sight that these two groups must be non-isomorphic.
+          However, we may rearrange the row and column labels in <xref ref="U5_table">Table</xref>
+          to obtain <xref ref="U5_table2">Table</xref>.
+          From the rearranged table we may read off the isomorphism:
+          <m>0 \rightarrow 1, 1\rightarrow 2, 2\rightarrow 4, 3 \rightarrow 3</m>.
+        </p>
+        <table xml:id="U5_table2">
+          <title>Rearranged Cayley table for <m>U(5)</m></title>
+          <tabular>
+            <row>
+              <cell><m>\odot</m></cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>4</cell>
+              <cell>3</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>4</cell>
+              <cell>3</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>2</cell>
+              <cell>4</cell>
+              <cell>3</cell>
+              <cell>1</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>4</cell>
+              <cell>3</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>3</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>4</cell>
+            </row>
+          </tabular>
+        </table>
+        <p>
+          Note the important point that when we rearranged the table,
+          we used the <em>same</em> ordering
+          <m>(1,2,4,3)</m> for both rows and columns.
+          You don't want to use one ordering for rows,
+          and a different ordering for columns.
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_Isomorphism_units">
+      <statement>
+      <p>
+        Consider the group of units of
+        <m>{\mathbb Z}_8</m> and the group of units of <m>{\mathbb Z}_{12}</m>; i.e.
+        <m>U(8)</m> and <m>U(12)</m>.
+        We've seen that these consist of the elements in
+        <m>{\mathbb Z}_8</m> and <m>{\mathbb Z}_{12}</m>,
+        that are relatively prime to <m>8</m> and <m>12</m>, respectively, so
+        <md>
+          <mrow>U(8) \amp  = \{1, 3, 5, 7 \}</mrow>
+          <mrow>U(12) \amp  = \{1, 5, 7, 11 \}</mrow>
+        </md>.
+      </p>
+      <exercise xml:id="exercise_Isomorphism_U8_U12_Cayley">
+        <statement>
+          <p>
+            Give the Cayley tables for <m>U(8)</m> and <m>U(12)</m>.
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        An isomorphism <m>\phi : U(8) \rightarrow U(12)</m> is given by
+        <md>
+          <mrow>1 \amp  \xrightarrow{\phi}  1</mrow>
+          <mrow>3 \amp  \xrightarrow{\phi}  5</mrow>
+          <mrow>5 \amp  \xrightarrow{\phi}  7</mrow>
+          <mrow>7 \amp  \xrightarrow{\phi}  11</mrow>
+        </md>.
+      </p>
+      <p>
+        <m>\phi</m> is one-to-one and onto by observation,
+        and we can verify that <m>\phi</m> preserves the operations of <m>U(8)</m> and <m>U(12)</m> by showing that replacing elements in the Cayley table of <m>U(8)</m> according to the isomorphism <m>\phi</m> gives the Cayley table of <m>U(12)</m> . Hence <m>U(8) \cong U(12)</m>.
+      </p>
+      </statement>
+    </example>
+    <p>
+      The function <m>\phi</m> is not the only possible isomorphism between <m>U(8)</m> and <m>U(12)</m>.
+    </p>
+    <exercise xml:id="exercise_Isomorphism_U8_U12_other">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Using Cayley tables,
+              show that the function <m>\psi</m> defines an isomorphism  between <m>U(8)</m> and <m>U(12)</m>, where:
+              <md>
+                <mrow>1 \amp  \xrightarrow{\psi}  1</mrow>
+                <mrow>3 \amp  \xrightarrow{\psi}  7</mrow>
+                <mrow>5 \amp  \xrightarrow{\psi}  11</mrow>
+                <mrow>7 \amp  \xrightarrow{\psi}  5</mrow>
+              </md>.
+              (You will have to rearrange rows and columns to get the identification between tables.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Define a different isomorphism between <m>U(8)</m> and <m>U(12)</m>,
+              and use Cayley tables to verify that it's an isomorphism.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_U8_U12_Z2Z2">
+      <statement>
+        <p>
+          Prove that both <m>U(8)</m> and <m>U(12)</m> are isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> (recall
+          <m>\mathbb{Z}_2 \times \mathbb{Z}_2</m> is the set of all pairs <m>(a,b)</m> with <m>a,b \in \mathbb{Z}_2</m>,
+          where the group operation is addition mod 2 on each element in the pair).
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac3">
+      <statement>
+        <p>
+          Prove that <m>U(8)</m> is isomorphic to the group of matrices
+          <me>
+            \begin{pmatrix}1 \amp  0 \\ 0 \amp  1 \end{pmatrix} , \begin{pmatrix}1 \amp  0 \\ 0 \amp  -1 \end{pmatrix} , \begin{pmatrix}-1 \amp  0 \\ 0 \amp  1 \end{pmatrix} , \begin{pmatrix}-1 \amp  0 \\ 0 \amp  -1 \end{pmatrix}
+          </me>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac4">
+      <statement>
+        <p>
+          Show that the matrices
+          <md>
+            <mrow>\Big\{ \begin{pmatrix}1 \amp  0 \amp  0 \\ 0 \amp  1 \amp  0 \\ 0 \amp  0 \amp  1 \end{pmatrix} , \begin{pmatrix}1 \amp  0 \amp  0 \\ 0 \amp  0 \amp  1 \\ 0 \amp  1 \amp  0 \end{pmatrix} , \begin{pmatrix}0 \amp  1 \amp  0 \\ 1 \amp  0 \amp  0 \\ 0 \amp  0 \amp  1 \end{pmatrix} , \begin{pmatrix}0 \amp  0 \amp  1 \\ 1 \amp  0 \amp  0 \\ 0 \amp  1 \amp  0 \end{pmatrix} , \begin{pmatrix}0 \amp  0 \amp  1 \\ 0 \amp  1 \amp  0 \\ 1 \amp  0 \amp  0 \end{pmatrix} , \begin{pmatrix}0 \amp  1 \amp  0 \\ 0 \amp  0 \amp  1 \\ 1 \amp  0 \amp  0 \end{pmatrix} \Big\}</mrow>
+          </md>
+          form a group.
+          Find an isomorphism of <m>G</m> with a more familiar group of order<nbsp/>6.
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="example_Isomorphism_factor_S3_iso">
+      <statement>
+        <p>
+          In <xref ref="example_Cosets_factor_S3">Example</xref> of the Cosets chapter,
+          we looked at the normal subgroup <m>N = \{ (1), (123), (132) \}</m> of <m>S_3</m>.
+          The cosets of <m>N</m> in <m>S_3</m> were <m>N</m> and <m>(12) N</m>;
+          and the quotient group <m>S_3 / N</m> had the following multiplication table.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>N</m></cell>
+            <cell><m>(12) N</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>N</m></cell>
+            <cell><m>N</m></cell>
+            <cell><m>(12) N</m></cell>
+          </row>
+          <row>
+            <cell><m>(12) N</m></cell>
+            <cell><m>(12) N</m></cell>
+            <cell><m>N</m></cell>
+          </row>
+        </tabular>
+        <p>
+          You may verify that <m>N</m> is in fact the group of all even permutations on three elements,
+          that is <m>A_3</m>;
+          and <m>(12) N = \{ (12), (13), (23) \}</m> is the set of odd permutations.
+          The information captured in <m>S_3/N</m> is parity;
+          that is, multiplying two even or two odd permutations results in an even permutation,
+          whereas multiplying an odd permutation by an even permutation yields an odd permutation.
+          This suggests a possible isomorphism to <m>{\mathbb Z}_2</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Isomorphism_factor_S3">
+      <statement>
+        <p>
+          Prove that the quotient group <m>S_3/A_3 \cong {\mathbb Z}_2</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In <xref ref="subsec_Cosets_NormalSubAndFactorGroup_FactorGroup">Section</xref>
+      of the Cosets chapter we hinted at several examples of possible isomorphisms,
+      which we'll have you prove now:
+    </p>
+    <exercise xml:id="exercise_Isomorphism_factor_iso">
+      <statement>
+        <p>
+          Prove the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>{\mathbb Z}/ 3 {\mathbb Z} \cong {\mathbb Z}_3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>D_n / R_n \cong {\mathbb Z}_2</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_factor_iso2">
+      <statement>
+        <p>
+          Based on your work in <xref ref="exercise_Cosets_factor_cayley_prac">Exercise</xref> prove the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>{\mathbb Z}/ 6 {\mathbb Z} \cong {\mathbb Z}_6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>{\mathbb Z}_{24} / \langle 8 \rangle \cong {\mathbb Z}_8</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>U(20) / \langle 3 \rangle \cong {\mathbb Z}_2</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We've seen several examples where Cayley tables were used to show that two groups are isomorphic. (Of course,
+      this works best if the groups are not too large,
+      and it certainly doesn't work if the groups are infinite!) Let's now consider how we can use Cayley tables to show when groups are <em>not</em>
+      isomorphic to each other.
+      Caution: it's not enough to have Cayley tables for the two groups that don't match<mdash/>we saw in <xref ref="example_Isomorphism_Cayley_noniso">Example</xref>
+      that even when tables don't match,
+      it may still be possible to rearrange one of the tables to create a matchup.
+    </p>
+    <p>
+      Suppose that if <m>T</m> is a Cayley table of a group <m>G</m>.
+      Then <m>g \in G</m> appears on the diagonal of <m>T</m> if and only if there is an element
+      <m>g' \in G</m> such that <m>g' \cdot g' = g</m>.
+      It turns out that this property is preserved under isomorphism:
+    </p>
+    <proposition xml:id="proposition_Isomorphism_Cayleydiag2">
+      <statement>
+        <p>
+          Given a Cayley table <m>T</m> for a finite group <m>G</m>,
+          and let <m>g \in G</m> appears on the diagonal of <m>T</m>.
+          Let <m>\phi:G \rightarrow H</m> be an isomorphism,
+          and let <m>T'</m> be a Cayley table of <m>H</m>.
+          Then <m>\phi(g)</m> appears on the diagonal of <m>T'</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        As stated above,
+        <m>g</m> appears on the diagonal of <m>T</m> if and only if there exists
+        <m>g' \in G</m> such that <m>g' \cdot g' = g</m>.
+        Since <m>\phi</m> is an isomorphism,
+        this implies <m>\phi(g') \cdot \phi(g') = \phi(g)</m>,
+        which in turn implies that <m>\phi(g)</m> appears on the diagonal of <m>T'</m>.
+      </p>
+    </proof>
+    <proposition xml:id="proposition_Isomorphism_CayleyDiagNum2">
+      <statement>
+        <p>
+          Given a Cayley table <m>T</m> for a finite group <m>G</m>,
+          and suppose the element <m>g \in G</m> appears <m>m</m> times on the diagonal of <m>T</m>.
+          Let <m>\phi:G \rightarrow H</m> be an isomorphism,
+          and let <m>T'</m> be a Cayley table of <m>H</m>.
+          Then <m>\phi(g)</m> appears <m>m</m> times on the diagonal of <m>T'</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_Isomorphism_CayleyDiagNumProof2">
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_CayleyDiagNum2">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <proposition xml:id="proposition_Isomorphism_CayleyDiagNum">
+      <statement>
+        <p>
+          Given a Cayley table <m>T</m> for a finite group <m>G</m>,
+          and suppose <m>n</m> distinct elements of <m>G</m> appear on the diagonal of <m>T</m>.
+          Let <m>\phi:G \rightarrow H</m> be an isomorphism,
+          and let <m>T'</m> be a Cayley table of <m>H</m>.
+          Then <m>n</m> distinct elements of <m>H</m> appear on the diagonal of <m>T'</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_Isomorphism_CayleyDiagNumProof">
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_CayleyDiagNum">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_another_pattern">
+      <statement>
+        <p>
+          By using the preceding propositions and comparing diagonal elements of Cayley tables,
+          prove that <m>{\mathbb Z}_4 \ncong U(12)</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac5">
+      <statement>
+        <p>
+          Prove or disprove: <m>U(8) \cong {\mathbb Z}_4</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac6">
+      <statement>
+        <p>
+          Let <m>\sigma</m> be the permutation <m>(12)</m>,
+          and let <m>\tau</m> be the permutation <m>(34)</m>.
+          Let <m>G</m> be the set <m>\{ \var{id}, \sigma, \tau, \sigma\tau \}</m> together with the operation of composition.
+          <ol type="a">
+            <li>
+              <p>
+                Give the Cayley table for the group <m>G</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove or disprove: <m>G \cong {\mathbb Z}_4</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove or disprove: <m>G \cong U(12)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="example_Isomorphism_not_isomorph_abelian">
+      <statement>
+        <p>
+          Even though <m>D_3</m> and
+          <m>{\mathbb Z}_6</m> possess the same number of elements,
+          we might suspect that they are not isomorphic,
+          because <m>{\mathbb Z}_6</m> is abelian and <m>D_3</m> is non-abelian.
+          Let's see if the Cayley tables can help us here:
+        </p>
+        <table xml:id="D3_table">
+          <title>Cayley table for <m>D_3</m></title>
+          <tabular>
+            <row>
+              <cell><m>\circ</m></cell>
+              <cell><m>\var{id}</m></cell>
+              <cell><m>\rho_1</m></cell>
+              <cell><m>\rho_2</m></cell>
+              <cell><m>\mu_1</m></cell>
+              <cell><m>\mu_2</m></cell>
+              <cell><m>\mu_3</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>\var{id}</m></cell>
+              <cell><m>\var{id}</m></cell>
+              <cell><m>\rho_1</m></cell>
+              <cell><m>\rho_2</m></cell>
+              <cell><m>\mu_1</m></cell>
+              <cell><m>\mu_2</m></cell>
+              <cell><m>\mu_3</m></cell>
+            </row>
+            <row>
+              <cell><m>\rho_1</m></cell>
+              <cell><m>\rho_1</m></cell>
+              <cell><m>\rho_2</m></cell>
+              <cell><m>\var{id}</m></cell>
+              <cell><m>\mu_3</m></cell>
+              <cell><m>\mu_1</m></cell>
+              <cell><m>\mu_2</m></cell>
+            </row>
+            <row>
+              <cell><m>\rho_2</m></cell>
+              <cell><m>\rho_2</m></cell>
+              <cell><m>\var{id}</m></cell>
+              <cell><m>\rho_1</m></cell>
+              <cell><m>\mu_2</m></cell>
+              <cell><m>\mu_3</m></cell>
+              <cell><m>\mu_1</m></cell>
+            </row>
+            <row>
+              <cell><m>\mu_1</m></cell>
+              <cell><m>\mu_1</m></cell>
+              <cell><m>\mu_2</m></cell>
+              <cell><m>\mu_3</m></cell>
+              <cell><m>\var{id}</m></cell>
+              <cell><m>\rho_1</m></cell>
+              <cell><m>\rho_2</m></cell>
+            </row>
+            <row>
+              <cell><m>\mu_2</m></cell>
+              <cell><m>\mu_2</m></cell>
+              <cell><m>\mu_3</m></cell>
+              <cell><m>\mu_1</m></cell>
+              <cell><m>\rho_2</m></cell>
+              <cell><m>\var{id}</m></cell>
+              <cell><m>\rho_1</m></cell>
+            </row>
+            <row>
+              <cell><m>\mu_3</m></cell>
+              <cell><m>\mu_3</m></cell>
+              <cell><m>\mu_1</m></cell>
+              <cell><m>\mu_2</m></cell>
+              <cell><m>\rho_1</m></cell>
+              <cell><m>\rho_2</m></cell>
+              <cell><m>\var{id}</m></cell>
+            </row>
+          </tabular>
+          }
+        </table>
+        <table xml:id="Z6_add_table">
+          <title>Cayley table for <m>{\mathbb Z}_6</m></title>
+          <tabular>
+            <row>
+              <cell><m>\oplus</m></cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>0</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+            </row>
+            <row>
+              <cell>5</cell>
+              <cell>5</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+            </row>
+          </tabular>
+        </table>
+        <p>
+          Note that the Cayley table for
+          <m>{\mathbb Z}_6</m> is symmetric across the main diagonal while the Cayley table for <m>D_3</m> is not.
+          Furthermore,
+          no matter how we rearrange the row and column headings for the Cayley table for <m>{\mathbb Z}_6</m>,
+          the table will always be symmetric.
+          It follows that there is no way to to match up the two groups' Cayley tables:
+          so <m>D_3 \ncong {\mathbb Z}_6</m>.
+        </p>
+        <p>
+          This argument via Cayley table works in the case where the two groups being compared are both small,
+          but if the groups are large then it's far too time-consuming
+          (especially if the groups are infinite!).
+          So let us take a different approach,
+          and fall back on our time-tested strategy of proof by contradiction.
+          In the case at hand,
+          this means that we first suppose that <m>D_3 \cong {\mathbb Z}_6</m>,
+          and then find a contradiction based on that supposition.
+        </p>
+        <p>
+          So, suppose that the two groups are isomorphic,
+          which means there exists an isomorphism <m>\phi : {\mathbb Z}_6 \rightarrow  D_3</m>.
+          Let <m>a , b \in D_3</m> be two elements such that <m>a\circ b \neq b \circ a</m>.
+          Since <m>\phi</m> is an isomorphism,
+          there exist elements <m>m</m> and <m>n</m> in <m>{\mathbb Z}_6</m> such<nbsp/>that
+          <me>
+            \phi( m )  = a  \text{ and } \phi( n )  = b
+          </me>.
+        </p>
+        <p>
+          However,
+          <me>
+            a\circ b = \phi(m ) \circ  \phi(n) = \phi(m \oplus  n) = \phi(n \oplus m) = \phi(n ) \circ \phi(m) = b \circ a
+          </me>,
+          which contradicts the fact that <m>a</m> and <m>b</m> do not commute.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Although we have only proven the non-isomorphicity of abelian and non-abelian groups for one particular case,
+      the same method of proof can be used to prove the following general result.
+    </p>
+    <proposition xml:id="proposition_Isomorphism_abelian_non-abelian">
+      <statement>
+        <p>
+          If <m>G</m> is an abelian group and <m>H</m> is a non-abelian group,
+          then <m>G \ncong H</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_abelian_non-abelian">Proposition</xref>
+          by imitating the proof in <xref ref="example_Isomorphism_not_isomorph_abelian">Example</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac7">
+      <statement>
+        <p>
+          Prove <m>D_4 \ncong {\mathbb Z}_8</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_iso_prac8">
+      <statement>
+        <p>
+          Prove <m>{\mathbb Z}/ 6 {\mathbb Z} \ncong S_3</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Finally, let's look at <m>{\mathbb Z}</m> and <m>{\mathbb R}</m>.
+      We know <m>{\mathbb Z}</m> is a cyclic group with <m>1</m> as the generator,
+      while <m>{\mathbb R}</m> is not cyclic. (Do you remember why?) We might suspect that <m>{\mathbb Z} \ncong {\mathbb R}</m>,
+      since one group is cyclic and the other isn't.
+      This is in fact true, and we'll prove it.
+      Since <m>{\mathbb Z}</m> and
+      <m>{\mathbb R}</m> are infinite groups we can't use Cayley tables,
+      so we have to use another method (three guesses as to what it is):
+    </p>
+    <proposition xml:id="proposition_Isomorphism_not_isomorph_cyclic">
+      <statement>
+        <p>
+          <m>{\mathbb Z}</m> is not isomorphic to <m>{\mathbb R}</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We will use a proof by contradiction.
+        Suppose that there exists an isomorphism <m>\phi: {\mathbb Z} \rightarrow {\mathbb R}</m>.
+        Choose any <m>x \in {\mathbb R}</m>,
+        and let <m>m \in {\mathbb Z}</m> be the pre-image of <m>x</m>,
+        so that <m>\phi(m) = x</m>.
+        It follows that:
+        <md>
+          <mrow>x \amp = \phi(m) = \phi(\underbrace{1 + \ldots + 1}_{m~\textrm{times} })= \underbrace{\phi(1) + \ldots + \phi(1)}_{m~\textrm{times} }</mrow>
+        </md>.
+      </p>
+      <p>
+        Thus <m>x \in \langle \phi(1) \rangle</m>.
+        But since this is true for <em>any</em>
+        <m>x \in {\mathbb R}</m>,
+        this means that <m>\phi(1)</m> is a generator of <m>{\mathbb R}</m>,
+        which means that <m>{\mathbb R}</m> is cyclic.
+        But we've already seen that
+        <m>{\mathbb R}</m> is <em>not</em> cyclic.
+        This contradiction shows that our original supposition must be false:
+        namely, there <em>cannot</em> exist an isomorphism <m>\phi: {\mathbb Z} \rightarrow {\mathbb R}</m>.
+        This completes the proof.
+      </p>
+    </proof>
+    <p>
+      Again we can generalize this proof to prove that a cyclic group cannot be isomorphic to a non-cyclic group.
+      The contrapositive of this statement is:
+    </p>
+    <proposition xml:id="proposition_Isomorphism_cyclic_noncyclic">
+      <statement>
+        <p>
+          If <m>G</m> is cyclic and <m>G \cong H</m>,
+          then <m>H</m> is also cyclic.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_Isomorphism_cyclic_noncyclic">
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_cyclic_noncyclic">Proposition</xref>. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_noniso_cyclic">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove that <m>{\mathbb Q}</m> is not isomorphic to <m>{\mathbb Z}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that <m>{\mathbb Z}_3 \times {\mathbb Z}_3</m> is not isomorphic to <m>{\mathbb Z}_9</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that <m>D_4 \ncong {\mathbb Z}_{24} / \langle 8 \rangle</m>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      In the foregoing examples,
+      the reader might develop the impression that isomorphisms must be functions between two different groups.
+      But such is not the case!
+      It is quite possible for a group to be isomorphic to itself.
+    </p>
+    <exercise xml:id="exercise_Isomorphism_autoMorph">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Given any group <m>G</m>,
+              let <m>\var{Id}:G \rightarrow G</m> be the identity map, that is,
+              <m>\var{Id}(g)=g</m> for all <m>g \in G</m>. show that <m>\var{Id}</m> is an isomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>\mathbb{M}_n(\mathbb{R})</m> be the group of
+              <m>n\times n</m> matrices with real entries under the addition operation.
+              Prove that the transpose function
+              <m>M \rightarrow M^T</m> is an isomorphism from
+              <m>\mathbb{M}_n(\mathbb{R})</m> to <m>\mathbb{M}_n(\mathbb{R})</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      An isomorphism from a group to itself is called an
+      <em>automorphism</em><idx><h>Automorphism</h><h>of a group</h></idx>.
+          <idx><h>Group</h><h>automorphism</h></idx>
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_Isomorphism_ExampleAndGeneralization_Properties">
+    <title>General properties of isomorphisms<nbsp/><nbsp/></title>
+    <figure>
+      <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+    </figure>
+    <p>
+      In the last two sections we proved several properties of isomorphic groups and their corresponding isomorphisms.
+      We collect these properties
+      (and add a few more)
+      in the following proposition:
+    </p>
+    <proposition xml:id="proposition_Isomorphism_isomorph_theorem_1">
+      <statement>
+        <p>
+          Let <m>\phi : G \rightarrow H</m> be an isomorphism of two groups.
+          Then the following statements are true.
+          <ol type="1">
+            <li>
+              <p>
+                <m>|G| = |H|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi^{-1} : H \rightarrow G</m> is an isomorphism.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>G</m> is abelian if and only if <m>H</m> is abelian.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>G</m> is cyclic if and only if <m>H</m> is cyclic.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>g \in G</m> is an element of order <m>n</m>
+                (that is, <m>| \langle g \rangle | = n</m>),
+                then <m>\phi(g) \in H</m> is also an element of order <m>n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>G'</m> is a subgroup of <m>G</m>,
+                then <m>\phi(G')</m> is a subgroup of <m>H</m> and
+                <m>G' \cong \phi(G')</m> (Recall that <m>\phi(G') = \{ \phi(g),
+                g \in G'\}</m>.)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Assertion (1) follows from the fact that <m>\phi</m> is a bijection.
+        The proofs of (2)<ndash/>(6) are indicated in the following exercises.
+      </p>
+      <exercise xml:id="exercise_Isomorphism_PhiBij">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Show part (2) of <xref ref="proposition_Isomorphism_isomorph_theorem_1">Proposition</xref>. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Show part (3) of <xref ref="proposition_Isomorphism_isomorph_theorem_1">Proposition</xref>. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Show part (4) of <xref ref="proposition_Isomorphism_isomorph_theorem_1">Proposition</xref>. (*Hint*)
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Suppose, <m>G, H, \phi</m> are as given in <xref ref="proposition_Isomorphism_isomorph_theorem_1">Proposition</xref>,
+            and suppose <m>g \in G</m> is an element of order <m>n</m>,
+            where <m>n>1</m> . Show that
+            <m>\phi(g)^k \neq {\var id}_H</m> for <m>k=1,\ldots n-1</m> , where
+            <m>{\var id}_H</m> is the identity of <m>H</m>.
+            Use your result to prove part (5) of <xref ref="proposition_Isomorphism_isomorph_theorem_1">Proposition</xref>.
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        We will complete the proof of part (6) in two steps:
+        <ol type="StepI">
+          <li>
+            <p>
+              <m>\phi(G')</m> is a subgroup of <m>H</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\phi(G')</m> is isomorphic to <m>G'</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <exercise xml:id="exercise_Isomorphism_phigprime_subgroup_H">
+        <statement>
+          <p>
+            Fill in the blanks of the following proof of Step (I) (that is,
+            <m>\phi(G')</m> is a subgroup of <m>H</m>):
+          </p>
+          <p>
+            Let us suppose that <m>G'</m> is a subgroup of <m>G</m>.
+            We claim that <m>\phi(G')</m> is actually a subgroup of
+            <em><m>~\lt 1>~</m></em>.
+            To show this,
+            by <xref ref="proposition_Groups_subgroup_prove_2">Proposition</xref>
+            it's enough to show that if <m>h_1</m> and <m>h_2</m> are elements of <m>\phi(G')</m>,
+            then <m>h_1 h_2^{-1}</m> is also an element of
+            <em><m>~\lt 2>~</m></em>.
+          </p>
+          <p>
+            Now given that <m>h_1, h_2 \in \phi(G')</m>,
+            by the definition of <m>\phi(G')</m> it must be true that there exist
+            <m>g_1, g_2 \in \underline{~\lt 3>~}</m> such that <m>\phi(g_1) = h_1, \phi(g_2) = h_2</m>.
+            But then we have
+            <md>
+              <mrow>h_1 h_2^{-1} \amp = \phi(g_1) \phi(g_2)^{-1} \amp \text{ (by substitution) }</mrow>
+              <mrow>\amp = \phi(g_1) \phi(g_2^{-1}) \amp (\text{ by Proposition~ } \underline{~\lt 4>~})</mrow>
+              <mrow>\amp = \phi(g_1 g_2^{-1}) \amp (\text{ by the definition of } \underline{~\lt 5>~})</mrow>
+            </md>.
+          </p>
+          <p>
+            Since <m>g_1 g_2^{-1}</m> is an element of <m>G'</m>,
+            it follows that <m>h_1 h_2^{-1} \in \underline{~\lt 6>~}</m>.
+            This completes the proof of Step (I).
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_Isomorphism_gprime_phigprime_iso">
+        <statement>
+          <p>
+            Complete the following proof of Step (II) (that is,
+            <m>G'</m> and <m>\phi(G')</m> are isomorphic).
+          </p>
+          <p>
+            Consider the function <m>\phi</m> restricted to the set <m>G'</m>:
+            that is, <m>\phi: G' \rightarrow \phi(G')</m>.
+            To prove this gives an isomorphism from <m>G'</m> to <m>\phi(G')</m>,
+            we need to show (i) <m>\phi: G' \rightarrow \phi(G')</m> is a bijection;
+            and (ii) <m>\phi: G' \rightarrow \phi(G')</m> has the operation-preserving property.
+          </p>
+          <p>
+            To show (i), we note that by the definition of <m>\phi(G')</m>,
+            for every <m>h \in \phi(G')</m> there exists a
+            <m>g \in \underline{~\lt 1>~}</m> such that <m>\phi(\underline{~\lt 2>~}) = h</m>.
+            It follows that <m>\phi</m> maps <m>G'</m> onto <m>\underline{~\lt 3>~}</m>.
+            Also, if <m>g_1, g_2 \in G'</m> and <m>\phi(g_1) = \phi(g_2)</m>,
+            then since <m>\phi</m> is a one-to-one function on <m>G</m> it follows that <m>g_1 = \underline{~\lt 4>~}</m>.
+            From this it follows that <m>\phi</m> is also a one-to-one function on <m>\underline{~\lt 5>~}</m>.
+            We conclude that <m>\underline{~\lt 6>~}</m> is a bijection.
+          </p>
+          <p>
+            To show (ii),
+            given <m>g_1, g_2 \in \underline{~\lt 7>~}</m> we have that
+            <m>\phi(g_1 g_2) = \underline{~\lt 8>~}</m> since by assumption <m>\phi</m> is an isomorphism from
+            <em><m>~\lt 9>~</m></em>
+            to <em><m>~\lt 10>~</m></em>.
+            This implies that <m>\phi</m> also has the operation-preserving property when it's considered as a function from
+            <em><m>~\lt 11>~</m></em> to
+            <em><m>~\lt 12>~</m></em>.
+            This completes the proof of Step (II).
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Prove <m>S_4</m> is not isomorphic to <m>D_{12}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove <m>A_4</m> is not isomorphic to <m>D_{6}</m>. (Recall that <m>A_4</m> is the alternating group
+          (group of even permutations)
+          on 4 letters.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          The <em>quaternion group</em><idx><h>Quaternion group (<m>Q_8</m>)</h></idx>
+          (denoted by <m>Q_8</m>)
+          was introduced in <xref ref="example_Groups_quaternions">Example</xref>
+          and <xref ref="exercise_Groups_QuatEx">Exercise</xref>.
+          Show that the quaternion group is not isomorphic to <m>D_4</m>.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

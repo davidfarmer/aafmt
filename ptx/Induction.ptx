@@ -1,0 +1,13 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Induction">
+  <title>Appendix: Induction proofs<ndash/>patterns and examples</title>
+  <xi:include  href="sec_Induction_BasicInduction.ptx"/>
+  <xi:include  href="sec_Induction_Advice.ptx"/>
+  <xi:include  href="sec_Induction_ProofPatternsAndPractice.ptx"/>
+  <xi:include  href="sec_Induction_StrongInduction.ptx"/>
+  <xi:include  href="sec_Induction_MoreAdviceAndStrongInduction.ptx"/>
+  <xi:include  href="sec_Induction_CommonMistakes.ptx"/>
+  <xi:include  href="sec_Induction_StrongInductionPractice.ptx"/>
+  <xi:include  href="sec_Induction_NonFormulaProofs.ptx"/>
+  <xi:include  href="sec_Induction_PracticeNonFormulaInduction.ptx"/>
+  <xi:include  href="sec_Induction_FallaciesAndPitfalls.ptx"/>
+</chapter>

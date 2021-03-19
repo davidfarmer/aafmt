@@ -1,0 +1,1472 @@
+<section xml:id="sec_ModularArithmetic_IntegerModn">
+  <title>The integers mod <m>n</m> (a.k.a. <m>{\mathbb Z}_n</m>)<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="subsec_ModularArithmetic_ArithWithRems">
+    <title>Remainder arithmetic</title>
+    <p>
+      Several times now in this chapter we've simplified our modular calculations by replacing numbers with their remainders mod <m>n</m>
+      (remember, we have defined these remainders as the set <m>{\mathbb Z}_n</m>).
+      We will now fulfill the promise we made at the end of the first section by proving that if you replace numbers with their remainders,
+      we don't change the result of our modular calculations.
+      That is, we'll show that modular arithmetic can be thought of as arithmetic on the remainders, or
+      <q>remainder arithmetic</q>
+      (as opposed to
+      <q>integer arithmetic</q>
+      or
+      <q>complex arithmetic</q>
+      which we're already familiar with).
+    </p>
+    <p>
+      Before we do this, we need to address an important issue.
+      Consider the case of <m>\mathbb{Z}_5 = \{0,1,2,3,4\}</m>,
+      so 3 and 4 are in <m>\mathbb{Z}_5</m>.
+      However the sum <m>3 + 4</m> is 7, which is not in <m>\mathbb{Z}_5</m>.
+      If we're going to do arithmetic with the remainders, we should define a
+      <q>sum</q>
+      on <m>\mathbb{Z}_n</m> such that the result is also in <m>\mathbb{Z}_n</m>.
+      This motivates the following two definitions:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {mod_add} <term>Modular Addition</term>
+              <idx><h>Modular addition</h></idx>
+        </p>
+        <p>
+          The sum mod <m>n</m> of two remainders mod <m>n</m> is the remainder left after dividing their regular sum by <m>n</m>;
+          that is, if <m>a,b \in {\mathbb Z}_n</m> then
+        </p>
+        <p>
+          <m>a \oplus b = r</m> iff <m>a + b = r + sn</m> and <m>r \in {\mathbb Z}_n</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Note that in <xref ref="definition_ModularArithmetic_mod_add">Definition</xref>
+      we write <m>a \oplus b = r</m> rather than <m>a \oplus b \equiv r \pmod{n}</m>,
+      since <m>a \oplus b</m> is defined to be
+      <em>equal</em> to the remainder.
+      The same holds for the following definition:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {mod_mult} <term>Modular Multiplication</term>
+        </p>
+        <p>
+          The product mod <m>n</m> of two remainders mod <m>n</m> is the remainder left after dividing their regular product by <m>n</m>;
+          that is, if <m>a,b \in {\mathbb Z}_n</m> then
+        </p>
+        <p>
+          <m>a \odot b = r</m> iff <m>a \cdot b = r + sn</m> and <m>r \in {\mathbb Z}_n</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Before we continue,
+      we should take special note of the following important points.
+    </p>
+    <remark>
+      <ul>
+        <li>
+          <p>
+            It is important to note that the operations <m>\oplus</m> and <m>\odot</m>
+            <em>depend on the modulus involved</em>.
+            We must always make sure that the modulus is clearly specified before talking about <m>\oplus</m> and <m>\odot</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Although technically we could define
+            <m>\ell \oplus m</m> and <m>\ell \odot m</m> for <em>any</em>
+            two integers <m>\ell,m \in \mathbb{Z}</m>,
+            in the following we will restrict the operations to elements of <m>\mathbb{Z}_n</m>.
+            So for example if we are working in <m>\mathbb{Z}_7</m>,
+            we may write <m>3 \oplus 4 = 0</m> and <m>5 \odot 6 = 2</m>,
+            but we won't write expressions like
+            <m>7 \oplus 6</m> or <m>13 \odot 22</m>.
+          </p>
+        </li>
+      </ul>
+    </remark>
+    <p>
+      Our first step towards showing that ordinary arithmetic can be replaced with arithmetic with remainders is the following proposition:
+    </p>
+    <proposition xml:id="proposition_ModularArithmetic_number_remainder">
+      <statement>
+        <p>
+          Given <m>\ell,m \in {\mathbb Z}</m>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\bmod(\ell+ m,n) = \bmod(\ell,n) \oplus \bmod(m,n)</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod(\ell \cdot m,n) = \bmod(\ell,n) \odot \bmod(m,n)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      Before we prove <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>,
+      let's give an example of how it can be applied.
+      Suppose we want to compute the following remainders:
+      <me>
+        \text{ mod } (8640 + 1059895,7)  \text{ and }    \text{ mod } (8640 \cdot 1059895, 7)
+      </me>.
+    </p>
+    <p>
+      OK, let's apply the proposition.
+      If we let <m>\ell=8640, m=1059895</m> and <m>n=7</m>,
+      then we have the following correspondence
+      <me>
+        \bmod(\ell+ m,n) \rightarrow \bmod(8640 + 1059895,7)
+      </me>
+    </p>
+    <p>
+      By division we may compute
+      <m>\bmod(8640,7)=2</m> and <m>\bmod(1059895,7)=4</m>.
+      This gives us the correspondence:
+      <me>
+        \bmod(\ell,n) \rightarrow 2;  \bmod(m,n) \rightarrow 4
+      </me>.
+    </p>
+    <p>
+      Using these correspondences,
+      <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref> gives us immediately that
+      <me>
+        \bmod(8640+ 1059895,7) = 2 \oplus 4 ,  \text{ and }   \bmod(8640 \cdot 1059895,7) = 2 \odot 4
+      </me>,
+      which gives us 6 and 1 for the sum and product, respectively.
+      Isn't this an awful lot simpler than adding and multiplying those two large numbers?
+    </p>
+    <p>
+      So let's get back to the proof.
+      We'll do (a) here: part (b) is left as an exercise.
+    </p>
+    <proof>
+      <p>
+        For simplicity we let <m>a :=  \bmod(\ell,n)</m> and <m>b :=  \bmod(m,n)</m>.
+        Then according to the definition of remainder mod <m>n</m> we have
+        <me>
+          \ell = a + sn \mathrm{~~~and~~~} m = b + tn
+        </me>.
+      </p>
+      <p>
+        Adding these two equations
+        (which is basically substitution)
+        and basic algebra we find
+        <me>
+          \ell + m =a + b + (s + t)n
+        </me>
+      </p>
+      <p>
+        Now by the definition of <m>\oplus</m>,
+        there is some <m>p \in {\mathbb Z}</m> such that <m>a + b = (a \oplus b) + pn</m>;
+        therefore
+        <me>
+          \ell + m = (a \oplus b) + pn + (s + t)n = (a \oplus b) + ( p + s + t)n. \mathrm{~~~~~~(subs.~and~ basic~algebra)}
+        </me>
+      </p>
+      <p>
+        Hence by the definition of modular equivalence,
+        <me>
+          \ell + m \equiv a \oplus b \pmod{n}
+        </me>.
+      </p>
+      <p>
+        Now since <m>a \oplus b</m> is between <m>0</m> and <m>n-1</m> by definition,
+        it follows from <xref ref="proposition_ModularArithmetic_remThm">Proposition</xref> that
+        <me>
+          \bmod(\ell + m,n)= a \oplus b
+        </me>.
+      </p>
+      <p>
+        Recalling the definitions of <m>a</m> and <m>b</m> above we get finally:
+        <me>
+          \bmod(\ell + m,n)=  \bmod(\ell,n) \oplus \bmod(m,n)
+        </me>,
+        and we're finished!
+      </p>
+    </proof>
+    <exercise xml:id="exercise_ModularArithmetic_44">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove part (b) of <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Come up with a definition for modular subtraction
+              (use the symbol <m>\ominus</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Using your definition,
+              prove the following: Given <m>\ell,m \in {\mathbb Z}</m>.
+              If <m>a =\bmod(\ell,n)</m> and <m>b=\bmod(m,n)</m>,
+              then <m>\bmod(\ell - m,n) = a\ominus b</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      The diagram in <xref ref="fig_commDiagModular">Figure</xref>
+      gives a way to visualize <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>.
+      In the diagram we only show the relation between <m>+</m> and <m>\oplus</m>:
+      the situation with <m>\cdot</m> and <m>\odot</m> is similar.
+      On the left side of the diagram,
+      we show two numbers <m>\ell</m> and <m>m</m> being added to give <m>\ell + m</m>.
+      The arrows from left to right show that the numbers
+      <m>\ell,
+      m</m>, and <m>\ell + m</m> can all be
+      <q>translated</q>
+      by taking remainders.
+      If we
+      <q>translate</q>
+      <m>\ell</m> and <m>m</m> first and then take the modular sum;
+      or we can take <m>\ell + m</m> first and then
+      <q>translate</q>
+      the result.
+      In either case, we end up with the same answer.
+    </p>
+    <figure xml:id="fig_commDiagModular">
+      <caption>Visualization of <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>.</caption>
+      <image width="84%" source="images/CommDiagModAdd.png"/>
+    </figure>
+    <exercise xml:id="exercise_ModularArithmetic_diagram">
+      <statement>
+        <p>
+          Make a diagram similar to <xref ref="fig_commDiagModular">Figure</xref>
+          for modular multiplication instead of modular addition.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Now that we've proven <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>,
+      we can combine operations into more complicated expressions and show equivalence.
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_ModPower">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Using part (b) of <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref> above,
+              show that if <m>\ell \in {\mathbb Z}</m> and
+              <m>a=\bmod(\ell,n)</m> then <m>\bmod(\ell^2,n) = a \odot a</m>. (*Hint*)]
+            </p>
+          </li>
+          <li>
+            <p>
+              Using part (a) prove a similar relation involving <m>\ell^3</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using part (b) prove a similar relation involving <m>\ell^4</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              From parts (a),(b) and (c),
+              what do you infer about <m>\ell^k</m> where <m>k</m> is any natural number? (Note that to actually <em>prove</em>
+              this fact requires the use of induction.)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ModularArithmetic_ops">
+      <statement>
+        <p>
+          Given <m>\ell,m,p \in {\mathbb Z}</m> and
+          <m>a=\bmod(\ell,n),
+          b=\bmod(m,n)</m>, and <m>c=\bmod(p,n)</m>.
+          Show the following equivalences using <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\bmod( (\ell +m) + p,n) = (a \oplus b) \oplus c</m>. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod( (\ell + (m + p),n) = a \oplus (b \oplus c)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod( (\ell \cdot m) \cdot p,n) = (a \odot b) \odot c </m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod((\ell \cdot m) + p,n) = (a \odot b) \oplus c </m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod((\ell + m) \cdot p,n) = (a \oplus b) \odot c</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can use similar methods as in <xref ref="exercise_ModularArithmetic_ops">Exercise</xref>,
+      to show that <em>any</em> arithmetical expression involving integers with no matter how many additions,
+      multiplications, and subtractions,
+      can be shown to be equivalent mod <m>n</m> to the corresponding arithmetical expression in
+      <m>{\mathbb Z}_n</m> using the modular operations <m>\oplus, \odot, \ominus</m>.
+    </p>
+    <p>
+      This completes our discussion showing that arithmetic mod <m>n</m> can be reduced to arithmetic in <m>{\mathbb Z}_n</m>.
+      What we've shown can simplify other modular arithmetic arguments as well:
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_number_remainder">
+      <statement>
+        <p>
+          Use <xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>
+          twice and the first definition of modular equivalence
+          (<xref ref="definition_ModularArithmetic_equivalence">Definition</xref>)
+          to prove the following propostions.
+          (It is also possible to prove these propositions directly from the definitions,
+          but the point of this exercise is to look at the proof from a different perspective.)
+        </p>
+        <p>
+          <em>Proposition</em>: Given <m>\ell,m,x,y \in {\mathbb Z}</m> where
+          <m>\ell \equiv x \pmod{n}</m> and <m>m \equiv y \pmod{n}</m>, then
+          <ol type="a">
+            <li>
+              <p>
+                <m>\ell + m \equiv x + y \pmod{n}</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ell \cdot m \equiv x \cdot y \pmod{n}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      This proposition shows that we can freely replace numbers in arithmetic expressions involving <m>+</m> and <m>\cdot</m> with other numbers that are equivalent mod <m>n</m>,
+      as long as we're only interested in the result mod <m>n</m>.
+      For example, suppose we want to find the following remainder:
+      <me>
+        \text{ mod } (80056 \cdot 69944, 56)
+      </me>.
+    </p>
+    <p>
+      We may notice that <m>80056 \equiv 80000 \pmod{56}</m> and <m>69944 \equiv 70000 \pmod{56}</m>.
+      So we can replace 80056 with 80000 and 69944 with 70000 in the computation:
+      <me>
+        \text{ mod } (80000 \cdot 70000, 56)= \text{ mod } (5600000000, 56)=0
+      </me>.
+    </p>
+    <p>
+      By noticing some patterns we were able to save ourselves quite a bit of work.
+    </p>
+    <p>
+      Note that we were careful to specify that replacement with modular equivalents works in modular equations that involve addition and/or multiplication.
+      It does <em>not</em> work for integer exponents. for example,
+      it is not true that <m>2^1 \equiv 2^4 (\text{ mod } 3)</m>,
+      even though <m>1 \equiv 4 (\text{ mod } 3)</m>.
+      It turns out that exponents can be replaced with simpler exponents in modular equivalences,
+      but we won't find out how this works until <xref ref="sec_Cosets_Fermat">Section</xref> (if you want to look ahead!)
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_prove">
+      <statement>
+        <p>
+          Prove or disprove,
+          using the proposition in <xref ref="exercise_ModularArithmetic_number_remainder">Exercise</xref>:
+          <ol type="a">
+            <li>
+              <p>
+                <m>7787 \cdot 21005 \cdot 495 \equiv 56002 \cdot 492 \cdot 213 \pmod{7}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(12345 \cdot 6789) + 1357 \equiv (98765 \cdot 13579) + 9876 \pmod{10}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(4545 \cdot 5239) + 1314 \equiv (7878 \cdot 3614) + 4647 \pmod{101}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>765432121234567\cdot 234567878765432 \equiv 456456456456456456 \cdot 789789789789789789789 \pmod{10}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>543254325432543254325432^3 \equiv 1212121212121212121212^7 \pmod{10}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>786786786786786786786^3 \equiv 456456456456456456456^4 \pmod{10}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>654321^{87654321} \equiv 123456^{12345678} \pmod{5}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ModularArithmetic_cayleyForZn1">
+    <title>Cayley tables for <m>{\mathbb Z}_n</m></title>
+    <p>
+      The fact that we can replace integers with their remainders mod <m>n</m> leads us to a simpler way of thinking about modular arithmetic.
+      First, recall the integer number line,
+      pictured (again) in <xref ref="fig_integers">Figure</xref>:
+    </p>
+    <figure xml:id="fig_integers">
+      <caption>The usual number line</caption>
+      <image width="84%" source="images/integer_line.png"/>
+    </figure>
+    <p>
+      We may relabel the integers with their remainders mod <m>5</m>,
+      pictured in <xref ref="fig_integers_mod_5">Figure</xref>:
+    </p>
+    <figure xml:id="fig_integers_mod_5">
+      <caption>The number line mod <m>5</m></caption>
+      <image width="84%" source="images/integers_mod_5.png"/>
+    </figure>
+    <p>
+      All the numbers equivalent to 0 mod 5 are labeled 0;
+      all the numbers equivalent to 1 mod 5 are labeled 1; and so on.
+      The whole infinite set of integers then is reduced to repetitive cycles of the integers <m>0</m> through <m>4</m>.
+      In other words,
+      all the integers are equivalent to either <m>0, 1, 2, 3</m>,
+      or <m>4</m>, mod <m>5</m>.
+    </p>
+    <p>
+      Furthermore, as we just discussed,
+      the sum and product mod <m>5</m> of any two numbers is exactly equivalent to the sum and product mod <m>5</m> of their corresponding remainders.
+      Therefore, the sum or product of <em>any</em>
+      two numbers mod <m>5</m> can be determined by the sum or product of the integers <m>0-4</m>.
+      So we only have to focus on the sums and products of these five numbers to get the result of any modular calculation mod <m>5</m>.
+    </p>
+    <p>
+      So let's calculate these sums and products.
+      We are only using the remainders for mod <m>5</m>
+      (recall we have already defined this set as <m>{\mathbb Z}_{5}</m>).
+      The following table then gives the results of addition mod <m>5</m> for <m>{\mathbb Z}_{5}</m>:
+    </p>
+    <table xml:id="groups_Z5_add_table">
+      <title>Addition table for <m>{\mathbb Z}_5</m></title>
+      <tabular>
+        <row>
+          <cell><m>\oplus</m></cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>0</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      As an example of how to read this table, the entry in the
+      <q>2</q>
+      row and the
+      <q>3</q>
+      column is 0, which tells us that <m>2 \oplus 3 = 0</m>
+      (remember, this result depends on fact that we're working in mod 5).
+    </p>
+    <p>
+      The following table gives the results of multiplication mod <m>5</m> for <m>{\mathbb Z}_{5}</m>:
+    </p>
+    <table xml:id="groups_Z5_mult_table">
+      <title>Multiplication table for <m>{\mathbb Z}_5</m></title>
+      <idx><h>Table</h><h>multiplication</h></idx>
+      <tabular>
+        <row>
+          <cell><m>\odot</m></cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>0</cell>
+          <cell>2</cell>
+          <cell>4</cell>
+          <cell>1</cell>
+          <cell>3</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>0</cell>
+          <cell>3</cell>
+          <cell>1</cell>
+          <cell>4</cell>
+          <cell>2</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>4</cell>
+          <cell>3</cell>
+          <cell>2</cell>
+          <cell>1</cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      Again, looking at the entry in the ''2'' row and the ''3'' column we see 1, which tells us that <m>2 \odot 3 = 1</m>.
+    </p>
+    <p>
+      Similarly, for each set of numbers
+      <m>{\mathbb Z}_n</m> we can construct a table to determine the result of any possible calculation mod <m>n</m>.
+      Tables like these are known as <em>Cayley tables</em>.<fn>
+      Technically, this kind of operation table is only called a
+      <q>Cayley table</q>
+      if the operation satisfies the
+      <q>group properties</q>
+      (see <xref ref="subsec_ModularArithmetic_DefOfGroup">Section</xref>).
+      </fn> We will see them often throughout the course.
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_49">
+      <statement>
+        <p>
+          Use the above Cayley tables for <m>\oplus</m> and <m>\odot</m> in
+          <m>\integer_5</m> to calculate each of the following.
+          (Remember, compute the remainders
+          <em>before</em> doing the arithmetic.)
+          <ol type="a">
+            <li>
+              <p>
+                <m>\bmod(456 \cdot (252 + 54),5)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod(523 + \left( 4568 \cdot (43 + 20525) \right),5)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod((456 \cdot 252) + (456 \cdot 54),5)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bmod(523 + \left( (4568 \cdot 43) + (4568 \cdot 20525) \right) ,5)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Later on (in the chapter on Equivalence Relations) we'll show another way of looking at the integers mod <m>n</m>.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_ModularArithmetic_ClosureZn">
+    <title>Closure properties of <m>{\mathbb Z}_n</m></title>
+    <p>
+      Let's look a little further into the arithmetic properties of the numbers
+      <m>{\mathbb Z}_n</m> that we've just defined.
+    </p>
+    <example>
+      <statement>
+        <p>
+          To start exploring, first consider <m>{\mathbb Z}_8</m>.
+          <xref ref="groups_Z8_add_table">Tables</xref>
+          and <xref ref="groups_Z8_mult_table"></xref>
+          are the addition and multiplication tables for <m>{\mathbb Z}_8</m>,
+          respectively.
+        </p>
+        <table xml:id="groups_Z8_add_table">
+          <title>Addition table for <m>{\mathbb Z}_8</m></title>
+          <tabular>
+            <row>
+              <cell><m>\oplus</m></cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+              <cell>0</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+            </row>
+            <row>
+              <cell>5</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+            </row>
+            <row>
+              <cell>6</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+            </row>
+            <row>
+              <cell>7</cell>
+              <cell>7</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+            </row>
+          </tabular>
+        </table>
+        <table xml:id="groups_Z8_mult_table">
+          <title>Multiplication table for <m>{\mathbb Z}_8</m></title>
+          <tabular>
+            <row>
+              <cell><m>\odot</m></cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>0</cell>
+              <cell>0</cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell>0</cell>
+              <cell>1</cell>
+              <cell>2</cell>
+              <cell>3</cell>
+              <cell>4</cell>
+              <cell>5</cell>
+              <cell>6</cell>
+              <cell>7</cell>
+            </row>
+            <row>
+              <cell>2</cell>
+              <cell>0</cell>
+              <cell>2</cell>
+              <cell>4</cell>
+              <cell>6</cell>
+              <cell>0</cell>
+              <cell>2</cell>
+              <cell>4</cell>
+              <cell>6</cell>
+            </row>
+            <row>
+              <cell>3</cell>
+              <cell>0</cell>
+              <cell>3</cell>
+              <cell>6</cell>
+              <cell>1</cell>
+              <cell>4</cell>
+              <cell>7</cell>
+              <cell>2</cell>
+              <cell>5</cell>
+            </row>
+            <row>
+              <cell>4</cell>
+              <cell>0</cell>
+              <cell>4</cell>
+              <cell>0</cell>
+              <cell>4</cell>
+              <cell>0</cell>
+              <cell>4</cell>
+              <cell>0</cell>
+              <cell>4</cell>
+            </row>
+            <row>
+              <cell>5</cell>
+              <cell>0</cell>
+              <cell>5</cell>
+              <cell>2</cell>
+              <cell>7</cell>
+              <cell>4</cell>
+              <cell>1</cell>
+              <cell>6</cell>
+              <cell>3</cell>
+            </row>
+            <row>
+              <cell>6</cell>
+              <cell>0</cell>
+              <cell>6</cell>
+              <cell>4</cell>
+              <cell>2</cell>
+              <cell>0</cell>
+              <cell>6</cell>
+              <cell>4</cell>
+              <cell>2</cell>
+            </row>
+            <row>
+              <cell>7</cell>
+              <cell>0</cell>
+              <cell>7</cell>
+              <cell>6</cell>
+              <cell>5</cell>
+              <cell>4</cell>
+              <cell>3</cell>
+              <cell>2</cell>
+              <cell>1</cell>
+            </row>
+          </tabular>
+        </table>
+      </statement>
+    </example>
+    <p>
+      There is an important feature exhibited in both <xref ref="groups_Z8_add_table">Table</xref>
+      and <xref ref="groups_Z8_mult_table">Table</xref> that is easy to overlook.
+      Notice that every entry in the table is also an element of <m>{\mathbb Z}_8</m>.
+      You can think of the set <m>\{0,...,7\}</m> as a closed box,
+      and when you add or multiply any two numbers in that box mod <m>8</m>,
+      you always get another number in that box, never outside of it
+      (indeed because addition and multiplication mod <m>8</m> return a remainder that is some number 0-7).
+      We express this mathematically by saying that
+      <m>{\mathbb Z}_8</m> is <term>closed</term>
+          <idx><h>Closure</h><h>integers mod n</h></idx>
+      under addition and multiplication mod <m>8</m>.
+      (Alternatively we may say:
+      addition and multiplcation mod <m>8</m> have the property of <term>closure</term>.)
+      It seems reasonable that the same should be true for any <m>{\mathbb Z}_n</m>,
+      and we state this formally as a proposition (as mathematicians are wont to do):
+    </p>
+    <proposition xml:id="proposition_ModularArithmetic_closed_property_Zn">
+      <statement>
+        <p>
+          <m>{\mathbb Z}_n</m> is closed under modular addition and multiplication,
+          for all positive integers <m>n</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_ModularArithmetic_52">
+      <statement>
+        <p>
+          Prove <xref ref="proposition_ModularArithmetic_closed_property_Zn">Proposition</xref>.
+          That is, show that the modular sum and modular product of two elements of
+          <m>{\mathbb Z}_n</m> are also in <m>{\mathbb Z}_n</m>. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Please note that closure is not in general a trivial property,
+      and there are many examples of number systems that are not closed under various operations.
+      For instance,
+      the positive integers are not closed under the operation of subtraction, because
+      (for example)
+      <m>5 - 7</m> is not a positive integer.
+      Similarly, the positive integers are not closed under the operation of square root,
+      because the square root of 2 is not an integer.
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_53">
+      <statement>
+        <p>
+          For each of the following number systems,
+          state whether or not they are closed under (i) addition (ii) subtraction (iii) multiplication (iv) division (v) square root.
+          In cases where closure holds you can simply state the fact
+          (no proof is necessary).
+          In cases where closure doesn't hold, give a counterexample.
+          For example,
+          we know that the negative real numbers are not closed under square root because
+          <m>\sqrt{-1}</m> is not a negative real number. (*Hint*)
+          <ol type="a">
+            <li>
+              <p>
+                The integers
+              </p>
+            </li>
+            <li>
+              <p>
+                The rational numbers
+              </p>
+            </li>
+            <li>
+              <p>
+                The real numbers
+              </p>
+            </li>
+            <li>
+              <p>
+                The positive rational numbers
+              </p>
+            </li>
+            <li>
+              <p>
+                The positive real numbers
+              </p>
+            </li>
+            <li>
+              <p>
+                The nonzero real numbers
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ModularArithmetic_54">
+      <statement>
+        <p>
+          Prove that the complex numbers are closed under complex addition and multiplication.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ModularArithmetic_IdentitiesAndInversesZn">
+    <title>Identities and inverses in <m>{\mathbb Z}_n</m></title>
+    <p>
+      Next, we want to look at some additional properties that were introduced in <xref ref="ComplexNumbers">Chapter</xref>,
+      namely identities and inverses
+      (both additive and multiplicative).
+      This time we'll go through these properties more quickly.
+    </p>
+    <p>
+      Consider first the additive identity.
+      Remember that an additive identity is an element which,
+      when added to any other element <m>a</m>,
+      gives a result of <m>a</m>.
+      For the specific case of <m>{\mathbb Z}_8</m>,
+      we can see from the first row of <xref ref="groups_Z8_add_table">Table</xref>
+      that <m>0 \oplus a = a</m> for any <m>a \in {\mathbb Z}_8</m>.
+      Similarly, the first column of <xref ref="groups_Z8_add_table">Table</xref> show that
+      <m>a \oplus 0 = a</m> for any <m>a \in {\mathbb Z}_8</m>.
+    </p>
+    <p>
+      Is 0 an additive identity for <em>any</em> <m>{\mathbb Z}_n</m>?
+      Not surprisingly, the answer is Yes:
+      <idx><h>Integers mod n</h><h>additive identity</h></idx>
+    </p>
+    <proposition xml:id="proposition_ModularArithmetic_id_property_Zn">
+      <statement>
+        <p>
+          <m>0 \in {\mathbb Z}_n</m> is the additive identity of <m>{\mathbb Z}_n</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Given any <m>a \in {\mathbb Z}_n</m>,
+        then <m>a \oplus 0</m> is computed by taking the remainder of <m>a + 0</m> mod <m>n</m>.
+        Since <m>a + 0 = a</m>, and <m>0 \leq a \lt n</m>,
+        it follows that the remainder of <m>a</m> is still <m>a</m>.
+        Hence <m>a \oplus 0 = a</m>.
+        Similarly we can show <m>0 \oplus a = a</m>.
+        Thus <m>0</m> satisfies the definition of identity for <m>{\mathbb Z}_n</m>.
+      </p>
+    </proof>
+    <exercise xml:id="exercise_ModularArithmetic_56">
+      <statement>
+        <p>
+          Give a similar proof that <m>1</m> is the multiplicative identity for <m>{\mathbb Z}_n</m> when <m>n >1</m>.
+          What is the multiplicative identity for <m>{\mathbb Z}_n</m> when <m>n=1</m>?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ModularArithmetic_InversesZn">
+    <title>Inverses in <m>{\mathbb Z}_n</m></title>
+    <p>
+      Now let's find out whether the integers mod <m>n</m> have additive and multiplicative inverses.
+          <idx><h>Inverse</h><h>integers mod n</h></idx>
+      Additive inverse first: for each element of
+      <m>{\mathbb Z}_n</m> is there a corresponding element of
+      <m>{\mathbb Z}_8</m> such that their modular sum is the additive identity (that is, 0)?
+      You may see in <xref ref="groups_Z8_add_table">Table</xref>
+      that each row of the addition table contains a <m>0</m> (e.g.
+      <m>1\oplus 7 = 0</m>).
+      It follows that each element of
+      <m>{\mathbb Z}_8</m> has an additive inverse.
+      But will the same be true for <m>{\mathbb Z}_{27}</m>,
+      or <m>{\mathbb Z}_{341}</m>, or <m>{\mathbb Z}_{5280}</m>?
+      We can't just take this for granted<ndash/>we need to give a proof:
+    </p>
+    <proposition xml:id="proposition_ModularArithmetic_addinv_property_Zn">
+      <statement>
+        <p>
+          Let <m>{\mathbb Z}_n</m> be the integers mod <m>n</m> and <m>a \in {\mathbb Z}_n</m>.
+          Then for every <m>a</m> there is an additive inverse <m>a' \in {\mathbb Z}_n</m>.
+        </p>
+        <p>
+          In other words:
+          for any <m>a \in {\mathbb Z}_n</m> in we can find an <m>a'</m> such that:
+          <me>
+            a \oplus a' = a' \oplus a  = 0
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      We structure the proof of <xref ref="proposition_ModularArithmetic_addinv_property_Zn">Proposition</xref> as an exercise.
+      We prove the two cases <m>a=0</m> and <m>a \neq 0</m> separately.
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_58">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that <m>0 \in {\mathbb Z}_n</m> has an additive inverse in <m>{\mathbb Z}_n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose <m>a</m> is a nonzero element of <m>{\mathbb Z}_n</m>
+              (in mathematical shorthand, we write this as:
+              <m>a \in {\mathbb Z}_n \setminus \{0\}</m>),
+              and let <m>a' = n-a</m>.
+              <ol type="i">
+                <li>
+                  <p>
+                    Show that <m>a'</m> is in <m>{\mathbb Z}_n</m> . (*Hint*)
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Show that <m>a \oplus a' = a' \oplus a = 0 \pmod{ n}</m>:
+                    that is, <m>a'</m> is the additive inverse of <m>a</m>.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      That takes care of additive inverse.
+      What about multiplication?
+      That is, no matter what <m>n</m> is,
+      given <m>a \in {\mathbb Z}_n</m> is there always another element of
+      <m>{\mathbb Z}_n</m> which multiplies to give the multiplicative identity?
+    </p>
+    <p>
+      Before attempting to prove this,
+      first let's see if it's true in <m>{\mathbb Z}_8</m>.
+      Consider the multiplication table for
+      <m>{\mathbb Z}_8</m> in <xref ref="groups_Z8_mult_table">Table</xref>.
+      We find that rows 0, 2, 4, and 6 do not contain a <m>1</m>.
+      This means that for <m>a</m> = 0, 2, 4, or 6, there's no
+      <m>b \in {\mathbb Z}_8</m> such that <m>a \odot b \equiv 1 \pmod{ 8}</m>.
+      So 0, 2, 4, and 6 have no multiplicative inverses in <m>{\mathbb Z}_8</m>.
+    </p>
+    <p>
+      Actually, it's not too hard to see that 0 <em>never</em>
+      has a multiplicative inverse for any <m>{\mathbb Z}_n</m>
+      (why?).
+      This means that it's impossible to prove a multiplicative version of <xref ref="proposition_ModularArithmetic_addinv_property_Zn">Proposition</xref>,
+      since we have a <term>counterexample</term>
+      that shows that not every element of <m>{\mathbb Z}_n</m> has an inverse,
+      no matter what <m>n</m> is.
+    </p>
+    <remark>
+      <p>
+        This example shows that it's often easier to <em>disprove</em>
+        something than to prove it!
+        To disprove a general statement,
+        you only need to find <em>just one</em> counterexample,
+        whereas an unlimited number of examples can never prove a general statement.
+      </p>
+    </remark>
+    <p>
+      But all is not lost as far as multiplicative inverses are concerned.
+      We'll see later that they play a very important role when we consider arithmetic with the <em>nonzero</em>
+      elements of <m>{\mathbb Z}_n</m>:
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_60">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find an integer <m>n>2</m> such that all <em>nonzero</em>
+              elements of <m>{\mathbb Z}_n</m> have multiplicative inverses.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find two additional values of <m>n>5</m> such that all nonzero elements of
+              <m>{\mathbb Z}_n</m> have multiplicative inverses.
+            </p>
+          </li>
+          <li>
+            <p>
+              What do the three numbers you found in (a) and (b) have in common?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Other arithmetic properties of <m>\oplus</m> and <m>\odot</m></title>
+    <p>
+      In many respects,
+      <m>\oplus</m> and <m>\odot</m> are very similar to the ordinary arithmetic operations <m>+</m> and <m>\cdot</m>.
+      It makes sense that they too should be associative,
+      distributive, and commutative
+      (recall these properties were defined in <xref ref="subsec_Preliminaries_OpsAndRels">Section</xref>).
+      But as mathematicians, it's not enough for something to
+      <q>make sense</q>
+      <ndash/>we need solid proof.
+      So let's buckle down and crank out some proofs.
+    </p>
+    <proposition xml:id="proposition_ModularArithmetic_Zn_comm_assoc">
+      <statement>
+        <p>
+          In the following <m>n</m> is an arbitrary positive integer and
+          <m>a,
+          b, c</m> denote arbitrary elements of <m>{\mathbb Z}_n</m>.
+          <ol type="a">
+            <li xml:id="comm">
+              <p>
+                Modular addition and multiplication are commutative:<idx><h>Commutative property</h><h>modular addition/multiplication</h></idx>
+                <md>
+                  <mrow>a \oplus b  \amp  =  b \oplus a</mrow>
+                  <mrow>a \odot b   \amp  =  b \odot a </mrow>
+                </md>.
+              </p>
+            </li>
+            <li xml:id="assoc">
+              <p>
+                Modular addition and multiplication are associative:
+    <idx><h>Associative property</h><h>modular addition/multiplication</h></idx>
+                <md>
+                  <mrow>(a \oplus b) \oplus c  =  a \oplus (b \oplus c)</mrow>
+                  <mrow>(a \odot b) \odot c    =  a \odot (b \odot c)</mrow>
+                </md>.
+              </p>
+            </li>
+            <li xml:id="distrib">
+              <p>
+                Modular multiplication distributes over modular addition:
+    <idx><h>Distributive property</h><h>modular addition/multiplication</h></idx>
+                <me>
+                  a \odot (b \oplus c)  = (a \odot b)\oplus (a \odot c)
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We'll prove associativity, and you'll prove the other parts as exercises
+        (the proofs are pretty similar).
+        The proof strategy is familiar:
+        we'll prove modular arithmetic properties by making use of the corresponding properties of ordinary arithmetic.
+      </p>
+      <p>
+        <term>Modular addition is associative:</term>
+        Given <m>a,b,c</m> are elements of <m>\mathbb{Z}_n</m>,
+        we may apply part (a) of <xref ref="exercise_ModularArithmetic_ops">Exercise</xref> and get
+        <me>
+          \bmod((a + b) + c),n) =  (a \oplus b) \oplus c
+        </me>.
+      </p>
+      <p>
+        Similarly, we may apply part (b) of <xref ref="exercise_ModularArithmetic_ops">Exercise</xref> to get
+        <me>
+          \bmod(a + (b + c),n) =  a \oplus (b \oplus c)
+        </me>.
+      </p>
+      <p>
+        Now here's where we use regular arithmetic.
+        The associative property of integer addition tells us that <m>(a+b)+c = a + (b + c)</m>,
+        so the left-hand sides are equal.
+        So <m>(a \oplus b) \oplus c = a \oplus (b \oplus c)</m>,
+        and the proof is complete.
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Explain the step in the above proof where we used part (a) of <xref ref="exercise_ModularArithmetic_ops">Exercise</xref>
+          to conclude that <m>\bmod((a + b) + c,n) = (a \oplus b) \oplus c</m>.
+          What values are we using for <m>\ell, m, p</m>,
+          and why is it OK to use these values?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove that addition mod <m>n</m> is commutative.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that multiplication mod <m>n</m> is commutative.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that multiplication mod <m>n</m> is associative.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove part <xref ref="distrib"/> of <xref ref="proposition_ModularArithmetic_Zn_comm_assoc">Proposition</xref>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ModularArithmetic_DefOfGroup">
+    <title>Group: a central concept in abstract algebra</title>
+    <p>
+      It's time for us to make a confession.
+      We have an ulterior motive.
+      We've been spending lots of time and effort discussing modular arithmetic because it provides good examples of one of the central concepts in abstract algebra,
+      namely the notion of a <em>group</em>.
+    </p>
+    <p>
+      Notice that the set <m>{\mathbb Z}_n</m> with the operation of <m>\oplus</m> has an identity,
+      and inverses, and the property of closure.
+      Furthermore,
+      <m>{\mathbb Z}_n</m> is associative under <m>\oplus</m>,
+      as we just showed.
+      Any combination of a set and an operation that has those three properties,
+      as well as the associative property,
+      is called a <em>group</em>.
+      Here's the formal definition:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {group} A <term><term>group</term></term>
+              <idx><h>Group</h><h>definition</h></idx>
+          is a set combined with an operation that has the following properties:
+          <ul>
+            <li>
+              <p>
+                <em>Closure</em>: the set is closed under the operation;
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Identity</em>: the set has an identity element for the operation;
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Inverse</em>:
+                every element of the set has an inverse under the operation;
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Associative</em>: the operation is associative.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Notice that we do <em>not</em> include the commutative property in this list.
+      Later on we'll see examples of groups that are
+      <em>not</em> commutative.
+      Groups that do have the commutative property are called
+      <term>abelian groups</term>.
+    </p>
+    <p>
+      Now that we've defined groups,
+      in retrospect we may look back and see that we've encountered groups before.
+      In fact, we've been working with groups since the very beginning of the book!
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_groupAdd">
+      <statement>
+        <p>
+          For each of the following sets of numbers,
+          determine which of the four group properties holds,
+          using the operation of addition.
+          If a property does <em>not</em> hold,
+          give a specific counterexample which shows that the property is false.
+          State also whether or not each set is a group.
+        </p>
+        <p>
+          (a) Integers;<nbsp/><nbsp/><nbsp/><nbsp/>(b)Positive integers;<nbsp/><nbsp/><nbsp/><nbsp/>(c) Rational numbers;<nbsp/><nbsp/><nbsp/><nbsp/>(d) Real numbers;
+          <nbsp/><nbsp/><nbsp/><nbsp/>(e) Complex numbers.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We've shown several examples of group under the operation of addition (+ or <m>\oplus</m>).
+      But what about multiplication?
+      With multiplication, things turn out quite differently.
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_groupMult">
+      <statement>
+        <p>
+          For each of the following sets of numbers,
+          determine which of the four group properties holds,
+          using the operation of multiplication.
+          If a property does <em>not</em> hold,
+          give a specific counterexample which shows that the property is false.
+          State also whether or not each set is a group.
+        </p>
+        <p>
+          (a) Integers;<nbsp/><nbsp/><nbsp/><nbsp/>(b)Positive integers;<nbsp/><nbsp/><nbsp/><nbsp/>(c) Rational numbers;<nbsp/><nbsp/><nbsp/><nbsp/>(d) Real numbers;
+          <nbsp/><nbsp/><nbsp/><nbsp/>(e) Complex numbers.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Based on our experience with the previous exercise, we may generalize:
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_64_0">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Explain why it is <em>impossible</em> for any set of
+              (real or complex)
+              numbers which contains both 0 and 1 to be a group under the operation of multiplication.
+            </p>
+          </li>
+          <li>
+            <p>
+              Explain why <m>\mathbb{Z}_n</m> is <em>not</em>
+              a group under <m>\odot</m> for any <m>n>1</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We've seen in <xref ref="exercise_ModularArithmetic_64_0">Exercise</xref>
+      that 0 causes a problem for multiplication,
+      as far as making groups is concerned.
+      But what if we remove 0 from the set?
+      We may have better luck:
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_64">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that the nonzero elements of
+              <m>{\mathbb Z}_3</m> is a group under <m>\odot</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Can you find an <m>n>3</m> such that the nonzero elements of <m>{\mathbb Z}_n</m> do <em>not</em>
+              form a group under <m>\odot</m>?
+              If so, tell which <m>n</m>,
+              and explain why <m>{\mathbb Z}_n</m> fails to be a group in this case.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Now that you know what a group is,
+      we'll be referring back to this definition fairly frequently throughout the rest of the book.
+      In particular,
+      we'll be saying a lot more about multiplicative groups,
+      which turn out to be somewhat more intricate
+      (and more interesting)
+      than additive groups.
+    </p>
+  </subsection>
+</section>

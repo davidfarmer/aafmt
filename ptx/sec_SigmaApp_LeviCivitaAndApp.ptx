@@ -1,0 +1,1193 @@
+<section xml:id="sec_SigmaApp_LeviCivitaAndApp">
+  <title>Levi-Civita symbols and applications</title>
+  <subsection xml:id="subsec_SigmaApp_LeviCivitaAndApp_LeviCivita">
+    <title>Levi-Civita symbols: definitions and examples</title>
+    <p>
+      When dealing with vectors and matrices in physics,
+      one often finds lurking the Levi-Civita symbol,<fn>
+      Levi-Civita actually refers to one person, not two:
+      the Italian mathematician Tullio Levi-Civita, (1873-1941),
+      who worked on mathematical physics
+      (including relativity).
+      </fn> which is written as an epsilon
+      (the Greek letter <m>\epsilon</m>)
+      with various numbers of subscripts.
+      The possible values it can take are 1, -1, or 0, depending on the values of the subscripts
+      (we refer to these subscripts as
+      <q>indices</q>).
+      This might not seem too useful since it can only take three different values,
+      but you will see that it does a great job of simplifying expressions that ordinarily would be much more complicated.
+    </p>
+    <p>
+      For an epsilon with two indices
+      (written as <m>\epsilon_{ij}</m>),
+      each index can be either 1 or 2.
+      The different values that <m>\epsilon_{ij}</m> can take are:
+      <me>
+        \epsilon_{ij}= \begin{cases}\,\,1 ~ \text{ if }  ~ i=1, j=2,  \\ -1 ~ \text{ if }  ~ i=2, j=1,  \\ \,\, 0 ~ \text{ if }  ~ i=j. \end{cases}
+      </me>
+    </p>
+    <p>
+      For an epsilon with three indices,
+      each index can be either 1,2,or 3.
+      The values of <m>\epsilon_{ijk}</m> are:
+      <me>
+        \epsilon_{ijk}= \begin{cases}1 ~ \text{ where }  ~ (i,j,k)= (1,2,3),  (2,3,1),  \mathrm{~or~}(3,1,2), \\ -1 ~ \text{ where }  ~ (i,j,k) = (2,1,3), (1,3,2),  \mathrm{~or~}(3,2,1),  \\ 0 ~ \text{ where }  ~  i=j, i=k, ~ \text{ or }  ~ j=k, ~ \text{ i.e., if any index is repeated. } \end{cases}
+      </me>
+    </p>
+    <p>
+      What's the rule behind this definition?
+      The six possible rearrangements of <m>(1,2,3)</m> in the definition of
+      <m>\epsilon_{ijk}</m> are called <em>permutations</em>.
+          <idx><h>Permutation</h></idx>
+      The three arrangements <m>(2,1,3)</m>, <m>(1,3,2)</m>,
+      and <m>(3,2,1)</m> can all be obtained from <m>(1,2,3)</m> by a single exchange of two numbers.
+      For example,
+      <m>(2,1,3)</m> is obtained from <m>(1,2,3)</m> by exchanging <m>1 \leftrightarrow 2</m>;
+      and the other two rearrangements exchange
+      <m>2 \leftrightarrow 3</m> and <m>1 \leftrightarrow 3</m> respectively.
+      On the other hand,
+      to get <m>(2,3,1)</m> or <m>(3,1,2)</m> from <m>(1,2,3)</m> requires <em>two</em> exchanges.
+      Since the number of exchanges for
+      <m>(2,1,3), (1,3,2),
+      and (3,2,1)</m> is odd, these are called
+      <em>odd permutations</em>,
+          <idx><h>Permutation</h><h>odd and even</h></idx>
+      while the others (including <m>(1,2,3)</m> are called
+      <em>even permutations</em>.
+      So the definition of <m>\epsilon_{ijk}</m> may be summarized as follows:
+      it's equal to 1 if <m>(i,j,k)</m> is an even permutation,
+      <m>-1</m> if <m>(i,j,k)</m> is an odd permutation,
+      and 0 if <m>(i,j,k)</m> is not a permutation (i.e. there are repeated indices.
+    </p>
+    <p>
+      You may wonder, Why this strange definition?
+      We'll see more reasons later,
+      but for now we can relate the definition of
+      <m>\epsilon_{ijk}</m> to rotations of the <m>x,y,z</m> axes in 3-dimensional space.
+      Let's call these axes 1,2,3 instead of <m>x,y,z</m> Now,
+      if it is possible to rotate the axes so that 1 moves to 2, 2 moves to 3, and 3 moves to 1:
+      in other words <m>(1,2,3)</m> has moved to <m>(2,3,1)</m>.
+      It's also possible to move <m>(1,2,3)</m> to <m>(3,1,2)</m>.
+      Notice that these two are exactly the even permutations!
+      On the other hand,
+      it is not possible to move <m>(1,2,3)</m> to <m>(1,3,2)</m>: To do so would require turning one of the axes around
+      (this is called a <em>reflection</em>).
+          <idx><h>Reflection</h></idx>
+      So the sign of <m>\epsilon_{ijk}</m> distinguishes rotations from reflections.
+      Besides this geometrical interpretation,
+      we'll have a lot more to say about even and odd permutations in <xref ref="sec_Permutations_OtherGroups">Section</xref>.)
+    </p>
+    <p>
+      We may simplify the notation somewhat if we define the <em>sign</em>
+      of a permutation as follows:
+      <me>
+        \text{ sign } (\sigma)= \begin{cases}1  \text{ if }  \sigma \text{ is an even permutation, } \\ -1  \text{ if }  \sigma \text{ is an even permutation. } \end{cases}
+      </me>
+    </p>
+    <p>
+      We may then concisely express the general definition of the
+      <term>Levi-Civita symbol</term>
+      with <m>n</m> indices as:
+      <me>
+        \epsilon_{i_1 i_2 i_3 \ldots i_n}= \begin{cases}\text{ sign }  \left( \begin{matrix}1\amp 2\amp 3\amp \ldots\amp n \\ i_1\amp i_2\amp i_3 \amp \ldots\amp i_n \end{matrix}  \right) \text{ if no indices are repeated, } \\ 0 ~ \text{ if any  index is repeated. } \end{cases}
+      </me>
+    </p>
+    <p>
+      The symbol with <m>n</m> indices is sometimes called an <m>n</m>-dimensional Levi-Civita symbol:
+      for instance,
+      <m>\epsilon_{ijk}</m> is a 3-dimensional Levi-Civita symbol.
+      The reason for this is that most often they are used with vector spaces that have the same dimension as the number of indices in the symbol.
+      So the Levi-Civita symbol with three indices,
+      <m>\epsilon_{ijk}</m> is most useful in three dimensions,
+      as we'll see shortly.
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_KLC">
+      <statement>
+        <p>
+          Using the general definition of the Levi-Civita symbol,
+          show that:
+          <ol type="a">
+            <li>
+              <p>
+                <m>\displaystyle \sum_{i,j} \epsilon_{ij} \delta_{ij}=0</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\epsilon_{i_1i_2\ldots i_n} \delta_{i_ji_k}=0</m> for any <m>j,k</m> such that <m>1 \le j \lt k \le n</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\epsilon_{ijk} = \epsilon_{jki} = \epsilon_{kij}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In the Set Theory chapter you saw the formula:
+      <me>
+        |A \cup B| = |A| + |B| - |A \cap B|
+      </me>.
+    </p>
+    <p>
+      This means that you may count all the elements contained in set <m>A</m> or set <m>B</m> by counting the elements in <m>A</m> and <m>B</m> separately,
+      then subtracting their intersection.
+      You have to subtract the intersection because the overlap between <m>A</m> and <m>B</m> gets counted twice in the separate counts of <m>A</m> and <m>B</m>.
+      (Think of a set diagram,
+      where <m>A</m> and <m>B</m> are represented by intersecting circles.)
+      When we split up summations depending on whether indices are equal or unequal,
+      we have to add and subtract in a similar way.
+      We can prove this using Levi-Civita symbols.
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_split">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that for any values <m>i,j,k \in \{1,2,3\}</m>, it is always true that
+              <me>
+                1=|\epsilon_{ijk}|+\delta_{ij}+\delta_{jk}+\delta_{ik}-2\delta_{ij}\delta_{ik}
+              </me>
+              (*Hint*).
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that
+              <me>
+                \sum_{i,j,k} a_{i,j,k}=\sum_{i,j,k~\text{ all unequal } }a_{i,j,k}+\sum_{i,k}a_{i,i,k}+\sum_{i,j}a_{i,j,j}+\sum_{j,k}a_{k,j,k}-2\sum_{i}a_{i,i,i}
+              </me>.
+              (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_SigmaApp_LeviCivitaAndApp_LeviCivitaDet">
+    <title>Levi-Civita symbols and determinants</title>
+    <p>
+      Now that we've defined Levi-Civita symbols,
+      we can actually use them for something!
+      The first application we'll look at is determinants.
+      Suppose you have a <m>2 \times 2</m> matrix <m>A</m>:
+      <me>
+        A = \left( \begin{array}{cc} a_{11} \amp  a_{12} \\ a_{21} \amp  a_{22} \end{array}  \right)
+      </me>
+    </p>
+    <p>
+      (Note that previously we separated multiple subscripts with a comma, e.g.
+      <m>a_{i,j}</m>: but from now on we'll leave out the comma (e.g.
+      <m>a_{ij}</m>), which is the way most math books do it.)
+    </p>
+    <p>
+      Then the determinant is:
+      <me>
+        \text{ det }  (A) = \left| \begin{array}{cc} a_{11} \amp  a_{12} \\ a_{21} \amp  a_{22} \end{array}  \right| = a_{11}a_{22} - a_{12}a_{21}
+      </me>
+    </p>
+    <p>
+      We can write this using the Levi-Civita symbol as:
+      <me>
+        \text{ det }  A = \sum_{i,j} \epsilon_{ij} a_{1i} a_{2j}
+      </me>
+    </p>
+    <p>
+      Let's check this by evaluating the double sum.
+      Remember that in this case, both <m>i</m> and <m>j</m> run from 1 to 2
+      <md>
+        <mrow>\text{ det }  A =\amp  \sum_{i,j} \epsilon_{ij} a_{1i} a_{2j}</mrow>
+        <mrow>=\amp  \sum_{i} \left( \sum_{j} \epsilon_{ij} a_{1i} a_{2j}\right)</mrow>
+        <mrow>=\amp  \sum_{i} \left( \epsilon_{i1} a_{1i} a_{21} + \epsilon_{i2} a_{1i} a_{22} \right)</mrow>
+        <mrow>=\amp  \epsilon_{11} a_{11} a_{21} + \epsilon_{12} a_{11} a_{22} + \epsilon_{21} a_{12} a_{21} + \epsilon_{22} a_{12} a_{22}</mrow>
+      </md>
+    </p>
+    <p>
+      Looking at the definition,
+      we know that <m>\epsilon_{11}</m> and <m>\epsilon_{22}</m> equals zero,
+      so the leftmost and rightmost terms go to zero.
+      For the remaining terms we have
+      <m>\epsilon_{12}</m> which equals 1, and <m>\epsilon_{21}</m> which equals -1.
+      So we're left with:
+      <me>
+        \text{ det }  A = a_{11}a_{22} - a_{12}a_{21}
+      </me>,
+      which is exactly the definition you learned in linear algebra.
+    </p>
+    <p>
+      The natural generalization to a <m>3 \times 3</m> matrix as:
+      <me>
+        \text{ det }  A = \sum_{i,j,k} \epsilon_{ijk} a_{1i} a_{2j} a_{3k}
+      </me>.
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_rowExp">
+      <statement>
+        <p>
+          Show that the above formula using
+          <m>\epsilon_{ijk}</m> does agree with the determinant that you obtain from row
+          (or column)
+          expansion.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          There is a formula for the determinant of a
+          <m>n \times n</m> matrix in terms of an <m>n</m>-index Levi-Civita symbol.
+          Guess what the formula should be
+          (you don't need to prove it).
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Based on our definition of the Levi-Civita symbol
+      <m>\epsilon_{ijk}</m> in terms of the sign of the permutation <m>\left( \begin{matrix}1 \amp  2 \amp  3  \\ i \amp  j \amp  k \end{matrix}  \right)</m>,
+      we can also write the formula for a <m>3 \times 3</m> determinant as:
+      <me>
+        \text{ det }  A = \sum_{\text{ permutations }  \phi} \text{ sign } (\phi) \cdot a_{1\phi(1)} a_{2\phi(2)} a_{3\phi(3)}
+      </me>.
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_detTrans">
+      <statement>
+        <p>
+          Use this formula to prove that the determinant of any
+          <m>3 \times 3</m> square matrix <m>A</m> is equal to the determinant of its transpose.
+          That is,
+          <me>
+            \text{ det }  A = \text{ det } A^{T}
+          </me>
+        </p>
+        <p>
+          (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      An important concept to keep in mind when dealing with these Levi-Civita symbols is what they mean based on when indices are equal or unequal,
+      and how that relates to permutations.
+      To see how this works,
+      let's look at a proof to show that if any two rows in a
+      <m>3 \times 3</m> matrix are equal, the determinant is 0.
+      Based on our definition we start out with:
+      <me>
+        \text{ det }  A = \sum_{i,j,k} \epsilon_{ijk} a_{1i} a_{2j} a_{3k}
+      </me>
+    </p>
+    <p>
+      We want to show what happens when any two rows are equal,
+      so let's do one case where row 1 equals row 2.
+      In that case <m>a_{2j}=a_{1j}</m>.
+      That means we can rewrite our determinant as:
+      <me>
+        \text{ det }  A =  \sum_{i,j,k} \epsilon_{ijk} a_{1i} a_{1j} a_{3k}
+      </me>
+    </p>
+    <p>
+      Now the letters <m>i,j,k</m> are just
+      <q>dummy indices</q>
+      or placeholders, so we can replace them with any letters we want.
+      So we can replace <m>i</m> with <m>j</m> and vice-versa without changing the value:
+      <me>
+        \text{ det }  A =  \sum_{j,i,k} \epsilon_{jik} a_{1j} a_{1i} a_{3k}
+      </me>
+    </p>
+    <p>
+      Now remember what we discussed earlier,
+      if you interchange two indices
+      (that is, an odd permutation)
+      of <m>\epsilon_{ijk}</m>,
+      you get its negative, so <m>\epsilon_{jik}=-\epsilon_{ijk}</m>.
+      Furthermore, We can replace <m>\sum_{j,i,k}</m> with
+      <m>\sum_{i,j,k}</m> because the order of summation doesn't matter.
+      This gives us
+      <me>
+        \text{ det }  A =  \sum_{i,j,k} -\epsilon_{ijk} a_{1j} a_{1i} a_{3k}
+      </me>,
+    </p>
+    <p>
+      Hey, whaddya know:
+      this is exactly equal to the negative of our original expression for <m>\text{ det } A</m>!
+      There's only one way that a number can be its own negative<ndash/>the number <em>must</em> be zero.
+      We conclude that if the first row is the same as the second row in a <m>3\times 3</m> matrix,
+      the determinant is always zero.
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              We showed that if the first and second row of a
+              <m>3\times 3</m> matrix is the same, the determinant is zero.
+              Now finish the proof that the determinant of a
+              <m>3\times 3</m> matrix is always zero if
+              <em>any</em> two rows are the same;
+              that is, prove it for the remaining cases.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that any <m>3 \times 3</m> matrix which has two columns equal also has determinant equal to 0.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We can take the notion of equal and unequal indices as step farther by proving that the determinant of a product of two matrices is equal to the product of their determinants.
+      Let's start with a simple <m>2 \times 2</m> matrix.
+      If matrices <m>A</m> and <m>B</m> are both <m>2 \times 2</m>,
+      we want to prove that <m>\text{ det } (AB)=\text{ det } A \,\text{ det } B</m>.
+      We can write <m>\text{ det } (AB)</m> as:
+      <me>
+        \text{ det } (AB)= \sum_{x,y} \epsilon_{xy} [AB]_{1x} [AB]_{2y}
+      </me>
+    </p>
+    <p>
+      Based on what we learned on how to represent products in terms of summation symbols,
+      we can expand this as:
+      <md>
+        <mrow>\text{ det } (AB)=\amp  \sum_{x,y} \epsilon_{xy} \left[ \sum_i a_{1i}b_{ix} \sum_j a_{2j}b_{jy}\right]</mrow>
+        <mrow>=\amp   \sum_{x,y} \epsilon_{xy} \left[ \sum_{i,j}  a_{1i}a_{2j} b_{ix}b_{jy}\right]</mrow>
+        <mrow>=\amp     \sum_{i,j}  a_{1i}a_{2j} \left[\sum_{x,y} \epsilon_{xy} b_{ix}b_{jy}\right]</mrow>
+      </md>,
+      where in the last equality we have exchanged the order of summation.
+    </p>
+    <p>
+      At this point we can now consider the product of two possibilities for our indices,
+      one where <m>i=j</m> and another where <m>i \neq j</m>:
+      <me>
+        \text{ det } (AB) = \sum_{i=j}(\ldots)+\sum_{i \neq j} (\ldots)
+      </me>.
+    </p>
+    <p>
+      Of the two sums on the right-hand side,
+      the first makes zero contribution:
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_EqualZero">
+      <statement>
+        <p>
+          Given that <m>i=j</m>,
+          show that <m>\sum_{x,y} \epsilon_{xy} b_{ix}b_{jy}</m> is equal to 0.
+          Use this to show that the first summation in the square brackets makes zero contribution. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Since we can ignore the case where <m>i=j</m>,
+      let us look at the case where <m>i \neq j</m>.
+      There are actually two cases:
+      <m>i=1, j=2</m> and <m>i=2, j=1</m>.
+      Notice that:
+      <md>
+        <mrow>\sum_{x,y}\epsilon_{xy} b_{ix}b_{jy}\amp = \sum_{x,y} \epsilon_{xy} b_{1x}b_{2y}~\text{ when } ~i=1,j=2;</mrow>
+        <mrow>\sum_{x,y} \epsilon_{xy} b_{ix}b_{jy}\amp = - \sum_{x,y}\epsilon_{xy} b_{1x}b_{2y}~\text{ when } ~i=2,j=1</mrow>
+      </md>.
+    </p>
+    <p>
+      These two cases can be summarized as:
+      <md>
+        <mrow>\sum_{x,y} \epsilon_{xy} b_{ix}b_{jy}\amp =\sum_{x,y}\epsilon_{xy}\epsilon_{ij} b_{1x}b_{2y}</mrow>
+      </md>.
+    </p>
+    <p>
+      This gives us:
+      <md>
+        <mrow>\sum_{i,j}  a_{1i}a_{2j} \left[\sum_{x,y} \epsilon_{xy} b_{ix}b_{jy}\right]\amp =  \sum_{i,j}  a_{1i}a_{2j} \left[\sum_{x,y} \epsilon_{xy} \epsilon_{ij} b_{1x}b_{2y}\right]</mrow>
+        <mrow>\amp =  \left(\sum_{i,j}\epsilon_{ij}   a_{1i}a_{2j}\right)\left(\sum_{x,y}  \epsilon_{xy} b_{1x}b_{2y}\right)</mrow>
+      </md>,
+      where in the second line we have noticed that the terms with <m>x,y</m> in the RHS of the first line can be separated from the terms with <m>i,j</m>.
+      At this point we are just about done,
+      since we may recognize the two terms in this final expression as
+      <m>\text{ det }  A</m> and <m>\text{ det }  B</m>, respectively.
+      Since the original expression we started with was <m>\text{ det } (AB)</m>, we have:
+      <me>
+        \text{ det } (AB)= \text{ det } A \,\text{ det } B
+      </me>.
+    </p>
+    <p>
+      This proof as it stands only works for <m>2 \times 2</m> matrices,
+      but it turns out that a similar proof works for <m>n \times n</m> matrices.
+      A key step in the proof was the identity:
+      <md>
+        <mrow>\sum_{x,y} \epsilon_{xy} b_{ix}b_{jy}\amp = \sum_{x,y} \epsilon_{xy}\epsilon_{ij} b_{1x}b_{2y}</mrow>
+      </md>,
+      which held whenever <m>i,j \in \{1,2\}</m> and <m>i \neq j</m>.
+      A similar equality holds in the <m>3 \times 3</m> case
+      (and indeed in the <m>n \times n</m> case).
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_detId">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that
+              <md>
+                <mrow>\sum_{x,y,z}  \epsilon_{xyz} b_{ix}b_{jy}b_{kz}\amp =\sum_{x,y,z} \epsilon_{xyz}\epsilon_{ijk} b_{1x}b_{2y}b_{3z}</mrow>
+              </md>,
+              whenever <m>i,j,k \in \{1,2,3\}</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Give a complete proof of <m>\text{ det } (AB)= \text{ det } A \,\text{ det } B</m> for the case where <m>A</m> and <m>B</m> are <m>3 \times 3</m> matrices.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We may use some of the facts which we've established in this section to prove some important properties of rotation matrices.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Recall from <xref ref="sec_SigmaApp_RotationMatrix3D">Section</xref>
+          that a rotation matrix <m>R</m> must satisfy
+          <m>R^{\text{T} } R = I</m> and <m>\det R \ge 0</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Using <xref ref="exercise_SigmaApp_detTrans">Exercise</xref>
+                and the determinant product formula <m>\det A \det B = \det(AB)</m>,
+                show that <m>\det R = 1</m> and <m>\det R^{\text{T} }=1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since <m>\det R = 1</m> it follows that
+                <m>R \in SL_3(\mathbb{R})</m> and hence <m>R</m> is invertible.
+                Use this fact to show that <m>R^{\text{T} } = R^{-1}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The results of the previous exercise are important,
+      so we'll restate them as a proposition.
+    </p>
+    <proposition xml:id="proposition_SigmaNotation_detRotMx">
+      <statement>
+        <p>
+          For any rotation matrix <m>R</m>,
+          <m>\det R = 1</m> and <m>R^{\text{T} } = R^{-1}</m>.
+        </p>
+      </statement>
+    </proposition>
+  </subsection>
+  <subsection xml:id="subsec_SigmaApp_LeviCivitaAndApp_CrossProducts">
+    <title>Levi-Civita symbols and cross products</title>
+    <p>
+      You may have seen the formula for the cross product of two vectors in vector calculus,
+      or college physics.
+      Given two three-dimensional vectors
+      <m>\textbf{a}=(a_1, a_2, a_3)</m> and <m>\textbf{b}=(b_1, b_2, b_3)</m>,
+      the <term>cross product</term> of <m>\textbf{a}</m> and
+      <m>\textbf{b}</m> can be expressed as (note that the absolute value brackets in the formula indicate that it's a determinant and not a matrix.)
+      <me>
+        \textbf{a} \times \textbf{b}= \left| \begin{array}{ccc} \textbf{e}_1 \amp  \textbf{e}_2  \amp  \textbf{e}_3  \\ a_1 \amp  a_2 \amp  a_3 \\ b_1 \amp  b_2 \amp  b_3 \end{array}  \right|
+      </me>,
+      where <m>\textbf{e}_1,  \textbf{e}_2 , \textbf{e}_3</m> are the vectors along the <m>x</m>,
+      <m>y</m>, and <m>z</m> directions in <m>\mathbb{R}^3</m>
+      (sometimes they're written as <m>\textbf{i}, \textbf{j}, \textbf{k}</m> instead).
+    </p>
+    <p>
+      It may seem strange that the matrix we're taking the determinant of has some entries that are vectors,
+      and some entries that are numbers.
+      But since we can still do addition and scalar multiplication with vectors,
+      we can plug the vectors into the determinant formula and still get a result<ndash/>which happens to be a vector. (Hey,
+      if it works, don't knock it!)
+    </p>
+    <p>
+      For example, suppose we have the vectors:
+      <me>
+        \textbf{a}= [2~ 2~ 4] \qquad \text{ and }  \qquad \textbf{b}=[-1~2~-3]
+      </me>.
+    </p>
+    <p>
+      Then the cross product <m>\textbf{a} \times \textbf{b}</m> is given by the determinant:
+      <me>
+        \textbf{a} \times \textbf{b} = \left| \begin{array}{ccc} \textbf{e}_1 \amp  \textbf{e}_2  \amp  \textbf{e}_3  \\ 2 \amp  2 \amp  4\\ -1 \amp  2 \amp  -3 \end{array}  \right|
+      </me>.
+    </p>
+    <p>
+      Therefore:
+      <md>
+        <mrow>\textbf{a} \times \textbf{b} =\amp  \textbf{e}_1 \, \left| \begin{array}{cc} 2 \amp  4</mrow>
+        <mrow>2 \amp  -3  \end{array} \right| - \textbf{e}_2 \, \left| \begin{array}{cc} 2 \amp  4</mrow>
+        <mrow>-1 \amp  -3  \end{array} \right| + \textbf{e}_3 \, \left| \begin{array}{cc} 2 \amp  2</mrow>
+        <mrow>1 \amp  2  \end{array} \right|</mrow>
+        <mrow>=\amp  -14 \textbf{e}_1 + 2 \textbf{e}_2 + 6 \textbf{e}_3</mrow>
+      </md>.
+    </p>
+    <p>
+      Or we can write the last line in a more familiar fashion:
+      <me>
+        [-14, ~ 2, ~ 6]
+      </me>.
+    </p>
+    <p>
+      So all we have to do to define a cross product using the Levi-Civita symbol is to simply plug these terms into the formula for the
+      <m>3 \times 3</m> determinant from earlier:
+      <me>
+        \textbf{a} \times \textbf{b} = \,\text{ det }  A = \sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \epsilon_{ijk} \textbf{e}_i  a_j b_k
+      </me>.
+    </p>
+    <p>
+      If you compare this formula with our original definition of <m>3 \times 3</m> determinant
+      (just before <xref ref="exercise_SigmaApp_rowExp">Exercise</xref>),
+      you'll see that we have dropped the first index on each term.
+      The reason is that the <m>\textbf{e}</m> terms will always be on the first row,
+      <m>a</m> on the second, and <m>b</m> on the third.
+    </p>
+    <p>
+      We can actually shorten this up a little bit more,
+      by rewriting the formula to find the
+      <m>i^{\text{ th } }</m> component of <m>\textbf{a} \times \textbf{b}</m>.
+      In other words,
+      we don't want the summation of all three <m>\textbf{e}_i</m> terms,
+      just one particular <m>\textbf{e}_i</m> term.
+      That means we remove the summation over <m>i</m>, which leaves us with:
+      <me>
+        (\textbf{a} \times \textbf{b})_i = \sum_{j=1}^3 \sum_{k=1}^3 \epsilon_{ijk} a_j b_k
+      </me>.
+    </p>
+    <p>
+      So for example, the first component
+      (intuitively the <m>x</m> component,
+      or as we would say, the <m>\textbf{e}_1</m> component)
+      is:
+      <me>
+        (\textbf{a} \times \textbf{b})_1 = a_2 b_3 - a_3 b_2
+      </me>.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Find the formulas for <m>(\textbf{a} \times \textbf{b})_2</m> and
+          <m>(\textbf{a} \times \textbf{b})_3</m>. (There's an easy solution if you apply cyclic permutations to the indices in the formula for <m>(\textbf{a} \times \textbf{b})_1</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Use the Levi-Civita symbol to find the cross product of the vectors
+          <m>\textbf{a}=[2,~-3,~2]</m> and <m>\textbf{b}=[1,~4,~-3]</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Use the Levi-Civita symbol<ndash/>based equation for the cross product to show <m>\textbf{a} \times \textbf{b} = -\textbf{b} \times \textbf{a}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In the following discussion,
+      we will be writing many multiple sums involving the indices <m>i,j</m> and <m>k</m>,
+      where each of these indices runs from 1 to 3.
+      It is convenient to simplify the notation by representing the multiple sum as a single sum over multiple indices.
+      For instance,
+      with this simplified notation we may rewrite our expression for <m>\textbf{a} \times \textbf{b}</m> as
+      <me>
+        \textbf{a} \times \textbf{b} =  \sum_{i,j,k} \epsilon_{ijk} \textbf{e}_i  a_j b_k
+      </me>,
+      and we may rewrite the expression for <m>(\textbf{a} \times \textbf{b})_i</m> as
+      <me>
+        (\textbf{a} \times \textbf{b})_i = \sum_{j,k} \epsilon_{ijk} a_j b_k
+      </me>.
+    </p>
+    <p>
+      Note that we do not bother to indicate that the indices <m>i,j,k</m> run from 1 to 3:
+      this is understood by the nature of <m>\epsilon_{ijk}</m>.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_SigmaApp_LeviCivitaAndApp_BAC-CAB-Rule">
+    <title>Proof of the vector BAC-CAB Rule</title>
+    <p>
+      As another example,
+      suppose we want to prove what is known as the <m>BAC-CAB</m> rule,
+          <idx><h>BAC-CAB@<m>BAC-CAB</m> rule</h></idx>
+      which states:
+      <me>
+        \textbf{a} \times \left( \textbf{b} \times \textbf{c} \right) = \textbf{b} \left( \textbf{a} \cdot \textbf{c} \right) - \textbf{c} \left( \textbf{a} \cdot \textbf{b} \right)
+      </me>.
+    </p>
+    <p>
+      We'll arrive at this formula this by two different routes:
+      the brute-force method or the symmetry method.
+      Let's start with the brute force method.
+    </p>
+    <proof>
+      <p>
+        (1) (brute force method) We can rewrite this using Levi-Civita symbols by using our definition of cross product.
+        First we find the cross product of
+        <m>\textbf{b}</m> and <m>\textbf{c}</m>:
+        <me>
+          (\textbf{b} \times \textbf{c})_i = \sum_{j,k} \epsilon_{ijk} b_j c_k
+        </me>.
+      </p>
+      <p>
+        The tricky part is taking the cross product of that result with <m>\textbf{a}</m>.
+        Let's use <m>\textbf{d}</m> to represent
+        <m>\textbf{b} \times \textbf{c}</m>, . Then the first component of <m>\textbf{d}</m> is:
+        <me>
+          d_1 = \left(\textbf{b} \times \textbf{c} \right)_1 = b_2 c_3 - b_3 c_2
+        </me>.
+      </p>
+      <p>
+        We can find the other components by noting that the indices are cyclic permutations.
+        Recall that <m>\epsilon_{123}</m> is equivalent to
+        <m>\epsilon_{231}</m> because the cycles <m>(123)</m> and <m>(231)</m> are equivalent.
+        So to go from <m>d_1</m> to <m>d_2</m>,
+        we need an equivalent cycle that replaces the <m>1</m> in the <m>i</m> position
+        (the first position)
+        with a <m>2</m>.
+        Now the <m>j</m> position, the second position,
+        would have to be <m>3</m>, because in this cycle <m>2</m> goes to <m>3</m>,
+        and similarly for the last position it will become a <m>1</m>.
+        So 1 becomes 2, 2 becomes 3, and 3 becomes 1.
+        Using this replacement we get <m>d_2</m>:
+        <me>
+          d_2 = \left(\textbf{b} \times \textbf{c} \right)_2 = b_3 c_1 - b_1 c_3
+        </me>.
+      </p>
+      <p>
+        The same strategy gives us <m>d_3</m>:
+        <me>
+          d_3 = \left(\textbf{b} \times \textbf{c} \right)_3 = b_1 c_2 - b_2 c_1
+        </me>.
+      </p>
+      <p>
+        By substitution
+        (and some algebraic rearranging)
+        we can find <m>\textbf{a} \times \textbf{d}</m>,
+        which is the same as <m>\textbf{a} \times \left(\textbf{b} \times \textbf{c}\right)</m>:
+        <md>
+          <mrow>\left(\textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_1 =  \left(\textbf{a} \times \textbf{d} \right)_1 =  a_2 d_3 - a_3 d_2 =\amp  a_2 \left(b_1 c_2 - b_2 c_1 \right) - a_3 \left(b_3 c_1 - b_1 c_3 \right)</mrow>
+          <mrow>=\amp  b_1 \left(a_2 c_2 + a_3 c_3\right) - c_1 \left(a_2 b_2 + a_3 b_3 \right)</mrow>
+        </md>.
+      </p>
+      <p>
+        Again, we can use the strategy of cyclically permuting the indices to easily find <m>b_2</m> and <m>b_3</m>:
+        <md>
+          <mrow>\left(\textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_2 =  \left(\textbf{a} \times \textbf{d} \right)_2 =  a_3 d_1 - a_1 d_3 =\amp  a_3 \left(b_2 c_3 - b_3 c_2 \right) - a_1 \left(b_1 c_2 - b_2 c_1 \right)</mrow>
+          <mrow>=\amp  b_2 \left(a_3 c_3 + a_1 c_1\right) - c_2 \left(a_1 b_1 + a_3 b_3 \right)</mrow>
+        </md>,
+        <md>
+          <mrow>\left(\textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_3 =  \left(\textbf{a} \times \textbf{d} \right)_3 =  a_1 d_2 - a_2 d_1 =\amp  a_1 \left(b_3 c_1 - b_1 c_3 \right) - a_2 \left(b_2 c_3 - b_3 c_2 \right)</mrow>
+          <mrow>=\amp  b_3 \left(a_1 c_1 + a_2 c_2\right) - c_3 \left(a_1 b_1 + a_2 b_2 \right)</mrow>
+        </md>.
+      </p>
+      <p>
+        Recall the definition of dot product in three dimensions:
+        <me>
+          \textbf{a} \cdot \textbf{b} = a_1 b_1 + a_2 b_2 + a_3 b_3
+        </me>.
+      </p>
+      <p>
+        Look closely at the first component of our resulting vector:
+        <me>
+          \left(\textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_1 =  b_1 \left(a_2 c_2 + a_3 c_3\right) - c_1 \left(a_2 b_2 + a_3 b_3 \right)
+        </me>.
+      </p>
+      <p>
+        The right hand side is the difference of two terms:
+        <m>b_1 \left(a_2 c_2 + a_3 c_3\right)</m> and <m>c_1 \left(a_2 b_2 + a_3 b_3 \right)</m>.
+        The first term can be seen as <m>b_1</m> times something that is
+        <q>almost</q>
+        a dot product: it's just missing the term <m>a_1c_1</m>.
+        Similarly, the second term is <m>c_1</m> times an
+        <q>almost</q>
+        dot product that's just missing a <m>a_1b_1</m>.
+        What are we going to do about the missing terms?
+        Why, just add them in!
+        In fact, we can simply add and subtract
+        <m>a_1b_1c_1</m> and rearrange to get:
+        <md>
+          <mrow>b_1 \left(a_2 c_2 + a_3 c_3\right) - c_1 \left(a_2 b_2 + a_3 b_3 \right) \amp = b_1 \left(a_2 c_2 + a_3 c_3\right) - c_1 \left(a_2 b_2 + a_3 b_3 \right) + a_1b_1c_1 -  a_1b_1c_1</mrow>
+          <mrow>\amp  = (b_1 \left(a_2 c_2 + a_3 c_3\right)+ a_1b_1c_1) - (c_1 \left(a_2 b_2 + a_3 b_3 \right)  + a_1b_1c_1)</mrow>
+          <mrow>\amp  = b_1 \left(a_2 c_2 + a_3 c_3+ a_1c_1\right) - c_1 \left(a_2 b_2 + a_3 b_3  + a_1b_1 \right)</mrow>
+          <mrow>\amp = b_1(\textbf{a} \cdot \textbf{c}) - c_1(\textbf{a} \cdot \textbf{b})</mrow>
+        </md>.
+      </p>
+      <p>
+        It's magic!
+        So we have shown
+        <me>
+          \left(\textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_1 = b_1 \left(\textbf{a} \cdot \textbf{c}\right) - c_1 \left(\textbf{a} \cdot \textbf{b}\right)
+        </me>
+      </p>
+      <p>
+        The same steps can be used to justify adding missing terms in the other two components as well:
+        <me>
+          \left(\textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_2 = b_2 \left(\textbf{a} \cdot \textbf{c}\right) - c_2 \left(\textbf{a} \cdot \textbf{b}\right)
+        </me>.
+        <me>
+          \left(\textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_3 = b_3 \left(\textbf{a} \cdot \textbf{c}\right) - c_3 \left(\textbf{a} \cdot \textbf{b}\right)
+        </me>.
+      </p>
+      <p>
+        Since we have all three components of the vectors represented and multiplied by the same thing we can shorten this to:
+        <me>
+          \textbf{a} \times \left( \textbf{b} \times \textbf{c} \right) = \textbf{b} \left( \textbf{a} \cdot \textbf{c} \right) - \textbf{c} \left( \textbf{a} \cdot \textbf{b} \right)
+        </me>.
+      </p>
+      <p>
+        Done!
+      </p>
+    </proof>
+    <p>
+      The other way of proving the BAC-CAB rule requires a bit more finesse than our previous brute force approach.
+      This time around we are going make more use of the symmetries of <m>\epsilon</m>,
+      so that we do not have to write out every single term.
+    </p>
+    <proof>
+      <p>
+        (2) <em>(Symmetry method)</em> First let us write the BAC-CAB rule in a way that allows us to more easily ask what happens for every possible value our indices can take,
+        so that we may organize them and get rid of any zero terms.
+      </p>
+      <p>
+        We begin by writing the <m>i</m>th component of
+        <m>\textbf{a} \times (\textbf{b} \times \textbf{c})</m> using Levi-Civita symbols as
+        <md>
+          <mrow>\left( \textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_i \amp =\sum_{j,k} \left[ \epsilon_{ijk} a_j \left( \sum_{m,n}\epsilon_{kmn} b_m c_n \right)\right]</mrow>
+          <mrow>\amp =\sum_{j,k,m,n} \left[ \epsilon_{ijk} a_j \left( \epsilon_{kmn} b_m c_n \right)\right]</mrow>
+        </md>.
+      </p>
+      <p>
+        By separating out the sum over <m>k</m>, we can rewrite this as:
+        <me>
+          \left( \textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_i =  \sum_{j,m,n} \left[ \sum_k \epsilon_{ijk} \epsilon_{kmn} \right] a_j b_m c_n
+        </me>.
+      </p>
+      <p>
+        Let's define the quantity inside the <m>[ \dots ]</m> as <m>S_{ijmn}</m>:
+        <me>
+          S_{ijmn} :=  \sum_k \epsilon_{ijk} \epsilon_{kmn}
+        </me>.
+      </p>
+      <p>
+        Then we will be able to simplify our expression for
+        <m>\left( \textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_i</m> if we can find a simpler expression for <m>S_{ijmn}</m>.
+        This quantity will have a different value for each choice of <m>i,j,m,n</m>.
+      </p>
+      <p>
+        Let's focus on the indices <m>i</m> and <m>j</m>.
+        First, if <m>i=j</m> then <m>\epsilon_{ijk} = \epsilon_{iik} = 0</m>,
+        so <m>S_{iimn} = 0</m>.
+        On the other hand, if <m>i \neq j</m>,
+        there is only one value of <m>k</m> that makes <m>\epsilon_{ijk}</m> nonzero
+        (because we must have <m>k \neq i,j</m>).
+        We must also have <m>m,n \neq k</m> in order for <m>\epsilon_{kmn} \neq 0</m>.
+        It follows that there are two possibilities for which <m>S_{ijmn} \neq 0</m>:
+        <ol type="A">
+          <li>
+            <p>
+              <m>i \neq j</m>, <m>m=i</m> and <m>n=j</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>i \neq j</m>, <m>m=j</m> and <m>n=i</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        In case (A) we have:
+        <me>
+          S_{ijij} =  \left[ \sum_k \epsilon_{ijk} \epsilon_{kij} \right] = \left[ \sum_k \epsilon_{ijk}^2 \right] = 1
+        </me>.
+      </p>
+      <p>
+        In case (B) we have:
+        <me>
+          S_{ijji} =  \left[ \sum_k \epsilon_{ijk} \epsilon_{kji} \right] = \left[ \sum_k -\left[\epsilon_{ijk}^2 \right] \right] = -1
+        </me>.
+      </p>
+      <p>
+        In summary we have:
+        <md>
+          <mrow>S_{ijmn} \amp = 1 ~ \text{ if } ~ m=i,~ n=j, ~ \text{ and } ~ i\neq j ;</mrow>
+          <mrow>S_{ijmn}\amp  = -1 ~ \text{ if } ~ n=i,~ m=j, ~ \text{ and } ~ i\neq j;</mrow>
+          <mrow>S_{ijmn}\amp  = 0~\text{ otherwise } </mrow>
+        </md>.
+      </p>
+      <p>
+        Let's plug this back into our expression for <m>\left( \textbf{a} \times (\textbf{b} \times \textbf{c}) \right)_i</m>.
+        We can then separate the terms where <m>m=i</m>,
+        <m>n=j</m> from the terms where <m>n=i</m>, <m>m=j</m>.
+        Notice that there is no longer a sum over 3 indices but only one index,
+        since <m>m</m> and <m>n</m> are determined by <m>i</m> and <m>j</m>:
+        <me>
+          \underbrace{\sum_{j, j \neq i}  a_j b_i c_j}_{\text{ (terms for \(m=i\), \(n=j\)) } }    -  \underbrace{ \sum_{j, j \neq i}   a_j b_j c_i}_{\text{ (terms for \(m=j\), \(n=i\)) } }
+        </me>
+      </p>
+      <p>
+        Now if we add <m>a_i b_i c_i</m> to the first set of terms,
+        and add <m>-a_i b_i c_i</m> to the second set of terms,
+        then the overall sum doesn't change but the two expressions simplify:
+        <me>
+          \sum_{j}  a_j b_i c_j    -  \sum_{j}   a_j b_j c_i
+        </me>
+      </p>
+      <p>
+        This is the same as:
+        <me>
+          a_i  (\textbf{b} \cdot \textbf{c}) - c_i (\textbf{a} \cdot \textbf{b})
+        </me>,
+        which is the <m>BAC-CAB</m> rule.
+      </p>
+    </proof>
+    <p>
+      In this case the brute force method wasn't much harder than the symmetry method,
+      but for more complicated expressions it is far easier to use the symmetries of
+      <m>\epsilon</m> to prove a statement rather than do it term by term.
+    </p>
+    <p>
+      The symmetry method gives an added windfall,
+      namely a general identity that will prove useful later:
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_2epsIdent">
+      <statement>
+        <p>
+          Using some facts from the discussion above,
+          show that <m>S_{ijmn} :=  \sum_k \epsilon_{ijk} \epsilon_{kmn}</m> can also be written in terms of Kronecker deltas as follows:
+          <me>
+            S_{ijmn} = \delta_{im} \delta_{jn} - \delta_{in} \delta_{jm}
+          </me>.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_SigmaApp_LeviCivitaAndApp_EulerRot">
+    <title>Proof of Euler's Rotation Theorem</title>
+    <p>
+      In <xref ref="subsec_GroupActions_SymmetryOfPolyhedra_Euler">Section</xref>
+      we prove Euler's formula for regular polyhedra.
+      Our proof depends on the following proposition:
+    </p>
+    <proposition xml:id="proposition_SigmaNotation_EulerRotThm">
+      <statement>
+        <p>
+          (<term>Euler's Rotation Theorem</term>): Any rotation
+          (besides the identity)
+          in three dimensions has exactly one axis which is fixed by the rotation.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      In this section, we'll prove this beautiful theorem! (<em>Note</em>
+      the proof requires familiarity with properties of eigenvalues and determinants,
+      which is a topic that is covered in most undergraduate Linear Algebra classes.)
+    </p>
+    <p>
+      First, we need to establish a general identity involving three-dimensional Levi-Civita symbols.
+    </p>
+    <proposition xml:id="proposition_SigmaNotation_crazyEq">
+      <statement>
+        <p>
+          Given any <m>3 \times 3</m> matrix <m>A</m>, then
+          <me>
+            \sum_{j,k,\ell}\epsilon_{jk\ell} a_{ij}a_{k\ell} =  \sum_{j,k,\ell}\epsilon_{jk\ell} a_{ji}a_{k\ell}
+          </me>.
+        </p>
+        <p>
+          (Observe the minute difference between the two sides:
+          there's an <m>a_{ij}</m> on the left-hand side which becomes an <m>a_{ji}</m> on the right.
+          Minute differences matter!)
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Let us consider the case <m>i=1</m>:
+        <me>
+          \sum_{j,k,\ell}\epsilon_{jk\ell} a_{1j}a_{k\ell} =  \sum_{j,k,\ell}\epsilon_{jk\ell} a_{j1}a_{k\ell}
+        </me>.
+        and we'll leave the cases <m>i=2,3</m> as exercises.
+      </p>
+      <p>
+        On both right and left sides there are terms with <m>j=1</m>,
+        <m>j=2</m>, and <m>j=3</m>.
+        We'll consider these cases one by one.
+        <ul>
+          <li>
+            <p>
+              <m>j=1</m>: these terms are equal on both sides,
+              since in this case <m>a_{1j}=a_{j1}=a_{11}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>j=2</m>: in view of the <m>\epsilon_{jk\ell}</m> on both sides,
+              since <m>j=2</m> the only nonzero terms are
+              <m>k=3, \ell=1</m> or <m>k=1, \ell = 3</m>.
+              On the left-hand side this gives <m>a_{12}a_{31} - a_{12}a_{13}</m>,
+              while on the right-hand side we get <m>a_{21}a_{31} - a_{21}a_{13}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>j=3</m>: once again,
+              in view of the <m>\epsilon_{jk\ell}</m> on both sides,
+              since <m>j=3</m> the only nonzero terms are
+              <m>k=1, \ell=2</m> or <m>k=2, \ell = 1</m>.
+              On the left-hand side this gives <m>a_{13}a_{12} - a_{13}a_{21}</m>,
+              while on the right-hand side we get <m>a_{31}a_{12} - a_{31}a_{21}</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        Adding all left-hand side terms gives
+        <me>
+          a_{12}a_{31} - a_{12}a_{13} + a_{13}a_{12} - a_{13}a_{21} = a_{12}a_{31}  - a_{13}a_{21}
+        </me>,
+        while adding all right-hand side terms gives
+        <me>
+          a_{21}a_{31} - a_{21}a_{13} + a_{31}a_{12} - a_{31}a_{21} = - a_{21}a_{13} + a_{31}a_{12}
+        </me>.
+      </p>
+      <p>
+        Miraculously, these turn out to be equal.
+      </p>
+      <exercise>
+        <statement>
+          <p>
+            Complete the proof of <xref ref="proposition_SigmaApp_crazyEq">Proposition</xref>
+            by showing equality for the cases <m>i=2,3</m>.
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <p>
+      No doubt this formula seems entirely unmotivated and somewhat useless
+      (although you have to admit it's kind of cute.)
+      However, it becomes incredibly useful when we apply it to rotation matrices.
+      To this end,
+      suppose <m>R</m> is a rotation matrix whose <m>(j,k)</m> entry is denoted by <m>r_{jk}</m>.
+      Then the equality in <xref ref="proposition_SigmaApp_crazyEq">Proposition</xref>
+      applied to matrix <m>R</m> becomes:
+      <me>
+        \sum_{j,k,\ell}\epsilon_{jk\ell} r_{ij}r_{k\ell} =  \sum_{j,k,\ell}\epsilon_{jk\ell} r_{ji}r_{k\ell}
+      </me>,
+      which implies (by rearranging terms)
+      <me>
+        \sum_{j}r_{ij} \left( \sum_{k,\ell} \epsilon_{jk\ell} r_{k\ell} \right) =  \sum_{j}r_{ji} \left( \sum_{k,\ell} \epsilon_{jk\ell} r_{k\ell} \right)
+      </me>.
+    </p>
+    <p>
+      The expressions in parentheses on the left and right are identical.
+      So let's define:
+      <me>
+        z_j :=  \sum_{k,\ell}\epsilon_{jk\ell} r_{k\ell}
+      </me>,
+      and we can replace the parenthetical expressions in our equality by <m>z_j</m>:
+      <me>
+        \sum_{j}r_{ij} z_j=  \sum_{j}r_{ji} z_j
+      </me>.
+    </p>
+    <p>
+      Rewriting this in matrix notation gives <m>Rz = R^{\text{T} }z</m>.
+      Using the fact that <m>R^{\text{T} } = R^{-1}</m>
+      (see <xref ref="proposition_SigmaApp_detRotMx">Proposition</xref>)
+      and a series of algebraic manipulations, we find:
+      <md>
+        <mrow>Rz = R^{-1}z \amp \implies  Rz - R^{-1}z = 0</mrow>
+        <mrow>\amp \implies R^2z - Iz = 0</mrow>
+        <mrow>\amp  \implies  (R + I)(R-I)z = 0</mrow>
+      </md>.
+    </p>
+    <p>
+      Now, there are two cases to consider:
+      <ul>
+        <li>
+          <p>
+            In the case where <m>(R-I)z \neq 0</m>,
+            then it must be true that <m>y := (R-I)z</m> is a nonzero vector which satisfies <m>(R+I)y=0</m>.
+            This implies that <m>y</m> is an eigenvector of <m>R</m> with eigenvalue <m>-1</m>.
+            Now since <m>R</m> is <m>3 \times 3</m>,
+            it must have 3 eigenvalues in total.
+            Let <m>\lambda_1</m> and <m>\lambda_2</m> be the 2 remaining eigenvalues.
+            We know from linear algebra that the product of the eigenvalues is equal to the determinant of <m>R</m>,
+            which is equal to 1 by <xref ref="proposition_SigmaApp_detRotMx">Proposition</xref>.
+            This imples that <m>-1 \cdot \lambda_1 \cdot \lambda_2 = 1</m> or <m>\lambda_1 \cdot \lambda_2 = -1</m>.
+            Now, the <m>\lambda</m>'s could be complex, or they could be real.
+            If complex, then they must be complex conjugates of each other
+            (since <m>R</m> is a real matrix),
+            but then their product would be positive
+            (why is this?).
+            Since their product is negative, this is not possible.
+            We may conclude that the <m>\lambda</m>'s are real.
+            Now let <m>w</m> be an eigenvector for the eigenvalue <m>\lambda_1</m>.
+            Then <m>Rw = \lambda_1 w</m>,
+            so that <m>\lVert Rw \rVert = |\lambda_1| \lVert w \rVert</m>.
+            But we know from the properties of rotations (see <xref ref="sec_SigmaApp_RotationMatrix3D">Section</xref>
+            that <m>\lVert Rw \rVert = \lVert w \rVert</m>.
+            This implies <m>|\lambda_1|=1</m>.
+            The same argument shows <m>|\lambda_2|=1</m>.
+            So what've we got?
+            We know that <m>\lambda_1</m> and <m>\lambda_2</m> are real.
+            We also know that <m>|\lambda_1|=|\lambda_2|=1</m>,
+            so each <m>\lambda</m> is either <m>+1</m> or <m>-1</m>.
+            Finally, we know that <m>\lambda_1 \cdot \lambda_2 = -1</m>.
+            This means that one of the <m>\lambda</m>'s must be <m>-1</m>,
+            and one must be 1.
+            Since the remaining eigenvalue is <m>-1</m>, It follows that there is a unique eigenvector with eigenvalue 1, which is the unique fixed axis of the rotation.
+          </p>
+        </li>
+        <li>
+          <p>
+            In the case where <m>(R-I)z = 0</m>,
+            then the vector <m>z</m> is fixed by the rotation <m>R</m>.
+            But is it the only fixed vector?
+            We'll show that if there is another fixed vector,
+            then <m>R</m> must be the identity.
+            Suppose that there's another vector <m>y</m> which is not parallel to <m>z</m> and is also fixed by the rotation,
+            so that <m>Ry=y</m>.
+            Since <m>R^{\text{T} }=R^{-1}</m>,
+            we may multiply both sides by
+            <m>R^{\text{T} }</m> and obtain <m>y = R^{\text{T} }y</m>, or
+            <me>
+              y_j = \sum_m r_{mj} y_m
+            </me>.
+            By the same token, we have <m>z = R^{\text{T} }z</m>, or
+            <me>
+              z_k = \sum_n r_{nk} z_n
+            </me>.
+            Consider now the vector <m>w</m> defined by:
+            <me>
+              w_i := \sum_{j,k}\epsilon_{ijk}y_jz_k
+            </me>.
+            Since <m>y</m> and <m>z</m> are both fixed under the rotation <m>R</m> we may replace <m>y_m</m> and <m>z_k</m> with <m>\sum_m r_{mj} y_m</m> and
+            <m>\sum_n r_{nk} z_n</m> respectively, so that:
+            <me>
+              w_i := \sum_{j,k,m,n}\epsilon_{ijk}(r_{mj} y_m) (r_{nk} z_n) = \sum_{j,k,m,n}\epsilon_{ijk}r_{mj}r_{nk} y_m  z_n
+            </me>.
+            Now we may compute <m>Rw</m>  using summation notation as:
+            <md>
+              <mrow>_{\ell} \amp = \sum_i r_{\ell i} w_i</mrow>
+              <mrow>\amp = \sum_{i,j,k,m,n}\epsilon_{ijk}r_{\ell i}r_{mj}r_{nk} y_m  z_n</mrow>
+              <mrow>\amp = \sum_{m,n} \left( \sum_{i,j,k}\epsilon_{ijk}r_{\ell i}r_{mj}r_{nk} \right) y_m  z_n</mrow>
+            </md>.
+            It looks like we're venturing deeper and deeper into mathematical muck.
+            But lo!
+            The expression in parentheses is something that we've seen  before,
+            in <xref ref="exercise_SigmaApp_detId">Exercise</xref>:
+            <me>
+              \sum_{i,j,k}\epsilon_{ijk}r_{\ell i}r_{mj}r_{nk}= \sum_{i,j,k} \epsilon_{\ell m n} \epsilon_{ijk}r_{1 i}r_{2j}r_{3k}
+            </me>,
+            and we may further simplify using other facts we've picked up here and there:
+            <md>
+              <mrow>\sum_{i,j,k} \epsilon_{\ell m n} \epsilon_{ijk}r_{1 i}r_{2j}r_{3k} \amp = \epsilon_{\ell m n} \sum_{i,j,k}  \epsilon_{ijk}r_{1 i}r_{2j}r_{3k}</mrow>
+              <mrow>\amp = \epsilon_{\ell m n} \det{R}</mrow>
+              <mrow>\amp = \epsilon_{\ell m n}</mrow>
+            </md>.
+            So, breathing a huge sigh of relief,
+            we may replace what's in the parentheses with  <m>\epsilon_{\ell m n}</m> and obtain
+            <me>
+              [Rw]_{\ell} = \sum_{m,n} \epsilon_{\ell mn} y_m  z_n = w_{\ell}
+            </me>.
+            So we have three vectors fixed by <m>R</m>:
+            <m>z,y</m>, and <m>w</m>.
+            If we can show that these are linearly independent,
+            then <em>all</em> vectors must be fixed by <m>R</m>,
+            and <m>R</m> must be the identity.
+            To show that the vectors are linearly independent,
+            it's enough to show that <m>\det [w \,\,\, y\,\,\, z] \neq 0</m>,
+            where <m>[w \,\,\, y\,\,\, z]</m> is the
+            <m>3 \times 3</m> matrix with columns <m>w, y,z</m>.
+            We know that the transpose has the same determinant,
+            so we may find the determinant using the Levi-Civita formula as:
+            <md>
+              <mrow>\det [w \,\,\, y\,\,\, z] \amp = \det [w \,\,\, y\,\,\, z]^{\text{T} }</mrow>
+              <mrow>\amp = \sum_{i,j,k} \epsilon_{ijk} w_i y_j z_k</mrow>
+              <mrow>\amp = \sum_{i,j,k} \epsilon_{ijk} \left( \sum_{m,n}\epsilon_{imn}y_mz_n \right) y_j z_k</mrow>
+              <mrow>\amp = \sum_{i,j,k,m,n} \epsilon_{ijk} \epsilon_{imn}  y_j z_ky_mz_n</mrow>
+              <mrow>\amp =  \sum_{j,k,m,n} \left( \sum_{i} \epsilon_{ijk} \epsilon_{imn}\right)  y_j y_m z_k z_n</mrow>
+            </md>
+            (note that in the third line when we substituted in the expression for <m>w_i</m>,
+            we had to change the summation indices from <m>j,k</m> to <m>m,n</m> to avoid conflict with the <m>j,k</m> indices that we were already using for a different summation.) In the final line,
+            we've separated out the summation over <m>i</m> for a reason.
+            <xref ref="exercise_SigmaApp_2epsIdent">Exercise</xref> tells us that:
+            <me>
+              \sum_k \epsilon_{ijk} \epsilon_{kmn} = \delta_{im} \delta_{jn} - \delta_{in} \delta_{jm}
+            </me>.
+            Assuming this is true
+            (you really should try to prove it, if you haven't already),
+            this enables us to evaluate our expression quite nicely.
+            <exercise xml:id="exercise_SigmaNotation_nonzeroVec">
+              <statement>
+                <p>
+                  Using the previous identity, show that
+                  <md>
+                    <mrow>\sum_{j,k,m,n} \left( \sum_{i} \epsilon_{ijk} \epsilon_{imn}\right)  y_j y_m z_k z_n \amp = (y \cdot y)(z \cdot z)-(y \cdot z)^2</mrow>
+                    <mrow>\amp = ||y||^2 ||z||^2 \sin(\theta)</mrow>
+                  </md>,
+                  where <m>\theta</m> is the angle between the vectors <m>y</m> and <m>z</m>.
+                  (Recall the inner product of two vectors
+                  <m>a \cdot b</m> is given by <m>\sum_i a_i b_i</m>,
+                  while <m>||a||^2 = a \cdot a</m>.)
+                </p>
+              </statement>
+            </exercise>
+            On the basis of the previous exercise,
+            we may conclude that <m>w,y,z</m> are linearly independent vectors
+            (and thus a basis of <m>\mathbb{R}^3</m>),
+            so long as <m>y</m> and <m>z</m> are nonzero, nonparallel vectors.
+            Now let's recap.
+            We showed that in the case where <m>(R-I)z = 0</m>,
+            then <m>z</m> gives the direction of a fixed axis.
+            We also showed, that if there is a different fixed axis,
+            then the rotation must be the identity.
+            So as long as <m>R</m> is not the identity,
+            then <m>R</m> must have a unique fixed axis.
+            We're done ... almost.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Actually we're not <em>quite</em> done.
+          We never showed that the vector <m>z</m> defined by <m>z_i := \sum_{j,k} \epsilon_{ijk} r_{jk}</m> is a nonzero vector.
+          We'll take care of this case in this exercise.
+          <ol type="a">
+            <li>
+              <p>
+                Show that if <m>z=0</m>,
+                then it must be true that <m>r_{ij}=r_{ji}</m> for all <m>i,j \in \{1,2,3\}</m>:
+                in other words, <m>R</m> is symmetric.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>R</m> is a symmetric rotation matrix,
+                then <m>(R^2 - I) v = 0</m> for
+                <em>any</em> vector <m>v</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Once we've shown (b), we have that
+          <m>(R+I)(R-I)v=0</m> and we're back to the two cases that we've proved already.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Now we're <em>really</em> done!
+    </p>
+  </subsection>
+</section>

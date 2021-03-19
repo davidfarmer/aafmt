@@ -1,0 +1,1059 @@
+<section xml:id="sec_ComplexNumbers_Arithmetic">
+  <title>Arithmetic with complex numbers<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="subsec_ComplexNumbers_Arithmetic_ComplexArithmetic">
+    <title>Complex arithmetic</title>
+    <p>
+      To add <idx><h>Complex numbers</h><h>addition</h></idx>
+      two complex numbers <m>z=a+bi</m> and <m>w=c+di</m>,
+      we just add the corresponding real and imaginary parts:
+      <me>
+        (a+bi)+(c+di)=(a+c)+(b+d)i
+      </me>.
+    </p>
+    <p>
+      Using this definition, we may prove directly that complex addition
+      (like regular addition)
+      is commutative:<fn>
+      It is important to realize that this <em>must</em>
+      be proved and <em>can't</em> just be assumed.
+      Later on we will define operations that are
+      <em>not</em> commutative.
+      </fn>
+    </p>
+    <proposition xml:id="proposition_ComplexNumbers_complex_comm">
+      <statement>
+        <p>
+          Addition on complex numbers is commutative.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We just need to show that for any two complex numbers <m>z</m> and <m>w</m>,
+        it's always true that <m>z + w = w + z</m>.
+        Writing <m>z = a + bi</m> and <m>w = c + di</m> as above,
+        the proof using statement-reason format runs as follows:
+      </p>
+      <tabular>
+        <row>
+          <cell>Statement</cell>
+          <cell>Reason</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>z + w = (a + bi) + (c + di)</m></cell>
+          <cell>substitution</cell>
+        </row>
+        <row>
+          <cell><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/> <m>= (a + c) + (b + d)i</m></cell>
+          <cell>definition of complex addition</cell>
+        </row>
+        <row>
+          <cell><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/> <m>= (c + a) + (d + b)i</m></cell>
+          <cell>real addition is commutative</cell>
+        </row>
+        <row>
+          <cell><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/> <m>= (c + di) + (a + bi)</m></cell>
+          <cell>def. of complex addition</cell>
+        </row>
+        <row>
+          <cell><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/> <m>= w + z</m>.</cell>
+          <cell>substitution</cell>
+        </row>
+      </tabular>
+    </proof>
+    <p>
+      Notice how we started in this proof with one side of the equality,
+      and through a series of steps ended up with the other side.
+      This is a good method to follow,
+      when you're trying to prove two things are equal.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_complex_associative">
+      <statement>
+        <p>
+          Prove that addition on complex numbers is associative.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Now that we have addition worked out, let's do multiplication.
+      We observe that the complex number <m>a + bi</m> looks just like the polynomial <m>a + bx</m>,
+      except the imaginary <m>i</m> replaces the unknown <m>x</m>.
+      So we'll take a cue from polynomial multiplication,
+      and multiply complex numbers just like polynomial factors,
+      using the FOIL (first, outside, inside, last)
+          <idx><h>FOIL (FLOI) method</h></idx>
+      method.
+      Better yet, with complex numbers it's more convenient to use FLOI (first,
+      last, outside, inside) instead.
+      The product of <m>z</m> and <m>w</m> is
+      <me>
+        (a+bi)(c+di)=ac+bdi^{2}+adi+bci=(ac-bd)+(ad+bc)i
+      </me>.
+    </p>
+    <p>
+      Question: How did we get rid of the <m>i^2</m> in the final equality?
+      Answer: Remember, we defined <m>i^2 = -1</m>,
+      and we just made the substitution.
+    </p>
+    <p>
+      A bevy of nice properties follow from this definition:
+    </p>
+    <example xml:id="example_ComplexNumbers_complex_commute">
+      <statement>
+        <p>
+          Complex multiplication is commutative.
+          This may be proved as follows. (Note that here we are combining statement-reason and paragraph proof formats.
+          It's OK to mix and match formats,
+          as long as you get the job done!)
+          <md>
+            <mrow>(a + bi)(c + di) \amp = (ac - bd) + (bc + ad)i \qquad \text{ (FLOI) }</mrow>
+            <mrow>\text{ On the other } \amp \text{ hand: }</mrow>
+            <mrow>(c + di)(a + bi) \amp = (ca - db) + (cb + da)i \qquad \text{ (FLOI) }</mrow>
+            <mrow>\amp  = (ac - bd) + (bc + ad)i \qquad \text{ (commutativity of real multiplication) }</mrow>
+          </md>
+        </p>
+        <p>
+          Since we obtain the same expression for
+          <m>(a + bi)(c + di)</m> and <m>(c + di)(a + bi)</m>,
+          it follows that <m>(a + bi)(c + di) = (c + di)(a + bi)</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Similar proofs can be given for other multiplicative properties:
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_16">
+      <statement>
+        <p>
+          Prove the associative law for multiplication of `complex numbers. (Follow the style of <xref ref="example_ComplexNumbers_complex_commute">Example</xref>).
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_17">
+      <statement>
+        <p>
+          Prove the distributive law for complex arithmetic:
+          that is, if <m>u,w</m>, and <m>z</m> are complex numbers,
+          then <m>(u)(w+z) = uw + uz</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Two arithmetic operations down, two to go!
+      Let's consider subtraction of complex numbers.
+      We may define <m>z - w</m> using complex addition and multiplication as:
+      <m>z - w = z + (-1)\cdot w</m>.
+          <idx><h>Complex numbers</h><h>subtraction</h></idx>
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_complex_subtraction">
+      <statement>
+        <p>
+          Given that <m>z = a + bi</m> and
+          <m>w = c + di</m> use the above definition of subtraction to derive an expression for <m>z - w</m> in terms of <m>a,b,c,d</m>.
+          Express your answer as (Real part) + (Imaginary part)<m>i</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Division is a little more complicated.
+      First we consider division of a complex number by a real number.
+      In this case we can define division as multiplication by the reciprocal,
+      just as with real numbers:
+      <men xml:id="eq_ComplexNumbers_1">
+        \frac{a + bi}{c} = (a + bi) \cdot \frac{1}{c} = a \cdot \frac{1}{c} + (bi) \cdot \frac{1}{c} = \frac{a}{c} + \cdot \frac{b}{c}i
+      </men>,
+      where we have used the distributive, associative,
+      and commutative properties of complex multiplication.
+    </p>
+    <p>
+      Now let's try to make sense of the ratio of two complex numbers:
+      <me>
+        \frac{w}{z}=\frac{c+di} {a+bi}
+      </me>.
+    </p>
+    <p>
+      This notation suggests that it should be true that
+      <me>
+        \frac{w}{z}=(c+di)  \cdot \frac{1}{a+bi}
+      </me>.
+    </p>
+    <p>
+      But what is <m>1/(a+bi)</m>?
+      To understand this, let's go back to arithmetic with real numbers.
+      If we have an ordinary real number <m>r</m>,
+      then <m>1/r</m> is the <em>multiplicative inverse</em><idx><h>Inverse</h><h>multiplicative</h></idx> of <m>r</m>:
+      that is, <m>r \cdot 1/r =1/r \cdot r = 1</m>.
+      We also write <m>1/r</m> as <m>r^{-1}</m>.
+      By analogy, to make sense of <m>1/z = 1/(a+bi)</m>,
+      we need to find a complex number <m>z^{-1}</m> such that <m>z^{-1} \cdot z = z \cdot z^{-1} = 1</m>.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_complex_mult_inv">
+      <statement>
+        <p>
+          Given that <m>z = a+bi</m> is a complex number and <m>z \neq 0</m>
+          (recall that <m>0</m> is the same as <m>0+0i</m>).
+          Show that the complex number
+          <me>
+            w=\frac{a}{a^{2}+b^{2}}- \frac{b}{a^{2}+b^{2}}i
+          </me>.
+          satisfies <m>zw=wz=1</m>, where <m>z=a+bi</m>. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Based on the previous exercise,
+      we are able to define <m>z^{-1}</m> for the complex number <m>z = a+bi</m>:
+      <me>
+        z^{-1}\,\, =\,\, \frac{a}{a^{2}+b^{2}}- \frac{b}{a^{2}+b^{2}}i \,\, =\,\, \frac{a-bi}{a^{2} + b^{2}}
+      </me>,
+      where the second equality follows from the distributive law.
+      We finally arrive at the formula for dividing two complex numbers:<idx><h>Complex numbers</h><h>division rule</h></idx>
+      <me>
+        \frac{c+di}{a+bi}= (c + di) \cdot \frac{a-bi}{a^2 + b^2}
+      </me>,
+      or alternatively
+      <me>
+        \frac{c+di}{a+bi}=  \frac{a-bi}{a^2 + b^2} \cdot (c + di)
+      </me>.
+    </p>
+    <p>
+      (These formulas holds as long as <m>a+bi \neq 0</m>).
+    </p>
+    <p>
+      It seems obvious that we should be able to write this formula more compactly as
+      <me>
+        \frac{c+di}{a+bi}= \frac{(c+di)(a-bi)}{a^2 + b^2}
+      </me>,
+      and in fact we can.
+      This is because the distributive and associative laws once again comes to our rescue.
+      Starting with the first expression above for <m>(c + di) / (a + bi)</m> we have:
+      <md>
+        <mrow>\frac{c+di}{a+bi}\amp = (c + di) \cdot \frac{a-bi}{a^2 + b^2} \qquad \qquad \qquad  \qquad \textrm{(from above)}</mrow>
+        <mrow>\amp  = (c + di) \cdot \left( (a-bi) \cdot \frac{1}{a^2 + b^2}\right) \qquad \textrm{(distributive law)}</mrow>
+        <mrow>\amp  = ((c + di) \cdot  (a-bi)) \cdot \frac{1}{a^2 + b^2} \qquad ~~\textrm{(associative law)}</mrow>
+        <mrow>\amp  = \frac{(c + di) \cdot  (a-bi)}{a^2 + b^2} \qquad \qquad ~~\textrm{(definition of division).}</mrow>
+      </md>
+    </p>
+    <p>
+      We summarize the formulas for complex addition,
+      multiplication, and division below:
+      <ul>
+        <li>
+          <p>
+            Addition: <m>(a+bi)+(c+di) = (a+c)+(b+d)i</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Multiplication: <m>(a+bi)(c+di) = (ac-bd)+(ad+bc)i</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Division: <m>\dfrac{c+di}{a+bi} = \dfrac{(c+di)(a-bi)}{a^2+b^2}</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_9">
+      <statement>
+        <p>
+          Evaluate each of the following.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(3-2i)+ (5i-6)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(5-4i)(7+2i)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\sqrt{7} + \sqrt{6}i)(\sqrt{7} - \sqrt{6}i)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a - bi)(a + bi)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a + bi)(b + ai)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(2 + \sqrt{3}i)^2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1+i)(-1+i)(-1-i)(1-i)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\sqrt{3}+i)(-1+ \sqrt{3}i)(-\sqrt{3}-i)(1 -\sqrt{3}i)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\left(\sqrt{5 + \sqrt{5}} + i\sqrt{5 - \sqrt{5}}\right)^4</m> (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{1+2i}{2-3i}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{a+bi}{b-ai}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{1+i}{1-i} + \dfrac{1-i}{1+i}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{\sqrt{3} - \sqrt{5}i}{\sqrt{5} + \sqrt{3}i}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>i^{45}</m> (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 + i)^4</m> (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 + i)^{41}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 + \sqrt{3}i)^{11}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>i^{1001} + i^{1003}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\left(\frac{i}{3 + 4i} \right) + \left(\frac{2}{4 + 3i} \right)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_10">
+      <statement>
+        <p>
+          If the nonzero complex number <m>z</m> has equal real and imaginary parts,
+          then what can you conclude about <m>z^2</m>?
+          What can you conclude about <m>z^4</m>? (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_findk">
+      <statement>
+        <p>
+          <m>z = 3+i</m> is a solution to <m>z^2 - 6z + k = 0</m>.
+          What is the value of <m>k</m>?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      You are probably familiar with the fact that the product of two nonzero real numbers is also nonzero.
+      Is the same true for complex numbers?
+      The answer is yes.
+    </p>
+    <proposition xml:id="proposition_ComplexNumbers_nonzero_complex_product">
+      <statement>
+        <p>
+          Given that <m>z = a+bi</m>, <m>w=c+di</m>, and <m>z \cdot w = 0</m>.
+          Then it must be true that either <m>z=0</m> or <m>w=0</m>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      The proof of <xref ref="proposition_ComplexNumbers_nonzero_complex_product">Proposition</xref>
+      is outlined in the following exercise.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_12">
+      <statement>
+        <p>
+          Complete the proof of <xref ref="proposition_ComplexNumbers_nonzero_complex_product">Proposition</xref> by filling in the blanks.
+          Note that some blanks may require an expression,
+          and not just a single number or variable.
+          <ol type="a">
+            <li>
+              <p>
+                The proof is by contradiction.
+                So we begin by <em>supposing</em>
+                that <m>z \neq \underline{~\lt 1>~}</m> and <m>w \neq \underline{~\lt 2>~}</m>
+                (which is the negation of what we're trying to prove).
+              </p>
+            </li>
+            <li>
+              <p>
+                Since <m>z \neq \underline{~\lt 3>~}</m>,
+                it follows that <m>z</m> has an inverse <m>z^{-1}</m> such that <m>z^{-1} \cdot z = \underline{~\lt 4>~}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since <m>z \cdot w = 0</m>,
+                we can multiply both sides of this equation by
+                <m>\underline{~\lt 5>~}</m> and obtain the equation <m>w = \underline{~\lt 6>~}</m>.
+                This equation contradicts the <em>supposition</em>
+                that <m>\underline{~\lt 7>~}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since our supposition has led to a false conclusion,
+                it follows that our supposition must be <m>\underline{~\lt 8>~}</m>.
+                Therefore it cannot be true that <m>\underline{~\lt 9>~}</m>,
+                so it must be true that <m>\underline{~\lt 10>~}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Arithmetic_ComparisonAddition">
+    <title>Comparison of integer, rational, real and complex addition properties</title>
+    <p>
+      It is obvious that addition with integers,
+      rational numbers, and real numbers have very similar properties.
+      In this section, we explore some of these properties.
+    </p>
+    <p>
+      For instance,
+      integers have an <term>additive identity</term><em>,</em>
+          <idx><h>Identity</h><h>additive</h></idx>
+      that is, one special unique integer that can be added to any integer without changing that integer.
+      The additive identity of the integers is 0, because for instance <m>5+0=5</m> and <m>0+5=5</m>.
+      In general, if we let <em>n</em>be an arbitrary integer,
+      then <m>n+0=0+n=n</m>.
+      It's pretty easy to see that 0 is also the additive identity of the rationals,
+      and the additive identity of the reals.
+    </p>
+    <p>
+      Every integer also has an <term>additive inverse</term>,
+          <idx><h>Inverse</h><h>additive</h></idx>
+      that is a corresponding number that can be added to the integer such that the sum is the additive identity
+      (that is, 0).
+      For example, the additive inverse of the number 5 is <m>-5</m>,
+      because <m>5+(-5)=0</m> and <m>(-5)+5=0</m>.
+      In general, if we let <em>n</em>be an arbitrary integer,
+      then <m>n+(-n)=(-n)+n=0</m>.
+    </p>
+    <p>
+      Notice an <em><em>important difference</em></em>
+      between additive identity and additive inverse:
+      the number 0 is the identity for all integers,
+      but each integer has a <em>different</em> inverse.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_tableentries">
+      <statement>
+        <p>
+          Complete all entries of <xref ref="additive_table">Table</xref>,
+          which shows the additive properties of integers,
+          rationals, reals, and complex numbers.
+              <idx><h>Complex numbers</h><h>additive properties</h></idx>
+        </p>
+        <table xml:id="additive_tableX">
+          <title>Additive properties of different number systems</title>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Integers (<m>n,m,k</m>)</cell>
+              <cell>Rationals (<m>\frac{n}{m},\frac{p}{q},\frac{j}{k}</m>)</cell>
+              <cell>Reals (<m>x,y,z</m>)</cell>
+              <cell>Complex  (<m>a+bi,c+di,e+fi</m>)</cell>
+            </row>
+            <row bottom="medium">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell  >Additive  identity</cell>
+              <cell><m>n+0 = 0+n  =n</m></cell>
+              <cell><m>\frac{n}{m}+0 = 0+\frac{n}{m}=\frac{n}{m}</m></cell>
+              <cell><m>x+0= 0+x=x</m></cell>
+              <cell><m>(a+bi)+\cdots= \cdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Additive inverse</cell>
+              <cell><m>n+(-n)=(-n)+n=0</m></cell>
+              <cell><m>\frac{n}{m} +  \cdots</m> = <m>\cdots</m></cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>\cdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Associative law<idx><h>Associative property</h></idx>
+              </cell>
+              <cell><m>n+(m+k)=(n+m)+k</m></cell>
+              <cell><m>\frac{n}{m}+(\frac{p}{q}+\frac{j}{k}) = \cdots</m></cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>\cdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Commutative law<idx><h>Commutative property</h></idx>
+              </cell>
+              <cell><m>n+m=m+n</m></cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>\cdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </table>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Arithmetic_ComparisonMultiplication">
+    <title>Comparison of integer, rational, real and complex multiplication properties</title>
+    <p>
+      Just as we've talked about the <em>additive</em>
+      identity and inverse for different number systems,
+      in the same way we can talk about the <em>multiplicative</em>
+      identity and inverse for different number systems.
+    </p>
+    <p>
+      The integers have multiplicative identity 1 because <m>n\cdot1=1\cdot n=n</m>.
+      However, most integers do <em>not</em>
+      have a multiplicative inverse.
+      Take the number 5, for example.
+      There is no <em>integer</em> that can be multiplied by 5 to give 1
+      (of course, <m>5\cdot\frac{1}{5}=\frac{1}{5}\cdot5=1</m>,
+      but <m>\frac{1}{5}</m> is not an integer, so it doesn't count).
+    </p>
+    <p>
+      On the other hand,
+      the real numbers do have multiplicative inverses, with just one exception.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_14">
+      <statement>
+        <p>
+          Which real number does not have a multiplicative inverse?
+          <em>Explain</em> your answer.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_15">
+      <statement>
+        <p>
+          Complete all entries of <xref ref="multiplicative_table">Table</xref>,
+          which shows the multiplicative properties of
+          <em>nonzero</em> rationals,
+          reals, and complex numbers.
+              <idx><h>Complex numbers</h><h>additive properties</h></idx>
+        </p>
+        <table xml:id="multiplicative_table">
+          <title>Multiplicative properties of different number systems</title>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell></cell>
+              <cell>Rationals (<m>\frac{n}{m},\frac{p}{q},\frac{j}{k}</m>)</cell>
+              <cell>Reals (<em>x,y,z</em>)</cell>
+              <cell>Complex (<m>a+bi</m>, <m>c+di</m>,<m>e+fi</m>)</cell>
+            </row>
+            <row bottom="medium">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell  >Multiplicative identity</cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>x\cdot1=1\cdot x=x</m></cell>
+              <cell><m>(a+bi)\cdot \ldots= \ldots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Multiplicative inverse</cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>x \cdot \frac{1}{x} = \frac{1}{x} \cdot x = 1 \mathrm{~if~} x\neq 0</m></cell>
+              <cell><m>\cdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Associative law</cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>x(yz) = (xy)z</m></cell>
+              <cell><m>\cdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Commutative law</cell>
+              <cell><m>\cdots</m></cell>
+              <cell><m>xy = yx</m></cell>
+              <cell><m>\cdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </table>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_complexFOIL">
+      <statement>
+        <p>
+          Prove FOIL for complex numbers:
+          that is, if <m>u,v,w</m>,
+          and <m>z</m> are complex numbers,
+          then <m>(u+v)(w+z) = uw + uz+vw+vz</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="additive_table">Tables</xref>- <xref ref="multiplicative_table"></xref>
+      show that complex numbers also follow the same fundamental algebraic rules that real numbers do.
+      This makes life a lot simpler!
+      From now on,
+      in our proofs we may freely apply these properties to complex numbers,
+      just like with real numbers.
+      But it's important to realize that we had to go through the process first of establishing the properties specifically for complex numbers,
+      because there are number systems in which these basic properties do not hold<ndash/>be forewarned!
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Arithmetic_ModulusConjugateComplex">
+    <title>Modulus and complex conjugate</title>
+    <p>
+      We are familiar with the absolute value of a real number:
+      for instance, <m>|-\sqrt{7}|=\sqrt{7}</m>.
+      In general, for a real number <m>x</m> the absolute value can be defined as <m>|x|\equiv\sqrt{x^{2}}</m>.
+      (Here and elsewhere, the square root symbol is used to denote the
+      <em>positive</em> square root.)
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {modulus} For a complex number <m>z</m>,
+          the <term>absolute value</term> or <term>modulus</term>
+              <idx><h>Modulus</h></idx>
+              <idx><h>Complex numbers</h><h>modulus</h></idx>
+          of <m>z=a+bi</m> is <m>|z|=\sqrt{a^{2}+b^{2}}</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Complex numbers have an additional operation that real numbers do not have.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {complexConjugate} The <term>complex conjugate</term>
+              <idx><h>Conjugate, complex</h></idx>
+              <idx><h>Complex numbers</h><h>complex conjugate</h></idx>
+          of a complex number <m>z=a+bi</m> is defined to be <m>\overline{z}=a-bi</m>.
+        </p>
+      </statement>
+    </definition>
+    <example xml:id="example_ComplexNumbers_complexadd">
+      <statement>
+        <p>
+          Let <m>z=2+3i</m> and <m>w=1-2i</m>.
+          Then
+          <me>
+            \overline{z} = \overline{2+3i} = 2 - 3i \text{   and   }  \overline{w} = \overline{1 - 2i} = 1 + 2i
+          </me>.
+        </p>
+        <p>
+          Notice also that
+          <me>
+            z+w=(2+3i)+(1-2i)=3+i \text{  and  }  zw=(2+3i)(1-2i)=8-i
+          </me>,
+          so that
+          <me>
+            \overline{z+w}=3-i \text{  and  }  \overline{zw}=8+i
+          </me>.
+        </p>
+        <p>
+          On the other hand, you may check that
+          <me>
+            \overline{z}+\overline{w}=(2-3i)+(1+2i)=3-i \text{  and  }  \overline{z}\overline{w}=(2-3i)(1+2i)=8+i
+          </me>.
+        </p>
+        <p>
+          What a
+          <q>coincidence</q>!
+        </p>
+        <p>
+          Another remarkable
+          <q>coincidence</q>
+          occurs when we multiply complex numbers by their complex conjugates:
+          <me>
+            z \cdot \overline{z} = (2+3i)(2-3i) = 13 \text{  and  }   w \cdot \overline{w} = (1-2i)(1+2i) = 5
+          </me>,
+          while on the other hand,
+          we may compute the moduli of <m>z</m> and <m>w</m> as
+          <me>
+            |z| = \sqrt{2^2 + 3^2} = \sqrt{13} \text{  and  }  |w| = \sqrt{ 1^2 + 2^2} =\sqrt{5}
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_ComplexNumbers_18">
+      <statement>
+        <p>
+          Evaluate each of the following.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\overline{i}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(4-5i)-\overline{(4i -4)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(9-i) \overline{(9-i)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(3+4i)+\overline{(3+4i)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\sqrt{7}+8i)-\overline{(\sqrt{7}+8i)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\left({\overline{\sqrt{3} -i}}\right)^{-1}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\overline{\left(\sqrt{3} -i\right)^{-1}}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\left( \overline{\left({\overline{4 -9i}}\right)^{-1}} \right) ^{-1}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a + bi)\overline{(a+bi)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a + bi) + \overline{(a+bi)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\frac{ \overline{3 + 8i} }{7 + 6i}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( \overline{4 -7i} ) \cdot (\overline{3 + 3i})^{-1}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In order to use the complex conjugate and modulus operations effectively,
+      we need to know how they interact with the arithmetic operations of addition,
+      multiplication, subtraction, and division.
+      In the following,
+      we prove several propositions that estabish important properties of these two operations.
+    </p>
+    <proposition xml:id="proposition_ComplexNumbers_conj_add">
+      <statement>
+        <p>
+          Given <m>z</m> and <m>w</m> are complex numbers,
+          then <m>\overline{z} + \overline{w} = \overline{z + w}</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We may write <m>z</m> as <m>a + bi</m> and <m>w</m> as <m>c + di</m>.
+        Then
+        <md>
+          <mrow>\overline{z} + \overline{w} \amp = \overline{a + bi} + \overline{c + di}</mrow>
+          <mrow>\amp  = (a - bi) + (c - di) \amp  \textrm{by~definition~of~conjugate}</mrow>
+          <mrow>\amp  = (a + c) - (b + d)i \amp  \textrm{commutative, associative }</mrow>
+          <mrow>\amp  = \overline{(a + c) + (b + d)i} \amp  \textrm{by~definition~of~conjugate}</mrow>
+          <mrow>\amp  = \overline{z + w} \amp  \textrm{by~definition~of~complex~addition}</mrow>
+        </md>
+      </p>
+    </proof>
+    <exercise xml:id="exercise_ComplexNumbers_cxprops">
+      <statement>
+        <p>
+          Prove each of the following propositions
+          (follow the style of <xref ref="proposition_ComplexNumbers_conj_add">Proposition</xref>).
+          <ol type="a">
+            <li>
+              <p>
+                <m>\overline{(\bar{z})} = z</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\overline{z} \cdot \overline{w} = \overline{zw}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>a</m> is real, then <m>a \overline{z} = \overline{az}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>|z| = | \overline{z}|</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>z \overline{z} = |z|^2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>|z w| = |z| |w|</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>|z|^3 = |z^3|</m> (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>z^{-1} = \dfrac{\overline{z}}{|z|^2}</m> (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>|z^{-1}| = \dfrac{1}{|z|}</m> (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\overline{z})^{-1} = \overline { z^{-1} }</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(zw)^{-1} = w^{-1} z^{-1}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_simpl">
+      <statement>
+        <p>
+          Simplify the following expression:
+          <m>(z + i\bar{z})(z - i\bar{z}) + \overline{(z + \bar{z})(z - \bar{z})}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_simp2">
+      <statement>
+        <p>
+          Suppose that <m>z</m> is a complex number such that <m>z^{-1} = \bar{z}</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Find the modulus of <m>z</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                How many solutions does this equation have?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_abs1">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that the complex number <m>z=a+bi</m> is a pure real number if and only if <m>\overline{z} = z</m>. (<em>Note</em>
+              that you actually need to prove two things here: (i) If <m>z</m> is real,
+              then <m>\overline{z} = z</m>; (ii) If
+              <m>\overline{z} = z</m>, then <m>z</m> is real).
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that <m>i(z + \bar{z})(z - \bar{z})</m> is real for any complex number <m>z</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              In view of part (a), complete the following statement:
+              <q>The complex number <m>z=a+bi</m> is a pure imaginary number if and only if <m>\overline{z} = \ldots \ldots</m>.</q>
+              <em>Prove</em> your statement.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Now that we have proved properties of complex numbers in the previous two exercises,
+      we may make use of these properties to prove facts about complex numbers without having to write everything out as <m>a + bi</m>.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_abs2">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove that If <m>|z| = 1</m> and <m>z</m> is not a real number,
+              then <m>\frac{z - 1}{z+1}</m> is a pure imaginary number. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that If <m>|z| = 1</m> and <m>z</m> is not a pure imaginary number (i.e.
+              <m>z</m> is not of the form <m>0 = bi</m>,
+              then <m>\frac{z - i}{z+i}</m> is a pure imaginary number.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_abs3">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Use appropriate properties from <xref ref="exercise_ComplexNumbers_cxprops">Exercise</xref> to prove the following:
+              for any nonzero complex number <m>z</m>,
+              the absolute value of <m>z + \bar{z}^{-1}</m> is greater than <m>\sqrt{3}</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Give an example of <m>z</m> such that <m>|z + \bar{z}^{-1}| = 2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Give four additional examples of <m>z</m> such that <m>|z + \bar{z}^{-1}| = 2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              *Show that for any nonzero complex number <m>z</m>,
+              <m>|z + \bar{z}^{-1}| \ge 2</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Show by example that part (d) is <em>not</em>
+              true if <m>z + \bar{z}^{-1}</m> is replaced with <m>z + z^{-1}</m>.
+              Find the smallest possible value for <m>|z + z^{-1}|</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

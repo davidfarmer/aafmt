@@ -1,0 +1,255 @@
+<section xml:id="sec_SigmaNotation_CommonSums">
+  <title>Common Sums<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    There are several sums, even a few infinite sums,
+    for which the total value is known.
+    One very basic example is:
+    <me>
+      \sum_{i=1}^{k}1
+    </me>.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Evaluate the preceding sum.
+        Be careful-the answer is NOT 1.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Another very useful example is:
+    <me>
+      \sum_{i=1}^{k}i=1+2+3\cdots+(k-1) + k
+    </me>
+  </p>
+  <p>
+    If one were to take the first term 1 and add it to the last term <m>k</m>,
+    we get <m>k+1</m>.
+    If we take the second term 2 and add to the second-to-last term <m>k-1</m> again we get <m>k+1</m>.
+    This is true for all terms in between.
+    In the case of an even number of terms
+    (such as <m>1+2+3+4</m>),
+    the terms split evenly.
+    In the case of an odd number of terms
+    (such as <m>1+2+3+4+5+6+7</m>)
+    we have 3 pairs that add to 8 but an additional term in the middle.
+    In either case,
+    we take the first term add to the last term and multiply that quantity by 1/2 the number of terms.
+    The formula is thus:
+    <me>
+      \sum_{i=1}^{k}i= \frac{k(k+1)}{2}
+    </me>.
+  </p>
+  <p>
+    We can use the same reasoning to arrive at the following formula.
+    <me>
+      \sum_{i=a}^{k}i=a+(a+1)+(a+2)\cdots+(k-1) + k = (k+a)(k-a+1)/2
+    </me>,
+    where <m>a</m> and <m>k</m> are integers and <m>a\lt k</m>.
+  </p>
+  <exercise xml:id="exercise_SigmaNotation_common1">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Write the sum of odd integers from <m>2a+1</m> to <m>2k+1</m> in sigma notation.
+            (Note that every odd number can be expressed as <m>2n+1</m>,
+            where <m>n</m> is an integer.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Give a formula for the sum that you wrote in (a). (Use the same reasoning that we used to find sums of consecutive integers.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Write the sum of even integers from <m>2a</m> to <m>2k</m> in sigma notation.
+          </p>
+        </li>
+        <li>
+          <p>
+            Give a formula for the sum that you wrote in (c).
+          </p>
+        </li>
+        <li>
+          <p>
+            Write the sum of every <m>5^{\text{ th } }</m> integer from <m>a</m> to <m>a + 5k</m> in sigma notation.
+          </p>
+        </li>
+        <li>
+          <p>
+            Give a formula for the sum that you wrote in (e).
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    All of the sums in <xref ref="exercise_SigmaNotation_common1">Exercise</xref>
+    have a constant difference between consecutive terms
+    (this constant difference is also called the <em>step size</em>).
+        <idx><h>Step size</h><h>for arithmetic sum</h></idx>
+    The step sizes for parts (a), (c),
+    and (e) are 2,2, and 5 respectively.
+    Any sum with a constant step size is called an
+    <term>arithmetic sum</term>:
+    and all arithmetic sums can be evaluated using the same technique that was used in parts (b),(d),
+    and (f) of the exercise.
+  </p>
+  <p>
+    <term>Geometric sums</term> are defined as the sum of non-negative integer powers of a common base.
+    For example, here is a geometric sum with base 1/2:
+    <me>
+      \sum_{i=0}^{n}\left({\dfrac{1}{2}}\right)^i=\left({\dfrac{1}{2}}\right)^0+\left({\dfrac{1}{2}}\right)^1+\left({\dfrac{1}{2}}\right)^2\cdots +\left({\dfrac{1}{2}}\right)^n  = 1 + {\dfrac{1}{2}} + {\dfrac{1}{4}} + {\dfrac{1}{8}}\cdots +\left({\dfrac{1}{2}}\right)^n
+    </me>
+  </p>
+  <p>
+    We can evaluate this sum using an algebraic trick.
+    Let <m>S</m> be the value of this sum.
+    We can solve for <m>S</m> by multiplying <m>S</m> term-by-term by 1/2 and subtracting:
+    <me>
+      S=1+\frac{1}{2}+ \cdots + \frac{1}{2^n}  \text{ and } \frac{1}{2}S=\frac{1}{2}+ \cdots + \frac{1}{2^{n+1}}
+    </me>,
+    so that
+    <me>
+      \left(S - \frac{1}{2}S\right) = 1 - \frac{1}{2^{n+1}}
+    </me>.
+  </p>
+  <p>
+    Solving this last equation for <m>S</m> gives:
+    <me>
+      S=\dfrac{1 - \frac{1}{2^{n+1}}}{1-\frac{1}{2}}
+    </me>.
+  </p>
+  <p>
+    This same technique can be used to prove the formula for a great variety of geometric sums,
+    as we show in the following exercise.
+  </p>
+  <exercise xml:id="exercise_SigmaNotation_geoSum">
+    <statement>
+      <p>
+        let
+        <me>
+          S = \sum_{i=0}^{n} ar^i
+        </me>,
+        where both <m>a</m> and <m>r</m> are complex numbers,
+        and <m>n</m> is a positive integer.
+        Use the
+        <q>sum subtraction</q>
+        technique (used above for the geometric sum with base 1/2) to derive the the following general formula:<idx><h>Geometric series</h><h>sum of</h></idx>
+        <me>
+          \sum_{i=0}^{n} ar^i = a \dfrac{1-r^{n+1}}{1-r}
+        </me>
+      </p>
+      <p>
+        (Note the formula can also be written:
+        <m>\sum_{i=0}^{n} ar^i = a \dfrac{r^{n+1}-1}{r-1}</m>.)
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Evaluate <m>\sum_{n=0}^{10} \left(\frac{4}{5}\right)^n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Evaluate <m>\sum_{n=0}^{100} \left(\frac{4}{5}\right)^n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Evaluate <m>\sum_{n=0}^{1000} \left(\frac{4}{5}\right)^n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            What do you think happen when the upper limit of the sum gets arbitrarily large?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Use
+        <q>sum subtraction</q>
+        to obtain a general formula for the following sum:
+        <me>
+          S = \sum_{k=m}^{n} w\cdot z^k
+        </me>,
+      </p>
+      <p>
+        Where <m>m,n</m> are arbitrary integers (<m>m\lt n</m>) and <m>w,z</m> are arbitrary nonzero complex numbers.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>z = \cis (2\pi/3)</m>.
+            Evaluate <m>\sum_{n=1}^3 z^n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>z = \cis (2\pi/10)</m>.
+            Evaluate <m>\sum_{n=-4}^5 z^n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>z = \cis (2\pi/13)</m>.
+            Evaluate <m>\sum_{n=2}^{14} z^n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Write down an equation that generalizes the results of parts (a),(b),(c).
+            Prove your equation.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    Some sums can be evaluated by grouping terms together to partially cancel out.
+    Two examples are:
+    <me>
+      1-2+3-4+\ldots -1000 = (1-2)+(3-4)+\ldots + (999-1000)  = (-1) + (-1) + \ldots + (-1) = -500
+    </me>.
+    <md>
+      <mrow>1 - 4 + 9 -16 + 25 - 36 + \ldots +49^2 \amp =  1 + (-4+9) + (-16+25) + \ldots + (-48^2+49^2)</mrow>
+      <mrow>\amp  = 1 + 5 + 9 + \ldots + 97</mrow>
+      <mrow>\amp  = (1 + 4\cdot 0) + (1 + 4\cdot 1) + \ldots + (1 + 4 \cdot 24)</mrow>
+      <mrow>\amp = (1 + \ldots + 1) + 4\cdot(0 + 1 + \ldots + 24)</mrow>
+      <mrow>\amp  = 24 + 4\cdot (24+1)\frac{24}{2}</mrow>
+      <mrow>\amp = 24 + 1200 = 1224</mrow>
+    </md>.
+  </p>
+  <p>
+    In calculus you saw
+    (or will see)
+    sums that have an infinite number of terms,
+    otherwise known as <term>infinite series</term>.
+    Some examples include:
+    <md>
+      <mrow>e^x \amp = \sum_{i=0}^{\infty}\dfrac{x^i}{i!} =1+\dfrac{x^1}{1!}+\dfrac{x^2}{2!}+\dfrac{x^3}{3!} \cdots</mrow>
+      <mrow>\sin(x) \amp = \sum_{i=0}^{\infty}\dfrac{(-1)^i x^{2i+1}}{(2i+1)!} = \dfrac{x^1}{1!}-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}\cdots</mrow>
+    </md>
+  </p>
+  <p>
+    Although we won't be talking about infinite series,
+    the same summation notation that we've been using also applies to sums with an infinite number of terms.
+  </p>
+</section>

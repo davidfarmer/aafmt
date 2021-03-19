@@ -1,0 +1,398 @@
+<section xml:id="sec_GroupActions_Definitions">
+  <title>Basic definitions<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    We'll get to definitions momentarily,
+    but first it's helpful to look at an example.
+  </p>
+  <example xml:id="example_GroupActions_Actions1">
+    <statement>
+      <p>
+        Consider the group <m>S_3=\{id,(AB),(AC),(BC),(ABC),(ABC)\}</m> and the set <m>X=\{A,B,C\}</m>.
+        Each element of <m>S_3</m>
+        <q>does something</q>
+        to each element of <m>X</m>.
+        See the <xref ref="fig_S3onABC">Figure</xref> below.
+      </p>
+      <figure xml:id="fig_S3onABC">
+        <caption><m>S_3</m> acting on <m>X=\{A,B,C\}</m>.</caption>
+        <image width="75%" source="images/S3onABC.png"/>
+      </figure>
+      <p>
+        Let's discuss the last element of <m>S_3</m>, <m>(ACB)</m>.
+        Notice <m>(ACB)</m>
+        <q>does something</q>
+        to each element of <m>X</m>.
+        It maps <m>A\rightarrow C</m>, <m>B\rightarrow A</m>,
+        and <m>C\rightarrow B</m>, so the map images are also elements of <m>X</m>.
+        The same is true for all other elements of <m>S_3</m>.
+        In fact, each element of <m>S_3</m> produces a bijection on the set <m>X=\{A,B,C\}</m>.
+        We refer to this as the group <m>S_3</m>
+        <em>acting on</em> the set <m>X</m>.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_GroupActions_Actions2">
+    <statement>
+      <p>
+        Let <m>R</m> be the group of all rotations around the origin in <m>\mathbb{R}^2</m>.
+        Let <m>r_d\in R</m> denote a counterclockwise rotation of <m>d</m> degrees.
+        Also, let <m>X</m> be the set of all lines through the origin,
+        where <m>x_d</m> denote the line which makes an angle of <m>d</m> degrees with the <m>x</m>-axis.
+        See <xref ref="fig_rotate_line">Figure</xref> below.
+      </p>
+      <figure xml:id="fig_rotate_line">
+        <caption><m>r_d=r_{30}</m> acting on the line <m>x_d=x_{15}</m></caption>
+        <image width="46%" source="images/rotate_line.png"/>
+      </figure>
+      <p>
+        Note that both <m>R</m> and <m>X</m> are infinite sets
+        (unlike the previous example).
+        As in <xref ref="example_GroupActions_Actions1">Example</xref>,
+        each element of <m>R</m>
+        <q>does something</q>
+        to each element of <m>X</m>.
+        In this case,
+        each element of <m>R</m> rotates an element of <m>X</m>,
+        producing another element of <m>X</m>.
+        For example,
+        rotating the line <m>x_{15}</m> by <m>r_{30}</m> produces the line <m>x_{45}</m>.
+        Furthermore <m>r_{30}</m> can rotate every element of <m>X</m> and <em>only</em>
+        produces elements of <m>X</m>.
+        This is true for all other rotations in <m>R</m>:
+        each element of <m>R</m> produces a bijection on the set <m>X</m>.
+        We again say that the group <m>R</m>
+        <em>acts on</em> the set <m>X</m>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    In the previous two examples we have been talking about a group
+    <q>action</q>
+    which is <em>different</em> from the group operation.
+    For example,
+    the group operation in <xref ref="example_GroupActions_Actions1">Example</xref>
+    is composition of permutations,
+    but the action is a mapping of points in <m>\{A,B,C\}</m>.
+    In <xref ref="example_GroupActions_Actions2">Example</xref>
+    the group operation is composition of rotations,
+    but the action is a mapping of lines.
+    In order to distinguish the two operations,
+    we will use the period (.) to represent group action.
+    For example the rotation illustrated in <xref ref="fig_rotate_line">Figure</xref>
+    can be expressed mathematically as <m>r_{30}.x_{15}=x_{45}</m>.
+  </p>
+  <p>
+    Since we have two different operations
+    (the group operation and the group action),
+    we should determine how they interact with each other.
+    We know that two group elements,
+    <m>g_1</m> and <m>g_2</m>,
+    can produce a third group element via the group operator because of closure,
+    and that group element can act on a set element, <m>x</m>.
+    We would represent this symbolically as <m>(g_1g_2).x</m>.
+    But could that process be done differently?
+    Yes, in fact one group element,
+    <m>g_2</m>, could act on the set element, <m>x</m>,
+    then that resulting set element could be acted on by a different group element,
+    <m>g_1</m>.
+    Symbolically we would write this as <m>g_1.(g_2.x)</m>.
+    It turns out
+    (and we will verify)
+    that these two processes are equal to each other:
+    <m>(g_1g_2).x=g_1.(g_2.x)</m>.
+    We refer to this equality as <term>compatibility</term>.
+        <idx><h>Actions</h><h>compatibility property of</h></idx>
+  </p>
+  <example xml:id="example_GroupActions_Compat1">
+    <statement>
+      <p>
+        To investigate this idea of compatibility let's compare
+        <m>[(AB)(ACB)].C</m> and <m>(AB).[(ACB).C]</m> where
+        <m>(AB),(ACB) \in S_3</m> and <m>B \in X=\{A,B,C\}</m>.
+        Note: square brackets were used to group because permutations use parentheses.
+        <xref ref="fig_Compatibility1">Figure</xref>
+        below has the work and a visual representation of the work.
+      </p>
+      <figure xml:id="fig_Compatibility1">
+        <caption>Formulas and diagrams demonstrating <m>[(AB)(ACB)].C=(AB).[(ACB).C]</m></caption>
+        <image width="89%" source="images/Compatibility1.png"/>
+      </figure>
+      <p>
+        So, <m>[(AB)(ACB)].C=A=(AB).[(ACB).C]</m>,
+        therefore, we can see compatibility in this specific case.
+        Compatibility can be easily shown to hold for the other elements of <m>X</m> because <m>S_3</m> produces a bijection on <m>X</m>.
+      </p>
+      <p>
+        Note the visual difference in the two operations.
+        The group operation of composition of permutations has all the mapping arrows for all elements
+        (the top left two illustrations).
+        This is because the result of a composition of permutations is another permutation.
+        The other illustrations have only one mapping arrow because <m>S_3</m> is acting on <m>X</m> producing only a single element of <m>X</m>.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_GroupActions_Compat2">
+    <statement>
+      <p>
+        Recall <m>R</m> and <m>X</m> from <xref ref="example_GroupActions_Actions2">Example</xref>,
+        show that <m>(r_{40} \circ r_{30}).x_{15}=r_{40}.(r_{30}.x_{15})</m>.
+        <me>
+          \begin{split} (r_{40} \circ r_{30}).x_{15}\amp \stackrel{?}{=}r_{40}.(r_{30}.x_{15}) \\ r_{70}.x_{15}\amp \stackrel{?}{=}r_{40}.x_{45}\\ x_{85}\amp \stackrel{\checkmark}{=}x_{85} \end{split}
+        </me>
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_GroupActions_Compat3">
+    <statement>
+      <p>
+        Let <m>G</m> be a group acting on the set <m>X</m>,
+        and <m>\sigma, \tau \in G</m> and <m>x \in X</m>.
+        Using these elements,
+        write a general rule for compatibility between <m>G</m> and <m>X</m>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    These ideas motivate the following definitions of action and <m>G</m>-Set:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {defaction} Let <m>G</m> be a group and <m>X</m> be a set.
+        A <term>(left) action</term>
+            <idx><h>Actions</h><h>group</h></idx>
+        of <m>G</m> on <m>X</m> is a map
+        <m>G\times X\rightarrow X</m> given by <m>(g, x)\rightarrow g.x</m>,
+        such that
+        <ol type="1">
+          <li>
+            <p>
+              Identity: <m>e.x = x</m> for all <m>x\in X</m>,
+              and <m>e</m> is the identity element of the group <m>G</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              Compatibility:
+              <m>(g_1g_2).x = g_1.(g_2.x)</m> for all <m>x\in X</m> and all <m>g_1, g_2 \in G</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        We will use the period to represent group action.
+        The set <m>X</m> on which <m>G</m> acts is called a
+        <term><m>G</m>-set</term> .
+            <idx><h>G-set@<m>G</m>-set</h></idx>
+      </p>
+    </statement>
+  </definition>
+  <remark>
+    <ol type="1">
+      <li>
+        <p>
+          <m>X</m> is not required to be a group,
+          it only needs to be a set.
+          <m>G</m> is the group.
+          In some cases, as we will see, <m>X</m> can be a group.
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>g.x</m> is not group multiplication.
+          It is the result when <m>g</m> acts on <m>x</m>,
+          and is always an element of <m>X</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          We call the set <m>X</m> a <m>G</m>-set because <m>G</m> is acting on it.
+          If <m>\mathbb{R}^2</m> is acting on <m>X</m> we will call <m>X</m> an <m>\mathbb{R}^2</m>-set;
+          <m>GL_2 (\mathbb{R})</m> acting on <m>X</m> would be a <m>GL_2 (\mathbb{R})</m>-set.
+        </p>
+      </li>
+      <li>
+        <p>
+          Notice that the second condition in <xref ref="definition_GroupActions_defaction">Definition</xref> is NOT associativity.
+          It is not associativity because the group operation between <m>g_1</m> and <m>g_2</m> is not the action between <m>g</m> and <m>x</m>.
+          Recall we refer to this property as compatibility.
+        </p>
+      </li>
+    </ol>
+  </remark>
+  <p>
+    It is also possible to define right group actions.
+  </p>
+  <exercise xml:id="exercise_GroupActions_RightAction">
+    <statement>
+      <p>
+        Fill in the blanks with the missing information for the definition of right action.
+        Let <m>G</m> be a group and <m>X</m> be a set.
+        A <term>(right) action</term>
+            <idx><h>Actions</h><h>group</h></idx>
+        of <m>G</m> on <m>X</m> is a map
+        <m>\underline{~\lt 1>~}\times \underline{~\lt 2>~}\rightarrow \underline{~\lt 3>~}</m> given by <m>(\underline{~\lt 4>~}, \underline{~\lt 5>~})\rightarrow \underline{~\lt 6>~}</m>,
+        such that
+        <ol type="1">
+          <li>
+            <p>
+              Identity: <m>\underline{~\lt 7>~}=\underline{~\lt 8>~}</m> for all <m>x\in X</m>,
+              and <m>e</m> is the identity element of the group <m>G</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              Compatibility:
+              <m>\underline{~\lt 9>~}=\underline{~\lt 10>~}</m> for all <m>x\in X</m> and all <m>g_1, g_2 \in G</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Moving forward in this chapter we'll focus just on left group actions.
+        <idx><h>Actions</h><h>left and right</h></idx>
+    Following are some more examples of group actions.
+  </p>
+  <example xml:id="example_GroupActions_Action3">
+    <statement>
+      <p>
+        Consider <m>GL_2(\mathbb{R})</m>
+        (the group of invertible <m>2 \times 2</m> matrices)
+        and <m>\mathbb{R}^2</m>.
+        Show that <m>GL_2(\mathbb{R})</m> acts on
+        <m>\mathbb{R}^2</m> by left multiplication on vectors which means that
+        <m>\mathbb{R}^2</m> is a <m>GL_2(\mathbb{R})</m>-set.
+        To check we must show identity and compatibility:
+        <ol type="1">
+          <li>
+            <p>
+              Check identity: If <m>v\in \mathbb{R}^2</m> and <m>I</m> is the identity matrix,
+              then <m>I.v = v</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Check compatibility: If <m>A</m> and <m>B</m> are <m>2 \times 2</m> invertible matrices,
+              then <m>(AB).v = A.(B.v)</m> (see <xref ref="exercise_GroupActions_Action4">Exercise</xref> below
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Therefore, by definition,
+        <m>\mathbb{R}^2</m> is a <m>GL_2(\mathbb{R})</m>-set.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_GroupActions_Action4">
+    <statement>
+      <p>
+        Let
+        <me>
+          A=\left[\begin{array}{cc} a\amp b\\c\amp d \end{array} \right]; B=\left[\begin{array}{cc} e\amp  f\\ g \amp  h \end{array} \right]; v=\left[\begin{array}{c}x\\ y \end{array} \right]
+        </me>.
+      </p>
+      <p>
+        Verify the compatibility condition
+        <m>(AB).v = A.(B.v)</m> by using the properties of matrix multiplication.
+      </p>
+    </statement>
+  </exercise>
+  <example xml:id="example_GroupActions_Action6">
+    <statement>
+      <p>
+        Let <m>G</m> be a group and
+        <m>\mathcal{E}_n</m> be the set of all subsets of <m>G</m> with <m>n</m> elements where <m>n</m> is a positive integer and <m>n\leq |G|</m>.
+        Let <m>S \in \mathcal{E}_n</m>,
+        meaning <m>S</m> is a subset of <m>G</m> with <m>n</m> elements.
+        Then <m>G</m> acts on <m>\mathcal{E}_n</m> by <m>g.S:=\{gs~|~s \in S\}</m>.
+        Note that <m>g.S</m> is a subset of <m>G</m> with <m>n</m> elements.
+        Let's verify that this is an action:
+        <ol type="1">
+          <li>
+            <p>
+              Check the identity condition:
+              <m>e.S=\{es~|~s \in S\}=S</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Check the compatibility condition: Let <m>g,h \in G</m>,
+              then <m>(gh).S=\{(gh)s~|~s \in S\}=\{g(hs)~|~s \in S\}=g.(h.S)</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Parts (1) and (2) verify that <m>\mathcal{E}_n</m> is a <m>G</m>-set.
+      </p>
+    </statement>
+  </example>
+  <p>
+    To show that <m>(G,X)</m> is <em>not</em> an action
+    (in other words <m>X</m> is not a <m>G</m>-set),
+    one may show any one of the following:
+    <ul>
+      <li>
+        <p>
+          <m>g.x \notin X</m> for some <m>g \in G</m> and <m>x \in X</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the identity condition fails
+          <m>e.x \neq x</m> for some <m>x\in X</m>; or
+        </p>
+      </li>
+      <li>
+        <p>
+          the compatibility condition fails:
+          <m>(g_1g_2).x \neq g_1.(g_2.x)</m> for some <m>x\in X</m> and some <m>g_1, g_2 \in G</m>.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    Usually the easiest way to show one of the above items is by a counterexample.
+  </p>
+  <exercise xml:id="exercise_GroupActions_Action7">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>G = 2\mathbb{Z}</m> and let <m>X =\mathbb{Z}</m>.
+            Show that <m>X</m> is a <m>G</m>-set.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>X = 2\mathbb{Z}</m>.
+            Show that <m>X</m> is <em>not</em>
+            a <m>\mathbb{Z}</m>-set. (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>G = H_6</m> (the complex <m>6</m>-th roots of unity
+            (see <xref ref="subsec_ComplexNumbers_ComplexRoots_RootsOfUnity">Section</xref>
+            in <xref ref="ComplexNumbers">Chapter</xref>)
+            and let <m>X =\mathbb{C}</m>.
+            Show that <m>X</m> is a <m>G</m>-set.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>X = H_8</m>.
+            Is <m>X</m> a <m>\mathbb{C}</m>-set?
+            Explain. (*Hint*)
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+</section>

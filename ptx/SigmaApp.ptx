@@ -1,13 +1,13 @@
 <chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="SigmaApp">
   <title>Application:  Sigma Notation in Linear Algebra</title>
-  <xi:include  href="sec_sigmaLinAlg.ptx"/>
-  <xi:include  href="sec_MatrixMultiplication.ptx"/>
-  <xi:include  href="sec_IdentityMatrixKroneckerDelta.ptx"/>
-  <xi:include  href="sec_AbbrevMatrixNotations.ptx"/>
-  <xi:include  href="sec_MatrixTransposeInverses.ptx"/>
-  <xi:include  href="sec_rotMx3.ptx"/>
-  <xi:include  href="sec_MatrixTraces.ptx"/>
-  <xi:include  href="sec_LeviCivita.ptx"/>
-  <xi:include  href="sec_sigma_hints.ptx"/>
-  <xi:include  href="sec_Sigma_study.ptx"/>
+  <xi:include  href="sec_SigmaApp_LinearAlgebra.ptx"/>
+  <xi:include  href="sec_SigmaApp_MatrixMultiplication.ptx"/>
+  <xi:include  href="sec_SigmaApp_IdentityMatrixKroneckerDelta.ptx"/>
+  <xi:include  href="sec_SigmaApp_AbbrevMatrixNotations.ptx"/>
+  <xi:include  href="sec_SigmaApp_MatrixTransposeInverses.ptx"/>
+  <xi:include  href="sec_SigmaApp_RotationMatrix3D.ptx"/>
+  <xi:include  href="sec_SigmaApp_MatrixTraces.ptx"/>
+  <xi:include  href="sec_SigmaApp_LeviCivitaAndApp.ptx"/>
+  <xi:include  href="sec_SigmaNotation_Hints.ptx"/>
+  <xi:include  href="sec_SigmaNotation_StudyGuide.ptx"/>
 </chapter>

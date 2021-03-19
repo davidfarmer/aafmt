@@ -1,0 +1,19 @@
+<section xml:id="sec_Polynomials_Hints">
+  <title>Hints for
+  <q>Polynomial Rings</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_Polynomials_poly4">Exercise</xref>(d): Note <m>4=3+1</m> and <m>11=3^2+2</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Polynomials_multform">Exercise</xref>(d): Are there any common factors you can take outside the summations before multiplying?
+  </p>
+  <p>
+    <xref ref="exercise_Polynomials_5Z">Exercise</xref>: Note that if <m>a_2</m> is in <m>5\mathbb{Z}</m>,
+    then <m>a_2 = 5a_2^{\prime}</m> where <m>a_2^{\prime}</m> is also an integer.
+    The same thing holds for al the other coefficients in <m>p(x)</m> and <m>q(x)</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Polynomials_roots">Exercise</xref>(b): Use the method in <xref ref="subsec_ComplexNumbers_ComplexRoots_RootsGeneral">Section</xref>.
+  </p>
+</section>

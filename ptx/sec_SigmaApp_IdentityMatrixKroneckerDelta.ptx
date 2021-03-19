@@ -1,0 +1,288 @@
+<section xml:id="sec_SigmaApp_IdentityMatrixKroneckerDelta">
+  <title>The identity matrix and the Kronecker delta</title>
+  <p>
+    The identity matrix <m>I</m> often comes up when working with matrices.
+    You may remember that an identity matrix has 1's on its diagonal and 0's everywhere else:
+    <me>
+      I = \left[ \begin{array}{ccccc} 1 \amp  0  \amp  \cdots \amp  0 \amp  0 \\ 0 \amp  1  \amp  \cdots \amp  0 \amp  0  \\ \vdots \amp  \vdots \amp  \vdots \amp  \vdots \amp  \vdots\\ 0 \amp  0  \amp  \cdots \amp  1 \amp  0  \\ 0 \amp  0  \amp  \cdots \amp  0 \amp  1 \end{array}  \right]
+    </me>.
+  </p>
+  <p>
+    Notice that the (<m>i,j</m>) entry lies on the diagonal if and only if its row index (<m>i</m>) is equal to its column index
+    (<m>j</m>).
+    This pattern is expressed in summation notation by the so-called
+    <term>Kronecker delta</term>.
+        <idx><h>Kronecker delta</h></idx>
+    <fn>
+    After Leopold Kronecker (1823-1891),
+    a prominent German mathematician who made many contributions to abstract algebra and number theory.
+    Outside of those areas,
+    he is most famous for his strong opposition to the theory of transfinite numbers first proposed by Georg Cantor (1845-1918).
+    Most (but not all) mathematicians today would say that Cantor was right and Kronecker was wrong.
+    This is a fascinating research topic if you're interested in the history of mathematics.
+    </fn> The Kronecker delta is written as
+    <m>\delta_{i,j}</m> and takes the following values:
+    <me>
+      \delta_{ij}= \begin{cases}1 ~ \text{ if }  ~ i=j,  \\ 0 ~ \text{ if }  ~ i \neq j. \end{cases}
+    </me>
+  </p>
+  <p>
+    By comparison with our description of the identity matrix,
+    we may see that the <m>i,j</m> entry of the identity matrix is equal to <m>\delta_{ij}</m>.
+    We may denote the (<m>i,j</m>) entry of <m>I</m> as <m>[I]_{i,j})</m>, so that:
+    <me>
+      [I]_{i,j} = \delta_{ij}
+    </me>.
+  </p>
+  <exercise xml:id="exercise_SigmaNotation_KroneckerIdentity">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            We know that if a matrix <m>B</m> is the inverse of the
+            <m>n \times n</m> matrix <m>A</m> then we have the equations:
+            <m>BA = I</m> and <m>AB = I</m>.
+            Rewrite these matrix equations in summation notation,
+            making use of the Kronecker delta <m>\delta_{ij}</m> (As above,
+            denote the (<m>i,j</m>) entries of <m>A</m> and <m>B</m> as <m>a_{i,j}</m> and <m>b_{i,j}</m> respectively.
+            You will need to choose your indices in order to make the product work out correctly.)
+          </p>
+        </li>
+        <li>
+          <p>
+            What matrix equation corresponds to the following system of equations in summation notation:
+            <m>\displaystyle{ \sum_{k=1}^n \delta_{ik}\delta_{kj}=\delta_{ij}}</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    It is possible to use the Kronecker delta to define matrices besides the identity matrix.
+    For example,
+    consider the <m>4 \times 4</m> matrix <m>A</m> with entries <m>a_{i,j}</m> defined by:
+    <me>
+      a_{i,j} := \delta_{i+1,j}, \qquad 1 \le i,j \le 4
+    </me>.
+  </p>
+  <p>
+    In this case,
+    the entry is 1 if the column index is one greater than the row index,
+    and 0 otherwise:
+    <me>
+      A = \left[ \begin{array}{ccccc} 0 \amp  1   \amp  0 \amp  0 \\ 0 \amp  0  \amp  1 \amp  0  \\ 0 \amp  0  \amp   0 \amp  1 \\ 0 \amp  0  \amp  0 \amp  0 \end{array}  \right]
+    </me>.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Write out the following matrices:
+        <ol type="a">
+          <li>
+            <p>
+              The matrix <m>C</m> defined by <m>\displaystyle c_{i,j} := \frac{1}{2} (-\delta_{i,j+1}+\delta_{i,j-1}) \qquad 1 \le i,j \le 6</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The matrix <m>D</m> defined by <m>\displaystyle d_{i,j} := -2\delta_{i,j} + \delta_{i+1,j} + \delta_{i-1,j}, \qquad 1 \le i,j \le 5</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The matrix <m>U</m> defined by <m>\displaystyle u_{i,j} := \delta_{i,j-1} + 2\delta_{i,j-2} + 3\delta_{i,j-3}, \qquad 1 \le i,j \le 4</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The matrix <m>X</m> defined by <m>\displaystyle x_{i,j} := -2\delta_{i,j} + 2\delta_{i,4-j} \qquad 1 \le i,j \le 5</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    For matrices that are expressable in terms of Kronecker deltas,
+    it is possible to find matrix products using summation notation.
+  </p>
+  <example>
+    <statement>
+      <p>
+        Let <m>\mathbf{v}</m> be the <m>10 \times 1</m> matrix given by
+        <me>
+          v_{j,1} = j, j=1 \ldots 10
+        </me>.
+      </p>
+      <p>
+        (Note that <m>\mathbf{v}</m> is essentially a column vector.) Let us compute <m>C\mathbf{v}</m>,
+        where the matrix <m>C</m> defined by
+        <me>
+          c_{i,j} := \frac{1}{2} (-\delta_{i-1,j} + \delta_{i+1,j}),  1 \le i,j \le 10
+        </me>.
+      </p>
+      <p>
+        The summation notation expression for the product is:
+        <me>
+          [C\mathbf{v}]_{ij} = \sum_{k=1}^{10} c_{i,k} v_{k,j}
+        </me>.
+      </p>
+      <p>
+        The first thing to notice is that the second index <m>j</m> must be 1 since
+        <m>\mathbf{v}</m> is a <m>10 \times 1</m> matrix.
+        We may also substitute the expressions for <m>d_{i,k}</m> and <m>v_{k,j}</m> and simplify:
+        <md>
+          <mrow>_{i1} \amp = \sum_{k=1}^{10} \frac{1}{2} (-\delta_{i-1,j} + \delta_{i+1,j}) k \qquad \qquad [\text{ Definitions of }  c_{i,k} \text{ and }  v_{k,1}]</mrow>
+          <mrow>\amp = -\frac{1}{2}\sum_{k=1}^{10}  \delta_{i-1,k}k + \frac{1}{2}\sum_{k=1}^{10}  \delta_{i+1,k}k \qquad \qquad [\text{ Summation rules } ]</mrow>
+        </md>
+      </p>
+      <p>
+        At this point,
+        we need to think about how the <m>\delta</m>'s function within these two sums.
+        Consider the first sum, namely:
+        <me>
+          \sum_{k=1}^{10}  \delta_{i-1,k}k
+        </me>.
+      </p>
+      <p>
+        For each value of <m>i=1,...,10</m>,
+        this sum will give a different result:
+        <ul>
+          <li>
+            <p>
+              When <m>i=1</m>, all terms in the sum are 0, so the result is zero.
+            </p>
+          </li>
+          <li>
+            <p>
+              When <m>i=2</m>,
+              the only term that contributes is the <m>k=1</m> term,
+              since <m>\delta_{1,k} = 0</m> unless <m>k=1</m>.
+              So for <m>i=2</m>, the sum gives 1.
+            </p>
+          </li>
+          <li>
+            <p>
+              Similarly when <m>i=3,...,10</m>,
+              the only term that contributes is the <m>k=i-1</m> term,
+              since <m>\delta_{3,k} = 0</m> unless <m>k=i-1</m>.
+              So the sum gives <m>i-1</m> for <m>2\le i \le 10</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        We may summarize these findings as follows:
+        <me>
+          \sum_{k=1}^{10}  \delta_{i-1,k}k = \begin{cases}0 \amp  \text{ if }  i=1 \\ i-1 \amp  \text{ if }  2 \le i \le 10. \end{cases}
+        </me>
+      </p>
+      <p>
+        The second sum may be evaluated similarly:
+        this time, <m>i=10</m> is the exceptional case:
+        <me>
+          \sum_{k=1}^{10}  \delta_{i+1,k}k = \begin{cases}i+1 \amp  \text{ if }  1 \le i \le 9 \\ 0 \amp  \text{ if }  i=10 . \end{cases}
+        </me>
+      </p>
+      <p>
+        Substituting these expressions into our matrix product formula gives:
+        <me>
+          [C\mathbf{v}]_{i1} = \begin{cases}-\frac{0}{2} + \frac{2}{2} = 1 \amp  \text{ if }  i=1\\ -\frac{i-1}{2} + \frac{i+1}{2} = 1 \amp  \text{ if }  2 \le i \le 9\\ -\frac{9}{2} + \frac{0}{2} = -4.5 \amp  \text{ if }  i=10. \end{cases}
+        </me>
+      </p>
+      <p>
+        The result is a <m>10 \times 1</m> column vector with entries all 1, except for a <m>-4.5</m> in the <m>10^{\text{ th } }</m> entry.
+      </p>
+    </statement>
+  </example>
+  <p>
+    Let's try another example, this time with two square matrices.
+  </p>
+  <example>
+    <statement>
+      <p>
+        This time we'll compute the entries of the matrix product <m>FV</m>,
+        where the entries <m>f_{ij}</m> of <m>F</m> and <m>v_{ij}</m> of <m>V</m> are given by:
+        <me>
+          f_{ij} := \delta_{i+1,j} - \delta_{i,j}; \qquad v_{i,j} := 2^{i+j},  1 \le i,j \le 20
+        </me>.
+      </p>
+      <p>
+        We may begin once again with the matrix product formula:
+        <md>
+          <mrow>FV_{ij} \amp = \sum_{k=1}^{20} f_{ik}v_{kj} \qquad \qquad [\text{ Matrix mulitplication formula } ]</mrow>
+          <mrow>\amp =  \sum_{k=1}^{20} (\delta_{i+1,k} - \delta_{i,k})2^{k+j} \qquad \qquad [\text{ Substitution } ]</mrow>
+          <mrow>\amp =  \sum_{k=1}^{20} \delta_{i+1,k}2^{k+j} - \delta_{i,k}2^{k+j} \qquad \qquad [\text{ Substitution } ]</mrow>
+          <mrow>\amp = 2^{i+1+j} - 2^{i+j} \qquad \qquad [\text{ Select nonzero term in each summation } ]</mrow>
+          <mrow>\amp = 2^{i+j}(2 - 1) \qquad \qquad [\text{ Factor out common factor } ]</mrow>
+          <mrow>\amp = 2^{i+j}. \qquad \qquad \qquad [\text{ Exponent rules } ]</mrow>
+        </md>
+      </p>
+      <p>
+        The shakiest step in this computation is the one labeled
+        <q>Select nonzero term in each summation</q>, and we should double-check to make sure we did it right.
+        When <m>i = 1,2,...,19</m>,
+        then it is always true that
+        <m>\delta_{i+1,k}</m> will be nonzero for a single value of <m>k</m> between 1 and 20,
+        so the sum over <m>k</m> of
+        <m>\delta_{i+1,k}</m> will reduce to a single term.
+        But the case <m>i=20</m> is different.
+        In this case,
+        <m>\delta_{20+1,k}</m> is equal to 0 for <em>all</em>
+        values of <m>k</m> between 1 and 20.
+        So we'll have to redo the calculation in this case:
+        <md>
+          <mrow>\sum_{k=1}^{20} \delta_{20+1,k}2^{k+j} - \delta_{20,k}2^{k+j} \amp = 0 - 2^{2-+j}</mrow>
+          <mrow>\amp = - 2^{20+j}</mrow>
+        </md>.
+      </p>
+      <p>
+        This brings us to the final result:
+        <me>
+          [FV]_{ij} = \begin{cases}2^{i+j} \amp  \text{ if }  1 \le i \le 19 \text{ and }  1 \le j \le 20\\ - 2^{20+j}    \amp  \text{ if }  i=20 \text{ and }  1 \le j \le 20. \end{cases}
+        </me>
+      </p>
+    </statement>
+  </example>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>\mathbf{v}</m> be the
+        <m>10 \times 1</m> matrix (a.k.a column vector) given by:
+        <m>v_{j,1} = j^2</m>, <m>j=1 \ldots 10</m>.
+        Compute <m>D\mathbf{v}</m>,
+        where the entries of <m>D</m> are given by
+        <m>\displaystyle d_{i,j} := -2\delta_{i,j} + \delta_{i+1,j} + \delta_{i-1,j}, \qquad 1 \le i,j \le 10</m> (The matrix <m>D</m> is an example of a
+        <term>discrete second derivative matrix</term>.
+            <idx><h>Matrix</h><h>discrete second deriviatve</h></idx>
+        )
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>F</m> and <m>B</m> be the
+        <m>50 \times 50</m> matrices defined by <m>f{i,j} = \delta_{i+1,j} - \delta_{i,j}</m>,
+        and <m>b_{i,j} = \delta_{i,j}-\delta_{i-1,j}</m>,
+        respectively. ( <m>F</m> and <m>B</m> are examples of
+        <term>forward difference matrix</term>
+        and <term>backward difference matrix</term>,
+        respectively.)<idx><h>Matrix</h><h>forward difference</h></idx>
+            <idx><h>Matrix</h><h>backward difference</h></idx>
+        <ol type="a">
+          <li>
+            <p>
+              Compute <m>FB</m>.
+              Compute <m>BF</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    It turns out that matrices defined using Kronecker deltas play a prominent role in numerical analysis,
+    and in particular the numerical solution of ordinary and partial differential equations.
+  </p>
+</section>

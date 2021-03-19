@@ -1,0 +1,519 @@
+<section xml:id="sec_EquivalenceRelations_ObtainingPartitions">
+  <title>Obtaining partitions from equivalence relations</title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <p>
+      <xref ref="proposition_EquivalenceRelations_parteqrel">Proposition</xref>
+      tells us that given any partition <m>\mathcal{P}</m> of a set <m>S</m>,
+      we can define an equivalence relation which says that two elements of <m>S</m> are equivalent iff they belong to the same set in the partition.
+      We'll see in this section that we can go the other way as well:
+      namely, given any equivalence relation on <m>S</m> we can construct a partition on <m>S</m> which divided all the elements of <m>S</m> among disjoint subsets.
+    </p>
+    <p>
+      To make this work, we first must define a key notion:
+      <em>equivalence classes</em>.
+      Here we go!
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_EquivalenceRelations_ObtainingPartitions_RelationToClass">
+    <title>From equivalence relations to equivalence classes</title>
+    <p>
+      Let's ramp up to our key definition by means of an example.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppose we're studying a set of people,
+          and we're only interested in their given names.
+          Of course there may be several Johns,
+          several Marys, a couple of Sylvesters,
+          and so on<ndash/> but as far as given names are concerned,
+          any two Johns can be considered as equivalent:
+          indeed, we formalized this sense of equivalence in <xref ref="example_EquivalenceRelations_MoreEquivRelEgs">Example</xref>(b).
+          We can group all Johns into a single set or class,
+          which we'll refer to as an <em>equivalence class</em>.
+          We can do the same thing with Marys, Sylvesters, Xyleenas, Zenobias,
+          and so on.
+          It follows that every person in the set belongs to her or his own equivalence class (even if the equivalence class consists of a single person!)
+        </p>
+      </statement>
+    </example>
+    <p>
+      Let's generalize this example.
+      Essentially,
+      the only fact about given names that we used to define equivalence classes was that given name defines an equivalence relation on the set of interest.
+      So it stands to reason that we can do something similar with any equivalence relation:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {DefEquivRel} Suppose <m>\sim</m> is an equivalence relation on a set<nbsp/><m>A</m>.
+          For each <m>a \in A</m>, the <term>equivalence class</term>
+              <idx><h>Equivalence class</h></idx>
+          of<nbsp/><m>a</m> is the following subset of<nbsp/><m>A</m>:
+          <me>
+            [a] = \{\, s \in A \mid s \sim a \,\}
+          </me>.
+        </p>
+        <p>
+          That is, the equivalence class of the element <m>a \in A</m> is the set of all elements of <m>A</m> that are equivalent to <m>a</m>.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          For the equivalence relation<nbsp/><m>N</m> described in <xref ref="example_EquivalenceRelations_MoreEquivRelEgs">Example</xref>(b), we have
+          <me>
+            [\var{Woodrow\,\,Wilson}] = \{\, x \in \var{People} \mid \var{GivenName}(x) = \var{GivenName}(\var{Woodrow\,\,Wilson}) \,\}
+          </me>.
+        </p>
+        <p>
+          In other words,
+          <m>[\var{Woodrow\,\,Wilson}]</m> is the set of all people whose given name is Woodrow.
+        </p>
+      </statement>
+    </example>
+    <warning>
+      <p>
+        The notation <m>[a]</m> does not tell us which equivalence relation is being used.
+        You should be able to figure out which relation it is from the context.
+      </p>
+    </warning>
+    <p>
+      Let's give a a more
+      <q>mathy</q>
+      example.
+    </p>
+    <example xml:id="example_EquivalenceRelations_EquivClassEg">
+      <statement>
+        <p>
+          Suppose <m>A = \{1,2,3,4,5\}</m> and
+          <md>
+            <mrow>\amp R =</mrow>
+            <mrow>\amp \left\{  (1,1), (1,3), (1,4), (2,2), (2,5), (3,1), (3,3), (3,4), (4,1), (4,3), (4,4), (5,2), (5,5) \right\}</mrow>
+          </md>
+        </p>
+        <p>
+          One can verify that <m>R</m> is an equivalence relation on<nbsp/><m>A</m>.
+          The equivalence classes are:
+          <me>
+            [1] = [3] = [4] = \{1,3,4\}, [2] = [5] = \{2,5\}
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_EquivalenceRelations_EquivClassEasyEx">
+      <statement>
+        <ol type="a">
+          <li xml:id="EquivClassEasyEx-set">
+            <p>
+              Let <m>B = \{1,2,3,4,5\}</m> and
+              <me>
+                S = \left\{ (1,1),\, (1,4),\, (2,2),\, (2,3),\, (3,2),\, (3,3),\, (4,1),\, (4,4),\, (5,5) \right\}
+              </me>.
+              Assume (without proof) that <m>S</m> is an equivalence relation on<nbsp/><m>B</m>.
+              Find the equivalence class of each element of<nbsp/><m>B</m>.
+            </p>
+          </li>
+          <li xml:id="EquivClassEasyEx-x_y">
+            <p>
+              Let <m>C = \{1,2,3,4,5\}</m> and define <m>\rel_C</m> by
+              <me>
+                x \rel_C y \iff x + y \text{ is even. }
+              </me>
+              Assume (without proof) that <m>\rel_C</m> is an equivalence relation on<nbsp/><m>C</m>.
+              Find the equivalence class of each element of<nbsp/><m>C</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Draw the arrow diagrams for the relations in <m>R</m> in <xref ref="example_EquivalenceRelations_EquivClassEg">Example</xref>,
+              and for the relations in parts (<m>a</m>) and (<m>b</m>) of this exercise.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      The following proposition presents some very important properties of equivalence classes:
+    </p>
+    <proposition xml:id="proposition_EquivalenceRelations_EquivRelProps">
+      <statement>
+        <p>
+          Suppose <m>\sim</m> is an equivalence relation on a set<nbsp/><m>S</m>.
+          Then:
+          <ol type="a">
+            <li xml:id="EquivRelProps-aIn">
+              <p>
+                For all <m>a \in S</m>, we have <m>a \in [a]</m>.
+              </p>
+            </li>
+            <li xml:id="EquivRelProps-nonempty">
+              <p>
+                For all <m>a \in S</m>, we have <m>[a] \neq \emptyset</m>.
+              </p>
+            </li>
+            <li xml:id="EquivRelProps-union">
+              <p>
+                The union of the equivalence classes is all of<nbsp/><m>S</m>.
+                This can be written mathematically as follows:
+                <me>
+                  \bigcup_{a \in S} [a] = S
+                </me>
+              </p>
+            </li>
+            <li xml:id="EquivRelProps-equal">
+              <p>
+                For any <m>a_1,a_2 \in S</m>,
+                such that <m>a_1 \sim a_2</m>,
+                we have <m>[a_1] = [a_2]</m>.
+              </p>
+            </li>
+            <li xml:id="EquivRelProps-disjoint">
+              <p>
+                For any <m>a_1,a_2 \in S</m>,
+                such that <m>a_1 \not\sim a_2</m>,
+                we have <m>[a_1] \cap [a_2] = \emptyset</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_EquivalenceRelations_EquivRelPropsPfEx">
+      <statement>
+        <p>
+          Prove the assertions in <xref ref="proposition_EquivalenceRelations_EquivRelProps">Proposition</xref>.
+          You may use the following hints:
+        </p>
+        <ol type="a">
+          <li>
+            <p>
+              Use the reflexive property of <m>\sim</m>,
+              together with <xref ref="definition_EquivalenceRelations_DefEquivRel">Definition</xref>
+            </p>
+          </li>
+          <li>
+            <p>
+              Use part (a).
+            </p>
+          </li>
+          <li>
+            <p>
+              This can be done by showing:
+            </p>
+            <ol type="i">
+              <li>
+                <p>
+                  <m>\bigcup_{a \in S} [a] \subset S</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>S \subset \bigcup_{a \in S} [a]</m>
+                </p>
+              </li>
+            </ol>
+            In (i), use the fact that <m>[a] \subset S</m>.
+            In (ii), use (a) above to show that every element of <m>S</m> is in at least one equivalence class.
+            (Recall also that <sq><m>\subset</m></sq> means
+            <q>contained in</q>, and includes the case where the two sets are equal.)
+          </li>
+          <li>
+            <p>
+              Remember that two sets are equal if they have all their elements in common.
+              So you want to show that given <m>a_1 \rel a_2</m>,
+              then every element of <m>[a_1]</m> is also an element of [<m>a_2]</m>,
+              and vice versa.
+              Do this as follows:
+              <ul>
+                <li>
+                  <p>
+                    Choose any <m>a_3 \in [a_1]</m>.
+                    Use <xref ref="definition_EquivalenceRelations_DefEquivRel">Definition</xref>
+                    together with the transitive property to show that <m>a_3 \in [a_2]</m>.
+                    Conclude that every element of <m>[a_1]</m> is also an element of <m>[a_2]</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Use a similar proof to show that every element of <m>[a_2]</m> is also an element of <m>[a_1]</m>.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              You can prove this one by contradiction.
+              Suppose the intersection is non-empty.
+              Choose an element in the intersection.
+              Use <xref ref="definition_EquivalenceRelations_DefEquivRel">Definition</xref>
+              and the transitive property to derive a contradiction.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="proposition_EquivalenceRelations_EquivRelProps">Proposition</xref>
+      also gives us this important fact:
+    </p>
+    <proposition xml:id="proposition_EquivalenceRelations_DisjointEquiv">
+      <statement>
+        <p>
+          Suppose <m>\sim</m> is an equivalence relation on a set<nbsp/><m>S</m>.
+          Then any two equivalence classes are either equal or disjoint;
+          that is, either they have exactly the same elements,
+          or they have no elements in common.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_EquivalenceRelations_DisjointEquivEx">
+      <statement>
+        <p>
+          Fill in the blanks to complete the proof of <xref ref="proposition_EquivalenceRelations_DisjointEquiv">Proposition</xref>:
+        </p>
+      </statement>
+      <proof>
+        <p>
+          It's enough to show that any two equivalence classes <m>[a_1]</m> and<nbsp/><m>[a_2]</m> that are not disjoint must in fact be equal.
+              <idx><h>Disjoint</h><h>applied to equivalence relations</h></idx>
+          <ol type="a">
+            <li>
+              <p>
+                Since the equivalence classes are not disjoint,
+                their intersection is nonempty:
+                so there is some <m>a \in [a_1] \cap \_\_\_\_\_\_\_\_</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Hence, <m>a \in \_\_\_\_\_\_\_\_</m> and <m>a \in \_\_\_\_\_\_\_\_</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                By <xref ref="definition_EquivalenceRelations_DefEquivRel">Definition</xref>,
+                this means <m>a \sim \_\_\_\_\_\_\_\_</m> and <m>a \sim \_\_\_\_\_\_\_\_</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Hence, <xref ref="proposition_EquivalenceRelations_EquivRelProps">Proposition</xref>
+                part ________ tells us that
+                <m>[a] =\_\_\_\_\_\_\_\_</m> and <m>[a] =\_\_\_\_\_\_\_\_</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Therefore <m>\_\_\_\_\_\_\_\_ = [a] = \_\_\_\_\_\_\_\_</m>,
+                as desired.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </proof>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_EquivalenceRelations_ObtainingPartitions_ClassToPartition">
+    <title>From equivalence classes to partitions</title>
+    <p>
+      It's time to come full circle,
+      and show that partitions arise from equivalence classes.
+      As in the previous section, we'll ramp up with an example.
+    </p>
+    <example xml:id="example_EquivalenceRelations_EquivClassPartEg">
+      <statement>
+        <p>
+          In <xref ref="example_EquivalenceRelations_EquivClassEg">Example</xref>,
+          the equivalence classes are <m>\{1,3,4\}</m> and <m>\{2,5\}</m>.
+          Since <m>1,2,3,4,5</m> each belong to exactly one of these sets,
+          we see that the set
+          <me>
+            \bigl\{ \{1,3,4\}, \{2,5\} \bigr\}
+          </me>
+          of equivalence classes is a partition of <m>\{1,2, 3,4,5\}</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Intuitively,
+      equivalence classes resulting from an equivalence relation on <m>S</m> will always break <m>S</m> up into disjoint sets which,
+      taken together, include all the elements of <m>S</m>.
+      We've seen this description before<ndash/>this is exactly what a partition does.
+      This observation places us at the doorstep of the following proposition:
+    </p>
+    <proposition xml:id="proposition_EquivalenceRelations_EquivRel-_Part">
+      <statement>
+        <p>
+          Suppose <m>\sim</m> is an equivalence relation on a set<nbsp/><m>A</m>.
+          Then
+          <me>
+            \{\, [a] \mid a \in A \,\}
+          </me>
+          is a partition of<nbsp/><m>A</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        From parts <xref ref="EquivRelProps-nonempty"/>, <xref ref="EquivRelProps-union"/>,
+        and <xref ref="EquivRelProps-disjoint"/> of <xref ref="proposition_EquivalenceRelations_EquivRelProps">Proposition</xref>,
+        we know that the equivalence classes are nonempty,
+        that their union is<nbsp/><m>A</m>,
+        and that they are pairwise disjoint.
+      </p>
+    </proof>
+    <p>
+      The following exercises illustrate <xref ref="proposition_EquivalenceRelations_EquivRel-_Part">Proposition</xref>.
+    </p>
+    <exercise xml:id="exercise_EquivalenceRelations_ECtoP">
+      <statement>
+        <p>
+          Consider the set <m>\mathbb{C}^*</m> defined by <m>\mathbb{C}^* := \mathbb{C} \setminus 0</m>,
+          i.e. the set of nonzero complex numbers.
+          Define a binary relation <m>\sim_r</m> on this set as follows.
+          Let <m>r_1 \cis(\theta_1)</m> and <m>r_2(\cis \theta_2)</m> be two elements of
+          <m>\mathbb{C}^*</m> expressed in polar form,
+          where <m>0 \le \theta \lt  2\pi</m>.
+          Then
+          <me>
+            r_1 \cis(\theta_1) \sim_r r_2(\cis \theta_2)  \iff r_1 = r_2
+          </me>.
+          <ol type="a">
+            <li>
+              <p>
+                Prove that <m>\sim_r</m> thus defined is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Sketch <m>[1], [1+i]</m>, and <m>[\pi \cis(\pi/3)]</m> in the complex plane
+                (show all three on a single sketch).
+                Give geometrical descriptions
+                (using words)
+                of each of these sets (i.e. what can you say about the shape, size,
+                and location of these three sets?)
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a geometrical description of the equivalence classes of <m>\sim_r</m> in the following form:
+                <q>The equivalence classes of <m>\sim_r</m> are all
+                <m>\_\_\_\_\_\_\_\_\_</m> centered at <m>\_\_\_\_\_\_\_\_\_</m></q>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Based on your description in part (c),
+                show that the equivalence classes of <m>\sim_r</m> form a partition of <m>\mathbb{C}^*</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We've seen that functions produce equivalence relations.
+                Give a function with domain
+                <m>\mathbb{C}^*</m> that produces the equivalence relation <m>\sim_r</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_EquivalenceRelations_ECtoP2">
+      <statement>
+        <p>
+          Consider the set <m>\mathbb{C}^*</m> as defined in <xref ref="exercise_EquivalenceRelations_ECtoP">Exercise</xref>.
+          Define a binary relation <m>\sim_{\theta}</m> on this set as follows.
+          Let <m>r_1 \cis(\theta_1)</m> and <m>r_2(\cis \theta_2)</m> be two elements of
+          <m>\mathbb{C}^*</m> expressed in polar form,
+          where <m>0 \le \theta \lt  2\pi</m>.
+          Then
+          <me>
+            r_1 \cis(\theta_1) \, \sim_{\theta} \, r_2(\cis \theta_2)  \iff \theta_1 = \theta_2
+          </me>.
+          <ol type="a">
+            <li>
+              <p>
+                Prove that <m>\sim_{\theta}</m> thus defined is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Sketch <m>[1], [1+i]</m>, and <m>[\pi \cis(\pi/3)]</m> in the complex plane
+                (show all three on a single sketch).
+                Give geometrical descriptions
+                (using words)
+                of each of these sets (i.e. what can you say about the shape, size,
+                and location of these three sets?)
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a geometrical description of the equivalence classes of
+                <m>\sim_{\theta}</m> in the following form:
+                <q>The equivalence classes of <m>\sim_{\theta}</m> are all
+                <m>\_\_\_\_\_\_\_\_\_</m> which begin at <m>\_\_\_\_\_\_\_\_\_</m></q>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Based on your description in part (c),
+                show that the equivalence classes of <m>\sim</m> form a partition of <m>\mathbb{C}^*</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a function with domain
+                <m>\mathbb{C}^*</m> that produces the equivalence relation <m>\sim_{\theta}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We close this section with an exercise that reinforces the idea that partitions and equivalence classes are really two different ways of looking at the same thing.
+    </p>
+    <exercise xml:id="exercise_EquivalenceRelations_equivalencePartition">
+      <statement>
+        <p>
+          We know from <xref ref="proposition_EquivalenceRelations_parteqrel">Proposition</xref>
+          that any partition produces an equivalence relation.
+          We also know from <xref ref="proposition_EquivalenceRelations_EquivRel-_Part">Proposition</xref>
+          that any equivalence relation produces a partition.
+          <ol type="a">
+            <li>
+              <p>
+                Suppose we begin with a partition <m>\mathcal{P}</m> on the set <m>A</m>,
+                and define an equivalence relation
+                <m>\sim_{\mathcal{P}}</m> as in <xref ref="proposition_EquivalenceRelations_parteqrel">Proposition</xref>.
+                Next, suppose that following <xref ref="proposition_EquivalenceRelations_EquivRel-_Part">Proposition</xref>
+                we define a partition <m>\mathcal{P}'</m> consisting of the equivalence classes of <m>\sim_{\mathcal{P}}</m>.
+                Show that <m>\mathcal{P}=\mathcal{P}'</m>.
+                (One way to do this is to show that every set in
+                <m>\mathcal{P}</m> is also a set in <m>\mathcal{P}</m>,
+                and vice versa.)
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose we begin with an equivalence relation <m>\sim</m> on the set <m>A</m>,
+                and define a partition of <m>A</m> as in <xref ref="proposition_EquivalenceRelations_EquivRel-_Part">Proposition</xref>.
+                Let's call this partition <m>\mathcal{Q}</m>.
+                Next, suppose that following <xref ref="proposition_EquivalenceRelations_parteqrel">Proposition</xref>
+                we define an equivalence relation <m>\mathcal{Q}</m>.
+                Show that the relations<m>\sim</m> and <m>\sim_{\mathcal{Q}}</m> are identical:
+                that is, <m>a \sim b \iff a \sim_{\mathcal{Q}} b</m>..
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

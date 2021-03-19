@@ -1,0 +1,729 @@
+<section xml:id="sec_EquivalenceRelations_ModularArithmetic">
+  <title>Modular arithmetic redux<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <p>
+      Abstract algebra often involves looking at familiar concepts and structures in a more general more abstract and
+      <q>elegant</q>
+      way.
+      As an example of this,
+      we will now revisit modular arithmetic and describe it from an entirely different point of view,
+      with the benefit of the concepts we have been developing in previous sections.
+    </p>
+    <p>
+      In the Modular Arithmetic chapter we defined the concept of
+      <q>modular equivalence</q>. You may recall that we actually gave two definitions,
+      which we repeat here:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {mod_eqiv_def_1} <term>(Modular Equivalence, first definition)</term>
+        </p>
+        <p>
+          <m>a \equiv b \pmod{n}</m> if and only if <m>a</m> and <m>b</m> have the same remainder when divided by <m>n</m>.
+        </p>
+      </statement>
+    </definition>
+    <definition>
+      <statement>
+        <p>
+          {mod_eqiv_def_2} <term>(Modular Equivalence, second definition)</term>
+        </p>
+        <p>
+          <m>a \equiv b \pmod{n}</m> iff <m>a - b = k \cdot n</m>,
+          where <m>k</m> is an integer
+          (that is, <m>k \in {\mathbb Z}</m>).
+        </p>
+      </statement>
+    </definition>
+    <exercise xml:id="exercise_EquivalenceRelations_ProveModEquiv">
+      <statement>
+        <p>
+          Using <xref ref="definition_EquivalenceRelations_mod_eqiv_def_2">Definition</xref>,
+          show that equivalence mod <m>n</m> is an equivalence relation. (That is,
+          show that equivalence mod <m>n</m> is (a) reflexive, (b) symmetric,
+          and (c) transitive)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="exercise_EquivalenceRelations_ProveModEquiv">Exercise</xref>
+      enables us to apply the concepts we've been developing to modular arithmetic.
+      In particular,
+      it enables us to describe modular arithmetic in terms of equivalence classes.
+      We will do this first with a simple example: the integers mod 3.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_EquivalenceRelations_ModularArithmetic_IntegerMod3">
+    <title>The integers modulo 3</title>
+    <p>
+      We have proven in <xref ref="exercise_EquivalenceRelations_ProveModEquiv">Exercise</xref>
+      that equivalence mod 3 is a bona fide equivalence relation.
+      So what are the equivalence classes?
+      And how many are there?
+    </p>
+    <p>
+      We can use <xref ref="definition_EquivalenceRelations_mod_eqiv_def_1">Definition</xref> to answer this question.
+      The possible remainders when an integer is divided by<nbsp/><m>3</m> are either <m>0</m>,
+      <m>1</m>, or<nbsp/><m>2</m>.
+      This tells us that every integer is equivalent (modulo<nbsp/><m>3</m>) to either <m>0</m>,
+      <m>1</m>, or<nbsp/><m>2</m>.
+      Using <xref ref="proposition_EquivalenceRelations_EquivRelProps">Proposition</xref>(d),
+      it follows that:
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            for every <m>k \in \integer</m>,
+            the equivalence class<nbsp/><m>[k]_3</m> must be either <m>[0]_3</m>,
+            <m>[1]_3</m>, or<nbsp/><m>[2]_3</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      (To emphasize the fact that <m>n = 3</m>,
+      we have included a subscript<nbsp/><m>{}_3</m> in the notation for the equivalence classes).
+    </p>
+    <p>
+      Specifically:
+      <ul>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>[0]_3 = \{ \ldots, -6, -3, 0, 3, 6, \ldots \}</m>,
+          </p>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>[1]_3 = \{ \ldots, -5, -2, 1, 4, 7, \ldots \}</m>,
+          </p>
+        </li>
+        <li class="custom-list-style-type" label="">
+          <p>
+            <m>[2]_3 = \{ \ldots, -4, -1, 2, 5, 8, \ldots \}</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      are three equivalence classes that partition the set of all integers.
+      In the Modular Arithmetic chapter we defined the integers mod 3 as the set of remainders under division mod 3.
+      Here we will give another definition that looks very different,
+      but turns out to amount to basically the same thing.
+    </p>
+    <remark>
+      <p>
+        What do we really mean by,
+        <q>basically the same thing</q>? Hold that thought<ndash/>we'll come back to this point later(in <xref ref="subsec_EquivalenceRelations_ModularArithmetic_theSameThing">Section</xref>).
+      </p>
+    </remark>
+    <definition>
+      <statement>
+        <p>
+          {mod_eqiv_def_3} <term>(Integers mod 3, equivalence class definition)</term>
+          The set of equivalence classes
+          <m>\{ [0]_3, [1]_3, [2]_3 \}</m> is identified as the set of
+          <term>integers mod 3</term>,
+          and is represented by the symbol<nbsp/><m>\integer_3</m>.
+              <idx><h>Integers mod <m>n</m></h><h>as equivalence classes</h></idx>
+        </p>
+        <p>
+          We may also use the simpler notation
+          <m>\class{k}</m> to represent the equivalence class <m>[k]_3</m>.
+          So we may write either <m>\integer_3 = \{ [0]_3, [1]_3, [2]_3 \}</m> or <m>\integer_3 = \{ \class{0}, \class{1}, \class{2} \} </m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Take a moment to appreciate the difference between this definition of
+      <m>\mathbb{Z}_3</m> and the one we gave in <xref ref="sec_ModularArithmetic_IntegerModn">Section</xref>.
+      Previously we took <m>\mathbb{Z}_3</m> as the set of integers
+      <m>\{0,1,2\}</m> and defined new addition and multiplication operations that had the property of closure.
+      But now we're taking a different tack.
+      We are saying that the elements of <m>\integer_3</m> are
+      <em>equivalence classes</em> rather than numbers.
+      In other words,
+      the elements of <m>\integer_3</m> are <em>sets</em>.
+    </p>
+    <p>
+      To complete the connection with our previous definition of <m>\mathbb{Z}_3</m>,
+      we need to define arithmetic operations on <m>\integer_3</m>,
+      using our new characterization in terms of equivalence classes.
+      Note the additional level of abstraction here:
+      these arithmetic operations are defined on equivalence classes,
+      which are <em>sets</em> rather than numbers.
+      But we've seen this before:
+      recall that in the Sets chapter we defined operations on sets.
+      So you're old hands at this!
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {RulesOfModArith} (Rules of modular arithmetic) The
+          <term>arithmetic operations modulo<nbsp/><m>3</m></term>
+          are defined as follows:<idx><h>Modular arithmetic</h><h>on equivalence classes</h></idx>
+          <ul>
+            <li>
+              <p>
+                <m>[a]_3 + [b]_3 = [a+b]_3</m> (or <m>\class{a} + \class{b} = \class{a + b}</m>),
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>[a]_3 - [b]_3 = [a-b]_3</m> (or <m>\class{a} - \class{b} = \class{a - b}</m>),
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>[a]_3 \cdot [b]_3 = [ab]_3</m>
+                (or <m>\class{a} \cdot \class{b} = \class{a b}</m>).
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      In <xref ref="definition_EquivalenceRelations_RulesOfModArith">Definition</xref>
+      we're actually giving <em>new meanings</em>
+      to the symbols <m>+</m>,<m>-</m>,
+      and <m>\cdot</m> . We could make this explicit by using different symbols.
+      But this is not really necessary:
+      whenever we're doing arithmetic with equivalence classes mod 3
+      (or mod <m>n</m>, for that matter),
+      you should always presume that we're using the modular definitions of <m>+</m>,<m>-</m>,
+      and <m>\cdot</m> .
+    </p>
+    <example xml:id="ModPlusExample">
+      <statement>
+        <p>
+          We have <m>[1]_3 + [2]_3 = [1 + 2]_3 = [3]_3</m>.
+          However, since 3 and 0 are in the same equivalence class,
+          we have <m>[3]_3 = [0]_3</m>,
+          so the above equation can also be written as <m>[1]_3 + [2]_3 = [0]_3</m>.
+          Equivalently, <m>\class{1} + \class{2} = \class{0}</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      <xref ref="ModPlusExample">Example</xref>
+      illustrates the following general rule:
+      <me>
+        \text{ If \(r\) is the remainder when \(a + b\) is divided by \(3\), then \(\class{a} + \class{b} = \class{r}\).}
+      </me>
+    </p>
+    <p>
+      You may recognize that this is essentially the same rule that we used in our previous discussion of modular arithmetic.
+    </p>
+    <exercise xml:id="exercise_EquivalenceRelations_47">
+      <statement>
+        <p>
+          Write down similar rules for (a) subtraction mod 3; (b) multiplication mod 3.
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          Here is a table that shows the results of addition modulo<nbsp/><m>3</m>.
+          (Recall that in the Modular Arithmetic chapter we referred to such tables as
+          <term>Cayley tables</term>.)
+        </p>
+        <tabular>
+          <row>
+            <cell><m>+</m></cell>
+            <cell><m>\class{0}</m></cell>
+            <cell><m>\class{1}</m></cell>
+            <cell><m>\class{2}</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>\class{0}</m></cell>
+            <cell><m>\class{0}</m></cell>
+            <cell><m>\class{1}</m></cell>
+            <cell><m>\class{2}</m></cell>
+          </row>
+          <row>
+            <cell><m>\class{1}</m></cell>
+            <cell><m>\class{1}</m></cell>
+            <cell><m>\class{2}</m></cell>
+            <cell><m>\class{0}</m></cell>
+          </row>
+          <row>
+            <cell><m>\class{2}</m></cell>
+            <cell><m>\class{2}</m></cell>
+            <cell><m>\class{0}</m></cell>
+            <cell><m>\class{1}</m></cell>
+          </row>
+        </tabular>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_EquivalenceRelations_Mod3TablesEx">
+      <statement>
+        <p>
+          Make tables that show the results of:
+          <ol type="a">
+            <li xml:id="Mod3TablesEx-multiplication">
+              <p>
+                multiplication modulo<nbsp/><m>3</m>.
+              </p>
+            </li>
+            <li xml:id="Mod3TablesEx-subtraction">
+              <p>
+                subtraction modulo<nbsp/><m>3</m> (For <m>\class{a} - \class{b}</m>,
+                put the result in row <m>\class{a}</m> and column; <m>\class{b}</m>.)
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          For both (a) and (b),
+          all table entries should be either <m>\class{0}</m>,
+          <m>\class{1}</m>, or <m>\class{2}</m>.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_EquivalenceRelations_ModularArithmetic_Modn">
+    <title>The integers modulo <m>n</m></title>
+    <p>
+      The preceding discussion can be generalized to apply with any integer<nbsp/><m>n</m> in place of<nbsp/><m>3</m>.
+      This results in <term>modular arithmetic</term>.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {integ_mod_n} Fix some natural number <m>n</m>.
+          <ol type="a">
+            <li>
+              <p>
+                For any integer<nbsp/><m>k</m>,
+                we use <m>[k]_n</m> to denote the equivalence class of<nbsp/><m>k</m> under congruence modulo<nbsp/><m>n</m>.
+                When <m>n</m> is clear from the context,
+                we may write<nbsp/><m>\class{k}</m>, instead of <m>[k]_n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The set of these equivalence classes is called the
+                <term>integers modulo<nbsp/><m>n</m></term>.
+                  <idx><h>Integers modulo</h></idx>
+              It is denoted<nbsp/><m>\integer_n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Addition, subtraction,
+                and multiplication modulo<nbsp/><m>n</m> are defined by:
+                <ul>
+                  <li>
+                    <p>
+                      <m>\class{a} \mathbin{+} \class{b} = \class{a + b}</m>,
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <m>\class{a} \mathbin{-} \class{b} = \class{a - b}</m>, and
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <m>\class{a} \cdot \class{b} = \class{a b}</m>.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+              Just as in the case of mod 3, whenever we're doing arithmetic mod <m>n</m> you should understand that we are using these definitions of <m>+</m>,
+              <m>-</m>, and<nbsp/><m>\cdot</m>.
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Note that <m>\left|\integer_n \right| = n</m>.
+      (Recall that for a set <m>S</m>,
+      <m>|S|</m> means the number of elements in <m>S</m>.)
+      We may enumerate the elements precisely as follows:
+    </p>
+    <proposition xml:id="proposition_EquivalenceRelations_equivModN">
+      <statement>
+        <p>
+          For any <m>n \in \mathbb{N}^+</m>, we have
+          <me>
+            \integer_n = \{ \class{0}, \class{1}, \class{2}, \ldots, \class{n-1} \}
+          </me>
+          and <m>\class{0}, \class{1}, \class{2}, \ldots, \class{n-1}</m> are all distinct.
+        </p>
+      </statement>
+    </proposition>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_EquivalenceRelations_equivModN">Proposition</xref>.
+          It is sufficient to show (a) <m>\class{0}, \class{1}, \class{2}, \ldots, \class{n-1}</m> are distinct;
+          and (b) for any integer,
+          the equivalence class <m>\class{k}</m> is one of <m>\class{0}, \class{1}, \class{2}, \ldots, \class{n-1}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_EquivalenceRelations_ModArithEx">
+      <statement>
+        <p>
+          Using the definitions of addition, subtraction,
+          and multiplication given in part (c) of <xref ref="definition_EquivalenceRelations_integ_mod_n">Definition</xref>,
+          make tables that show the results of:
+          <ol type="a">
+            <li xml:id="ModArithEx-tables-addition">
+              <p>
+                addition modulo<nbsp/><m>4</m>.
+              </p>
+            </li>
+            <li xml:id="ModArithEx-tables-subtraction">
+              <p>
+                subtraction modulo<nbsp/><m>5</m>.
+              </p>
+            </li>
+            <li xml:id="ModArithEx-tables-multiplication">
+              <p>
+                multiplication modulo<nbsp/><m>6</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_EquivalenceRelations_ModArithEx2">
+      <statement>
+        <p>
+          Find <m>x,y \in \integer_{12}</m> such that
+          <m>x \neq \class{0}</m> and <m>y \neq \class{0}</m>,
+          but <m>x \cdot y = \class{0}</m>.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_EquivalenceRelations_ModularArithmetic_theSameThing">
+    <title>What do we mean by
+    <q>the same thing</q>?</title>
+    <p>
+      Now it's time to go back to our statement in <xref ref="subsec_EquivalenceRelations_ModularArithmetic_IntegerMod3">Section</xref>
+      that the definition of <m>\integer_n</m> and its operations in terms of equivalence classes is the
+      <q>same thing</q>
+      as the definition in terms of remainder arithmetic that we gave in the Modular Arithmetic chapter.
+    </p>
+    <p>
+      One way to see this is to consider the Cayley tables.
+      There is a striking similarity between the Cayley tables for <m>\oplus</m> and <m>\odot</m> that we computed in <xref ref="subsec_ModularArithmetic_cayleyForZn1">Section</xref>
+      and the tables that we just finished computing in the previous section:
+    </p>
+    <exercise xml:id="exercise_EquivalenceRelations_compareCaley">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Compute Cayley tables for <m>\oplus</m> and <m>\odot</m> for
+              <m>\integer_7</m> using remainder arithmetic
+              (as we did in <xref ref="subsec_ModularArithmetic_cayleyForZn1">Section</xref>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Compute Cayley tables for <m>+</m> and <m>\cdot</m> for
+              <m>\integer_7</m> using the method we used in the previous section.
+            </p>
+          </li>
+          <li>
+            <p>
+              Make profound comments about what you observe.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Whether we think of <m>\integer_n</m> as a subset of
+      <m>\integer</m> with operations <m>\oplus</m> and <m>\odot</m>,
+      or whether we think of <m>\integer_n</m> as a set of equivalence classes,
+      as far as practical computation is concerned it really makes no difference.
+      The operations give the same result.
+      Any equation that holds for the one version, also hold for the other.
+      Mathematically we describe this situation as saying that the two versions of
+      <m>\integer_n</m> are <term>isomorphic</term>.
+      We've encountered isomorphism before
+      (in <xref ref="subsec_ComplexNumbers_Graphical_remRepComplex">Section</xref>),
+      and later on we'll denote an entire chapter to this concept
+      (<xref ref="Isomorphism">Chapter</xref>).
+    </p>
+    <p>
+      We should hasten to add that although the two versions work the same computationally,
+      the conceptual differences between the two are important.
+      Looking at the
+      <q>same thing</q>
+      in different ways can inspire new ideas that may bring deep insights and breakthroughs in understanding.
+      In fact, this is one of the most powerful tools in the mathematican's toolbox.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_EquivalenceRelations_ModularArithmetic_WellDefSect">
+    <title>Something we have swept under the rug</title>
+    <p>
+      The discussion of modular arithmetic ignored a very important point.
+      When we evaluate <m>\class{a} \mathbin{+} \class{b}</m>,
+      we use the following process:
+      <ul>
+        <li>
+          <p>
+            Choose an element from <m>\class{a}</m> and an element from <m>\class{b}</m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            Add them together (using regular integer arithmetic);
+          </p>
+        </li>
+        <li>
+          <p>
+            Find the equivalence class of the result.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      But suppose we had chosen <em>different</em>
+      elements to represent <m>\class{a}</m> and <m>\class{b}</m>:
+      how do we know that we would come up with the same answer?
+      In other words: how do we know that
+      <m>\class{a} \mathbin{+} \class{b}</m> is independent of the choice of representatives from
+      <m>\class{a}</m> and <m>\class{b}</m>?
+    </p>
+    <p>
+      So there's a little more work we have to do here to make sure that we don't get into trouble.
+      We need to show that the operations of addition,
+      subtraction, and multiplication are
+      <term>well-defined</term>:
+          <idx><h>Well defined</h></idx>
+      that is, if <m>a_1, a_2, b_1</m>,
+      and <m>b_2</m> are integers such that <m>\class{a_1} = \class{a_2}</m> and
+      <m>\class{b_1} = \class{b_2}</m>, then we need to show that
+      <ol type="a">
+        <li>
+          <p>
+            <m>\class{a_1} \mathbin{+} \class{b_1} = \class{a_2} \mathbin{+} \class{b_2}</m>,
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\class{a_1} \mathbin{-} \class{b_1} = \class{a_2} \mathbin{-} \class{b_2}</m>,
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\class{a_1} \cdot \class{b_1} = \class{a_2} \cdot \class{b_2}</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Fortunately, these statements are all true,
+      as you will show in the following exercise.
+    </p>
+    <exercise xml:id="exercise_EquivalenceRelations_54">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Fill in the blanks in the following proof of statement (a) above that <m>\mathbin{+}</m> is well-defined
+              (that is, that <m>\class{a_1} = \class{a_2}</m> and
+              <m>\class{b_1} = \class{b_2}</m> implies that <m>\class{a_1} + \class{b_1} = \class{a_2} + \class{b_2}</m>):
+              Suppose <m>\class{a_1} = \class{a_2}</m> and <m>\class{b_1} = \class{b_2}</m>.
+              <ol type="i">
+                <li>
+                  <p>
+                    From the definition of equivalence class,
+                    it follows that <m>a_1 \equiv \underline{~\lt 1>~} \pmod{n}</m> and <m>b_1 \equiv \underline{~\lt 2>~} \pmod{n}</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    By <xref ref="definition_EquivalenceRelations_mod_eqiv_def_2">Definition</xref>,
+                    it follows that <m>a_1 = a_2 + k_1 \cdot \underline{~\lt 3>~}</m> and <m>b_1 = b_2 + k_2 \cdot \underline{~\lt 4>~}</m>,
+                    where <m>k_1</m> and <m>k_2</m> are <m>\underline{~\lt 5>~}</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    By substitution and integer arithmetic,
+                    it follows that <m>(a_1 + b_1) - (a_2 + b_2) = \underline{~\lt 6>~}</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Since <m>k_1 + k_2</m> is an integer it follows from <xref ref="definition_EquivalenceRelations_mod_eqiv_def_2">Definition</xref>
+                    that <m>(a_1 + b_1) \equiv \underline{~\lt 7>~} \pmod{\underline{~\lt 8>~}}</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    It follows from <xref ref="proposition_EquivalenceRelations_EquivRelProps">Proposition</xref>(d) that <m>\underline{~\lt 9>~}</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    From <xref ref="definition_EquivalenceRelations_integ_mod_n">Definition</xref>
+                    (c) we have <m>\class{a_1} \mathbin{+} \class{b_1} = \underline{~\lt 10>~}</m> and <m>\class{a_2} \mathbin{+} \class{b_2} = \underline{~\lt 11>~}</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    By substitution we obtain that <m>\class{a_1} + \class{b_1} = \class{a_2} + \class{b_2}</m>,
+                    which implies that <m>\mathbin{+}</m> is well-defined on equivalence classes.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+          <li>
+            <p>
+              By following the proof in part (a),
+              prove that subtraction mod <m>n</m> is well-defined.
+            </p>
+          </li>
+          <li>
+            <p>
+              By following the proof in part (a),
+              prove that multiplication mod <m>n</m> is well-defined.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Actually, finding operations that are well-defined on equivalence classes is somewhat of a big deal.
+      In many cases, candidate operations turn out to be
+      <em>not</em> well-defined:
+    </p>
+    <exercise xml:id="exercise_EquivalenceRelations_ExpModNotWellDef">
+      <statement>
+        <p>
+          Suppose we try to define an exponentiation operation on <m>\integer_3</m> by:
+          <me>
+            {[a]_3}^{\,\wedge} \, [b]_3 = [a^b]_3  \text{ for }  [a]_3, [b]_3 \in \integer_3
+          </me>.
+        </p>
+        <p>
+          Show that <m>\;^{\wedge}</m> is not well-defined:
+          that is, find <m>a_1, b_1, a_2, b_2 \in \integer</m>,
+          such that <m>[a_1]_3 = [a_2]_3</m> and <m>[b_1]_3 = [b_2]_3</m>,
+          but <m>\left[a_1^{b_1} \right]_3 \neq \left[a_2^{b_2} \right]_3</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_EquivalenceRelations_WellDefEx">
+      <statement>
+        <ol type="a">
+          <li xml:id="WellDefEx-AbsVal0">
+            <p>
+              Show that absolute value does <em>not</em>
+              produce a well-defined function from<nbsp/><m>\integer_7</m> to<nbsp/><m>\integer_7</m>.
+              That is, show there exist <m>a,b \in \integer</m>, such that
+              <me>
+                [a]_7 = [b]_7, \text{ but }  \bigl[ |a| \bigr]_7 \neq \bigl[ |b| \bigr]_7
+              </me>.
+            </p>
+          </li>
+          <li xml:id="WellDefEx-AbsVal">
+            <p>
+              Show that part (a) is true for <em>every</em> <m>n > 2</m>.
+              That is, show that absolute value does <em>not</em>
+              provide a well-defined function from<nbsp/><m>\integer_n</m> to<nbsp/><m>\integer_n</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_EquivalenceRelations_57">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that there is a well-defined function <m>f \colon \integer_{12} \to \integer_{4}</m>,
+              given by <m>f \bigl( [a]_{12} \bigr) = [a]_{4}</m>.
+              That is, show that if <m>[a]_{12} = [b]_{12}</m>,
+              then <m>[a]_4 = [b]_4</m>.
+            </p>
+          </li>
+          <li xml:id="WellDefEx-divide">
+            <p>
+              Generalize part (a) by showing that if <m>m</m> divides <m>n</m>,
+              then there is a well-defined function <m>f \colon \integer_n \to \integer_m</m>,
+              given by <m>f \bigl( [a]_n \bigr) = [a]_m</m>.
+              That is, show that if <m>[a]_n = [b]_n</m>,
+              then <m>[a]_m = [b]_m</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_EquivalenceRelations_58">
+      <statement>
+        <ol type="a">
+          <li xml:id="WellDefEx-odd2">
+            <p>
+              Show that if we try to define a function
+              <m>g \colon \integer_3 \to \integer_2</m> by <m>g \bigl( [a]_3 \bigr) = [a]_2</m>,
+              then the result is <em>not</em> well-defined.
+              That is, show that there exist
+              <m>a,
+              b \in \integer</m> such that
+              <m>[a]_3 = [b]_3</m> but <m>[a]_2 \neq [b]_2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Generalize part (a) by showing that
+              <m>m,
+              n</m> are integers and <m>m</m> does not divide <m>n</m>,
+              then the function <m>f: \integer_n \to \integer_m</m> given by <m>f \bigl( [a]_n \bigr) = [a]_m</m> is
+              <em>not</em> well-defined.
+              That is, show that there exists integers <m>a</m>,
+              <m>b</m> such that <m>[a]_n = [b]_n</m> and <m>[a]_m \neq [b]_m</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Recall that <m>\integer_n</m> replaces integers <m>a</m> and<nbsp/><m>b</m> that are congruent modulo<nbsp/><m>n</m> with objects<nbsp/><m>\class{a}</m> and<nbsp/><m>\class{b}</m> that are exactly equal to each other.
+      This was achieved by letting
+      <m>\integer_n</m> be the set of all equivalence classes.
+      The set <m>\integer_n</m> applies only to congruence modulo<nbsp/><m>n</m>,
+      but the same thing can be done for any equivalence relation:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {moduloRelation} Suppose <m>\sim</m> is an equivalence relation on a set<nbsp/><m>A</m>.
+          The set of all equivalence classes is called
+          <term><m>A</m> modulo<nbsp/><m>\sim</m></term>.
+          It is denoted <m>A/\mathord{\sim}</m>.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          Suppose we define an equivalence relation<nbsp/><m>\sim</m> on<nbsp/><m>\integer</m> by
+          <m>a \sim b</m> iff <m>a \equiv b \pmod{n}</m>.
+          Then <m>\integer/\mathord{\sim}</m> is simply another name for<nbsp/><m>\integer_n</m>.
+        </p>
+      </statement>
+    </example>
+  </subsection>
+</section>

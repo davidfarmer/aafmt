@@ -1,0 +1,382 @@
+<section xml:id="sec_ComplexNumbers_StudyGuide">
+  <title>Study guide  for
+  <q>Complex Numbers</q>
+  chapter</title>
+  <introduction>
+    <p>
+      Note: all study guides were written by Katrina Smith.
+    </p>
+  </introduction>
+  <subsection>
+    <title><xref ref="sec_ComplexNumbers_Origin">Section</xref>, The origin of complex numbers</title>
+    <subsubsection>
+      <title>Concepts</title>
+      <ol>
+        <li>
+          <p>
+            <m>n</m>th roots of a real number
+          </p>
+        </li>
+        <li>
+          <p>
+            Roots of a real function
+          </p>
+        </li>
+        <li>
+          <p>
+            Proof by contradiction
+          </p>
+        </li>
+        <li>
+          <p>
+            Irrational number: cannot be written as a quotient of integers
+          </p>
+        </li>
+        <li>
+          <p>
+            Definition of <m>i</m> (square root of <m>-1</m>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Definition of complex numbers:
+            <m>\mathbb{C}=\{a+bi, a,b \in \mathbb{R} \}</m>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Notation</title>
+      <ol>
+        <li>
+          <p>
+            Symbols for number systems: <m>\mathbb{R}</m>=real numbers,
+            <m>\mathbb{Z}</m>=integers, <m>\mathbb{N}</m>=natural numbers
+            (positive integers),
+            <m>\mathbb{Q}</m>=rational numbers,
+            <m>\mathbb{C}</m>=complex numbers
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\exists</m> means
+            <q>there exists</q>, and <m>\in</m> means
+            <q>element of</q>. So <m>\exists x \in \mathbb{C}, x^3 = -1</m> means ``there exists a complex number <m>x</m> such that <m>x^3=-1</m>.
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Given a real number,
+            prove whether it has any real <m>n</m>th roots. ( <xref ref="exercise_ComplexNumbers_root1"></xref>,
+            <xref ref="exercise_ComplexNumbers_root2"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Use proof by contradiction to prove a value or function has no real roots. ( <xref ref="exercise_ComplexNumbers_root1"></xref>,
+            <xref ref="exercise_ComplexNumbers_root2"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Given an <m>n</m>th root which is not an integer,
+            prove that it is irrational. ( <xref ref="exercise_ComplexNumbers_6"></xref>,
+            <xref ref="exercise_ComplexNumbers_4"></xref>)
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_ComplexNumbers_Arithmetic">Section</xref>, Arithmetic with complex numbers</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Complex arithmetic
+          </p>
+        </li>
+        <li>
+          <p>
+            Identity &amp; inverse (additive &amp; multiplicative)
+          </p>
+        </li>
+        <li>
+          <p>
+            Associative law
+          </p>
+        </li>
+        <li>
+          <p>
+            Commutative law
+          </p>
+        </li>
+        <li>
+          <p>
+            Absolute value or modulus of complex number
+          </p>
+        </li>
+        <li>
+          <p>
+            Complex conjugate
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Key Formulas</title>
+      <ol>
+        <li>
+          <p>
+            Complex addition: <m>(a + bi) + (c + di) = (a + c) + (b + d)i</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Complex multiplication (FLOI):
+            <m>(a + bi)(c + di) = (ac - bd) + (ad + bc)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Complex division:
+            <m>\dfrac{(c + di)}{(a + bi)} = \dfrac{(c + di)(a - bi)}{(a^{2} + b^{2})}, \text{ when } \, (a + bi) \ne 0</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Modulus of complex number: <m>\mid z \mid = \sqrt{a^{2} + b^{2}}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Complex conjugate of a complex number:
+            <m>\bar{z} = a - bi</m>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Simplify expressions involving complex numbers in <m>a+bi</m> form,
+            including inverse and complex conjugation. ( <xref ref="exercise_ComplexNumbers_9"></xref>,
+            <xref ref="exercise_ComplexNumbers_18"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Simplify algebraic expressions with variables in <m>a+bi</m> form,
+            including inverse and complex conjugation. ( <xref ref="exercise_ComplexNumbers_9"></xref>d,
+            e, k, <xref ref="exercise_ComplexNumbers_18"></xref>i, j)
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to state the associative,
+            inverse, identity, commutative,
+            and distributive properties for different number systems.
+            <xref ref="exercise_ComplexNumbers_15"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove identities for a complex number <m>z</m> involving algebraic expressions, modulus,
+            complex conjugate <em>without</em>
+            converting back to Cartesian form. ( <xref ref="exercise_ComplexNumbers_cxprops"></xref>a-i)
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_ComplexNumbers_Graphical">Section</xref>, Alternative representations of complex numbers</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            Forms of complex number: rectangular and polar form
+          </p>
+        </li>
+        <li>
+          <p>
+            Converting from rectangular form to polar form and vice versa
+          </p>
+        </li>
+        <li>
+          <p>
+            Complex multiplication and division using polar form
+          </p>
+        </li>
+        <li>
+          <p>
+            De Moivre's Theorem (raising complex numbers to integer powers)
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Key Formulas</title>
+      <ol>
+        <li>
+          <p>
+            Converting from polar form to rectangular:
+            <m>a = r\cos\theta; b = r\sin\theta</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Converting from rectangular form to polar:
+            <m>r = \mid z \mid = \sqrt{a^{2}+b^{2}}; \\\theta = \tan^{-1}\left(\dfrac{b}{a}\right)</m> (** be careful about
+            <m>\tan^{-1}</m> <mdash/> make sure it's in the right quadrant **)
+          </p>
+        </li>
+        <li>
+          <p>
+            Multiplication of complex numbers:
+            <m>r \cis \theta \cdot s \cis \phi = rscis(\theta + \phi)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Division of complex numbers:
+            <m>\dfrac{r \cis \theta}{s \cis \phi} = \left(\dfrac{r}{s}\right)cis(\theta - \phi)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            De Moivre's Theorem:
+            <m>(r \cis \theta)^{n} = r^{n}\cis(n \theta)</m> {Notes}
+            <ol type="a">
+              <li>
+                <p>
+                  <m>r \cis \theta \text{ := } r(\cos\theta + i\sin\theta</m>);
+                  <q>:=</q>
+                  means
+                  <q>is defines as</q>
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Be able to convert back and forth between rectangular form and polar form. ( <xref ref="exercise_ComplexNumbers_21"></xref>,
+            <xref ref="exercise_ComplexNumbers_22"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Perform complex multiplications and divisions using polar form
+            (if the problem is stated in terms of rectangular form,
+            convert to polar form first). ( <xref ref="exercise_ComplexNumbers_25"></xref>,
+            <xref ref="exercise_ComplexNumbers_26"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Raise complex numbers to positive and negative integer powers using de Moivre's theorem.
+            <xref ref="exercise_ComplexNumbers_31"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove trigonometric formulas for <m>\cos(n\theta)</m> and
+            <m>\sin(n\theta)</m> using de Moivre's theorem.
+            <xref ref="exercise_ComplexNumbers_cos_form"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+  <subsection>
+    <title><xref ref="sec_ComplexNumbers_ComplexRoots">Section</xref>, Complex numbers and roots of algebraic equations</title>
+    <subsubsection>
+      <title>Concepts:</title>
+      <ol>
+        <li>
+          <p>
+            <m>n^{th}</m> roots of unity
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>n^{th}</m> roots of arbitrary complex numbers
+          </p>
+        </li>
+        <li>
+          <p>
+            The Fundamental Theorem of Algebra
+          </p>
+        </li>
+        <li>
+          <p>
+            Complex roots of polynomials with real coefficients come in conjugate pairs.
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Key Formulas</title>
+      <ol>
+        <li>
+          <p>
+            Roots of unity:
+            <m>z = \cis\left(\dfrac{2k\pi}{n}\right),\text{ where } \, k = 0, 1, ... , n - 1</m>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+    <subsubsection>
+      <title>Competencies</title>
+      <ol>
+        <li>
+          <p>
+            Know how to find <m>n^{th}</m> roots of unity for any <m>n \in \mathbb{N}</m>.
+            <xref ref="exercise_ComplexNumbers_49"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Relate complex conjugation and multiplication by <m>n^{th}</m> roots of unity to rigid motions of a regular <m>n</m>-gon. ( <xref ref="exercise_ComplexNumbers_hexagon_rotate"></xref>
+            - <xref ref="exercise_ComplexNumbers_non_comm"></xref>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Find all <m>n^{th}</m> roots of a given complex number by (1) Finding a single root using de Moivre's theorem: (2) Multiplying that single root by all <m>n^{th}</m> roots of unity.
+            (Note: there are always <m>n</m> <m>n^{th}</m> roots for any complex number.)
+            ( <xref ref="exercise_ComplexNumbers_58a"></xref>,
+            <xref ref="exercise_ComplexNumbers_60"></xref>).
+          </p>
+        </li>
+        <li>
+          <p>
+            Be able to prove complex conjugation properties of roots of polynomial equations with real coefficients.
+            <xref ref="exercise_ComplexNumbers_cubic_conj"/>
+          </p>
+        </li>
+        <li>
+          <p>
+            Use complex conjugate properties of roots to reconstruct polynomials.
+            <xref ref="exercise_ComplexNumbers_62"/>
+          </p>
+        </li>
+      </ol>
+    </subsubsection>
+  </subsection>
+</section>

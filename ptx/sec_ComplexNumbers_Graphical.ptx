@@ -1,0 +1,1064 @@
+<section xml:id="sec_ComplexNumbers_Graphical">
+  <title>Alternative representations of complex numbers<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="subsec_ComplexNumbers_Graphical_CartesianRepresentation">
+    <title>Cartesian representation of complex numbers</title>
+    <p>
+      There are several ways to represent complex numbers,
+      that have different conceptual advantages.
+      For instance,
+      a complex number <m>z=a+bi</m> can be considered simply as a pair of real numbers <m>(a,b)</m>,
+      where the first number is the real part and the second number is the imaginary part.
+      We are used to plotting ordered pairs <m>(a,b)</m> on an <m>xy</m> plane,
+      where <m>a</m> is the <m>x</m> coordinate and <m>b</m> is the <m>y</m> coordinate.
+      Representing a complex number in this way as an ordered pair <m>(a,b)</m> is called the <term>rectangular</term>
+      or <term>Cartesian</term> representation.
+      The rectangular<idx><h>Complex numbers</h><h>rectangular or Cartesian representation</h></idx> representations of <m>z_{1}=2+3i</m>,
+      <m>z_{2}=1-2i</m>,
+      and <m>z_{3}=-3+2i</m> are depicted in <xref ref="rectcoord">Figure</xref>.
+    </p>
+    <p>
+      Often the notation <m>a + bi</m> is also referred to as
+      <q>rectangular representation</q>, since it's so similar to <m>(a,b)</m>.
+      In the following, we will refer to <m>a + bi</m> as the
+      <q>rectangular form</q>
+      of the complex number <m>z</m>.
+    </p>
+    <p>
+      Mathematicians naturally think of complex numbers as points on a plane <mdash/> in fact,
+      the complex numbers are often referred to as the
+      <q>complex plane</q>.
+          <idx><h>Complex plane</h></idx>
+    </p>
+    <figure xml:id="rectcoord">
+      <caption>Rectangular coordinates of a complex number</caption>
+      <image>
+<latex-image>
+<![CDATA[\begin{tikzpicture}\draw [->]  (0,-5) -- (0,5);
+\draw  [->] (-8,0) -- (8,0);
+\node [right] at (0,5) {\(y\)};
+\node [below] at (8,0) {\(x\)};
+\node [below] at (0.5,0) {\(0\)};
+\filldraw[fill=black, draw=black] (2,3) circle (0.05cm);
+\node [right] at (2,3) {\(z_1 = 2 + 3i\)};
+\filldraw[fill=black, draw=black] (-3,2) circle (0.05cm);
+\node [left] at (-3, 2) {\(z_3 = -3 + 2i\)};
+\filldraw[fill=black, draw=black] (1,-2) circle (0.05cm);
+\node [right] at (1, -2) {\(z_2 = 1 -  2i\)};\end{tikzpicture}]]>
+</latex-image>
+      </image>
+    </figure>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Graphical_VectorRepresentation">
+    <title>Vector representation of complex numbers</title>
+    <p>
+      You should already know that a point in a plane can also be considered as a <em>vector</em>:
+      in other words,
+      the ordered pair <m>(a,b)</m> can be identified with the vector <m>a</m><em>i</em> + <m>b</m><em>j</em>,
+      where <em>i</em> and <em>j</em>
+      are the unit vectors in the <m>x+</m> and <m>y+</m> directions,
+      respectively.
+      So complex numbers can also be considered as two-dimensional vectors.
+          <idx><h>Complex numbers</h><h>vector representation</h></idx>
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_19">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Write the numbers <m>3 + 7i</m> and <m>-5 + 9i</m> as vectors.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the sum of the two vectors that you found in (a).
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the sum <m>(3 + 7i) + (-5 + 9i)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the relation between your answers to (b) and (c)?
+              Explain.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Although the preceding exercise may seem sort of pointless,
+      in fact it is extremely significant.
+      This is our first example of an <em>isomorphism</em>:
+      a correspondence between mathematical systems that are essentially identical.
+      At this point we will not give a formal definition of isomorphism,
+      but to get the gist of the idea consider two mathematicians (Stan and Ollie) with very different tastes.
+      Stan thinks geometrically,
+      so he always thinks of complex numbers as vectors in a plane;
+      while Ollie thinks algebraically,
+      so he writes complex numbers as <m>a + bi</m>.
+      If Stan and Ollie work on the same problem involving complex addition,
+      even though Stan's answer will be a vector and Ollie's will look like <m>a + bi</m>,
+      their answers will always agree
+      (that is, if they both do the problem right).
+    </p>
+    <p>
+      Of course this correspondence between complex numbers and vectors breaks down when we consider multiplication,
+      because we have never seen multiplication of 2-D vectors before.
+      But it works perfectly well if we stick with addition.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Graphical_PolarRepresentation">
+    <title>Polar representation of complex numbers</title>
+    <p>
+      Nonzero complex numbers can also be represented using
+      <term>polar coordinates</term>.
+          <idx><h>Polar coordinates</h></idx>
+      To specify any nonzero point on the plane,
+      it suffices to give an angle <m>\theta</m> from the positive <m>x</m> axis in the counterclockwise direction and a distance <m>r</m> from the origin,
+      as in <xref ref="fig_polarcoord">Figure</xref>.
+          <idx><h>Polar coordinates</h></idx>
+          <idx><h>Complex numbers</h><h>polar representation</h></idx>
+      The distance <m>r</m> is the absolute value or modulus defined previously, while the angle <m>\theta</m> is called the <em><em>argument</em></em><idx><h>Argument</h><h>of complex number</h></idx>
+      of the complex number <m>z</m>.
+    </p>
+    <figure xml:id="fig_polarcoord">
+      <caption>Polar coordinates of a complex number</caption>
+      <image>
+<latex-image>
+<![CDATA[\begin{tikzpicture}\draw [->]  (0,-5) -- (0,5);
+\draw  [->] (-8,0) -- (8,0);
+\node [right] at (0,5) {\(y\)};
+\node [below] at (8,0) {\(x\)};
+\node [below] at (0.5,0) {\(0\)};
+\draw (0,0) -- (35:6);
+\draw (2,0) arc (0:35:2);
+\filldraw[fill=black, draw=black] (35:6) circle (0.05cm);
+\node [right] at (35:6) {\(a + bi\)};
+\node [above] at (35:3) {\(r\)};
+\node [right] at (17:2) {\(\theta\)};\end{tikzpicture}]]>
+</latex-image>
+      </image>
+    </figure>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Graphical_RectToPolar">
+    <title>Converting between rectangular and polar form</title>
+    <p>
+      We can see from the <xref ref="fig_polarcoord">Figure</xref> that
+      <me>
+        z=a+bi=r\cos\theta+( r\sin\theta) i
+      </me>,
+      where
+      <md>
+        <mrow>r\amp =|z|=\sqrt{a^{2}+b^{2}}</mrow>
+        <mrow>a \amp  =r\cos\theta</mrow>
+        <mrow>b \amp  =r\sin\theta</mrow>
+      </md>.
+    </p>
+    <p>
+      We will frequently use the abbreviation <sq>cis</sq>, which stands for
+      <q>cosine plus <m>i</m> sine</q>:
+          <idx><h>Cis</h><h>definition</h></idx>
+      <me>
+        \cis\theta := \cos\theta+i\sin\theta
+      </me>.
+    </p>
+    <p>
+      (In this expression, the notation
+      <q>:=</q>
+      means
+      <q>is defined as</q>. Note that we're writing <sq><m>i\sin\theta</m></sq> instead of <m>(\sin \theta) i</m>,
+      because then we don't need a parenthesis.) Multiplying both sides by <m>r</m> gives
+      <me>
+        r\cis\theta = r(\cos\theta+i\sin\theta)
+      </me>
+    </p>
+    <p>
+      We know from trigonometry that adding <m>2 \pi</m> to <m>\theta</m> does not change
+      <m>\cos \theta</m> or <m>\sin \theta</m>.
+      This means for example that the following complex numbers are equal:
+      <m>2.6 \cis\left(\frac{\pi}{9}\right), 2.6 \cis\left(2\pi + \frac{\pi}{9}\right), 2.6 \cis\left(-2\pi + \frac{\pi}{9}\right), \ldots</m>.
+      However, we can always find a <m>\theta</m> between <m>0</m> and <m>2\pi</m> such that <m>z = r \cis \theta</m>;
+      so the standard representation of
+      <m>z = r \cis \theta</m> has <m>0 \leq \theta \lt 2\pi</m>.
+    </p>
+    <example xml:id="example_ComplexNumbers_1">
+      <statement>
+        <p>
+          Let <m>z=2\cis \frac{\pi}{3}</m>.
+          Then
+          <me>
+            a=2\cos \frac{\pi}{3}=1
+          </me>
+          and
+          <me>
+            b=2\sin \frac{\pi}{3}=\sqrt{3}
+          </me>.
+        </p>
+        <p>
+          Hence, the rectangular representation is <m>z=1+\sqrt{3}\, i</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Conversely, if we are given a rectangular representation of a complex number,
+      it is often useful to know the number's polar representation.
+    </p>
+    <example xml:id="example_ComplexNumbers_2">
+      <statement>
+        <p>
+          Let <m>z=3\sqrt{2}-3\sqrt{2}\, i</m>
+          (see <xref ref="fig_ComplexNumbers_polar_to_cart">Figure</xref>).
+          Then the modulus of <m>z</m> is
+          <me>
+            r=\sqrt{a^{2}+b^{2}}=\sqrt{36}=6
+          </me>.
+        </p>
+        <p>
+          We can find the argument <m>\theta</m> by noticing that the tangent is equal to <m>\frac{-3\sqrt{2}}{3\sqrt{2}}</m> or <m>-1</m>.
+          This means that <m>\theta = \arctan(-1)</m>.
+          Since the angle is in the fourth quadrant,
+          this means that <m>\theta = \frac{7\pi}{4}</m>.
+        </p>
+        <p>
+          In general, for the complex number <m>a + b\,i</m> we have
+          <me>
+            \theta=\arctan\left(\frac{b}{a}\right)
+          </me>,
+          where we must be careful to choose the value of <m>\theta</m> corresponding to the quadrant where <m>a + b\,i</m> is located.
+          The best way to make sure you've chosen the right <m>\theta</m> is to <em>draw a picture</em>
+          (like <xref ref="fig_ComplexNumbers_polar_to_cart">Figure</xref>).
+        </p>
+      </statement>
+    </example>
+    <figure xml:id="fig_ComplexNumbers_polar_to_cart">
+      <caption>Modulus and argument of  <m>z=3\sqrt{2}-3\sqrt{2}\  i</m></caption>
+      <image width="46%" source="images/polar_to_cart.png"/>
+    </figure>
+    <exercise xml:id="exercise_ComplexNumbers_21">
+      <statement>
+        <p>
+          Convert the following complex numbers to rectangular form
+          (that is, write as <m>a + bi</m>).
+          Give <em>exact</em> answers and not decimals
+          (use square roots if necessary).
+          <ol type="a">
+            <li>
+              <p>
+                <m>2 \cis(\pi / 6 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>5 \cis(9\pi/4)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>3 \cis(\pi)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{\cis(7\pi/4)}{2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sqrt{2} \cis(5\pi / 3 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\frac{1}{\sqrt{7}} \cis(-7\pi / 6 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>14 \cis(30 \pi / 12 )</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_22">
+      <statement>
+        <p>
+          Convert the following complex numbers to polar representation (Give exact answers,
+          no decimal approximations).
+          <ol type="a">
+            <li>
+              <p>
+                <m>1-i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>-1 + i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>-5</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>2+2i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>-2 - 2i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sqrt{3} + i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>-3i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>2i + 2 \sqrt{3}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sqrt{6} - \sqrt{6}i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>-3\sqrt{2} - \sqrt{6}i</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>-\sqrt{50} - \sqrt{50}i</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Pictures are essential for gaining an intuitive grasp of how complex numbers work.
+      They're also a lot more fun to draw than mathematical symbols.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_cos_form2">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              <xref ref="fig_polarcoord">Figure</xref>
+              shows polar and Cartesian representations of a complex number <m>z</m> in the complex plane.
+              Redraw the figure, and put
+              <m>\overline{z}</m> in the picture as well.
+              Show the Cartesian coordinates of <m>\overline{z}</m>,
+              as well as the modulus and the complex argument
+              (angle).
+            </p>
+          </li>
+          <li>
+            <p>
+              Use your picture to obtain the polar representation of <m>\bar{z}</m> in terms of the modulus and complex argument of <m>z</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      The close interrelationship between plane geometry and complex numbers is a rich source of mathematical insight.
+      The following exercise explores some aspects of this relationship.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_23">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Consider the following set of complex numbers:
+              <me>
+                \{z \text{ such that }  |z| \lt  2. \}
+              </me>
+              In the complex plane, what does this set look like?
+              Draw a picture, and describe verbally.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use complex numbers to specify the set of all points on a circle of radius 5 with center at the origin (your answer should look like the set specification given in part (a)).
+            </p>
+          </li>
+          <li>
+            <p>
+              Consider the following set of complex numbers:
+              <me>
+                \{z \text{ such that }  |z-i| = 2. \}
+              </me>
+              In the complex plane, what does this set look like?
+              Draw a picture, and describe verbally.
+            </p>
+          </li>
+          <li>
+            <p>
+              Describe the following as a set of complex numbers:
+              the set of all points on a circle of radius 3 that passes through the origin and has center on the positive <m>x</m>-axis.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Graphical_MultPowerComplexPolar">
+    <title>Multiplication and powers in complex polar form</title>
+    <p>
+      The polar representation of a complex number makes it easy to find products,
+      quotients, and powers of complex numbers.
+    </p>
+    <proposition xml:id="proposition_ComplexNumbers_polar_mult">
+      <statement>
+        <p>
+          Let <m>z=r\cis\theta</m> and
+          <m>w=s\cis\phi</m> be two nonzero complex numbers.
+          Then
+          <me>
+            z \cdot w=rs\cis(\theta+\phi)
+          </me>.
+        </p>
+        <p>
+          Alternatively, we may write
+          <me>
+            r \cis \theta \cdot s \cis \phi =rs\cis(\theta+\phi)
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        The proof uses the following trigonometric formulas (surely you remember them!):
+        <md>
+          <mrow>\cos(\theta + \phi ) \amp = \cos\theta\cos\phi - \sin\theta\sin\phi</mrow>
+          <mrow>\sin(\theta + \phi ) \amp = \cos\theta \cdot \sin\phi + \sin\theta \cdot \cos\phi</mrow>
+        </md>
+      </p>
+      <exercise xml:id="exercise_ComplexNumbers_24">
+        <statement>
+          <p>
+            Fill in the blanks to complete the proof:
+            <md>
+              <mrow>z \cdot w \amp = r\cis\theta \cdot \underline{~\lt 1>~}</mrow>
+              <mrow>\amp = r \left( \cos\theta + i \sin(\underline{~\lt 2>~}) \right) \cdot s  \left( \underline{~\lt 3>~} \right)</mrow>
+              <mrow>\amp =  rs \cdot \left( \cos\theta + i \sin(\underline{~\lt 4>~}) \right) \cdot  \left( \underline{~\lt 5>~}\right)</mrow>
+              <mrow>\amp =  rs \left( (\cos\theta \cos\phi   - \sin\theta \sin\phi)  + i(\underline{~\lt 6>~}) \right)</mrow>
+              <mrow>\amp =  rs  \left( \cos(\theta + \phi) + i\sin( \underline{~\lt 7>~}) \right)</mrow>
+              <mrow>\amp =  r s  \cis( \underline{~\lt 8>~})</mrow>
+            </md>
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <exercise xml:id="exercise_ComplexNumbers_proof_of_mod2">
+      <statement>
+        <p>
+          Use <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>
+          and the polar expression for <m>\bar{z}</m> that was given in <xref ref="subsec_ComplexNumbers_Graphical_RectToPolar">Section</xref>
+          to give a simple proof of the following identity:
+          <me>
+            z \bar{z} = |z|^2
+          </me>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We will also want to divide complex numbers in polar form.
+      But first, we need to characterize multiplicative inverses.
+      Note for example that <m>\left[2 \cis (3\pi / 4)\right]^{-1} = (1/2) \cis (-3 \pi/4)</m> since
+      <me>
+        2 \cis (3\pi / 4) \cdot (1/2) \cis (-3 \pi/4) = 2 \cdot (1/2) \cdot \cis( 3\pi/4 -3 \pi /4) = \cis(0) = 1
+      </me>,
+      and similarly
+      <me>
+        (1/2) \cis (-3 \pi/4) \cdot 2 \cis (3\pi / 4)  = \cis(0) = 1
+      </me>.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_polar_z_inv">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Let <m>z = 13 \cis\left(\frac{5\pi}{7}\right)</m>.
+              Find a complex number <m>w</m>
+              (in complex polar form)
+              such that <m>zw = wz = 1</m>.
+              Write <m>w</m> so that its argument is between <m>0</m> and <m>2\pi</m>.
+              What is the sum of the arguments of <m>z</m> and <m>w</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>z = \frac{3}{8} \cis\left(0.39\pi\right)</m>.
+              Find a complex number <m>w</m>
+              (in complex polar form)
+              such that <m>zw = wz = 1</m>.
+              Write <m>w</m> so that its argument is between <m>0</m> and <m>2\pi</m>.
+              What is the sum of the arguments of <m>z</m> and <m>w</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>z=r\cis\theta</m> and <m>w=s\cis\phi</m>.
+              Determine what <m>s</m> and <m>\phi</m> must be so that <m>w = z^{-1}</m>.
+              That is, find a value for <m>s</m> and <m>\phi</m> so that
+              <me>
+                z \cdot s\cis\phi = s\cis\phi \cdot z = 1
+              </me>.
+              Specify <m>\phi</m> in such a way that it lies in the interval <m>[0,2\pi]</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      From <xref ref="exercise_ComplexNumbers_polar_z_inv">Exercise</xref>
+      we may deduce that the inverse of a complex number <m>w = s \cis \phi</m> is
+      <me>
+        w^{-1} = \frac{1}{s}\cis(2\pi -\phi)
+      </me>,
+      which we could also write as
+      <me>
+        w^{-1} = \frac{1}{s}\cis(-\phi)
+      </me>
+      since changing the argument by <m>2\pi</m> does not change the value of the number.
+    </p>
+    <p>
+      Now recall that to divide two complex numbers <m>z</m> and <m>w</m>,
+      we rewrite <m>\frac{z}{w}</m> as <m>z \cdot w^{-1}</m>.
+      So with <m>z=r\cis\theta</m> and
+      <m>w=s\cis\phi</m> we may divide as follows:
+      <me>
+        \frac{z}{w} = (r\cis\theta) \cdot (\frac{1}{s}\cis(-\phi)) = \frac{r}{s}\cis(\theta - \phi)
+      </me>.
+    </p>
+    <p>
+      The previous discussion proves the following proposition.
+    </p>
+    <proposition xml:id="proposition_ComplexNumbers_polar_div">
+      <statement>
+        <p>
+          Let <m>z=r\cis\theta</m> and
+          <m>w=s\cis\phi</m> be two nonzero complex numbers.
+          Then
+          <me>
+            \frac{z}{w} = \frac{r}{s}\cis(\theta - \phi)
+          </me>.
+        </p>
+        <p>
+          Alternatively, we may write
+          <me>
+            \frac{r \cis \theta}{s \cis \phi} = \frac{r}{s}\cis(\theta - \phi)
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      In summary, multiplication and division of complex numbers in polar form proceeds as follows:
+    </p>
+    <p>
+      Multiplication:
+      <ul>
+        <li>
+          <p>
+            Multiply the two moduli together to get the modulus of the product.
+          </p>
+        </li>
+        <li>
+          <p>
+            Add the two arguments together to get the argument of the product.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Division:
+      <ul>
+        <li>
+          <p>
+            Divide the modulus of the numerator by the modulus of the denominator to get the modulus of the quotient.
+          </p>
+        </li>
+        <li>
+          <p>
+            Subtract the argument of the denominator from the argument of the numerator to get the argument of the quotient.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <example xml:id="example_ComplexNumbers_polarmult">
+      <statement>
+        <p>
+          If <m>z=3\cis(\pi/3)</m> and <m>w=2\cis(\pi/6)</m>, then
+          <me>
+            zw=(2\cdot3)\cis(\pi/3 + \pi/6)= 6 \cis(\pi/2)=6i
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_ComplexNumbers_25">
+      <statement>
+        <p>
+          Calculate each of the following products using complex polar arithmetic.
+          Give the answer in rectangular form if you can do so without using roots or decimals.
+          Otherwise, leave the answer in polar form.
+          <ol type="a">
+            <li>
+              <p>
+                <m>2\cis\left(\frac{\pi}{4}\right) \cdot \frac{1}{2} \cis\left( \frac{3\pi}{4}\right)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>14\cis\left( \frac{6\pi}{5}\right) \cdot \frac{1}{7} \cis\left( \frac{4\pi}{5} \right)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cis\left(\frac{9\pi}{7}\right) \cdot 2 \cis\left( \frac{8\pi}{7}\right) \cdot 3 \cis\left( \frac{4\pi}{7}\right)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sqrt{3}\cis\left(\frac{\pi}{12}\right)\cdot \sqrt{56}\cis\left(\frac{\pi}{15}\right)\cdot \sqrt{21}\cis\left(\frac{\pi}{15}\right)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sqrt{5}\cis\left(\frac{\pi}{19}\right)\cdot 3^{1/3} \cis\left(\frac{\pi}{3}\right)\cdot 45^{1/3}\cis\left(\frac{-10\pi}{57}\right)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ComplexNumbers_26">
+      <statement>
+        <p>
+          Calculate each of the following quotients using complex polar arithmetic.
+          Give the answers in polar form.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\dfrac{5\cis\left( \frac{5\pi}{6}\right)}{2\cis \left( \frac{\pi}{2}\right)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{27\cis\left(\frac{7\pi}{12}\right)}{6\cis\left(\frac{5\pi}{3}\right)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{2\sqrt{2} + 2\sqrt{2}i}{\frac{\sqrt{3}}{4} + \frac{1}{4}i}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{3 - 3i}{2 - \sqrt{12}i}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{\sqrt{27} i}{\sqrt{3} - 3i}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dfrac{\sqrt{17} - \sqrt{51} i}{-17 - 17i}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>
+      is the key fact used in finding the following formula for powers of complex numbers in polar form:
+    </p>
+    <proposition xml:id="proposition_ComplexNumbers_DeMoivre">
+      <statement>
+        <p>
+          (<term>de Moivre's Theorem</term>)
+        </p>
+        <p>
+          Let <m>z=r\cis\theta</m> be a nonzero complex number.
+          Then for <m>n=1,2,\ldots</m> we have
+          <me>
+            (r\cis\theta)^{n}=r^{n}\cis(n\theta).\tag{\(P(n)\)}
+          </me>
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      (We identify this statement as
+      <q><m>P(n)</m></q>
+      for later convenience.)
+    </p>
+    <p>
+      Before giving the proof,
+      we first give some general explanation of the ideas behind the proof.
+    </p>
+    <p>
+      <em>Ideas Behind the Proof</em>: We will use a very common proof technique called <term>induction</term>.
+          <idx><h>Induction</h></idx>
+      <fn>
+      In the Appendix we give a more thorough treatment of the topic of induction.
+      Here we give only a brief presentation.
+      </fn> Induction is commonly used to prove statements of the form
+      <q><m>P(n)</m> is true for <m>n = 1,2,3,\ldots</m></q>, where <m>n</m> is some equation or statement involving the quantity <m>n</m>.
+    </p>
+    <p>
+      Notice that we actually want to prove an
+      <em>infinite</em> number of statements:
+      that is, we want to prove:
+      <ul>
+        <li>
+          <p>
+            <m>(r\cis\theta)^{1}=r^{1}\cis\theta</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>(r\cis\theta)^{2}=r^{2}\cis(2\theta)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>(r\cis\theta)^{3}=r^{3}\cis(3\theta)</m> <ellipsis/>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      The first statement is obviously true.
+      The second statement
+      (for <m>n=2</m>)
+      can be proved using <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>:
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_27">
+      <statement>
+        <p>
+          Prove <m>(r\cis\theta)^{2}=r^{2}\cis(2\theta)</m> using <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The third statement
+      (for <m>n=3</m>)
+      can be proved using the statement for <m>n=2</m>:
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_28">
+      <statement>
+        <p>
+          Fill in the blanks to complete the proof:
+          <md>
+            <mrow>(r\cis\theta)^{3} \amp = r\cis\theta \cdot (\underline{~\lt 1>~})^{2} \amp  \text{ (associative) }</mrow>
+            <mrow>\amp =  r\cis\theta \cdot (r^{2} \cdot\underline{~\lt 2>~}) \amp  \text{ (by the previous exercise) }</mrow>
+            <mrow>\amp =  r^{3} \cdot \cis( \theta +  \underline{~\lt 3>~})) \amp  \mbox{(by <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>)}</mrow>
+            <mrow>\amp =   \underline{~\lt 4>~}) \amp  \mbox{(by basic algebra)}</mrow>
+          </md>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      So we have actually used the statement for <m>n=2</m> to prove the statement for <m>n=3</m>.
+      We could continue in this fashion to prove <m>n=4</m> from <m>n=3</m>:
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_29">
+      <statement>
+        <p>
+          Prove <m>(r\cis\theta)^{4}=r^{4}\cis(4\theta)</m>,
+          using <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>
+          and the result of the previous exercise (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Obviously it would take a long time to prove <m>n=5</m> from <m>n=4</m>,
+      <m>n=6</m> from <m>n=5</m>, and so on.
+      So instead, we will prove the following statement that covers all these cases:
+      <me>
+        \text{ If }  (r\cis\theta)^{k}=r^{k}\cis(k\theta) \mbox{ is true, then }  (r\cis\theta)^{k+1}=r^{k+1}\cis((k+1)\theta) \mbox{ is also true.}
+      </me>
+    </p>
+    <p>
+      This allows us to
+      <q>ladder up</q>: if the statement is true for some integer,
+      then it's also true for the <em>next</em> integer.
+    </p>
+    <p>
+      In summary, the induction proof has two basic elements:
+      <ul>
+        <li>
+          <p>
+            Prove the statement <m>P(n)</m> for <m>n=1</m> (this is called the
+            <q>base case</q>
+            );
+          </p>
+        </li>
+        <li>
+          <p>
+            Assuming that <m>P(n)</m> is true for <m>n=k</m>,
+            it follows that <m>P(n)</m> is also true for for <m>n=k+1</m>
+            (this is called the
+            <q>induction step</q>).
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Now that we've given the ideas,
+      here is the actual proof of <xref ref="proposition_ComplexNumbers_DeMoivre">Proposition</xref>:
+    </p>
+    <proof>
+      <p>
+        We will use induction on <m>n</m>.
+        First, for <m>n=1</m> the proposition is trivial.
+        This establishes the
+        <q>base case</q>.
+      </p>
+      <p>
+        Next, assume that <m>P(n)</m> is true for <m>n=k</m>:
+        that is, <m>z^k = r^k \cis(k \theta)</m>.
+        Then using this fact and exponent rules,
+        we may rewrite <m>z^{k+1}</m> as
+        <md>
+          <mrow>z^{k+1} \amp  =z^{k}z</mrow>
+          <mrow>\amp  =r^{k}\cis(k\theta)\,r(\cis\theta)</mrow>
+          <mrow>\amp  =r^{k+1}[\cis(k\theta + \theta)]</mrow>
+          <mrow>\amp  =r^{k+1} \cis[(k+1)\theta]</mrow>
+        </md>.
+      </p>
+      <p>
+        This establishes the
+        <q>induction step</q>, which completes the proof.
+      </p>
+    </proof>
+    <example xml:id="example_ComplexNumbers_DeMoivre">
+      <statement>
+        <p>
+          We will compute <m>z^{10}</m> where <m>z=1+i</m>.
+          Rather than computing <m>(1+i)^{10}</m> directly,
+          it is much easier to switch to polar coordinates and calculate <m>z^{10}</m> using de Moivre's Theorem:
+          <md>
+            <mrow>z^{10} \amp  =(1+i)^{10}</mrow>
+            <mrow>\amp  =\left(\sqrt{2}\cis\left(\frac{\pi}{4}\right)\right)^{10}</mrow>
+            <mrow>\amp  =(\sqrt{2}\,)^{10}\cis\left(\frac{5\pi}{2}\right)</mrow>
+            <mrow>\amp  =32\cis\left(\frac{\pi}{2}\right)</mrow>
+            <mrow>\amp  =32i</mrow>
+          </md>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Notice that de Moivre's Theorem says nothing about a complex number raised to negative powers.
+      For any real number <m>x</m>,
+      we know <m>x^{-n}</m> means <m>(x^n)^{-1}</m>.
+      Complex numbers happen to work the same way.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {polar_negpower} Given a complex number <m>z=r\cis\theta</m>,
+          <me>
+            z^{-n} = (z^n)^{-1}
+          </me>.
+        </p>
+      </statement>
+    </definition>
+    <example xml:id="example_ComplexNumbers_5">
+      <statement>
+        <p>
+          Let <m>z = 2\cis(\pi/4)</m>.
+          What is <m>z^{-3}</m>?
+          <md>
+            <mrow>z^{-3} \amp  = (z^3)^{-1}</mrow>
+            <mrow>\amp  = ([2\cis(\pi/4)]^3)^{-1}</mrow>
+            <mrow>\amp  = (8\cis(3\pi/4))^{-1}  \mbox{ (by de Moivre's Theorem) }</mrow>
+            <mrow>\amp  = \frac{1}{8}\cis(5\pi/4) \qquad \mbox{ (by <xref ref="exercise_ComplexNumbers_polar_z_inv">Exercise</xref>) }</mrow>
+          </md>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_ComplexNumbers_31">
+      <statement>
+        <p>
+          Calculate each of the following expressions.
+          Write the answer as <m>a + bi</m> if you can do so without using roots or decimals.
+          Otherwise, you may leave the answer in polar form.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1+i)^{-3}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 - i)^{6}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\sqrt{3}+i)^{5}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(-i)^{10}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>((1-i)/2)^{4}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(-\sqrt{2} - \sqrt{2}\, i)^{12}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(-2+2i)^{-5}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\sqrt{2 + \sqrt{2}} - i\sqrt{2 - \sqrt{2}})^{16}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\frac{(\sqrt{15} -3 \sqrt{5}i)^5}{60^2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\frac{(1-i)^{10}}{(-\sqrt{3} + i)^6}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ComplexNumbers_Graphical_remRepComplex">
+    <title>A Remark on representations of complex numbers</title>
+    <p>
+      We have seen that a complex number <em>z</em>
+      can be expressed in a number of different ways:
+      <ul>
+        <li>
+          <p>
+            As <m>a+bi</m>, where <m>a</m> and <m>b</m> are real numbers;
+          </p>
+        </li>
+        <li>
+          <p>
+            As a point in the Cartesian (two-dimensional) plane;
+          </p>
+        </li>
+        <li>
+          <p>
+            As a pair of real numbers (<m>a,b</m>) that give the rectangular coordinates of the point in the plane;
+          </p>
+        </li>
+        <li>
+          <p>
+            As a pair of numbers <m>(r,\theta)</m> where <m>r\geq0</m> and <m>0\le\theta\lt 2\pi</m>,
+            that give the polar coordinates of the point in the plane;
+          </p>
+        </li>
+        <li>
+          <p>
+            As <m>r\cdot(\cos\theta+i\cdot\sin\theta)</m>,
+            or the equivalent form <m>r\cdot\cis(\theta)</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      In abstract mathematics, it is very common to represent the
+      <q>same</q>
+      entity in a number of different ways.
+      One of the main goals of abstract algebra is to identify mathematical structures that are the
+      <q>same</q>
+      algebraically even though they appear to be different.
+      Mathematical structures that are the
+      <q>same</q>
+      algebraically are said to be <term>isomorphic</term>.
+      We will be seeing isomorphic structures throughout this course.
+    </p>
+    <p>
+      The importance of isomorphism in mathematics cannot be overstated.<fn>
+      There are other types of
+      <q>morphisms</q>
+      as well, such as homeomorphism
+      (in topology),
+      diffeomorphism
+      (in differential topology),
+      and just plain morphism
+      (in category theory).
+      </fn> Realizing that the same thing can be represented in two different ways is often the key to mathematical progress,
+      and can lead to enormous simplifications.
+      For instance,
+      we have seen that it's easier to add complex numbers in Cartesian form,
+      while it's much simpler to multiply complex numbers in polar form.
+      Since Cartesian and polar forms are simply two different ways of representing the same thing,
+      we can freely switch back and forth between the two forms,
+      using whichever is most convenient at the moment.
+    </p>
+    <exercise xml:id="exercise_ComplexNumbers_cos_form">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Using de Moivre's formula for <m>z^3</m> where <m>z = \cis \theta</m>,
+              find formulas for <m>\cos 3 \theta</m> and <m>\sin 3 \theta</m> in terms of
+              <m>\cos \theta</m> and <m>\sin \theta</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Using part (a), find a formula for
+              <m>\cos 3 \theta</m> in terms of <m>\cos \theta</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that for any <m>n</m>,
+              it is always possible to find a formula for
+              <m>\cos n\theta</m> in terms of <m>\cos \theta</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that for any <em>even</em> <m>n</m>,
+              it is always possible to find a formula for
+              <m>\cos n\theta</m> in terms of <em>even</em>
+              powers of <m>\cos \theta</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

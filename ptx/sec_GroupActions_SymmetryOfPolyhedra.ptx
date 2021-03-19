@@ -1,0 +1,2354 @@
+<section xml:id="sec_GroupActions_SymmetryOfPolyhedra">
+  <title>Symmetries of regular polyhedra</title>
+  <introduction>
+    <p>
+      We want to apply our new ideas to gain insight about the groups of rotational symmetries of
+      <term>regular polyhedra</term><idx><h>Polyhedron</h><h>regular</h></idx> In general,
+      a <em>polyhedron</em> can be thought of as a collection of faces,
+      edges and vertices:
+      for example, a cube has 6 faces, 12 edges and 8 vertices.
+      A <em>regular polyhedron</em> is a polyhedron in which all faces are congruent regular polygons,
+      and the same number of edges meet at every vertex.
+      The group of rotational symmetries of a polyhedron act on the faces,
+      edges and vertices.
+      Any rotational symmetry will always take faces to faces,
+      edges to edges and vertices to vertices.
+    </p>
+    <p>
+      In the following discussion we'll be introducing a bunch of new ideas.
+      As usual, we'll illustrate these ideas first on a particular example.
+      So let's begin with the cube,
+      which is perhaps the regular polyhedron which is easiest to understand.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_G_equiv">
+    <title><m>G</m>-equivalence and orbits</title>
+    <p>
+      Some of the rotational symmetries of the cube are indicated in <xref ref="fig_CubeRot">Figure</xref>.<fn>
+      Note that these are NOT the only rotational symmetries of the cube<ndash/>we'll discuss the others later
+      (see this excellent video: \url{http://www.youtube.com/watch?v=gBg4-lJ19Gg}).
+      </fn> The figure shows three possible rotation axes.
+      We will denote the <m>90^{\circ}</m> counterclockwise rotations around the <m>x,y</m> and <m>z</m> axes as <m>r_x, r_y,r_z</m> respectively.
+      We will also denote the faces of the cube as <m>x_-, x_+,y_-,y_+,z_-,z_+</m>.
+      For example the rotation <m>r_x\compose r_x=r_x^2</m> will take the bottom face (<m>z_-</m>) to the top face
+      (<m>z_+</m>).
+    </p>
+    <figure xml:id="fig_CubeRot">
+      <caption>Cube with 3 axes of rotation that give symmetries.</caption>
+      <image width="37%" source="images/AxesOfCube.png"/>
+    </figure>
+    <remark>
+      <p>
+        When we rotate the cube,
+        the axes remain <em>fixed</em> while the cube rotates around them.
+        So in <xref ref="fig_CubeRot">Figure</xref>
+        you may imagine the axes to be like
+        <q>laser beams</q>
+        going through the cube, where the laser beams are labeled
+        <m>x,
+        y</m> and <m>z</m> according to their axes.
+        These laser beams and labels do not move when the figure is rotated.
+        For example,
+        consider the rotation <m>r_z</m> followed by <m>r_x</m>
+        (which is written as <m>r_x\circ r_z</m>).
+        Under <m>r_z</m>,
+        the face <m>x_+</m> will rotate where the <m>y_+</m> face was.
+        Then following rotation <m>r_x</m> will occur around the original laser beam <m>x</m> axis,
+        and not the axis to where the <m>x_+</m> face has moved
+        (which would be the rotation <m>r_y</m>).
+        The cube ends up with the face <m>x_+</m> on the top with the <m>z</m> axis,
+        <m>y_+</m> on the negative side of the <m>x</m> axis,
+        and <m>z_+</m> on the negative side of the <m>y</m> axis.
+      </p>
+    </remark>
+    <figure xml:id="fig_CubeFold">
+      <caption>A paper cube to print, cut and fold
+      (from \url{http://www.korthalsaltes.com}).</caption>
+      <image width="46%" source="images/CubeFold.png"/>
+    </figure>
+    <remark>
+      <p>
+        Make or find a physical manipulative of a cube.
+        This can be a 6-sided die or constructed from paper as seen in <xref ref="fig_CubeFold">Figure</xref>.
+        When working with a manipulative of your polyhedron it is a good idea label each face uniquely,
+        whether by color, letter, number, or symbol.
+        If you label your faces <m>x_+, x_-, y_+</m>,
+        etc., make sure to remember that these refer to
+        <em>faces</em> and not <em>axes</em>
+        (as we said above,
+        the axes are like fixed laser beams that don't move with the cube).
+        It also helps to take a picture or two of your manipulative when in its starting position.
+        You might also draw a pair of <m>x</m> and <m>y</m> axes on a spare sheet of paper,
+        set this on the table, and rotate your cube above this paper.
+      </p>
+    </remark>
+    <exercise xml:id="exercise_GroupActions_Cube1">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Give rotations that take the bottom face (<m>z_-</m>) to each of the faces <m>x_-,x_+,y_-,y_+</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Give rotations that take the face <m>y_-</m> to each of the faces <m>x_-,x_+,y_+,z_-,z_+</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let's define a notation for the cube's vertices as follows.
+              For example,
+              <m>+++</m> represents the vertex in the first octant
+              (<m>x>0,y>0,z>0</m>).
+              The vertex <m>+-\,-</m> will be in the octant where
+              <m>x>0,y\lt 0,z\lt 0</m> (Which is the vertex at lower left in <xref ref="fig_CubeRot">Figure</xref>).
+              Give rotations that take the vertex <m>+-\,-</m> to each of the of the vertices
+              <me>
+                +++, ~-\,++,~+\,-\,+,~ ++\,-,~-\,-\,+,~-\,+\,-,~-\,-\,-
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let's denote the edges of the cube as follows.
+              For example,
+              <m>\overline{x_+,z_-}</m> represents the edge where the faces <m>x_+</m> and <m>z_-</m> meet.
+              The edge <m>\overline{x_+,y_-}</m> is where the faces <m>x_+</m> and <m>y_-</m> meet.
+              (This is the left,
+              front-facing edge of cube in <xref ref="fig_CubeRot">Figure</xref>.)
+              <ol type="i">
+                <li>
+                  <p>
+                    Using the above notation, list all edges of the cube.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Give rotations that take the edge
+                    <m>\overline{x_+,y_+}</m> to each of the other edges.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      From the previous exercise it's pretty clear that for any two faces of a cube there is at least one symmetry that takes the first face to the second.
+      In other words,
+      if <m>A</m> and <m>B</m> represent faces then there always exists a symmetry <m>g</m> such that <m>gA=B</m>.
+      This example motivates the following definition.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {GEquivalent} If a group <m>G</m> acts on a set <m>X</m> and <m>x,
+          y \in X</m>,
+          then <m>x</m> is said to be <term><m>G</m>-equivalent</term><idx><h>G-equiv@<m>G</m>-equivalent</h></idx> to <m>y</m> if there exists a <m>g \in G</m> such that <m>g.x =y</m>.
+          We write <m>x \sim_Gy</m> or
+          <m>x \sim y</m> if two elements are <m>G</m>-equivalent.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      By this definition we can say that all faces of a cube are <m>G</m>-equivalent to each other under the group of rotational symmetries of a cube,
+      because given any two faces we can always find a rotation that takes the first face to the second face
+      (and the inverse rotation takes the second face back to the first face).
+      The notation we're using strongly suggests that <m>\sim_G</m> must be an equivalence relation.
+      If fact this is true:
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>X</m> be a <m>G</m>-set.
+          Then <m>G</m>-equivalence is an equivalence relation on <m>X</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        The relation <m>\sim</m> is reflexive since <m>ex = x</m>.
+        Suppose that <m>x \sim y</m> for <m>x, y \in X</m>.
+        Then there exists a <m>g</m> such that <m>g.x = y</m>.
+        In this case <m>g^{-1}.y=x</m>;
+        hence, <m>y \sim x</m>.
+        To show that the relation is transitive,
+        suppose that <m>x \sim y</m> and <m>y \sim z</m>.
+        Then, there must exist group elements <m>g</m> and <m>h</m> such that <m>g.x = y</m> and <m>h.y= z</m>.
+        So <m>z = h.y = (hg).x</m>, and <m>x</m> is equivalent to <m>z</m>.
+      </p>
+    </proof>
+    <p>
+      Recall from <xref ref="EquivalenceRelations">Chapter</xref>
+      that every equivalence relation on a set <m>X</m> is associated with a partition of <m>X</m>,
+      where a partition is a collection of disjoint subsets whose union is <m>X</m>.
+      Each set in this partition is called an
+      <term>equivalence class</term>.
+          <idx><h>Equivalence class</h></idx>
+    </p>
+    <exercise xml:id="exercise_GroupActions_Cube2">
+      <statement>
+        <p>
+          Consider the edge <m>\overline{y_+,z_+}</m> of a cube.
+          What is the equivalence class of this edge under <m>G</m>-equivalence,
+          where <m>G</m> is the group of rotational symmetries of a cube?
+          <em>Explain</em> your answer.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In the case of a cube where <m>X=\{\text{ faces } \}\cup\{\text{ edges } \}\cup\{\text{ vertices } \}</m> The three sets
+      <m>\{\text{ faces } \},\{\text{ edges } \},\{\text{ vertices } \}</m> are disjoint equivalence classes whose union is <m>X</m>.
+      We call each of these sets an <em>orbit</em>
+      of <m>X</m> under <m>G</m>.
+      In general, we have the following definition.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {noteorbit} If <m>X</m> is a <m>G</m>-set,
+          then each set in the partition of <m>X</m> associated with <m>G</m>-equivalence is called an
+          <term>orbit</term><idx><h>Orbit</h><h>Of a <m>G</m>-set</h></idx> of <m>X</m> under <m>G</m>.
+          We will denote the orbit that contains an element <m>x</m> of <m>X</m> by <m>{\cal O}_x</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The next example shows how these concepts apply to permutation groups as well.
+    </p>
+    <example xml:id="example_GroupActions_Orbit1">
+      <statement>
+        <p>
+          Let <m>G</m> be the permutation group defined by
+          <me>
+            G =\{(1), (1 23), (1 3 2), (4 5), (1 2 3)(4 5), (1 3 2)(4 5) \}
+          </me>
+          and <m>X = \{ 1, 2, 3, 4, 5\}</m>.
+          Then <m>X</m> is a <m>G</m>-set.
+          There are permutations in <m>G</m> that take <m>1\rightarrow2</m>,
+          <m>1\rightarrow3</m>, <m>2\rightarrow3</m>, and vice versa.
+          There are also permutations that take <m>4\rightarrow 5</m> and vice versa.
+          So the orbits are <m>\{1, 2, 3\}</m> and <m>\{4, 5\}</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_GroupActions_orbits2">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Let <m>G=\{\var{id},\mu_1\}</m> which is a subgroup of <m>S_3</m>
+              (the symmetry group of an equilateral triangle)
+              (See <xref ref="fig_groups_s3_symmetry">Figure</xref>
+              in <xref ref="sec_Symmetry_Group">Section</xref>.) Let
+              <m>X=\{A,B,C\}</m> be the set of vertices of an equilateral triangle.
+              List the orbits of <m>X</m> under <m>G</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>G</m> be the permutation group defined by
+              <md>
+                <mrow>G =\amp \{(1), (1358),(15)(38), (1853), (247),(274), (1358)(247),(15)(38)(247),</mrow>
+                <mrow>\amp ~~ (1853)(247),(1358)(274),(15)(38)(274),(1853)(274) \}</mrow>
+              </md>
+              and <m>X = \{ 1, 2, 3, 4, 5,6,7,8\}</m>.
+              Then <m>X</m> is a <m>G</m>-set.
+              List the orbits of <m>X</m> under <m>G</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_Stabilizers">
+    <title>Stabilizers, stabilizer subgroups, and fixed point sets</title>
+    <p>
+      Let's return to the cube to illustrate another new concept.
+      Every rotation of a cube has an axis of rotation as well as an angle.
+      For rotations which are symmetries we've considered 3 possible axes,
+      passing through opposite pairs of faces.
+      Take for instance the axis which passes through <m>x_+</m> and <m>x_-</m>,
+      and consider the set of all the rotational symmetries having this axis.
+      In fact, this set of symmetries forms a subgroup of the symmetries of the cube (in this case,
+      the subgroup is isomorphic to the rotations of the square or (<m>\integer_4</m>,+)).
+      Now all of the elements of this subgroup leave the face <m>x_+</m> fixed
+      (although <m>x_+</m> rotates,
+      it remains in the same place).
+      Similarly, the rotations about the axis through <m>y_+</m> and <m>y_-</m> form a subgroup whose elements leave <m>y_+</m> fixed;
+      and the rotations about the axis through <m>z_+</m> and <m>z_-</m> behave the same way for <m>z_+</m>.
+    </p>
+    <p>
+      These are all examples of <em>stabilizer subgroups</em>.
+      The general definition is as follows.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {StabilizerSubgroups} Given that <m>X</m> is a <m>G</m>-set and <m>x \in X</m>,
+          let <m>G_x</m> be the set of group elements <m>g</m> that fix <m>x</m>:
+          in other words, <m>g.x=x</m>.
+          Then <m>G_x</m> is called the <term>stabilizer subgroup</term><idx><h>Subgroup</h><h>stabilizer</h></idx> or
+          <term>isotropy subgroup</term>
+              <idx><h>Subgroup</h><h>isotropy</h></idx>
+          for the element <m>x</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The above definition presumes that <m>G_x</m> is in fact a subgroup of <m>G</m>,
+      which up until now we haven't proved.
+      The following exercise remedies this deficiency:
+    </p>
+    <exercise xml:id="exercise_GroupActions_Stabilizer1">
+      <statement>
+        <p>
+          Given any <m>x</m> in <m>X</m>,
+          prove that the stabilizer subgroup <m>G_x</m> is indeed a subgroup of <m>G</m>.
+          (Recall this involves proving closure under composition and inverse.)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="definition_GroupActions_StabilizerSubgroups">Definition</xref>
+      talks about elements of the group <m>G</m> which leave a particular element of set <m>X</m> fixed.
+      We can turn this around and consider elements of <m>X</m> which are fixed by a particular element of <m>G</m>.
+      In fact, each element of <m>G</m> has an associated subset of <m>X</m> that it leaves unchanged.
+    </p>
+    <p>
+      Consider for instance the group of rotations of a cube.
+      We may describe the cube as consisting of faces, edges,
+      and vertices.
+      So let's take <m>X=\{\text{ faces } \}\cup\{\text{ edges } \}\cup\{\text{ vertices } \}</m>.
+      Rotations about the <m>x</m> axis
+      (which can all be expressed as <m>{r_x}^n</m> for some <m>n</m>)
+      leave the faces <m>x_+</m> and <m>x_-</m> fixed.
+      Similarly, <m>\{y_+</m> ,<m>y_-\}</m> and
+      <m>\{z_+,z_-\}</m> are fixed by rotations about the <m>y</m> axis and <m>z</m> axis,
+      respectively.
+      Thus, <m>\{x_+,x_-\},\{y_+,y_-\},\{z_+,z_-\}</m>,
+      are all examples of <em>fixed point sets</em> in <m>X</m>.
+      This leads to another definition:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {FixedPoint} Let <m>G</m> be a group acting on a set <m>X</m>,
+          and let <m>g</m> be an element of <m>G</m>.
+          The <term>fixed point set</term><idx><h>Fixed point set</h><h>of a group element</h></idx> of <m>g</m> in <m>X</m>,
+          denoted by <m>X_g</m>,
+          is the set of all <m>x \in X</m> such that <m>g.x = x</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      It is important to remember that
+      <m>X_g \subset X</m> and <m>G_x \subset G</m>.
+    </p>
+    <p>
+      Let's use this notation to describe some stabilizer subgroups and fixed point sets for familiar examples of group actions.
+    </p>
+    <example xml:id="example_GroupActions_FixedPoint1">
+      <statement>
+        <p>
+          Let <m>G</m> be the rotational symmetries of a cube and <m>X=\{\text{ faces } \}\cup\{\text{ edges } \}\cup\{\text{ vertices } \}</m>.
+          The fixed point set of <m>\var{id}</m> is:
+          <me>
+            X_{\var{id}}=\{\text{ faces } \}\cup\{\text{ edges } \}\cup\{\text{ vertices } \}
+          </me>,
+          since the identity rotation leaves the entire cube unchanged.
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_GroupActions_FixedPoint2">
+      <statement>
+        <p>
+          Let's consider the stabilizer subgroups for the faces of a cube.
+          These contain the elements of the group <m>G</m> of rotations of the cube that leave each face unchanged.
+          The stabilizer subgroups for the faces are:
+          <me>
+            \begin{array}{c} G_{x_+}=G_{x_-}=\{\var{id},r_x,r_x^2,r_x^3\}\\ G_{y_+}=G_{y_-}=\{\var{id},r_y,r_y^2,r_y^3\}\\...... ..G_{z_+}=G_{z_-}=\{\var{id},r_x,r_x^2,r_x^3\} \end{array}
+          </me>
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_GroupActions_FixedPoint3">
+      <statement>
+        <p>
+          Let <m>X = \{1, 2, 3, 4, 5, 6\}</m> and suppose that <m>G</m> is the permutation group given by the permutations
+          <me>
+            \{(1), (1 2)(3 4 5 6), (3 5)(4 6), (1 2)( 3 6 5 4)\}
+          </me>.
+        </p>
+        <p>
+          Then the fixed point sets of <m>X</m> under the action of <m>G</m> for the different group elements are
+          <me>
+            \begin{array}{c} X_{(1)} = X, \\ X_{(3 5)(4 6)} = \{1,2\}, \\ X_{(1 2)(3 4 5 6)} = X_{(1 2)(3 6 5 4)} = \emptyset, \end{array}
+          </me>
+          and the stabilizer subgroups for the different elements of <m>X</m> are
+          <me>
+            \begin{array}{c} G_1 = G_2 = \{(1), (3 5)(4 6) \}, \\ G_3 = G_4 = G_5 = G_6 = \{(1)\}. \end{array}
+          </me>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_GroupActions_s4_gset_group">
+      <statement>
+        <p>
+          Let <m>G = S_4</m>
+          (the permutations of 4 elements),
+          and let <m>X = \{1,2,3,4\}</m>.
+          <m>X</m> is a <m>G</m>-set.
+          <ol type="a">
+            <li>
+              <p>
+                Give <m>G_2</m>, <m>G_4</m>, and <m>G_2 \cap G_4</m>.
+                Is <m>G_2 \cap G_4</m> a group?
+                <em>Explain</em> your answer.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give <m>X_{(123)}</m>,
+                <m>X_{(234)}</m>,and <m>X_{(123)} \cap X_{(234)}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (a) with <m>G=A_4</m>
+                (the group of even permutations on 4 elements).
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (b) with <m>G=A_4</m>
+                (the group of even permutations on 4 elements).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      As usual, we will denote the number of elements in the fixed point set of an element <m>g \in G</m> by <m>|X_g|</m>,
+      the number of elements of the stabilizer subgroup of <m>x\in X</m> as <m>|G_x|</m> and the number of elements in the orbit of <m>x \in X</m> by <m>|{\cal O}_x|</m>.
+    </p>
+    <exercise xml:id="exercise_GroupActions_sn_gset_group">
+      <statement>
+        <p>
+          Let <m>G = S_n</m>
+          (the permutations of n elements),
+          and let <m>X = \{1,2,\ldots n \}</m>.
+          <m>X</m> is a <m>G</m>-set.
+          <ol type="a">
+            <li>
+              <p>
+                What is <m>|G_1|</m>?
+                What is <m>|G_2|</m>?
+                What is <m>|G_k|</m> where <m>k \in X</m>? (Recall that <m>|S_n| = n!</m>)
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>g</m> is a <m>3</m>-cycle,
+                then what is <m>|X_g|</m>?
+                What if <m>g</m> is a 5-cycle? (You may assume that <m>n \ge 5</m>).
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a general formula for <m>|X_g|</m>,
+                where <m>g</m> is a <m>k</m>-cycle
+                (<m>2 \le k \le n</m>).
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (a) with <m>G = A_n</m>
+                (the even permutations of <m>n</m> elements).
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (b) with <m>G = A_n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (c) with <m>G = A_n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_OrderPolyhedralRotSymGroup">
+    <title>Counting formula for the order of  polyhedral rotational symmetry groups</title>
+    <p>
+      It is possible to characterize the size of the rotational symmetry group <m>G</m> for a regular polyhedron in terms of <m>|{\cal O}_x|</m>and <m>|G_x|</m>.
+      We'll show this with an example.
+    </p>
+    <example xml:id="example_GroupActions_CountingFormula1">
+      <statement>
+        <p>
+          Consider our old friend the group of rotational symmetries of a cube acting on <m>X=\{\text{ faces } \}\cup\{\text{ edges } \}\cup\{\text{ vertices } \}</m>.
+          We've seen that <m>G_{x_+}=\{\var{id},r_x,r_x^2,r_x^3\}</m> is the stabilizer subgroup for <m>x_+</m>.
+          Thus there are four rotations that take <m>x_+</m> to itself.
+          We've also seen that there's at least one rotation that takes <m>x_+</m> to each of the six faces of the cube:
+          this is the same thing as saying that the orbit of a face is the set of all faces.
+          Each of these rotations can be composed with any of the elements of <m>G_{x_+}</m> for a total of
+          <m>6\cdot 4=24</m> rotational symmetries of a cube.
+          To summarize, we've discovered that
+          <me>
+            |G|=|G_{x_+}|\cdot |{\cal O}_{x_+}|
+          </me>.
+        </p>
+        <p>
+          Note that <m>x_+</m> was an arbitrary choice:
+          we could use this argument with any of the faces and obtain the same result.
+        </p>
+      </statement>
+    </example>
+    <p>
+      In the previous example we used faces to count the rotational symmetries of a cube but we could use edges or vertices as well.
+      In the next exercise we'll consider edges and in the following one we'll consider vertices.
+      Remember that amodel of a cube might help with these exercises
+      (see <xref ref="fig_CubeFold">Figure</xref>).
+    </p>
+    <exercise xml:id="exercise_GroupActions_CountingFormula2">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find the stabilizer subgroup for the edge <m>\overline{x_+,z_+}</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the stabilizer subgroup for the edge <m>\overline{x_-,y_+}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              In <xref ref="example_GroupActions_CountingFormula1">Example</xref>
+              we constructed a formula for <m>|G|</m> in terms of
+              <m>| G_{x_+}|</m> and <m>|{\cal O}_{x_+}|</m>.
+              Construct a similar formula using
+              <m>G_{\overline{x_+,z_+}}</m> and <m>|{\cal O}_{\overline{x_+,z_+}}|</m>,
+              and show that you get the same answer.
+              Do the same thing with <m>G_{\overline{x_-,y_+}}</m> and <m>|{\cal O}_{\overline{x_-,y_+}}|</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the stabilizer subgroup for the vertex <m>+,+,+</m> (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the stabilizer subgroup for the vertex <m>+\,,-\,,+</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using parts (d) and (e), construct alternative formulas for <m>|G|</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      From the previous example and exercises,
+      it seems we have a general formula:
+      if <m>G</m> acts on <m>X</m> and <m>x\in X</m>, then
+      <me>
+        |G|=|G_x|\cdot|{\cal O}_x|
+      </me>.
+    </p>
+    <p>
+      This may remind you of <em>Lagrange's Theorem</em>,
+      which we proved in <xref ref="sec_Cosets_LagrangeTheorem">Section</xref> of the Cosets chapter:
+      <me>
+        |G|=|H|\cdot [G:H]
+      </me>,
+      where <m>H</m> is any subgroup of <m>G</m>.
+      If we replace <m>H</m> with <m>G_x</m>, this becomes
+      <me>
+        |G|=|G_x|\cdot [G:G_x]
+      </me>.
+    </p>
+    <p>
+      Comparing with our previous formula, we get
+      <me>
+        |{\cal O}_x|=[G:G_x]
+      </me>.
+    </p>
+    <p>
+      Let's give a bona fide mathematical proof of this.
+    </p>
+    <proposition xml:id="proposition_GroupActions_CountingFormula">
+      <statement>
+        <p>
+          (<em>Counting formula</em>):<nbsp/><nbsp/><nbsp/><nbsp/> Let <m>G</m> be a group and <m>X</m> a <m>G</m>-set.
+          If <m>x\in X</m>, then <m>|{\cal O}_x| = [G:G_x]</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        In general, a good way to show that two sets are the same size is to show that there is a <em>bijection</em>
+        (1-1 and onto map) between the two sets.
+        We will define a map <m>\phi</m> between the orbit
+        <m>{\cal O}_x</m> and the set of left cosets of <m>G_x</m> in <m>G</m> as follows.
+        Let <m>y \in {\cal O}_x</m>.
+        Then there exists a <m>g</m> in <m>G</m> such that <m>g x = y</m>.
+        Define <m>\phi</m> by <m>\phi( y ) = g G_x</m>.
+        Note that this coset contain an element <m>ge=g</m>:
+        so it contains an element that takes <m>x\rightarrow y</m>.
+      </p>
+      <p>
+        Before we can show that <m>\phi</m> is a bijection,
+        we must first show that <m>\phi(y)</m> is well-defined for any <m>y</m>,
+        and does not depend on our selection of <m>g</m>.
+        Suppose that <m>g'</m> is another element in <m>G</m> such that <m>g'x = y</m>.
+        Then <m>g x = g' x</m> or <m>x= g^{-1} g' x</m>.
+        By the definition of the stabilizer subgroup <m>G_x</m>,
+        <m>g^{-1}g'\in G_x</m>.
+        By <xref ref="proposition_Cosets_cosets_theorem_1">Proposition</xref>
+        in <xref ref="sec_Cosets_CosetsPartitions">Section</xref>,
+        it follows that <m>g G_x = g' G_x</m>.
+        Thus, <m>y</m> gets mapped to the same coset regardless of the choice of group element.
+      </p>
+      <p>
+        To show that <m>\phi</m> is one-to-one,
+        we'll assume that <m>\phi(x_1) = \phi(x_2)</m>,
+        and show that this means that <m>x_1=x_2</m>.
+        Here we go:
+      </p>
+      <p>
+        Recall that <m>\phi(x_1)</m> is defined as a coset of <m>G_x</m> that contains an element <m>g_1</m> that satisfies <m>g_1x=x_1</m>.
+        Similarly, <m>\phi(x_2)</m> , contains an element <m>g_2</m> that satisfies <m>g_2x=x_2</m>.
+        But we're assuming that <m>\phi(x_1) = \phi(x_2)</m>.
+        This means that <m>g_1</m> and <m>g_2</m> are in the same coset of <m>G_x</m>.
+      </p>
+      <p>
+        Now consider the expression <m>g_1(g_1^{-1}g_2)x</m>.
+        On the one hand, by the associative law we get:
+        <me>
+          (g_1g_1^{-1})g_2x=g_2x=x_2
+        </me>.
+      </p>
+      <p>
+        On the other hand,
+        by <xref ref="proposition_Cosets_cosets_theorem_1">Proposition</xref> in the Cosets chapter,
+        it follows that <m>g_1^{-1}g_2</m> is in <m>G_x</m>,
+        so that <m>g_1^{-1}g_2x=x</m>.
+        This means that we also have:
+        <me>
+          g_1(g_1^{-1}g_2)x=g_1x=x_1
+        </me>.
+      </p>
+      <p>
+        Therefore <m>x_1=x_2</m>.
+        This completes the proof that <m>\phi</m> is 1-1.
+      </p>
+      <p>
+        Finally, we must show that the map <m>\phi</m> is onto:
+        that is, every coset of <m>G_x</m> is in the range of <m>\phi</m>.
+        This is much quicker than the proof of 1-1.
+        Let <m>g G_x</m> be any left coset.
+        If <m>g x =y</m>, then <m>\phi(y) = g G_x</m>.
+        Thus <m>gG_x</m> is in the range of <m>\phi</m>,
+        and the proof is finished.
+      </p>
+    </proof>
+    <p>
+      At this point,
+      it is straightforward to put <xref ref="proposition_GroupActions_CountingFormula">Proposition</xref>
+      together with Lagrange's Theorem to obtain:
+    </p>
+    <proposition xml:id="proposition_GroupActions_OrbStab">
+      <statement>
+        <p>
+          (<em>Orbit-Stabilizer Theorem</em>):<nbsp/><nbsp/><nbsp/><nbsp/> Let <m>G</m> be a group and <m>X</m> a <m>G</m>-set.
+          Given <m>x\in X</m>,
+          let <m>{\cal O}_x</m> be the orbit of <m>x</m> under <m>G</m>,
+          and let <m>G_x</m> be the stabilizer subgroup for the element <m>x</m>. then <m>|G| = |{\cal O}_x|||G_x|</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_GroupActions_proofOrbStab">
+      <statement>
+        <p>
+          Prove <xref ref="proposition_GroupActions_OrbStab">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The Orbit-Stabilizer Theorem enables us to quickly find some nifty relationships among numbers of faces,
+      vertices,
+      and edges:
+    </p>
+    <exercise xml:id="exercise_GroupActions_CubeCounts">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show using <xref ref="proposition_GroupActions_OrbStab">Proposition</xref> that for the cube,
+              the ratio (number of edges /
+              (number of faces)
+              = 4/2.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the same method to find the ratio
+              (number of edges)
+              /
+              (number of vertices)
+              for the cube.
+            </p>
+          </li>
+          <li>
+            <p>
+              For the dodecahedron
+              (regular polyhedron with 12-sided faces),
+              find the ratio of
+              (number of faces)
+              /
+              (number of vertices). (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_RepresentSymmetryGroupAsStabilizer">
+    <title>Representing a symmetry group in terms of stabilizer subgroups</title>
+    <p>
+      We can approach the structure of the group of rotational symmetries of a cube from another direction.
+      We've talked about stabilizer subgroups,
+      and we can see how these subgroups
+      <q>fit together</q>
+      within <m>G</m>.
+      For example,
+      we've seen that for every face there are three rotations
+      (besides the identity)
+      that leaves that face fixed.
+      These rotations correspond to 90, 180,
+      and 270 degree rotations of a square:
+      so they have order 4,2, and 4 respectively.<fn>
+      Recall that the
+      <q>order</q>
+      of a group element <m>g</m> is the smallest positive integer <m>n</m> such that <m>g^n = \var{id}</m>.
+      </fn> So for each face,
+      there are two rotations of order 4 and one rotation of order 2 in the stabilizer of that face.
+      Since there are 6 faces of a cube,
+      this seems to imply that there must be twelve rotations of order 4 and six rotations of order 2 associated with the stabilizers of the different faces.
+    </p>
+    <p>
+      Unfortunately, this is not quite true.
+      The reason is that any rotation that leaves the front face fixed also leaves the back face fixed.
+      So the stabilizer of the front face is the same as the stabilizer of the back face.
+      In fact, the faces of the cube are stabilized in pairs:
+      front-back, left-right, and top-bottom.
+      Since there are 3 pairs,
+      this means that we only have 6 rotations of order 4 and 3 rotations of order 2.
+      If we add in the identity, this gives a total of 10 rotations.
+      But we've already shown that the group of rotational symmetries of a cube has 24 elements.
+      So where are the other 14?
+    </p>
+    <p>
+      Well, we haven't exhausted the possible stabilizers.
+      Consider for instance the stabilizer of a vertex.
+      We know that 3 faces meet at each vertex.
+      So if I twirl the cube around the vertex,
+      the three faces can rotate into each other.
+      So besides the identity, there are two rotations of order 3.
+      As with the faces,
+      each vertex has a corresponding opposite vertex<ndash/>so the vertices are stabilized in pairs.
+      Since there are 8 vertices,
+      this means there are 4 pairs,
+      which means there are 8 rotations of order 3.
+      This brings us up to a total of 18 rotations.
+      So where are the other six?
+    </p>
+    <exercise xml:id="exercise_GroupActions_Stabilizers1">
+      <statement>
+        <p>
+          Consider the edges of a cube.
+          <ol type="a">
+            <li>
+              <p>
+                For each edge, how many rotations
+                (besides the identity)
+                leave that edge fixed?
+              </p>
+            </li>
+            <li>
+              <p>
+                What are the orders of the rotations
+                (besides the identity)
+                that leave an edge fixed?
+              </p>
+            </li>
+            <li>
+              <p>
+                Do edges come in pairs or not?
+                If so give the pairs, if not, explain why not.
+              </p>
+            </li>
+            <li>
+              <p>
+                Altogether how many group elements
+                (besides the identity)
+                stabilize at least one edge?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_GroupActions_Stabilizers2">
+      <statement>
+        <p>
+          Based on the information given in the preceding discussion,
+          complete the following table to characterize the group elements of the rotational symmetries of a cube according to their orders and fixed point sets
+          (you may also find this video to be helpful: \url{http://www.youtube.com/watch?v=gBg4-lJ19Gg}). (*Hint*)
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><em> Number of group elements</em></cell>
+            <cell><em>order</em></cell>
+            <cell><em>Fixed point set</em></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>1</cell>
+            <cell>entire cube (identity)</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>6</cell>
+            <cell>4</cell>
+            <cell>opposite faces</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><mdash/></cell>
+            <cell><mdash/></cell>
+            <cell>opposite faces</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><mdash/></cell>
+            <cell><mdash/></cell>
+            <cell>opposite vertices</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><mdash/></cell>
+            <cell><mdash/></cell>
+            <cell>opposite edges</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_GroupActions_Stabilizers2b">
+      <statement>
+        <p>
+          The table in <xref ref="exercise_GroupActions_Stabilizers2">Exercise</xref>
+          is suspiciously like something that we've seen before.
+          <ol type="a">
+            <li>
+              <p>
+                Consider the group <m>S_4</m>, which has 24 elements.
+                Make a table with three columns labeled,
+                <q>number of elements</q>,
+                <q>order of the element</q>,
+                <q>cycle structure</q>. In the right-hand column, list the possible cycle structures:
+                identity, one 4-cycle, two 2-cycles,
+                one 3-cycle, and one 2-cycle.
+                Then fill in the other two columns according to the cycle structure listed in each row.
+              </p>
+            </li>
+            <li>
+              <p>
+                Based on the table you created in part (a) and the table in <xref ref="exercise_GroupActions_Stabilizers2">Exercise</xref>,
+                what do you conjecture?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_RegularPolyhedralRotaionGroup">
+    <title>Examples of other regular polyhedral rotation groups</title>
+    <introduction>
+      <p>
+        Let's get to know some other regular polyhedra using orbits and stabilizer subgroups to describe their rotational symmetry groups.
+      </p>
+    </introduction>
+    <subsubsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_Tetrahedron">
+      <title>The tetrahedron</title>
+      <p>
+        Consider a regular tetrahedron,
+        as shown in <xref ref="fig_TetRot">Figure</xref>.
+        This polyhedron has 4 faces, 6 edges and 4 vertices.
+        Each face is a triangle and each face is opposite a vertex.
+        We will consider the rotations of a tetrahedron around 4 axes.
+        Each axis passes through a vertex and the face opposite that vertex.
+        See <xref ref="fig_TetRot">Figure</xref>.
+        For example,
+        a rotation of the axis through vertex <m>A</m> will also stabilize face <m>a</m>.
+        We can call this axis <m>\overset{\leftrightarrow}{Aa}</m>.
+        Similarly, we will call the other axes <m>\overset{\leftrightarrow}{Bb}</m>,
+        <m>\overset{\leftrightarrow}{Cc}</m> and <m>\overset{\leftrightarrow}{Dd}</m>.
+      </p>
+      <figure xml:id="fig_TetRot">
+        <caption>Tetrahedron with 4 axes of rotation that give symmetries. Figure modified  from \url{https://inspirehep.net/record/1228365/plots}.</caption>
+        <image width="46%" source="images/TetrahedronC.png"/>
+      </figure>
+      <p>
+        Each of these axes rotates a triangular face.
+        We'll write one counterclockwise rotation of face <m>a</m> around <m>\overset{\leftrightarrow}{Aa}</m> as <m>r_{Aa}</m>
+        (and similarly for the other axes).
+        An animation of the rotations of a tetrahedron is available at:
+      </p>
+      <p>
+        \url{https://www.youtube.com/watch?v=qAR8BFMS3Bc}
+      </p>
+      <p>
+        You can also make your own tetrahedron like the one in <xref ref="fig_TetraFold">Figure</xref>.
+      </p>
+      <figure xml:id="fig_TetraFold">
+        <caption>Tetrahedron to print, cut and fold
+        (from \url{http://www.korthalsaltes.com}).</caption>
+        <image width="46%" source="images/TetrahedronFold.png"/>
+      </figure>
+      <exercise xml:id="exercise_GroupActions_Tetra_1">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                How many degrees does <m>r_{Aa}</m> rotate face <m>a</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the order of <m>r_{Aa}</m>?
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        Consider the tetrahedron in <xref ref="fig_TetRot">Figure</xref>.
+        The rotation <m>r_{Cc}</m> takes vertex <m>D</m> to vertex <m>A</m> and face <m>d</m> to face <m>a</m>.
+      </p>
+      <exercise xml:id="exercise_GroupActions_tetra2">
+        <statement>
+          <p>
+            We'll find it useful later to represent these rotations as permutations.
+            <ol type="a">
+              <li>
+                <p>
+                  Represent each of the rotations <m>r_{Aa}</m>,
+                  <m>r_{Bb}</m>, <m>r_{Cc}</m>,
+                  <m>r_{Dd}</m> as permutations on the set of vertices.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Represent each of the rotations <m>r_{Aa}</m>, <m>r_{Bb}</m>,
+                  <m>r_{Cc}</m>, <m>r_{Dd}</m> as permutations on the set of faces.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Tetra3">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Give rotations that takes face <m>c</m> to each to each of the other faces <m>a,
+                b, d</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give rotations that takes vertex <m>D</m> to each of the other vertices.
+              </p>
+            </li>
+            <li>
+              <p>
+                Consider the edges of the tetrahedron.
+                Denote the edge between the vertices <m>C</m> and <m>D</m> as <m>\overline{CD}</m>:
+                and other edges similarly.
+                Use this notation to name each of the edges of the tetrahedron.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a rotation that takes edge
+                <m>\overline{CD}</m> to each of the other edges.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Tetra4">
+        <statement>
+          <p>
+            Consider the vertex <m>A</m> of a tetrahedron.
+            What is the equivalence class of this vertex under <m>G</m>-equivalence,
+            where <m>G</m> is the groups of rotational symmetries of a tetrahedron? (Note: This <m>G</m>-equivalence class is the same as orbit of <m>A</m>. which we denote as <m>{\cal O}_A</m>.)
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        Just as with the cube,
+        the rotation group <m>G</m> of any polyhedron acts on the set <m>X=\{\text{ faces } \}\cup\{\text{ edges } \}\cup\{\text{ vertices } \}</m>.
+        Recall that each group element <m>g\in G</m> has a
+        <em>fixed point set</em>
+        <m>X_g\in X</m> that it leaves unchanged:
+        that is, <m>g.x=x</m> for any <m>x\in X_g</m>.
+        Let's find some fixed point sets for rotations of the tetrahedron.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Tetra5">
+        <statement>
+          <p>
+            Let <m>G</m> be the rotational symmetries of a tetrahedron
+            <ol type="a">
+              <li>
+                <p>
+                  What is the fixed point set of <m>r_{Bb}</m>?
+                </p>
+              </li>
+              <li>
+                <p>
+                  What is the fixed point set of <m>r_{Bb}\compose r_{Dd}</m>? (*Hint*)
+                </p>
+              </li>
+              <li>
+                <p>
+                  What is the fixed point set of <m>r_{Bb}^{-1}\compose r_{Dd}</m>?
+                </p>
+              </li>
+              <li>
+                <p>
+                  Give all rotations that fix the set <m>\{D,d\}</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        Let's consider the stabilizer subgroups for the faces and vertices of a tetrahedron.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Tetra5a">
+        <statement>
+          <p>
+            Find the following stabilizer subgroups:
+            <m>G_{A}, G_{B}</m>, <m>G_{C}</m>, <m>G_{D}</m>,
+            <m>G_{a}</m>, <m>G_{b}</m>, <m>G_{c}</m>, <m>G_{d}</m>.
+            Which subgroups are equal? (*Hint*)
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        Let's use the stabilizer subgroups above to determine the total number of rotational symmetries of a tetrahedron.
+        So far we've found 4 rotational axes and two rotations around each axis.
+        Together with the identity, this gives nine rotations.
+        But there are more rotational symmetries of a tetrahedron than we've discovered so far.
+        Let's try to find them.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Tetra7">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Find the stabilizer subgroup for the edge <m>\overline{CD}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the stabilizer subgroup for the edge <m>\overline{AB}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                How many different group elements
+                (besides the identity)
+                stabilize at least one edge?
+              </p>
+            </li>
+            <li>
+              <p>
+                Are there any group elements that are not stabilizers of either an edge or a face?
+                Explain your answer.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Tetra8">
+        <statement>
+          <p>
+            The Orbit-Stabilizer Theorem gives us a formula for <m>|G|</m> in terms of<m>| G_{A}|</m> and <m>|{\cal O}_{A}|</m>.
+            Alternatively, it also gives a formula for<m>|G|</m> in terms of
+            <m>| G_{\overline{AB}}|</m> and <m>|{\cal O}_{\overline{AB}}|</m>.
+            Show that both formulas give the same answer for <m>|G|</m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Tetra9">
+        <statement>
+          <p>
+            Complete the following table (similar to the table in <xref ref="exercise_GroupActions_Stabilizers2">Exercise</xref>)to characterize the group elements of the rotational symmetries of a tetrahedron according to the type(s) of sets they stabilize.
+            We show two rows: fill in the blanks,
+            and add as many rows as necessary to complete the table.
+          </p>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><em> Number of group elements</em></cell>
+              <cell><em>Order</em></cell>
+              <cell><em>Fixed point set</em></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>1</cell>
+              <cell><ndash/></cell>
+              <cell>entire tetrahedron (identity)</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><mdash/></cell>
+              <cell>3</cell>
+              <cell>vertex + face</cell>
+            </row>
+          </tabular>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Recalling <xref ref="exercise_GroupActions_Stabilizers2b">Exercise</xref>,
+            we may suppose that there is a permutation group which resembles the symmetry group of the tetrahedron,
+            in the same way that <m>S_4</m> resembles the symmetry group of the cube.
+            Identify a well-known symmetry group with 12 elements and make a table for this group which is arranged like the table in <xref ref="exercise_GroupActions_Stabilizers2b">Exercise</xref>.
+            What do you conjecture based on your results?
+          </p>
+        </statement>
+      </exercise>
+    </subsubsection>
+    <subsubsection>
+      <title>The octahedron</title>
+      <p>
+        Another regular polyhedron is the octahedron.
+        We will see that in some ways an octahedron is like a cube.
+        When opposite points are lined up on a vertical <m>z</m> axis,
+        the octahedron has no vertical or horizontal faces,
+        as shown in <xref ref="fig_OctaRot">Figure</xref>.
+        We denote a <m>90^{\circ}</m> counterclockwise rotation around the <m>z</m> axis by <m>r_z</m>
+        (and similarly for rotations around the <m>x</m>, and <m>y</m> axes).
+        Since each vertex of the octahedron lies on an axis,
+        we can use the <m>x,y</m>, and <m>z</m> axis to label the vertices.
+        For example <m>y_+</m> is the vertex on the positive <m>y</m> axis.
+        We can also name the edges using this notation for their endpoints.
+        Let's use the axes to label the faces of the octahedron too.
+        Consider <xref ref="fig_OctaRot">Figure</xref>,
+        we'll refer to the the face in the first octant as <m>\triangle_{ +++}</m>
+        (the other faces will be labeled similarly).
+      </p>
+      <figure xml:id="fig_OctaRot">
+        <caption>Octahedron with 3 axes of rotation that give symmetries (figure modified from \url{https://en.wikipedia.org/wiki/File:Octahedron.svg})</caption>
+        <image width="46%" source="images/AxesOfOctahedron.png"/>
+      </figure>
+      <exercise xml:id="exercise_GroupActions_Octa1">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                List all the faces of the octahedron using the notation above.
+              </p>
+            </li>
+            <li>
+              <p>
+                Based on <xref ref="fig_OctaRot">Figure</xref>
+                how many faces does an octahedron have?
+                How many vertices?
+                How many edges?
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        A model of an octahedron might help with the following exercises.
+        You can make one like the one in <xref ref="fig_OctaFold">Figure</xref>.
+        There's also a virtual octahedron on GeoGebra that you can manipulate at: \url{https://www.geogebra.org/m/KtTGGrSp}. A Youtube video that shows the rotational symmetries of an octahedron may be found at: \url{https://www.youtube.com/watch?v=CCaX5eTteEg}.
+      </p>
+      <figure xml:id="fig_OctaFold">
+        <caption>A paper octahedron to print, cut and fold
+        (from \url{http://www.korthalsaltes.com}).</caption>
+        <image width="46%" source="images/OctahedronFold.png"/>
+      </figure>
+      <exercise xml:id="exercise_GroupActions_Octa2">
+        <statement>
+          <p>
+            What is the order of <m>r_z</m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Octa3">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Give rotations that take <m>\triangle _{+++}</m> to each to each of the other faces.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give rotations that take <m>x_-</m> to each of the other vertices.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a rotation that takes edge
+                <m>\overline{z_+y_+}</m> to each of the other edges.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Octa4">
+        <statement>
+          <p>
+            Consider the edge <m>\overline{x_-y_+}</m> of a octahedron.
+            What is <m>{\cal O}_{\overline{x_-y_+}}</m>?
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Octa5">
+        <statement>
+          <p>
+            Let <m>G</m> be the rotational symmetries of an octahedron
+            <ol type="a">
+              <li>
+                <p>
+                  What is the fixed point set of <m>r_{y}\compose r_{z}</m>?
+                </p>
+              </li>
+              <li>
+                <p>
+                  What is the fixed point set of <m>r_{y}^2\compose r_{x}</m>?
+                </p>
+              </li>
+              <li>
+                <p>
+                  What is the fixed point set of <m>r_{x}^2\compose r_{y}</m>?
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        Let's consider the stabilizer subgroups for the faces and vertices of an octahedron.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Octa5a">
+        <statement>
+          <p>
+            Find the stabilizer subgroups for each of the vertices of the octahedron. (*Hint*)
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        Let's find the total number of rotational symmetries for the octahedron.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Octa6">
+        <statement>
+          <p>
+            Let <m>G</m> be the rotational symmetries of an octahedron.
+            Construct a formula for <m>|G|</m> in terms of
+            <m>| G_{y_+}|</m> and <m>|{\cal O}_{y_+}|</m>
+            (see <xref ref="example_GroupActions_CountingFormula1">Example</xref>).
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        So far we have discovered 10 rotational symmetries of an octahedron.
+        Three axis of 3 rotations each plus the identity.
+        By the previous exercise, there are still more to discover.
+        Here we go!
+      </p>
+      <exercise xml:id="exercise_GroupActions_Octa7">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Find the stabilizer subgroup for the edge <m>\overline{y_+~z_+}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the stabilizer subgroup for the edge <m>\overline{y_-~z_-}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                How many different group elements
+                (besides the identity)
+                stabilize at least one edge?
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Octa8">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Find the stabilizer subgroup for the face <m>\triangle_{+ + +}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the stabilizer subgroup for the face <m>\triangle_{ -~-~-}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                How many different group elements stabilize at least one face?
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Octa9">
+        <statement>
+          <p>
+            In <xref ref="exercise_GroupActions_Octa6">Exercise</xref>
+            we constructed a formula for <m>|G|</m> in terms of
+            <m>|G_{y_+}|</m> and <m>|{\cal O}_{y_+}|</m>.
+            Do the same thing using <m>|G_{\triangle_{+ + +}}|</m> and <m>|{\cal O}_{\triangle_{+ + +}}|</m>,
+            and show that you get the same value for <m>|G|</m>.
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Octa10">
+        <statement>
+          <p>
+            Complete the following table to characterize the group elements of the rotational symmetries of an octahedron.
+            We show two rows, how many more to complete the table?
+          </p>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><em> Number of group elements</em></cell>
+              <cell><em>Order</em></cell>
+              <cell><em>Fixed point set</em></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><mdash/></cell>
+              <cell><mdash/></cell>
+              <cell>entire  octahedron (identity)</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><mdash/></cell>
+              <cell><mdash/></cell>
+              <cell>opposite vertices</cell>
+            </row>
+          </tabular>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_dual">
+        <statement>
+          <p>
+            There are some striking similarities between the tables in <xref ref="exercise_GroupActions_Octa10">Exercises</xref>
+            and <xref ref="exercise_GroupActions_Stabilizers2"></xref>.
+            Describe the similarities, and see if you can explain them.
+            <xref ref="fig_Dual">Figure</xref> may give you some ideas.
+          </p>
+        </statement>
+      </exercise>
+      <figure xml:id="fig_Dual">
+        <caption>Figure for <xref ref="exercise_GroupActions_dual">Exercise</xref> (source: \url{https://en.wikipedia.org})</caption>
+        <image width="46%" source="images/Dual_Cube-Octahedron.png"/>
+      </figure>
+    </subsubsection>
+    <subsubsection>
+      <title>The dodecahedron</title>
+      <p>
+        Let's practice finding the elements of the rotation group of another regular polyhedron.
+        Consider the regular dodecahedron in <xref ref="fig_Dodeca">Figure</xref>.
+        A dodecahedron has 12 faces and each face is a regular pentagon.
+        How many edges does this polyhedron have and how many vertices?
+        Well, since each of the twelve faces is a pentagon that seems to give <m>12\cdot 5=60</m> edges.
+        But two faces meet at each edge,
+        so we actually have <m>(12\cdot 5)/2=30</m> edges.
+      </p>
+      <figure xml:id="fig_Dodeca">
+        <caption>Dodecahedron (source:\url{https://en.wikipedia.org})</caption>
+        <image width="46%" source="images/Dodecahedron.png"/>
+      </figure>
+      <p>
+        You can also make your own dodecahedron to help you explore its rotational symmetries.
+        See <xref ref="fig_DodecaFold">Figure</xref>.
+      </p>
+      <figure xml:id="fig_DodecaFold">
+        <caption>A dodecahedron to print, cut and fold  (from  \url{http://www.korthalsaltes.com}).</caption>
+        <image width="46%" source="images/DodecahedronFold.png"/>
+      </figure>
+      <exercise xml:id="exercise_GroupActions_Dodeca1">
+        <statement>
+          <p>
+            Determine the number of vertices of a regular dodecahedron.
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        Let <m>f_1</m> be one face of the dodecahedron.
+        An axis through the center of <m>f_1</m> also passes the opposite face which is parallel to <m>f_1</m>.
+        We'll call this opposite face <m>f_1^*</m> and denote a counterclockwise rotation of <m>f_1</m> about this axis as <m>r_{f_1}</m>.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Dodeca2">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                What is the order of <m>r_{f_1}</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>G</m> be the rotational symmetry group of a dodecahedron.
+                List all rotations in the stabilizer subgroup <m>G_{f_1}</m>.
+                What else do they stabilize?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is <m>|G_{f_1}|?</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                How many group elements in <m>G</m> stabilize at least 1 face?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is <m>|{\cal O}_{f_1}|</m>?
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        Now we can find the total number of rotational symmetries in <m>G</m>.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Dodeca3">
+        <statement>
+          <p>
+            Find <m>|G|</m> in terms of
+            <m>|G_{f_1}|</m> and <m>|{\cal O}_{f_1}|</m>.
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        So far we've found the number of the stabilizers of faces of the dodecahedron.
+        But, as with the cube and tetrahedron,
+        we need axes of symmetry through edges and vertices as well.
+        Let <m>v_1</m> be one vertex of the dodecahedron.
+        An axis of symmetry through <m>v_1</m> will also pass through the opposite vertex,
+        which we will call <m>v_1^*</m>.
+        A counterclockwise rotation about this axis is called <m>r_{v_1}</m>.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Dodeca4">
+        <statement>
+          <ol>
+            <li>
+              <p>
+                Find the order of <m>r_{v_1}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                List all rotations in the stabilizer subgroup <m>G_{v_1}</m>.
+                What else do they stabilize?
+              </p>
+            </li>
+            <li>
+              <p>
+                How many group elements in <m>G</m>
+                (besides the identity)
+                stabilize at least 1 vertex?
+              </p>
+            </li>
+            <li>
+              <p>
+                What is <m>|{\cal O}_{v_1}|</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Find <m>|G|</m> in terms of
+                <m>|G_{v_1}|</m> and <m>|{\cal O}_{v_1}|</m>.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        Let's consider the edges of the dodecahedron.
+        We've seen already that there are 30 edges.
+        Based on this information and previous exercises, complete the following.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Dodeca5">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Let <m>e_1</m> be one edge of the dodecahedron.
+                What is <m>|G_{e_1}|</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Are the edges of a dodecahedron stabilized in pairs?
+                Explain your answer. (*Hint*)
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Dodeca6">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                How many group elements of <m>G</m> besides the identity stabilize at least 1 edge?
+              </p>
+            </li>
+            <li>
+              <p>
+                Complete the following table to characterize the group elements of the rotational symmetries of a dodecahedron.
+                We show two rows, how many more to complete the table?
+                <tabular>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><em> Number of group elements</em></cell>
+                    <cell><em>order</em></cell>
+                    <cell><em>Fixed point set</em></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><ndash/></cell>
+                    <cell><ndash/></cell>
+                    <cell>entire  dodecahedron (identity)</cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><mdash/></cell>
+                    <cell><ndash/></cell>
+                    <cell><ndash/></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Identify a group of permutations with the same number of elements as the symmetry group of the dodecahedron.
+            Make a table for this group which is arranged like the table in <xref ref="exercise_GroupActions_Stabilizers2b">Exercise</xref>.
+            What do you conjecture based on your results?
+          </p>
+        </statement>
+      </exercise>
+    </subsubsection>
+    <subsubsection>
+      <title>Football (a.k.a.
+      <q>soccer ball</q>
+      )</title>
+      <p>
+        All the polyhedra we've studied so far have congruent regular faces.
+        These are also known as <term>Platonic solids</term>.
+            <idx><h>Platonic solids</h></idx>
+        Let's explore the rotation group of a polyhedron whose faces are not all congruent.
+        A familiar example is the football
+        (following American usage, we'll call it a``soccer ball'),
+        as shown in <xref ref="fig_Soccer">Figure</xref>.
+            <idx><h>Soccer ball</h></idx>
+        The soccer ball has 32 faces, 12 regular pentagons and 20 hexagons.
+      </p>
+      <figure xml:id="fig_Soccer">
+        <caption>The soccer ball has both pentagonal and  hexagonal faces.  Source: \url{http://mathworld.wolfram.com/TruncatedIcosahedron.html}.</caption>
+        <image width="37%" source="images/Soccerball.png"/>
+      </figure>
+      <p>
+        Let's try to count the rotations of a soccer ball that preserve symmetry.
+        Axes can be placed through the center of pentagonal faces,
+        which are stabilized in pairs.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Soccer1">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Given one particular pentagonal face of the soccer ball,
+                what is the order of its stabilizer?
+              </p>
+            </li>
+            <li>
+              <p>
+                Given that there are 12 pentagonal faces,
+                find <m>|G|</m> where <m>G</m> is group of rotational symmetries of the soccer ball. (*Hint*)
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        Axes can also be placed through the center of hexagonal faces.
+        However, not all rotations about an axis through a hexagonal face will result in symmetry.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Soccer2">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Given one particular hexagonal face of the soccer ball,
+                what is the order of its stabilizer?
+              </p>
+            </li>
+            <li>
+              <p>
+                Using your answers to (a) and part (b) of <xref ref="exercise_GroupActions_Soccer1">Exercise</xref>,
+                determine the number of hexagonal faces. (*Hint*)
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        Axes of rotation also pass through
+        <em>some</em> of the edges.
+        Notice that there are two types of edges:
+        those which join two hexagonal faces,
+        and those which join a hexagonal face and a pentagonal face.
+      </p>
+      <exercise xml:id="exercise_GroupActions_Soccer3">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Consider an edge which joins a hexagonal face and a pentagonal face.
+                How many rotations
+                (besides the identity)
+                stabilize this edge?
+                <em>Explain</em> your answer.
+              </p>
+            </li>
+            <li>
+              <p>
+                Consider an edge which joins two hexagonal faces.
+                How many rotations stabilize this edge?
+                <em>Explain</em> your answer.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using the counting formula and your answers to previous exercises,
+                determine the number of edges which join two hexagons.
+              </p>
+            </li>
+            <li>
+              <p>
+                Note each pentagon touches 5 hexagons.
+                Use this information and information from <xref ref="exercise_GroupActions_Soccer1">Exercise</xref>
+                to determine the number of edges which join a pentagon and hexagon.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        What about vertices?
+      </p>
+      <exercise xml:id="exercise_GroupActions_Soccer4">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Consider a particular vertex.
+                How many rotations
+                (besides the identity)
+                stabilize this edge?
+                <em>Explain</em> your answer.
+              </p>
+            </li>
+            <li>
+              <p>
+                Note each vertex touches one pentagon,
+                and each pentagon has five vertices.
+                Use this information and information from <xref ref="exercise_GroupActions_Soccer1">Exercise</xref>
+                to determine the number of vertices.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_GroupActions_Soccer5">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Create a table similar to the table in <xref ref="exercise_GroupActions_Stabilizers2">Exercise</xref>
+                which characterizes the rotational symmetries of the soccer ball.
+              </p>
+            </li>
+            <li>
+              <p>
+                Does this table resemble one of the tables that we constructed previously for regular polyhedra?
+                If so, which?
+                Can you explain this?
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+    </subsubsection>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_Euler">
+    <title>Euler's formula for regular polyhedra</title>
+    <p>
+      In this section we'll play with counting the order of the rotation group <m>G</m> of a regular polyhedron in different ways.
+      It turns out that this will lead us to an interesting and useful formula relating the number of edges,
+      vertices, and faces in a polyhedron.
+      Let's start by reviewing our previous examples and noticing a pattern.
+    </p>
+    <exercise xml:id="exercise_GroupActions_Eulers1">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Complete the table and compare <m>|G|</m> to the number of edges of each polyhedron.
+              The number of edges is equal to the order of the orbit of any edge <m>e</m>,
+              denoted as <m>|{\cal O}_e|</m>.
+              <tabular>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>polyhedron</cell>
+                  <cell>number of edges (<m>|{\cal O}_e|</m>)</cell>
+                  <cell>order of group (<m>|G|</m>)</cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>cube</cell>
+                  <cell>12</cell>
+                  <cell>24</cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>tetrahedron</cell>
+                  <cell><mdash/></cell>
+                  <cell><ndash/></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>octahedron</cell>
+                  <cell><mdash/></cell>
+                  <cell><ndash/></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>dodecahedron</cell>
+                  <cell><ndash/></cell>
+                  <cell><ndash/></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+              </tabular>
+            </p>
+          </li>
+          <li>
+            <p>
+              Based on the table,
+              guess an equation for <m>|G|</m> in terms of <m>{\cal O}_e</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove your equation using <xref ref="proposition_GroupActions_OrbStab">Proposition</xref>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Now in <xref ref="exercise_GroupActions_Stabilizers2">Exercises</xref>,
+      <xref ref="exercise_GroupActions_Tetra9"></xref>,
+      and <xref ref="exercise_GroupActions_Octa10"></xref>
+      we showed another way of counting the elements of <m>G</m>:
+      by counting the stabilizers of faces, vertices, and edges
+      (plus the identity).
+      But does this work for <em>every</em> polyhedron?
+      Could there possibly be a rotational symmetry that doesn't stabilize <em>anything</em>?
+      It turns out that this isn't possible
+      (at least in three dimensions).
+      The argument
+      (which depends on a key fact proved by the famous mathematician Leonhard Euler)
+      goes as follows.
+    </p>
+    <p>
+      Euler proved in 1775 that any rotation in three dimensions has a unique fixed axis.
+      (We won't give the proof here,
+      but it's related to the cross product discussed in <xref ref="subsec_SigmaApp_LeviCivitaAndApp_LeviCivita">Section</xref>.)
+      Now if we rotate a polyhedron,
+      then the axis must intersect the polyhedron twice:
+      that is, it must intersect two elements of <m>X</m> where <m>X = \{\text{ faces,
+      vertices,
+      edges } \}</m>.
+      Let's call these two elements
+      <m>\epsilon_1</m> and <m>\epsilon_2</m>.
+      Since the rotation leaves the two intersections unchanged,
+      there's one point of <m>\epsilon_1</m> which maps to itself
+      (and similarly for <m>\epsilon_2</m>).
+      If the rotation is a symmetry,
+      then <m>\epsilon_1</m> must be fixed by the rotation,
+      because there's no way it couldn't map to a different element of <m>X</m> and still have one point which remains in <m>\epsilon_1</m>.
+      The same argument holds for <m>\epsilon_2</m>.
+      This shows that any rotational symmetry must stabilize at least two elements of <m>X</m>.
+    </p>
+    <p>
+      We can take the argument even further.
+      The rotational symmetry which stabilizes <m>\epsilon_1</m> and
+      <m>\epsilon_2</m> can't possibly stabilize any other elements of <m>X</m>:
+      this is because the center point of any stabilized element
+      (be it face, vertex, or edge)
+      is unchanged by a rotational symmetry,
+      and Euler tells us that there is only one fixed axis and hence exactly two fixed points.
+    </p>
+    <p>
+      So since every rotational symmetry
+      (besides the identity)
+      stabilizes <em>exactly</em> two elements,
+      then if we sum up all of the (non-identity) stabilizers for all elements of <m>X</m> then we will count each (non-identity) symmetry exactly twice.
+      It follows that
+      <me>
+        2(|G|-1) = \sum_{x \in X}  (|G_x|-1)
+      </me>
+    </p>
+    <p>
+      (note that we use <m>|G|-1</m> and <m>|G_x|-1</m> because we're not counting the identity symmetry).
+    </p>
+    <p>
+      Let's apply this formula to a regular polyhedron with <m>|{\cal O}_f|</m> faces,
+      <m>|{\cal O}_v|</m> vertices and <m>|{\cal O}_e|</m> edges.
+      Applying <xref ref="proposition_GroupActions_OrbStab">Proposition</xref> to faces,
+      edges, and vertices gives:
+      <me>
+        |G_f|=\frac{|G|}{|{\cal O}_f|}; \qquad |G_e|=\frac{|G|}{|{\cal O}_e|}; \qquad |G_v|=\frac{|G|}{|{\cal O}_v|}
+      </me>.
+    </p>
+    <p>
+      Now for the sum.
+      Since there are <m>{\cal O}_f</m> faces,
+      <m>{\cal O}_e</m> edges, and <m>{\cal O}_v</m> vertices we have:
+      <md>
+        <mrow>2 (|G| -1) \amp =  \sum_{x \in X}  (|G_x|-1)</mrow>
+        <mrow>\amp =  \sum_{\text{ faces } }  (|G_f|-1)+\sum_{\text{ edges } }  (|G_e|-1)+\sum_{\text{ vertices } }  (|G_v|-1)</mrow>
+        <mrow>\amp = |{\cal O}_f|  \left(\frac{|G|}{|{\cal O}_f|}-1\right)+ |{\cal O}_e| \left(\frac{|G|}{|{\cal O}_e|}-1\right)+  |{\cal O}_v|\left(\frac{|G|}{|{\cal O}_v|}-1\right)</mrow>
+        <mrow>\amp =  3|G| - |{\cal O}_f| -  |{\cal O}_e| -  |{\cal O}_v|</mrow>
+      </md>.
+    </p>
+    <p>
+      Rearranging, we find:
+      <me>
+        |{\cal O}_f| +  |{\cal O}_v|  +  |{\cal O}_e| =  |G|+2
+      </me>.
+    </p>
+    <p>
+      But we've also seen that <m>|G| = 2{\cal O}_e</m> for regular polyhedra.
+      Substituting and rearranging a little further gives:
+      <me>
+        |{\cal O}_f|+|{\cal O}_v|-|{\cal O}_e|=2
+      </me>.
+    </p>
+    <p>
+      This powerful equation is called
+      <em>Euler's formula</em>.
+          <idx><h>Euler's formula</h><h>For networks on a sphere</h></idx>
+      Let's see how it can be useful in determining properties of regular polyhedra.
+    </p>
+    <exercise xml:id="exercise_GroupActions_Euler5">
+      <statement>
+        <p>
+          A certain regular polyhedron has 20 triangular faces.
+          <ol type="a">
+            <li>
+              <p>
+                Using <xref ref="proposition_GroupActions_OrbStab">Proposition</xref>,
+                find the number of edges.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using Euler's formula, find the number of vertices.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using <xref ref="proposition_GroupActions_OrbStab">Proposition</xref>,
+                find the number of edges which meet at each vertex.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_GroupActions_Euler_4">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Verify Euler's formula for the cube and tetrahedron.
+            </p>
+          </li>
+          <li>
+            <p>
+              Explain why the proof we have given does not apply to the soccer ball.
+              Verify that notwithstanding, Euler's formula still works for the soccer ball anyway!
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <remark>
+      <p>
+        Euler's formula has far more general application than we've shown here.
+        It works for any network of edges and vertices which can be drawn on a sphere.
+        Variants of the formula work for networks drawn on other shapes
+        (like a donut, or a donut with multiple holes).
+        Pursuing this topic further would lead us into the area of mathematics known as
+        <term>algebraic topology</term>,
+        which is a fascinating topic but unfortunately a much bigger mouthful than we can swallow at this point.
+      </p>
+    </remark>
+    <p>
+      We don't need to limit ourselves to Euler's formula.
+      There are lots of other fun facts we can prove:
+    </p>
+    <exercise xml:id="exercise_GroupActions_Euler_n">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Modify the proof of Euler's formula to prove the following formula for the soccer ball:
+              <me>
+                2 =  |\text{ faces } | + |\text{ edges } | + |\text{ vertices } | - X \cdot |G|
+              </me>,
+              where <m>|G|</m> is the order of the symmetry group of the soccer ball.
+              Find the value of <m>X</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that the following formula is true for <em>any</em>
+              network of edges and vertices which can be drawn on a sphere:
+              <me>
+                |\text{ faces } | + |\text{ edges } | + |\text{ vertices } | -2 \equiv 0 \pmod{|G|}
+              </me>,
+              where <m>|G|</m> is the order of the rotational symmetry group of the network.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_GroupActions_FunFact">
+      <statement>
+        <p>
+          Let <m>X</m> be a polyhedron consisting of faces, edges and vertices.
+          The symmetry group of <m>X</m> is <m>G</m>.
+          <m>X</m> is not a regular polyhedron<ndash/>the vertices and edges are not all identical.
+          This is what we know about <m>X</m>:
+          <ul>
+            <li>
+              <p>
+                There are two types of vertices, and two types of edges.
+              </p>
+            </li>
+            <li>
+              <p>
+                Type I vertices are all <m>G</m>-equivalent;
+                and every Type I vertex has 5 edges which are all <m>G</m>-equivalent.
+                (This implies that the stabilizer subgroup of any Type I vertex has order 5.)
+              </p>
+            </li>
+            <li>
+              <p>
+                Type II vertices are all <m>G</m>-equivalent.
+              </p>
+            </li>
+            <li>
+              <p>
+                Type I edges are all <m>G</m>-equivalent;
+                and the 180-degree rotation about the axis through the origin and the center of any Type I edge is a symmetry.
+                (In other words,
+                the stabilizer subgroup of any Type I edge has order 2.)
+              </p>
+            </li>
+            <li>
+              <p>
+                Type II edges are all <m>G</m>-equivalent;
+                and Type II edges are not fixed by any symmetries.
+              </p>
+            </li>
+            <li>
+              <p>
+                All faces are triangles, and all are <m>G</m>-equivalent.
+              </p>
+            </li>
+          </ul>
+          <ol type="a">
+            <li>
+              <p>
+                Use the Orbit-Stabilizer Theorem
+                (<xref ref="proposition_GroupActions_OrbStab">Proposition</xref>)
+                to express the number of Type I vertices, Type I edges,
+                and Type II edges in terms of <m>|G|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>|G|</m> is divisible by 10.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since every edge is shared by two faces, it follows that:
+                <me>
+                  2 \cdot \text{ (number of edges) = (number of faces)(number of edges per face) }
+                </me>.
+                Use this fact to express the number of faces in terms of <m>|G|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute the order of the stabilizer subgroup of any face in <m>X</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use Euler's formula to express the number of Type II vertices in terms of <m>|G|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using the Counting Formula applied to Type II vertices,
+                show that the order of the stabilizer subgroup of any Type II vertex is 3 or less.
+                Then show that order 1 and order 2 are both impossible,
+                so that the order must be 3.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using Euler's formula, compute <m>|G|</m>.
+                Give explicitly the number of vertices and edges of each type,
+                and the number of faces.
+              </p>
+            </li>
+            <li>
+              <p>
+                Look up on the web, and see if you can identify this polyhedron
+                (this is an example of an <term>Archimedian solid</term>).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_AreTheirOthers">
+    <title>Are there other regular polyhedra?</title>
+    <p>
+      We have investigated four regular polyhedra:
+      cube, tetrahedron, octahedron, and dodecahedron.
+      Could there be any others?
+      What does group theory tell us?
+    </p>
+    <exercise xml:id="exercise_GroupActions_allPoly">
+      <statement>
+        <p>
+          Let us suppose we have a regular polyhedron with <m>n_f</m> faces,
+          <m>n_e</m> edges, and <m>n_v</m> vertices.
+          Let us further suppose that each face has <m>f</m> edges per face and <m>v</m> edges which meet at each vertex.
+          (Note in particular that <m>v \ge 3</m>,
+          because 2 parallel edges which join together form a single edge and not a vertex.)
+          Let <m>G</m> be the group of rotational symmetries.
+          <ol type="a">
+            <li>
+              <p>
+                Use the Counting Formula to obtain three different equations for <m>|G|</m> in terms of <m>n_f, n_e, n_v, f</m>,
+                and <m>v</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use part (a) and Euler's formula to find an equation that relates <m>f, v</m>,
+                and <m>|G|</m>
+                (that is, these are the only 3 variables in the equation).
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>f=3</m>.
+                Find the possible values of <m>v</m>.
+                For each value of <m>v</m>,
+                find the corresponding values of <m>|G|, n_f, n_e</m>,
+                and <m>n_v</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>f=4</m>.
+                Find the possible values of <m>v</m>.
+                For each value of <m>v</m>,
+                find the corresponding values of <m>|G|, n_f, n_e</m>,
+                and <m>n_v</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>f=5</m>.
+                Find the possible values of <m>v</m>.
+                For each value of <m>v</m>,
+                find the corresponding values of <m>|G|, n_f, n_e</m>,
+                and <m>n_v</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>f \ge 6</m>.
+                Show that this would imply <m>v\lt 3</m>, which is impossible.
+              </p>
+            </li>
+            <li>
+              <p>
+                Besides the four polyhedra we have investigated,
+                could there be any others?
+                If so, what are their properties?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Take a moment to appreciate how amazing these results are.
+      Since polyhedra are geometrical objects,
+      one would think that one would have to consider geometrical facts about angles and how they fit together in order to determine which ones are possible.
+      In particular,
+      we know from geometry that a regular polyhedron couldn't have more than 6 regular polygons meeting at an edge,
+      because then we'd have more than 360 degrees.
+      Geometry also tells us that polyhedral faces couldn't have more than 6 sides,
+      since then we couldn't have more than 2 meeting at a vertex.
+      But we have figured out which regular polyhedra can exist,
+      purely on the basis of algebra with no considerations of angles whatsoever!
+    </p>
+    <p>
+      The other wonderfully mysterious fact is that all of the regular polyhedra that we have determined to be possible do actually exist.
+      It seems that our simple algebraic representations have captured some deep properties of the three-dimensional world that we live in.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_reflSym">
+    <title>Reflection symmetries of polyhedra</title>
+    <p>
+      We have never shown that the rotational symmetries are the <em>only</em>
+      symmetries of the regular solids In fact, there are others!
+      Recall that in the dihedral group,
+      besides rotations there were reflections.
+      Consider for example the hexagon:
+      it had 6 rotations
+      (including the identity)
+      and 6 reflections.
+      It's possible to rotate the hexagon and keep the hexagon in the same plane.
+      However, to reflect the hexagon, you have to
+      <q>flip</q>
+      it, which requires three dimensions.
+      It turns out that something similar is true for the regular solids.
+      There are also reflection symmetries for the regular solids:
+      in fact, there are as many reflections as rotations,
+      just as in the dihedral group.
+      Also like the dihedral group,
+      to reflect a solid requires one extra dimension.
+      It is rather mind-blowing to think that if we lived in a world with four physical dimensions,
+      it would be possible to turn your right hand into your left hand just by
+      <q>flipping</q>
+      in the fourth dimension!
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_GroupActions_SymmetryOfPolyhedra_FiniteGroupRotation3D">
+    <title>Finite subgroups of the group of rotations in 3 dimensions</title>
+    <p>
+      The set of all possible rotations in 3 dimensions forms a group,
+      which is called the <term>special orthogonal group</term>
+      and is denoted by the symbol <m>SO_3</m>.
+      (<m>SO_3</m> is actually the intersection of the
+      <q>orthogonal group</q>
+      <m>O_3</m> with the special linear group in three dimensions,
+      which is why it's called
+      <q>special</q>.)
+      All of the rotational symmetry groups of regular polyhedra which we've been considering are finite subgroups of <m>SO_3</m>.
+    </p>
+    <p>
+      In <xref ref="Symmetry">Chapter</xref>
+      we encountered another class of finite subgroups of <m>SO_3</m>,
+      namely the dihedral groups <m>D_n</m> which consist of rotations and flips
+      (we should be careful to include <m>D_2</m>,
+      which is generated by a single 180-degree rotation and a flip).
+      Although a flip is not a 2-d rotation,
+      it is a rotation in 3-dimensions
+      (as we indicated in <xref ref="subsec_GroupActions_SymmetryOfPolyhedra_reflSym">Section</xref>).
+      Naturally, the rotation groups for the different <m>n</m>-gons (which are subgroups of the <m>D_n</m> form another class of finite subgroups of <m>SO_3</m>.
+    </p>
+    <p>
+      Are there any other finite subgroups of <m>SO_3</m>.
+      The answer is <em>no</em> For a proof, the reader may consult
+      <q>Classifying Finite Subgroups of <m>SO_3</m></q>
+      by Hannah Mark, which
+      (as of April 1 2020)
+      can be found at: \url{homepages.math.uic.edu/<nbsp/>kauffman/FiniteRot.pdf}
+      (if the link doesn't work, you may try a Google search).
+    </p>
+    <p>
+      Once again, note the amazing power of mathematics.
+      Mathematics tells reality what it can and cannot do.
+      Mathematics commands the universe,
+      and the universe must obey.
+    </p>
+  </subsection>
+</section>

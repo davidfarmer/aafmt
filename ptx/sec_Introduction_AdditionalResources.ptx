@@ -1,0 +1,72 @@
+<section xml:id="sec_Introduction_AdditionalResources">
+  <title>Additional resources</title>
+  <p>
+    This is the Information Age,
+    and a mere textbook is somewhat limited in its ability to convey information.
+    Accordingly, as we continue to use the book in our classes,
+    we are continuing to build an ecosystem to support the book's use:
+    <ul>
+      <li>
+        <p>
+          The book's web site is \url{http://abstractalgebra.altervista.org/}.
+        </p>
+      </li>
+      <li>
+        <p>
+          An electronic version of the book is available at \url{https://sl2x.aimath.org/book/aafmt/}.
+        </p>
+      </li>
+      <li>
+        <p>
+          For a print copy,
+          we recommend an on-demand print service such as \url{https://www.printme1.com/}.
+        </p>
+      </li>
+      <li>
+        <p>
+          A comprehensive set of short video presentations of the book's content may be found on the EAAEA YouTube channel: \url{https://www.youtube.com/playlist?list=PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo}. A second YouTube channel with worked exercises may be found at: \url{https://www.youtube.com/playlist?list=PL2uooHqQ6T7NMO1Lk5lX3tDyQF8URCwwK}.
+        </p>
+      </li>
+      <li>
+        <p>
+          An
+          <q>Instructor's Supplement</q>
+          is available upon request: email the editor
+          <url href="mailto:thron@tamuct.edu">thron@tamuct.edu</url>
+          from a verifiable faculty email address.
+        </p>
+      </li>
+      <li>
+        <p>
+          Any instructor wishing to customize the material or extract certain portions may email the editor
+          <url href="mailto:thron@tamuct.edu">thron@tamuct.edu</url>
+          to request the <latex/><nbsp/>source code.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    <em>Acknowledgements</em>
+  </p>
+  <p>
+    In our preparation of this text,
+    we were fortunate to find via the web some extraordinarily generous authors (Tom Judson, Dave Witte Morris and Joy Morris, A. J. Hildebrand) who freely shared their material with us.
+    Thanks to them,
+    we were able to put the first version of this textbook together within the span of a single semester
+    (not that we're finished <mdash/> this is a living book,
+    not a dead volume).
+    We hope that other instructors will similarly benefit from the material offered here.
+  </p>
+  <p>
+    Several Master's students at Texas A&amp;M-Central Texas have made contributions to the book as part of a projects course or thesis.
+    Their names are listed in the title,
+    and their contributions are acknowleged at the beginning of each chapter.
+  </p>
+  <p>
+    Our very special thanks to Meghan DeWitt for her thorough critical reading of the book and her incisive comments.
+    The book has greatly benefitted from her numerous suggestions.
+  </p>
+  <blockquote>
+    Unless the LORD builds the house, the builders labor in vain. Unless the LORD keeps the city, the watchman is wakeful in vain.  It is vanity to rise up early, stay up late, and eat the bread of sorrows, for He gives sleep to those He loves."  (Psalm 127:1-2)
+  </blockquote>
+</section>

@@ -1,0 +1,481 @@
+<section xml:id="sec_Polynomials_OperationsAndSigmaNotation">
+  <title>Polynomial operations in summation notation</title>
+  <p>
+    In the preceding section, we discussed familiar polynomial operations.
+    In this section we give general formulas for these operations in terms of summation notation.
+    These formulas are important both theoretically and practically:
+    theoretically,
+    because they give us a way to express general polynomial operations in proofs;
+    and practically,
+    because they provide instructions for programming polynomial operations on computers.
+  </p>
+  <p>
+    So far we have been using polynomials with real
+    (and occasionally complex)
+    coefficients<ndash/>but keep in mind that the formulas that we obtain will also apply to other types of polynomials as well,
+    as we shall see in <xref ref="sec_Polynomials_ExoticPolynomials">Section</xref>.
+  </p>
+  <p>
+    First we give the summation representation for an arbitrary polynomial:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {sumPoly} A polynomial may be written as
+        <me>
+          f(x) = a_0 + a_1 x +a_2 x^2 + \cdots + a_N x^N = \sum^{N}_{n=0} a_n x^n
+        </me>,
+      </p>
+      <p>
+        Where <m>a_n</m> is the <term>coefficient</term>
+            <idx><h>Polynomial</h><h>coefficients</h></idx>
+        of <m>x^n</m>,
+        <m>n=1,2, \ldots N</m>.
+        It is possible for <m>a_n = 0</m>,
+        in which case we usually omit the corresponding <m>x^n</m> term
+        (for instance,
+        we write <m>-7 + x^2</m> rather than <m>-7 + 0x + x^2</m>).
+        When we write a polynomial as a sum in this way we will <term>assume</term>
+        that <m>a_N \neq 0</m> (here <m>a_N</m> is called the
+        <term>leading coefficient</term>.
+            <idx><h>Polynomial</h><h>leading coefficient</h></idx>
+        Thus the largest power of <m>x</m> that appears in the polynomial is <m>x^N</m>:
+        this largest power is called the
+        <term>degree</term><idx><h>Degree</h><h>of a polynomial</h></idx> of the polynomial.
+      </p>
+    </statement>
+  </definition>
+  <remark>
+    <p>
+      According to <xref ref="definition_Polynomials_sumPoly">Definition</xref>,
+      we write polynomials in ascending order.
+      This differs from <xref ref="sec_Polynomials_PolynomialArithmetic">Section</xref>,
+      where we wrote polynomials in descending order as is customary in secondary school.
+      Since the operation <sq>+</sq> is commutative,
+      the two ways are equivalent:
+      but we will increasingly use this new way,
+      which turns out to be useful for a number of reasons.
+    </p>
+  </remark>
+  <example xml:id="example_Polynomials_poly3_5">
+    <statement>
+      <p>
+        Express the following polynomials in summation notation:
+        <ol type="a">
+          <li>
+            <p>
+              <m>p_1(x)=1 + x+x^2+x^3</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_2(x)=0 + x+2x^2+3x^3+4x^4+5x^5+6x^6+7x^7</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_3(x)=5 x+4x^2+3x^3+2x^4</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_4(x)=x+4x^2+9x^3+16x^4+25x^5</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_5(x)=-3ix^3+4x^4+5i^5x^5</m> (note that here <m>i</m> denotes <m>\sqrt{-1}</m>)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_6(x)=\sqrt{2}\cis(\pi/3)x^3+\sqrt{3}\cis(2\pi/3)x^6-x^9 + 2\cis(4\pi/3)x^{12} + \sqrt{5}\cis(5\pi/3)x^{15} + \sqrt{6}x^{18}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_7(x)=0+\frac{1}{2}x+\frac{2}{3}x^2+\frac{3}{4}x^3+\frac{4}{5}x^4</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_8(x)=i+(1+2i)x+(2+3i)x^2+(3+4i)x^3+(4+5i)x^4+(5+6i)x^5+(6+7i)x^6</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        {Answers:}
+        <ol type="a">
+          <li>
+            <p>
+              <m>p_1(x) = \sum_{j=0}^{3} x^j</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_2(x)=\sum_{m=0}^{7} mx^m</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_3(x)=\sum_{k=1}^{4} (6-k)x^k</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_4(x)=\sum_{\ell=0}^{5} \ell^2x^\ell</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_5(x) = \sum_{n=3}^{5}ni^nx^n</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_6(x) = \sum_{q=1}^{6}\sqrt{q+1}\cis(q\pi/3)x^{3q}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_7(x) = \sum_{i=0}^{5}\frac{ix^i}{i+1}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p_8(x) = \sum_{a=0}^{6}(a+(a+1)i)x^a</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Note that we don't always begin the sum at 0, depending on the polynomial.
+        Also, the power of <m>x</m> may be a function of the index,
+        as in <m>p_6</m>.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_Polynomials_poly3l">
+    <statement>
+      <p>
+        Write down the polynomial that each summation represents.
+        <ol type="a">
+          <li>
+            <p>
+              <m>p(x) = \sum_{j=0}^{6}( j^2+2)x^{3j}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x) = \sum_{r=2}^{5} (r+1)i^rx^r</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x) = \sum_{s=0}^{8} (-1)^sx^{2s}</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Polynomials_poly4">
+    <statement>
+      <p>
+        Re-express the following polynomials in summation notation,
+        and give the degree of each polynomial.
+        <ol type="a">
+          <li>
+            <p>
+              <m>2 + 0x + 6x^2 + 0x^3 + 10x^4 + 0x^5 + 14x^6 +0x^7 + 18x^8</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\cis(\frac{\pi}{2})x^2 + 0x^3 + \cis(\pi)x^4 + 0x^5 + \cis(\frac{3\pi}{2})x^6</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>1+ 2x + 4x^2 + 8x^3 + 16x^4 + 32x^5</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>1+4x+11x^2+30x^3+85x^4</m> (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>1-\frac{1}{3}x + \frac{1}{5}x^2 - \frac{1}{7}x^3 + \frac{1}{9}x^4 - \frac{1}{11}x^5</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <remark>
+    <p>
+      In cases where there is no apparent pattern in the coefficients,
+      then summation notation may not be beneficial.
+      For example, suppose:
+      <me>
+        p(x) = 7+ 22x^2 + x^3-6x^6+4x^8-x^9
+      </me>.
+    </p>
+    <p>
+      Since there's no clear pattern in the coefficients,
+      there's no advantage in writing <m>p(x)</m> in summation notation.
+    </p>
+  </remark>
+  <p>
+    Although the following definition may seem rather obvious,
+    nonetheless we should state it to be precise.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {PolynomialEquality} Two polynomials are said to be
+        <term>equal</term><idx><h>Equality</h><h>of polynomials</h></idx> if and only if their corresponding coefficients are equal.
+        That is, if we let
+        <me>
+          p(x)  = \sum^{M}_{m=0} a_m x^m; \qquad q(x)  = \sum^{N}_{n=0} b_n x^n
+        </me>,
+        then <m>p(x) = q(x)</m> if and only if <m>M=N</m> and
+        <m>a_m = b_m</m> for all <m>0 \leq m \leq M</m>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Now we're ready to express our arithmetical rules in summation notation.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {defsumpoly} We define the <em>sum of two polynomials</em><idx><h>Sum</h><h>of polynomials</h></idx>
+            <idx><h>Polynomials</h><h>sum</h></idx>
+        as follows.
+        Let
+        <md>
+          <mrow>p(x)  = \sum^{M}_{m=0} a_m x^m ; \qquad q(x)  = \sum^{N}_{n=0} b_n x^n</mrow>
+        </md>,
+      </p>
+      <p>
+        Then the sum of <m>p(x)</m> and <m>q(x)</m> is
+        <me>
+          p(x) + q(x) =  \sum_{k=0}^{\max(M,N)} (a_k + b_k) x^k
+        </me>.
+      </p>
+      <p>
+        In this formula,
+        if <m>M>N</m> then it's understood that <m>b_k=0</m> when <m>k>N</m>;
+        and if <m>N>M</m> then it's understood that <m>a_k = 0</m> when <m>k>M</m>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Notice that we have taken the upper limit of the sum to
+    <m>\max(M,N)</m> in order to make sure to include all nonzero terms from both polynomials.
+  </p>
+  <p>
+    Now that we have a formula for adding polynomials,
+    the next step is to obtain a formula for multiplying polynomials,
+    using summation notation.
+    To do this, let's repeat the polynomial multiplication procedure we used in <xref ref="sec_Polynomials_PolynomialArithmetic">Section</xref>,
+    only this time we'll use two general polynomials instead of specific examples.
+    As with addition, we use
+    <me>
+      p(x)  = \sum^{M}_{m=0} a_m x^m; \qquad q(x)  = \sum^{N}_{n=0} b_n x^n
+    </me>.
+  </p>
+  <p>
+    In the multiplication example in <xref ref="sec_Polynomials_PolynomialArithmetic">Section</xref>,
+    we split up the first polynomial,
+    and multiplied each term of the first polynomial by the second polynomial.
+    When applied to <m>p(x)</m> and <m>q(x)</m>, this becomes:
+    <md>
+      <mrow>p(x)q(x)\amp = a_0x^0 \cdot q(x) + a_1x^1 \cdot q(x) + \ldots + a_Nx^N \cdot q(x)</mrow>
+      <mrow>\amp = \sum^M_{m=0} a_mx^m \cdot q(x)</mrow>
+      <mrow>\amp = \sum^M_{m=0} a_mx^m \cdot \left(\sum^{N}_{n=0} b_n x^n\right)</mrow>
+    </md>,
+    where in the last equation we have replaced <m>q(x)</m> with its expression in summation notation.
+    Now since <m>a_mx^m</m> is constant with respect to <m>n</m>,
+    we may pull <m>a_mx^m</m> inside the sum over <m>n</m>,
+    which gives:
+    <me>
+      p(x) q(x) =\sum_{m=0}^{M}\sum_{n=0}^{N}(a_mx^m) b_n x^{n}=\sum_{m=0}^{M}\sum_{n=0}^{N}a_m b_n x^{m+n}
+    </me>,
+    where we have used our multiplication rule for monomials:
+    <m>(a_mx^m) b_n x^{n}=a_m b_n x^{m+n}</m>.
+  </p>
+  <p>
+    Although this expression is correct,
+    it's kind of a hodgepodge.
+    The reason is that not all the terms with the same power of <m>x</m> are grouped together.
+    So let's try to collect terms according to like power of <m>x</m>.
+  </p>
+  <p>
+    We'll start with <m>x^0</m>.
+    Since terms have the form <m>a_m b_n x^{m+n}</m>,
+    this means we need to find all values of <m>m</m> and <m>n</m> such that <m>m+n=0</m>.
+    Since both <m>m</m> and <m>n</m> are nonnegative,
+    the only possibility is <m>m=0,n=0</m>,
+    which gives the term <m>a_0 b_0 x^{0}</m>.
+  </p>
+  <p>
+    Next let's look at <m>x^1</m>.
+    In this case we want terms
+    <m>a_m b_n x^{m+n}</m> which have <m>m+n=1</m>.
+    There are two: <m>a_1 b_0 x^{1}</m> and <m>a_0 b_1 x^{1}</m>.
+  </p>
+  <p>
+    If we treat <m>x^2</m> similarly, we have three terms:
+    <m>a_2 b_0 x^{2}</m>, <m>a_1 b_1 x^{2}</m>, and <m>a_0 b_2 x^{2}</m>.
+    Then <m>x^3</m> has four terms:
+    <m>a_3 b_0 x^{3}</m>, <m>a_2 b_1 x^{3}</m>,
+    <m>a_1b_2 x^{3}</m>, and <m>a_0b_3x^3</m>.
+    Do you see the pattern?
+    For <m>x^k</m> we will get <m>k+1</m> terms:
+    <m>a_k b_0 x^{k}</m>, <m>a_{k-1} b_1 x^{k}</m>, <m>\ldots</m>,
+    <m>a_1 b_{k-1} x^{k}</m>, and <m>a_0 b_{k} x^{k}</m>.
+    Since <m>+</m> is commutative,
+    we may sum these terms together to obtain the coefficient of <m>x^k</m>,
+    which we will denote as <m>c_k</m>:
+    <me>
+      c_k  = a_0  b_k + a_1 b_{k -1} + \cdots + a_{k -1} b _1 + a_k b_0 = \sum_{j = 0}^k a_j b_{k - j}
+    </me>,
+  </p>
+  <p>
+    This is the coefficient of <m>x^k</m> in the summation notation expression for the product.
+    At last we have our general formula:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {defprodpoly} The <em>product of two polynomials</em><idx><h>Product</h><h>of polynomials</h></idx>
+            <idx><h>Polynomials</h><h>product</h></idx> <m>p(x)= \sum^{M}_{m=0} a_m x^m</m> and <m>q(x)=\sum^{N}_{n=0} b_n x^n</m> is given by:
+        <me>
+          p(x) q(x) = \sum_{k=0}^{M+N} c_k x^k
+        </me>,
+        where
+        <me>
+          c_k=  \sum_{j = 0}^k a_j b_{k - j}
+        </me>
+        for each <m>k</m>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Let's verify the formula by computing <m>f(x)</m>, where:
+    <me>
+      f(x)=(1+x^2-2x^3)(x+4x^3)
+    </me>.
+  </p>
+  <p>
+    <m>f(x)</m> is the product of <m>p(x)</m> and <m>q(x)</m>, where:
+    <me>
+      p(x)= 1x^0 + 0x^1 + 1x^2 + (-2)x^3   \text{ and }   q(x)= 0x^0 + 1x^1 + 0x^2 + 4x^3
+    </me>
+  </p>
+  <p>
+    Both polynomials have degree 3, so the degree of the product is 3+3=6:
+    <me>
+      p(x) q(x) = \sum_{k=0}^{m+n} c_k  x^k =  \sum_{k=0}^{6} c_k x^k
+    </me>.
+  </p>
+  <p>
+    Now all we have to do is find the values of the seven coefficients <m>c_0, \ldots,c_6</m>,
+    some of which may be zero.
+    Let us start with <m>c_0</m>:
+    <me>
+      c_0 = \sum_{i = 0}^0 a_i b_{0 - i} = a_0b_0= 0 \cdot 1 = 0
+    </me>.
+  </p>
+  <p>
+    Already we've found a term that is zero.
+    We still need to find six more coefficients<ndash/>how about we look at the fifth coefficient:
+    <me>
+      c_4 =  \sum_{i = 0}^4 a_i b_{4 - i} =   a_0b_4 + a_1b_3 +a_2b_2 + a_3b_1 + a_4b_0
+    </me>.
+  </p>
+  <p>
+    Notice that <m>a_4=b_4=0</m> since <m>p(x)</m> and <m>q(x)</m> both have degree 3, so the first and last terms are both 0.
+    Altogether we have
+    <me>
+      c_4=0+0\cdot 4+1\cdot 0+(-2)\cdot 1+0=-2
+    </me>.
+  </p>
+  <p>
+    Doing the same for the other coefficients gives us:
+    <me>
+      f(x)= 0x^0+ 1x^1 + 0x^2 + 5x^3 + (-2)x^4 + 4x^5 + (-8)x^6
+    </me>
+  </p>
+  <p>
+    Getting rid of the zero terms and dealing with the negatives gives us the simplified version:
+    <me>
+      f(x)=x+5x^3-2x^4+4x^5-8x^6
+    </me>.
+  </p>
+  <exercise xml:id="exercise_Polynomials_mult2way">
+    <statement>
+      <p>
+        Perform the following polynomial multiplications in two ways:
+        first, by following the procedure described in <xref ref="sec_Polynomials_PolynomialArithmetic">Section</xref>;
+        and second, by using the coefficient formula in <xref ref="definition_Polynomials_defprodpoly">Definition</xref> directly.
+        Verify that the two methods agree.
+        <ol type="a">
+          <li>
+            <p>
+              <m>(-5+x)(3x+ x^2)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(-\sqrt{3}+x)(2\sqrt{3}+5x^3)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(7/2- 3x+4x^2)(2+x^3)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(- 7x^2 + 4x^3+8x^5 )(3-5x+10x^2 )</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The coefficient formula enables us to compute a single coefficient for a product of polynomials without having to compute the rest of the product.
+    Here are some exercises for practice:
+  </p>
+  <exercise xml:id="exercise_Polynomials_multform">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Give the coefficient of <m>x^{100}</m> in the polynomial <m>p(x)^2</m>,
+            where <m>p(x) = \sum_{n=0}^{100} x^n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Give the coefficient of <m>x^{25}</m> in the polynomial <m>p(x) \cdot q(x)</m>,
+            where <m>p(x) = \sum_{n=0}^{25} nx^n</m> and <m>q(x) = \sum_{m=0}^{25} x^m</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            give the coefficient of <m>x^{33}</m> in the polynomial <m>p(x) \cdot q(x)</m>,
+            where <m>p(x) = \sum_{n=1}^{33} \frac{x^n}{n}</m> and <m>q(x) = \sum_{n=0}^{32} (33-n)x^n</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+</section>

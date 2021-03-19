@@ -1,0 +1,118 @@
+<section xml:id="sec_Homomorphism_FirstIsomorphismTheorem">
+  <title>The First Isomorphism Theorem</title>
+  <p>
+    There's one property that we observed in earlier sections of this chapter that we haven't proven so far, namely,
+    the quotient group created by the kernel of a homomorphism is isomorphic to the image of the homomorphism.
+    In order to do this,
+    we'll need a clearer idea of how homomorphisms actually work.
+    <xref ref="fig_homomorph3">Figure</xref>
+    gives a schematic diagram of a general homomorphism <m>f</m> with kernel <m>K</m>.
+  </p>
+  <figure xml:id="fig_homomorph3">
+    <caption>Homomorphism <m>f:G \rightarrow H</m> with kernel <m>K</m>.</caption>
+    <image width="75%" source="images/homomorph3.png"/>
+  </figure>
+  <p>
+    The figure shows the cosets of <m>K</m>,
+    which form a partition of <m>G</m> as we showed in the Cosets chapter.
+    These cosets can be thought of as elements of the quotient group <m>G/K</m>.
+  </p>
+  <p>
+    The arrangement of arrows in the figure indicate that any two points in the same coset <m>gK</m> map to the same element of <m>H</m>.
+    This is true because
+    <me>
+      f(gk) = f(g)f(k) = f(g)e' = f(g)\qquad (\text{ given that }  g \in G, k \in K)
+    </me>.
+  </p>
+  <p>
+    This implies that we can actually define a function <m>F</m> from <m>G/K</m> to <m>H</m> as follows:
+    <me>
+      F(gK) = f(g)
+    </me>.
+  </p>
+  <p>
+    The function is well-defined because if
+    <m>g'K = gK</m> then <m>F(g'K) = f(g') = f(g) = F(gK)</m>.
+  </p>
+  <p>
+    So what's the point?
+    It turns out that this function <m>F</m> is exactly the isomorphism that we're looking for.
+    We've already shown that it's well-defined:
+    all that's left is to show that it's one-to-one and onto,
+    and that it preserves the operation.
+    We state these results as a proposition.
+  </p>
+  <proposition xml:id="proposition_Homomorphism_FirstIsoTheorem">
+    <statement>
+      <p>
+        (<em>First Isomorphism Theorem</em>) <idx><h>First Isomorphism Theorem</h><h>for groups</h></idx>
+      </p>
+      <p>
+        Suppose <m>f : G \rightarrow H</m> is a homomorphism with <m>K =\ker f</m>.
+        Let the function <m>F: G/K \rightarrow f(G)</m> be defined according to <m>F(gK) = f(g)</m>.
+        Then <m>F</m> is an isomorphism.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      As mentioned above, we only need to show that <m>F</m> is 1-1, onto,
+      and preserves the operation.
+      <ul>
+        <li>
+          <p>
+            1-1: Suppose that <m>F(g_1K) = F(g_2K)</m>.
+            Then according to the definition of <m>F</m>,
+            this means that <m>f(g_1) = f(g_2)</m>.
+            From this we obtain (using the homomorphism property of <m>f</m>):
+            <me>
+              f(g_1^{-1}g_2)) = f(g_1^{-1})f(g_2) =  f(g_1)^{-1}f(g_2) = f(g_1)^{-1}f(g_1) = e'  \implies g_1^{-1}g_2 \in K
+            </me>.
+            By <xref ref="proposition_Cosets_cosets_theorem_1">Proposition</xref>
+            in the Cosets chapter (parts (1) and (2)),
+            this implies that <m>g_1K = g_2K</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Onto: Let <m>h</m> be an arbitrary element of <m>f(G)</m>.
+            Then there exists <m>g \in G</m> such that <m>f(g)=h</m>.
+            By the definition of <m>F</m>,
+            we have also that <m>F(gK) = h</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Preserves operations: Using properties of normal subgroups, we have:
+            <me>
+              F(g_1Kg_2K) = F(g_1g_2K) = f(g_1g_2) = f(g_1)f(g_2) = F(g_1K)F(g_2K)
+            </me>.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </proof>
+  <example xml:id="example_Homomorphism_homo_cyclic">
+    <statement>
+      <p>
+        Let <m>G</m> be a cyclic group with generator <m>g</m>.
+        Define a map <m>f : {\mathbb Z} \rightarrow G</m> by <m>n \mapsto g^n</m>.
+        This map is a surjective homomorphism<idx><h>Homomorphism</h><h>surjective</h></idx> since
+        <me>
+          f( m + n) = g^{m+n} = g^m g^n = f(m) f(n)
+        </me>.
+      </p>
+      <p>
+        Clearly <m>f</m> is onto.
+        If <m>|g| = m</m>, then <m>g^m = e</m>.
+        Hence, <m>\ker f = m {\mathbb Z}</m> and <m>{\mathbb Z} / \ker f = {\mathbb Z} / m {\mathbb Z} \cong G</m>.
+        On the other hand, if the order of <m>g</m> is infinite,
+        then <m>\ker f = 0</m> and <m>\phi</m> is an isomorphism of <m>G</m> and <m>{\mathbb Z}</m>.
+        Hence, two cyclic groups are isomorphic exactly when they have the same order.
+        We may conclude that up to isomorphism,
+        the only cyclic groups are
+        <m>{\mathbb Z}</m> and <m>{\mathbb Z}_n</m>.
+      </p>
+    </statement>
+  </example>
+</section>

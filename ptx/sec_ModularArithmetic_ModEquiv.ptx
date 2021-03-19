@@ -1,0 +1,632 @@
+<section xml:id="sec_ModularArithmetic_ModEquiv">
+  <title>Modular equivalence and modular arithmetic</title>
+  <p>
+    In order to understand the situation more thoroughly,
+    let us focus on the 5-mile racetrack example used in <xref ref="example_ModularArithmetic_racetrack">Examples</xref>
+    and <xref ref="example_ModularArithmetic_racetrack2"></xref>.
+    The racetrack
+    (with mile markers)
+    is shown in <xref ref="fig_racetrack">Figure</xref>.
+  </p>
+  <figure xml:id="fig_racetrack">
+    <caption>5-mile racetrack</caption>
+    <image width="37%" source="images/racetrack.png"/>
+  </figure>
+  <p>
+    Let's say the car starts at mile marker 0.
+    The car may then travel forward (counterclockwise) or backwards (clockwise) any number of miles;
+    we may define the car's <em>net displacement</em>
+    as the the total number of forward miles traveled minus the the total number of backward miles.
+    Net displacement is a very useful concept if you are a race car driver.
+    For example,
+    the winner of the Indianapolis 500 is the the first driver to achieve a net displacement of 500 miles (in this case,
+    only forward motion is allowed!)
+  </p>
+  <p>
+    We may characterize the displacement of the car using a conventional number line,
+    as shown in <xref ref="fig_displacement">Figure</xref>.
+    Moving forward around the racetrack corresponds to moving right
+    (positive direction)
+    on the number line;
+    while moving backward around the racetrack corresponds to moving left
+    (negative direction).
+  </p>
+  <figure xml:id="fig_displacement">
+    <caption>Displacements on a 5-mile racetrack</caption>
+    <image width="84%" source="images/integer_line.png"/>
+  </figure>
+  <exercise xml:id="exercise_ModularArithmetic_racetrack_displacements">
+    <statement>
+      <p>
+        Compute the net displacement for the following multi-stage trips:
+        <ol type="a">
+          <li>
+            <p>
+              346 miles in the forward direction,
+              then 432 miles in the backward direction,
+              then 99 miles in the forward direction.
+            </p>
+          </li>
+          <li>
+            <p>
+              A forward displacements of 44 miles,
+              followed by 13 additional forward displacements of 53 miles
+              (one after the other).
+            </p>
+          </li>
+          <li>
+            <p>
+              Repeat the following sequence 25 times:
+              a forward displacement of 17 miles,
+              followed by a backward displacement of 9 miles,
+              followed by a forward displacement of 22 miles.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    From the preceding exercise, it appears that we may use ordinary addition,
+    subtraction and/or multiplication to compute the car's net displacement after a trip involving several stages.
+  </p>
+  <p>
+    On the other hand, if we want to represent the <em>position</em>
+    of the car on the track as it relates to net displacement,
+    we would have to relabel the number line as shown in <xref ref="fig_positions">Figure</xref>,
+    using only the integers <m>0,1,2,3,4</m>.
+  </p>
+  <figure xml:id="fig_positions">
+    <caption>Positions on the 5-mile racetrack</caption>
+    <image width="84%" source="images/integers_mod_5.png"/>
+  </figure>
+  <exercise xml:id="exercise_ModularArithmetic_racetrack_positions">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Compute the positions on the racetrack corresponding to each of the net displacements that you computed in <xref ref="exercise_ModularArithmetic_racetrack_displacements">Exercise</xref>.
+          </p>
+        </li>
+        <li>
+          <p>
+            How are your answers in (a) related to the corresponding answers in <xref ref="exercise_ModularArithmetic_racetrack_displacements">Exercise</xref>?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    You may have noticed that different displacements may correspond to the same position.
+    For example, displacements of 8, 23,
+    and -17 all correspond to the same position
+    (namely 3).
+    We say that two displacements that correspond to the same position are <em>equivalent</em>.
+    The fact that displacements 8 and 23 are equivalent on a 5-mile racetrack may be expressed mathematically as:
+    <m>8 \equiv 23 \pmod{5}</m>
+    (in words, we say <sq>8 is equivalent to 23 mod 5</sq>).
+  </p>
+  <p>
+    How can you tell when two displacements correspond to the same position?
+    In our racetrack example we may notice that 8, 23,
+    and -17 all have remainder 3 when divided by 5.
+    So in this example at least,
+    we can see that the position on the racetrack corresponds to the remainder when the displacement is divided by the length of the racetrack
+    (which serves as the modulus).
+    You may verify that this is true for any displacement:
+    the position is what's left after all whole multiples of 5 are taken out.
+  </p>
+  <p>
+    This seems to indicate that we can define a notion of equivalence in terms of remainders.
+    But let's be careful here.
+    You've probably been finding remainders since elementary school<ndash/>but have you really thought about what you're doing?
+    How do you know there will always be a remainder?
+    And how do you know there's only one?
+    Why couldn't some numbers have two different remainders,
+    and some have none at all?
+    It appears that before we can define modular equivalence in terms of remainders,
+    first we're going to have to establish some solid facts about remainders:
+  </p>
+  <proposition xml:id="proposition_ModularArithmetic_DivAlg">
+    <statement>
+      <p>
+        (<em>The</em> <term>division algorithm</term>) Given any integer <m>a</m> and any positive integer <m>m</m>,
+        then there exists a unique number <m>r</m> between <m>0</m> and <m>m-1</m> such that
+        <m>a = q \cdot m + r</m> for some integer <m>q</m>.
+        In this expression, <m>q</m> is called the <em>quotient</em>,
+            <idx><h>Quotient</h><h>under integer division</h></idx>
+        and <m>r</m> is called the <em>remainder</em>.
+            <idx><h>Remainder</h><h>under integer division</h></idx>
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      It turns out that proving this
+      <q>simple</q>
+      fact is not so simple!
+      Although this fact has been used for millennia (it's sometimes called
+      <term>Euclidean division</term>,
+      because Euclid used it ca. 300 B.C.), the first rigorous proof was found relatively recently.
+      There are actually two things to prove:
+      first, that the remainder <m>r</m> exists,
+      and second, that it's unique.
+      We're going to punt on the <sq>existence</sq> part:
+      you can find the proof in a book on number theory.<fn>
+      Or check the internet,
+      e.g.: \url{http://www.oxfordmathcenter.com/drupal7/node/479}.
+      </fn> The <sq>unique</sq> part is proved by the following fill-in-the-blanks exercise:
+    </p>
+    <exercise xml:id="exercise_ModularArithmetic_27">
+      <statement>
+        <p>
+          Fill in the blanks in the following proof that the remainder is always unique.
+        </p>
+        <p>
+          We'll give a proof by contradiction.
+          Suppose that <m>a</m> has two different remainders when divided by <m>m</m>.
+          Let's call these two different remainders <m>r</m> and <m>s</m>,
+          where <m>0 \le r,s \le \underline{~\lt 1>~}</m> and <m>r \neq s</m>.
+        </p>
+        <p>
+          It follows that <m>a = q \cdot m + r</m> and <m>a = p \cdot m + \underline{~\lt 2>~}</m>,
+          where <m>q</m> and <m>p</m> are <m>\underline{~\lt 3>~}</m>.
+          Setting these two expressions equal and rearranging enables us to obtain an expression for <m>r-s</m>, namely:
+          <m>r - s = (\underline{~\lt 4>~})\cdot m</m>.
+          Thus <m>r-s</m> is an integer multiple of <m>\underline{~\lt 5>~}</m>.
+        </p>
+        <p>
+          On the other hand,
+          we know that <m>r \ge 0</m> and <m>s \le \underline{~\lt 6>~}</m>,
+          so by arithmetic we obtain <m>r - s \ge \underline{~\lt 7>~}</m>.
+          Furthermore,
+          <m>r \le \underline{~\lt 8>~}</m> and <m>s \ge \underline{~\lt 9>~}</m>,
+          so <m>r - s \le \underline{~\lt 10>~}</m>.
+          Combining these two results,
+          we find that <m>r-s</m> is an integer between
+          <m>\underline{~\lt 11>~}</m> and <m>\underline{~\lt 12>~}</m>.
+        </p>
+        <p>
+          Now, the only integer multiple of <m>m</m> between <m>\underline{~\lt 13>~}</m> and
+          <m>\underline{~\lt 14>~}</m> is <m>\underline{~\lt 15>~}</m>.
+          It follows that <m>r - s = \underline{~\lt 16>~}</m>,
+          or <m>r = \underline{~\lt 17>~}</m>.
+          But this contradicts our supposition that <m>\underline{~\lt 18>~}</m>.
+          So our supposition cannot be true:
+          and <m>a</m> cannot have <m>\underline{~\lt 19>~}</m>.
+          Thus the remainder when <m>a</m> is divided by <m>m</m> is unique,
+          and the proof is complete.
+        </p>
+      </statement>
+    </exercise>
+  </proof>
+  <p>
+    We'll use the notation
+    <q>mod(<m>a,m</m>)</q>
+    to indicate the remainder of <m>a</m> when divided by <m>m</m>.
+    This notation is used in most mathematical software
+    (such as Excel, Matlab, and so on),
+    and it reflects the fact that the remainder is a function of <m>a</m> and <m>m</m>.
+  </p>
+  <remark>
+    <p>
+      Unlike many references, we do <em>not</em> use the expressions
+      <q><m>a \bmod m</m></q>
+      or
+      <q><m>a \pmod m</m></q>
+      to denote the remainder when <m>a</m> is divided by <m>m</m>.
+      In this book we <em>never</em> write
+      <q><m>a \bmod m</m></q>
+      or
+      <q><m>a \pmod m</m></q>
+      as stand-alone expressions.
+      In the expression <m>a \equiv b \pmod n</m>,
+      the <m>\pmod n</m> refers to the <sq><m>\equiv</m></sq> and not to the <m>b</m>.
+      So it's true that <m>2 = 17 \pmod 5</m>,
+      and it's also true that <m>17 \equiv 2 \pmod{5}</m>.
+    </p>
+  </remark>
+  <p>
+    Now that we know that unique remainders really do always exist,
+    we're in a position to use them in our definition of modular equivalence:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {equivalence} Two integers <m>a</m> and <m>b</m> are <em>equivalent</em>
+        mod <m>m</m><idx><h>Modular equivalence</h><h>first definition</h></idx> if both <m>a</m> and <m>b</m> have the same remainder when divided by <m>m</m>.
+        To denote that <m>a</m> and <m>b</m> are
+        <term>equivalent</term> mod <m>m</m>, we write:
+        <m>a \equiv b \pmod{m}</m>.
+      </p>
+    </statement>
+  </definition>
+  <remark>
+    <p>
+      Notice that <xref ref="definition_ModularArithmetic_equivalence">Definition</xref> uses the 3-lined
+      <q><m>\equiv</m></q>
+      here instead of the usual <m>=</m> sign.
+      This notation is used to emphasize the fact that modular equivalence resembles equality,
+      but is not quite the same thing.
+      For example,
+      we have already seen that 8 and 23 are equivalent mod 5, even though they are not equal.
+      In a later chapter we'll discuss equivalence relations,
+      and we'll see that equivalence is in some sense a generalization of equality.
+      For now, be alerted to the fact that
+      <q><m>\equiv</m></q>
+      and
+      <q><m>=</m></q>
+      do not necessarily have the same properties.
+      It's tempting for instance to make statements such as,
+      <q><m>a \equiv b \pmod{m}</m> implies <m>a-b \equiv 0 \pmod{m}</m></q>. But just because this is true for <m>=</m> doesn't mean it's also true for <m>\equiv</m>!
+      In this case the statement turns out to be true,
+      but it requires proof <mdash/> and in this class you are not allowed to make assertions that have not been proven.<fn>
+      This may be one reason why not many mathematicians are politicians,
+      and vice-versa.
+      </fn>
+    </p>
+  </remark>
+  <p>
+    The following result enables us to verify when we've indeed found a remainder.
+  </p>
+  <proposition xml:id="proposition_ModularArithmetic_remThm">
+    <statement>
+      <p>
+        If <m>a \equiv r \pmod{m}</m> and <m>0 \le r \le m-1</m>,
+        then <m>r = \bmod(a,m)</m>.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      Given that <m>a \equiv r \pmod{m}</m>,
+      by the definition of modular equivalence it follows that <m>a</m> and <m>r</m> have the same remainder mod <m>m</m>.
+      But since <m>0 \le r \le m-1</m>,
+      the remainder of <m>r</m> is <m>r</m> itself.
+      It follows that the remainder of <m>a</m> is also <m>r</m>:
+      so <m>r = \bmod(a,m)</m>.
+    </p>
+  </proof>
+  <p>
+    There is an alternative
+    (and very useful)
+    way to determine modular equivalence.
+    Suppose that <m>a \equiv b \pmod{m}</m>,
+    so that <m>a</m> and <m>b</m> have the same remainder when divided by <m>m</m>.
+    Let's call this remainder <m>r</m>.
+    Then we can write <m>a = p \cdot m + r</m> and
+    <m>b = q \cdot m + r</m> for some integers <m>p,q</m> It follows from basic algebra that <m>a - p \cdot m =b - q \cdot m</m>.
+    We then proceed step-by-step using basic algebra as follows:
+    <md>
+      <mrow>\amp a - p \cdot m = b - q \cdot m</mrow>
+      <mrow>\implies \amp  a - b = p \cdot m - q \cdot m</mrow>
+      <mrow>\implies \amp  a - b = (p - q) \cdot m.</mrow>
+      <mrow>\implies \amp  a - b  \text{ is divisible by }  m</mrow>
+    </md>.
+  </p>
+  <p>
+    In summary, we have shown that
+    <me>
+      \text{ If }  a \equiv b \pmod{m}  \text{ then }  a - b \text{ is divisible by }  m
+    </me>.
+    which we can also write as
+    <me>
+      a \equiv b \pmod{m} \implies \mbox{ \(a - b\) is divisible by \(m\).}
+    </me>
+  </p>
+  <p>
+    It turns out that the <em>converse</em>
+        <idx><h>Converse</h></idx>
+    statement is also true.<fn>
+    In general, if you have a statement of the form
+    <q>If A then B</q>, then the converse  is
+    <q>If B then A</q>.  Similarly, the converse of
+    <q>A <m>\implies</m> B</q>
+    is,
+    <q>B <m>\implies</m> A</q>.
+    </fn> The converse statement is:
+    <me>
+      \mbox{ If  \(a - b\) is divisible by \(m\)  then } a \equiv b \pmod{m}
+    </me>.
+  </p>
+  <p>
+    One way to prove this is to prove the
+    <em>contrapositive</em>,
+        <idx><h>Contrapositive</h></idx>
+    which is logically equivalent.<fn>
+    In general, the contrapositive of
+    <q>If A as true then B is also true</q>, is
+    <q>If B is not true then A is not true</q>. Alternatively: if you have a statement
+    <q>A <m>\implies</m> B</q>, then the contrapositive is
+    <q>not B <m>\implies</m> not A</q>. Unlike the converse, the contrapositive is <em>always</em>
+    true if the original statement is true
+    </fn> In this case,
+    the contrapositive statement is,
+    <q>If <m>a \not\equiv b \pmod{m}</m>,
+    then <m>a-b</m> is not divisible by <m>m</m></q>).
+  </p>
+  <exercise xml:id="exercise_ModularArithmetic_equivdef">
+    <statement>
+      <p>
+        Finish the proof of the contrapositive by filling in the blanks:
+      </p>
+      <p>
+        Suppose <m>a \not\equiv b \pmod{m}</m>.
+        Let <m>r</m> be the remainder of <m>a</m> when divided by <m>\underline{~\lt 1>~}</m>,
+        and let <m>s</m> be the remainder of
+        <m>\underline{~\lt 2>~}</m> when divided by <m>\underline{~\lt 3>~}</m>.
+        Since the remainders are unequal,
+        it follows that one must be bigger than the other:
+        let us choose <m>a</m> to be the number with the larger remainder,
+        so that <m>r > \underline{~\lt 4>~}</m>.
+        By the definition of remainder,
+        we may write <m>a = p\cdot m + \underline{~\lt 5>~}</m>,
+        and we may also write <m>b = q\cdot \underline{~\lt 6>~} + \underline{~\lt 7>~}</m>.
+        Then by basic algebra,
+        <m>a - b = (p-q)\cdot \underline{~\lt 8>~} + (r - \underline{~\lt 9>~})</m>.
+      </p>
+      <p>
+        We want to show that <m>r-s</m> is the remainder of <m>a-b</m> when divided by <m>m</m>.
+        To do this, we need to show that <m>r-s</m> is between 0 and <m>\underline{~\lt 10>~}</m>.
+        Since <m>r>s</m> it follows that <m>r-s > \underline{~\lt 11>~}</m>.
+        Furthermore, Since <m>r \lt m</m> and <m>s \ge 0</m>,
+        it follows that <m>r - s \lt \underline{~\lt 12>~}</m>.
+        So we have shown that <m>r-s</m> is between
+        <m>\underline{~\lt 13>~}</m> and <m>\underline{~\lt 14>~}</m>,
+        so by Proposition <m>\underline{~\lt 15>~}</m> it follows that <m>r-s</m> is the remainder of <m>a-b</m> when divided by <m>m</m>.
+        However, <m>r-s > 0</m>,
+        which means that <m>a-b</m> is not divisible by <m>\underline{~\lt 16>~}</m>.
+        This is exactly what we needed to prove, so the proof is complete.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    We summarize <xref ref="exercise_ModularArithmetic_equivdef">Exercise</xref>
+    and the preceding discussion together in the following proposition.
+  </p>
+  <proposition xml:id="proposition_ModularArithmetic_equivalence_alt">
+    <statement>
+      <p>
+        Given any two integers <m>a</m> and <m>b</m>, and a modulus <m>m</m>
+        (<m>m</m> is a positive integer).
+        Then
+        <me>
+          a \equiv b \pmod{m} \mathrm{~if~and~only~if~} a - b = k \cdot m
+        </me>,
+        where <m>k</m> is an integer.
+      </p>
+    </statement>
+  </proposition>
+  <p>
+    We may rewrite <xref ref="proposition_ModularArithmetic_equivalence_alt">Proposition</xref>
+    more elegantly using mathematical shorthand as follows: Given <m>a,b,m \in {\mathbb Z}</m>,
+    then<idx><h>Modular equivalence</h><h>alternative definition</h></idx>
+    <me>
+      a \equiv b \pmod{m} \mathrm{~iff~} m | (a - b)
+    </me>.
+  </p>
+  <p>
+    Note the two shorthand expressions we have used here:
+    the symbol <sq><m>\in</m></sq> means <sq>contained in</sq> or <sq>elements of</sq>,
+    while the single vertical line <sq><m>|</m></sq> means ``divides'.
+  </p>
+  <p>
+    The following proposition establishes important facts about modular equivalence that we'll need later.
+  </p>
+  <proposition xml:id="proposition_ModularArithmetic_equivalence_transitive">
+    <statement>
+      <p>
+        Given any integers <m>a,
+        b, c</m> and a positive integer <m>n</m> such that
+        <m>a \equiv b \pmod{n}</m> and <m>c \equiv b \pmod{n}</m>.
+        Then it is also true that <m>a \equiv c, c \equiv a, b \equiv a</m>,
+        and <m>b \equiv c</m>
+        (all these equivalences are <m>\pmod{n}</m>)
+        .
+      </p>
+    </statement>
+  </proposition>
+  <remark>
+    <p>
+      This proposition actually establishes that modular equivalence is both
+      <em>transitive</em> and <em>symmetric</em>.
+      If you haven't seen this terminology before don't worry<ndash/>we'll talk about transitive and symmetric relations in the Equivalence Relations chapter.
+    </p>
+  </remark>
+  <exercise xml:id="exercise_ModularArithmetic_eqproof">
+    <statement>
+      <p>
+        Prove <xref ref="proposition_ModularArithmetic_equivalence_transitive">Proposition</xref>. (*Hint*)<fn>
+        All *Hints* can be found at the end of the book (or by clicking on the *Hints* link.)
+        </fn>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_ModularArithmetic_jan25">
+    <statement>
+      <p>
+        Suppose January 25 is a Thursday.
+        <ol type="a">
+          <li>
+            <p>
+              Use <xref ref="definition_ModularArithmetic_equivalence">Definition</xref>
+              to determine whether January 3 is a Thursday.
+              Show your reasoning.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use <xref ref="proposition_ModularArithmetic_equivalence_alt">Proposition</xref>
+              to determine whether January 31 is a Thursday.
+              Show your reasoning.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the nearest Thursday to January 15.
+              Show your reasoning.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the nearest Thursday to April 18.
+              Show your reasoning.
+              (Note: the year is not a leap year.)
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_ModularArithmetic_22">
+    <statement>
+      <p>
+        Determine whether or not the following equivalences are true.
+        Explain your reasoning.
+        If the equivalence is not true,
+        change one of the numbers to make it true.
+        <ol type="a">
+          <li>
+            <p>
+              <m>71 \equiv 13 \pmod{4}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>-23 \equiv 13 \pmod{6}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>101 \equiv 29 \pmod{6}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>50 \equiv 13 \pmod{7}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>654321 \equiv 123456 \pmod{5}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>1476532 \equiv -71832778 \pmod{10}</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Let us now return to the problem of finding the position corresponding to the net displacement following a multi-stage trip.
+    When you computed racetrack positions in <xref ref="exercise_ModularArithmetic_racetrack_positions">Exercise</xref>,
+    most likely you simply took the net displacements you computed in <xref ref="exercise_ModularArithmetic_racetrack_displacements">Exercise</xref>,
+    divided by 5 and took remainder.
+    However, our new concept of modular equivalence gives us another way of solving this problem <mdash/> one that can be much,
+    much easier if we're dealing with large displacements.
+  </p>
+  <example xml:id="example_ModularArithmetic_mod_add_new">
+    <statement>
+      <p>
+        Suppose Dusty drives around the 5-mile track 112 miles in a positive direction,
+        then 49 miles in a negative direction,
+        then 322 miles in a positive direction.
+        To find Dusty's net displacement we may take
+        <m>112 - 49 + 322 = 385</m> and then take the remainder mod <m>5</m>
+        (which turns out to be 0).
+        But notice that:
+        <md>
+          <mrow>\bmod(112,5) \amp = 2,</mrow>
+          <mrow>\bmod(-49,5) \amp = 1,</mrow>
+          <mrow>\bmod(322,5) \amp = 2</mrow>
+        </md>,
+        and we compute
+        <me>
+          2 + 1 + 2 = 5 \equiv 0 \pmod{5}
+        </me>.
+      </p>
+      <p>
+        We have obtained the same answer with much less work.
+        How did we do it?
+        By <em>replacing each number with its remainder</em>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    Can we do the same thing with multiplication?
+  </p>
+  <example xml:id="example_ModularArithmetic_mod_mult_new">
+    <statement>
+      <p>
+        Suppose I travel on my racetrack at a 113 miles per hour in the positive direction for 17 hours.
+        We may compute:
+        <md>
+          <mrow>\text{ Net displacement } \amp : 113 \cdot 17 = 1921 \text{ miles }</mrow>
+          <mrow>\text{ Final position } \amp : 1921 = 384\cdot 5 + 1 \implies \text{ final position }  = 1</mrow>
+        </md>.
+      </p>
+      <p>
+        On the other hand,
+        we may reach the same conclusion by a somewhat easier route:
+        <md>
+          <mrow>\bmod(113,5) \amp = 3,</mrow>
+          <mrow>\bmod(17,5) \amp = 2</mrow>
+        </md>,
+        and we compute
+        <me>
+          3 \cdot 2 = 6 \equiv 1\pmod{5}
+        </me>.
+      </p>
+      <p>
+        Again, we have obtained the correct answer by
+        <em>replacing each number with its remainder</em>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    Does this work in general?
+    In fact it does!
+    However, this requires a mathematical proof.
+    We will discuss the proof in a later section <mdash/> but at least our discussion shows that
+    <em>arithmetic with remainders</em>
+    is meaningful and useful.
+  </p>
+  <p>
+    If we're doing arithmetic <m>\pmod{n}</m>,
+    then the remainders will necessarily be between <m>0</m> and <m>n-1</m>
+    (inclusive).
+    This set of remainders has a special name,
+    which later on we'll use extensively:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {integers_mod_n}
+            <idx><h>Integers mod <m>n</m></h></idx>
+        The set of integers <m>\{0,1,\ldots,n-1\}</m> is called the set of
+        <term>integers mod <m>n</m></term>,
+        and is denoted by the symbol <m>{\mathbb Z}_n</m>.
+      </p>
+    </statement>
+  </definition>
+  <remark>
+    <p>
+      In this chapter, we are considering
+      <m>{\mathbb Z}_n</m> as a subset of <m>\mathbb{Z}</m>.
+      Later on in <xref ref="EquivalenceRelations">Chapter</xref>
+      we will view <m>{\mathbb Z}_n</m> from an entirely different perspective.
+      (You don't really need to know this now<ndash/>just file it away for future reference.)
+    </p>
+  </remark>
+  <exercise xml:id="exercise_ModularArithmetic_28">
+    <statement>
+      <p>
+        Now you're ready!
+        Give answers for the seven examples at the beginning of this chapter.
+      </p>
+    </statement>
+  </exercise>
+</section>

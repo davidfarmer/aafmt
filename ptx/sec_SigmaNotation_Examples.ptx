@@ -1,0 +1,144 @@
+<section xml:id="sec_SigmaNotation_Examples">
+  <title>Lots of examples<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    In mathematics one often encounters sums everywhere.
+    Sometimes these sums have very few terms,
+    but occasionally the sums can reach hundreds,
+    thousands or even an infinite number of terms.
+    In these cases,
+    rather than listing each and every term or listing the first several terms and assuming the pattern is obvious,
+    one can represent a sum using <term>summation notation</term>,
+    often referred to as <term>sigma notation</term>.
+  </p>
+  <p>
+    Sigma notation has four main parts:
+    the <em>index variable</em>,
+    the <em>starting value</em>, the <em>final value</em>
+    and the <em>formula</em>.
+    These parts are illustrated in the following example.
+  </p>
+  <example xml:id="example_SigmaNotation_Sigma1">
+    <statement>
+      <p>
+        Consider:
+        <me>
+          \sum _{i=1}^{10}(i+2)
+        </me>
+      </p>
+      <p>
+        In this case,
+        the <m>\Sigma</m> symbol lets us know that this is a sum.
+        The <m>i=1</m> serves two functions.
+        It tells us that the index variable is <m>i</m>,
+        and that <m>i</m> has a starting value of 1.
+        The <m>10</m> is the final value,
+        and the <m>(i+2)</m> to the right of the <m>\Sigma</m> is the formula.
+        The <m>i</m> in the formula,
+        takes each integer value from the starting value (1) to the final value (10).
+        Therefore we have:
+        <me>
+          \sum _{i=1}^{10}(i+2) = 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12=75
+        </me>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    This notation has a lot of flexibility.
+    For example, the sum's formula can be a constant value:
+    <me>
+      \sum _{i=1}^{10}5 = 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 = 50
+    </me>.
+  </p>
+  <p>
+    Or we could have the index as an exponent:
+    <me>
+      \sum _{i=1}^{10}(2^i) = 2^1 + 2^2 + 2^3 + 2^4 + 2^5 + 2^6+ 2^7+ 2^8+ 2^9+ 2^{10}
+    </me>
+  </p>
+  <p>
+    Now all the examples so far have a numerical value that can be calculated.
+    However, summation notation can also be used to express functions of variables such as:
+    <me>
+      \sum _{i=1}^{10}(x^i)= x^1 + x^2 + x^3 + x^4 + x^5 + x^6+ x^7+ x^8+ x^9+ x^{10}
+    </me>
+  </p>
+  <p>
+    Note that any variables in the formula that do not match the index are left as variables
+    (such as <m>x</m> in the previous example).
+    While we do not know what the sum value is other than in terms of <m>x</m>,
+    we can much more concisely state the sum in sigma notation.
+  </p>
+  <p>
+    Another typical use for the index in the formula is to denote an index in a coefficient.
+    Consider the polynomial:
+    <me>
+      ax^2 + bx + c
+    </me>.
+  </p>
+  <p>
+    Instead of using a different letter,
+    we can use a subscript to denote a different value but use the same letter:
+    <me>
+      a_2x^2 + a_1x + a_0
+    </me>.
+  </p>
+  <p>
+    And when we use subscripts,
+    we can use the index in the formula to denote that subscript.
+    <me>
+      \sum_{i=0}^{2}a_ix^i
+    </me>
+  </p>
+  <p>
+    Changing the starting and/or final values does not affect the pattern of the formula,
+    but it does change the number of terms and any index values used in that formula.
+    Take one of the previous examples:
+    <me>
+      \sum _{i=1}^{10}i = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
+    </me>
+  </p>
+  <p>
+    If we were to change the <m>i=1</m> to <m>i=4</m> then the sum would lose terms 1,2,3:
+    <me>
+      \sum _{i=4}^{10}i = 4 + 5 + 6 + 7 + 8 + 9 + 10
+    </me>
+  </p>
+  <p>
+    Likewise, if we were to also change the 10 to 6, it would lose the terms 10,9,8 and 7;
+    <me>
+      \sum _{i=4}^{6}i = 4 + 5 + 6
+    </me>.
+  </p>
+  <exercise xml:id="exercise_SigmaNotation_Sigma_Notation_Practice">
+    <statement>
+      <p>
+        Evaluate the following:
+        <ol type="a">
+          <li>
+            <p>
+              <m>\displaystyle{\sum _{i=0}^{400} \,2}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\displaystyle{ \sum_{j=17}^{20} \, 2j^2 - j}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\displaystyle{ \sum_{k=0}^{4}(x^{2k} - k)}</m> (Your answer should be in terms of <m>x</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\displaystyle{ \sum_{k=0}^{100} \left(\frac{1}{k+2} - \frac{1}{k+1}\right)}</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

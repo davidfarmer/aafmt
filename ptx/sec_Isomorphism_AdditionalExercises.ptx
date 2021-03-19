@@ -1,0 +1,183 @@
+<section xml:id="sec_Isomorphism_AdditionalExercises">
+  <title>Additional exercises</title>
+  <ol type="1">
+    <li>
+      <p>
+        Let <m>\omega = \cis(2 \pi /n)</m>.
+        Show that <m>\omega^n = 1</m>,
+        and  prove that the matrices
+        <me>
+          A= \begin{pmatrix}\omega \amp  0 \\ 0 \amp  \omega^{-1} \end{pmatrix} \text{ and } B = \begin{pmatrix}0 \amp  1 \\ 1 \amp  0 \end{pmatrix}
+        </me>
+        generate a multiplicative group isomorphic to <m>D_n</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Show that the set of all matrices of the form
+        <me>
+          B = \begin{pmatrix}\pm 1 \amp  n \\ 0 \amp  1 \end{pmatrix}
+        </me>,
+        where <m>n \in {\mathbb Z}_n</m>,
+        is a group isomorphic to <m>D_n</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>G = {\mathbb R} \setminus \{ -1 \}</m> and define a binary operation on <m>G</m> by
+        <me>
+          a \ast b = a + b + ab
+        </me>.
+        Prove that <m>G</m> is a group under this operation.
+        Show that <m>(G, *)</m> is isomorphic to the multiplicative group of nonzero real numbers.
+      </p>
+    </li>
+    <li>
+      <p>
+        Find all the subgroups of <m>D_4</m>.
+        Which subgroups are normal?
+        What are all the quotient groups of <m>D_4</m> up to isomorphism?
+      </p>
+    </li>
+    <li>
+      <p>
+        Prove that <m>D_4</m> cannot be the internal direct product of two of its proper subgroups.
+      </p>
+    </li>
+    <li xml:id="exercise_Isomorphism_eoc">
+      <p>
+        * Prove that <m>S_3 \times {\mathbb Z}_2</m> is isomorphic to <m>D_6</m>.
+        Can you make a conjecture about <m>D_{2n}</m>?
+        Prove your conjecture. (*Hint*)
+      </p>
+    </li>
+    <li>
+      <p>
+        Find all the subgroups of the quaternion group, <m>Q_8</m>.
+        Which subgroups are normal?
+        What are all the quotient groups of <m>Q_8</m> up to isomorphism?
+      </p>
+    </li>
+    <li>
+      <p>
+        Prove <m>U(5) \cong {\mathbb Z}_4</m>.
+        Can you generalize this result to show that <m>U(p) \cong {\mathbb Z}_{p-1}</m>?
+      </p>
+    </li>
+    <li>
+      <p>
+        Write out the permutations associated with each element of <m>S_3</m> in the proof of Cayley's Theorem.
+      </p>
+    </li>
+    <li>
+      <p>
+        Prove that <m>A \times B</m> is abelian if and only if <m>A</m> and <m>B</m> are abelian.
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>H_1</m> and <m>H_2</m> be subgroups of <m>G_1</m> and <m>G_2</m>,
+        respectively.
+        Prove that <m>H_1 \times H_2</m> is a subgroup of <m>G_1 \times G_2</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>m, n \in {\mathbb Z}</m>,
+        so that <m>(m,n) \in \mathbb{Z} \times \mathbb{Z}</m>.
+        Prove that <m>\langle (m,n) \rangle \cong \langle d \rangle</m> if and only if <m>d = \gcd(m,n)</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>m, n \in {\mathbb Z}</m>.
+        Prove that <m>\langle m \rangle \cap \langle n \rangle \cong \langle l \rangle</m> if and only if <m>d = \lcm(m,n)</m>.
+        The following exercises will require this definition:
+        <definition>
+          <statement>
+            <p>
+              An <term>automorphism</term><idx><h>Automorphism</h><h>of a group</h></idx>
+          <idx><h>Group</h><h>automorphism of</h></idx>
+              of a group <m>G</m> is an isomorphism with itself.
+            </p>
+          </statement>
+        </definition>
+      </p>
+    </li>
+    <li>
+      <p>
+        Prove that complex conjugation is an automorphism of the additive group of complex numbers;
+        that is, show that the map
+        <m>\phi( a + bi ) = a - bi</m> is an isomorphism from
+        <m>{\mathbb C}</m> to <m>{\mathbb C}</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Prove that <m>a + ib \mapsto a - ib</m> is an automorphism of <m>{\mathbb C}^*</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Prove that <m>A \mapsto B^{-1}AB</m> is an automorphism of
+        <m>SL_2({\mathbb R})</m> for all <m>B</m> in <m>GL_2({\mathbb R})</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        We will denote the set of all automorphisms of <m>G</m> by <m>Aut(G)</m>.
+        Prove that <m>Aut(G)</m> is a subgroup of <m>S_G</m>,
+        the group of permutations of <m>G</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Find <m>Aut( {\mathbb Z}_6)</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Find <m>Aut( {\mathbb Z})</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Find two nonisomorphic groups <m>G</m> and <m>H</m> such that <m>Aut(G) \cong Aut( H)</m>.
+      </p>
+    </li>
+    <li>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>G</m> be a group and <m>g \in G</m>.
+            Define a map <m>i_g : G \rightarrow G</m> by <m>i_g(x) = g x g^{-1}</m>.
+            Prove that <m>i_g</m> defines an automorphism of <m>G</m>.
+            Such an automorphism is called an
+            <term>inner automorphism</term>.
+          <idx><h>Automorphism</h><h>inner</h></idx>
+      </p>
+        </li>
+        <li>
+          <p>
+            The set of all inner automorphisms is denoted by <m>Inn(G)</m>.
+            Prove that <m>Inn(G)</m> is a subgroup of <m>Aut(G)</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            What are the inner automorphisms of the quaternion group <m>Q_8</m>?
+            Is <m>Inn(G) = Aut(G)</m> in this case?
+          </p>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <p>
+        Let <m>G</m> be a group and <m>g \in G</m>.
+        Define maps <m>\sigma_g :G \rightarrow G</m> and <m>\tau_g :G \rightarrow G</m> by
+        <m>\sigma_g(x) = gx</m> and <m>\tau_g(x) = xg^{-1}</m>.
+        Show that <m>i_g := \tau_g \circ \sigma_g</m> is an automorphism of <m>G</m>.
+      </p>
+    </li>
+  </ol>
+</section>

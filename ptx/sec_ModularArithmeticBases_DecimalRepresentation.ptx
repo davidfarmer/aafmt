@@ -1,0 +1,763 @@
+<section xml:id="sec_ModularArithmeticBases_DecimalRepresentation">
+  <title>Decimal representations</title>
+  <subsection>
+    <title>Decimal representation formula</title>
+    <p>
+      We are so used to writing decimal numbers,
+      that we take for granted what we're doing.
+      Let's think a little more carefully about what's really going on when we write a decimal number.
+      Let's start with integers.
+      Essentially,
+      representing an integer as a decimal <idx><h>Decimal representation</h><h>of integers</h></idx> means writing writing the integer in terms of powers of 10.
+      For example, the number 72483 means:
+      <men>
+        72483=7\cdot 10^{4}+2 \cdot 10^{3}+ 4 \cdot 10^2 + 8 \cdot 10^1 + 3 \cdot 10^0
+      </men>.
+    </p>
+    <p>
+      In general, a <m>m+1</m>-digit decimal number <m>n</m> which has digits <m>d_m</m>,
+      <m>d_{m-1} \ldots d_0</m>
+      (from largest to smallest)
+      has the value:
+      <men>
+        n=d_{m}10^{m}+d_{m-1}10^{m-1}+\cdots+d_{0}
+      </men>.
+    </p>
+    <p>
+      Note that each digit <m>d_j</m> must be in <m>\mathbb{Z}_{10}</m>.
+    </p>
+  </subsection>
+  <subsection xml:id="decDigits">
+    <title>Formulas for decimal digits of of integers</title>
+    <p>
+      It is easy for a human being to identify the digits of a decimal number,
+      because we're used to decimal arithmetic.
+      But we want a way of <em>mathematically</em> defining the digits.
+      This is useful when we need to have a computer recognize the decimal digits of a number
+      (computers use <em>binary</em> rather than decimal numbers,
+      so it takes some doing to get them to produce decimal digits).
+    </p>
+    <p>
+      Let's do this first with a simple example.
+      We'll take our favorite number <m>n=72483</m>,
+      and see if we can develop a mathematical process to read off the digits.
+      The lowest digit (i.e. the number in the one's place) is found by taking the mod base 10:
+      <m>3 = \bmod (n,10)</m>.
+      Then if we subtract this digit from <m>n</m>,
+      we get <m>72480</m>, which is divisible by 10.
+      When we divide by 10, we obtain <m>7248</m>.
+      Notice that the one's digit of this new number is equal to the 10's digit of <m>n</m>.
+      So we can repeat the same process and take the modulus base 10 to obtain <m>8 = \bmod(7248,10)</m>.
+      We then take <m>7248 - 8 = 7240</m>,
+      divide by 10, and repeat the process until we get all the digits
+      (from lowest to highest).
+    </p>
+    <p>
+      Let's generalize this to an arbitrary integer,
+      <m>n</m> expressed in base <m>10</m>.
+      The lowest digit (i.e. the number in the one's place) is found by calculating <m>\bmod (n,10)</m>.
+      Let's call this <m>d_0</m>.
+      We compute <m>(n-d_0)/10</m> which we will call <m>a_1</m>.
+      The second digit <m>d_1</m> is equal to <m>\bmod(a_1,10)</m>.
+      To obtain the third digit <m>d_2</m>,
+      we first compute <m>a_2  = (a_1-d_1)/10</m> and then <m>d_2 = \bmod(a_2,10)</m>.
+      From here, we will repeat the same steps to get the rest of the digits.
+      We may summarize the entire process in the following series of equations:
+      <md>
+        <mrow>a_{0}=n\amp ;~~ d_{0}=\bmod(n,10)</mrow>
+        <mrow>a_{1}=\frac{a_{0}-d_{0}}{10}\amp ;~~ d_{1}=\bmod(a_{1},10)</mrow>
+        <mrow>a_{2}=\frac{a_{1}-d_{1}}{10}\amp ;~~ d_{2}=\bmod(a_{2},10)</mrow>
+        <mrow>\vdots</mrow>
+        <mrow>a_{m}=\frac{a_{m-1}-d_{m-1}}{10}\amp ;~~ d_{m}=\bmod(a_{m},10)</mrow>
+      </md>,
+    </p>
+    <p>
+      This sequence of <m>m+1</m> equations can be summarized as follows:
+      <md>
+        <mrow>a_{0}=n\amp ;~~ d_{0}=\bmod(n,10)</mrow>
+        <mrow>a_{k}=\frac{a_{k-1}-d_{k-1}}{10}\amp ;~~ d_{k}=\bmod(a_{k},10), \qquad k = 1, \ldots m</mrow>
+      </md>
+    </p>
+    <p>
+      These equation specify a <em>recursive process</em>
+          <idx><h>Recursive process</h></idx>
+      or <em>recursive method</em>,
+      so called because we're repeating the same calculation again and again with the results of previous calculations.
+      The neat thing is that we can use a similar process to find digits of numbers in other bases as well.
+      We'll explain how this works in the next section.
+    </p>
+    <exercise xml:id="exercise_ModularArithmeticBases_recursive_method">
+      <statement>
+        <p>
+          Apply the above recursive method to obtain the sequences <m>\{a_k\}</m> and <m>\{d_k\}</m> for the following cases:
+          <ol type="a">
+            <li>
+              <p>
+                The 100's digit of <m>n=238</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The 1000's digit of <m>n=52812</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The 10000's digit of <m>n=27819</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The above procedure can be long,
+      particularly if we're trying to find <m>d_m</m> for a large value of <m>m</m>.
+      Fortunately, there's a way to shortcut the process:
+    </p>
+    <example xml:id="example_ModularArithmeticBases_k_th-dig">
+      <statement>
+        <p>
+          Let's find the digit <m>d_6</m> for the number <m>n=1928307465</m>
+          (we may note in this case <m>d_6=8</m>).
+          First, we can remove the digits above <m>d_6</m> digit taking <m>n</m> modulo <m>10^7</m>:
+          <me>
+            \bmod(n,10^{7})=8307465
+          </me>.
+        </p>
+        <p>
+          On the other hand,
+          we can obtain all digits below <m>d_6</m> by taking <m>n</m> modulo <m>10^7</m>:
+          <me>
+            \bmod(n,10^{7})=307465
+          </me>
+        </p>
+        <p>
+          Now subtracting the two we get:
+          <me>
+            \bmod(n,10^{7}) - \bmod(n,10^{6})=8000000
+          </me>
+        </p>
+        <p>
+          From this point,
+          we easily obtain <m>d_6</m> by dividing by <m>10^6</m>.
+          So in summary, we have:
+          <me>
+            d_6 = \frac{\bmod(n,10^7)-\bmod(n,10^6)}{10^6}
+          </me>
+        </p>
+      </statement>
+    </example>
+    <p>
+      This formula can be generalized to find the digit <m>d_k</m> for any positive integer <m>n</m>:
+      <men xml:id="eq_digit">
+        d_{k}=\frac{\bmod(n,10^{k+1})-\bmod(n,10^{k})}{10^{k}}
+      </men>
+    </p>
+    <exercise xml:id="exercise_ModularArithmeticBases_formula_for_k_th_digit">
+      <statement>
+        <p>
+          Show how the formula in <xref ref="eq_digit"/> can be used to find the following digits.
+          <ol type="a">
+            <li>
+              <p>
+                The 2nd digit of n=238 base 10
+              </p>
+            </li>
+            <li>
+              <p>
+                The 4th digit of n=21657 base 10
+              </p>
+            </li>
+            <li>
+              <p>
+                The 3rd digit of n=4356 base 10
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Formulas for  decimal digits of nonintegers</title>
+    <p>
+      So far we've been talking about finding decimal digits of integers.
+      What about other real numbers?
+      Happily, it turns out there are similar formulas that work for any real number,
+      as we will now show.
+      To make things simple,
+      in this section we will consider numbers between 0 and 1.
+      Then for a general real number,
+      we can separate it into its integer part and fractional part,
+      and use our previous formulas for the integer part and the formulas in this section for the rest.
+    </p>
+    <p>
+      Numbers between 0 and 1 have a decimal expansion like integers do:
+      <men>
+        x=d_{-1}10^{-1}+d_{-2}10^{-2}+\cdots+d_{-k}10^{-k}+\cdots,  \text{  where }  d_{-j}\in \mathbb{Z}_{10}
+      </men>
+    </p>
+    <p>
+      Fractional numbers differ from integer in that the decimal expansion may be <em>infinite</em>,
+      that is to say it may go on forever.<fn>
+      In fact it is true that
+      <q>almost all</q>
+      numbers between 0 and 1 have infinite decimal expansions<ndash/>and yes,
+      <q>almost all</q>
+      has a mathematically precise definition!
+      </fn>
+    </p>
+    <p>
+      Let's see if we can compute the <m>d_{-k}</m> digit of a decimal number less than 1.
+      But first, let's recall some useful notation:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {floor} The <term>floor</term> is the highest integer less than or equal to the given decimal number,
+          <m>x</m>, and is represented as <m>\lfloor x \rfloor</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Earlier, we used two methods,
+      recursive method and a generalized formula,
+      to find <m>d_k</m> of a decimal interger.We can do the same to find <m>d_{-k}</m> of the fractional part of a decimal number.
+      We willl take the fraction representation of
+      <m>x=0.17428</m> and find its third decimal digit, <m>d_{-3}</m>.
+      This will be done using two different methods
+      (just like we did with integers).
+      First, we will use a recursive method,
+      then we will find a direct formula.
+      Let's begin with the recursive method,
+      which gives us the digits one by one.
+      We may notice that the first decimal digit of <m>x</m> is actually the integer part of <m>10x</m>:
+      in other words, <m>d_{-1} = \lfloor 10x \rfloor</m>.
+      We may subtract this from <m>10x</m> to obtain <m>b_{-1} = 0.7428</m>.
+      Notice that <m>b_{-1}</m> contains all the digits of <m>x</m> except <m>d_{-1}</m>.
+      So let's do it again.
+      Multiplying <m>b_{-1}</m> by 10 and taking the floor, we obtain <m>d_{-2}</m>.
+      Subtracting this from <m>10b_{-1}</m> gives us <m>b_{-2} = 0.428</m>.
+      Once more should do it!
+      Multiply <m>b_{-2}</m> by 10 and taking the floor gives <m>d_{-3} = 4</m>.
+      Done!
+    </p>
+    <p>
+      In general, the recursive process for finding <m>d_{-k}</m> is as follows:
+      <men xml:id="eq_recursFrac">
+        \begin{aligned}d_{-1}=\lfloor 10x\rfloor\amp ;~~ b_{-1}=10x - d_{-1}\\ d_{-2}=\lfloor 10b_{-1}\rfloor\amp ;~~ b_{-2}=10b_{-1} - d_{-2}\\ \vdots \\ d_{-k}=\lfloor 10b_{-k+1}\rfloor\amp ;~~ b_{-k}=10b_{-k+1} - d_{-k}\\ \vdots \end{aligned}
+      </men>
+    </p>
+    <p>
+      This process can take a very long time if we're trying to find <m>d_{-k}</m> for large values of <m>k</m>.
+      Recall that formula <xref ref="eq_digit"/> gives an easy way of finding individual decimal digits of integers.
+      Can we do the same thing for fractions?
+      Yes we can!
+    </p>
+    <example xml:id="example_ModularArithmeticBases_fracdigit">
+      <statement>
+        <p>
+          Find <m>d_{-3}</m> of the decimal number <m>x=0.17428</m>
+        </p>
+        <p>
+          Since we're looking for <m>d_{-3}</m>, Let's multiply <m>x</m> by <m>10^3</m>.
+          <me>
+            0.17428\cdot 10^3=174.28
+          </me>
+        </p>
+        <p>
+          Then take the floor:
+          <me>
+            \lfloor 174.28 \rfloor = 174
+          </me>
+        </p>
+        <p>
+          Finally, take the modulus base 10 (which is the 1's place of the number,
+          as we've seen before):
+          <me>
+            \bmod(174,10)=4
+          </me>
+        </p>
+        <p>
+          This gives us the correct value of <m>d_{-3}</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Let's recap the steps in <xref ref="example_ModularArithmeticBases_fracdigit">Example</xref>s:
+      <ol type="i">
+        <li>
+          <p>
+            multiply the given <m>x</m> by <m>10^k</m>,
+          </p>
+        </li>
+        <li>
+          <p>
+            take the floor of the number found in step <m>(i)</m>,
+          </p>
+        </li>
+        <li>
+          <p>
+            find the modulus of number in step (ii) base 10.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      This procedure can be generalized to the following formula:
+      <men xml:id="eq_decdig">
+        d_{-k}=\bmod(\lfloor x\cdot 10^k\rfloor,10)
+      </men>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          {find n'th decimal number} Complete the following exercises using the recursive method from Equation<nbsp/><xref ref="eq_recursFrac"/> and re-do them by using Equation<nbsp/><xref ref="eq_decdig"/>:
+          <ol type="a">
+            <li>
+              <p>
+                Find the 2nd decimal digit of 0.238 base 10
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the 4th decimal digit of 0.54289 base 10
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the 3rd decimal digit of 0.7129 base 10
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Repeating decimals</title>
+    <p>
+      You have probably encountered fractions with infinite decimal expansions,
+      such as <m>1/9 = 0.11111\ldots</m>,
+      <m>1/11 = 0.09090909\ldots</m>,
+      and <m>1/7 = 0.142857142857\ldots</m>.
+      It is a strange and wonderful fact that these infinite decimal expansions always <em>repeat</em>:
+      for example,
+      the decimal expansion for <m>1/7</m> has the sequence <m>142857</m> that keeps on repeating.
+      This observation suggests two questions:
+      <ol>
+        <li>
+          <p>
+            Why do decimal fractions repeat?
+          </p>
+        </li>
+        <li>
+          <p>
+            What is the period of repetition?
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      In this section we'll answer these two questions.
+      But first we need to prove a preliminary proposition.
+    </p>
+    <proposition xml:id="proposition_ModularArithmeticBases_10power">
+      <statement>
+        <p>
+          Let <m>n>2</m> be an integer such that <m>\gcd(n,10)=1</m>.
+          Then there exist a positive integer <m>m</m> such that <m>\bmod(10^{m},n)=1</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Consider the infinite sequence:
+        <m>\bmod(10,n)</m>, <m>\bmod(10^{2},n)</m>,
+        <m>\bmod(10^{3},n),\dots</m>.
+        All of these numbers are between <m>1</m> and <m>n-1</m>.
+        Since the sequence is infinite and only can take at most <m>n-1</m> values,
+        it follows there must be at least two values that are equal,
+        so <m>\bmod(10^{k},n)=\bmod(10^{j},n)</m>, where <m>k>j</m>.
+        But,
+        <md>
+          <mrow>\bmod(10^{k},n)\amp =\bmod(10^{j}\cdot 10^{k-j},n) \amp  \text{ [exponent rules] }</mrow>
+          <mrow>\amp =\bmod(10^{j},n)\odot \bmod(10^{k-j},n) \amp \text{ [<xref ref="proposition_ModularArithmetic_number_remainder">Proposition</xref>] } </mrow>
+        </md>.
+      </p>
+      <p>
+        Since <m>\bmod(10^{k},n)=\bmod(10^{j},n)</m>,
+        it follows by substitution that
+        <me>
+          \bmod(10^{j},n)=\bmod(10^j,n)\odot \bmod(10^{k-j},n)
+        </me>
+      </p>
+      <p>
+        Which implies <m>\bmod(10^{k-j},n)=1</m>.
+        So if we set <m>m=k-j</m>,
+        we have <m>\bmod(10^{m},n)=1</m>,
+        and the proof is finished.
+      </p>
+    </proof>
+    <p>
+      <xref ref="proposition_ModularArithmeticBases_10power">Proposition</xref>
+      leads to the following definition:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {orderMod10} Given a positive integer <m>n</m> with <m>\gcd(10,n)=1</m>.
+          The smallest positive integer <m>m</m> such that <m>mod(10^{m},n)=1</m> is called the
+          <term>multiplicative order</term> of <m>n \pmod{10}</m>).
+        </p>
+        <p>
+          (Note that the order of <m>n</m> is guaranteed to exist because of <xref ref="proposition_ModularArithmeticBases_10power">Proposition</xref>).
+        </p>
+      </statement>
+    </definition>
+    <p>
+      We can now prove that a large class of fractions repeat,
+      as follows:
+    </p>
+    <proposition xml:id="proposition_ModularArithmeticBases_gcd1">
+      <statement>
+        <p>
+          Let <m>n>1</m> be a positive integer with <m>\gcd(10,n)=1</m>,
+          and let <m>m</m> be the multiplicative order of
+          <m>n \pmod{10}</m> . Then the decimal expansion of
+          <m>\frac{1}{n}</m> repeats every <m>m</m> digits.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Given that <m>m</m> is the multiplicative order of <m>n</m> mod 10,
+        from <xref ref="definition_ModularArithmeticBases_orderMod10">Definition</xref>,
+        we get <m>\bmod((10^{m}-1),n)=0</m>.
+        In other words, <m>10^{m}-1</m> is divisible by <m>n</m>,
+        so that <m>\frac{10^{m}-1}{n}</m> is an integer.
+        Letting <m>k=\frac{10^{m}-1}{n}</m>, it follows that:
+        <md>
+          <mrow>\frac{1}{n}\amp =\frac{k}{10^{m}-1} \amp  \text{ substitution }</mrow>
+          <mrow>\amp =\frac{k}{10^{m}}\left(\frac{1}{1-10^{-m}}\right) \amp  \text{ factor }</mrow>
+          <mrow>\amp =\frac{k}{10^{m}}\left(1+10^{-m}+\cdots\right) \amp \text{ geometric series }</mrow>
+          <mrow>\amp =k \cdot 10^{-m}+ k \cdot 10^{-2m}+\cdots  \amp \text{ distributive law and algebra }</mrow>
+        </md>
+      </p>
+      <p>
+        Next from the definition of <m>k</m>,
+        we may conclude that <m>k \lt 10^m</m>
+        (verify this).
+        So <m>k\cdot 10^{-m}\lt 1</m>,
+        and the nonzero decimal digits of
+        <m>k\cdot 10^{-m}</m> are all contained in the first <m>m</m> decimal places to the right of the decimal point.
+        Similarly, the nonzero decimal digits of
+        <m>k\cdot 10^{-2m}</m> all lie within the second <m>m</m> decimal places
+        (between the <m>10^{-m-1}</m> place and the <m>10^{-2m}</m> place),
+        the nonzero decimal digits of
+        <m>k\cdot 10^{-3m}</m> are all in the following <m>m</m> decimal places,
+        and so on.
+        In other words,
+        the terms <m>k \cdot 10^{-m}, k \cdot 10^{-2m}, \cdots</m> are all within successive blocks of <m>m</m> digits.
+        Thus <m>k</m> is the repeating sequence in the repeating decimal
+        (possibly padded by some zeros,
+        in case <m>k</m> has less than <m>m</m> nonzero digits),
+        and that the fraction repeats every <m>m</m> digits.
+      </p>
+    </proof>
+    <exercise xml:id="exercise_ModularArithmeticBases_inttimefrac">
+      <statement>
+        <p>
+          Given that the fraction <m>j/n \lt 1</m> and <m>\gcd(10,n)=1</m>,
+          show that <m>j/n</m> is still a repeating fraction with the same period as <m>1/n</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          In <xref ref="proposition_ModularArithmeticBases_gcd1">Proposition</xref>
+          we proved that the decimal expansion of
+          <m>\frac{1}{n}</m> repeats every <m>m</m> digits for a positive integer <m>n>1</m> with <m>\gcd(10,n)=1</m>.
+          Does the proposition still hold if <m>\gcd(10,n)\neq 1</m>?
+          If yes then prove it, and if no then give a counterexample.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection>
+    <title>Divisibility rules</title>
+    <p>
+      How do we know if a decimal integer,
+      <m>m</m>, is divisible by an decimal integer, <m>n</m>?
+      In this section we will be discovering the divisibility rules for different integers,
+      <m>n</m>.
+      We will start with finding the divisibility rule for <m>n=3</m>.
+    </p>
+    <example xml:id="example_ModularArithmeticBases_234divby3">
+      <statement>
+        <p>
+          Is <m>234</m> divisible by <m>3</m>?
+          Answering this question is equivalent to showing whether or not <m>\bmod(234,3)=0</m>.
+          Let's first write the decimal representation of <m>234</m>:
+          <md>
+            <mrow>234=200+30+4=2\cdot 10^{2}+3\cdot 10+4</mrow>
+          </md>
+        </p>
+        <p>
+          Since <m>\bmod(10,3)=1</m>, we get
+          <md>
+            <mrow>\bmod(234,3)\amp =\bmod(2 \cdot 10^{2}+3 \cdot 10+4,3) \amp  [\textrm{substitution} ]</mrow>
+            <mrow>\amp =\bmod(2\cdot(1)^2+3\cdot(1)+4,3) \amp  [\textrm{Props. <xref ref="proposition_ModularArithmetic_remThm"></xref> and <xref ref="proposition_ModularArithmetic_number_remainder"></xref>} ]</mrow>
+            <mrow>\amp =\bmod(9,3)=0 \amp  [\textrm{arithmetic} ]</mrow>
+          </md>
+        </p>
+      </statement>
+    </example>
+    <p>
+      Let's generalize <xref ref="example_ModularArithmeticBases_234divby3">Example</xref>.
+      Suppose we have a decimal number, <m>n</m>,
+      with digits <m>d_{0}\dots d_{m}</m> so that the number can be written as <m>d_{m}d_{m-1}\dots d_{0}</m>.
+      Then we can write
+      <me>
+        n=d_{m}\cdot 10^{m}+d_{m-1}\cdot 10^{m-1}+\dots +d_{0}\cdot 10^{0}
+      </me>
+    </p>
+    <p>
+      It follows that
+      <md>
+        <mrow>\bmod(n,3)\amp =\bmod(d_m\cdot 10^m+d_{m-1}\cdot 10^{m-1}+\dots +d_{0}\cdot 10^0,3)</mrow>
+        <mrow>\amp =\bmod(d_{m}+d_{m-1}+\dots+d_{0},3)=0</mrow>
+      </md>.
+    </p>
+    <p>
+      This observation leads to the following proposition.
+    </p>
+    <proposition xml:id="proposition_ModularArithmeticBases_divisibility_by_3">
+      <statement>
+        <p>
+          An integer is divisible by 3 if and only if the sum of its digits is divisible by 3.
+        </p>
+      </statement>
+    </proposition>
+    <example xml:id="example_ModularArithmeticBases_6472_divisble_by_11">
+      <statement>
+        <p>
+          Is <m>6472</m> divisible by 11?
+          In the following argument we use the fact that <m>10 \equiv-1\pmod{11}</m>,
+          which means that we can replace <m>10</m> with <m>-1</m> whenever we are taking mod's base 10.
+          <md>
+            <mrow>\bmod(6472,11)\amp =\bmod(6\cdot 10^{3}+4\cdot 10^{2}+7\cdot 10+2\cdot 1,11)</mrow>
+            <mrow>\amp =\bmod(6\cdot (-1)^{3}+4\cdot (-1)^{2} + 7\cdot (-1) + 2,11)</mrow>
+            <mrow>\amp =\bmod(-6+4-7+2,11)=\bmod(-7,11)=4</mrow>
+          </md>
+        </p>
+        <p>
+          Since <m>\bmod(6472,11)\neq 0</m>,
+          <m>6472</m> is not divisible by <m>11</m>.
+        </p>
+      </statement>
+    </example>
+    <proposition xml:id="proposition_ModularArithmeticBases_divisibility_by_11">
+      <statement>
+        <p>
+          A number is divisible by <m>11</m> if and only if the
+          <em>alternating sums</em>
+          of the digits is divisible by <m>11</m>.
+          (Note: alternating sums is where the signs of the number alternate when summing.)
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Given an integer with digits
+          <m>d_{0}\dots d_{n}</m> where the number is writeen as <m>d_{n}d_{n-1}\dots d_{1}d_{0}</m> we can write
+          <md>
+            <mrow>n=d_{m}\cdot 10^{m}+d_{m-1}\cdot 10^{m-1}+\dots +d_{0}\cdot 10^{0}</mrow>
+          </md>
+          it follows that:
+          <md>
+            <mrow>\amp \bmod(n,11) \amp</mrow>
+            <mrow>\amp ~~=\bmod(d_{m}\cdot 10^{m}+d_{m-1}\cdot 10^{m-1}+\dots +d_{0}\cdot 10^{0},11) \amp  \textrm{[substitution]}</mrow>
+            <mrow>\amp ~~=\bmod(d_{m}\cdot (-1)^{m}+d_{m-1}\cdot (-1)^{m-1}+\dots+d_{0}\cdot (-1)^{0},11) \amp  [\bmod(10,11)=-1]</mrow>
+            <mrow>\amp ~~=\bmod \left( (-1)^m (d_m - d_{m-1}+\dots + d_{0}\cdot 1),11 \right) \amp  \textrm{[factor out }  (-1)^m]</mrow>
+          </md>
+        </p>
+        <p>
+          Therefore, <m>\bmod(n,11)</m>=0 if and only if the alternating sums of the digits of the number <m>d_{n}\dots d_{0}</m> is divisible by 11.
+        </p>
+      </proof>
+    </proposition>
+    <exercise xml:id="exercise_ModularArithmeticBases_mod_9_and_mod_37">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              In <xref ref="proposition_ModularArithmeticBases_divisibility_by_3">Proposition</xref>
+              we showed that a number is divisible by <m>3</m> if and only if the sum of its digits is divisible by <m>3</m>.
+              Write a similar argument and state a proposition for a number that is divisible by <m>9</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <xref ref="powersOf10Mod37">Figure</xref>
+              shows a table giving the different powers of 10 mod base 37.
+              <figure xml:id="powersOf10Mod37">
+                <caption>Spreadsheet to compute the powers of 10 mod 37</caption>
+                <image width="37%" source="images/divisibility_37.png"/>
+              </figure>
+              Based on the results shown in <xref ref="powersOf10Mod37">Figure</xref>,
+              propose a divisibility rule to check whether numbers are divisible by 37.
+              Apply your rule to the following numbers: 17094, 411108, 365412
+            </p>
+          </li>
+          <li>
+            <p>
+              Create a spreadsheet similar to the the spreadsheet in <xref ref="powersOf10Mod37">Figure</xref>.
+              Use your spreadsheet to find
+              <m>\bmod(10^{n},111)</m> for <m>0\leq n\leq 8</m>.
+              Come up with a proposition for numbers in base <m>111</m> and prove it similarly the divisibility rule for numbers in base <m>11</m> was proved in Proposition <m>~ <xref ref="proposition_ModularArithmeticBases_divisibility_by_11"></xref></m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Here's a number-magic trick involving divisibility that you can try on your friends.
+      This example is thanks to Mr.
+      Ogungbesan Adedoyinsola, a student at the University of Lagos.
+    </p>
+    <example xml:id="example_ModularArithmeticBases_reverse9">
+      <statement>
+        <p>
+          Let n=321.
+          The digits in reverse order give <m>m=123</m>.
+          Now subtract <m>n-m=321-123=198</m>.
+          We can add the digits of <m>198</m> to get <m>1+9+8=18</m>.
+          Since the sum of the digits of <m>198</m> is divisible by <m>9</m>,
+          <m>198</m> is divisible by <m>9</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Repeat <xref ref="example_ModularArithmeticBases_reverse9">Example</xref>
+          with the numbers: 4567, 314142, 583651.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Amazing!
+      But we have the mathematical tools to see why it works:
+    </p>
+    <exercise xml:id="exercise_ModularArithmeticBases_decimal_interger_reverse_order">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Take any decimal integer, write the digits in reverse order,
+              and subtract the reversed number from the original number.
+              Show that the result is always divisible by <m>9</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the decimal integer has an odd number of digits,
+              show that the result obtained in <m>(a)</m> will always be divisible by <m>99</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that if you take any decimal integer <m>n</m>, rearrange the digits,
+              multiply by any power of 10, and subtract <m>n</m> from the resulting number,
+              then your final result will always be divisible by 9.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      There are many variations on this theme<ndash/>maybe you can come up with one yourself.
+    </p>
+    <exercise xml:id="exercise_ModularArithmeticBases_reverse_even_number_digits">
+      <statement>
+        <p>
+          Take any number with an even number of digits,
+          reverse the number, and add the two together.
+          Show that the result is always divisible by <m>11</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_ModularArithmeticBases_append_reverse_order">
+      <statement>
+        <p>
+          Take any number with any number of digits.
+          Write the digits in reverse order and append them to the end of the original number
+          (for example, if the original number is 2834,
+          the end result is the number 28344382).
+          Show that the result is always divisible by <m>11</m>.(Hint: Think about <xref ref="exercise_ModularArithmeticBases_reverse_even_number_digits">Exercise</xref>).
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ul>
+          <li>
+            <p>
+              Factor the number 1001, and use your result to design a procedure that does the following.
+              Given a number <m>n</m> with <m>m</m> digits,
+              using a single subtraction
+              (and no multiplication)
+              construct a number <m>n'</m> with <m>m-3</m> digits such that <m>\mod(n,7) = \mod(n',7), \mod(n,11) = \mod(n',11)</m>,
+              and <m>\mod(n,13) = \mod(n',13)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Explain how it is possible to use your procedure to take an arbitrarily large number <m>n</m> and obtain a number with three or fewer digits which has the same divisibility with respect to 7, 11, and 13 as <m>n</m> does.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use your procedure to test
+              (by hand)
+              the numbers 14142131356237 and 314159653589 for divisibility by 7,11, and 13,
+              using only subtraction and 3 final divisiions of a 3-digit number.
+            </p>
+          </li>
+        </ul>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ul>
+          <li>
+            <p>
+              Prove that the following rule works for divisibility by 7.
+              Given a <m>m</m>-digit number,
+              remove the last digit <m>d_0</m> to obtain a <m>m-1</m>-digit number,
+              then subtract <m>2d_0</m> from the <m>m-1</m>-digit number.
+              Then the new number has the same divisibility by 7 as the original number.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the result in (a) to test the number 27182818284590 for divisibiilty by 7.
+            </p>
+          </li>
+          <li>
+            <p>
+              Obtain similar rules for divisibility by 13 and 19.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use your rules from (c) to test 27182818284590 for divisibility by 13 and 19.
+            </p>
+          </li>
+        </ul>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

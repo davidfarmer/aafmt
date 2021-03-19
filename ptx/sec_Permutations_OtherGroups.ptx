@@ -1,0 +1,731 @@
+<section xml:id="sec_Permutations_OtherGroups">
+  <title>Other groups of permutations</title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="sec_Permutations_OtherGroups_EvenOddPermutaions">
+    <title>Even and odd permutations</title>
+    <p>
+      We saw in the previous section that any permutation can be represented as a product of transpositions.
+      However, this representation is not unique.
+      Consider for instance:
+      <ul>
+        <li>
+          <p>
+            <m>{\var id} = (1 2) ( 1 2)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\var id} = (1 3 )(2 4 )(1 3 )( 2 4 )</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\var id} = (1 5 )(2 6 )(7 9 )( 1 4 )(3 4)(3 4)(1 4)(7 9)(2 6)(1 5)</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Although these representations of
+      <m>{\var id}</m> are vastly different, by some
+      <q>strange coincidence</q>
+      they all involve the product of an even number of transpositions.
+    </p>
+    <exercise xml:id="exercise_Permutations_id_odd_trans">
+      <statement>
+        <p>
+          ***** Write <m>{\var id}</m> as a product of an odd number of transpositions (If you succeed,
+          you automatically get an <m>A</m> in this course!)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      As you might guess from the previous exercise,
+      there's something fishy going on here.
+      To get to the bottom of this,
+      we need to get a better handle on what happens when you multiply a permutation by a transposition.
+      In particular,
+      we know that any permutation can be written as a product of disjoint cycles:
+      so what happens to these cycles when we multiply by a transposition?
+      To get warmed up, let's first look at some special cases.
+    </p>
+    <exercise xml:id="exercise_Permutations_perm_trans_multiply">
+      <statement>
+        <p>
+          Write <m>\tau \sigma</m> as the products of disjoint cycles,
+          where <m>\sigma = (12345678)</m> and:
+          <m>(a)~\tau= (25);~~ (b)~\tau= (16);~~ (c)~\tau=(48) ;~~ (d)~\tau=(35)</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      As always it is helpful to have a good representation of the situation,
+      preferably in pictures.
+      For the following argument, we will represent a cycle as a
+      <q>pearl necklace</q>, as shown in <xref ref="fig_pearl">Figure</xref>.
+      This is not so different from our previous representation of cycles
+      (for instance, in <xref ref="fig_cycle">Figure</xref>),
+      but we are not including labels for the particular elements in the cycle because we want to emphasize the general structure and not get bogged down in details.
+    </p>
+    <figure xml:id="fig_pearl">
+      <caption>
+      <q>Pearl necklace</q>
+      representation of a cycle.</caption>
+      <image width="28%" source="images/pearl_necklace.png"/>
+    </figure>
+    <p>
+      <xref ref="fig_abC">Figure</xref>
+      shows how we may represent the multiplication <m>(ab)C</m> of transposition <m>(ab)</m> with cycle <m>C</m>,
+      where <m>a</m> and <m>b</m> are elements included within <m>C</m>.
+      The transposition effectively redirects the arrow pointing into <m>a</m>,
+      so that now it points into <m>b</m>.
+      The transposition also redirects the arrow pointing into <m>b</m> so that it now points into <m>a</m>.
+      As a result, there are now two cycles instead of one.
+      The sum of the lengths of the two cycles is equal to the length of the original cycle.
+    </p>
+    <figure xml:id="fig_abC">
+      <caption>(a) Cycle <m>C</m>, including elements <m>a</m> and <m>b</m>;<nbsp/> (b) Product of transposition <m>(ab)</m> with cycle <m>C</m>, showing redirection of arrows into <m>a</m> and <m>b</m>;<nbsp/> (c) The result of <m>(ab)C</m> is two separate cycles.</caption>
+      <image width="75%" source="images/abC.png"/>
+    </figure>
+    <p>
+      Using this representation,
+      we can now investigate what happens when we multiply a transposition <m>(ab)</m> times an <em>arbitrary</em>
+      permutation <m>\sigma</m>.
+      We already know that <m>\sigma</m> can be thought of as a collection of disjoint cycles
+      (plus stationary elements, that are unaffected by <m>\sigma</m>).
+      There are several possibilities for how <m>a</m> and <m>b</m> can fit within the cycles of <m>\sigma</m>,
+      as shown in <xref ref="fig_abC2">Figure</xref>.
+      Each possibility may or may not change the number of cycles,
+      as well as the sum of the lengths of all cycles.
+    </p>
+    <figure xml:id="fig_abC2">
+      <caption>Multiplication of <m>(ab)</m> times a permutation <m>\sigma</m>, showing the different ways that <m>a</m> and <m>b</m> can be situated within the cycles and stationary elements of  <m>\sigma</m>. Note that  case (a) corresponds to the situation described in <xref ref="fig_abC">Figure</xref>.</caption>
+      <image width="93%" source="images/abC2.png"/>
+    </figure>
+    <exercise xml:id="exercise_Permutations_trans_perm">
+      <statement>
+        <p>
+          In each of the following situations,
+          we are considering the multiplication of a transposition <m>(ab)</m> with a permutation <m>\sigma</m>.
+          Match each situations to the correct case (a)<ndash/>(f) in <xref ref="fig_abC2">Figure</xref>.
+          For example, <m>(ab)=12</m> and
+          <m>\sigma = (1234)(567)</m> corresponds to case (d),
+          because <m>a</m> and <m>b</m> are consecuitve elements in one of the cycles of <m>\sigma</m>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(ab) = (36), \sigma = (123)(456)(78)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(ab) = (45), \sigma = (123)(678)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(ab) = (34), \sigma = (123) (567)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(ab) = (45), \sigma = (23)(45)(67)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(ab) = (34), \sigma = (278)(13546)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_trans_perm2">
+      <statement>
+        <p>
+          Draw a set of pictures (similar to <xref ref="fig_abC">Figure</xref>(c)) for each of the possibilities (a)<ndash/>(f) in <xref ref="fig_abC2">Figure</xref>
+          showing the effect of the transposition <m>(ab)</m> on the cycles.
+          Keep in mind that the transposition merely redirects the arrows into <m>a</m> and <m>b</m> so that they point into <m>b</m> and <m>a</m>,
+          respectively.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_cycle_length_table">
+      <statement>
+        <p>
+          Using your results from the previous exercise,
+          complete <xref ref="transposition_table">Table</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <table xml:id="transposition_table">
+      <title>Multiplication of permutation by transpositions</title>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Diagram in Fig.<nbsp/> <xref ref="fig_abC2"></xref></cell>
+          <cell>Change in number of cycles</cell>
+          <cell>Change in sum of cycle lengths</cell>
+          <cell>Is column 3 minus column 2 even or odd?</cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell  >(a)</cell>
+          <cell>+1</cell>
+          <cell>0</cell>
+          <cell>odd</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(b)</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(c)</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(d)</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(e)</cell>
+          <cell><m>-1</m></cell>
+          <cell><m>-2</m></cell>
+          <cell>_____</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(f)</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+          <cell>_____</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      If you did the previous exercise correctly,
+      you will find that no matter where the transposition falls,
+      the entry in the last column is always <sq>odd</sq>.
+      Consider what this means.
+      Suppose I have a permutation <m>\sigma</m> whose sum of cycle lengths minus number of cycles is equal to <m>N</m>.
+      I then multiply <m>\sigma</m> by a transposition to obtain another permutation <m>\tau</m>,
+      whose sum of cycle lengths minus number of cycles is equal to <m>M</m>.
+      The last column of <xref ref="transposition_table">Table</xref>shows that it must be true that <m>M-N</m> is <em>always</em> odd.
+      In other words,
+      if <m>M</m> is even then <m>N</m> is odd: and vice versa.
+      We may express this concisely using the following definition:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defparity} for any permutation <m>\sigma</m> written in disjoint cycle notation,
+          the number
+          <me>
+            \text{ mod(sum of cycle lengths minus number of cycles,2) }
+          </me>
+          is called the <term>parity</term> of <m>\sigma</m>.
+              <idx><h>Permutation</h><h>parity</h></idx>
+          A permutation with parity 0 is called an
+          <term>even permutation</term>,
+          while a permutation with parity 1 is called an
+          <term>odd permutation</term>.
+          .
+              <idx><h>Permutation</h><h>odd and even</h></idx>
+          Often books will use the terms
+          <q>even parity</q>
+          and
+          <q>odd parity</q>
+          instead of parity 0 and 1, respectively.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      We may summarize our argument so far as follows:
+    </p>
+    <proposition xml:id="proposition_Permutations_multByTrans">
+      <statement>
+        <p>
+          Given a permutation <m>\sigma</m> and a transposition <m>(ab)</m>,
+          then the parity of <m>(ab)\sigma</m> is different from the parity of <m>\sigma</m>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      So far we have considered multiplying permutations on the
+      <em>left</em> by a transposition.
+      What about multiplying them on the <em>right</em>?
+      It turns out we can use the
+      <q>direction-reversing</q>
+      property of permutation inverses to answer this very elegantly.
+    </p>
+    <exercise xml:id="exercise_Permutations_parity_right">
+      <statement>
+        <ol>
+          <li>
+            <title>(a)</title>
+            <p>
+              Considerthe
+              <q>necklace</q>
+              diagrams (a)-(f) of permutations shown in <xref ref="fig_abC2">Figure</xref>.
+              If we take the <em>inverse</em> of each permutation,
+              how does its diagram change?
+              What happens to the arrows?
+              How do the shapes of the cycles change (if at all)?
+            </p>
+          </li>
+          <li>
+            <title>(b)</title>
+            <p>
+              In <xref ref="exercise_Permutations_trans_perm2">Exercise</xref>
+              you multiplied each of the permutations (a)-(f) in <xref ref="fig_abC2">Figure</xref> on the left by <m>(ab)</m>.
+              How do the results change if you multiply the <em>inverses</em>
+              of each permutation on the left by <m>(ab)</m>?
+            </p>
+          </li>
+          <li>
+            <title>(c)</title>
+            <p>
+              Prove that <m>\left( (ab) \sigma^{-1} \right)^{-1} = \sigma(ab)</m>.
+            </p>
+          </li>
+          <li>
+            <title>(d)</title>
+            <p>
+              Using (a-c) above,
+              prove the following statement: For any permutation <m>\sigma</m> and any transposition <m>(ab)</m>,
+              <m>(ab) \sigma</m> and <m>\sigma (ab)</m> have the same cycle structure.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Now here's the punch line.
+      We know that <em>every</em> permutation can be written as a product of transpositions.
+      From what we have just shown,
+      an odd permutation must be the product of an odd number of transpositions;
+      while an even permutation must be the product of an even number of transpositions.
+      It is <em>impossible</em> to write an even permutation as the product of an odd number of transpositions;
+      and vice versa.
+      We summarize our conclusions in the following proposition.
+    </p>
+    <proposition xml:id="proposition_Permutations_even_and_odd">
+      <statement>
+        <p>
+          A permutation <m>\sigma</m> can be written as the product of an even number of transpositions if and only if <m>\sigma</m> is an even permutation.
+          Also, <m>\sigma</m> can be written as the product of an odd number of transpositions if and only if <m>\sigma</m> is an odd permutation.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_Permutations_id_odd">
+      <statement>
+        <p>
+          Prove that it is impossible to write the identity permutation as the product of an odd number of transpositions.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_even_odd">
+      <statement>
+        <p>
+          Suppose <m>\sigma</m> is an <m>n</m>-cycle.
+          How can you tell whether <m>\sigma</m> is an even or odd permutation?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In the following exercises you will explore a bit further the parity properties of permutations.
+    </p>
+    <exercise xml:id="exercise_Permutations_Ex95">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove that the product of two even permutations is even.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that the product of two odd permutations is even.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the parity of the product of an even permutation and an odd permutation?
+              What about the product of an odd permutation and an even permutation?
+              <em>Prove</em> your answers.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_Sn_even_odd">
+      <statement>
+        <p>
+          For each of the following sets,
+          describe which permutations are even and which are odd,
+          according to their cycle structure. (*Hint*)
+          <ol type="a">
+            <li>
+              <p>
+                <m>S_6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>S_7</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>S_8</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          This exercise requires some knowledge of linear algebra.
+          It also relates back to the discussion of Levi-Civita symbols in <xref ref="subsec_SigmaApp_LeviCivitaAndApp_LeviCivita">Section</xref>
+        </p>
+        <p>
+          Suppose <m>\sigma</m> is a permutation in <m>S_4</m>.
+          We can define a <m>4 \times 4</m> matrix
+          <m>P_{\sigma}</m> using index notation as follows:
+              <idx><h>Permutation</h><h>matrix</h></idx>
+          <me>
+            [P_{\sigma}]_{ij} = \begin{cases}1 \amp \text{ if }  j = \sigma(i), \\ 0 \amp \text{ if }  j \neq  \sigma(i). \end{cases}
+          </me>
+        </p>
+        <p>
+          (Here <m>i</m> and <m>j</m> can take any values from 1 to 4.) The matrix
+          <m>P_{\sigma}</m> is in fact known as the
+          <term>permutation matrix</term>
+          associated with the permutation <m>\sigma</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Write down the matrix <m>P_{\sigma}</m> when: (i)
+                <m>\sigma = (13)</m>; (ii) <m>\sigma = (132)</m>; (iii)
+                <m>\sigma = (12)(34)</m>; (iv) <m>\sigma = (1234)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using the formula that you guessed in the previous problem,
+                evaluate <m>\det P_{\sigma}</m> when: (i)
+                <m>\sigma = (24)</m>; (ii) <m>\sigma = (143)</m>; (iii)
+                <m>\sigma = (14)(23)</m>; (iv) <m>\sigma = (1423)</m>.
+                Check your answer using the row
+                (or column)
+                expansion method for computing determinants.
+              </p>
+            </li>
+            <li>
+              <p>
+                How is the value of <m>\det P_{\sigma}</m> related to the
+                <q>evenness</q>
+                or
+                <q>oddness</q>
+                of the permutation <m>\sigma</m>?
+                  <idx><h>Permutation matrix</h><h>determinant</h></idx>
+              </p>
+            </li>
+            <li>
+              <p>
+                For the 4 permutations in part (a),
+                show that when you multiply the <m>4 \times 1</m> column vector
+                <m>[1,2,3,4]^T</m> times the matrix <m>P_{\sigma}</m>,
+                you obtain the second row of the tableau for <m>\sigma</m>.
+                In other words, the matrix <m>P_{\sigma}</m>
+                <q>performs</q>
+                the permutation <m>\sigma</m> on column vector entries.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that the result in (b) is true in general:
+                namely, that <m>P_{\sigma}[1,2,3,4]^T = [\sigma(1),\sigma(2),\sigma(3),\sigma(4)]^T</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="sec_Permutations_OtherGroups_AlternatingGroup">
+    <title>The alternating group</title>
+    <p>
+      We have shown that all permutations are either even or odd.
+      In other words,
+      for any <m>n \in \mathbb{Z}</m> we have that <m>S_n</m> is the union of two disjoint sets:
+      <m>S_n = A_n \cup B_n</m>,
+      where <m>A_n</m> and <m>B_n</m> are the even and odd permutations respectively.
+      We are particularly interested in the set <m>A_n</m>,
+      because it has nice properties with respect to product of permutations:
+    </p>
+    <exercise xml:id="exercise_Permutations_A_nGroupProps">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that <m>{\var id} \in A_n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that if <m>\sigma \in A_n</m>,
+              then <m>\sigma^{-1} \in A_n</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that if <m>\sigma, \mu \in A_n</m>,
+              then <m>\sigma \mu \in A_n</m>. (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      In light of the previous exercise,
+      it's beginning to look like <m>A_n</m> could be a group under permutation product.
+      Let's check off the group properties:
+      <ul>
+        <li>
+          <p>
+            Is <m>A_n</m> closed under permutation product?
+            Yes, according to Ex.
+            <xref ref="exercise_Permutations_A_nGroupProps"></xref>(c).
+          </p>
+        </li>
+        <li>
+          <p>
+            Does <m>A_n</m> have an identity element?
+            Yes, according to Ex.
+            <xref ref="exercise_Permutations_A_nGroupProps"></xref>(a).
+          </p>
+        </li>
+        <li>
+          <p>
+            Does <m>A_n</m> have inverses for every element?
+            Yes, according to Ex.
+            <xref ref="exercise_Permutations_A_nGroupProps"></xref>(b).
+          </p>
+        </li>
+        <li>
+          <p>
+            Is <m>A_n</m> associative?
+            Yes, because the operation is composition,
+            and composition is associative.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      We have thus essentially proven the following proposition:
+    </p>
+    <proposition xml:id="proposition_Permutations_An_group">
+      <statement>
+        <p>
+          The set <m>A_n</m> is a group.
+        </p>
+      </statement>
+    </proposition>
+    <definition xml:id="alternatinggroup">
+      <statement>
+        <p>
+          {defAlternatingGroup} The group <m>A_n</m> of even permutations is called the
+          <term> alternating group on <m>n</m> numbers</term>.
+              <idx><h>Group</h><h>alternating</h></idx>
+        </p>
+      </statement>
+    </definition>
+    <exercise xml:id="exercise_Permutations_B_nGroupProps">
+      <statement>
+        <p>
+          Prove or disprove:
+          the set of odd permutations <m>B_n</m> is also a group.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We know that <m>A_n</m> is a group <mdash/> but how big is it?
+      Of course, it depends on the number of odd permutations <m>B_n</m>,
+      since <m>A_n</m> and <m>B_n</m> together make up <m>S_n</m>.
+      So which is bigger: <m>A_n</m> or <m>B_n</m>?
+      The answer is <ellipsis/> neither!
+    </p>
+    <proposition xml:id="proposition_Permutations_Alternating1">
+      <statement>
+        <p>
+          The number of even permutations in <m>S_n</m>,
+          <m>n \geq 2</m>, is equal to the number of odd permutations;
+          hence, <m>| A_n | = n!/2</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        The key to the proof is showing that there is a <em>bijection</em>
+        between <m>A_n</m> and <m>B_n</m>.
+        Since a bijection is one-to-one and onto,
+        this means that <m>A_n</m> and <m>B_n</m> must have exactly the same number of elements.
+      </p>
+      <p>
+        To construct a bijection,
+        notice that <m>(1 2) \in S_n</m> and define a function <m>f: A_n \rightarrow S_n</m> by:
+        <m>f(\sigma) = (1 2) \compose \sigma</m>. (Notice that we are taking <m>A_n</m> as our domain,
+        and not <m>S_n</m>).
+        To show that <m>f</m> is a bijection,
+        we need to show three things:
+        <ol type="a">
+          <li>
+            <p>
+              <m>B_n</m> is a valid codomain for <m>f</m>:
+              that is, <m>f(\sigma) \in B_n ~\forall \sigma \in A_n</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>f:A_n \rightarrow B_n</m> is onto:
+              that is, <m>\forall \mu \in B_n ~\exists \sigma \in A_n</m> such that <m>f(\sigma) = \mu</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>f</m> is one-to-one: that is,
+              <m>f(\sigma_1) = f(\sigma_2)</m> implies <m>\sigma_1 = \sigma_2</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Parts (a) <mdash/> (c) will be proven by
+        (none other than)
+        you, in the following exercise:
+      </p>
+      <exercise xml:id="exercise_Permutations_prove">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Show part (a). (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Show part (b). (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Show part (c). (*Hint*)
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+    </proof>
+    <exercise xml:id="exercise_Permutations_A4">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              What is <m>| A_4 |</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              List all the permutations of <m>A_4</m> (Write them in cycle notation.
+              Make sure you have them all <mdash/> you should have as many as part (a) indicates).
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_A6_A7_A8">
+      <statement>
+        <p>
+          Give all possible cycle structures for elements in each of the following sets.
+          (You don't need to list all the permutations,
+          just the cycle configurations e.g.
+          <q>pair of 2-cycles</q>.)
+          <ol type="a">
+            <li>
+              <p>
+                <m>A_6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_7</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_8</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

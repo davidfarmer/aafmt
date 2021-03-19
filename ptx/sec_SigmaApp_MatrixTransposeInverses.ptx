@@ -1,0 +1,152 @@
+<section xml:id="sec_SigmaApp_MatrixTransposeInverses">
+  <title>Matrix transpose and matrix inverse</title>
+  <subsection xml:id="subsec_SigmaApp_MatrixTransposeInverses_MatrixTranspose">
+    <title>Matrix transpose</title>
+    <p>
+      Transpose is another operation on matrices that lends itself to summation notation.
+      Recall that the transpose of a matrix changes the rows to columns,so that the first row becomes the first column,
+      the second row becomes the second column, and so on.
+      The transpose of matrix <m>A</m> is denoted as <m>A^{\text{T} }</m>.
+          <idx><h>Transpose</h><h>of a matrix</h></idx>
+          <idx><h>Matrix</h><h>transpose</h></idx>
+      Using indices and recalling that first index is the row and the second is the column, we can express this as:
+      <me>
+        \left[ {A}^{\text{T} } \right]_{i,j} = \left[ A \right]_{j,i}
+      </me>,
+      that is, the <m>(i,j)</m> entry of
+      <m>A^{\text{T} }</m> is equal to the <m>(j,i)</m> entry of <m>A</m>.
+      Since we typically write the <m>(j,i)</m> entry of <m>A</m> as <m>a_{j,i}</m>,
+      we may also write:
+      <me>
+        \left[ {A}^{\text{T} } \right]_{i,j} = a_{j,i}
+      </me>.
+    </p>
+    <p>
+      Don't get caught up with the particular indices <m>i</m> and <m>j</m><ndash/>the important thing is that the indices are switched when you take the transpose.
+      For example, we can also write
+      <m>\left[ {A}^{\text{T} } \right]_{j,i} = a_{i,j}</m> or <m>\left[ {A}^{\text{T} } \right]_{k,m} = a_{m,k}</m>.
+    </p>
+    <p>
+      Now let's demonstrate the power of our new notation to prove an important property of transpose:
+    </p>
+    <proposition xml:id="proposition_SigmaNotation_prodTrans">
+      <statement>
+        <p>
+          If <m>A</m> and <m>B</m> are matrices such that the matrix product is defined, then
+          <me>
+            \left( {A}{B} \right)^{\text{T} } = {B}^{\text{T} } {A}^{\text{T} }
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We'll prove this by expressing the <m>(i,j)</m> entry of the left-hand side in summation notation,
+        doing some algebraic hocus-pocus,
+        and showing that it agrees with the <m>(i,j)</m> entry of the right side.
+        First we make things clear by specifying that <m>{A}</m> has <m>n</m> columns and <m>B</m> has <m>n</m> rows
+        (these dimensions have to agree,
+        or the product is not defined).
+        This gives us
+        <me>
+          \left[ AB \right]_{i,j}= \sum_{k} a_{i,k} b_{k,j}
+        </me>.
+      </p>
+      <p>
+        (remember that we decided to use abbreviated notation,
+        so we leave off the summation limits) so the <m>(i,j)</m> entry of the left-hand side is:
+        <me>
+          \left[ (AB)^T \right]_{i,j} = \left[ AB \right]_{j,i} = \sum_{k} a_{j,k} b_{k,i}
+        </me>.
+      </p>
+      <p>
+        At this point we can introduce <m>{A}</m> and <m>{B}</m> transpose because the <m>j,k</m> entry of any matrix is the <m>k,j</m> entry of its transpose:
+        <me>
+          \sum_{k} a_{j,k} b_{k,i} =  \sum_{k} \left[A^{\text{T} }\right]_{k,j} \left[B^{\text{T} }\right]_{i,k.}
+        </me>
+      </p>
+      <p>
+        Since the terms of <m>{A}</m> and <m>{B}</m> are being expressed as a summation,
+        they commute (i.e. order doesn't matter),
+        which allows us to say (using our definition of matrix product):
+        <me>
+          \sum_{k} \left[A^{\text{T} }\right]_{k,j} \left[B^{\text{T} }\right]_{i,k} = \sum_{k} \left[B^{\text{T} }\right]_{i,k}\left[A^{\text{T} }\right]_{k,j} = \left[ {B}^{\text{T} }{A}^{\text{T} } \right]_{i,j}
+        </me>,
+      </p>
+      <p>
+        Voil&#xe0;, we have the <m>(i,j)</m> entry of the right-hand side,
+        and the proof is complete.
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Give a formula for <m>(ABC)^T</m>,
+          and prove your formula using summation notation.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          We know that the transpose of a
+          <m>n \times n</m> matrix is a <m>n \times n</m> matrix.
+          So we can consider transpose as a function from
+          <m>M_n(\mathbb{R})</m> to <m>M_n(\mathbb{R})</m>,
+          where <m>M_n(\mathbb{R})</m> is the set of
+          <m>n \times n</m> matrices with real-number entries.
+          Prove or disprove the following:
+          <ol type="a">
+            <li>
+              <p>
+                Transpose defines an invertible function from
+                <m>M_n(\mathbb{R})</m> to <m>M_n(\mathbb{R})</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Transpose preserves addition, i.e.
+                <m>A^T + B^T = (A+B)^T</m> for any matrices <m>A,B \in M_n(\mathbb{R})</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Transpose preserves multiplication, i.e.
+                <m>A^T \cdot B^T = (A\cdot B)^T</m> for any matrices <m>A,B \in M_n(\mathbb{R})</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_SigmaApp_MatrixTransposeInverses_MatrixInverse">
+    <title>Matrix inverse</title>
+    <p>
+      We can also express matrix inverse equations in summation notation.
+      Recall that the inverse of a matrix <m>A</m> is a matrix <m>A^{-1}</m> such that
+      <m>AA^{-1}=I</m> and <m>A^{-1}A=I</m>.
+    </p>
+    <exercise xml:id="exercise_SigmaNotation_inverse1">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Express the equations <m>AA^{-1}=I</m> and
+              <m>A^{-1}A=I</m> using summation notation.
+              You may use the notation <m>[A]_{i,j}</m> and
+              <m>[A^{-1}]_{i,j}</m> to express the entries of the two matrices.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that <m>A</m> and <m>B</m> are invertible square matrices of the same size
+              (so that <m>A^{-1}</m> and <m>B^{-1}</m> exist and are also of the same size).
+              Prove that <m>(AB)^{-1} = B^{-1}A^{-1}</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

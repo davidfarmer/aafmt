@@ -1,0 +1,24 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="SigmaNotation">
+  <title>Sigma Notation</title>
+  <introduction>
+    <p>
+      We're about to start looking at polynomials,
+      which means we'll be working with sums of terms<ndash/>sometimes many terms.
+      Such sums are often written using a special notation known as
+      <q>sigma notation</q>. It's possible that you are already a master of sigma notation.
+      If not, you can brush up with the material in this section.
+      (At very least,
+      you should try some of the exercises to make sure that you haven't gotten rusty.)
+    </p>
+    <p>
+      David Weathers wrote the original version of <xref ref="sec_SigmaNotation_Examples">Sections</xref>- <xref ref="sec_SigmaNotation_CommonSums"></xref>.
+      Johnny Watts started <xref ref="sec_SigmaApp_LinearAlgebra">Sections</xref>- <xref ref="sec_SigmaNotation_SumByParts"></xref>,
+      while Rachel McCoy made significant improvements to <xref ref="sec_SigmaNotation_SumByParts">Section</xref>.
+    </p>
+  </introduction>
+  <xi:include  href="sec_SigmaNotation_Examples.ptx"/>
+  <xi:include  href="sec_SigmaNotation_Properties.ptx"/>
+  <xi:include  href="sec_SigmaNotation_Nested.ptx"/>
+  <xi:include  href="sec_SigmaNotation_CommonSums.ptx"/>
+  <xi:include  href="sec_SigmaNotation_SumByParts.ptx"/>
+</chapter>

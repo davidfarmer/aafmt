@@ -1,0 +1,1789 @@
+<section xml:id="sec_Polynomials_PolynomialsAndDivision">
+  <title>Polynomials and division</title>
+  <introduction>
+    <p>
+      So far, we have looked at addition and multiplication of polynomials.
+      We've also dealt with subtraction,
+      because subtraction is simply addition of additive inverses.
+      So it's only natural to consider the question of polynomial division.
+    </p>
+    <p>
+      We've just mentioned that subtraction is the same as addition of additive inverses.
+      Similarly, division is multiplication by multiplicative inverses.
+    </p>
+    <p>
+      Do polynomials have multiplicative inverses?
+      Be careful here.
+      In high-school algebra or in calculus,
+      the polynomial <m>p(x)</m> has a perfectly good multiplicative inverse,
+      namely <m>1/p(x)</m>.
+      But <m>1/p(x)</m> is not a polynomial,
+      so for us it doesn't count!
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Which elements of <m>\mathbb{R}[x]</m> have multiplicative inverses that are also elements of <m>\mathbb{R}[x]</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Which elements of <m>\mathbb{R}[x]</m> have multiplicative inverses that are also elements of <m>\mathbb{R}[x]</m>?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </introduction>
+  <subsection xml:id="subsec_Polynomials_PolynomialsAndDivision_divisionalgorithm">
+    <title>The Division Algorithm for polynomials over fields<nbsp/><nbsp/></title>
+    <figure>
+      <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+    </figure>
+    <p>
+      In <xref ref="ModularArithmetic">Chapter</xref>,
+      we used the following fact about integers:
+      for any two integers <m>a</m> and <m>b</m> with <m>b > 0</m>,
+      then there exist unique integers <m>q</m> and <m>r</m> such that <m>a = bq+r</m>,
+      where <m>0 \leq r \lt b</m>.
+      This fact was known to the ancient Greeks,
+      who proved it using what's known as the
+      <em>division algorithm</em>.<fn>
+      As we said before, you may find a proof in any book on number theory.
+      Or, take a look at: \url{http://2000clicks.com/mathhelp/NumberTh09EuclidsAlgorithm.aspx}.
+      </fn> It turns out that a similar division algorithm<idx><h>Division algorithm</h><h>for polynomials</h></idx> exists for many types of polynomials.
+      In this section we'll give the proof.
+      But first, as usual, we look at some examples.
+    </p>
+    <example xml:id="example_Polynomials_poly_division">
+      <statement>
+        <p>
+          Dividing polynomials in <m>\mathbb{R}[x]</m> is very similar to long division of real numbers.
+          For example,
+          suppose that we divide <m>x^3 - x^2 + 2 x - 3</m> by <m>x - 2</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>x - 2</m></cell>
+            <cell><m>x^3</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>2 x</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>3</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>x^3</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>2 x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>2 x</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>3</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>x^2</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>2 x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4 x</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>3</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4 x</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>8</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>5</m></cell>
+          </row>
+        </tabular>
+        <p>
+          In the example,
+          we need to take the leading power term of <m>x</m> in the divisor and multiply by something that will make it equal to the the leading power term in the dividend.
+          In this case it's <m>x^2</m>.
+          This gives <m>x^2\cdot(x-2) = x^3 - 2x^2</m> Subtract from the dividend to yield a remainder of
+          <m>x^2 + 2x - 3</m> and repeat until the remainder is of a degree less than the divisor.
+        </p>
+        <p>
+          Hence, <m>x^3 - x^2 + 2 x - 3 = (x - 2) (x^2 + x + 4 ) + 5</m>,
+          which you may check by multiplying out the right-hand side.
+        </p>
+      </statement>
+    </example>
+    <p>
+      In <m>\mathbb{Z}_p[x]</m> the process of division is very similar.
+      You may want to use a Cayley table for multiplication,
+      to determine what terms go in the quotient.
+      Additionally,
+      when subtracting the product of the quotient and divisor from the dividend,
+      each negative term must be replaced with its equivalent in <m>\mathbb{Z}_p</m>,
+      which is the remainder mod <m>p</m>.
+    </p>
+    <example xml:id="example_Polynomials_poly_divisionb">
+      <statement>
+        <p>
+          Divide <m>(2x^3+3x^2+x+4)</m> by <m>(x+2)</m> where both polynomials are in <m>\mathbb{Z}_5[x]</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>2x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>3</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>x + 2</m></cell>
+            <cell><m>2x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>3x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>2x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4 x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>3x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>3 x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>3x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>1</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>3</m></cell>
+          </row>
+        </tabular>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Polynomials_div1">
+      <statement>
+        <p>
+          Find <m>q(x)</m> and <m>r(x)</m> in the following equations.
+          All polynomials are in <m>\mathbb{R}[x]</m>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>x^2+3x+27=(x-2)q(x) + r(x)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>15x^3+13x-27=(x-5)q(x) + r(x)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>10x^3 - x^2+3x+27=(2x^2-4)q(x) + r(x)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Polynomials_div2">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Divide <m>3x^6 + x^5 +4x^4 +2</m> by <m>x+3</m> where both polynomials are in <m>\mathbb{Z}_5[x]</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Divide <m>x^7 + x^5 + x^3 + x</m> by <m>x + 1</m> where both polynomials are in <m>\mathbb{Z}_2[x]</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Divide <m>4x^5 + 2x^4 + 3x^3 + 5x^2 + x + 6</m> by <m>x+6</m> where both polynomials are in <m>\mathbb{Z}_7[x]</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Divide <m>x^5+9x^4 + 6x^3 + 2x^2 + 7x + 3</m> by
+              <m>x^2+7x+9</m> where both polynomials are in <m>\mathbb{Z}_{11}[x]</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Divide <m>7x^3 + 2x^2 + 4x + 8</m> by <m>5x+6</m>,
+              where both polynomials are in <m>\mathbb{Z}_{13}[x]</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We are now ready to prove the division algorithm for polynomials.
+      In order to make our results as general as possible,
+      we won't be too specific about the coefficients.In <xref ref="sec_Polynomials_PropertiesAndSigmaNotation">Section</xref>
+      we gave five properties that our set of coefficients <m>R</m> should satisfy
+      (including associativity, distributivity,
+      and commutativity of addition).
+      In this section we will refer to our set of coefficients as <m>F</m>,
+      and we require that <m>F</m> have the same properties as <m>R</m> plus two more:
+      <ol type="I">
+        <li>
+          <p>
+            <m>F</m> has a multiplicative identity (which we will denote as 1)
+          </p>
+        </li>
+        <li>
+          <p>
+            The nonzero elements of <m>F</m> have multiplicative inverses:
+            that is, if <m>a \in F</m> and <m>a \neq 0</m>,
+            then there exists an element
+            <m>a^{-1} \in F</m> such that <m>a \cdot a^{-1} = a^{-1} \cdot a = 1</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      These properties are characteristic of a type of mathematical structure called a <term>field</term>.
+      We'll study fields more extensively in <xref ref="Rings">Chapter</xref>:
+      but for now,
+      we simply recognize Properties (I)-(VII) as common properties of many
+      (but not all)
+      of the number systems we've seen so far.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Of the number systems <m>{\mathbb R},{\mathbb C},{\mathbb Q},{\mathbb Z},{\mathbb Z}_n</m>,
+          <m>{\mathbb M}_n</m>,
+          which all satisfy (I)-(V), which do not satisfy (VI) and (VII)?
+        </p>
+      </statement>
+    </exercise>
+    <proposition>
+      <statement>
+        <p>
+          {Division for Polynomials} <em>(Division algorithm for polynomials)</em>
+          Suppose that the set <m>F</m> has addition and multiplication operations that satisfy (I)-(VII).
+          Let <m>f(x)</m> and <m>g(x)</m> be nonzero polynomials in <m>F[x]</m>,
+          where the degree of <m>g(x)</m> is greater than 0.
+          Then there exist unique polynomials <m>q(x)</m> and <m>r(x)</m> in <m>F[x]</m> such that
+          <me>
+            f(x) = g(x)q(x) + r(x)
+          </me>,
+          where the degree of <m>r(x)</m> is less than the degree of <m>g(x)</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We will first prove the existence of <m>q(x)</m> and <m>r(x)</m>.
+        We define a set <m>S</m> as follows:
+        <me>
+          S = \{f(x) - g(x) h(x), \text{ for all }  h(x) \in F[x] \}
+        </me>.
+      </p>
+      <p>
+        This set is nonempty since <m>f(x) \in S</m>.
+        Let <m>r(x)</m> be a polynomial of smallest degree in <m>S</m>.<fn>
+        At this point we can't assume that there's only one such polynomial,
+        so we have to say
+        <q>a polynomial</q>
+        rather than
+        <q>the polynomial</q>.
+        </fn> This means that there must exist a <m>q(x)</m> such that
+        <me>
+          r(x) = f(x) - g(x) q(x)
+        </me>.
+      </p>
+      <p>
+        We need to show that the degree of <m>r(x)</m> is less than the degree of <m>g(x)</m>.
+        Let's prove this by contradiction.
+        So we assume the contrary, namely that <m>\deg g(x) \leq \deg r(x)</m>.
+        Let <m>n,m</m> be the degree of
+        <m>g(x),r(x)</m> respectively, where <m>n \leq m</m>.
+        Then we may write
+        <me>
+          g(x) = a_0 + a_1 x + \cdots + a_n x^n
+        </me>
+        and
+        <me>
+          r(x) = b_0 + b_1 x + \cdots + b_m x^m
+        </me>,
+        where <m>a_n \neq 0</m> and <m>b_m \neq 0</m>.
+        Taking a cue from the process of long division,
+        we define a new polynomial <m>r'(x)</m> by
+        <md>
+          <mrow>r'(x) := r(x) - b_m a_n^{-1} x^{m-n}g(x)</mrow>
+        </md>
+      </p>
+      <p>
+        It's tedious to write out all the terms of <m>r'(x)</m>.
+        Fortunately, it's not really necessary.
+        We only need to remark that the degree of <m>r'(x)</m> is less than the degree of <m>r(x)</m>,
+        since the leading-order terms of <m>r(x)</m> and
+        <m>b_m(a_n^{-1}) x^{m-n}g(x)</m> are both <m>b_m x^m</m>,
+        so they cancel.
+        We may plug in <m>r(x) = f(x) - g(x) q(x)</m> to obtain
+        <md>
+          <mrow>r'(x) \amp :=  f(x) - g(x) q(x) - b_m a_n^{-1}  x^{m-n}g(x)</mrow>
+          <mrow>\amp = f(x) - g(x) \left( q(x) - b_m a_n^{-1}  x^{m-n}\right)</mrow>
+        </md>.
+      </p>
+      <p>
+        This shows that <m>r'(x)</m> is also in <m>S</m>
+        (look back at the definition and see!).
+        But <m>\deg r'(x) \lt \deg r(x)</m>,
+        which contradicts our condition that <m>r(x)</m> is an element of <m>S</m> with smallest degree.
+        The rules of proof by contradiction allow us to conclude that our assumption is false:
+        namely, it must be true that <m>\deg g(x) > \deg r(x)</m>.
+        This finishes the proof of existence.
+      </p>
+      <p>
+        To show that <m>q(x)</m> and <m>r(x)</m> are unique,
+        suppose that polynomials <m>q'(x)</m> and <m>r'(x)</m> satisfy <m>f(x) = g(x) q'(x) + r'(x)</m>, so that
+        <me>
+          f(x) = g(x) q(x) + r(x) = g(x) q'(x) + r'(x)
+        </me>.
+      </p>
+      <p>
+        This implies
+        <me>
+          g(x) [q(x) - q'(x) ] = r'(x) - r(x)
+        </me>.
+      </p>
+      <p>
+        If <m>q(x) - q'(x)</m> is not the zero polynomial,
+        then since the field <m>F</m> has no zero divisors it follows that <m>\deg( g(x)) \leq \deg( g(x) [q(x) - q'(x) ])</m>.
+        This in turn implies
+        <me>
+          \deg g(x) \leq \deg( g(x) [q(x) - q'(x) ] )= \deg( r'(x) - r(x) )
+        </me>.
+      </p>
+      <p>
+        However, the degrees of both <m>r(x)</m> and <m>r'(x)</m> are strictly less than the degree of <m>g(x)</m>,
+        so their difference can't have such a large degree.
+        It follows that <m>q(x) - q'(x) = 0</m>,
+        which implies that <m>q(x)=q'(x)</m> and <m>r(x)=r'(x)</m>.
+      </p>
+    </proof>
+  </subsection>
+  <subsection xml:id="subsec_Polynomials_PolynomialsAndDivision_GCD">
+    <title>Greatest common divisors of polynomials</title>
+    <p>
+      In the Modular Arithmetic chapter,
+      we used the Euclidean algorithm to find the gcd's of sets of integers.
+      Now that we have a division algorithm for polynomials,
+      we can find gcd's of polynomials in the same way.
+    </p>
+    <p>
+      To illustrate this, we begin with an example in <m>\mathbb{R}[x]</m>.
+    </p>
+    <example xml:id="example_Polynomials_euclideanpoly">
+      <statement>
+        <p>
+          Suppose that we would like to find the gcd of
+          <m>a(x) = x^4 - 5x^3 + 5x^2 +5x - 6</m> and <m>b(x) = x^4 + 5x^3 + 5x^2 - 5x -6</m>.
+          We first divide <m>a(x)</m> by <m>b(x)</m> to determine the remainder,
+          <m>r_1</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell>1</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>x^4 + 5x^3 + 5x^2 - 5x -6</m></cell>
+            <cell><m>x^4</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>5x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x</m></cell>
+            <cell><m>-</m></cell>
+            <cell>6</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>-x^4</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>5x^3</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>5x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x</m></cell>
+            <cell><m>+</m></cell>
+            <cell>6</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>-10x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>10x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <p>
+          So <m>r_1 =-10x^3+10x</m>.
+          We then divide <m>b(x)</m> by <m>r_1</m> to determine the second remainder,
+          <m>r_2</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>-\frac{1}{10}x</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>\frac{1}{2}</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>-10x^3+10x</m></cell>
+            <cell><m>x^4</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x^2</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>5x</m></cell>
+            <cell><m>-</m></cell>
+            <cell>6</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>-x^4</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>5x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6x^2</m></cell>
+            <cell><m>-</m></cell>
+            <cell><m>5x</m></cell>
+            <cell><m>-</m></cell>
+            <cell>6</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>-5x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>6x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>-</m></cell>
+            <cell>6</cell>
+          </row>
+        </tabular>
+        <p>
+          So <m>r_2 =6x^2-6</m>.
+          We then divide <m>r_1</m> by <m>r_2</m> to determine the third remainder,
+          <m>r_3</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>-\frac{5}{3}x</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>6x^2-6</m></cell>
+            <cell><m>-10x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>10x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>10x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>-</m></cell>
+            <cell><m>10x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell>0</cell>
+          </row>
+        </tabular>
+        <p>
+          Notice that <m>r_3=0</m>.
+          This means that <m>6x^2 -6</m> divides both <m>a(x)</m> and <m>b(x)</m>.
+          Furthermore, any real,
+          nonzero multiple of <m>6x^2 -6</m> will divide both <m>a(x)</m> and <m>b(x)</m>.
+          For convenience,
+          we choose the multiple with a leading coefficient of 1.
+          This means that <m>x^2-1</m> is the gcd of <m>a(x)</m> and <m>b(x)</m>.
+          You should check that <m>x^2-1</m> divides both <m>a(x)</m> and <m>b(x)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Use the Euclidean algorithm to compute the gcd of <m>a(x)=5x^3-2x^2-22x+21</m> and
+              <m>b(x)=5x^4-7x^3+15x^2-21x</m> in <m>\mathbb{R}[x]</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the Euclidean algorithm to compute the gcd of <m>a(x)=4x^4-4x^3-4x^2+12x-8</m> and
+              <m>b(x)=8x^4-8x^3+8x^2-12x+4</m> in <m>\mathbb{R}[x]</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Now that we've seen some examples with coefficients in <m>\mathbb{R}[x]</m>,
+      lets see how the Euclidean algorithm can be applied to determine the gcd of polynomials in
+      <m>\mathbb{Z}_p[x]</m>, where <m>p</m> is prime.
+    </p>
+    <example xml:id="example_Polynomials_euclideanZn">
+      <statement>
+        <p>
+          Suppose that we would like to find the gcd of <m>a(x) = x^4 + 2x^3 + 5x^2 +5x + 1</m> and
+          <m>b(x) = x^4 + 5x^3 + 5x^2 + 2x +1</m> in <m>\mathbb{Z}_7[x]</m>.
+          We first divide <m>a(x)</m> by <m>b(x)</m> to determine the remainder,
+          <m>r_1</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell>1</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>x^4 + 5x^3 + 5x^2 +2x +1</m></cell>
+            <cell><m>x^4</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>2x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x</m></cell>
+            <cell><m>+</m></cell>
+            <cell>1</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>6x^4</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>2x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>2x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x</m></cell>
+            <cell><m>+</m></cell>
+            <cell>6</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>3x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <p>
+          So <m>r_1 = 4x^3+3x</m>.
+          We then divide <m>b(x)</m> by <m>r_1</m> to determine the second remainder,
+          <m>r_2</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>2x</m></cell>
+            <cell><m>+</m></cell>
+            <cell>3</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>4x^3+3x</m></cell>
+            <cell><m>x^4</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>5x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>2x</m></cell>
+            <cell><m>+</m></cell>
+            <cell>1</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>6x^4</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>5x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>2x</m></cell>
+            <cell><m>+</m></cell>
+            <cell>1</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>2x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell>5x</cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>6x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell>1</cell>
+          </row>
+        </tabular>
+        <p>
+          So <m>r_2 =6x^2+1</m>.
+          We then divide <m>r_1</m> by <m>r_2</m> to determine the third remainder,
+          <m>r_3</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>3x</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>6x^2+1</m></cell>
+            <cell><m>4x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>3x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>3x^3</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell>0</cell>
+          </row>
+        </tabular>
+        <p>
+          Notice that <m>r_3=0</m>.
+          Therefore, <m>6x^2 + 1</m> divides both <m>a(x)</m> and <m>b(x)</m>.
+          We multiply <m>6x^2 + 1</m> by the inverse of 6 to obtain the gcd for <m>a(x)</m> and <m>b(x)</m>.
+          The result is <m>x^2+6</m>.
+          We leave it to the reader to check that <m>x^2+6</m> divides both <m>a(x)</m> and <m>b(x)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Use the Euclidean algorithm to compute the gcd of <m>a(x)=x^3+x^2+3x</m> and
+              <m>b(x)=3x^3+2x^2+x+4</m> in <m>\mathbb{Z}_5[x]</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the Euclidean algorithm to compute the gcd of <m>a(x)=x^3+2x^2+2</m> and
+              <m>b(x)=2x^2-x+1</m> in <m>\mathbb{Z}_3[x]</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Polynomials_PolynomialsAndDivision_FTOA">
+    <title>Polynomial roots and the FTOA (easy part) <nbsp/><nbsp/></title>
+    <figure>
+      <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+    </figure>
+    <p>
+      When you first learned about factoring polynomials with integer or real coefficients,
+      you may have been told
+      (or noticed on your own)
+      that a polynomial of degree <m>n</m> has at most <m>n</m> roots.
+      This result is important enough that it has a name:
+      it's part of the <term>Fundamental Theorem of Algebra</term>,
+      or <term>FTOA</term><nbsp/>for short
+      (sadly, it's only the easy part of FTOA<ndash/>we'll discuss the hard part later).
+    </p>
+    <p>
+      Most likely though you've never seen a proof of the FTOA. No worries<ndash/>the proof is at hand!
+      In keeping with our previous discussion,
+      we will state our results in terms of <m>F[x]</m>,
+      where the set of coefficients <m>F</m> satisfies properties (I)-(VII).
+    </p>
+    <p>
+      The following preliminary proposition gives us a way to relate polynomial values to polynomial remainders.
+    </p>
+    <proposition xml:id="proposition_Polynomials_polyremainder">
+      <statement>
+        <p>
+          Let <m>F</m> satisfy properties (I)-(VII), <m>f(x) \in F[x]</m>,
+          and <m>a \in F</m>.
+          When <m>f(x)</m> is divided by <m>x-a</m>,
+          the remainder is <m>f(a)</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        According to <xref ref="proposition_Polynomials_Division_for_Polynomials">Proposition</xref>,
+        if we divide <m>f(x)</m> by <m>x-a</m>,
+        it will produce two unique polynomials <m>q(x)</m> and <m>r(x)</m> such that <m>f(x) = (x-a)q(x) + r(x)</m>.
+        Since the degree of <m>x-a</m> is 1, then according to the division algorithm,
+        the degree of <m>r(x)</m> must be less than 1.
+        Therefore <m>r(x)</m> must be a constant <m>r</m>, and we may write:
+        <me>
+          f(x) = (x-a)q(x) + r
+        </me>.
+      </p>
+      <p>
+        If we set <m>x=a</m> then we get:
+        <md>
+          <mrow>f(a) \amp = (a-a)q(x) + r</mrow>
+          <mrow>\amp  = 0 \cdot q(x) + r</mrow>
+          <mrow>\amp  = r</mrow>
+        </md>.
+      </p>
+    </proof>
+    <p>
+      This proposition can save lots of time when finding remainders under division by monomials.
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find the remainders when <m>\sum_{k=1}^{100} k x^{k-1}</m> is divided by <m>x-1</m> and <m>x+1</m>,
+              respectively.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the remainders when <m>\sum_{k=0}^{100} \left( \frac{1}{2} \right)^k x^k</m> is divided by <m>x-1/2</m> and <m>x+1/2</m>,
+              respectively.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the remainders when <m>\sum_{k=0}^{100} 3^k x^{k}</m> is divided by <m>x+1/9</m> and <m>x - 1/9</m>,
+              respectively.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      The following proposition is an important special case of <xref ref="proposition_Polynomials_polyremainder">Proposition</xref>.
+    </p>
+    <proposition xml:id="proposition_Polynomials_polydivides">
+      <statement>
+        <p>
+          Let <m>F</m> satisfy properties (I)-(VII), <m>f(x) \in F[x]</m>,
+          and <m>a \in F</m>.
+          Then <m>x-a</m> divides <m>f(x)</m> if and only if <m>f(a) = 0</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        From <xref ref="proposition_Polynomials_polyremainder">Proposition</xref>
+        <m>f(x) = (x-a) \cdot q(x) + f(a)</m>.
+        Therefore <m>f(a) = 0</m> if and only if <m>f(x)=(x-a) \cdot q(x)</m>,
+        which is true if and only if <m>x-a</m> divides <m>f(x)</m>.
+      </p>
+    </proof>
+    <p>
+      We may also restate <xref ref="proposition_Polynomials_polydivides">Proposition</xref> as:
+      <m>a</m> is a root of the polynomial <m>f(x)</m> if and only if <m>x-a</m> divides <m>f(x)</m>.
+    </p>
+    <p>
+      We will need to take care of some preliminaries in order to prove
+      (the easy part of)
+      the Fundamental Theorem of Algebra.
+      From basic algebra with real numbers,
+      we know that if <m>ab=0</m> then either <m>a=0</m> or <m>b=0</m>
+      (see also <xref ref="proposition_ComplexNumbers_nonzero_complex_product">Proposition</xref>
+      of <xref ref="ComplexNumbers">Chapter</xref>).
+      Actually, this <term>zero-divisor property</term>
+      hold for any set <m>R</m> that satisfies (I)-(VII):
+    </p>
+    <proposition xml:id="proposition_Polynomials_noZeroDiv">
+      <statement>
+        <p>
+          Suppose that <m>F</m> satisfies properties (I)-(VII).
+          Given <m>a,b \in F</m> and <m>ab = 0</m>,
+          then either <m>a=0</m> or <m>b=0</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Polynomials_noZeroDiv">Proposition</xref>. (<em>Hint</em>:
+          you may follow the steps given in <xref ref="exercise_ComplexNumbers_12">Exercise</xref>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      It turns out that if <m>F</m> satisfies the zero-divisor property,
+      then <m>F[x]</m> satisfies the same property:
+    </p>
+    <proposition xml:id="proposition_Polynomials_polyremainder2">
+      <statement>
+        <p>
+          Suppose <m>F</m> satisfies Properties (I)-(VII), and suppose <m>p(x),
+          q(x) \in F[x]</m>.
+          Then <m>p(x) q(x)=0</m> iff either <m>p(x)=0</m> or <m>q(x)=0</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Since this is a
+        <q>iff</q>
+        proof, we must actually prove both the
+        <q>if</q>
+        ' statement and the
+        <q>only if</q>
+        statement.
+      </p>
+      <p>
+        First we prove the
+        <q>if</q>
+        part.
+        It follows from the formula for multiplication of polynomials that if either <m>p(x)=0</m> or <m>q(x)=0</m>,
+        then the product <m>p(x)q(x)</m> must also be 0.
+        That was easy!
+      </p>
+      <p>
+        The
+        <q>only if</q>
+        part is harder.
+        We will prove the contrapositive,
+        namely that <m>p(x)\neq\ 0</m> and
+        <m>q(x)\neq\ 0</m> implies that <m>p(x)q(x) \neq 0</m>.
+        Let
+        <me>
+          p(x) =  \sum_{i=0}^{m} a_i x^i \mathrm{~ and ~} q(x) =  \sum_{j=0}^{n} b_j x^j
+        </me>,
+        where <m>a_m \neq\ 0</m> and <m>b_n\neq\ 0</m>.
+        We can then write
+        <me>
+          p(x) q(x) = \sum_{k=0}^{m+n} c_k, \mathrm{~~where~~} c_{k} =  \sum_{i=0}^{k}a_i b_{k-i}
+        </me>.
+      </p>
+      <p>
+        Consider the coefficient <m>c_{m+n}</m>,
+        which may be expanded out as
+        <me>
+          c_{m+n} =  a_0 b_{m+n} + a_1 b_{m+n-1} + \ldots  + a_{m}b_{n} + \dots +  a_{n+m-1}b_{1} + a_{n+m}b_{0}
+        </me>.
+      </p>
+      <p>
+        Take a look at these terms for a moment.
+        Which of them are nonzero?
+        Notice how we've separated out the term
+        <m>a_{m}b_{n}</m> in the middle of the expansion.
+        Since <m>a_{m} \neq 0</m> and
+        <m>b_{n} \neq 0</m>, this term is nonzero.
+        Now, are there any other nonzero terms?
+        All terms have the form <m>a_i b_j</m>,
+        and for every other term in the series
+        (besides <m>a_{m}b_{n}</m>)
+        we have either <m>i>m</m> or <m>j>n</m>.
+        If <m>i>m</m> then <m>a_i=0</m>,
+        since the degree of <m>p(x)</m> is <m>m</m> and all coefficients of terms of higher degree are 0.
+        For the same reason, if <m>j>n</m> then <m>b_j=0</m>.
+        It follows that except for the term <m>a_{m}b_{n}</m>,
+        all other terms <m>a_ib_j</m> are 0, which implies that <m>c_{m+n} = a_mb_n \neq 0</m>.
+        But this means that <m>p(x)q(x)</m> has a nonzero term,
+        namely <m>c_{m+n}x^{m+n}</m>,
+        so <m>p(x)q(x) \neq 0</m>.
+        The proof is completed.
+      </p>
+    </proof>
+    <p>
+      And here's the result we've been waiting for.
+      Now that we've prepared the ground,
+      it's not so difficult to prove.
+    </p>
+    <proposition xml:id="proposition_Polynomials_FTOA">
+      <statement>
+        <p>
+          (<em>Fundamental Theorem of Algebra:
+          easy part</em>) Suppose <m>F</m> satisfies properties (I)-(VII), and let <m>f(x)</m> be a polynomial in <m>F[x]</m> of degree <m>n</m>.
+          Then the equation <m>f(x)=0</m> has at most <m>n</m> solutions:
+          that is, there are at most <m>n</m> distinct elements
+          <m>\{x_1,\ldots x_n\}</m> of <m>F</m> such that
+          <m>f(x_m)=0</m> for <m>1 \le m \le n</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Suppose <m>a_1</m> is a solution to <m>f(x)=0</m>.
+        Then by <xref ref="proposition_Polynomials_polydivides">Proposition</xref>
+        it follows that <m>x-a_1</m> divides <m>f(x)</m>.
+        Therefore <m>f(x) = (x-a_1) g_{n-1}(x)</m> where the degree of <m>g_{n-1}(x)=n-1</m>.
+      </p>
+      <p>
+        Now if <m>a_2 \neq a_1</m> is another solution then using our above result we have
+        <me>
+          f(a_2) = (a_2 - a_1)g_{n-1}(a_2) = 0
+        </me>.
+      </p>
+      <p>
+        Since <m>a_2 - a_1 \neq 0</m>,
+        it follows that <m>g_{n-1}(a_2) = 0</m>.
+        So we can write <m>g_{n - 1}(x) = (x-a_2)g_{n-2}(x)</m> where the degree of <m>g_2(x) = n-2</m>.
+      </p>
+      <p>
+        Continuing in the same way,
+        if there are distinct roots <m>a_1,a_2,...,a_n</m> then
+        <me>
+          f(x) = (x - a_1)(x - a_2)...(x - a_n)g_0
+        </me>,
+        where the degree of <m>g_0</m> is 0
+        (in other words, <m>g_0</m> is a constant.).
+        So there can't be any more solutions, <m>a_{n+1}</m>,
+        because <m>(x-a_{n+1})</m> doesn't divide <m>g_0</m>.
+      </p>
+    </proof>
+    <p>
+      The previous theorem immediately gives us an extremely important general property of roots of polynomials:
+    </p>
+    <proposition xml:id="proposition_Polynomials_atmostnroots">
+      <statement>
+        <p>
+          Suppose <m>F</m> satisfies properties (I)-(VII), and let <m>c</m> be any element <m>F</m>.
+          Then <m>c</m> has at most <m>n</m> <m>n^{\text{ th } }</m> roots.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Given <m>C \in F</m>,
+        then the polynomial <m>x^n-c</m> is an element of <m>F[x]</m>.
+        By <xref ref="proposition_Polynomials_FTOA">Proposition</xref>,
+        the equation <m>x^n-c=0</m> has at most <m>n</m> solutions.
+        This is exactly the same thing as saying that <m>c</m> has at most <m>n</m> <m>n^{\text{ th } }</m> roots.
+      </p>
+    </proof>
+    <exercise xml:id="exercise_Polynomials_roots">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find all fourth roots of 5625 in <m>\mathbb{R}[x]</m>.
+              Give exact solutions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all fifth roots of <m>3125i</m> in <m>\mathbb{C}[x]</m>.
+              Give exact solutions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all fifth roots of 5 in <m>\mathbb{Z}_7</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all sixth roots of 1 in <m>\mathbb{Z}_7</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Take note of the
+      <q>at most</q>
+      qualification in <xref ref="proposition_Polynomials_FTOA">Proposition</xref>.
+      There are cases of polynomials in <m>F[x]</m> which do not have
+      <em>any</em> roots in <m>F</m>.
+      For example, there are polynomials in
+      <m>\mathbb{R}[x]</m> that have no roots at all in <m>\mathbb{R}[x]</m>,
+      as the next examples illustrate.
+    </p>
+    <example xml:id="example_Polynomials_poly_complex">
+      <statement>
+        <p>
+          Find the roots of <m>p(x)=2x^2+2x+5</m>.
+        </p>
+        <p>
+          Since this is a quadratic polynomial we can use the famous quadratic formula:
+          <me>
+            x=\frac {-b \pm \sqrt{b^2-4ac}}{2a}
+          </me>
+        </p>
+        <p>
+          In <m>p(x), a=2, b=2</m>, and <m>c=5</m>.
+          We substitute those values into the formula and obtain the following:
+          <md>
+            <mrow>x\amp =\frac {-2 \pm \sqrt{2^2-4\cdot 2\cdot 5}}{2\cdot 2}=\frac {-2 \pm \sqrt{-36}}{4}=\frac {-2 \pm 6i}{4}</mrow>
+            <mrow>\amp =\frac {-1 \pm 3i}{2}</mrow>
+          </md>.
+        </p>
+        <p>
+          So the roots of <m>p(x)</m> are <m>x</m> ={<m>-\frac{1}{2}+\frac{3}{2}i, -\frac{1}{2}-\frac{3}{2}i</m>}. Neither of these roots are elements of <m>{\mathbb R}</m>.
+          As noted above this does not contradict FTOA, which only guarantees there won't be more than 2 roots.
+        </p>
+      </statement>
+    </example>
+    <p>
+      The next example is a cubic polynomial in <m>\mathbb{Z}[x]</m>.
+      To find the rational roots, we will make use of the following proposition.
+    </p>
+    <proposition xml:id="proposition_Polynomials_Rationalroots">
+      <statement>
+        <p>
+          Let <m>f(x) = a_{n}x^n+a_{n-1}x^{n-1}+...+a_{0}</m> be a polynomial in <m>\mathbb{Z}[x]</m>.
+          Any rational roots of <m>f(x)</m> expressed in lowest terms have numerators,
+          <m>p</m>,
+          which are factors of <m>a_{0}</m> and denominators, <m>q</m>,
+          which are factors of <m>a_{n}</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Let <m>f(x) = a_{n}x^n+a_{n-1}x^{n-1}+...+a_{0}</m> be a polynomial in
+        <m>\mathbb{Z}[x]</m> and suppose that <m>p/q</m> is a root of <m>f(x)</m>,
+        where the fraction <m>p/q</m> is in lowest terms
+        (so <m>p</m> and <m>q</m> are relatively prime).
+      </p>
+      <p>
+        First we will show that <m>p</m> is a factor of <m>a_{0}</m>.
+        Since <m>p/q</m> is a root of <m>f(x)</m> we have <m>f\left(\frac {p}{q}\right)=0</m>,
+        which implies
+        <me>
+          a_{n}\left(\frac {p}{q}\right)^n+a_{n-1}\left(\frac {p}{q}\right)^{n-1}+...+a_{0}=0
+        </me>.
+      </p>
+      <p>
+        Multiplying both sides by <m>q^n</m>, we have,
+        <me>
+          \left(a_{n}\left(\frac {p}{q}\right)^n+a_{n-1}\left(\frac {p}{q}\right)^{n-1}+...+a_{0}\right)q^n=0
+        </me>,
+        which simplifies to
+        <me>
+          a_{n}p^n+a_{n-1}(p^{n-1}q)+...+a_{0}q^n=0
+        </me>.
+      </p>
+      <p>
+        This expression can be rearranged to obtain:
+        <me>
+          p\left(-a_{n}p^{n-1}-a_{n-1}(p^{n-2}q)-...-a_{1}q^{n-1}\right)=a_{0}q^n
+        </me>.
+      </p>
+      <p>
+        Since <m>f(x) \in \mathbb{Z}[x]</m>,
+        all the coefficients <m>a_i</m> are also integers.
+        <m>p</m> and <m>q</m> are also integers.
+        Since integers are closed under addition and multiplication,
+        it follows that both sides of the above equation are integers.
+        Since <m>p</m> divides the left-hand side,
+        it must also divide the right-hand side.
+        Therefore <m>p</m> divides <m>a_{0}q^n</m>.
+        Now <m>p</m> and <m>q</m> are relatively prime:
+        so in order for <m>p</m> to divide <m>a_{0}q^n</m>,
+        it must divide <m>a_0</m>.
+        In other words,
+        <m>p</m> is a factor of <m>a_{0}</m><mdash/>which is just what we wanted to prove.
+      </p>
+      <p>
+        It turns out the proof that <m>q</m> is a factor of <m>a_{n}</m> is basically the same,
+        if we use a little trick.
+        The first equation that we wrote down above was:
+        <me>
+          a_{n}\left(\frac {p}{q}\right)^n+a_{n-1}\left(\frac {p}{q}\right)^{n-1}+...+a_{0}=0
+        </me>.
+      </p>
+      <p>
+        Let's multiply both sides by <m>(q/p)^n</m>.
+        After simplifying, and rearranging we get:
+        <me>
+          a_{0}\left(\frac {q}{p}\right)^n+a_{1}\left(\frac {q}{p}\right)^{n-1}+...+a_{n}=0
+        </me>.
+      </p>
+      <p>
+        Now, this new equation corresponds exactly to the first equation with the following replacements:
+        <me>
+          a_n  \rightarrow a_0;\,\, a_{n-1} \rightarrow a_1;\,\, \ldots;\,\, a_0 \rightarrow a_n; \,\, p  \leftrightarrow q
+        </me>.
+      </p>
+      <p>
+        We can then go through the entire previous argument,
+        making these replacements.
+        We concluded previously that <m>p</m> is a factor of <m>a_0</m><mdash/>so if we apply the identical argument to the equation with replacements,
+        we obtain that <m>q</m> is a factor of <m>a_n</m>.
+        You may fill in the details in the following exercise.
+      </p>
+      <exercise>
+        <statement>
+          <p>
+            Starting with the equation <m>a_{0}\left(q/p\right)^n+a_{1}\left(q/p\right)^{n-1}+...+a_{n}=0</m>,
+            give the complete argument which shows that <m>q</m> is a factor of <m>a_n</m>.
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <p>
+      Now let's get some practice using <xref ref="proposition_Polynomials_Rationalroots">Proposition</xref>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Find the roots of <m>f(x)=3x^3+10x^2+11x+6</m>.
+        </p>
+        <p>
+          Since this is a cubic polynomial,
+          we can't use the quadratic formula,
+          at least not to begin with.
+          The coefficients are integers,
+          so we may use <xref ref="proposition_Polynomials_Rationalroots">Proposition</xref>,
+          which says that <em>any</em> rational roots of <m>p(x)</m> have numerators that are factors of <m>a_{0}</m> and denominators that are factors of <m>a_{n}</m>.
+          This does not guarantee that there are rational roots:
+          sometimes polynomials are irreducible,
+          but we still try every method possible to find those roots unless we know that we can't reduce the polynomial.
+          So we will proceed with trying to find the roots of <m>f(x)</m> using <xref ref="proposition_Polynomials_Rationalroots">Proposition</xref>.
+        </p>
+        <p>
+          In <m>f(x)</m>, possible numerators of any rational roots are:
+          <m>p=\pm1, \pm2, \pm3, \pm6</m>.
+          The possible denominators are: <m>q=\pm1, \pm3</m>.
+          So we have as possible rational roots the following:
+          <m>p/q= \pm1, \pm\frac{1}{3}, \pm2, \pm\frac{2}{3},\pm3, \pm6</m>.
+          By <xref ref="proposition_Polynomials_polydivides">Proposition</xref>,
+          if <m>f(p/q)=0</m> then <m>(x-p/q)</m> is a factor of <m>f(x)</m>;
+          which would make <m>p/q</m> a root of <m>f(x)</m>.
+          After testing all possibilities we find the following rational root:
+          <m>f(-2)=3(-2)^3+10(-2)^2+11(-2)+6=0</m>.
+          Therefore, <m>x=-2</m> is a root of <m>f(x)</m> and <m>(x+2)</m> is a factor of <m>f(x)</m>.
+          We then use long division to factor <m>f(x)</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>3x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>3</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>x + 2</m></cell>
+            <cell><m>3x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>10x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>11x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>3x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6 x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>11x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>8x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>3 x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>3x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>0</m></cell>
+          </row>
+        </tabular>
+        <p>
+          So now we have <m>f(x)=(x+2)(3x^2+4x+3)</m>.
+          We use the quadratic formula to find the following roots for <m>3x^2+4x+3</m>.
+          <m>x=\frac{-2\pm \sqrt{5}i}{3}</m>.
+          So there are two complex roots and one real root.
+          They are <m>x={\frac{-2 - \sqrt{5}i}{3}, -2, \frac{-2+ \sqrt{5}i}{3}}</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Polynomials_complexroots">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find the roots of <m>f(x)=2x^2+x+1</m>.
+              Give exact solutions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the roots of <m>f(x)=5x^3+17x^2+7x+3</m>.
+              Give exact solutions.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      In the exercises above, the leading coefficient is not 1.
+      The situation is especially simple if the leading coefficient is 1.
+      In such a case, the rational roots are integers:
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Given that <m>p(x) \in \mathbb{Z}[x]</m>,
+              and <m>p(x)</m> has leading coefficient 1, show that all rational roots of <m>p(x)</m> are integers.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the roots of <m>f(x)=x^3-13x+12</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Polynomials_PolynomialsAndDivision_FTOAhard">
+    <title>Algebraic closure and the FTOA (hard part)</title>
+    <p>
+      We've been referring to the
+      <q>easy</q>
+      part of the Fundamental Theorem of Algebra.
+      It's time now to consider the
+      <q>hard</q>
+      part.
+    </p>
+    <p>
+      <xref ref="proposition_Polynomials_FTOA">Proposition</xref>
+      says that any polynomial in <m>F[x]</m> of degree <m>n</m> has at most <m>n</m> roots that are elements of <m>F</m>,
+      as long as <m>F</m> satisfies properties (I)-(VII).
+      But the proposition can't guarantee the existence of even one root<ndash/>and we've shown in <xref ref="example_Polynomials_poly_complex">Example</xref>
+      that there may be no roots at all!
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Give an example of a polynomial in <m>{\mathbb Q}[x]</m> which has roots in
+          <m>{\mathbb R}</m> but no roots in <m>{\mathbb Q}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      For some special cases of <m>F</m> however,
+      a nonconstant polynomial in <m>F[x]</m> (i.e. a polynomial with degree 1 or more) always has roots in <m>F</m>.
+      As a lead-in,
+      we may notice that for every nonconstant polynomial in
+      <m>\mathbb{R}[x]</m> that we looked at we were always able to find complex roots,
+      even when weren't able to find real roots.
+      This might lead us to conjecture that every nonconstant polynomial in
+      <m>\mathbb{R}[x]</m> has at least one root in <m>\mathbb{C}</m>.
+      The hard part of the Fundamental Theorem of Algebra affirms that this is true.
+      What's more,
+      not just nonconstant polynomials in <m>\mathbb{R}[x]</m>,
+      but also those in <m>\mathbb{C}[x]</m> all have at least one in <m>\mathbb{C}</m>.
+      Here's the statement of the theorem:
+    </p>
+    <proposition xml:id="proposition_Polynomials_FTOAhard">
+      <statement>
+        <p>
+          (<em>Fundamental Theorem of Algebra:
+          hard part</em>) Any nonconstant polynomial in
+          <m>\mathbb{C}[x]</m> has at least one complex root.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      There are several proofs of this theorem.
+      The most elegant involves the field of mathematics known as
+      <q>complex analysis</q>, and specifically the theory of integrals of functions whose domain and codomain are <m>\mathbb{C}</m>.
+      This proof is one of the highlights in most undergraduate complex analysis classes.<fn>
+      For a visualizable, constructive proof that uses basic calculus,
+      see \url{https://arxiv.org/abs/2002.04418}.
+      </fn>
+    </p>
+    <p>
+      Here are some examples that illustrate <xref ref="proposition_Polynomials_FTOAhard">Proposition</xref>.
+    </p>
+    <example xml:id="example_Polynomials_poly_complexroots">
+      <statement>
+        <p>
+          We begin with an example of a linear binomial in <m>\mathbb{C}[x]</m>.
+          Let <m>p(x)=(3+2i)x+(2-i)</m>.
+          Find the root of <m>p(x)</m> (since <m>p(x)</m> is linear,
+          it will only have one root).
+        </p>
+        <p>
+          First we set <m>p(x)</m> equal to zero and then proceed to find the root as follows.
+          Begining with <m>(3+2i)x+(2-i)=0</m>,
+          we may rearrange to obtain
+          <me>
+            x=\frac{-2+i}{3+2i}
+          </me>,
+          and multiplying numerator and denominator by <m>3 - 2i</m> and simplifying gives
+          <me>
+            x=\frac{4+7i}{13}\in \mathbb{C}[x]
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_Polynomials_poly_complexroots2">
+      <statement>
+        <p>
+          Let's do another example,
+          but this time with a quadratic trinomial in <m>\mathbb{C}[x]</m>.
+          Let <m>p(x)=(1+i)x^2+(2-i)x+(3+3i)</m>.
+          Find the roots of <m>p(x)</m>.
+        </p>
+        <p>
+          Since this is a quadratic polynomial we can use the quadratic formula and obtain the following:
+          <md>
+            <mrow>x=\amp \frac {-(2-i) \pm \sqrt{(2-i)^2-4(1+i)(3+3i)}}{2(1+i)}=\frac {(-2+i) \pm \sqrt{3-4i-24i}}{(2+2i)}</mrow>
+            <mrow>=\amp \frac {(-2+i) \pm \sqrt{3-28i}}{(2+2i)}=\frac {(-2+i) \pm \sqrt{3-28i}}{(2+2i)}\cdot \frac {2-2i}{2-2i}</mrow>
+            <mrow>=\amp \frac{6+6i\pm (2-2i)\sqrt{3-28i}}{8}=\frac{3+3i\pm (1-i)\sqrt{3-28i}}{4}</mrow>
+          </md>.
+        </p>
+        <p>
+          So the two roots are <m>x=\left\{\frac{3+3i- (1-i)\sqrt{3-28i}}{4}, \frac{3+3i+ (1-i)\sqrt{3-28i}}{4}\right\}</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Polynomials_complexrootsb">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find the root of <m>p(x)=(4-3i)x+(2+6i)</m>.
+              Give an exact solution.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the roots of <m>p(x)=(2+i)x^2+(2-3i)x+(7+3i)</m>.
+              Give exact solutions.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <proposition xml:id="proposition_Polynomials_complexlinear">
+      <statement>
+        <p>
+          Any polynomial <m>p(x)</m> of degree <m>n</m> in
+          <m>\mathbb{C}[x]</m> can be completely factored as a constant times a product of <m>n</m> linear terms,
+          as follows:
+          <men>
+            p(x) = b(x -a_1)(x-a_2) \ldots (x - a_n)
+          </men>.
+          where <m>b, a_1, \ldots, a_n \in {\mathbb C}</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Let <m>p(x)</m> be an arbitrary polynomial of degree <m>n</m> in <m>\mathbb{C}[x]</m>.
+        By <xref ref="proposition_Polynomials_FTOAhard">Proposition</xref>,
+        <m>p(x)</m> has at least one complex root <m>a</m>.
+        So <m>(x-a)</m> is a factor of <m>p(x)</m> and we can write <m>p(x)=(x-a_1)p_1(x)</m>;
+        where the degree of <m>p_1(x)</m> is <m>n-1</m>.
+        If <m>p_1(x)</m> is linear,
+        then we are done, but if <m>p_1(x)</m> is not linear,
+        then by <xref ref="proposition_Polynomials_FTOAhard">Proposition</xref>
+        it also has a complex root <m>a_2</m>.
+        So <m>(x-a_2)</m> is a factor of <m>p_2(x)</m> and we can write <m>p(x)=(x-a_1)(x-a_2)p_2(x)</m>;
+        where the degree of <m>p_2(x)</m> is <m>n-2</m>.
+        The same argument continues until we reach <m>p_{n-2}(x)</m>,
+        which has degree 1.
+        But this means that <m>p_{n-2}(x)</m> can be written as <m>bx - c</m>,
+        which we may rewrite as <m>b(x-a_n)</m>, where <m>a_n = c/b</m>.
+        It follows finally that <m>p(x) =b (x-a_1)(x-a_2) \ldots (x-a_n)</m>.
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>p(x)</m> is a polynomial of degree <m>n</m> such that the coefficient of <m>x^n</m> is 1
+          (such a polynomial is called a <term>monic polynomial</term>).
+              <idx><h>Polynomial</h><h>monic</h></idx>
+          Show that for a monic polynomial,
+          the coefficient <m>b</m> in <xref ref="proposition_Polynomials_complexlinear">Proposition</xref> is equal to 1.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Now let's apply <xref ref="proposition_Polynomials_complexlinear">Proposition</xref> to an example.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>f(x)=x^4-4x^3+10x^2-24x+24</m> be a polynomial in <m>\mathbb{C}[x]</m>.
+          Notice that the coefficients of <m>f(x)</m> are integers,
+          so <m>f(x)</m> is also in <m>\mathbb{Z}[x]</m>.
+          Therefore we can use <xref ref="proposition_Polynomials_Rationalroots">Proposition</xref>
+          to factor out our first linear term.
+          Since <m>a_0=24</m> and <m>a_n=1</m>,
+          possible rational roots are
+          <me>
+            \frac{p}{q}= \pm1, \pm 2, \pm 3, \pm 4,\pm 6, \pm 8, \pm 12
+          </me>.
+        </p>
+        <p>
+          By <xref ref="proposition_Polynomials_polydivides">Proposition</xref>,
+          if <m>f(p/q)=0</m> then <m>(x-p/q)</m> is a factor of <m>f(x)</m> i.e.
+          <m>p/q</m> a root of <m>f(x)</m>.
+          After testing all possibilities we find the following rational root:
+          <m>f(2)=2^4-4(2)^3+10(2)^2-24(2)+24=0</m>.
+          Therefore, <m>x=2</m> is a root of <m>f(x)</m> and <m>(x-2)</m> is a factor of <m>f(x)</m>.
+          After dividing <m>f(x)</m> by <m>(x-2)</m> we have the following:
+          <md>
+            <mrow>f(x)=\amp  (x-2)(x^3-2x^2+6x-12)=(x-2)(x^2(x-2)+6(x-2))</mrow>
+            <mrow>=\amp (x-2)(x-2)(x^2+6)=(x-2)^2(x^2+6)</mrow>
+          </md>.
+        </p>
+        <p>
+          Solving <m>x^2+6=0</m> for <m>x</m> gives us additional roots:
+          <m>x = -\sqrt6 i, 2,\sqrt6 i</m>.
+          In summary, we have
+          <me>
+            f(x)= (x-2)(x-2)(x+\sqrt{6}i)(x-\sqrt{6}i)
+          </me>.
+        </p>
+        <p>
+          So as <xref ref="proposition_Polynomials_complexlinear">Proposition</xref> states,
+          <m>f(x)</m> factors completely into a product of linear terms.
+        </p>
+      </statement>
+    </example>
+    <remark>
+      <p>
+        Although <m>f(x)</m> is a fourth degree polynomial,
+        and factors into the product of 4 linear terms,
+        yet it only has 3 <em>distinct</em>
+        roots because of the repeated factor <m>(x-2)</m>.
+        This agrees with <xref ref="proposition_Polynomials_FTOA">Proposition</xref>,
+        which implies that a polynomial of degree 4 has <em>at most</em>
+        <m>n</m> distinct solutions.
+      </p>
+    </remark>
+    <p>
+      Take a moment to savor the full generality of <xref ref="proposition_Polynomials_FTOAhard">Proposition</xref>.
+      We don't have to restrict ourselves to polynomials with real coefficients:
+      even if the polynomial's coefficients are imaginary or complex,
+      the proposition still guarantees that the polynomial has a root.
+      Further, <xref ref="proposition_Polynomials_complexlinear">Proposition</xref>
+      then guarantees that it can be factored into a product of linear factors.
+    </p>
+    <exercise xml:id="exercise_Polynomials_complexPoly">
+      <statement>
+        <p>
+          Factor each of the following polynomials into a product of linear terms.
+          <ol type="a">
+            <li>
+              <p>
+                <m>p(x) = x^3 + (-6+i)x^2 + (13-6i)x + 13i = 0</m> (<em>hint:</em> evaluate <m>p(-i)</m>).
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(x) = x^3 - 6ix^2 -11x + 6i = 0</m> (<em>hint:</em> evaluate <m>f(i)</m>).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Suppose that <m>p(x) \in {\mathbb C}[x]</m> and <m>p(x)=p(-x)</m>.
+              Show that <m>p(x)</m> is actually a polynomial in <m>x^2</m>,
+              so that <m>p(x)</m> can be written as <m>q(x^2)</m> where
+              <m>q(x) \in {\mathbb C}[x]</m>. (<em>Hint:</em> If <m>p(a)=0</m>,
+              then what about <m>p(-a)</m>?
+              Use this fact to get two linear factors of <m>p(x)</m>,
+              and multiply them together.
+              The case where <m>p(0)=0</m> should be treated separately.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that <m>p(x) \in {\mathbb C}[x]</m> and <m>p(x)=-p(-x)</m>.
+              Show that <m>p(x)</m> can be written as <m>xq(x^2)</m> where <m>q(x) \in {\mathbb C}[x]</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

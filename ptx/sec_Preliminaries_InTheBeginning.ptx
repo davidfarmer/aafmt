@@ -1,0 +1,98 @@
+<section xml:id="sec_Preliminaries_InTheBeginning">
+  <title>In the Beginning<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  Let's start at the very beginning
+  A very good place to start
+  When you read you begin with A B C
+  When you sing you begin with Do Re Me
+  <p>
+    (Oscar Hammerstein, <em>The Sound of Music</em>)
+  </p>
+  <blockquote>
+    God made the integers; all else is the work of man.
+    (Leopold Kronecker, German mathematician, 1886)
+  </blockquote>
+  <p>
+    If Maria had been more mathematically inclined, she might have continued:
+    <q>When you count, you begin with 1 2 3</q>. Ordinarily we think of the
+    <q>counting numbers</q>
+    (which mathematicians call the <term>natural numbers</term>
+    or <term>positive integers</term>) as the
+    <q>very beginning</q>
+    of math.
+  </p>
+  <p>
+    It's true that when we learn math in school,
+    we begin with the counting numbers.
+    But do we really start at the
+    <q>very beginning</q>? How do we know that <m>1 + 1 = 2</m>?
+    How do we know that the methods we learned to add, multiply,
+    divide, and subtract will always work?
+    We've been taught how to factor integers into prime factors.
+    But how do we know this always works?
+  </p>
+  <p>
+    Mathematicians are the ultimate skeptics: they won't take
+    <q>Everyone knows</q>
+    or
+    <q>It's obvious</q>
+    as valid reasons.
+    They keep asking
+    <q>why</q>, breaking things down into the most basic assumptions possible.
+    The very basic assumptions they end up with are called <term>axioms</term>.
+        <idx><h>Axiom</h></idx>
+    They then take these axioms and play with them like building blocks.
+    The arguments that they build with these axioms are called <term>proofs</term>,
+    and the conclusions of these proofs are called
+    <term>propositions</term><idx><h>Proposition</h><h>mathematical</h></idx> or <term>theorems</term>.
+        <idx><h>Theorem</h></idx>
+  </p>
+  <p>
+    The mathematician's path is not an easy one.
+    It is exceedingly difficult to push things back to their foundations.
+    For example,
+    arithmetic was used for thousands of years before a set of simple axioms was finally developed (you may look up
+    <q>Peano axioms</q>
+    on the web).<fn>
+    The same is true for calculus.
+    Newton and Leibniz first developed calculus around 1670,
+    but it wasn't made rigorous until 150 years later.
+    </fn> Since this is an elementary book,
+    we are not going to try to meet rigorous mathematical standards.
+    Instead, we'll lean heavily on examples,
+    including the integers, rationals, and real numbers.
+    Once you are really proficient with different examples,
+    then it will be easier to follow more advanced ideas.<fn>
+    Historically, mathematics has usually progressed this way:
+    examples first,
+    and axioms later after the examples are well-understood.
+    </fn>
+  </p>
+  <p>
+    This text is loaded with proofs,
+    which are as unavoidable in abstract mathematics as they are intimidating to many students.
+    We try to
+    <q>tone things down</q>
+    as much as possible.
+    For example, we will take as
+    <q>fact</q>
+    many of the things that you learned in high school and college algebra<ndash/>even though you've never seen proofs of these
+    <q>facts</q>. In the next section we remind you of some of these
+    <q>facts</q>. When writing proofs or doing exercise feel free to use any of these facts.
+    If you have to give a reason, you can just say
+    <q>basic algebra</q>.
+        <idx><h>Algebra</h><h>high school and college</h></idx>
+  </p>
+  <p>
+    We close this prologue with the assurance that abstract algebra is a beautiful subject that brings amazing insights into the nature of numbers,
+    and the nature of Nature itself.
+    Furthermore,
+    engineers and technologists are finding more and more practical applications,
+    as we shall see in some of the later chapters.
+  </p>
+  <p>
+    The original version of this chapter was written by David Weathers.
+  </p>
+</section>

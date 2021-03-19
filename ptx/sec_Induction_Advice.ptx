@@ -1,0 +1,52 @@
+<section xml:id="sec_Induction_Advice">
+  <title>Advice on writing up induction proofs</title>
+  <p>
+    Here are four things to keep in mind as you write up induction proofs.
+  </p>
+  <p>
+    <em>#1: Begin any induction proof by stating precisely,
+    and prominently,
+    the statement you plan to prove.</em>
+    This statement typically involves an equation
+    (or assertion)
+    in the variable <m>n</m>, and we're trying to prove this equation
+    (or assertion)
+    for all natural numbers <m>n</m> bigger than a certain value.
+    A good idea is to write out the statement and label it as
+    <q><m>P(n)</m></q>, so that it's easy to spot, and easy to reference;
+    see the sample proofs for examples.
+  </p>
+  <p>
+    <em>#2: Be sure to properly begin and end the induction step.</em>
+    From a logical point of view,
+    an induction step is a proof of a statement of the form,
+    <q>for all <m>k\in\NN, P(k)\Rightarrow P(k+1)</m></q>. To prove such a statement, you need to start out by asserting,
+    <q>let <m>k\in \NN</m> be given</q>),
+    then assume <m>P(k)</m> is true (
+    <q>Suppose <m>P(n)</m> is true for <m>n=k</m></q>),
+    and, after a sequence of logical deductions, derive <m>P(k+1)</m> (
+    <q>Therefore <m>P(n)</m> is true for <m>n=k+1</m></q>).
+  </p>
+  <p>
+    <em>#3: Use different letters for the general variable appearing in the statement you seek to prove (<m>n</m> in the above example) and the variable used for the induction step (<m>k</m> in the above example).</em>
+    The reason for this distinction is that in the induction step you want to be able to say something like the following:
+    <q>Let <m>k\in\NN</m> be given,
+    and suppose <m>P(k)</m> .... [Proof of induction step goes here] ... Therefore <m>P(k+1)</m> is true.</q>
+    Without introducing a second variable <m>k</m>,
+    such a statement wouldn't make sense.
+  </p>
+  <p>
+    <em>#4: Always clearly state,
+    at the appropriate place in the induction step,
+    when the induction hypothesis is being used.</em> E.g., say
+    <q>By the induction hypthesis we have ...</q>, or use a parenthetical note
+    <q>(by induction hypothesis)</q>
+    in a chain of equations as in the above example.
+    The induction hypothesis is the case <m>n=k</m> of the statement we seek to prove (i.e., the statement
+    <q><m>P(k)</m></q>
+    and it is what you assume at the start of the induction step.
+    The place where this hypothesis is used is the most crucial step in an induction argument,
+    and you must get this hypothesis into play at some point during the proof of the induction step<mdash/>if not,
+    you are doing something wrong.
+  </p>
+</section>

@@ -1,0 +1,1352 @@
+<section xml:id="sec_Permutations_CycleNotation">
+  <title>Cycle notation<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="subsec_Permutations_CycleNotation_TableausCycles">
+    <title>Tableaus and cycles</title>
+    <p>
+      In the Symmetries chapter,
+      we introduced tableau notation to deal with bijections because of its brevity and ease of use for function composition.
+      But as you may have noticed in the last section,
+      even tableaus can become cumbersome to work with.
+      To work effectively with permutation groups,
+      we need a more streamlined method of writing down and manipulating permutations.
+      This method is known as cycle notation.
+    </p>
+    <example xml:id="example_Permutations_permute_to_cycle_1">
+      <statement>
+      <p>
+        Suppose <m>\rho \in S_6</m> and <m>\rho = \begin{pmatrix}1 \amp  2 \amp  3 \amp  4 \amp  5 \amp  6 \\ 2 \amp  3 \amp  4 \amp  5 \amp  6 \amp  1 \end{pmatrix}</m>.
+        Then
+        <me>
+          \rho(1) = 2,\  \rho(2) = 3,\  \rho(3) = 4,\  \rho(4) = 5,\  \rho(5) = 6,\  \text{ and }  \rho(6) = 1
+        </me>.
+      </p>
+      <p>
+        A shorter way to represent this is
+        <me>
+          1 \to 2, 2 \to 3, 3 \to 4, 4 \to 5, 5 \to 6 \mbox { and } 6 \to 1
+        </me>.
+      </p>
+      <p>
+        We can visualize this as a
+        <q>wheel</q>, as shown in <xref ref="fig_cycle">Figure</xref>
+      </p>
+      <figure xml:id="fig_cycle">
+        <caption>Cycle representation of the  permutation (123456).</caption>
+        <image width="23%" source="images/perm_cycle.png"/>
+      </figure>
+      <p>
+        We shall write this trail of inputs and outputs as <m>(123456)</m>;
+            <idx><h>Cycle notation</h></idx>
+        and rather than
+        <q>wheel</q>, we call this a <term>cycle</term>.
+            <idx><h>Permutation</h><h>cycle</h></idx>
+        Reading the cycle from left to right indicates that 1 goes to 2, 2 goes to 3, <m>\ldots</m>,
+        and the 6 at the end goes back to 1.
+      </p>
+      <exercise xml:id="exercise_Permutations_equal_cycles2">
+        <statement>
+          <p>
+            Show that <m>(123456) = (345612)</m> by drawing a figure similar to <xref ref="fig_cycle">Figure</xref> for each cycle.
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="exercise_Permutations_equal_cycles1">
+        <statement>
+          <p>
+            Show that <m>(123456)</m> and
+            <m>(234561)</m> both have the same tableau
+            (so they are in fact the same permutation).
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        From the previous two exercises,
+        it is clear that there are many ways to write the same cycle:
+        we can begin with any element we want,
+        and work our way around until we get back to the same element.
+        To avoid possible confusion,
+        from now on we will follow the convention of starting the cycle with the
+        <q>smallest</q>
+        or
+        <q>first</q>
+        element of the domain.
+      </p>
+      <p>
+        For this particular permutation,
+        since our cycle contains all the inputs in the domain of <m>\rho</m>,
+        it represents the whole function
+        (because it gives us the outputs for every input).
+        Therefore in cycle notation,
+        <me>
+          \rho = (123456)
+        </me>
+      </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_long_cycle_perm1">
+      <statement>
+        <p>
+          Write the following permutation of <m>S_6</m> in cycle notation:
+          <me>
+            \mu = \begin{pmatrix}1 \amp  2 \amp  3 \amp  4 \amp  5 \amp  6 \\ 3 \amp  4 \amp  5 \amp  1 \amp  6 \amp  2 \end{pmatrix}
+          </me>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_long_cycle_perm2">
+      <statement>
+        <p>
+          Given the permutation <m>\mu = (152634)</m> in <m>S_6</m> :
+          <ol type="a">
+            <li>
+              <p>
+                Write <m>\mu</m> in tableau form.
+              </p>
+            </li>
+            <li>
+              <p>
+                Write <m>\mu</m> as a figure similar to <xref ref="fig_cycle">Figure</xref>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_long_cycle_perm3">
+      <statement>
+        <p>
+          Given the permutation <m>\mu = (165432)</m> in <m>S_6</m> :
+          <ol type="a">
+            <li>
+              <p>
+                Write <m>\mu</m> in tableau form.
+              </p>
+            </li>
+            <li>
+              <p>
+                Write <m>\mu</m> as a figure similar to <xref ref="fig_cycle">Figure</xref>
+              </p>
+            </li>
+            <li>
+              <p>
+                Compare your answer to (b) with <xref ref="fig_cycle">Figure</xref> of <m>\rho = (123456)</m>.
+                Explain the difference between <m>\mu</m> and <m>\rho</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <definition>
+      <statement>
+        <p>
+          {cyclelength} The <term>length</term>
+          of a cycle is how many elements the cycle contains;
+          i.e. how many elements are in the parentheses.
+              <idx><h>Cycle</h><h>length of</h></idx>
+          Formally, if <m>(a_1, a_2, \ldots, a_n)</m> is a cycle,
+          then the length of <m>(a_1, a_2, \ldots, a_n)</m> is <m>n</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      For example,
+      the permutation <m>\rho</m> in <xref ref="example_Permutations_permute_to_cycle_1">Example</xref>
+      above is represented by a cycle of length six.
+    </p>
+    <remark>
+      <p>
+        Notice how we have used the notation <m>a_j</m> to indicate arbitrary elements in a cycle.
+        This is a common practice in abstract algebra.
+      </p>
+    </remark>
+    <p>
+      Now not all permutations in <m>S_6</m> correspond to a cycle of length six.
+      For instance:
+    </p>
+    <example xml:id="example_Permutations_permute_to_cycle_3">
+      <statement>
+        <p>
+          Suppose <m>\tau \in S_6</m> and <m>\tau = \begin{pmatrix}1 \amp 2 \amp 3 \amp 4 \amp 5 \amp 6 \\ 1 \amp 4 \amp 2 \amp 3 \amp 5 \amp 6 \end{pmatrix}</m>.
+          Then
+          <ul>
+            <li>
+              <p>
+                <m>1 \to 1</m>, which means that <m>1</m>
+                <q>stays put.</q>
+                So we don't use <m>1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>2 \to 4</m>, <m>4 \to 3</m>, and <m>3 \to 2</m>;
+                so we have <m>(243)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Finally, <m>5 \to 5</m> and <m>6 \to 6</m>;
+                so they also stay put.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Hence
+          <me>
+            \tau = (243)
+          </me>
+        </p>
+      </statement>
+    </example>
+    <p>
+      Based on the procedure in the previous example then,
+      how would we represent the identity permutation on a set of <m>n</m> elements?
+      All the elements stay put, so technically <m>{\var id}</m> would equal the
+      <q>empty cycle</q>. Some references in fact use
+      <q><m>()</m></q>
+      to denote the identity:
+      but in this book we will always denote the identity permutation by
+      <m>{\var id}</m> as a reminder that this is in fact the group's identity element.
+          <idx><h>Permutation</h><h>identity</h></idx>
+          <idx><h>Identity</h><h>of permutation groups</h></idx>
+    </p>
+    <warning xml:id="cycle_domain">
+      <p>
+        Cycle notation does not indicate the domain of the permutation.
+        For instance,
+        the permutation <m>(243)</m> in <xref ref="example_Permutations_permute_to_cycle_3">Example</xref>
+        had domain <m>\{1,2,3,4,5,6\}</m>,
+        but <m>(243)</m> could also refer to a permutation on the domain <m>\{1,2,3,4\}</m>.
+        When working with permutations in cycle notation,
+        make sure you know what the domain is.
+        (In most cases, it's clearly specified by the context.)
+      </p>
+    </warning>
+    <exercise xml:id="exercise_Permutations_short_cycle1">
+      <statement>
+        <p>
+          Write each of the following permutations in <m>S_7</m> in tableau form.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\omega = (243)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\omega = (2365)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\omega = (14257)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_short_cycle2">
+      <statement>
+        <p>
+          Draw a figure similar to <xref ref="fig_cycle">Figure</xref>
+          depicting each of the following permutations in <m>S_5</m>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\sigma = (25)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sigma = (135)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sigma = (1342)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      A final question that may come to mind is:
+      do all permutations correspond to some cycle?
+      Certainly, as we've seen,
+      all cycles correspond to some permutation in <m>S_n</m>.
+      However, can all permutations in <m>S_n</m> be represented as a cycle?
+      We will take the next several parts of this section to explore this question.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_CycleNotation_CompositionCycles">
+    <title>Composition (a.k.a. product) of cycles</title>
+    <p>
+      Since cycles represent permutations,
+      they can be composed together.
+      If we change the cycles to tableaus,
+      we know how to compose them.
+      Now let's figure out how to compose them using the cycles themselves.
+          <idx><h>Composition</h><h>of cycles</h></idx>
+          <idx><h>Cycle</h><h>composition</h></idx>
+    </p>
+    <notation>
+      <p>
+        Given permutations <m>\sigma</m> and <m>\tau</m>,
+        instead of writing <m>\sigma \compose \tau</m> we write the shorthand notation:
+        <m>\sigma \tau</m>.
+        Furthermore,
+        instead of calling this the composition of <m>\sigma</m> and <m>\tau</m>,
+        we refer to it as the <term>product</term>
+        of <m>\sigma</m> and <m>\tau</m>.<fn>
+        Once again we see mathematicians' annoying habit of reusing familiar terms to mean something new in a different contexts.
+        In this case, the
+        <q>product</q>
+        of permutations means something quite different from ordinary multiplication.
+        </fn>
+      </p>
+    </notation>
+    <example xml:id="example_Permutations_cycle_comp_1">
+      <statement>
+        <p>
+          Suppose we want to form the product
+          (that is, composition)
+          <m>\sigma \tau</m>,
+          where <m>\sigma, \tau \in S_6</m> and <m>\sigma = (1 5 3 2 ), \tau = (1 2 6)</m>.
+        </p>
+        <figure xml:id="fig_cycle_composition">
+          <caption>Product of cycles <m>\sigma</m> and <m>\tau</m>, showing the derivation of <m>\sigma \tau (1) = 1</m>.</caption>
+          <image width="37%" source="images/cycle_composition.png"/>
+        </figure>
+        <p>
+          <xref ref="fig_cycle_composition">Figure</xref>
+          provides a visual representation of how the product <m>\sigma \tau</m> acts on 1.
+          Remember that we operate from right to left,
+          so the figure shows <sq>1</sq> coming in from the right.
+          The action of <m>\tau</m> takes 1 to 2. ( For convenience we have
+          <q>flattened</q>
+          the permutations <m>\tau</m> and <m>\sigma</m>,
+          so they no longer appear as circles.) Then we pass over to <m>\sigma</m>,
+          which takes 2 to 1.
+          The final result is 1: therefore <m>\sigma(\tau(1)) = 1</m>.
+        </p>
+        <p>
+          Evidently 1 remains unchanged by the permutation,
+          so let's look at what happens to 2.
+          We see this in <xref ref="fig_cycle_composition2">Figure</xref>.
+          First, <m>\tau</m> moves 2 to 6.
+          Moving on to <m>\sigma</m>, we find that <m>\sigma</m> leaves the 6 unchanged.
+          The result is that <m>\sigma(\tau(2)) = 6</m>.
+        </p>
+        <figure xml:id="fig_cycle_composition2">
+          <caption>Product of cycles <m>\sigma</m> and <m>\tau</m> (continued), showing <m>\sigma \tau (2) = 6</m>.</caption>
+          <image width="37%" source="images/cycle_composition_2.png"/>
+        </figure>
+        <p>
+          We have seen that <m>\sigma\tau</m> takes 2 to 6:
+          so now let's see where <m>\sigma\tau</m> takes 6. (Perhaps you can see that we're trying to build a cycle here.) The top part of <xref ref="fig_cycle_composition_finish">Figure</xref>
+          uses the same process to show the result:
+          <m>\sigma(\tau(6)) = 5</m>.
+          The middle part of <xref ref="fig_cycle_composition_finish">Figure</xref>
+          shows that <m>\sigma(\tau(5)) = 3</m>;
+          and the bottom part of <xref ref="fig_cycle_composition_finish">Figure</xref>
+          shows that <m>\sigma(\tau(3)) = 2</m>.
+          We already know that <m>\sigma(\tau(2)) = 6</m>,
+          so we have closed out our cycle.
+          We have shown <m>2 \rightarrow 6 \rightarrow 5 \rightarrow 3 \rightarrow 2</m>,
+          which amounts to the cycle: <m>(2653)</m>.
+        </p>
+        <figure xml:id="fig_cycle_composition_finish">
+          <caption>Product of cycles <m>\sigma</m> and <m>\tau</m> (continued), showing <m>6\rightarrow5\rightarrow3\rightarrow2</m>.</caption>
+          <image width="37%" source="images/cycle_composition_finish.png"/>
+        </figure>
+        <p>
+          So far 4 is unaccounted for:
+          but a quick inspection of <xref ref="fig_cycle_composition_finish">Figure</xref>
+          shows that 4 is not affected by either <m>\tau</m> or <m>\sigma</m>.
+          So the entire action of <m>\tau</m> followed by <m>\sigma</m> is summarized by the cycle <m>(2653)</m>,
+          meaning that we can write:
+          <m>\sigma \tau</m> = <m>(2653)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_perm_not_comm">
+      <statement>
+        <p>
+          Using the same permutations <m>\sigma</m> and <m>\tau</m> as above:
+          <ol type="a">
+            <li>
+              <p>
+                Write the product <m>\tau \sigma</m> in cycle notation.
+              </p>
+            </li>
+            <li>
+              <p>
+                By comparing your results for
+                <m>\sigma \tau</m> and <m>\tau \sigma</m>,
+                fill in the blank in the following statement: In general,
+                permutations do not <m>\_\_\_\_\_\_\_\_\_\_\_\_</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <example xml:id="example_Permutations_cycle_comp_2a">
+      <statement>
+        <p>
+          At the beginning it may be helpful to draw a picture,
+          as in the previous example.
+          However, once you gain experience,
+          you should be able to find the product of cycles directly.
+          Consider the product <m>\sigma\tau</m> where
+          <m>\sigma = (AEDBF)</m> and <m>\tau=(ABDFE)</m>.
+          Then we have:
+          <ul>
+            <li>
+              <p>
+                <m>\tau</m> takes <m>A \to B</m> and <m>\sigma</m> takes <m>B \to</m>F; hence
+                <m>\sigma \tau</m> takes <m>A \to F</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau</m> takes <m>F \to E</m>,
+                and <m>\sigma</m> takes <m>E \to D</m>;
+                hence <m>\sigma \tau</m> takes <m>F \to D</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau</m> takes <m>D \to F</m>,
+                and <m>\sigma</m> takes <m>F \to A</m>;
+                hence <m>\sigma \tau</m> takes <m>D \to A</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          We have finished a cycle: <m>(AFD)</m>.
+          Let us check where the other letters <m>B, C, E</m> go:
+          <ul>
+            <li>
+              <p>
+                <m>\tau</m> takes <m>B \to D</m>,
+                and <m>\sigma</m> takes <m>D \to B</m>;
+                hence <m>\sigma \tau</m> takes <m>B \to B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Neither <m>\tau</m> nor <m>\sigma</m> affects <m>C</m>;
+                hence <m>\sigma \tau</m> takes <m>C \to C</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau</m> takes <m>E \to A</m>,
+                and <m>\sigma</m> takes <m>A \to E</m>;
+                hence <m>\sigma \tau</m> takes <m>E \to E</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Since <m>B, C, E</m> are unaffected by <m>\sigma \tau</m>,
+          we conclude that <m>\sigma \tau=(AFD)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_cycle_comp_exer1">
+      <statement>
+        <p>
+          Given that <m>\delta = (135)</m>, <m>\sigma = (347)</m>,
+          and <m>\rho = (567)</m> are permutations in <m>S_7</m>,
+          compute the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>\delta \sigma</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sigma \delta</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\delta \rho</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\rho \delta</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sigma \rho</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\rho \sigma</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_CycleNotation_ProductDisjointCycles">
+    <title>Product of disjoint cycles</title>
+    <definition>
+      <statement>
+        <p>
+          {disjointcycles} Two cycles are <term>disjoint</term>
+          if their parentheses contain no elements in common.
+          Formally, two cycles <m>(a_1, a_2, \ldots,
+          a_k )</m> and <m>(b_1, b_2, \ldots,
+          b_l )</m>, are <term>disjoint</term>
+              <idx><h>Cycle</h><h>disjoint</h></idx>
+          if <m>a_i \neq b_j, \forall i, j</m> such that
+          <m>1 \le i \le k</m> and <m>1 \le j \le l</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      For example,
+      the cycles <m>(135)</m> and <m>(27 )</m> are disjoint,
+      whereas the cycles <m>(135)</m> and <m>(347 )</m> are not.
+    </p>
+    <example xml:id="example_Permutations_cycles_disjoint_comp">
+      <statement>
+        <p>
+          Given <m>\sigma = (135)</m>, <m>\tau = (27)</m>,
+          <m>\sigma , \tau \in S_7</m>;
+          let us compute <m>\sigma \tau</m>.
+        </p>
+        <p>
+          Notice right away that every number affected by <m>\tau</m> is unaffected by <m>\sigma</m>;
+          and vice versa.
+          Since the two cycles always remain separate,
+          it is appropriate to represent <m>\sigma \tau</m> as <m>(135)(27)</m>,
+          because the cycles don't reduce any farther.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Now since <m>S_7</m> is closed under function composition,
+      it follows that <m>\sigma \tau = (135)(27)</m> must be a permutation in <m>S_7</m>.
+    </p>
+    <exercise xml:id="exercise_Permutations_permute_disjoint">
+      <statement>
+        <p>
+          Write the permutation <m>\sigma \tau</m> from <xref ref="example_Permutations_cycles_disjoint_comp">Example</xref> in tableau form.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      This permutation can't be represented by one cycle,
+      but rather by <em>two</em> disjoint cycles.
+      So we have an answer to our previous question:
+      all cycles are permutations, but not all permutations are cycles.
+      Some are represented by two disjoint cycles:
+      and in fact some are represented by more than two disjoint cycles.
+    </p>
+    <example xml:id="example_Permutations_permute_to_cycle_2">
+      <statement>
+        <p>
+          Suppose <m>\mu \in S_7</m> and <m>\mu = \begin{pmatrix}1 \amp 2 \amp 3 \amp 4 \amp 5 \amp 6 \amp 7 \\ 6 \amp 1 \amp 4 \amp 3 \amp 7 \amp 2 \amp 5 \end{pmatrix}</m>.
+          Then
+          <ul>
+            <li>
+              <p>
+                <m>1 \to 6</m>, <m>6 \to 2</m>, and <m>2 \to 1</m>;
+                therefore we have the cycle <m>(162)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>3 \to 4</m> and <m>4 \to 3</m>;
+                therefore we have <m>(34)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Finally, <m>5 \to 7</m> and <m>7 \to 5</m>;
+                therefore we have <m>(57)</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Hence <m>\mu = (162)(34)(57)</m>,
+          as we may verify by computing the product <m>(162)\compose (34)\compose (57)</m> directly.
+        </p>
+        <p>
+          We may represent this process graphically as follows.
+          The permutation <m>\mu</m> is also a binary relation,
+          and thus can be represented as a digraph as shown in <xref ref="Permutations_cycle_rep">Figure</xref>(a).
+          We can make the digraph appear much simpler by rearranging the vertices as in <xref ref="Permutations_cycle_rep">Figure</xref>(b).
+          We shall see that <em>all</em> permutations can be simplified in this manner.
+              <idx><h>Digraph</h><h>of a permutation</h></idx>
+        </p>
+      </statement>
+    </example>
+    <figure xml:id="permute_cycle_rep">
+      <caption>(a) Digraph representation of permutation (b) Rearrangement of digraph into cycles</caption>
+      <image width="42%" source="images/cycle_rep.png"/>
+    </figure>
+    <exercise xml:id="exercise_Permutations_tab_to_cycle">
+      <statement>
+        <p>
+          Write the following permutations in cycle notation.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\rho = \begin{pmatrix}1 \amp 2 \amp 3 \amp 4 \amp 5 \amp 6 \\ 2 \amp 1 \amp 5 \amp 6 \amp 3 \amp 4 \end{pmatrix}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sigma = \begin{pmatrix}1 \amp 2 \amp 3 \amp 4 \amp 5 \amp 6\\ 2 \amp 5 \amp 6 \amp 4 \amp 1 \amp 3 \end{pmatrix}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\omega = \begin{pmatrix}1 \amp 2 \amp 3 \amp 4 \amp 5 \amp 6 \\ 4 \amp 5 \amp 1 \amp 6 \amp 2 \amp 3 \end{pmatrix}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau = \begin{pmatrix}1 \amp 2 \amp 3 \amp 4 \amp 5 \amp 6 \\ 5 \amp 3 \amp 4 \amp 1 \amp 2 \amp 6 \end{pmatrix}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_cycle_to_tab">
+      <statement>
+        <p>
+          Write each of the following permutations in <m>S_9</m> in tableau form.
+          <ol type="a">
+            <li>
+              <p>
+                <m>\mu = (259)(347)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sigma = (25678)(14)(39)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau = (286)(193)(457)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\omega = (257)(18)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_D6_cycles">
+      <statement>
+        <p>
+          Write the permutations of <m>D_6</m> in cycle notation
+          (recall that <m>D_6</m> is the group of symmetries of a hexagon).
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_D4_cycles">
+      <statement>
+        <p>
+          Write the symmetries of a square in cycle notation.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      There is one more issue we need to explore with the product of disjoint cycles,
+      which we will do in the following exercise.
+    </p>
+    <exercise xml:id="exercise_Permutations_dis_cycles_comm">
+      <statement>
+        <p>
+          In parts (a)<ndash/>(d) below,
+          write both permutations on the set <m>\{1,2,3,4,5,6\}</m> in tableau form.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(123)(45)</m> and <m>(45)(123)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(14)(263)</m> and <m>(263)(14)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1352)(46)</m> and <m>(46)(1352)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(135)(246)</m> and <m>(246)(135)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                From your results in (a)-(d),
+                what do you conjecture about the product of disjoint cycles?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The examples in <xref ref="exercise_Permutations_dis_cycles_comm">Exercise</xref>
+      seem to indicate that the product of disjoint cycles is commutative.
+      This is in fact true, as we shall now prove.
+          <idx><h>Commutative property</h><h>of disjoint cycles</h></idx>
+    </p>
+    <proposition xml:id="proposition_Permutations_disjoint_cycles_commute">
+      <statement>
+        <p>
+          Disjoint cycles commute:
+          that is, given two disjoint cycles
+          <m>\sigma = (a_1, a_2, \ldots,
+          a_j)</m> and <m>\tau = (b_1, b_2, \ldots, b_k)</m> we have
+          <me>
+            \sigma \tau = \tau \sigma = (a_1, a_2, \ldots, a_j) (b_1, b_2, \ldots, b_k)
+          </me>
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We present this proof as a fill-in-the-blanks exercise:
+      </p>
+      <exercise xml:id="exercise_Permutations_disjoint_commutative">
+        <statement>
+          <p>
+            Fill in the blanks to complete the proof:
+          </p>
+          <p>
+            Recall that permutations are defined as bijections on a set <m>X</m>.
+            In order to show that the two permutations
+            <m>\sigma \tau</m> and <m>\tau \sigma</m> are equal,
+            it's enough to show that they are the same function.
+            In other words, we just need to show that
+            <m>\sigma \tau (x)</m> =<m>\underline{ ~\lt 1>~}</m> for all <m>x \in X</m>.
+          </p>
+          <p>
+            We'll define <m>A = \{a_1, a_2, \ldots,
+            a_j\}</m> and <m>B = \{b_1, b_2, \ldots, b_k\}</m>.
+            By hypothesis <m>A</m> and <m>B</m> are disjoint,
+            so <m>A \underline{ ~\lt 2>~} B = \underline{ ~\lt 3>~}</m>.
+            Given an arbitrary <m>x \in X</m>,
+            there are three possibilities: (i) <m>x \in A</m> and <m>x \notin B</m>; (ii)
+            <m>x \in \underline{ ~\lt 4>~}</m> and <m>x \notin \underline{ ~\lt 6>~}</m>; (iii)
+            <m>x \notin \underline{ ~\lt 7>~}</m> and <m>x \notin \underline{ ~\lt 8>~}</m>.
+            <ol type="i">
+              <li>
+                <p>
+                  In this case,
+                  since <m>x \notin B</m> it follows that <m>\tau(x) = x</m>.
+                  We then have <m>\sigma \tau (x) = \sigma(\tau(x)) = \sigma(x)</m>.
+                  Furthermore,
+                  since <m>x \in A</m> it follows that <m>\sigma(x) \in A</m>,
+                  so <m>\sigma(x) \notin B</m>.
+                  We then have <m>\tau \sigma (x) = \tau(\sigma(x)) = \sigma(x)</m>.
+                  It follows that <m>\sigma \tau (x) = \tau \sigma (x)</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  In this case,
+                  since <m>x \notin \underline{ ~\lt 9>~}</m> it follows that <m>\underline{ ~\lt 10>~}(x) = x</m>.
+                  We then have <m>\tau \sigma (x) = \underline{ ~\lt 11>~} = \underline{ ~\lt 12>~}(x)</m>.
+                  Furthermore,
+                  since <m>x \in \underline{ ~\lt 13>~}</m> it follows that <m>\underline{ ~\lt 14>~}(x) \in \underline{ ~\lt 15>~}</m>,
+                  so <m>\underline{ ~\lt 16>~}(x) \notin \underline{ ~\lt 17>~}</m>.
+                  We then have <m>\sigma \tau (x) = \underline{ ~\lt 18>~} = \underline{ ~\lt 19>~}(x)</m>.
+                  It follows that <m>\sigma \tau (x) = \tau \sigma (x)</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  In this case,
+                  since <m>x \notin A</m> it follows that <m>\underline{ ~\lt 20>~}(x) = x</m>.
+                  Similarly since <m>x \notin \underline{ ~\lt 21>~}</m> it follows that <m>\underline{ ~\lt 22>~}(x) = x</m>.We then have
+                  <m>\tau \sigma (x) = \underline{ ~\lt 23>~}</m> and <m>\sigma \tau (x) = \underline{ ~\lt 24>~}</m>.
+                  It follows that <m>\sigma \tau (x) = \tau \sigma (x)</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+          <p>
+            In all three cases we have
+            <m>\sigma \tau (x)</m> = <m>\underline{ ~\lt 25>~}</m>,
+            so therefore <m>\sigma \tau = \tau \sigma</m>.
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <p>
+      What we've discovered about products of two disjoint cycles is also true for products of any number of disjoint cycles.
+      Since disjoint cycles act independently, they all commute.
+    </p>
+    <exercise xml:id="exercise_Permutations_disjoint_commute_tableau">
+      <statement>
+        <p>
+          Write each of the following permutations on <m>X = \{1,2,\ldots,9\}</m> in tableau form.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1346)(298)(57)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(57)(1346)(298)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(298)(57)(1346)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                Which of the above permutations are the same?
+                Which are different?
+                <em>Explain</em> your answer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_disjoint_commute_cycle">
+      <statement>
+        <p>
+          Write each of the following permutations 2 different ways using cycle notation.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(147)(258)(369)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(12)(35)(46)(78)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(14359)(28)(67)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_CycleNotation_ProductsCycleNotation">
+    <title>Products of permutations using cycle notation</title>
+    <p>
+      Finally, now that we know how to deal with permutation compositions that simplify to disjoint cycles,
+      we can now compose any set of permutations we want.
+      We will start with a couple examples.
+    </p>
+    <example xml:id="example_Permutations_cycle_comp_3">
+      <statement>
+        <p>
+          Given the permutations <m>\mu = (257)(134)</m> and <m>\rho = (265)(137)</m> in <m>S_7</m>,
+          write <m>\mu \rho</m> in cycle notation.
+          <ul>
+            <li>
+              <p>
+                <m>1 \to 3</m>, <m>3 \to 3</m>,
+                <m>3 \to 4</m>, and <m>4 \to 4</m>;
+                therefore <m>1 \to 4</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>4 \to 4</m>, <m>4 \to 4</m>,
+                <m>4 \to 1</m>, and <m>1 \to 1</m>;
+                therefore <m>4 \to 1</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          This gives us the cycle <m>(14)</m>.
+          Continuing,
+          <ul>
+            <li>
+              <p>
+                <m>2 \to 2</m>, <m>2 \to 6</m>,
+                <m>6 \to 6</m>, and <m>6 \to 6</m>;
+                therefore <m>2 \to 6</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>6 \to 6</m>, <m>6 \to 5</m>,
+                <m>5 \to 5</m>, and <m>5 \to 7</m>;
+                therefore <m>6 \to 7</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>7 \to 1</m>, <m>1 \to 1</m>,
+                <m>1 \to 3</m>, and <m>3 \to 3</m>;
+                therefore <m>7 \to 3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>3 \to 7</m>, <m>7 \to 7</m>,
+                <m>7 \to 7</m>, and <m>7 \to 2</m>;
+                therefore <m>3 \to 2</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          So we have the cycle <m>(2673)</m>.
+          Now the only input not included in our cycles is <m>5</m>,
+          so logically it should stay put.
+          But let's test it just in case we made a mistake in our work above.
+          <ul>
+            <li>
+              <p>
+                <m>5 \to 5</m>, <m>5 \to 2</m>,
+                <m>2 \to 2</m>, and <m>2 \to 5</m>;
+                therefore <m>5</m> does indeed stay put.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          So, we finally have: <m>\mu \rho = (14)(2673)</m>
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_Permutations_cycle_comp_4">
+      <statement>
+        <p>
+          Find the product <m>(156)(2365)(123)</m> in <m>S_6</m> .
+          <ul>
+            <li>
+              <p>
+                <m>1 \to 2</m>, <m>2 \to 3</m>, and <m>3 \to 3</m>;
+                therefore <m>1 \to 3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>3 \to 1</m>, <m>1 \to 1</m>, and <m>1 \to 5</m>;
+                therefore <m>3 \to 5</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>5 \to 5</m>, <m>5 \to 2</m>, and <m>2 \to 2</m>;
+                therefore <m>5 \to 2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>2 \to 3</m>, <m>3 \to 6</m>, and <m>6 \to 1</m>;
+                therefore <m>2 \to 1</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          So we have <m>(1352)</m>.
+          <ul>
+            <li>
+              <p>
+                <m>4</m> does not appear in any of the cycles,
+                so we know it won't be acted on by any of the cycles.
+                Hence <m>4</m> stays put.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>6 \to 6</m>, <m>6 \to 5</m>, and <m>5 \to 6</m>;
+                hence <m>6</m> stays put.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Therefore <m>(156)(2365)(123) = (1352)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_cycle_comp_5">
+      <statement>
+        <p>
+          Given the following permutations in <m>S_8</m>,
+          <me>
+            \sigma = (1257)(34) , \tau = (265)(137), \text { and } \rho = (135)(246)(78)
+          </me>
+          find the products:
+          <ol type="a">
+            <li>
+              <p>
+                <m>\sigma \tau</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau \sigma</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau \rho</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sigma \rho</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_cycle_comp_2">
+      <statement>
+        <p>
+          Compute each of the following.
+          Note that e.g.
+          <m>(123)^2</m> means the same as <m>(123)(123)</m>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1345)(234)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(12)(1253)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(143)(23)(24)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1423)(34)(56)(132)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1254)(13)(25)^2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1254)^2 (123)(45)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_CycleNotation_CycleStructure">
+    <title>Cycle structure of permutations</title>
+    <p>
+      Over the last several subsections,
+      we've seen permutations represented as no cycles (<m>{\var id}</m>),
+      a single cycle, or the product of any number of disjoint cycles.
+      This worked because both a single cycle and a product of disjoint cycles can't be reduced to a simpler form in cycle notation.
+      Are there any other possibilities?
+      Are there permutations that can't be represented as either a single cycle or a product of disjoint cycles?
+      The answer to this compelling question is given in the following proposition.
+      This type of proposition is called an
+      <q>existence and uniqueness</q>
+      statement, and for convenience we'll divide the statement into two parts:
+    </p>
+    <proposition xml:id="proposition_Permutations_perm_simple_notation">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Every permutation <m>\sigma</m> in <m>S_n</m> can be written either as the identity,
+              a single cycle, or as the product of disjoint cycles.
+            </p>
+          </li>
+          <li>
+            <p>
+              These disjoint cycles are <em>uniquely</em>
+              determined by the permutation <m>\sigma</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </proposition>
+    <p>
+      The following proof is a formalized version of the procedure we've been using to change permutations from tableau form to cycle notation.
+      Admittedly, it looks intimidating.
+      However, we include it for your
+      <q>cultural enrichment</q>, because higher-level mathematics is typically like this.
+      It's often the case that particular examples of a certain principle are relatively easy to explain,
+      but constructing a general proof that covers <em>all</em>
+      cases is much more difficult.
+    </p>
+    <p>
+      Before starting the proof,
+      we remind you that the notation <m>\sigma = (a_1 \, a_2 \, \ldots \, a_n)</m> means:
+      <md>
+        <mrow>\sigma( a_1 )  = a_2  \amp  \amp \sigma( a_2 )  = a_3 \amp \ldots   \amp  \ldots \amp \sigma( a_k )  = a_1</mrow>
+      </md>,
+      and <m>\sigma( x) =x</m> for all other elements <m>x \in X</m>.
+    </p>
+    <proof>
+      <p>
+        Let's begin with (a) We can assume that <m>X = \{ 1, 2, \ldots,
+        n \}</m>.
+        Let <m>\sigma \in S_n</m>,
+        and define <m>X_1 = \{1, \sigma(1), \sigma^2(1), \ldots \}</m>.
+        The set <m>X_1</m> is finite since <m>X</m> is finite.
+        Therefore the sequence <m>1, \sigma(1), \sigma^2(1), \ldots</m> must repeat.
+        Let <m>j_1</m> be the first index where the sequence repeats,
+        so that <m>\sigma^{j_1}(1) = \sigma^k(1)</m> for some <m>k \lt j_1</m>.
+        Then if we apply <m>\sigma^{-1}</m> to both sides of the equation we get <m>\sigma^{j_1-1}(1) = \sigma^{k-1}(1)</m>.
+        Repeating this <m>k-1</m> more times gives <m>\sigma^{j_1-k}(1) = 1</m>.
+        This implies that the sequence repeats at index <m>j_1-k</m>:
+        but we've already specified that <m>j_1</m> is the <em>first</em>
+        index where the sequence repeats.
+        The only way this can happen is if <m>k=0</m>.
+        It follows that <m>X_1 = \{1, \sigma(1), \sigma^2(1), \ldots \sigma^{j_1-1}(1) \}</m>,
+        where <m>\sigma^{j_1}(1) = 1</m>.
+      </p>
+      <p>
+        Now there are two possible cases:
+        <ol type="i">
+          <li>
+            <p>
+              <m>X_1</m> accounts for all the integers in <m>X</m>; i.e.
+              <m>X_1 = X</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              there are some integers in <m>X</m> not accounted for in <m>X_1</m>
+              (that is, <m>X \backslash X_1 \neq \emptyset</m>).
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        If case (ii) holds, then let <m>i</m> be the smallest integer in
+        <m>X \backslash X_1</m> and define <m>X_2</m> by <m>\{ i, \sigma(i), \sigma^2(i), \ldots \}</m>.
+        Just as with <m>X_1</m>, we may conclude that <m>X_2</m> is a finite set,
+        and that <m>X_2</m> = <m>\{ i, \sigma(i), \ldots, \sigma^{j_2-1}(i) \}</m> where <m>\sigma^{j_2}(i) = i</m>.
+      </p>
+      <p>
+        We claim furthermore that <m>X_1</m> and <m>X_2</m> are disjoint.
+        We can see this by contradiction:
+        <em>suppose</em> on the other hand that <m>X_1</m> and <m>X_2</m> are not disjoint.
+        Then it must be the case that
+        <m>\sigma^p(1) = \sigma^q(i)</m> for some natural numbers
+        <m>p,
+        q</m> with <m>0 \le p \lt j_1</m> and <m>0 \le q \lt j_2</m>.
+        Applying <m>\sigma</m> to both sides of this equation,
+        gives <m>\sigma^{p+1}(1) = \sigma^{q+1}(i)</m>.
+        If we continue applying <m>\sigma</m> to both sides a total of <m>j_2 - q</m> times then we obtain <m>\sigma^{p+j_2 - q}(1) = \sigma^{j_2}(i)</m>.
+        But since <m>\sigma^{j_2}(i) = i</m>,
+        it follows that <m>\sigma^{p+j_2 - q}(1) = i</m>,
+        which implies that <m>i \in X_1</m>.
+        This is a contradiction, because we know <m>i \in X \backslash X_1</m>.
+        The contradiction shows that the
+        <em>supposition</em> must be false,
+        so <m>X_1</m> and <m>X_2</m> are disjoint.
+      </p>
+      <p>
+        Continuing in the same manner,
+        we can define finite disjoint sets <m>X_3, X_4, \ldots</m>.
+        Since <m>X</m> is a finite set,
+        we are guaranteed that this process will end and there will be only a finite number of these sets.
+        Some of these sets <m>X_j</m> will have only a single element:
+        in this case, <m>\sigma_j= \var{id}</m>,
+        and it is not necessary to include these sets in the list.
+        We may remove these sets,
+        and relabel the remaining sets as <m>X_1,\ldots X_s</m>.
+        If <m>\sigma_i</m> is the cycle defined by
+        <me>
+          \sigma_i( x ) = \left\{ \begin{array}{ll} \sigma( x ) \amp  x \in X_i \\ x \amp  x \notin X_i, \end{array} \right.
+        </me>
+        then <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_s</m>.
+        Since the sets <m>X_1, X_2, \ldots, X_r</m> are disjoint,
+        the cycles <m>\sigma_1, \sigma_2, \ldots, \sigma_s</m> must also be disjoint.
+      </p>
+      <p>
+        Now recall case (i) above.
+        In this case, <m>\sigma = \sigma_1</m>.
+        Hence, <m>\sigma</m> is either a single cycle or the product of <m>r</m> disjoint cycles.Note that if <m>\sigma = \var{id}</m>,
+        then the process described above will yield all single-element sets,
+        so that <m>r=0</m> and <m>\{X_1,\ldots X_r\}=</m>
+        (this is why we treat the <m>\var{id}</m> as a special case).
+        But if <m>\sigma \neq \var{id}</m>,
+        the process will create at least one cycle of length <m>\ge 2</m>.
+        This completes the proof of (a).
+      </p>
+      <p>
+        Now on to (b).
+        To show uniqueness of the disjoint cycles,
+        we suppose that <m>\sigma = \sigma_1 \ldots \sigma_s</m> and also <m>\sigma = \rho_1 \ldots \rho_r</m>,
+        where the <m>\sigma_j</m>'s are disjoint cycles and the <m>\rho_j</m>'s are also disjoint cycles.
+        The proof may be accomplished by showing that <m>S = R</m>,
+        where <m>S := \{\sigma_1,\ldots \sigma_s \}</m> and <m>R := \{\rho_1,\ldots,\rho_r\}</m>.
+        To do this, we may show every cycle in <m>S</m> is also in <m>R</m>,
+        and vice versa.
+        So take <m>\sigma_j \in S</m>,
+        and write <m>\sigma_j =(a_1 \, a_2 \, \ldots \, a_J)</m>.
+        Since <m>\sigma_j(a_1) = a_2</m>,
+        it follows that <m>\sigma(a_1) = a_2</m>.
+        But this means that there must be a cycle
+        <m>\rho_\ell \in R</m> such that <m>\rho_\ell(a_1) = a_2</m>.
+        In the same way we may show that <m>\rho(a_2) = a_3, \ldots \rho(a_J)=a_1</m>.
+        Since <m>\rho_{\ell}</m> is a cycle,
+        it follows that <m>\rho_{\ell}(x) = x</m> for <m>x \notin \{a_1 \, a_2 \, \ldots \, a_J\}</m>.
+        It follows that <m>\rho_\ell(x) = \sigma_j(x)</m> for all <m>x \in X</m>,
+        and hence <m>\rho_\ell = \sigma_j</m>.
+        Thus every element of <m>S</m> is also an element of <m>R</m>.
+        The proof is then completed by the following exercise:
+      </p>
+      <exercise xml:id="exercise_Permutations_uniqueness_proof">
+        <statement>
+          <p>
+            Complete the proof of <xref ref="proposition_Permutations_perm_simple_notation">Proposition</xref>
+            by showing that every <m>\rho_j</m> in <m>R</m> is also in the set <m>S</m>.
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <p>
+      <xref ref="proposition_Permutations_perm_simple_notation">Proposition</xref>
+      is a <em>classification theorem</em>.
+      You have seen classification theorems before:
+      for instance,
+      you know that any natural number <m>>1</m> can be written uniquely as the product of primes.
+      <xref ref="proposition_Permutations_perm_simple_notation">Proposition</xref>
+      similarly gives us a standard way to represent permutations.
+      It allows us to characterize the types of permutations in <m>S_n</m> according to their cycle sizes,
+      as shown in the following example.
+    </p>
+    <example xml:id="example_Permutations_S5_cycle_types">
+      <statement>
+        <p>
+          We know that every permutation in <m>S_5</m> is the product of disjoint cycles.
+          Let us list all possible cycle lengths and number of cycles for the permutations of <m>S_5</m>.
+          <ul>
+            <li>
+              <p>
+                First of all,
+                <m>S_5</m> contains the identity, which has no cycles.
+              </p>
+            </li>
+            <li>
+              <p>
+                Second, some permutations in <m>S_5</m> consist of a single cycle.
+                The single cycle could have length 2, 3, 4, or 5
+                (remember, we don't count cycles of length 1).
+              </p>
+            </li>
+            <li>
+              <p>
+                Third, some permutations in <m>S_5</m> consist of the product of two disjoint cycles.
+                To enumerate these,
+                suppose first that one of the cycles is a cycle of length 2.
+                Then the other cycle could be a cycle of length 2 (for instance in the case
+                <m>(12)(34)</m>) or a cycle of length 3 (as in the case <m>(14)(235)</m>).
+                There are no other possibilities,
+                because we only have 5 elements to permute,
+                and a larger disjoint cycle would require more elements.
+              </p>
+            </li>
+            <li>
+              <p>
+                It's not possible to have three or more disjoint cycles,
+                because that would require at least six elements.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          To summarize then,
+          the possible cycle structures for permutations in <m>S_5</m> are:
+          <ul>
+            <li>
+              <p>
+                The identity
+              </p>
+            </li>
+            <li>
+              <p>
+                single cycles of lengths 5, 4, 3, or 2
+              </p>
+            </li>
+            <li>
+              <p>
+                two disjoint cycles of lengths 2 and 3;
+                and two disjoint cycles of lengths 2 and 2
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_cycle_types">
+      <statement>
+        <p>
+          Following <xref ref="example_Permutations_S5_cycle_types">Example</xref>,
+          list all possible cycle structures of permutations in the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>S_6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>S_7</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>S_8</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

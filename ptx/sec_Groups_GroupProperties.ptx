@@ -1,0 +1,705 @@
+<section xml:id="sec_Groups_GroupProperties">
+  <title>Basic properties of groups</title>
+  <p>
+    Now that we have a general definition of groups,
+    we can use this definition to prove properties that are true of <em>all</em> groups.
+    We'll begin by proving some essential properties that we've shown for specific groups,
+    but need to know in general:
+  </p>
+  <proposition xml:id="proposition_Groups_id_unique">
+    <statement>
+      <p>
+        The identity element in a group <m>G</m> is unique;
+        that is, there exists only one element <m>e \in G</m> such that
+        <m>eg = ge = g</m> for all <m>g \in G</m>.
+      </p>
+    </statement>
+  </proposition>
+  <remark>
+    <p>
+      The following proof follows the classic format used to prove that something is unique:
+      assume instead there are two of them,
+      then either derive a contradiction or show that the two things are really equal.
+      We will employ the latter.
+    </p>
+  </remark>
+  <proof>
+    <p>
+      Suppose that <m>e</m> and <m>e'</m> are both identities in <m>G</m>.
+      Then <m>eg = ge = g</m> and
+      <m>e'g = ge' = g</m> for all <m>g \in G</m>.
+      We need to show that <m>e = e'</m>.
+      If we think of <m>e</m> as the identity, then <m>ee' = e'</m>;
+      but if <m>e'</m> is the identity, then <m>ee' = e</m>.
+      Combining these two equations,
+      we have <m>e = ee' = e'</m>.
+    </p>
+  </proof>
+  <p>
+    <xref ref="proposition_Groups_id_unique">Proposition</xref>
+    shows that group identities are unique <mdash/> it turns out that inverses in a group are also unique:
+  </p>
+  <proposition xml:id="proposition_Groups_inv_unique">
+    <statement>
+      <p>
+        If <m>g</m> is any element in a group <m>G</m>,
+        then the inverse of <m>g</m> is unique.
+      </p>
+    </statement>
+  </proposition>
+  <exercise xml:id="exercise_Groups_inverse_unique">
+    <statement>
+      <p>
+        Fill in the blanks to complete the following proof of <xref ref="proposition_Groups_inv_unique">Proposition</xref>.
+        <ol type="a">
+          <li>
+            <p>
+              By the definition of inverse,
+              if <m>g'</m> is an inverse of an element <m>g</m> in a group <m>G</m>,
+              then <m>g \cdot \underline{~\lt 1>~} = g' \cdot \underline{~\lt 2>~} = e</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Similarly, if <m>g''</m> is an inverse of <m>g</m> then <m>g \cdot \underline{~\lt 3>~} = \underline{~\lt 4>~} \cdot g = e</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              We may show that <m>g' = g''</m> as follows:
+              <md>
+                <mrow>g' \amp  = g' \cdot \underline{~\lt 5>~}  \amp \text{ (definition of identity) }</mrow>
+                <mrow>\amp  = g' \cdot (\underline{~\lt 6>~} \cdot g'') \amp \text{ (part b above, def. of inverse) }</mrow>
+                <mrow>\amp  = (g' \cdot g) \cdot \underline{~\lt 7>~}  \amp \text{ (associative property of group G) }</mrow>
+                <mrow>\amp  = \underline{~\lt 8>~} \cdot g'' \amp \text{ (part a above, def. of inverse) }</mrow>
+                <mrow>\amp  = g'' \amp \text{ (def. of identity) }</mrow>
+              </md>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_39">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Consider the group <m>{\mathbb C}^{\ast}</m>,
+            and let <m>a = 5 + 3i \in {\mathbb C}^{\ast}</m>.
+            What is <m>a^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the group defined by the set
+            <m>S = {\mathbb R} \setminus \{ -1 \}</m> and the binary operation <m>a \ast b = a + b +ab</m>.
+            What is <m>5^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the group defined by the set
+            <m>G = {\mathbb R}^{\ast} \times {\mathbb Z}</m> and the operation <m>(a,m) \circ (b,n) = (ab,
+            m+n)</m>.
+            What is <m>(3,2)^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the group <m>U(12)</m>.
+            What is <m>5^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the group <m>GL_2({\mathbb R})</m>.
+            What is <m>\begin{pmatrix}4 \amp 3 \\ 3 \amp 2 \end{pmatrix} ^{-1}</m>?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    An important property of inverses is:
+  </p>
+  <proposition xml:id="proposition_Groups_group_inv_reverse">
+    <statement>
+      <p>
+        Let <m>G</m> be a group.
+        If <m>a, b \in G</m>, then <m>(ab)^{-1} = b^{-1}a^{-1}</m>.
+      </p>
+    </statement>
+  </proposition>
+  <remark>
+    <p>
+      We've actually seen this property before,
+      in the permutations chapter:
+      recall that for two permutations <m>\sigma</m> and <m>\tau</m>,
+      we showed that <m>(\sigma \tau)^{-1} = \tau^{-1} \sigma^{-1}</m>.
+    </p>
+  </remark>
+  <proof>
+    <p>
+      By the inverse property, <m>\exists a^{-1}, b^{-1} \in G</m>.
+      By the closure property, <m>ab \in G</m> and <m>b^{-1}a^{-1} \in G</m>.
+      So we only need to verify that
+      <m>b^{-1}a^{-1}</m> satisfies the definition of inverse
+      (from <xref ref="proposition_Groups_inv_unique">Proposition</xref>,
+      we know the inverse is unique).
+      First, we have:
+      <md>
+        <mrow>(ab)(b^{-1}a^{-1}) \amp  = a(bb^{-1})a^{-1}  \text{ (associative property of group G) }</mrow>
+        <mrow>\amp  = aea^{-1}  \text{ (def. of inverse) }</mrow>
+        <mrow>\amp  = aa^{-1}  \text{ (def. of identity) }</mrow>
+        <mrow>\amp  = e.  \text{ (def. of inverse) }</mrow>
+      </md>
+    </p>
+    <p>
+      The remainder of the proof is left as an exercise:
+    </p>
+    <exercise xml:id="exercise_Groups_42">
+      <statement>
+        <p>
+          Fill in the blanks to complete the proof of <xref ref="proposition_Groups_group_inv_reverse">Proposition</xref>
+          <md>
+            <mrow>(b^{-1}a^{-1})(ab) \amp  = b^{-1}(a^{-1}a)b  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+            <mrow>\amp  = b^{-1}eb  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+            <mrow>\amp  = b^{-1}b  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+            <mrow>\amp  = e.  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+          </md>
+        </p>
+      </statement>
+    </exercise>
+  </proof>
+  <p>
+    By repeated application of <xref ref="proposition_Groups_group_inv_reverse">Proposition</xref>,
+    we may find the inverse of the product of multiple group elements,
+    for example:
+    <m>(abcd)^{-1} = d^{-1}c^{-1}b^{-1}a^{-1}</m>.
+  </p>
+  <p>
+    <xref ref="proposition_Groups_group_inv_reverse">Proposition</xref> shows that in general,
+    when finding inverses of products it is necessary to take the products of inverses in reverse order.
+    One might ask, Is it ever the case that it's not necessary to reverse the order?
+    Glad you asked!
+    We address this question in the following exercise:
+  </p>
+  <exercise xml:id="exercise_Groups_group_abelian">
+    <statement>
+      <p>
+        Given a group <m>G</m> and <m>a, b \in G</m>,
+        prove that <m>G</m> is abelian if and only if
+        <m>(ab)^{-1} =a^{-1}b^{-1}</m> for all <m>a,b</m> in <m>G</m>. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    <xref ref="proposition_Groups_group_inv_reverse">Proposition</xref>
+    characterizes the inverse of a product:
+    now we shall characterize the inverse of an inverse.
+    From ordinary algebra we know that
+    <m>-(-a) = a</m> and <m>1/(1/a) = a</m>.
+    This generalizes to arbitrary groups as follows:
+  </p>
+  <proposition xml:id="proposition_Groups_inv_inv">
+    <statement>
+      <p>
+        Let <m>G</m> be a group.
+        For any <m>a \in G</m>, <m>(a^{-1})^{-1} = a</m>.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      If <m>a \in G</m>, then since <m>G</m> is a group,
+      then <m>a^{-1} \in G</m> exists.
+      And again, since <m>G</m> is a group,
+      there also exists <m>(a^{-1})^{-1} \in G</m>.
+    </p>
+    <p>
+      Now, by the definition of inverse,
+      <m>a^{-1} (a^{-1})^{-1} = e</m>.
+      Consequently,
+      multiplying both sides of this equation by <m>a</m>,
+      we have (the argument continues in the following exercise):
+    </p>
+    <exercise xml:id="exercise_Groups_44">
+      <statement>
+        <md>
+          <mrow>a(a^{-1}(a^{-1})^{-1}) \amp  = ae \amp \mbox{(multiplication by} ~a)</mrow>
+          <mrow>(aa^{-1})(a^{-1})^{-1} \amp  = ae   \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+          <mrow>e(a^{-1})^{-1} \amp  = ae   \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+          <mrow>(a^{-1})^{-1} \amp = a.  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+        </md>
+      </statement>
+    </exercise>
+  </proof>
+  <exercise xml:id="exercise_Groups_inv_prod">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Suppose <m>a,b \in {\mathbb C}^{\ast}</m>,
+            where <m>a = 4 + 3i</m> and <m>b = 5 - 12i</m>.
+            What is <m>(ab)^{-1}</m>?
+            What is <m>(ba)^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Suppose <m>a,b \in G</m>,
+            where G is the group defined by the set
+            <m>S = {\mathbb R} \setminus \{ -1 \}</m> and the binary operation <m>a \ast b = a + b +ab</m>.
+            If <m>a = 10, b = 1</m>, what is <m>(ab)^{-1}</m>?
+            What is <m>(ba)^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Suppose <m>\sigma, \tau \in S_6</m>,
+            where <m>\sigma = (3456), \tau = (1625)</m>.
+            What is <m>(\sigma \tau)^{-1}</m>?
+            What is <m>(\tau \sigma)^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the group <m>U(5)</m>.
+            What is <m>(4 \cdot 3)^{-1}</m>?
+            What is <m>(3 \cdot 4)^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Suppose <m>a, b \in GL_2({\mathbb R})</m>, where
+            <me>
+              a = \begin{pmatrix}6 \amp  7 \\ 2 \amp  3 \end{pmatrix}  \mbox{ and } b = \begin{pmatrix}5 \amp  -2 \\ 2 \amp  -1 \end{pmatrix}
+            </me>
+            What is <m>(ab)^{-1}</m>?
+            What is <m>(ba)^{-1}</m>?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    In high school algebra we wrote equations like <m>6 + x = -\sqrt{2}</m> or <m>5x = 6</m>,
+    and we could always find a real number <m>x</m> that was a solution.
+    Now we know that <m>{\mathbb R}</m> is a group under addition and multiplication.
+    Similarly, we have seen that equations like
+    <m>ax = b \pmod{n}</m> and <m>a + x = b \pmod{n}</m> had solutions for
+    <m>x \in U(n)</m> and <m>x \in {\mathbb Z}_n</m>, respectively.
+  </p>
+  <p>
+    Noticing a pattern here, the question then is this:
+    does the equation <m>ax = b</m> have a solution for any group <m>G</m>?
+    In other words,
+    if <m>a</m> and <m>b</m> are two elements in a group <m>G</m>,
+    does there exist an element <m>x \in G</m> such that <m>ax = b</m>?
+    If such an <m>x</m> does exist, is it unique?
+    The following proposition answers both of these questions affirmatively.
+  </p>
+  <proposition xml:id="proposition_Groups_group_equations">
+    <statement>
+      <p>
+        Let <m>G</m> be a group and <m>a</m> and <m>b</m> be any two elements in <m>G</m>.
+        Then the equations <m>ax = b</m> and <m>xa = b</m> have unique solutions in <m>G</m>.
+      </p>
+    </statement>
+  </proposition>
+  <p>
+    Note we need separate proofs to show that <m>x</m> exists and is unique for both <m>ax =b</m> and <m>xa = b</m>,
+    since we don't know whether the group is abelian.
+    The proof for <m>ax=b</m> is a fill-in-the-blank exercise,
+    while the proof for <m>xa=b</m> you'll do on your own:
+  </p>
+  <exercise xml:id="exercise_Groups_48">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Complete the proof that <m>ax=b</m> has a unique solution by filling in the blanks:  Suppose that <m>ax = b</m>.
+            First we must show that such an <m>x</m> exists.
+            Since <m>a \in G</m> and <m>G</m> is a group,
+            it follows that <m>a^{-1}</m> exists.
+            Multiplying both sides of <m>ax = b</m> on the left by <m>a^{-1}</m>, we have
+            <md>
+              <mrow>a^{-1}(ax) \amp  = a^{-1}b \amp \mbox{(left multiplication by \(a^{-1}\))}</mrow>
+              <mrow>(a^{-1}a)x \amp  = a^{-1}b  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+              <mrow>ex \amp  = a^{-1}b  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+              <mrow>x \amp  = a^{-1}b.  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+            </md>
+            We have thus shown that <m>ax = b</m> implies <m>x  = a^{-1}b</m>,
+            so <m>ax = b</m> can have at most one solution.
+            We may also verify that <m>x  = a^{-1}b</m> is indeed a solution:
+            <md>
+              <mrow>a(a^{-1}b) \amp  =  (aa^{-1})b  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+              <mrow>\amp  = eb  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+              <mrow>\amp  =b.  \amp (\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_)</mrow>
+            </md>
+            This completes the proof that the solution both exists,
+            and is unique.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove now the existence and uniqueness of the solution of <m>xa = b</m> (similar to part (a)).
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    The key method used in these proofs,
+    the composition of both sides of the equation by <m>a^{-1}</m>,
+    is something you've seen many times before.
+    For instance in high school algebra,
+    to solve the equation <m>5x = 6</m> above,
+    we teach our kids to divide each side by 5.
+    Remember that dividing by 5 is the same as multiplying by its reciprocal <m>1/5</m>.
+    And <m>1/5</m> is the multiplicative inverse of 5.
+    So in fact we are composing (multiplying) each side of the equation by <m>5^{-1}</m> in order to solve for <m>x</m>.
+  </p>
+  <p>
+    As in our example then,
+    composing both sides of the equation by <m>a^{-1}</m> is not only useful for the proofs,
+    but in actually solving for <m>x</m>.
+    Therefore, no matter what crazy elements and strange binary operation make up our group,
+    we can still solve for <m>x</m> using the same algebra we learned in high school.
+    In other words, given a group <m>G</m> and <m>a,b \in G</m>,
+    if <m>ax =b</m>, then <m>x = a^{-1}b</m>;
+    if <m>xa =b</m>, then <m>x = ba^{-1}</m>; and so on.
+    Use this methodology in the following exercises.
+  </p>
+  <exercise xml:id="exercise_Groups_49">
+    <statement>
+      <p>
+        Given <m>a, b \in {\mathbb C}^{\ast}</m>,
+        where <m>a = 3 - 3i</m> and <m>b = 2 + 12i</m>;
+        solve for <m>x</m> in each of the following equations.
+        <me>
+          \textrm{(a)} ~~ax = b \qquad \qquad \textrm{(b)} ~~xa = b\qquad\qquad \textrm{(c)} ~~bx = a\qquad\qquad \textrm{(d)} ~~xb = a.\qquad\qquad
+        </me>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_50">
+    <statement>
+      <p>
+        Suppose <m>G</m> is the group defined by the set
+        <m>S = {\mathbb R} \setminus \{ -1 \}</m> and the binary operation <m>a \ast b = a + b +ab</m>.
+        Solve for <m>x</m> in each of the following equations.
+        <me>
+          \textrm{(a)} ~~11 \ast x = -3 \qquad \textrm{(b)} ~~x \ast 11 = -3\qquad \textrm{(c)} ~~-3 \ast x = 11\qquad \textrm{(d)} ~~x \ast (-3) = 11.\qquad
+        </me>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_51">
+    <statement>
+      <p>
+        Given <m>\rho, \mu \in S_8</m>,
+        where <m>\rho = (532)(164)</m> and <m>\mu = (18753)(26)</m>;
+        solve for <m>x</m> in each of the following equations.
+        <me>
+          \textrm{(a)} ~~\rho x = \mu \qquad \qquad \textrm{(b)} ~~x \rho = \mu\qquad\qquad \textrm{(c)} ~~\mu x = \rho\qquad\qquad \textrm{(d)} ~~x \mu = \rho.\qquad\qquad
+        </me>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_52">
+    <statement>
+      <p>
+        Given the group <m>U(9)</m>,
+        solve for <m>x</m> in each of the following equations.
+        <me>
+          \textrm{(a)} ~~5x=8 \qquad \qquad \textrm{(b)} ~~x5=8\qquad\qquad \textrm{(c)} ~~8x=5\qquad\qquad \textrm{(d)} ~~x8=5.\qquad\qquad
+        </me>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_53">
+    <statement>
+      <p>
+        Given <m>A, B \in GL_2({\mathbb R})</m>, where
+        <me>
+          A = \begin{pmatrix}6 \amp  5 \\ 4 \amp  4 \end{pmatrix}  \mbox{ and } B = \begin{pmatrix}-2 \amp  -1 \\ 7 \amp  4 \end{pmatrix}
+        </me>
+      </p>
+      <p>
+        Solve for <m>X</m> in each of the following equations.
+        <me>
+          \textrm{(a)} ~~AX=B \qquad \textrm{(b)} ~~XA=B\qquad \textrm{(c)} ~~BX=A\qquad \textrm{(d)} ~~XB=A.\qquad
+        </me>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Groups_54">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Given a group <m>G</m> and <m>a, b \in G</m>,
+            prove that if <m>G</m> is abelian,
+            then any solution of <m>ax = b</m> is also a solution of <m>xa = b</m>
+            (and vice versa).
+            Given a group <m>G</m> that is <em>not</em> abelian,
+            show that it is always possible to find an equation of the form <m>ax = b</m> which has a solution that is <em>not</em>
+            a solution to <m>xa = b</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    In our work so far, we've frequently used the
+    <term>substitution property</term>.
+        <idx><h>Substitution property</h></idx>
+    For instance if <m>x = y</m>,
+    then we know also that <m>a\cdot x = a \cdot y</m>,
+    regardless of the operation <m>\cdot</m>.
+    But suppose I gave you the equation <m>a \cdot x = a \cdot y</m>.
+    Is it necessarily true that <m>x = y</m>?
+    If <m>a, x,y \in {\mathbb R}</m> and the operation is multiplication,
+    then it's true <em>as long as <m>a \neq 0</m></em>.
+    To show this,
+    we may use the method we talked about in the previous proposition:
+    multiply each side of the equation by <m>a^{-1}</m>
+    (that is, divide by a),
+    and the result is <m>x = y</m>.
+    In basic algebra courses this property is often called the
+    <term>law of cancellation</term>.
+        <idx><h>Law of cancellation</h></idx>
+    Now this works for real numbers:
+    but suppose <m>a,x,y</m> were elements of some other group.
+    Would the law of cancellation still hold?
+    In fact, using the method shown above,
+    you can prove this property holds for any group <m>G</m>.
+  </p>
+  <proposition xml:id="proposition_Groups_cancel">
+    <statement>
+      <p>
+        If <m>G</m> is a group and <m>a, b, c \in G</m>,
+        then <m>ba = ca</m> implies <m>b = c</m> and <m>ab = ac</m> implies <m>b = c</m>.
+      </p>
+    </statement>
+  </proposition>
+  <p>
+    This proposition tells us that the
+    <term>right and left cancellation laws</term><idx><h>Cancellation law</h><h>for groups</h></idx> are true in groups.
+    We leave the proof as an exercise.
+  </p>
+  <exercise xml:id="exercise_Groups_56">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            To prove <xref ref="proposition_Groups_cancel">Proposition</xref>,
+            we need to prove both that <m>ba = ca</m> implies <m>b = c</m>,
+            and that <m>ab = ac</m> implies <m>b = c</m>.
+            Why do these two statements require two different proofs?
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove <xref ref="proposition_Groups_cancel">Proposition</xref>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    We can use exponential notation for groups just as we do in ordinary algebra:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {DefGroupExponents} If <m>G</m> is a group and <m>g \in G</m>,
+        then we define <m>g^0 = e</m>.
+        For <m>n \in {\mathbb N}</m>, we define
+        <me>
+          g^n := \underbrace{g \cdot g \cdots g}_{n \; { times}}
+        </me>
+        and
+        <me>
+          g^{-n} := (g^{-1})^n =  \underbrace{g^{-1} \cdot g^{-1} \cdots g^{-1}}_{n \; { times}}
+        </me>.
+      </p>
+    </statement>
+  </definition>
+  <exercise xml:id="exercise_Groups_57">
+    <statement>
+      <p>
+        Using <xref ref="definition_Groups_DefGroupExponents">Definition</xref>,
+        prove that
+        <me>
+          (g^n)^{-1} = g^{-n}
+        </me>,
+        i.e. the inverse of <m>g^n</m> is equal to <m>g^{-n}</m> for any group element <m>g</m> and for any natural number <m>n</m>.
+      </p>
+    </statement>
+  </exercise>
+  <proposition xml:id="proposition_Groups_exponent_laws">
+    <statement>
+      <p>
+            <idx><h>Exponent laws</h></idx>
+        In a group, the usual laws of exponents hold; that is, for all <m>g, h \in G</m>,
+        <ol>
+          <li>
+            <p>
+              <m>g^mg^n = g^{m+n}</m> for all <m>m, n \in {\mathbb Z}</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(g^m)^n = g^{mn}</m> for all <m>m, n \in {\mathbb Z}</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(gh)^n = (h^{-1}g^{-1})^{-n}</m> for all <m>n \in {\mathbb Z}</m>.
+              Furthermore, if <m>G</m> is abelian,
+              then <m>(gh)^n = g^nh^n</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      We will prove part (1), and you will do the rest.
+      We can break part (1) into four cases: (a)
+      <m>m,n \ge 0</m>; (b) <m>m,n \lt 0</m>; (c)
+      <m>m \ge 0, n\lt 0</m>; (d) <m>m\lt 0, n \ge 0</m>.
+    </p>
+    <p>
+      Consider first case (a).
+      Using <xref ref="definition_Groups_DefGroupExponents">Definition</xref>, we have
+      <me>
+        g^m g^n = \underbrace{g \cdot g \cdots g}_{m \; { times}}\underbrace{g \cdot g \cdots g}_{n \; { times}}
+      </me>,
+      and
+      <me>
+        g^{m+n} = \underbrace{g \cdot g \cdots g}_{m+n \; { times}}
+      </me>.
+    </p>
+    <p>
+      Since the right-hand sides of these expressions are equal,
+      then so are the left-hand sides:
+      so <m>g^mg^n = g^{m+n}</m>.
+    </p>
+    <p>
+      The proof of case (b) is exactly the same,
+      except on the right-hand sides we should replace all <m>g</m>'s with <m>g^{-1}</m> and we should also replace <sq><m>m</m> times</sq>,
+      <sq><m>n</m> times</sq>,
+      and <sq><m>m+n</m> times</sq> with <sq><m>-m</m> times</sq>,
+      <sq><m>-n</m> times</sq>,
+      and <sq><m>-(m+n)</m> times</sq> respectively (recall that <m>m</m> and <m>n</m> are negative,
+      so <m>-(m+n)</m> is positive).
+      These replacements gives us <m>g^mg^n =( g^{-1})^{-(m+n)}</m>,
+      and according to <xref ref="definition_Groups_DefGroupExponents">Definition</xref>
+      we may rewrite this as <m>g^mg^n = g^{m+n}</m>.
+      This completes the proof of case (b).
+    </p>
+    <p>
+      In case (c), we have
+      <me>
+        g^m g^n = \underbrace{g \cdot g \cdots g}_{m \; { times}}\underbrace{g^{-1} \cdot g^{-1} \cdots g^{-1}}_{-n \; { times}}
+      </me>.
+    </p>
+    <p>
+      We now have two subcases to consider.
+      First, if <m>m \ge -n</m>,
+      then all of the <m>g^{-1}</m> factors cancel and we end up with
+      <me>
+        g^m g^n = \underbrace{g \cdot g \cdots g}_{m+n \; { times}}
+      </me>.
+    </p>
+    <p>
+      Second, if <m>m \lt  -n</m>,
+      then all of the <m>g</m> factors are canceled and we end up with
+      <me>
+        g^m g^n = \underbrace{g^{-1} \cdot g^{-1} \cdots g^{-1}}_{-(m+n) \; { times}}
+      </me>.
+    </p>
+    <p>
+      In either of these subcases,
+      the right-hand side agrees with the definition of <m>g^{m+n}</m>,
+      so the equality is proved.
+    </p>
+    <p>
+      Case (d) is just like (c),
+      except we exchange the signs on the <m>g</m>'s, <m>m</m>'s and <m>n</m>'s on the right-hand sides.
+      This completes the proof of part (1).
+    </p>
+    <exercise xml:id="exercise_Groups_59">
+      <statement>
+        <p>
+          Prove parts (2) and (3) of <xref ref="proposition_Groups_exponent_laws">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+  </proof>
+  <p>
+    Notice that <m>(gh)^n \neq g^nh^n</m> in general,
+    since the group may not be abelian.
+  </p>
+  <p>
+    If the group is <m>{\mathbb Z}</m> or <m>{\mathbb Z}_n</m>,
+    we write the group operation additively and the exponential operation multiplicatively;
+    that is, we write <m>ng</m> instead of <m>g^n</m>.
+    The laws of exponents now become
+    <ol>
+      <li>
+        <p>
+          <m>mg + ng = (m+n)g</m> for all <m>m, n \in {\mathbb Z}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>m(ng) = (mn)g</m> for all <m>m, n \in {\mathbb Z}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>m(g + h) = mg + mh</m> for all <m>m \in {\mathbb Z}</m>.
+        </p>
+      </li>
+    </ol>
+  </p>
+  <p>
+    It is important to realize that the last statement can be made only because
+    <m>{\mathbb Z}</m> and <m>{\mathbb Z}_n</m> are abelian groups.
+  </p>
+  <remark>
+    <p>
+      (<em>historical background</em>) Although the first clear axiomatic definition of a group was not given until the late 1800s,
+      group-theoretic methods had been employed before this time in the development of many areas of mathematics,
+      including geometry and the theory of algebraic equations.
+    </p>
+    <p>
+      Joseph-Louis Lagrange
+          <idx><h>Lagrange, Joseph-Louis</h></idx>
+      used group-theoretic methods in a 1770<ndash/>1771 memoir to study methods of solving polynomial equations.
+      Later, &#xc9;variste Galois
+          <idx><h>Galois, &#xc9;variste</h></idx>
+      (1811<ndash/>1832) succeeded in developing the mathematics necessary to determine exactly which polynomial equations could be solved in terms of the polynomials' coefficients.
+      Galois' primary tool was group theory.
+    </p>
+    <p>
+      The study of geometry was revolutionized in 1872 when Felix Klein
+          <idx><h>Klein, Felix</h></idx>
+      proposed that geometric spaces should be studied by examining those properties that are invariant under a transformation of the space.
+      Sophus Lie,
+          <idx><h>Lie, Sophus</h></idx>
+      a contemporary of Klein,
+      used group theory to study solutions of partial differential equations.
+      One of the first modern treatments of group theory appeared in William Burnside's
+          <idx><h>Burnside, William</h></idx>
+      <em>The Theory of Groups of Finite Order</em>
+      [1], first published in 1897.
+    </p>
+  </remark>
+</section>

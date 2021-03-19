@@ -1,0 +1,267 @@
+<section xml:id="sec_SigmaNotation_SumByParts">
+  <title>Summation by parts</title>
+  <p>
+    Those who have studied integrals in calculus may be familiar with the process of integration by parts.
+    This is used when you need to find the integral of the product of two terms.
+    While this process is used for continuous situations,
+    there is a version of this process for discrete situations called
+    <term>summation by parts</term>.
+  </p>
+  <p>
+    To show how summation by parts works,
+    we'll look at a particular case.
+    Consider the following product of sums:
+    <me>
+      \left( \sum_{n=1}^{5}a_{n} \right) \left( \sum_{n=1}^{5}b_{n} \right)
+    </me>.
+  </p>
+  <p>
+    If we broke this up into individual terms,
+    we'd obtain <m>n \cdot n = n^2</m> terms of the form <m>a_j b_k</m>.
+    <xref ref="fig_IBP">Figure</xref>
+    shows the terms arranged on a grid.
+    We've separated these terms into two parts using a diagonal line,
+    and we've further grouped terms either by row
+    (above the line)
+    or by column
+    (below the line).
+    You'll see in a minute why we've arranged things like this.
+  </p>
+  <figure xml:id="fig_IBP">
+    <caption>Arrangements of terms in the product of sums <m>\left( \sum_{n=1}^{5}a_{n} \right) \left( \sum_{n=1}^{5}b_{n} \right)</m>.</caption>
+    <image width="56%" source="images/IBP.png"/>
+  </figure>
+  <p>
+    Now let's go back and express the sum of all these terms a different way.
+    We'll introduce the notation:
+    <me>
+      A_{k}= \sum_{j=1}^{k}a_{j} \text{ and }  B_{k}= \sum_{j=1}^{k}b_{j}
+    </me>.
+  </p>
+  <p>
+    <m>A_k</m> and <m>B_k</m> are the <m>k</m>th <term>partial sums</term>
+    for the series <m>\sum a_j</m> and <m>\sum b_j</m>, respectively.
+    The product of sums that we started with can be written succinctly as <m>A_{5}B_{5}</m>.
+  </p>
+  <p>
+    We may use this new notation to re-express the grouped terms in the figure.
+    Consider first the terms below the diagonal line.
+    These terms are grouped by column,
+    and each group is encircled by an oval:
+    <ul>
+      <li>
+        <p>
+          The sum of the first oval(column on far left) is:
+          <m>a_{1}b_{1}= a_{1}B_{1}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The sum of the second oval(column second from the left) is:
+          <m>a_{2}\left ( b_{1}+b_{2} \right )= a_{2}B_{2}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The sum the third oval(column third from the left) is:
+          <m>a_{3}\left ( b_{1}+b_{2}+b_{3} \right )= a_{3}B_{3}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The sum of the fourth oval(column fourth from left) is:
+          <m>a_{4}\left ( b_{1}+b_{2}+b_{3}+b_{4} \right )= a_{4}B_{4}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The sum of the fifth oval(column on the far right) is:
+          <m>a_{5}\left (b _{1}+b_{2}+b_{3}+b_{4}+b_{5} \right )=a _{5}B_{5}</m>.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    Adding these five sums together accounts for all the terms below the diagonal line:
+    <me>
+      a_1B_1 + a_2B_2 + \ldots + a_5B_5 = \sum_{k=1}^{5}a_kB_k
+    </me>,
+    where we've used summation notation to make the expression more compact.
+  </p>
+  <p>
+    Now let's repeat this process for the horizontal ovals above the diagonal line:
+    <ul>
+      <li>
+        <p>
+          The sum for the first oval(bottom row above line) is:
+          <m>a_{1}b_{2}= A_{1}b_{2}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The sum for the second oval( second row from bottom) is:
+          <m>\left ( a_{1}+a_{2} \right)b_{3}= A_{2}b_{3}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The sum for the third oval(second row from the top) is:
+          <m>\left ( a_{1}+a_{2}+a_{3} \right )b_{4}= A_{3}b_{4}</m>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The sum for the fourth oval(top row) is:
+          <m>\left ( a_{1}+a_{2}+a_{3}+a_{4} \right)b_{5}= A_{4}b_{5}</m>.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    Adding these five sums together accounts for all the terms below the diagonal line:
+    <me>
+      A_1b_2 +  \ldots + A_4b_5 = \sum_{k=1}^{5-1}A_kb_{k+1}
+    </me>.
+  </p>
+  <p>
+    Since we've now accounted for terms both above and below the line,
+    we obtain the sum of all terms by adding together:
+    <me>
+      A_{5}B_{5}= \sum_{k=1}^{5}a_{k}B_{k}+\sum_{k=1}^{5-1}A_{k}b_{k+1}
+    </me>.
+  </p>
+  <p>
+    By rearranging this equation, we find:
+    <me>
+      \sum_{k=1}^{5}a_{k}B_{k}= A_{5}B_{5}-\sum_{k=1}^{5-1}A_{k}b_{k+1}
+    </me>.
+  </p>
+  <p>
+    There's really nothing special about the number <sq>5</sq> in our above expression<ndash/>we just chose it because this was a relatively simple case that we could illustrate.
+    To get the general formula, we simply replace '5' with '<m>n</m>':
+    <me>
+      \sum_{k=1}^{n}a_{k}B_{k}= A_{n}B_{n}-\sum_{k=1}^{n-1}A_{k}b_{k+1}
+    </me>.
+  </p>
+  <p>
+    Notice the striking similarity between this formula and the formula for integration by parts:
+    <me>
+      \int_a^b u dv =\left. uv\right|_a^b - \int_a^b v du
+    </me>.
+  </p>
+  <p>
+    The resemblance makes a lot of sense,
+    since integration is essentially a kind of summation (more precisely,
+    a summation taken to a limit.)
+  </p>
+  <p>
+    Now let's look at some examples to see how we can make use of this formula.
+  </p>
+  <example>
+    <statement>
+      <p>
+        Evaluate <m>\sum_{k=1}^{n}2^{k-1}k</m>.
+      </p>
+      <p>
+        In order to use the summation by parts formula,
+        we need to define <m>a_k</m> and <m>B_k</m> so that the summand
+        <m>2^{k-1}k</m> is the product of <m>a_k</m> and <m>B_k</m>.
+        Just as in integration by parts,
+        we want to make our choice based on what makes the calculations easiest.
+        Note that <m>B_{k}</m> is a partial sum of <m>k</m> terms,
+        and that <m>k = 1 + \ldots + 1</m>.
+        So it's natural to choose <m>B_{k}=k</m>,
+        which means that <m>a_{k}=2^{k-1}</m>.
+      </p>
+      <p>
+        Based on our choice of <m>B_{k}</m> and <m>a_{k}</m>,
+        we can now figure out <m>b_{k}</m> and <m>A_{k}</m>.
+        As we noted above,
+        <m>B_{k}</m> is the sum of <m>k</m> 1's, so that <m>b_k=1</m>.
+        This leaves us with <m>a_k = 2^{k-1}</m>, so that
+        <me>
+          A_{k}=\sum_{j=1}^{k}a_j
+        </me>.
+      </p>
+      <p>
+        As we've seen before,
+        we may rewrite this by shifting the starting value of the index, so that
+        <me>
+          A_{k}=\sum_{j'=0}^{k-1}2^{j'} =  \frac{2^k-1}{2-1} = 2^k-1
+        </me>,
+        where we've used our standard formula for the sum of geometric series.
+      </p>
+      <p>
+        Summarizing our progress so far, we have:
+        <me>
+          a_k=2^{k-1}; B_k=k;  b_k=1;  A_k=2^k-1
+        </me>.
+      </p>
+      <p>
+        Plugging the above values into the summation by parts formula, we find:
+        <me>
+          \sum_{k=1}^{n}2^{k-1}k= \left (2 ^{n}-1 \right )n-\sum_{k=1}^{n-1}\left ( 2^{k}-1 \right )
+        </me>.
+      </p>
+      <p>
+        The summation on the far right can be evaluated by breaking it into two separate parts:
+        <me>
+          \sum_{k=1}^{n-1}\left ( 2^{k}-1 \right )= \sum_{k=1}^{n-1}2^{k}-\sum_{k=1}^{n-1}1 = (2^{n}-1)- (n-1)
+        </me>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    We can put this into our equality and do some further algebraic puttering to obtain the final result:
+    <md>
+      <mrow>\sum_{k=1}^{n}2^{k-1}k \amp = (2 ^{n}-1)n- (2^{n}-1)+(n-1)</mrow>
+      <mrow>\amp =  2^{n}n-n-(2^{n}-1)+(n-1)</mrow>
+      <mrow>\amp =  2^{n}n-2^{n}</mrow>
+      <mrow>\amp =  2^{n}(n-1)</mrow>
+    </md>.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Evaluate <m>\sum_{k=1}^{n}k^{2}</m> by taking <m>B_k=k</m> and <m>a_k = k</m>.
+        You will need the expression for the sum
+        <m>1 + 2 + \ldots + m</m> that we derived previously.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    From the preceding examples we may see that <m>B_k = k</m> is a frequent choice.
+    This is closely related to the fact that <m>u=x</m> is a frequent choice when applying the integration by parts formula.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Prove the following equation using summation by parts:
+        <me>
+          \sum_{k=1}^n k^3 = \frac{n^4}{4} + \frac{n^3}{2} + \frac{n^2}{4}
+        </me>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Evaluate <m>\sum_{k=1}^{n}3^{k}k</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Evaluate <m>\sum_{k=1}^{n}3^{k}k^2</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Evaluate <m>\sum_{k=1}^{7n} \cis(2\pi k/7)\cdot k</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+</section>

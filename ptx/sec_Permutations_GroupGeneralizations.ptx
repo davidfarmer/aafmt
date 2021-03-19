@@ -1,0 +1,429 @@
+<section xml:id="sec_Permutations_GroupGeneralizations">
+  <title>Permutation groups and other generalizations</title>
+  <introduction>
+    <p>
+      We saw in the Symmetries chapter that the set of symmetries of any figure form a group under the operation of function composition.
+      Since we've already seen that permutations are closely related to symmetries,
+      this naturally leads to the question:
+      is <m>S_X</m> a group under function composition?
+      Fortunately, this time the answer is easier to prove.
+    </p>
+    <proposition xml:id="proposition_Permutations_S_X_group">
+      <statement>
+        <p>
+          Given any set <m>X</m>, <m>S_X</m> is a group under function composition.
+              <idx><h>Composition</h><h>of symmetries</h></idx>
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <ul>
+        <li>
+          <p>
+            First then, if <m>f, g \in S_X</m>,
+            then <m>f \compose g</m> would be,
+            by definition of composition,
+            a function from <m>X \to X</m>.
+            Further, since it is a composition of two bijections,
+            <m>f \compose g</m> would be a bijection
+            (proved in Functions chapter).
+            Therefore by definition <m>f \compose g</m> is permutation from <m>X \to X</m>.
+            In other words <m>f \compose g \in S_X</m>.
+            So <m>S_X</m> is closed under function composition.
+              <idx><h>Composition</h><h>of permutations</h></idx>
+          </p>
+        </li>
+        <li>
+          <p>
+            Second, the identity of <m>S_X</m> is just the permutation that sends every element of <m>X</m> to itself (We will call this permutation <m>{\var id}</m>,
+            just like we did with symmetries.)<idx><h>Permutation</h><h>identity</h></idx>.
+              <idx><h>Identity</h><h>of a permutation</h></idx>
+          </p>
+        </li>
+        <li>
+          <p>
+            Third, if <m>f \in S_X</m>, then by definition <m>f</m> is a bijection;
+            hence from the Inverse section of the Functions chapter we know <m>f</m> has an inverse <m>f^{-1}</m> from <m>X \to X</m> that is also a bijection.
+            Hence <m>f^{-1} \in S_X</m>.
+            Therefore every permutation in <m>S_X</m> has an inverse.
+              <idx><h>Permutation</h><h>inverse</h></idx>
+              <idx><h>Inverse</h><h>of permutations</h></idx>
+          </p>
+        </li>
+        <li>
+          <p>
+            Finally, composition of functions is associative,
+            which makes the group operation associative.
+          </p>
+        </li>
+      </ul>
+      <p>
+        Hence <m>S_X</m> is a group under function composition.
+      </p>
+    </proof>
+  </introduction>
+  <subsection xml:id="subsec_Permutations_GroupGeneralizations_GroupsOnNNumbers">
+    <title>The symmetric group on <m>n</m> numbers</title>
+    <p>
+      We can label the vertices of a triangle as <m>A, B, C</m> or <m>1, 2, 3</m> or
+      <m>\var{apple, pear,
+      cherry}</m> or whatever, without changing the triangle.
+      No matter how we label the triangle,
+      the symmetries of the triangle will be the "same" in some sense
+      (although we write them down differently).
+    </p>
+    <p>
+      Since symmetries are special cases of permutations,
+      this motivates us to investigate the effect of relabeling on permutations in general.
+    </p>
+    <p>
+      For starters, we'll look at a simple example.
+      Let <m>X = \{A, B, C, D\}</m> and <m>Y = \{1, 2, 3, 4\}</m>.
+      Suppose
+      <me>
+        \mu = \begin{pmatrix}A \amp  B \amp  C \amp  D\\ D \amp  C \amp  B \amp  A \end{pmatrix} ; \qquad \sigma = \begin{pmatrix}A \amp  B \amp  C \amp  D\\ C \amp  D \amp  A \amp  B \end{pmatrix}
+      </me>
+      and
+      <me>
+        \tau = \begin{pmatrix}1 \amp  2 \amp  3 \amp  4\\ 4 \amp  3 \amp  2 \amp  1 \end{pmatrix} ; \qquad \rho = \begin{pmatrix}1 \amp  2 \amp  3 \amp  4\\ 3 \amp  4 \amp  1 \amp  2 \end{pmatrix}  \\
+      </me>
+    </p>
+    <p>
+      Is <m>\mu = \tau</m>?
+      Technically no, because they their domain/codomains are different,
+      yet we can clearly see that they are somehow equivalent.
+      But how do we express this equivalence?
+    </p>
+    <p>
+      Suppose we start with the tableau for <m>\mu</m>.
+      We cross out every <sq>A</sq> in the tableau and replace with <sq>1</sq>.
+      Similarly, we replace <m>B, C, D</m> with <m>2, 3,4</m> respectively.
+      Then what we end up with is exactly <m>\tau</m>.
+      In other words, performing a
+      <q>face-lift</q>
+      on <m>\mu</m> gives <m>\tau</m>.
+      Therefore <m>\mu</m> and <m>\tau</m> are equivalent,
+      as are <m>\sigma</m> and <m>\rho</m>.
+    </p>
+    <exercise xml:id="exercise_Permutations_7">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Write <m>\mu \compose \sigma</m> in tableau form.
+            </p>
+          </li>
+          <li>
+            <p>
+              Write <m>\tau \compose \rho</m> in tableau form.
+            </p>
+          </li>
+          <li>
+            <p>
+              Is <m>\mu \compose \sigma</m> equivalent to <m>\tau \compose \rho</m>?
+              <em>Explain</em> your answer.
+            </p>
+          </li>
+          <li>
+            <p>
+              Is <m>\sigma \compose \mu</m> equivalent to <m>\rho \compose \tau</m>?
+              <em>Explain</em> your answer.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Let's summarize our findings so far:
+      <ul>
+        <li>
+          <p>
+            The <em>sets</em> <m>S_X</m> and <m>S_Y</m> are equivalent in the following sense:
+            for each element of <m>S_X</m> we can find an equivalent element of <m>S_Y</m> by replacing
+            <m>A, B, C, D</m> with <m>1, 2, 3, 4</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Further, in the exercises we saw that the composition of two particular elements in <m>S_X</m> is equivalent to the composition of the two equivalent elements in <m>S_Y</m>.
+            Although we've only shown this for two particular examples,
+            it makes sense that the same thing would work no matter which two elements in <m>S_X</m> that we choose
+            (after all, all we're doing is replacing letters with numbers<ndash/>and we're always replacing the same letter with the same number).
+            So we can say that composition acts the
+            <q>same</q>
+            on both sets.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      So far we have only looked at sets with four elements.
+      Now it's time to generalize these results to sets of any size.
+      First, some notation:
+    </p>
+    <notation xml:id="order_y">
+      <p>
+        The <term>order of a set</term> <m>Y</m> is the number of elements of <m>Y</m>,
+        and is written as <m>|Y|</m>.
+            <idx><h>Order</h><h>of a set</h></idx>
+        <fn>
+        You're probably used to seeing
+        <m>|\ldots|</m> as representing absolute value.
+        Of course a set is not a number,
+        so it has no absolute value.
+        We use <m>|Y|</m> to denote order because it's a measure of the
+        <em>size</em> of set <m>Y</m>,
+        just as the absolute value of a number is the
+        <q>size</q>
+        of the number.
+        </fn>
+      </p>
+    </notation>
+    <p>
+      Now let <m>X = \{1,2,\ldots,
+      n\}</m>, and consider any set <m>Y</m> with <m>|Y| = n</m>.
+      We could do a similar
+      <q>face-lifting</q>
+      as above to show that <m>S_X</m> is equivalent to <m>S_Y</m>.
+      So the group <m>S_X</m> is equivalent to the permutations of <em>any</em>
+      set of <m>n</m> elements.
+    </p>
+    <notation xml:id="sym_group_n_numbers">
+      <p>
+        Let <m>X=\{ 1, 2, \ldots, n\}</m>.
+        Instead of writing <m>S_X</m>,
+        we write <m>S_n</m> . <m>S_n</m> is called the
+        <term>symmetric group</term>
+            <idx><h>Group</h><h>symmetric</h></idx>
+        on <m>n</m> numbers.
+      </p>
+    </notation>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_GroupGeneralizations_IsomorphicGroups">
+    <title>Isomorphic groups</title>
+    <p>
+      In <xref ref="sec_Symmetry_UnexplainedMiracle">Section</xref>
+      we compared the groups <m>\mathbb{Z}_n</m>,
+      the <m>n</m> rotations of a regular n-gon,
+      and the <m>n^{th}</m> roots of unity.
+      We saw that,
+      as long as you made a suitable pairing (bijection) between the elements of any two of these sets,
+      then their Cayley tables were exactly the same.
+    </p>
+    <p>
+      We've just seen the very same thing for <m>S_n</m>.
+      If <m>|X| = |Y| = n</m> and we replace each of the elements in <m>X</m> with a corresponding element in <m>Y</m>,
+      we concluded that the composition of <em>any</em>
+      two elements in <m>S_X</m> is equivalent to the composition of the two equivalent elements in <m>S_Y</m>.
+      That's exactly the same thing as saying that the Cayley table entries are equivalent between the two groups.
+    </p>
+    <p>
+      This "equivalence of groups" is one of the premier concepts in abstract algebra,
+      almost as important as the concept of a group itself.
+      When two groups are equivalent like this,
+      we say that they are <term>isomorphic groups</term>;
+      we also say that the bijection that causes the groups to be equivalent is an <term>isomorphism</term>
+          <idx><h>Isomorphic groups</h></idx>
+          <idx><h>Group</h><h>isomorphic</h></idx>.
+          <idx><h>Isomorphism</h><h>definition of</h></idx>
+      We will see in a later chapter how to show in general that two groups are isomorphic;
+      but for now,
+      forming the groups' Cayley Tables and seeing if you can match elements to make the tables the same is a very good strategy.
+    </p>
+    <exercise xml:id="exercise_Permutations_isomorphic1">
+      <statement>
+        <p>
+          Let <m>W =\{G, H \}</m> and <m>Z = \{J, K \}</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Write the Cayley Tables for <m>S_W</m> and <m>S_Z</m>.
+                It would be helpful to write the entries of <m>S_W</m> and <m>S_Z</m> in tableau form.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a bijection from <m>W</m> to <m>Z</m>,
+                and the corresponding bijection from <m>S_W</m> to <m>S_Z</m>,
+                that would show <m>S_W</m> is isomorphic to <m>S_Z</m>.
+                (Remember that a bijection can be thought of as a
+                <q>relabeling</q>
+                of elements of <m>W</m> as elements of <m>Z</m>.)
+              </p>
+            </li>
+            <li>
+              <p>
+                How many possible bijections from <m>W</m> to <m>Z</m> give rise to isomorphisms from <m>S_W</m> to <m>S_Z</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_11">
+      <statement>
+        <p>
+          Let <m>X =\{A, B, C\}</m> and <m>Y = \{M, N, P\}</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Write the Cayley Tables for <m>S_X</m> and <m>S_Y</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a bijection from <m>X</m> to <m>Y</m>,
+                and the corresponding bijection from <m>S_X</m> to <m>S_Y</m>,
+                that would show <m>S_X</m> is isomorphic to <m>S_Y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                How many possible bijections from <m>X</m> to <m>Y</m> produce isomorphisms from <m>S_X</m> to <m>S_Y</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Now let <m>X =\{A, B, \ldots M\}</m> and <m>Y = \{N, O, \ldots Z\}</m>.
+                How many different bijections from <m>X</m> to <m>Y</m> produce isomorphisms from <m>S_X</m> to <m>S_Y</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_GroupGeneralizations_SubgroupAndPermutationGroups">
+    <title>Subgroups and permutation groups</title>
+    <p>
+      Let's summarize this section so far.
+      The permutations on a set <m>X</m> of <m>n</m> elements is a group under function composition
+      (denoted by <m>S_n</m>).
+      Further, for any figure with <m>n</m> sides,
+      the symmetries of that figure is a subset of <m>S_n</m> containing at least the identity permutation,
+      and that subset is itself a group under function composition.
+      This example motivates the following definition.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defsubgroup} A subset of a group <m>G</m> that is itself a group under the same operation as <m>G</m> is called a <term>subgroup</term>
+              <idx><h>Subgroup</h></idx>
+          of <m>G</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The notion of subgroup is a key concept in abstract algebra,
+      which will be used throughout the rest of the book.
+    </p>
+    <example xml:id="example_Permutations_subgroups">
+      <statement>
+        <p>
+          From the above definition of subgroup it follows that:
+          <ul>
+            <li>
+              <p>
+                The symmetries of a rectangle are a subgroup of <m>S_4</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The symmetries of an isosceles triangle are a subgroup of <m>S_3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>D_5</m> is a subgroup of <m>S_5</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The permutations of <m>\{1,2,3\}</m> are a subgroup of the permutations of <m>\{1,2,3,4\}</m>.
+                Hence <m>S_3</m> is a subgroup of <m>S_4</m>.
+                By the same token,
+                <m>S_m</m> can be considered as a subgroup of <m>S_n</m> whenever <m>m \lt n</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </example>
+    <definition>
+      <statement>
+        <p>
+          {defpermgroup} A subgroup of <m>S_n</m> is called a
+          <term>permutation group</term>
+              <idx><h>Group</h><h>permutation</h></idx>.
+              <idx><h>Permutation group</h></idx>
+        </p>
+      </statement>
+    </definition>
+    <exercise xml:id="exercise_Permutations_permute_S5">
+      <statement>
+        <p>
+          Consider the subset <m>G</m> of <m>S_5</m> consisting of the identity permutation <m>{\var id}</m> and the permutations
+          <md>
+            <mrow>\sigma \amp  = \begin{pmatrix} 1 \amp  2 \amp  3 \amp  4 \amp  5</mrow>
+            <mrow>1 \amp  2 \amp  3 \amp  5 \amp  4 \end{pmatrix}</mrow>
+            <mrow>\tau \amp  = \begin{pmatrix} 1 \amp  2 \amp  3 \amp  4 \amp  5</mrow>
+            <mrow>3 \amp  2 \amp  1 \amp  4 \amp  5 \end{pmatrix}</mrow>
+            <mrow>\mu \amp  = \begin{pmatrix} 1 \amp  2 \amp  3 \amp  4 \amp  5</mrow>
+            <mrow>3 \amp  2 \amp  1 \amp  5 \amp  4 \end{pmatrix}</mrow>
+          </md>.
+          <ol type="a">
+            <li>
+              <p>
+                Write the Cayley table for <m>G</m>.
+                Label your rows and columns as:
+                <m>{\var id}, \sigma, \tau, \mu</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use the Cayley table to explain whether <m>G</m> is a subgroup of <m>S_5</m> or not.
+                <em>Remember: you don't need to show the associative property,
+                since function composition is associative.</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_permute_S4">
+      <statement>
+        <p>
+          Consider the subset <m>G</m> of <m>S_4</m> consisting of the identity permutation <m>{\var id}</m> and the permutations
+          <md>
+            <mrow>\sigma \amp  = \begin{pmatrix} 1 \amp  2 \amp  3 \amp  4</mrow>
+            <mrow>2 \amp  3 \amp  1 \amp  4 \end{pmatrix}</mrow>
+            <mrow>\tau \amp  = \begin{pmatrix} 1 \amp  2 \amp  3 \amp  4</mrow>
+            <mrow>3 \amp  2 \amp  1 \amp  4 \end{pmatrix}</mrow>
+            <mrow>\mu \amp  = \begin{pmatrix} 1 \amp  2 \amp  3 \amp  4</mrow>
+            <mrow>3 \amp  1 \amp  2 \amp  4 \end{pmatrix}</mrow>
+          </md>.
+          <ol type="a">
+            <li>
+              <p>
+                Write the Cayley table for <m>G</m> (Label your rows and columns as:
+                <m>{\var id}, \sigma, \tau, \mu</m>).
+              </p>
+            </li>
+            <li>
+              <p>
+                Use the Cayley table to explain whether or not <m>G</m> is a subgroup of <m>S_4</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      As the example shows,
+      a permutation group need not comprise all symmetries of a figure or all rearrangements of a set.
+      Many permutation groups have no evident practical interpretation whatsoever.
+      Nonetheless they are still useful,
+      because as we shall see they can be used to characterize the groups that contain them.
+    </p>
+  </subsection>
+</section>

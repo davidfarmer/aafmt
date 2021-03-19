@@ -83,29 +83,33 @@
         </author>
       </titlepage>
     </frontmatter>
-    <xi:include href="./introduction.ptx"/>
+    <xi:include href="./chap_Introduction.ptx"/>
     <xi:include href="./GlossaryofSymbols.ptx"/>
-    <xi:include href="./BeforeWeBegin.ptx"/>
-    <xi:include href="./complex.ptx"/>
-    <xi:include href="./modular.ptx"/>
-    <xi:include href="./bases.ptx"/>
-    <xi:include href="./sets.ptx"/>
-    <xi:include href="./functions.ptx"/>
-    <xi:include href="./crypt.ptx"/>
-    <xi:include href="./Sigma.ptx"/>
+    <xi:include href="./Preliminaries.ptx"/>
+    <xi:include href="./ComplexNumbers.ptx"/>
+    <xi:include href="./ModularArithmetic.ptx"/>
+    <xi:include href="./ModularArithmeticBases.ptx"/>
+    <xi:include href="./Sets.ptx"/>
+    <xi:include href="./Functions.ptx"/>
+    <xi:include href="./Cryptography.ptx"/>
+    <xi:include href="./SigmaNotation.ptx"/>
     <xi:include href="./SigmaApp.ptx"/>
-    <xi:include href="./poly.ptx"/>
-    <xi:include href="./symmetries.ptx"/>
-    <xi:include href="./permute.ptx"/>
-    <xi:include href="./groups.ptx"/>
-    <xi:include href="./further_crypt.ptx"/>
-    <xi:include href="./EquivalenceRelationsChap.ptx"/>
-    <xi:include href="./cosets.ptx"/>
-    <xi:include href="./algcodes.ptx"/>
-    <xi:include href="./isomorph.ptx"/>
-    <xi:include href="./homomorph.ptx"/>
-    <xi:include href="./actions.ptx"/>
-    <xi:include href="./rings.ptx"/>
+    <xi:include href="./Polynomials.ptx"/>
+    <xi:include href="./Symmetry.ptx"/>
+    <xi:include href="./Permutations.ptx"/>
+    <xi:include href="./Groups.ptx"/>
+    <xi:include href="./FurtherCryptography.ptx"/>
+    <xi:include href="./EquivalenceRelations.ptx"/>
+    <xi:include href="./Cosets.ptx"/>
+    <xi:include href="./ErrorAndCorrectionCode.ptx"/>
+    <xi:include href="./Isomorphism.ptx"/>
+    <xi:include href="./ExploringPolynomials.ptx"/>
+    <xi:include href="./Homomorphism.ptx"/>
+    <xi:include href="./GroupActions.ptx"/>
+    <xi:include href="./Rings.ptx"/>
+    <xi:include href="./PolynomialCodes.ptx"/>
+    <xi:include href="./Induction.ptx"/>
+    <xi:include href="./chapter1x.ptx"/>
     <backmatter>
       <xi:include href="./bibliography.ptx"/>
       <index>

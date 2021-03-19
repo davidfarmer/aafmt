@@ -1,0 +1,547 @@
+<section xml:id="sec_EquivalenceRelations_BinaryRelation">
+  <title>Binary relations <nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    Recall that according to <xref ref="definition_Functions_functionDef">Definition</xref>,
+    any function <m>f \colon A \to B</m> can be represented as a set of ordered pairs.
+    More precisely,
+    each element of<nbsp/><m>f</m> is an ordered pair <m>(a,b)</m>,
+    such that <m>a \in A</m> and <m>b \in B</m>.
+    Therefore, every element of<nbsp/><m>f</m> is an element of <m>A \times B</m>,
+    so <m>f</m><nbsp/>is a subset of <m>A \times B</m>.
+    There are however subsets of
+    <m>A \times B</m> that are not functions.
+  </p>
+  <example xml:id="example_EquivalenceRelations_bbal">
+    <statement>
+      <p>
+        Let <m>P</m> be the set of all professional basketball players in the NBA<fn>
+        National Basketball Association,
+        <q>men's professional basketball league in North America <m>\ldots</m> widely considered to be the premier men's professional basketball league in the world.</q>
+        (Wikipedia)
+        </fn> and let <m>T</m> be the set of NBA teams.
+        <m>f_T: P \to T</m> as follows:
+        <me>
+          f_T(p)=\text{ the team that } p \text{ plays for }
+        </me>.
+      </p>
+      <p>
+        Alternatively,
+        <m>f_T</m> can be represented as the set of ordered pairs:
+        <me>
+          f_T=\{\, (p,t)  \in  P \times T  \mid  p  \text{  is a member of }  t\}
+        </me>.
+      </p>
+      <p>
+        On the other hand,
+        we may be interested not just in players' current teams,
+        but in <em>all</em> teams that players have played for.
+        This relationship could also be characterized by a set of ordered pairs:
+        <me>
+          \{\, (p,t)  \in  P \times T  \mid  p  \text{  has at one time or another played for }  t\}
+        </me>.
+      </p>
+      <p>
+        This is <em>not</em> a function,
+        because many NBA players have played on more than one team.
+      </p>
+    </statement>
+  </example>
+  <p>
+    In light of the previous example,
+    it makes mathematical sense to define a relation between sets <m>A</m> and <m>B</m> to be a set of ordered pairs;
+    that is, a relation between <m>A</m> and <m>B</m> is any subset of <m>A \times B</m>.
+    Unlike the case of functions,
+    there are no restrictions<ndash/>every subset is a relation.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {relation} <idx><h>Relation</h><h>definition of</h></idx> Suppose <m>A</m> and <m>B</m> are sets.
+        <ol type="a">
+          <li>
+            <p>
+              Any subset of <m>A \times B</m> is called a
+              <term>relation from<nbsp/><m>A</m> to<nbsp/><m>B</m></term>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For the special case where <m>A = B</m>,
+              any subset of <m>A \times A</m> is called a
+              <term>binary relation</term>
+                <idx><h>Binary Relation</h></idx>
+                <idx><h>Relation</h><h>binary</h></idx>
+              on<nbsp/><m>A</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </definition>
+  <example xml:id="example_EquivalenceRelations_bbalb">
+    <statement>
+      <p>
+        Let <m>P</m> be the set of all professional basketball players in the NBA. Consider the following subset of <m>P \times P</m>:
+        <me>
+          \{\, (p,p\,')  \in  P \times T  \mid  p\,'  \text{  is the tallest teammate of }  p\}
+        </me>.
+      </p>
+      <p>
+        This is a binary relation,
+        according to Definition!<nbsp/> <xref ref="definition_EquivalenceRelations_relation"></xref>,
+        and it also can be identified with the function <m>f_h: P \to P</m> defined by:
+        <m>f_h(p)=\text{ the tallest teammate of } p </m>.
+      </p>
+      <p>
+        On the other hand, consider a different subset of <m>P \times P</m>:
+        <me>
+          \{\, (p,p\,')  \in  P \times T  \mid  p\,'  \text{  is a teammate of }  p\}
+        </me>.
+      </p>
+      <p>
+        This is a binary relation,
+        but <em>not</em> a function because any player will have many teammates.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_EquivalenceRelations_bball_subsets">
+    <statement>
+      <p>
+        Express the following relations on NBA players as subsets of <m>P \times P</m>
+        (as in <xref ref="example_EquivalenceRelations_bbal">Example</xref>).
+        <ol type="a">
+          <li>
+            <p>
+              Players that both play the same positions
+            </p>
+          </li>
+          <li>
+            <p>
+              Players that have birthdays in the same month
+            </p>
+          </li>
+          <li>
+            <p>
+              The second player is taller than the first
+            </p>
+          </li>
+          <li>
+            <p>
+              The first player has a higher jersey number than the second
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    So far we've been discussing relations in a non-numerical context,
+    but our definitions apply to relations on sets of numbers as well.
+    Relations on <m>\mathbb{R}</m>
+    (or subsets of <m>\mathbb{R}</m>)
+    are discussed in many middle or high school algebra courses.
+    Any graph in the <m>\mathbb{R}^2</m> plane gives a relation;
+    and conversely, any relation involving subsets of
+    <m>\mathbb{R}</m> can be represented as a graph in the plane.
+    Relations in <m>\mathbb{R}^2</m> are often taught along with functions:
+    for example,
+    students are given a graph of some discrete or continuous relation in the
+    <m>\mathbb{R}^2</m> plane and asked to determine if the given relation is a function.
+  </p>
+  <example xml:id="example_EquivalenceRelations_r2relation">
+    <statement>
+      <p>
+        Consider the graphs in <xref ref="fig_graphrelations">Figure</xref>,
+        where the set <m>A \times B</m> is indicated at the top of each graph.
+        Which are relations in <m>A \times B</m>?
+        Which are binary relations?
+        Which are functions?
+      </p>
+      <figure xml:id="fig_graphrelations">
+        <caption>Graphs of relations. Constructed using GeoGebra</caption>
+        <image width="93%" source="images/graphrelations.png"/>
+      </figure>
+      <ul>
+        <li>
+          <p>
+            All three graphs are relations because all graphs are subsets of <m>A \times B</m>
+            (as specified at the top of each graph).
+          </p>
+        </li>
+        <li>
+          <p>
+            The first and third relations are binary relations,
+            but the second relation isn't because <m>A \neq B</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The first is not a function,
+            because e.g. both <m>(1,1)</m> and <m>(1,-1)</m> are in the graph.
+            The second is a function because it is uniquely defined on all of <m>A</m>
+            (in this case <m>A=\mathbb{R}</m>).
+            The third is not a function because e.g. there is no pair of the form <m>(-1,y)</m>,
+            so the function is not defined on all of <m>A</m>.
+          </p>
+        </li>
+      </ul>
+    </statement>
+  </example>
+  <example xml:id="example_EquivalenceRelations_ex_rel">
+    <statement>
+      <p>
+        If <m>A = \{1,2,3\}</m> and <m>B = \{4,5,6\}</m>,
+        some examples of relations from <m>A</m> to <m>B</m> are:
+        <me>
+          \{ (1,4), (2,5), (3,6)\}
+        </me>,
+        <me>
+          \{ (1,6), (3,4)\}
+        </me>,
+        <me>
+          \{ (2,5), (3,5) \}
+        </me>,
+        <me>
+          \emptyset
+        </me>,
+      </p>
+      <me>
+        \{ (1,4), (1,5), (1,6), (2,4), (2,5), (2,6), (3,4), (3,5), (3,6) \}
+      </me>.
+      <p>
+        Notice that all of these sets are subsets of <m>A \times B</m>.
+        The final example is the set <m>A \times B</m> itself.
+        Notice that <m>\emptyset</m> is a valid relation because it's a subset of
+        <m>A \times B</m> (a subset with no elements).
+        On the other hand, the set <m>\{ \emptyset \}</m> is
+        <em>not</em> a relation,
+        because it is a set with one element
+        (namely <m>\emptyset</m>),
+        and this element is not an element of <m>A \times B</m>.
+        For similar reasons, <m>\{(1, \emptyset) \}</m> is
+        <em>not</em> a relation.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_EquivalenceRelations_cities">
+    <statement>
+      <p>
+        Let <m>A = \{\text{ all cities in the U.S. } \}</m> and
+        <m>B = \{\text{ all states in the U.S. } \}</m>. some examples of relations from <m>A</m> to <m>B</m> are:
+        <me>
+          \{ \text{ (Springfield,Illinois),(Springfield,Missouri),(Springfield,Texas),(Springfield,Wisconsin) } \}
+        </me>,
+        <me>
+          \{ \text{ (Corinth,Texas),(Liverpool,Texas),(Paris,Texas),(Sudan,Texas),(Troy,Texas) } \}
+        </me>,
+        <me>
+          \{ \text{ (Austin,Texas),(Boston,Massachusetts),(Phoenix,Arizona) } \}
+        </me>,
+        <me>
+          \{ (x,y) \text{ such that }  x \text{ is the capital of }  y \}
+        </me>.
+      </p>
+      <p>
+        The third of these relations is a
+        <em>subset</em> of the last.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_EquivalenceRelations_7">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>A = \{a\}</m> and <m>B = \{1\}</m>.
+            List <em>all</em> relations from <m>A</m> to <m>B</m>. (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>A = \{a\}</m> and <m>B = \{1,2\}</m>.
+            List <em>all</em> relations from <m>A</m> to <m>B</m>. (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>A = \{a,b\}</m> and <m>B = \{1\}</m>.
+            List <em>all</em> relations from <m>A</m> to <m>B</m>. (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            * Let <m>A = \{a,b\}</m>.
+            List <em>all</em> the binary relations on <m>A</m>. (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            * Let <m>A = \{a,b,c\}</m>.
+            How many binary relations are there on the set <m>A</m>? (*Hint*)
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    We'll mostly be concerned with binary relations,
+    not relations from some set<nbsp/><m>A</m> to some other set<nbsp/><m>B</m>.
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_notbinary">
+    <statement>
+      <p>
+        Let <m>S</m> be the set of all living people.
+        Which of the follow relationships define binary relations on <m>S</m>? brother, pet,
+        favorite color, dentist, college major, and professor?
+      </p>
+    </statement>
+  </exercise>
+  <definition>
+    <statement>
+      <p>
+        {digraph}
+            <idx><h>Digraph</h></idx>
+        We can draw a picture to represent any given binary relation on any given set<nbsp/><m>A</m>:
+        <ul>
+          <li>
+            <p>
+              Draw a dot for each element of<nbsp/><m>A</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For <m>a,b \in A</m>,
+              draw an arrow from <m>a</m> to<nbsp/><m>b</m> if and only if <m>(a,b)</m> is an element of the relation.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        The resulting picture is called a
+        <term>digraph</term>. (The word is pronounced
+        <q>DIE-graff</q>
+        <mdash/> it is short for
+        <q>directed graph.</q>
+      </p>
+    </statement>
+  </definition>
+  <example xml:id="example_EquivalenceRelations_digraph1">
+    <statement>
+      <p>
+        Let <m>A =  \{1,2,3,4,5\}</m>.
+        We can define a binary relation<nbsp/><m>R_1</m> on<nbsp/><m>A</m> by letting
+        <me>
+          R_1 = \{\, (x,y) \mid x \neq y \text{ and }  x^2 + y \leq 10 \,\}
+        </me>.
+      </p>
+      <p>
+        This binary relation is represented by the digraph in <xref ref="fig_x2y">Figure</xref>:
+      </p>
+      <figure xml:id="fig_x2y">
+        <caption>Digraph of the binary relation of <m>R_1</m></caption>
+        <image width="56%" source="images/x2+y.png"/>
+      </figure>
+      <p>
+        Note that there's a bidirectional arrow between <m>1</m> and<nbsp/><m>3</m> because
+        <m>(1,3) \in R_1</m> and <m>(3,1) \in R_1</m>.
+        On the other hand there's only a one directional arrow from <m>2</m> to<nbsp/><m>3</m> because <m>(2,3) \in R_1</m>,
+        but <m>(3,2) \notin R_1</m>.
+      </p>
+      <p>
+        We can also define a binary relation <m>R_2</m> on <m>A</m> by letting
+        <me>
+          R_2=\{(x,y) \text{ such that }  x\mid y\}
+        </me>,
+        where <m>x\mid y</m> means <m>x</m> divides <m>y</m>.
+        This binary relation is represented by the digraph in <xref ref="fig_xdividesy">Figure</xref>.
+      </p>
+      <figure xml:id="fig_xdividesy">
+        <caption>Digraph of the binary relation of <m>R_2</m></caption>
+        <image width="56%" source="images/xdividesy.png"/>
+      </figure>
+      <p>
+        In this digraph there are loops at each number because <m>a \mid a</m> for each <m>a</m>.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_EquivalenceRelations_DrawBinRelExer1">
+    <statement>
+      <p>
+        Choose your favorite NBA team,
+        and find a team roster (a good place to look is ESPN.com).
+        Choose 6 players that have complete data,
+        and let that be your set <m>A</m>. draw a digraph for each of the following binary relations on<nbsp/><m>A</m>:
+        <ol type="a">
+          <li xml:id="DrawBinRelExer-sisterXX">
+            <p>
+              <m>\{ (x,y) \in F \times F \,|\, x \text{ 's height is within 2 inches of } y\text{ 's height } \}</m>
+            </p>
+          </li>
+          <li xml:id="DrawBinRelExer-sonXX">
+            <p>
+              <m>\{ (x,y) \in A \times A \,|\, x\text{ 's age is within the same decade as } y\text{ 's } \}</m>
+            </p>
+          </li>
+          <li xml:id="DrawBinRelExer-marriedX">
+            <p>
+              The relation
+              <q>is taller than</q>.
+            </p>
+          </li>
+          <li xml:id="DrawBinRelExer-livedX">
+            <p>
+              The relation
+              <q>is less than 10 pounds heavier than</q>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_EquivalenceRelations_DrawBinRelExer3">
+    <statement>
+      <p>
+        Let <m>A = \{-2,-1,0,1,2\}</m> Draw a digraph for each of the following binary relations on<nbsp/><m>A</m>:
+        <ol type="a">
+          <li xml:id="DrawBinRelExer-sonX">
+            <p>
+              <m>R_a = \{\, (x,y) \mid x^2 = y^2 \,\} </m>.
+            </p>
+          </li>
+          <li xml:id="DrawBinRelExer-sisterX">
+            <p>
+              <m>R_b = \{\, (x,y) \mid x^2 - y^2 \lt 2 \,\} </m>.
+            </p>
+          </li>
+          <li xml:id="DrawBinRelExer-married">
+            <p>
+              <m>R_c = \{\, (x,y) \mid (x-y)^2 \lt 2 \,\} </m>.
+            </p>
+          </li>
+          <li xml:id="DrawBinRelExer-lived">
+            <p>
+              <m>R_d = \{\, (x,y) \mid x\equiv y \pmod{3} \,\} </m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_EquivalenceRelations_DrawBinRelExer2">
+    <statement>
+      <p>
+        It is also possible to draw digraphs for relations that are not binary relations.
+        In this case,
+        your digraph should have a dot for each element of <m>A \cup B</m>.
+        <ol type="a">
+          <li xml:id="DrawBinRelExer-son">
+            <p>
+              Draw digraph representations of the relations given in <xref ref="example_EquivalenceRelations_ex_rel">Example</xref>.
+            </p>
+          </li>
+          <li xml:id="DrawBinRelExer-sister">
+            <p>
+              The graphs you drew in (a) are all examples of
+              <term>bipartite</term> graphs.
+              Complete the following definition: A bipartite graph is a graph in which the vertices (dots) can be divided into two sets,
+              such that <m>\ldots</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    We commonly use symbols such as
+    <m>=, \lt  , \subset, \ldots</m> that are used to compare elements of a set.
+    You may have called these
+    <q>relations</q>
+    in your high school algebra class <mdash/> and in fact,
+    they can all be considered as binary relations in the sense of <xref ref="definition_EquivalenceRelations_relation">Definition</xref>.
+    For example,
+    using the symbol <m>\lt</m> we can define the following binary relation on <m>{\mathbb R}</m> :
+    <me>
+      R_\lt   := \{\, (x,y) \in \mathbb{R} \times \mathbb{R} \mid x \lt  y \}
+    </me>
+  </p>
+  <p>
+    (here the symbol
+    <q><m>:=</m></q>
+    means
+    <q>defined as</q>).
+    Note that <m>R_\lt</m> here is a subset of <m>\mathbb{R} \times \mathbb{R}</m>,
+    so it is indeed a binary relation according to <xref ref="definition_EquivalenceRelations_relation">Definition</xref>.
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_RelationDef">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Define the set <m>R_></m> associated with the symbol
+            <q><m>></m></q>
+            applied to the natural numbers.
+          </p>
+        </li>
+        <li>
+          <p>
+            Define the set <m>R_=</m> associated with the symbol
+            <q><m>=</m></q>
+            applied to the complex numbers.
+            In your definition assume that equality of real numbers has been defined,
+            and write complex numbers in rectangular form
+            (for example, <m>a + bi</m> or <m>c + di</m>).
+          </p>
+        </li>
+        <li>
+          <p>
+            List all the elements of the set
+            <m>R_\subset</m> associated with the symbol
+            <q><m>\subset</m></q>
+            applied to the subsets of <m>A := \{1,2\}</m>. (The set of subsets of <m>A</m> is denoted as <m>\mathcal{P}(A)</m>,
+            the <term>power set</term>
+              <idx><h>Power set</h></idx>
+            of <m>A</m>.) (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the set <m>R_\subset</m> associated with the symbol
+            <q><m>\subset</m></q>
+            applied to the subsets of <m>A := \{1,2,3\}</m>.
+            How many elements does <m>R_\subset</m> have?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_RelationDef">Exercise</xref>
+    shows that any comparison symbol applied to a set gives rise to a binary relation.
+    So rather than writing <m>R_\lt , R_>, R_=</m> and so on,
+    we simply use the comparison symbol itself to represent the binary relation.
+    Notice that technically, '<m>\lt</m>' defined on
+    <m>\mathbb{R}</m> is a different relation from '<m>\lt</m>' defined on <m>\mathbb{N}</m>:
+    we will always make it very clear on which set the relation is being defined.
+  </p>
+  <p>
+    We will use the symbol <m>\rel</m>
+    (which may be read as
+    <q>is related to</q>,
+    <q>tilde</q>, or
+    <q>twiddle</q>
+    )
+    to denote a generic comparison symbol.
+    If we are working with the set <m>A</m>,
+    then the symbol <m>\rel</m> also represents the binary relation <m>A_\rel := \{\, (x,y) \in A \times A \mid x \rel y \}</m>.
+  </p>
+  <p>
+    We have shown that comparison symbols give rise to relations:
+    the reverse is also true.
+    Given a relation <m>R</m> defined on the set <m>A</m>,
+    we can define a comparison symbol <m>\rel</m> applied to <m>a,b \in A</m> as follows:
+    <m>a \rel b</m> iff <m>(a,b) \in R</m>.
+  </p>
+</section>

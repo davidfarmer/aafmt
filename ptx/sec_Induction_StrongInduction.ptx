@@ -1,0 +1,220 @@
+<section xml:id="sec_Induction_StrongInduction">
+  <title>Strong Induction, with applications</title>
+  <introduction>
+    <p>
+      One of the most common applications of induction is to problems involving recurrence sequences such as the Fibonacci numbers,
+      and to representation problems such as the representation of integers as a product of primes (Fundamental Theorem of Arithmetic),
+      sums of powers of <m>2</m>
+      (binary representation),
+      and sums of stamp denominations
+      (postage stamp problem).
+    </p>
+    <p>
+      In applications of this type,
+      the case <m>n=k</m> in the induction step is not enough to deduce the case <m>n=k+1</m>;
+      one usually needs additional predecessors predecessors to get the induction step to work,
+      e.g., the two preceding cases <m>n=k</m> and <m>n=k-1</m>,
+      or <em>all</em> preceding cases <m>n=k,k-1,\dots,1</m>.
+      This variation of the induction method is called
+      <em>strong induction</em>.
+      The induction principle remains valid in this modified form.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_Induction_StrongInduction_Recurrences">
+    <title>Strong induction and recurrences</title>
+    <p>
+      In the induction proofs we've looked at so far,
+      we first had to prove a base case,
+      and then used a preceding case (<m>n=k</m>) to prove the case <m>n=k+1</m> in the induction step.
+      But when we aply induction to two-term recurrence sequences like the Fibonacci numbers,
+      we'll need <em>two</em> preceding cases,
+      <m>n=k</m> and <m>n=k-1</m>, in the induction step,
+      and <em>two</em> base cases (e.g., <m>n=1</m> and <m>n=2</m>) to get the induction going.
+      The logical structure of such a proof is of the following form:
+    </p>
+    <p>
+      <em>Base step:</em> <m>P(n)</m> is true for <m>n=1,2</m>.
+    </p>
+    <p>
+      <em>Induction step:</em> Let <m>k\in\NN</m> with <m>k\ge 2</m> be given and assume <m>P(n)</m> holds for <m>n=k</m> and <m>n=k-1</m>.
+    </p>
+    <p>
+      [... Work goes here ...]
+    </p>
+    <p>
+      Therefore <m>P(k+1)</m> holds.
+    </p>
+    <p>
+      <em>Conclusion:</em> By the principle of strong induction,
+      <m>P(n)</m> holds for all <m>n\in\NN</m>.
+    </p>
+    <p>
+      Note that in the induction step, one could also say
+      <q>Assume <m>P(n)</m> holds for `` <m>n=1,2,\dots, k</m></q>; this is a bit redundant as only the last two of the cases
+      <m>n=1,2,\dots,k</m> are needed, though logically correct.
+    </p>
+    <p>
+      Here is a worked-out example of a proof by strong induction.
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>a_n</m> be the sequence defined by <m>a_1=1</m>,
+          <m>a_2=8</m>, and <m>a_n=a_{n-1}+2a_{n-2}</m> for <m>n\ge3</m>.
+          Then <m>a_n=3\cdot 2^{n-1}+2(-1)^n</m> for all <m>n\in\NN</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We'll prove by strong induction that, for all <m>n\in\NN</m>,
+        <me>
+          \tag{\(P(n)\)} a_n=3\cdot 2^{n-1}+2(-1)^n
+        </me>.
+      </p>
+      <p>
+        <em>Base case:</em> When <m>n=1</m>,
+        the left side of <m>P(1)</m> is <m>a_1 =1</m>,
+        and the right side is <m>3\cdot 2^{0}+2\cdot(-1)^1=1</m>,
+        so both sides are equal and <m>P(1)</m> is true.
+      </p>
+      <p>
+        When <m>n=2</m>,
+        the left and right sides of <m>P(2)</m> are <m>a_2=8</m> and <m>3\cdot 2^1+2\cdot(-1)^2=8</m>,
+        so <m>P(2)</m> also holds.
+      </p>
+      <p>
+        <em>Induction step:</em> Let <m>k\in\NN</m> with <m>k\ge2</m> be given and suppose <m>P(n)</m> is true for <m>n=1,2,\dots,k</m>.
+        Then
+        <md>
+          <mrow>a_{k+1}\amp =a_{k}+2a_{k-1} \text{ (by recurrence for \(a_n\)) }</mrow>
+          <mrow>\amp = 3\cdot 2^{k-1}+2\cdot(-1)^k +2\left(3\cdot 2^{k-2}+2\cdot(-1)^{k-1}\right) \text{ (by \(P(k)\) and \(P(k-1)\)) }</mrow>
+          <mrow>\amp = 3\cdot \left(2^{k-1}+2^{k-1}\right) +2\left((-1)^k+2(-1)^{k-1}\right) \text{ (by algebra) }</mrow>
+          <mrow>\amp = 3\cdot 2^k+2(-1)^{k+1} \text{ (more algebra). }</mrow>
+        </md>
+      </p>
+      <p>
+        Thus, <m>P(k+1)</m>) holds, and the proof of the induction step is complete.
+      </p>
+      <p>
+        <em>Conclusion:</em> By the strong induction principle,
+        it follows that <m>P(n)</m> is true for all <m>n\in\NN</m>.
+      </p>
+    </proof>
+  </subsection>
+  <subsection xml:id="subsec_Induction_StrongInduction_RepresentProblems">
+    <title>Strong Induction and representation problems</title>
+    <p>
+      For applications to representation problems one typically requires the induction hypothesis in its strongest possible form,
+      where one assumes <em>all</em> preceding cases (i.e., for
+      <m>n=1,2,\dots,k</m>) instead of just the immediate predecessor
+      (as in simple induction)
+      or two predecessors
+      (as in strong induction applied to two-term recurrences).
+    </p>
+    <p>
+      Below is a classic example of this type,
+      a proof that every integer <m>\ge2</m> can be written as a product of prime numbers.
+      This is the existence part of what is called the Fundamental Theorem of Arithmetic;
+      the other part guarantees uniquess of the representation,
+      which we will not be concerned with here
+      (it can also be proved by induction,
+      but the proof is a little more complicated).
+    </p>
+    <p>
+      Recall the definition of <em>prime</em>
+      from <xref ref="ComplexNumbers">Chapter</xref>:
+      an integer <m>n>1</m> is called <em>prime</em>
+      if it has no factor greater than 1 other than itself.
+      An integer <m>n>1</m> that is not prime is called <em>composite</em>:
+          <idx><h>Composite number</h><h>definition</h></idx>
+      in other words,
+      <m>n</m> can be written as <m>n=ab</m> with integers <m>a,b</m> satisfying <m>2\le a,b\lt n</m>.
+      Using these definitions, we may now state and prove:
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          <em>(Fundamental Theorem of Arithmetic: existence)</em>
+        </p>
+        <p>
+          Any integer <m>n\ge 2</m> is either a prime or can be represented as a product of
+          (not necessarily distinct)
+          primes, i.e., in the form <m>n=p_1p_2\dots p_r</m>,
+          where the <m>p_i</m> are primes.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We will prove by strong induction that the following statement holds for all integers <m>n\ge2</m>.
+        <me>
+          \text{ \(n\) can be represented as a product of one or more primes. } \tag{\(P(n)\)}
+        </me>
+      </p>
+      <p>
+        <em>Base case:</em> The integer <m>n=2</m> is a prime since it cannot be written as a product <m>ab</m>,
+        with integers <m>a,b\ge 2</m>,
+        so <m>P(n)</m> holds for <m>n=2</m>.
+      </p>
+      <p>
+        <em>Induction step:</em>
+        <ul>
+          <li>
+            <p>
+              Let <m>k\ge2</m> be given and suppose <m>P(n)</m> is true for all integers <m>2\le n\le k</m>,
+              i.e., suppose that all such <m>n</m> can be represented as a product of one or more primes.
+            </p>
+          </li>
+          <li>
+            <p>
+              We seek to show that <m>k+1</m> also has a representation of this form.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>k+1</m> itself is prime,
+              then <m>P(n)</m> holds for <m>n=k+1</m>, and we are done.
+            </p>
+          </li>
+          <li>
+            <p>
+              Now consider the case when <m>k+1</m> is composite.
+            </p>
+          </li>
+          <li>
+            <p>
+              By definition,
+              this means that <m>k+1</m> can be written in the form <m>k+1=ab</m>,
+              where <m>a</m> and <m>b</m> are integers satisfying <m>2\le a,b\lt k+1</m>,
+              i.e., <m>2\le a,b\le k</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since <m>2\le a,b\le k</m>,
+              the induction hypothesis can be applied to <m>a</m> and <m>b</m> and shows that <m>a</m> and <m>b</m> can be represented as products of one or more primes.
+            </p>
+          </li>
+          <li>
+            <p>
+              Multiplying these two representations gives a representation of <m>k+1</m> as a product of primes.
+            </p>
+          </li>
+          <li>
+            <p>
+              Hence <m>k+1</m> has a representation of the desired form,
+              so <m>P(n)</m> holds for <m>n=k+1</m>,
+              and the induction step is complete.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        <em>Conclusion:</em> By the strong induction principle,
+        it follows that <m>P(n)</m> is true for all <m>n\ge2</m>,
+        i.e., every integer <m>n\ge2</m> is either a prime or can be represented as a product of primes.
+      </p>
+    </proof>
+  </subsection>
+</section>

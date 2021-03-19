@@ -1,0 +1,355 @@
+<section xml:id="sec_Preliminaries_TestYourself">
+  <title>Test yourself</title>
+  <p>
+    Test yourself with the following exercises.
+    If you feel totally lost, I strongly recommend that you improve your basic algebra skills before continuing with this course.
+    Trying to do higher math without a confident mastery of basic algebra is like trying to play baseball without knowing how to throw and catch.
+  </p>
+  <exercise xml:id="exercise_Preliminaries_TestYourselfQ1">
+    <statement>
+      <p>
+        Simplify the following expressions.
+        Factor whenever possible
+        <ol type="a">
+          <li>
+            <p>
+              <m>2^4 4^2</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\dfrac{3^9}{9^3}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\left( \dfrac{5}{9} \right)^7 \left( \dfrac{9}{5} \right)^6</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\dfrac{a^5}{a^7} \, \cdot \, \dfrac{a^3}{a}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>x(y-1) - y(x-1)</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Preliminaries_TestYourselfQ2">
+    <statement>
+      <p>
+        Same instructions as the previous exercise.
+        These examples are harder. (<em>Hint</em>: It's usually best to make the base of an exponent as simple as possible.
+        Notice for instance that <m>4^7 = (2^2)^7 = 2^{14}</m>.)
+        <ol type="a">
+          <li>
+            <p>
+              <m>6^{1/2\cdot}2^{1/6}\cdot3^{3/2}\cdot2^{1/3}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(9^3)(4^7)\left(\frac{1}{2}\right)^8\left(\frac{1}{12}\right)^6</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>4^5 \cdot 2^3 \cdot \left(\frac{1}{2}\right)^5 \cdot \left( \frac{1}{4} \right) ^3</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>2^3 \cdot 3^4 \cdot 4^5 \cdot 2^{-5} \cdot 3^{-4} \cdot 4^{-3}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\dfrac{x(x-3)+3(3-x)}{(x-3)^2}</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Preliminaries_TestYourselfQ3">
+    <statement>
+      <p>
+        Same instructions as the previous exercise.
+        These examples are even harder.
+        (<em>Hint</em>: Each answer is a single term,
+        there are no sums or differences of terms.)
+        <ol type="a">
+          <li>
+            <p>
+              <m>\dfrac{a^5 +a^3 - 2a^4}{(a-1)^2}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>a^x b^{3x}(ab)^{-2x}(a^2 b)^{x/2}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(x+y^{-1})^{-2}(xy+1)^2</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\dfrac{(3^x+9^x)(1-3^x)}{1-9^x})</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\dfrac{3x^2 - x}{x-1} + \dfrac{2x}{1-x}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\displaystyle{ \left(\frac{(x+y)^{x+y}(x-y)^{x-y}}{(x^2 - y^2)^x}\right)}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\displaystyle{\left( \frac{6^6}{2^2 3^3} + \frac{2^8 3^6}{6^3}\right)^{1/2}}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\displaystyle{\frac{(a+b)(b+c) + (a-b)(b-c)}{a+c} }</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Preliminaries_TestYourselfQ4">
+    <statement>
+      <p>
+        Find ALL real solutions to the following equations.
+        <ol type="a">
+          <li>
+            <p>
+              <m>x^2 = 5x</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(x - \sqrt{7})(x+\sqrt{7}) = 2</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>2^{4+x} = 4(2^{2x})</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>3^{-x} = 3(3^{2x})</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>16^5 = x^4</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\dfrac{1}{1 + 1/x} -1= -1/10</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Preliminaries_TestYourselfQ5">
+    <statement>
+      <p>
+        (<em>Challenge problems</em>) These problems come from Chinese high school math web sites (thanks to J. L. Thron)
+        <ol type="a">
+          <li>
+            <p>
+              Simplify: <m>\frac{2^{n+4} - 2(2^n)}{2(2^{n+3})}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>m = 7^9</m> and <m>n=9^7</m>,
+              express <m>63^{63}</m> in terms of <m>m</m> and <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>2^x3^y = 10</m> and <m>2^y3^x = 15</m>,
+              find <m>x</m> and <m>y</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that the following expression always has real roots:
+              <m>(x-3)(x-2) = a(a+1)</m>, where <m>a</m> is any real number.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>3x-5y+3=0</m>, find <m>\displaystyle \frac{8^{x+2}}{32^y}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Solve for <m>x</m>:
+              <m>(6x+7)^2(3x+4)(x+1) = 6</m> (multiply to obtain two quadratic terms,
+              then substitute)
+            </p>
+          </li>
+          <li>
+            <p>
+              Solve for <m>x</m>:
+              <m>9^x + 12^x=16^x</m>. (divide the equation by one of the terms)
+            </p>
+          </li>
+          <li>
+            <p>
+              Solve for <m>x</m>:
+              <m>\frac{x+1}{x+2} + \frac{x+8}{x+9} =\frac{x+2}{x+3} + \frac{x+7}{x+8}</m>. (Simplify the numerators in each fraction)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>m=2019^2 + 2020^2</m>,
+              evaluate <m>\sqrt{2m-1}</m>. (use the fact that 2020 = 2019+1)
+            </p>
+          </li>
+          <li>
+            <p>
+              Solve for <m>x</m>:
+              <m>\sqrt{x^2 + 9} + \sqrt{x^2-9} = 5 + \sqrt{7}</m>.
+              (To avoid squaring twice,
+              use difference of squares to obtain a second equation,
+              then use the two equations together to eliminate one of the square roots.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>a = 4^{1/3} + 2^{1/3} + 1</m>,
+              evaluate <m>\frac{3}{a} + \frac{3}{a^2} + \frac{1}{a^3}</m>. (Write out the expressions for <m>\frac{1 - x^3}{1-x}</m> and <m>(1+y)^3</m>,
+              and see if you can relate them to the given expressions)
+            </p>
+          </li>
+          <li>
+            <p>
+              Solve for <m>x</m>:
+              <m>x = \sqrt{x - \frac{1}{x}} + \sqrt{1 - \frac{1}{x}}</m>.
+              (To avoid squaring twice,
+              use difference of squares to obtain a second equation,
+              then use the two equations together to eliminate one of the square roots.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that <m>a+b+c=0</m> and <m>a^3 + b^3 + c^3=0</m>.
+              Show that <m>a^n + b^n + c^n = 0</m> for all odd values of <m>n</m>. (Look at two cases: (a) at least one of <m>a,b,c</m> is equal to 0; (b) exactly two of the numbers have the same sign (without loss of generality,
+              you may assume that <m>a,b>0</m> and <m>c\lt 0</m>)).
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>a^2-9a+1=0</m>,
+              find <m>\displaystyle a^2 - 7a + \frac{18}{a^2+1}</m>. (solve the first equation for <m>a^2</m> and for <m>a^2+1</m>,
+              and use substitutions.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>x_1</m> and <m>x_2</m> are both solutions to the equation <m>x^2+1 = 1/x</m>,
+              find <m>2021^{x_1 - x_2}</m>
+              (graph the functions <m>y = x^2+1</m> and <m>y = 1/x</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>x+y=3</m> and <m>xy=1</m>, evaluate <m>x^5 + y^5</m>
+              (use the first two expressions to find quadratic equations for <m>x</m> and <m>y</m>,
+              then substitute repeatedly for <m>x^2</m> and <m>y^2</m> in <m>x^5 + y^5</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>\displaystyle \frac{a+b}{c} = \frac{a+c}{b} = \frac{b+c}{a}</m>,
+              find the value of <m>\displaystyle \frac{abc}{(a+b)(b+c)(c+a)}</m> (Be careful!
+              There may be more than one answer.
+              Take two of the equations and clear the denominators.
+              Both sides will have a common factor,
+              which may or may not be zero.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>x= 2 + \sqrt{2}</m>,
+              find <m>x^4 - 4x^3+7x^2 - 20x + 16</m>.(Find a quadratic equation satisfied by <m>2 + \sqrt{2}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>4x^{-4} - 2x^{-2}=3</m> and <m>x^4 + y^2 = 3</m>,
+              find <m>4x^{-4} + y^4</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>30^x = 2010</m> and <m>67^y = 2010</m>,
+              find <m>x^{-1} + y^{-1}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>a+b=6</m> and <m>ab + (c-a)^2 + 9=0</m>,
+              find <m>a+b+c</m> (Try to find a particular solution for <m>a,b,c</m>.
+              Look at the signs of the terms.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Simplify <m>\displaystyle \frac{1234^2}{2469^2 + 2467^2 - 2}</m> (no calculator required!)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given <m>2^a = 10, 2^ b = 5, 2^c = 200</m>,
+              compute <m>a -4041b + 2020c - 6060</m>. (Exponent rules!)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given<m>\displaystyle \frac{xy}{x+y}=1, \frac{yz}{y+z} = 2, \frac{xz}{x+z} = 3</m>,
+              find <m>x</m>.
+              (Take reciprocals and break the fractions apart.
+              Then add together the equations.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>a_1, a_2,\ldots a_{1000}</m> are the first 1000 terms of a geometric series with
+              <m>a_1= 1/5</m> and <m>a_{1000} = 20</m>.
+              The product <m>a_1 \cdot a_2 \cdot \ldots \cdot a_{1000}</m> can be expressed as <m>2^x</m>.
+              Find <m>x</m>.
+              (Recall that the <m>n</m>th term of a geometric series has the form <m>a r^n</m>.
+              Group terms in the geometric series in pairs.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Without using a calculator, determine which is larger:
+              <m>9^{12}</m> or <m>15^9</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

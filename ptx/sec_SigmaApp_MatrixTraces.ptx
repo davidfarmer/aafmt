@@ -1,0 +1,168 @@
+<section xml:id="sec_SigmaApp_MatrixTraces">
+  <title>Matrix traces</title>
+  <p>
+    Another cool application of summation notation with matrices is to prove things about the <term>trace</term>
+        <idx><h>Trace</h><h>of a matrix</h></idx>
+    of a matrix.
+    The trace only applies to square matrices
+    (equal number of rows and columns)
+    and is the sum of all the entries on the diagonal<ndash/>that is,
+    the sum of all entries with the same column and row number.
+    In summation notation, the trace of an <m>n \times n</m> matrix as:
+    <me>
+      \text{ Tr }  \left( A \right)= a_{1,1} + a_{2,2} + \ldots + a_{n,n} = \sum_{i} a_{i,i}
+    </me>
+  </p>
+  <p>
+    This time we are using the index <m>i</m> for both the row position and the column position,
+    so its the position of the index that denotes row and column.
+    The formula for the product used two different letters for the indices because they were not always equal,
+    but for trace the row and column number will always be equal,
+    so we only need one letter.
+  </p>
+  <p>
+    The next exercise covers some basic properties of traces:
+  </p>
+  <exercise xml:id="exercise_SigmaNotation_trace1">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Prove that if <m>A</m> and <m>B</m> are square matrices of the same size,
+            then <m>\text{ Tr } \left( A + B \right) = \text{ Tr } \left( A \right) + \text{ Tr } \left( B \right)</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove that if <m>A</m> is a square matrix with real entries and <m>k</m> is a real number,
+            then <m>\text{ Tr } \left(k A \right) = k\text{ Tr } \left( A \right)</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    In the above exercise,
+    we have considered the trace of the sum of two matrices.
+    Now we consider the trace of the
+    <em>product</em> of two matrices.
+    To this end,
+    let <m>{A}</m> and <m>{B}</m> be a <m>n \times n</m> matrices.
+    So first we have:
+    <me>
+      \text{ Tr }  \left({A} {B}\right) = \sum_{i} [AB]_{i,i} = \sum_{i}\left( \sum_k a_{i,k}b_{k,i}\right) = \sum_{i,k}a_{i,k}b_{k,i}
+    </me>.
+  </p>
+  <p>
+    All we've done here is take the matrix product formula,
+    and set the second index of the second matrix entry equal to first index of the first matrix entry.
+    Now to make things interesting,
+    let's find the trace for the reverse order:
+    <me>
+      \text{ Tr }  \left({B} {A}\right) = \sum_{i} [BA]_{i,i} = \sum_{i} \left( \sum_{k} b_{i,k}a_{k,i} \right) = \sum_{i,k}a_{k,i}b_{i,k}
+    </me>.
+  </p>
+  <p>
+    Let's play with this last equation a bit.
+    As we mentioned before,
+    we can change the sum over <m>i,k</m> to a sum over <m>i,k</m> without changing anything.
+    Furthermore,
+    since <m>b_{i,k}</m> and <m>a_{k,i}</m> are numbers,
+    they commute under multiplication:
+    <me>
+      \text{ Tr }  \left({B} {A}\right) =\sum_{i,k} b_{i,k}a_{k,i} =  \sum_{k,i} a_{k,i}b_{i,k}
+    </me>.
+  </p>
+  <p>
+    Finally, we rename the indices by changing <m>k</m> to <m>i</m> and <m>i</m> to <m>k</m>. (Remember,
+    it's the positions of the indices that are important,
+    not the letters we call them by!) After renaming, we get:
+    <me>
+      \text{ Tr }  \left({B} {A}\right) =\sum_{i,k} a_{i,k}b_{k,i}
+    </me>,
+    which agrees with our original expression for <m>\text{ Tr }  ({A}{B})</m>.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        In the above proof that <m>\text{ Tr } ({AB}) = \text{ Tr } ({BA})</m>,
+        we assumed that both <m>A</m> and <m>B</m> were square matrices.
+        Show that the formula is still true when <m>A</m> is a
+        <m>m \times n</m> matrix and <m>B</m> is a
+        <m>n \times m</m> matrix. (Notice that <m>AB</m> and <m>BA</m> are both square matrices,
+        so that <m>\text{ Tr } \left({A} {B}\right)</m> and
+        <m>\text{ Tr } \left({B} {A}\right)</m> are both well-defined.)
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_SigmaNotation_trace3">
+    <statement>
+      <p>
+        Show that <m>\text{ Tr } ({ABC}) = \text{ Tr } ({CAB})</m>,
+        as long as the dimensions of <m>A, B, C</m> are such that the products are well-defined. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Show that
+        <me>
+          \text{ Tr }  ({ABCD}) = \text{ Tr } ({DABC})= \text{ Tr } ({CDAB}) = \text{ Tr } ({BCDA})
+        </me>,
+        as long as the matrices have dimensions so that all of these products are defined.
+        Notice that all of these arrangements of the matrices <m>A, B, C, D</m> are
+        <em>cyclic permutations</em> of each other.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_SigmaNotation_linalg">
+    <statement>
+      <p>
+        In linear algebra, given two
+        <m>n \times n</m> matrices <m>A</m> and <m>B</m> we say that <m>A</m> is <term>similar</term>
+            <idx><h>Matrices</h><h>similar</h></idx>
+        to <m>B</m> if there exists an invertible matrix <m>S</m> such that <m>B = S^{-1}AS</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Prove that if <m>A</m> is similar to <m>B</m>,
+              then <m>B</m> is similar to <m>A</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that if <m>A</m> is similar to <m>B</m>,
+              then <m>\text{ Tr } ({A}) = \text{ Tr } ({B})</m>. (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>A</m> be a <m>n \times n</m> diagonal matrix with positive entries,
+        so that the entries of <m>A</m> are given by:
+        <m>[A]_{i,j} = a_{i} \delta_{ij}</m> where <m>a_i > 0, i = 1, \ldots, n</m>.
+        Define the matrix <m>\log A</m> as follows:
+        <m>[\log A]_{i,j} = \log(a_{i}) \delta_{ij}</m>,
+        where <m>\log</m> refers to natural logarithm.
+        Show that:
+        <me>
+          \text{ Tr } (\log A) = \log (\det A)
+        </me>.
+      </p>
+      <p>
+        (Remember that the determinant of a diagonal matrix is the product of the entries on the diagonal.) This formula is actually quite general,
+        and applies to many non-diagonal matrices as well,
+        as long as <m>\log A</m> is properly defined.<fn>
+        In some cases,
+        the formula can be used to estimate the determinants of very large matrices:
+        see \url{http://arxiv.org/pdf/hep-lat/9707001}.
+        </fn>
+      </p>
+    </statement>
+  </exercise>
+</section>

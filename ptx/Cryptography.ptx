@@ -1,0 +1,33 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Cryptography">
+  <title>Introduction to Cryptography<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <p>
+      Cryptography is the study of sending and receiving secret messages.
+      The aim of cryptography is to send messages across a channel so only the intended recipient of the message can read it.
+      In addition, when a message is received,
+      the recipient usually requires some assurance that the message is authentic;
+      that is, that it has not been sent by someone who is trying to deceive the recipient.
+      Modern cryptography is heavily dependent on abstract algebra and number theory.
+    </p>
+    <p>
+      <em>Prerequisites</em>: The cryptographic systems we'll be looking at are all based on modular arithmetic.
+      To understand this chapter,
+      the reader should be familiar with the material in <xref ref="ModularArithmetic">Chapters</xref>
+      and <xref ref="Functions"></xref>.
+      <xref ref="sec_PolynomialCodes_CyclicBinaryCodes">Section</xref>
+      also uses some simple matrix multiplication.
+    </p>
+    <p>
+      Thanks to Tom Judson for material used in this chapter.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Cryptography_Overview.ptx"/>
+  <xi:include  href="sec_Cryptography_PrivateKey.ptx"/>
+  <xi:include  href="sec_Cryptography_PublicKey.ptx"/>
+  <xi:include  href="sec_Cryptography_References.ptx"/>
+  <xi:include  href="sec_Cryptography_Hints.ptx"/>
+  <xi:include  href="sec_Cryptography_StudyGuide.ptx"/>
+</chapter>

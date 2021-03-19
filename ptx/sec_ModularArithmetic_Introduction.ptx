@@ -1,0 +1,152 @@
+<section xml:id="sec_ModularArithmetic_Introduction">
+  <title>Introductory examples<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    Modular arithmetic was originally motivated by common,
+    real-life situations.
+    So we begin our introduction by describing several problems based on practical situations for you to think about.
+    We don't ask you to find the solutions just yet <mdash/> instead,
+    focus on the similarities between the different problems.
+  </p>
+  <example xml:id="example_ModularArithmetic_crockpot">
+    <statement>
+      <p>
+        Don has whipped up some stew that he wants to slow-cook in his crockpot.
+        The stew is supposed to cook for exactly 40 hours.
+        The crockpot is not automatic,
+        so Don has to turn it on and off by hand.
+        When would be a good time for Don to turn on the crockpot? (Additional information: Don is away at work from 8 a.m. to 5 p.m. every day.
+        Also, Don would like to avoid waking up in the middle of the night to turn the crockpot on or off.)
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_ModularArithmetic_odometer">
+    <statement>
+      <p>
+        Jennifer owns a vintage 1957 Thunderbird which has had two previous owners.
+        She claims that the car's first owner drove it 129,000 miles,
+        the second owner drove it 77,000 miles,
+        and she's driven 92,500 miles.
+        If her claim is true, then what should the odometer read?
+        Note that on old cars the odometer only goes up to 99,999.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_ModularArithmetic_day_of_week">
+    <statement>
+      <p>
+        April 15, 2012 was on a Friday.
+        What day of the week was December 24 of 2011? (Note 2012 is a leap year!)
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_ModularArithmetic_lunar_year">
+    <statement>
+      <p>
+        A lunar year is 354 days.
+        If Chinese New Year is determined according to the lunar year,
+        and Chinese New Year is February 14 in 2010,
+        then when is Chinese New Year in 2011?
+        In 2012?
+        In 2009?<fn>
+        Note that the Chinese calendar actually adds extra months in some years,
+        so not every Chinese year is 354 days.
+        So this example is not 100% accurate
+        </fn>
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_ModularArithmetic_watch">
+    <statement>
+      <p>
+        The hour hand on Tad's old watch is broken and does not move.
+        Currently the watch shows a time of 3:46.
+        Tad has just begun a 3-part test,
+        where each part takes 75 minutes
+        (plus a 10-minute break between parts).
+        What time will the watch read when the first part is over?
+        The second part?
+        The entire test?
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_ModularArithmetic_racetrack">
+    <statement>
+      <p>
+        A racing car starts at the 3 mile mark of a 5-mile circuit.
+        It goes another 122 miles.
+        Then, it turns around and drives 444 miles in the reverse direction.
+        Where does the car end up?
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_ModularArithmetic_racetrack2">
+    <statement>
+      <p>
+        Suppose our race car is driving around the 5-mile track again.
+        If it starts at the 3 mile mark and makes 17 consecutive runs of 24 miles each,
+        what mile marker does it end up at?
+      </p>
+    </statement>
+  </example>
+  <exercise>
+    <statement>
+      <p>
+        Try to describe what all of the preceding problems have in common.
+        Describe some differences.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Notice that in each example the set of possible answers is restricted to a finite set of integers.
+    For instance, in the odometer example
+    (<xref ref="example_ModularArithmetic_odometer">Example</xref>)
+    we know even before working the problem that the answer must be an integer between 0 and 99,999
+    (inclusive).
+    In other words,
+    there are 100,000 possible answers to the question,
+    regardless of the particular mileages involved.
+  </p>
+  <exercise xml:id="exercise_ModularArithmetic_modulus0">
+    <statement>
+      <p>
+        Give the number of possible answers for <xref ref="example_ModularArithmetic_crockpot">Examples</xref>
+        and <xref ref="example_ModularArithmetic_day_of_week"></xref>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Each example above requires arithmetic to solve,
+    but it's arithmetic with a twist.
+    For example,
+    in <xref ref="example_ModularArithmetic_racetrack">Example</xref>
+    if the car is at the 3-mile mark and travels another 3 miles,
+    then it arrives at the 1-mile marker.
+    This is a strange equation: <m>3 + 3 = 1</m>.
+    The reason of course is that the location
+    <q>cycles</q>
+    back to 0 instead of increasing to <m>5,6,7, \ldots</m> This
+    <q>arithmetic with cycles</q>
+    is actually called <term>modular arithmetic</term>.
+        <idx><h>Arithmetic</h><h>modular</h></idx>
+    The size of one cycle (which is equal to the number of possible answers described in <xref ref="exercise_ModularArithmetic_modulus0">Exercise</xref>
+    is called the <term>modulus</term>
+        <idx><h>Modulus</h></idx>.
+        <idx><h>Modulus</h></idx>
+  </p>
+  <exercise xml:id="exercise_ModularArithmetic_modulus1">
+    <statement>
+      <p>
+        Give the modulus for the seven examples at the beginning of this chapter.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    In summary, modular arithmetic refers to arithmetic done according to a modulus,
+    so that the numbers reset
+    (or cycle around)
+    every time you reach the modulus.
+  </p>
+</section>

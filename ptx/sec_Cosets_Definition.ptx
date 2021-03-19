@@ -1,0 +1,369 @@
+<section xml:id="sec_Cosets_Definition">
+  <title>Definition of cosets</title>
+  <p>
+    The concept of
+    <q>coset</q>
+    brings together two ideas that we've seen before,
+    namely <em>subgroups</em> and <em>equivalence classes</em>.
+    We'll see how cosets arise from this mix by using a familiar example.
+  </p>
+  <example xml:id="example_Cosets_ModArith">
+    <statement>
+    <p>
+      <em>(Modular addition d&#xe9;j&#xe0;
+      vu all over again)</em>
+    </p>
+    <p>
+      Back in <xref ref="ModularArithmetic">Chapter</xref>
+      we defined modular equivalence
+      (<xref ref="definition_ModularArithmetic_equivalence">Definition</xref>),
+      and in <xref ref="proposition_ModularArithmetic_equivalence_alt">Proposition</xref>
+      we gave an alternative characterization:
+    </p>
+    <p>
+      <m>a \equiv b \pmod{m}</m> iff <m>a - b = k \cdot m</m>,
+      where <m>k</m> is an integer
+      (that is, <m>k \in {\mathbb Z}</m>).
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Give 4 integers <m>a</m> that satisfy the equation:
+              <m>a \equiv 0 \pmod{3}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Give 4 integers <m>a</m> that satisfy the equation:
+              <m>a \equiv 2 \pmod{3}</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      In <xref ref="sec_EquivalenceRelations_ModularArithmetic">Section</xref>
+      in the Equivalence Relations chapter,
+      we saw that modular equivalence was indeed an
+      <em>equivalence relation</em>,
+      and gave rise to <em>equivalence classes</em>:
+    </p>
+    <p>
+      <m>[0]_3 = \{\mbox{All integers equivalent to 0 mod 3} \} = \{ \ldots -9, -6, -3, 0, 3, 6, 9 \ldots \}</m>.
+    </p>
+    <p>
+      <m>[1]_3 = \{\mbox{All integers equivalent to 1 mod 3} \} = \{ \ldots -8, -5, -2, 1, 4, 7, 10 \ldots \}</m>.
+    </p>
+    <p>
+      <m>[2]_3 = \{\mbox{All integers equivalent to 2 mod 3} \} = \{ \ldots -7, -4, -1, 2, 5, 8, 11 \ldots \}</m>.
+    </p>
+    <p>
+      Then in the Groups chapter we introduced an alternative notation for <m>[0]_3</m>,
+      namely <m>3{\mathbb Z}</m>.
+      Since every element of <m>[1]_3</m> is 1<nbsp/>+<nbsp/>an element of <m>3{\mathbb Z}</m>
+      (and similarly for <m>[2]_3</m>)
+      it makes sense to introduce the notation:
+    </p>
+    <p>
+      <m>[1]_3 = 1 + 3{\mathbb Z}</m>.
+    </p>
+    <p>
+      <m>[2]_3 = 2 + 3{\mathbb Z}</m>.
+    </p>
+    <p>
+      Notice the pattern here.
+      Recall that <m>3{\mathbb Z}</m> is a
+      <em>subgroup</em> of <m>{\mathbb Z}</m>.
+      In order to
+      <q>create</q>
+      the equivalence class <m>1 + 3{\mathbb Z}</m>,
+      we added a specific group element (namely, 1) to <em>every</em>
+      element of the subgroup <m>3{\mathbb Z}</m>.
+      The same holds true for <m>2 + 3{\mathbb Z}</m>.
+      In both cases, the notation follows the pattern:
+    </p>
+    <p>
+      (selected group element) (group operation)
+      (subgroup).
+    </p>
+    <p>
+      And, since every element of <m>[1]_3</m> can also be viewed as an element of <m>3{\mathbb Z}</m><nbsp/>+<nbsp/>1
+      (and similarly for <m>[2]_3</m>),
+      an alternative notation that makes sense is:
+    </p>
+    <p>
+      <m>[1]_3 = 3{\mathbb Z} + 1</m>
+    </p>
+    <p>
+      <m>[2]_3 = 3{\mathbb Z} + 2</m>,
+    </p>
+    <p>
+      which follows the pattern:
+    </p>
+    <p>
+      (subgroup) (group operation)
+      (selected group element).
+    </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_Cosets_equiv_class_mod5">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Write the 5 equivalence classes
+            (subsets of <m>{\mathbb Z}</m>)
+            which make up <m>{\mathbb Z}_5</m> using our new notation.
+          </p>
+        </li>
+        <li>
+          <p>
+            Write all elements of <m>{\mathbb Z}_7</m> using our new notation.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    The same pattern that we saw in the preceding example can actually be generalized to any group possessing a subgroup:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {def_coset} Let <m>G</m> be a group and <m>H</m> a subgroup of <m>G</m>.
+        The <term>left coset</term>
+            <idx><h>Coset</h><h>left</h></idx>
+        of <m>H</m> with <term> representative</term><idx><h>Coset</h><h>representative</h></idx> <m>g \in G</m> is defined as the following set:
+        <me>
+          gH = \{ gh : h \in H \}
+        </me>.
+      </p>
+      <p>
+        <term>Right cosets</term>
+            <idx><h>Coset</h><h>right</h></idx>
+        are defined similarly by
+        <me>
+          Hg = \{ hg : h \in H \}
+        </me>.
+      </p>
+      <p>
+        (Note that in the preceding equations,
+        <q><m>gh</m></q>
+        denotes <m>g \compose h</m> where
+        <m>\compose</m> is the group operation.
+        This is similar to our writing <m>xy</m> to denote
+        <m>x \cdot y</m> in conventional algebra).
+      </p>
+    </statement>
+  </definition>
+  <p>
+    <xref ref="definition_Cosets_def_coset">Definition</xref>
+    looks a little different from <xref ref="example_Cosets_ModArith">Example</xref>,
+    e.g. we have <m>gH</m> instead of <m>3 + {\mathbb Z}</m>.
+    But in fact the pattern is the same:
+    (group element)
+    (group operation)
+    (subgroup).
+    If the group operation is +, we will typically write left cosets as <m>g + H</m> and right cosets as <m>H + g</m>.
+    For all other group operations,
+    we'll use the more compact notation <m>gH</m> and <m>Hg</m>.
+  </p>
+  <p>
+    We should note also that <xref ref="definition_Cosets_def_coset">Definition</xref>
+    enables us to express the same coset in multiple ways.
+    For example,
+    the coset <m>1 + 3\mathbb{Z}</m> described above could also be written as <m>4 + 3\mathbb{Z}</m> or
+    <m>7 + 3\mathbb{Z}</m> or <m>-8 + 3\mathbb{Z}</m>.
+    These all refer to the same subset of <m>\mathbb{Z}</m>.
+  </p>
+  <p>
+    Now <xref ref="definition_Cosets_def_coset">Definition</xref>
+    distinguishes between <em>left</em>
+    and <em>right</em> cosets.
+    In our earlier discussion,the left coset <m>1 + 3{\mathbb Z}</m> and the right coset
+    <m>3{\mathbb Z} + 1</m> were in fact the same set,
+    as were <m>2 + 3{\mathbb Z}</m> and the right coset <m>3{\mathbb Z} + 2</m>.
+    But left and right cosets are not always equal,
+    as the following example shows.
+  </p>
+  <example xml:id="example_Cosets_S3_Cosets">
+    <statement>
+      <p>
+        Let <m>H</m> be the subgroup of <m>S_3</m> defined by the permutations
+        <m>\{(1), (123), (132) \}</m>. (Here we are using <m>(1)</m> to denote the identity permutation <m>{\var id}</m>.) to find cosets,
+        we should take each element of <m>S_3</m> and multiply it by the three permutations in <m>H</m>.
+        Recall the elements of <m>S_3</m> are <m>(1), (123), (132), (12), (13)</m>,
+        and <m>(23)</m>.
+        The left cosets of <m>H</m> are thus:
+        <md>
+          <mrow>(1)H = (1 2 3)H =  (132)H = \{(1), (1 23), (132) \},</mrow>
+          <mrow>(1 2)H = (1 3)H = (2 3)H =  \{ (1 2), (1 3), (2 3)  \}</mrow>
+        </md>.
+      </p>
+      <p>
+        There are 2 left cosets,
+        and each coset can be expressed in 3 different ways.
+      </p>
+      <p>
+        On the other hand,
+        the right cosets of <m>H</m> may be computed similarly as:
+        <md>
+          <mrow>H(1) = H(1 2 3) =  H(132) = \{(1), (1 23), (132) \},</mrow>
+          <mrow>H(1 2) = H(1 3) = H(2 3) =  \{ (1 2), (1 3), (2 3)  \}</mrow>
+        </md>.
+      </p>
+      <p>
+        So in this case once again the left cosets and right cosets are the same.
+      </p>
+      <p>
+        On the other hand,
+        let <m>K</m> be the subgroup of <m>S_3</m> defined by the permutations <m>\{(1), (1 2)\}</m>.
+        Then the left cosets of <m>K</m> are
+        <md>
+          <mrow>(1)K = (1 2)K = \{(1), (1 2)\}</mrow>
+          <mrow>(1 3)K = (1 2 3)K = \{(1 3), (1 2 3)\}</mrow>
+          <mrow>(2 3)K = (1 3 2)K = \{(2 3), (1 3 2)\};</mrow>
+        </md>
+        and the right cosets of <m>K</m> are
+        <md>
+          <mrow>K(1) = K(1 2) = \{(1), (1 2)\}</mrow>
+          <mrow>K(1 3) = K(1 3 2) = \{(1 3), (1 3 2)\}</mrow>
+          <mrow>K(2 3) = K(1 2 3) = \{(2 3), (1 2 3)\}</mrow>
+        </md>.
+      </p>
+      <p>
+        The left and right cosets are <em>not</em> the same.
+      </p>
+      <p>
+        Take note of something very striking about the previous two examples.
+        First look at the case of <m>H \subset S_3</m>.
+        In this case we ended up with 2 different left cosets,
+        each of which could be expressed as <m>gH</m> in 3 different ways.
+        For example, we saw that <m>(1 2)H = (1 3)H = (2 3)H</m>.
+        In fact, these three different <m>g</m>'s are exactly the elements of the coset!
+        The very same thing applies to all other cases.
+        For example, we found <m>K(2 3) = K(1 2 3)</m>,
+        and that both were equal to <m>\{(2 3), (1 2 3)\}</m>.
+        This turns out to be a general property of cosets,
+        which we will prove in the next section.
+      </p>
+    </statement>
+  </example>
+  <p>
+    Unequal left and right cosets are actually very common.
+    So let's get some practice determining both left and right cosets.
+  </p>
+  <exercise xml:id="exercise_Cosets_Z6_cosets">
+    <statement>
+      <p>
+        Let <m>H</m> be the subgroup of
+        <m>{\mathbb Z}_6 = \{0,1,2,3,4,5\}</m> consisting of the elements 0 and 3. (We are using our simplified notation here:
+        <sq>0</sq> represents <m>\overline{0}</m>, etc.) The left cosets are
+        <md>
+          <mrow>0 + H = 3 + H = \{ 0, 3 \}</mrow>
+          <mrow>1 + H = 4 + H = \{ 1, 4 \}</mrow>
+          <mrow>2 + H = 5 + H = \{ 2, 5 \}</mrow>
+        </md>.
+      </p>
+      <p>
+        What are the right cosets?
+        Are the left and right cosets equal?
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Cosets_left_right_cosets">
+    <statement>
+      <p>
+        List the left and right cosets of the subgroups in each of the following.
+        Tell whether the left and right cosets are equal.
+      </p>
+      <p>
+        (Recall the following notations:
+        <m>\langle a \rangle</m> is the cyclic group generated by the element <m>a</m> in a given group <m>G</m>;
+        <m>A_n</m> (the alternating group) is the set of even permutations,
+        on <m>n</m> objects;
+        <m>D_4</m> is the group of symmetries of a square;
+        and <m>{\mathbb T}</m> is the group of complex numbers with modulus 1, under the operation of multiplication.)
+        <ol type="a">
+          <li>
+            <p>
+              <m>\langle 8 \rangle</m> in <m>{\mathbb Z}_{24}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\langle 3 \rangle</m> in <m>U(8)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>4{\mathbb Z}</m> in <m>{\mathbb Z}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>H = \{ (1), (123), (132) \}</m> in <m>S_4</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>H = \{1,i,-1,-i\}</m> in <m>Q_8</m> (See <xref ref="example_Groups_quaternions">Example</xref>)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A_4</m> in <m>S_4</m> (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>A_n</m> in <m>S_n</m> (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>D_4</m> in <m>S_4</m> (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>{\mathbb T}</m> in <m>{\mathbb C}^\ast</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <remark>
+    <p>
+      From now on, if the left and right cosets coincide,
+      or if it is clear from the context to which type of coset that we are referring,
+      we will simply use the word
+      <q>coset</q>
+      without specifying left or right.
+    </p>
+  </remark>
+  <p>
+    From what we've seen so far,
+    you might have noticed that it seems that left and right cosets are always equal for
+    <em>abelian</em> groups.
+    This makes sense,
+    because abelian means you get the same result whether you compose on the left or on the right.
+    In fact, it is true in general:
+  </p>
+  <exercise xml:id="exercise_Cosets_abelian_cosets">
+    <statement>
+      <p>
+        Show that if <m>G</m> is an abelian group and <m>H</m> is a subgroup of <m>G</m>,
+        then any left coset <m>gH</m> is equal to the right coset <m>Hg</m>. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    But abelian groups are not the only groups in which left cosets are equal to right cosets<ndash/>see for example the first case in <xref ref="example_Cosets_S3_Cosets">Example</xref>.
+    So we still haven't answered the question of what is the most general situation in which left cosets and right cosets are equal.
+    We'll take this issue up again in <xref ref="subsec_Cosets_NormalSubAndFactorGroup_NormalSubgroups">Section</xref>.
+  </p>
+</section>

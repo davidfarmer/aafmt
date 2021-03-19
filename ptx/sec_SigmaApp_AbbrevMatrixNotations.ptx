@@ -1,0 +1,113 @@
+<section xml:id="sec_SigmaApp_AbbrevMatrixNotations">
+  <title>Abbreviated matrix notations</title>
+  <p>
+    In the following discussion, we will be seeing lots of sums involving matrices.
+    This being the case,
+    it's worth our while to try to simplify our notation.
+    In our expression for <m>C=AB</m>, we had:
+    <me>
+      {c}_{i,j}= \sum_{k=1}^n a_{i,k} b_{k,j}
+    </me>
+  </p>
+  <p>
+    Now, notice that the index <m>k</m> runs over all columns of <m>A</m> and all rows of <m>B</m>
+    (recall that matrix multiplication is only defined if the number of columns of <m>A</m> is equal to the number of rows of <m>B</m>).
+    This being the case,
+    we don't really need to mention that <m>k</m> runs from 1 to <m>n</m><ndash/>we should simply understand that the index <m>k</m> runs over all possible values.
+    We can therefore convey the same information by simply writing:
+    <me>
+      {c}_{i,j}= \sum_{k} a_{i,k} b_{k,j}
+    </me>.
+  </p>
+  <p>
+    This makes more complicated matrix multiplications much simpler.
+    For example,
+    if <m>D = (AB)C</m> where <m>A</m> is <m>n \times p</m>,
+    <m>B</m> is <m>p \times q</m>,
+    and <m>C</m> is <m>q \times r</m> instead of
+    <me>
+      {d}_{i,m}= \sum_{j=1}^q \left( \sum_{k=1}^p a_{i,k} b_{k,j} \right) c_{j,m}
+    </me>,
+    we may write
+    <me>
+      {d}_{i,m}= \sum_{j} \left( \sum_{k} a_{i,k} b_{k,j} \right) c_{j,m}
+    </me>,
+    which further simplifies to
+    <me>
+      {d}_{i,m}= \sum_{j,k}  a_{i,k} b_{k,j} c_{j,m}
+    </me>.
+  </p>
+  <p>
+    We could write either <m>\sum_{j,k}</m> or <m>\sum_{k,j}</m>:
+    all possible values of <m>k</m> and <m>j</m> are summed over,
+    so it doesn't matter which order we mention the indices.
+  </p>
+  <p>
+    There is an even more abbreviated notation that is commonly used in physics,
+    called <term>Einstein notation</term> (yes,
+    it's that Einstein!) Notice that in our expression for <m>{c}_{i,j}</m>,
+    the subscript <m>k</m> is <em>repeated</em>:
+    that is, it appears as a subscript on <m>a_{i,k}</m> and on <m>b_{k,j}</m>.
+    Similarly, in our expression for
+    <m>{d}_{i,m}</m> the summed subscripts (<m>j</m> and <m>k</m>) are also repeated:
+    both appear as subscripts in two terms.
+    The Einstein rule may be summarized as:
+    <me>
+      \text{ Repeated indices are assumed to be summed. }
+    </me>
+  </p>
+  <p>
+    So for example, the expression
+    <me>
+      {d}_{i,m}= \sum_{j} \left( \sum_{k} a_{i,k} b_{k,j} \right) c_{j,m}
+    </me>
+    in Einstein notation simplifies to:
+    <me>
+      {d}_{i,m}=  a_{i,k} b_{k,j} c_{j,m}
+    </me>.
+  </p>
+  <exercise xml:id="exercise_SigmaNotation_abbreviated1">
+    <statement>
+      <p>
+        Write the following expressions in both abbreviated notations.
+        Note that all indices are summed over the full range of possible values.
+        <ol type="a">
+          <li>
+            <p>
+              <m>\sum_{i=1}^m \left( \sum_{j=1}^n \left( \sum_{k=1}^p a_{i,j} b_{j,i} \right) c_{k,k}\right)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\sum_{\ell=1}^L \left( \sum_{m=1}^M \left( \sum_{n=1}^N a_{\ell,m} b_{n,\ell} \right) c_{m,n} \right)</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_SigmaNotation_unabbreviated1">
+    <statement>
+      <p>
+        Suppose <m>A,B,C,D</m> are <m>n \times n</m> matrices.
+        Write the complete (unabbreviated) expression corresponding to the following sums in Einstein notation:
+        <ol type="a">
+          <li>
+            <p>
+              <m>a_{i,j}a_{k,\ell}b_{p,k}b_{i,\ell}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>d_{i,j}a_{k,\ell}b_{j,k}b_{i,\ell}</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    In the following sections we will use the first type of abbreviated notation
+    (not Einstein notation).
+  </p>
+</section>

@@ -1,0 +1,187 @@
+<section xml:id="sec_ExploringPolynomials_DefiningVectorSpace">
+  <title>Definition of  vector space</title>
+  <p>
+    The most basic idea of a
+    <q>vector</q>
+    is a quantity that has magnitude and direction,
+    and which can be represented by an arrow.
+    This simple representation was good enough for basic math and physics classes.
+    However, in upper-level math
+    (and physics)
+    there's a lot more to vectors than this.
+    Vectors are defined as objects in a <em>vector space</em>,
+    which can have <m>1,2,3, 4</m>,
+    or millions of dimensions.
+    Besides this, vectors in a vector space must have two operations
+    (called <em>addition</em> and <em>scalar multiplication</em>)
+    which must satisfy certain requirements.
+  </p>
+  <p>
+    Here is the formal definition of a vector space:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        A <term>vector space over the real numbers</term><idx><h>vector space</h><h>over
+        <m>\mathbb{R}</m></h></idx> consists of a set <m>V</m> along with two operations '+' and ' <m>\cdot</m> ', subject to the conditions that for all vectors <m>\vec {v},\vec{w},\vec{u} \in V</m> and all scalars
+        <m>r,
+        s</m> <m>\in \mathbb{R}</m>:
+        <ol type="1">
+          <li>
+            <p>
+              The set <m>V</m> is closed under vector addition:
+              <m>\vec{v} + \vec{w} \in V</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Vector addition is commutative:
+              <m>\vec{v} + \vec{w} = \vec{w} + \vec{v}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Vector addition is associative: (<m>\vec{v} + \vec{w}) + \vec{u} = \vec{v} + (\vec{w} + \vec{u}</m>)
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists a <term>zero vector</term>
+                <idx><h>zero</h><h>vector</h></idx>
+              <m>\vec{0} \in V</m> such that
+              <m>\vec{v} + \vec{0} = \vec{v}</m> for all <m>\vec{v} \in V</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Each <m>\vec{v} \in V</m> has an additive inverse
+              <m>\vec{w} \in V</m> such that <m>\vec{w} + \vec{v} = \vec{0}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              The set <m>V</m> is closed under scalar multiplication:
+              <m>r \vec{v} \in V</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Addition of scalars distributes over scalar multiplication:
+              <m>(r+ s) \cdot \vec{v} = r \cdot \vec{v} + s \cdot \vec{v}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Scalar multiplication distributes over vector addition:
+              <m>r \cdot( \vec{v} + \vec{w}) = r \cdot \vec{v} + r \cdot \vec{w}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Ordinary multiplication of scalars associates with scalar multiplication:
+              <m>(rs) \cdot \vec{v} = r \cdot (s \cdot \vec{v})</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Multiplication by the scalar 1 is an identity operation:
+              <m>1 \cdot \vec{v} = \vec{v}</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Let us recall how these definitions apply to a familiar example.
+  </p>
+  <example>
+    <statement>
+      <p>
+        The set <m>\mathbb{R}^3</m> is a vector space if the operations '<m>+</m>' and '<m>\cdot</m>' have their usual meaning of vector addition and scalar multiplication,
+        respectively:
+        <me>
+          \left(\begin{array}{c}x_1\\x_2\\x_3 \end{array} \right)+ \left(\begin{array}{c}y_1\\y_2\\y_3 \end{array} \right) = \left(\begin{array}{c}x_1+y_1\\x_2+y_2\\x_3+y_3 \end{array} \right) \text{ and }  r\cdot \left(\begin{array}{c}x_1\\x_2\\x_3 \end{array} \right) = \left(\begin{array}{c}rx_1\\rx_2\\rx_3 \end{array} \right)
+        </me>.
+      </p>
+      <p>
+        Let's check the 10 conditions.
+        We'll take
+        <me>
+          \vec{v} := \left(\begin{array}{c}v_1\\v_2\\v_3 \end{array} \right); \vec{w} := \left(\begin{array}{c}w_1\\w_2\\w_3 \end{array} \right); \vec{u} = \left(\begin{array}{c}u_1\\u_2\\u_3 \end{array} \right)
+        </me>
+        as arbitrary vectors in <m>\mathbb{R}^3</m>
+        (<m>u_j, v_j</m> and <m>w_j</m> are real numbers for <m>j=1,2,3</m>).
+      </p>
+      <p>
+        For (1) to show that vector addition is closed we have
+        <me>
+          \left(\begin{array}{c}v_1\\v_2\\v_3 \end{array} \right) + \left(\begin{array}{c}w_1\\w_2\\w_3 \end{array} \right) = \left(\begin{array}{c}v_1+w_1\\v_2+w_2\\v_3+w_3 \end{array} \right) \in\mathbb{R}^3
+        </me>,
+      </p>
+      <p>
+        So addition is closed.
+      </p>
+      <p>
+        For (2),we show addition of vectors commutes:
+        <me>
+          \left(\begin{array}{c}v_1\\v_2\\v_3 \end{array} \right) + \left(\begin{array}{c}w_1\\w_2\\w_3 \end{array} \right) = \left(\begin{array}{c}v_1+w_1\\v_2+w_2\\v_3+w_3 \end{array} \right) =  \left(\begin{array}{c}w_1+v_1\\w_2+v_2\\w_3+v_3 \end{array} \right) = \left(\begin{array}{c}w_1\\w_2\\w_3 \end{array} \right) +\left(\begin{array}{c}v_1\\v_2\\v_3 \end{array} \right)
+        </me>.
+      </p>
+      <p>
+        For (3), we show vector addition is associative:
+        <md>
+          <mrow>\left( \left(\begin{array}{c}v_1</mrow>
+          <mrow>v_2</mrow>
+          <mrow>v_3\end{array}\right) + \left(\begin{array}{c}w_1</mrow>
+          <mrow>w_2</mrow>
+          <mrow>w_3\end{array}\right) \right) + \left(\begin{array}{c}u_1</mrow>
+          <mrow>u_2</mrow>
+          <mrow>u_3\end{array}\right) \amp = \left(\begin{array}{c}(v_1+w_1)+u_1</mrow>
+          <mrow>(v_2+w_2)+u_2</mrow>
+          <mrow>(v_3+w_3)+u_3\end{array}\right)</mrow>
+          <mrow>\amp = \left(\begin{array}{c}v_1+(w_1+u_1)</mrow>
+          <mrow>v_2+(w_2+u_2)</mrow>
+          <mrow>v_3+(w_3+u_3)\end{array}\right)</mrow>
+          <mrow>\amp  =  \left(\begin{array}{c}v_1</mrow>
+          <mrow>v_2</mrow>
+          <mrow>v_3\end{array}\right) + \left( \left(\begin{array}{c}w_1</mrow>
+          <mrow>w_2</mrow>
+          <mrow>w_3\end{array}\right)   + \left(\begin{array}{c}u_1</mrow>
+          <mrow>u_2</mrow>
+          <mrow>u_3\end{array}\right) \right)</mrow>
+        </md>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    Conditions 4,5,6,7 are reserved for exercises.
+  </p>
+  <p>
+    To show that scalar multiplication distributes from the left over vector addition (property 8), we may proceed as follows:
+    <md>
+      <mrow>r \cdot \left(\left(\begin{array}{c}v_1</mrow>
+      <mrow>v_2</mrow>
+      <mrow>v_3\end{array}\right) ~+~\left(\begin{array}{c}w_1</mrow>
+      <mrow>w_2</mrow>
+      <mrow>w_3\end{array}\right) \right) \amp = \left(\begin{array}{c}r(v_1+w_1)</mrow>
+      <mrow>r(v_2+w_2)</mrow>
+      <mrow>r(v_3+w_3)\end{array}\right)</mrow>
+      <mrow>\amp = \left(\begin{array}{c}rv_1+rw_1</mrow>
+      <mrow>rv_2+rw_2</mrow>
+      <mrow>rv_3+rw_3\end{array}\right)</mrow>
+      <mrow>\amp  = r \cdot\left(\begin{array}{c}v_1</mrow>
+      <mrow>v_2</mrow>
+      <mrow>v_3\end{array}\right) + r \cdot\left(\begin{array}{c}w_1</mrow>
+      <mrow>w_2</mrow>
+      <mrow>w_3\end{array}\right)</mrow>
+    </md>
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Prove conditions 4,5,6,7,9,10 for column vectors in <m>\RR^3</m>.
+      </p>
+    </statement>
+  </exercise>
+</section>

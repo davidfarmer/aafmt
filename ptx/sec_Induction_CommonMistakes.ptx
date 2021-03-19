@@ -1,0 +1,117 @@
+<section xml:id="sec_Induction_CommonMistakes">
+  <title>Common mistakes</title>
+  <p>
+    The following examples illustrate some common mistakes in setting up base case(s) and the induction step.
+  </p>
+  <ul>
+    <li class="custom-list-style-type" label="">
+      <p>
+        <em>Example 1.</em>
+      </p>
+      <ul>
+        <li>
+          <p>
+            <em>Base step:</em> <m>n=3</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Induction step:</em> Let
+            <m>k\in \NN</m> with <m>k\ge 3</m> be given and assume <m>P(n)</m> is true for <m>n=k</m> and <m>n=k-1</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Comment:</em> <em>BAD:</em> When <m>k=3</m>
+            (the first case of the induction step),
+            the induction step requires the cases <m>3</m> and <m>2</m>,
+            but only <m>2</m> is covered in the base step.
+            <em>FIX:</em> Add the case <m>n=2</m> to the base step.
+          </p>
+        </li>
+      </ul>
+    </li>
+    <li class="custom-list-style-type" label="">
+      <p>
+        <em>Example 2.</em>
+        <ul>
+          <li>
+            <p>
+              <em>Base step:</em> <m>n=1</m> and <m>n=2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Induction step:</em> Let
+              <m>k\in \NN</m> with <m>k>2</m> be given and assume <m>P(n)</m> is true for <m>n=k</m> and <m>n=k-1</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Comment:</em> <em>BAD.</em>
+              Gap between base case and the first case of the induction step: The first case <m>k=3</m> of the induction step requires the cases <m>3</m> and <m>2</m>,
+              but the base step only gives the cases <m>1</m> and <m>2</m>.
+              <em>FIX:</em> Start induction step at <m>k=2</m> rather than <m>k=3</m>:
+              <q>Let <m>k\in\NN</m> with <m>k\ge 2</m> be given <ellipsis/></q>
+            </p>
+          </li>
+        </ul>
+      </p>
+    </li>
+    <li class="custom-list-style-type" label="">
+      <p>
+        <em>Example 3.</em>
+        <ul>
+          <li>
+            <p>
+              <em>Base step:</em> <m>n=1</m> and <m>n=2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Induction step:</em> Assume <m>P(n)</m> is true for <m>n=k</m> and <m>n=k-1</m>.
+              Then ...
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Comment:</em> <em>BAD.</em>
+              The variable <m>k</m> in the induction step is not quantified.
+              <em>FIX:</em> Add
+              <q>Let <m>k\in\NN</m> with <m>k\ge2</m> be given.</q>
+            </p>
+          </li>
+        </ul>
+      </p>
+    </li>
+    <li class="custom-list-style-type" label="">
+      <p>
+        <em>Example 4.</em>
+        <ul>
+          <li>
+            <p>
+              <em>Base step:</em> <m>n=1</m> and <m>n=2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Induction step:</em> Let
+              <m>k\in \NN</m> be given and assume <m>P(n)</m> is true for <m>n=k</m> and <m>n=k-1</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Comment:</em> <em>BAD.</em>
+              Here the first case induction step is <m>k=1</m>,
+              with the induction hypothesis being the cases <m>n=k</m> and <m>n=k-1</m>.
+              But when <m>k=1</m>, the second of these cases,
+              <m>n=k-1=0</m>, is out of range.
+              <em>FIX:</em> Add the restriction <m>k\ge2</m> to the induction step:
+              <q>Let <m>k\in\NN</m> with <m>k\ge2</m> be given.</q>
+            </p>
+          </li>
+        </ul>
+      </p>
+    </li>
+  </ul>
+</section>

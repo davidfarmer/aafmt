@@ -1,0 +1,15 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="chap_Introduction">
+  <title>Forward</title>
+  <introduction>
+    <blockquote>
+      All truths are easy to understand once they are discovered; the point is to discover them.
+      <em>(Source:  Galileo Galilei,
+      <q>Dialogue on the Two Chief World Systems</q>
+      )</em>
+    </blockquote>
+  </introduction>
+  <xi:include  href="sec_Introduction_ToTheStudent.ptx"/>
+  <xi:include  href="sec_Introduction_ToTheInstructor.ptx"/>
+  <xi:include  href="sec_Introduction_AdditionalResources.ptx"/>
+  <xi:include  href="sec_Introduction_OrganizationPlanOfTheBook.ptx"/>
+</chapter>

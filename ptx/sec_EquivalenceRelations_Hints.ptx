@@ -1,0 +1,55 @@
+<section xml:id="sec_EquivalenceRelations_Hints">
+  <title>Hints for
+  <q>Equivalence Relations and Equivalence Classes</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_7">Exercise</xref>(a): There are two.<nbsp/><nbsp/><nbsp/><nbsp/>(b): There are four.<nbsp/><nbsp/><nbsp/><nbsp/>(c): There are four.<nbsp/><nbsp/><nbsp/><nbsp/>(d): There are sixteen.<nbsp/><nbsp/><nbsp/><nbsp/>(e): The answer is
+    <em>bigger</em> than 500!
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_RelGraphR2">Exercise</xref>(a.ii): The graph consists of shaded areas,
+    not points or lines.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_RelationDef">Exercise</xref>(c): There are 9.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_17">Exercise</xref>(a):
+    <m>\leq</m> is <em>not</em> symmetric <mdash/> you may show this by giving a counterexample.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_17">Exercise</xref>(c): The
+    <q>Is it transitive?</q>
+    question amounts to answering the following: Given
+    <m>z_1 \sim z_2</m> and <m>z_2 \sim z_3</m>.
+    Is it always true that <m>z_1 \sim z_3</m>?
+    If yes, prove it; and if no, give a counterexample.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_trickyTransitive">Exercise</xref>(a): There are actually three counterexamples,
+    you only need to find one.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_trickyTransitive">Exercise</xref>(b): Give a specific example where <m>a \sim b</m> and
+    <m>b \sim c</m> but <m>a \not\sim c</m>.
+    In other words,
+    <m>(a,b)</m> and <m>(b,c)</m> are elements of <m>R_{\sim}</m>,
+    but <m>(a,c)</m> is not in <m>R_{\sim}</m>.
+    It is not necessary for <m>a,b</m>,
+    and <m>c</m> to be distinct.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_trickyTransitive">Exercise</xref>(c): Explain why it is impossible to find a counterexample.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_EquivRelShowEx">Exercise</xref>(b): You may assume
+    (without proof)
+    that the negative of any integer is an integer,
+    and that the sum of any two integers is an integer.
+    For transitivity, notice that <m>x - z = (x - y) + (y - z)</m>.
+  </p>
+  <p>
+    <xref ref="exercise_EquivalenceRelations_EquivRelShowEx">Exercise</xref>(c): This is similar to the proof in <xref ref="example_EquivalenceRelations_NxNEquivRelEg">Example</xref>,
+    but with multiplication in place of addition.
+  </p>
+</section>

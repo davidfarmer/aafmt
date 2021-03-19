@@ -1,0 +1,233 @@
+<section xml:id="sec_SigmaApp_MatrixMultiplication">
+  <title>Matrix multiplication</title>
+  <p>
+    It should come as no surprise that summation notation commonly shows up when working with matrices.
+    In the following discussion,
+    we will follow the common practice of denoting a matrix with a capital letter in italics,
+    and the entries of the matrix with the same letter in lowercase.
+    Thus for example,
+    <m>a_{2,4}</m> denotes the entry of matrix <m>A</m> in row 2, column 4.
+  </p>
+  <p>
+    Consider the example of multiplying the
+    <m>3 \times 3</m> matrix <m>A</m> and the <m>3 \times 2</m> matrix <m>B</m>.
+    <me>
+      {A}{B} = \left( \begin{array}{ccc} a_{1,1} \amp  a_{1,2}  \amp  a_{1,3}  \\ a_{2,1} \amp  a_{2,2} \amp  a_{2,3} \\ a_{3,1} \amp  a_{3,2} \amp  a_{3,3} \end{array}  \right) \left( \begin{array}{cc} b_{1,1} \amp  b_{1,2}    \\ b_{2,1} \amp  b_{2,2}  \\ b_{3,1} \amp  b_{3,2} \end{array}  \right)
+    </me>
+    <me>
+      = \left( \begin{array}{cc} a_{1,1} b_{1,1} + a_{1,2} b_{2,1} + a_{1,3} b_{3,1} \amp  a_{1,1} b_{1,2} + a_{1,2} b_{2,2} + a_{1,3} b_{3,2}  \\ a_{2,1} b_{1,1} + a_{2,2} b_{2,1} + a_{2,3} b_{3,1} \amp  a_{2,1} b_{1,2} + a_{2,2} b_{2,2} + a_{2,3} b_{3,2}  \\ a_{3,1} b_{1,1} + a_{3,2} b_{2,1} + a_{3,3} b_{3,1} \amp  a_{3,1} b_{1,2} + a_{3,2} b_{2,2} + a_{3,3} b_{3,2} \end{array}  \right)
+    </me>
+  </p>
+  <p>
+    Wouldn't it be nice if we could shorten that mess?
+    Fortunately we can!
+    Let the matrix <m>{C}</m> be the product <m>{A} {B}</m>,
+    where <m>{A}</m> is an <m>m ~\times ~n</m> matrix and <m>{B}</m> is an
+    <m>n ~\times ~p</m> matrix , which implies that the dimensions of <m>{C}</m> will be <m>m ~ \times ~ p</m>.<fn>
+    Remember the requirement for multiplying any two matrices is that the number of columns of the first must match the number of rows of the second.
+    </fn> If the row number is given by the first index
+    (in this case <m>i</m>),
+    and the column number is given by the second index
+    (in this case <m>j</m>),
+    we can write the entries of <m>{C}</m> as:
+    <me>
+      {c}_{i,j}= \sum_{k=1}^n a_{i,k} b_{k,j}
+    </me>
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        In the above formula,
+        both <m>i</m> and <m>j</m> are restricted to a particular range of values.
+        What are the possible values of <m>i</m> and <m>j</m>?
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Let's show how this formula works in a specific case.
+    Suppose <m>{A}</m> is a <m>3 \times 3</m> matrix and <m>{B}</m> is a
+    <m>3 \times 2</m> matrix as in our previous example,
+    then the result of the product <m>{A} {B}</m> is a
+    <m>3 \times 2</m> matrix that we can call <m>{C}</m>.
+    Now suppose we want to find the entry on the third row in the second column of <m>{C}</m>,
+    then we would compute:
+    <md>
+      <mrow>{c}_{3,2} =\amp  \sum_{k=1}^3 a_{3,k} b_{k,2}</mrow>
+      <mrow>=\amp  a_{3,1} b_{1,2} + a_{3,2} b_{2,2} + a_{3,3} b_{3,2}</mrow>
+    </md>.
+  </p>
+  <p>
+    Sure enough,
+    when we look at the long version we wrote earlier for the product <m>{AB}</m> our result matches the entry on the second row,
+    third column.
+  </p>
+  <p>
+    The above formula makes it possible to calculate individual matrix elements,
+    without having to compute the entire matrix.
+  </p>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let the entries of <m>A</m> be given by
+            <m>a_{i,j} = \sqrt{i+j}</m> for <m>1 \le i,j \le 100</m>.
+            Let <m>C = A\cdot A</m>
+            (we can also write <m>C=A^2</m>).
+            Compute <m>c_{10,10}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} = (i+j)^2</m> and
+            <m>b_{i,j} = \frac{1}{i+j}</m> for <m>1 \le i,j \le 27</m>.
+            Let <m>C = A\cdot B</m> Compute <m>c_{8,8}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            For the matrices <m>A</m> and <m>B</m> in part (b),
+            give a general formula for <m>c_{k,k}, 1 \le k \le 27</m> where <m>C=AB</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =2^{i+j}</m> and
+            <m>b_{i,j} =2^{-(i+j)}</m> for <m>1 \le i,j \le 50</m>.
+            Let <m>C = AB</m>.
+            Compute <m>c_{7,11}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =3^{i+j}</m> and
+            <m>b_{i,j} =4^{-(i+j)}</m> for <m>1 \le i,j \le 22</m>.
+            Let <m>C = AB</m>.
+            Compute <m>c_{5,4}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =r^{i+j}</m> and
+            <m>b_{i,j} =s^{-(i+j)}</m> for <m>1 \le i,j \le N</m>,
+            where <m>r</m> and <m>s</m> are arbitrary real numbers.
+            Let <m>C = AB</m>.
+            Give a general formula for <m>c_{i,j}</m>, <m>1\le i,j \le N</m>.
+            (Note the same formula works if <m>r</m> and <m>s</m> are taken as complex numbers.)
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =2^{ij}</m> and
+            <m>b_{i,j} =2^{-ij}</m> for <m>1 \le i,j \le 20</m>.
+            Let <m>C = AB</m>.
+            Compute <m>c_{11,11}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            For <m>A,B,C</m> as in part (a), compute <m>c_{9,6}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =2^{ij}</m> and
+            <m>b_{i,j} =2^{-ij}</m> for <m>1 \le i,j \le N</m>.
+            Let <m>C = AB</m>.
+            Give a general formula for <m>c_{i,j}</m> that is valid for any <m>(i,j)</m> with <m>1 \le i,j \le N</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =w^{ij}</m> and
+            <m>b_{i,j} =w^{-ij}</m> for <m>1 \le i,j \le N</m>,
+            where <m>w</m> is a fixed complex number.
+            Let <m>C = AB</m> Give a general formula for <m>c_{i,j}</m> that is valid for any <m>(i,j)</m> with <m>1 \le i,j \le N</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>z= \cis(\pi/4)</m>,
+            and let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =z^{ij}</m> and
+            <m>b_{i,j} =z^{-ij}</m> for <m>1 \le i,j \le 8</m>.
+            Let <m>C = AB</m> Compute <m>c_{4,4}</m> and <m>c_{3,5}</m> .
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>z= \cis(2\pi/N)</m>,
+            and let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =z^{ij}</m> and
+            <m>b_{i,j} =z^{-ij}</m> for <m>1 \le i,j \le N</m>.
+            Let <m>C = AB</m> Give a general formula for <m>c_{k,k}</m> which is valid for all <m>k</m> with <m>1 \le k \le N</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>z= \cis(2\pi/N)</m>,
+            and let the entries of <m>A</m> and <m>B</m> be given by <m>a_{i,j} =z^{ij}</m> and
+            <m>b_{i,j} =z^{-ij}</m> for <m>1 \le i,j \le N</m>.
+            Let <m>C = AB</m> Give a general formula for
+            <m>c_{k+1,k}</m> which is valid for all <m>k</m> with <m>1 \le k \le N-1</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_SigmaNotation_sigmaAssoc">
+    <statement>
+      <p>
+        Given three matrices <m>A, B, C</m> with sizes <m>m \times n, n \times p, p \times q</m> respectively.
+        <ol type="a">
+          <li>
+            <p>
+              Let <m>D = BC</m>.
+              Write a formula for the entries <m>d_{i,j}</m> of <m>D</m> in terms of the entries of <m>B</m> and <m>C</m>
+              (<m>b_{i,k}</m> and <m>c_{k,j}</m>, respectively).
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>G = AD</m>.
+              Write a formula for the entries
+              <m>g_{\ell,j}</m> of <m>G</m> in terms of the entries of <m>A</m>,
+              <m>B</m> and <m>C</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>H</m> = <m>(AB)</m>, and let <m>M = HC</m>.
+              Write a formula for the entries
+              <m>m_{\ell,j}</m> of <m>M</m> in terms of the entries of <m>A</m>,
+              <m>B</m> and <m>C</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using parts (b) and (c),
+              show that matrix multiplication is
+              <em>associative</em>. (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

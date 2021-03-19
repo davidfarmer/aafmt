@@ -1,0 +1,489 @@
+<section xml:id="sec_Homomorphism_Definitions">
+  <title>Definition and several more examples</title>
+  <p>
+    In the previous section we saw that homomorphisms give us a way of finding structural similarity between groups,
+    even when those groups are not isomorphic.
+    A homomorphism only needs to map elements from one group to another in such a way that it preserves the operations between the two groups.
+    That's it.
+    Unlike isomorphisms, it doesn't have to be one-to-one or onto.
+  </p>
+  <p>
+    Let's now formally state the definition:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {homomorphism_def} A <term>homomorphism</term><idx><h>Group</h><h>homomorphism of</h></idx>
+            <idx><h>Homomorphism</h></idx>
+        between groups <m>(G, \cdot)</m> and
+        <m>(H, \circ)</m> is a function <m>f : G \rightarrow H</m> such that
+        <me>
+          f( g_1 \cdot g_2 ) = f( g_1 ) \circ f( g_2 )
+        </me>
+        for all <m>g_1, g_2 \in G</m>.
+        The range of <m>f</m> in <m>H</m> is called the
+        <term> homomorphic image</term>
+            <idx><h>Homomorphic image</h></idx>
+        <nbsp/>of<nbsp/><m>f</m>.<fn>
+        You may have noticed that in the Isomorphisms chapter we used Greek letters (<m>\phi</m> etc.) for isomorphisms,
+        whereas here we typically use the  letter <m>f</m> to denote a homomorphism.
+        There is no special reason for this<ndash/>both notations are used in math books,
+        and you should be comfortable either way.
+        </fn>
+      </p>
+    </statement>
+  </definition>
+  <exercise xml:id="exercise_Homomorphism_homo_image_kernel_1">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            For the homomorphism <m>g</m> from <m>{\mathbb Z}_8</m> to
+            <m>\langle i \rangle</m> in <xref ref="example_Homomorphism_Z_8_i_homomorph">Example</xref>,
+            what is the homomorphic image of <m>g</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            For the homomorphism <m>q</m> from <m>{\mathbb Z}_8</m> to
+            <m>\langle i \rangle</m> in <xref ref="example_Homomorphism_Z_8_isub_homomorph">Example</xref>,
+            what is the homomorphic image of <m>q</m>?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    All of our examples so far have been with finite groups;
+    let's look at infinite groups instead.
+    As we saw in the Isomorphisms chapter,
+    with finite groups we can use Cayley tables to verify the equality of the group operations,
+    but with infinite groups we don't have Cayley tables,
+    so we need to use the definition of a homomorphism.
+  </p>
+  <example xml:id="example_Homomorphism_homo_T">
+    <statement>
+      <p>
+        Recall that the circle group
+        <m>{ \mathbb T}</m> consists of all complex numbers <m>z</m> such that <m>|z|=1</m>.
+        So geometrically,
+        the circle group consists of the complex numbers that trace out a circle of radius 1 about the origin in the complex plane
+        (hence the name),
+        as shown in the figure below:
+      </p>
+      <figure xml:id="fig_circleGroup">
+        <caption>Circle group <m>{ \mathbb T}</m> in complex plane</caption>
+        <image>
+<latex-image>
+<![CDATA[\begin{tikzpicture}\draw [->]  (0,-1.5) -- (0,1.5);
+\draw  [->] (-1.75,0) -- (1.75,0);
+\node [right] at (0,1.5) {Im};
+\node [below] at (1.75,0) {Re};
+\node [below] at (0.1,0) {\(0\)};
+\draw (0,0) circle (1);
+\filldraw[fill=black, draw=black] (0:1) circle (0.03);
+\filldraw[fill=black, draw=black] (90:1) circle (0.03);
+\filldraw[fill=black, draw=black] (180:1) circle (0.03);
+\filldraw[fill=black, draw=black] (270:1) circle (0.03);
+\node [right] at (1,-0.15) {1};
+\node [left] at (0,1.15) {\(i\)};
+\node [left] at (-1,-0.15) {\(-1\)};
+\node [left] at (0,-1.15) {\(-i\)};\end{tikzpicture}]]>
+</latex-image>
+        </image>
+      </figure>
+      <p>
+        Now imagine wrapping the real number line around this circle like it was a tape measure,
+        with <m>0</m> on the real number line corresponding to <m>1</m> on the unit circle.
+        Then we would have a correspondence between each real number and a complex number in <m>{ \mathbb T}</m>.
+        Every <m>2\pi</m> units the real numbers start around the circle again,
+        so that an infinite set of real numbers corresponds to each complex number <m>z</m> in <m>{ \mathbb T}</m>.
+        For instance not only 0, but <m>2\pi, 4\pi, 6\pi</m>,
+        etc. would correspond to <m>1</m>.
+        Evidently for a given complex number <m>z</m>,
+        any real number <m>\alpha</m> that corresponds to <m>z</m> is an
+        <em>argument</em> for <m>z</m>
+        (see <xref ref="fig_polarcoord">Figure</xref>),
+        so that <m>z = \cis \alpha</m>.
+        From this point of view,
+        we may conceive of <m>\cis</m> as a function from
+        <m>{ \mathbb R}</m> to <m>{ \mathbb T}</m>.
+        Does <m>\cis</m> preserve the operations between
+        <m>{ \mathbb R}</m> and <m>{ \mathbb T}</m>?
+        We've shown this before in <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>
+        in the Complex Numbers chapter,
+        but it won't hurt to see it again:
+        <md>
+          <mrow>\cis( \alpha + \beta ) \amp  = \cos( \alpha + \beta ) + i \sin( \alpha + \beta )</mrow>
+          <mrow>\amp  = (\cos \alpha \cos \beta - \sin \alpha \sin \beta)  + i( \sin \alpha \cos \beta + \cos \alpha \sin \beta )</mrow>
+          <mrow>\amp  = (\cos \alpha + i \sin \alpha )(\cos \beta + i \sin \beta )</mrow>
+          <mrow>\amp  = \cis( \alpha ) \cis( \beta )</mrow>
+        </md>.
+      </p>
+      <p>
+        So we have it;
+        <m>\cis</m> is a homomorphism from the additive group of real numbers to the circle group.
+        This means that in some sense,
+        complex multiplication on the unit circle is like addition of real numbers.
+      </p>
+    </statement>
+  </example>
+  <p>
+    In the following exercise,
+    we relate the previous example to the properties observed in <xref ref="example_Homomorphism_Z_8_i_homomorph">Examples</xref>
+    and <xref ref="example_Homomorphism_Z_8_isub_homomorph"></xref> in the previous section.
+  </p>
+  <exercise xml:id="exercise_Homomorphism_circle_cosets_factorgroup">
+    <statement>
+      <p>
+        As we mentioned above, <m>\cis</m> maps <m>0, \pm 2\pi, \pm 4\pi</m>,
+        etc to <m>1</m>, the identity, in <m>{ \mathbb T}</m>.
+        Another way to say the same thing is:
+      </p>
+      <p>
+        <m>\cis^{-1}(1) = \{ \ldots , -4\pi, -2\pi, 0, 2\pi, 4\pi, \ldots \}</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Prove that <m>\{ \ldots , -4\pi, -2\pi, 0, 2\pi, 4\pi, \ldots \}</m> is a normal subgroup of <m>{ \mathbb R}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              What are the cosets of <m>\{ \ldots , -4\pi, -2\pi, 0, 2\pi, 4\pi, \ldots \}</m> in <m>{ \mathbb R}</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Define a function <m>F:{ \mathbb R} / 2\pi { \mathbb Z} \rightarrow { \mathbb T}</m> by:
+              <m>F(x + 2\pi\mathbb{Z}) = \cis(x)</m>.
+              Show that the function is well-defined:
+              that is, show that if <m>x_1</m> and <m>x_2</m> are both elements of the same coset of <m>2\pi\mathbb{Z}</m>,
+              then <m>F(x_1+2\pi\mathbb{Z}) = F(x_2+2\pi\mathbb{Z})</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>F</m> defined above is a bijection:
+              that is, <m>F</m> maps different cosets to different elements of <m>\mathbb{T}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>F</m> defined above is an isomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the homomorphic image of the function <m>\cis: \mathbb{R} \rightarrow \mathbb{T}</m>?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <example xml:id="example_Homomorphism_homo_C_">
+    <statement>
+      <p>
+        The circle group <m>{ \mathbb T}</m> also gives us a completely different way of constructing a homomorphism between complex and real numbers.
+        Every complex number in <m>{ \mathbb T}</m> has modulus 1;
+        i.e. they lie all on a circle of radius 1 in the complex plane.
+        If we increase radius of the circle to 2, all of those complex numbers have the same modulus 2.
+        In fact if you keep increasing or decreasing the radius of the circle,
+        you can catch all the complex numbers in the plane with the concentric circles you've created.
+        So every complex number (except 0) corresponds to a positive real number by its modulus.
+        Since we can represent any complex number as <m>r \cis \theta</m>,
+        we can define a function <m>f:  {\mathbb C}^\ast \mapsto  {\mathbb R}^\ast</m> by
+        <me>
+          f(r \cis \theta) = r
+        </me>.
+      </p>
+      <p>
+        Let's see whether <m>f</m> is a homomorphism.
+        If <m>r_1 \cis \theta_1</m> and
+        <m>r_2 \cis \theta_2</m> are arbitrary nonzero complex numbers, we have:
+        <md>
+          <mrow>f((r_1\cis \theta_1)\cdot (r_2\cis \theta_2)) \amp = f(r_1 \cis \theta_1 r_2 \cis \theta_2)</mrow>
+          <mrow>\amp = f((r_1 r_2)\cis (\theta_1+ \theta_2))</mrow>
+          <mrow>\amp = r_1 r_2</mrow>
+          <mrow>\amp = f((r_1\cis \theta_1)\cdot f(r_2\cis \theta_2))</mrow>
+        </md>.
+      </p>
+      <p>
+        So <m>f</m> is indeed a homomorphism from
+        <m>{\mathbb C}^\ast</m> to <m>{\mathbb R}^\ast</m>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    Once again, we may compare this example to the remarks of the previous section.
+  </p>
+  <exercise xml:id="exercise_Homomorphism_Cstar_modulus_cosets">
+    <statement>
+      <p>
+        With reference to the function <m>f</m> defined in <xref ref="example_Homomorphism_homo_C_">Example</xref>:
+        <ol type="a">
+          <li>
+            <p>
+              What is the homomorphic image of <m>f</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that the homomorphic image of <m>f</m> is a subgroup of <m>{\mathbb R}^\ast</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all the elements in <m>{\mathbb C}^\ast</m> that map to the identity in <m>{\mathbb R}^\ast</m>;
+              that is, find all <m>r \cis \theta \in {\mathbb C}^\ast</m> such that <m>f(r \cis \theta) = 1</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Is the set from part (b) a normal subgroup of <m>{\mathbb C}^\ast</m>?
+              Prove or disprove.
+            </p>
+          </li>
+          <li>
+            <p>
+              What are the cosets in <m>{\mathbb C}^\ast</m> of the set in part (b)?
+            </p>
+          </li>
+          <li>
+            <p>
+              Define the quotient group created by the normal subgroup in (e),
+              and prove that it's isomorphic to the homomorphic image of <m>f</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Now it's your turn.
+    In the following exercises,
+    you'll have a chance to verify some homomorphisms for yourself.
+  </p>
+  <exercise xml:id="exercise_Homomorphism_homo_GL2">
+    <statement>
+      <p>
+        Consider the group <m>GL_2( {\mathbb R })</m>
+        (that is, the group of invertible
+        <m>2 \times 2</m> matrices under matrix multiplication).
+        If
+        <me>
+          A= \begin{pmatrix}a \amp  b \\ c \amp  d \end{pmatrix}
+        </me>
+        is in <m>GL_2( {\mathbb R })</m>,
+        then the determinant is nonzero;
+        that is, <m>\det(A) = ad -bc \neq 0</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Prove that <m>\det( AB) = \det(A) \det(B)</m> for <m>A, B \in GL_2( {\mathbb R} )</m>.
+              This shows that the function <m>\det</m> is a homomorphism from
+              <m>GL_2( {\mathbb R })</m> to <m>{\mathbb R}^\ast</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the homomorphic image of <m>\det</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              In the Groups chapter we defined <m>SL_2( {\mathbb R })</m> as the set of
+              <m>2 \times 2</m> real matrices whose determinant is 1.
+              It follows that <m>SL_2( {\mathbb R })</m> is the subset of
+              <m>GL_2( {\mathbb R })</m> which maps under <m>\det</m> to the identity of <m>\RR^*</m>.
+              Prove that <m>SL_2( {\mathbb R })</m> is a subgroup of <m>GL_2( {\mathbb R })</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Describe the cosets of <m>SL_2( {\mathbb R })</m> in <m>GL_2( {\mathbb R })</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that <m>SL_2( {\mathbb R })</m> is a normal subgroup of <m>GL_2( {\mathbb R })</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that the quotient group
+              <m>GL_2( {\mathbb R }) / SL_2( {\mathbb R })</m> is isomorphic to <m>{\mathbb R}^\ast</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <remark>
+    <p>
+      This last exercise wasn't as easy to visualize as the previous ones.
+      So we had to rely on <em>properties</em> rather than intuition.
+      This is typically what happens in mathematics:
+      you start with visualizable examples,
+      and use these as a springboard to leap into higher abstractions.
+    </p>
+  </remark>
+  <exercise xml:id="exercise_Homomorphism_homo_GL2_a">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Define a function <m>f: {\mathbb C} \rightarrow {\mathbb R }</m> as follows:
+            <m>f(a+bi) = a</m>.
+            Prove or disprove: <m>f</m> is a homomorphism.
+          </p>
+        </li>
+        <li>
+          <p>
+            Define a function <m>g: {\mathbb C} \rightarrow {\mathbb R }</m> as follows:
+            <m>g(a+bi) = b</m>.
+            Prove or disprove: <m>g</m> is a homomorphism.
+          </p>
+        </li>
+        <li>
+          <p>
+            Define a function <m>h: {\mathbb C}^* \rightarrow {\mathbb R }^*</m> as follows:
+            <m>h(a+bi) = a</m>.
+            Prove or disprove: <m>h</m> is a homomorphism. (<em>Note</em>
+            this is a different situation from part (a)!)
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Homomorphism_2x2_add">
+    <statement>
+      <p>
+        Remember that <m>{\mathbb M}_2( {\mathbb R})</m> is the group of real-valued
+        <m>2 \times 2</m> matrices under addition.
+        Define and prove a homomorphism from
+        <m>{\mathbb M}_2( {\mathbb R})</m> to <m>{\mathbb R}</m>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Now lets deal with homomorphisms in a more general context,
+    to prepare us for the task of proving properties of homomorphisms in general
+    (which we'll get to in the next section).
+  </p>
+  <exercise xml:id="exercise_Homomorphism_homo_Zn">
+    <statement>
+      <p>
+        Let <m>G</m> be a group and <m>g \in G</m>.
+        In the Groups chapter we saw that the set of all integer powers (positive,
+        negative,
+        and zero) of <m>g</m> form a group,
+        which is called the <em>cyclic subgroup</em>
+        generated by <m>g</m> and is denoted by <m>\langle g \rangle</m>.
+        Since each integer corresponds to a power of <m>g</m>,
+        we may define a map <m>f : {\mathbb Z} \rightarrow G</m> by <m>f( n ) = g^n</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Show that <m>f</m> is a group homomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the homomorphic image of <m>f</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all the elements in <m>{\mathbb Z}</m> that map to the identity in <m>G</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Is the set from part (c) a subgroup of <m>{\mathbb Z}</m>?
+              Prove or disprove.
+            </p>
+          </li>
+          <li>
+            <p>
+              What are the cosets in <m>{\mathbb Z}</m> of the set in part (c)?
+            </p>
+          </li>
+          <li>
+            <p>
+              Show the set in part (c) is a normal subgroup in <m>{\mathbb Z}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Define the quotient group created by the normal subgroup in (g),
+              and prove that it's isomorphic to the homomorphic image of <m>f</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        If <m>G</m> is an abelian group and <m>n \in {\mathbb N}</m>,
+        show that <m>\phi : G \rightarrow G</m> defined by
+        <m>\phi(g) = g^n</m> is a group homomorphism.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Finally, let's look at one more pattern for the homomorphisms we've developed so far before we go proving these patterns/properties hold for homomorphisms of groups in general:
+  </p>
+  <exercise xml:id="exercise_Homomorphism_homo_ex_inverses">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            In the group <m>{\mathbb Z}_8</m>, the inverse of 3 is 5
+            (we may write this as <m>3^{-1} = 5</m>).
+            Using the homomorphism <m>g</m> from <xref ref="example_Homomorphism_Z_8_i_homomorph">Example</xref>,
+            what is <m>g(5)</m>?
+            What is the inverse of <m>g(3)</m> in the group <m>\langle i \rangle</m>?
+            What does this example show about the relation between
+            <m>g(3^{-1})</m> and <m>(g(3))^{-1}</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            In <m>{\mathbb Z}_8</m>, <m>2^{-1} = 6</m>.
+            Using the homomorphism <m>q</m> from <xref ref="example_Homomorphism_Z_8_isub_homomorph">Example</xref>,
+            what is <m>q(2^{-1})</m>?
+            What is <m>(q(2))^{-1}</m>?
+            What do you notice about your two answers?
+          </p>
+        </li>
+        <li>
+          <p>
+            In <m>{\mathbb C}^\ast</m>,
+            <m>(r \cis \theta)^{-1} = \frac{1}{r} \cis (2\pi - \theta)</m>.
+            Using <m>f</m> from <xref ref="example_Homomorphism_homo_C_">Example</xref>,
+            compute <m>f\left((r \cis \theta)^{-1}\right)</m> and <m>(f(r \cis \theta))^{-1}</m>.
+            What do you notice about your two answers?
+          </p>
+        </li>
+        <li>
+          <p>
+            In <m>GL_2( {\mathbb R })</m>,
+            what is the inverse of <m>\begin{pmatrix}a \amp b \\ c \amp d \end{pmatrix}</m>?
+            Using <m>f</m> from <xref ref="exercise_Homomorphism_homo_GL2">Exercise</xref>,
+            does <m>f\left((\begin{pmatrix}a \amp b \\ c \amp d \end{pmatrix} )^{-1}\right) = [f(\begin{pmatrix}a \amp b \\ c \amp d \end{pmatrix} )]^{-1}</m>?
+            Verify or give a counterexample.
+          </p>
+        </li>
+        <li>
+          <p>
+            What general property of homomorphisms can you infer from these examples? (You don't need to give a proof if you don't want to.)
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+</section>

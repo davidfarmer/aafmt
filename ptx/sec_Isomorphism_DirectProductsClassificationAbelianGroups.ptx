@@ -1,0 +1,1008 @@
+<section xml:id="sec_Isomorphism_DirectProductsClassificationAbelianGroups">
+  <title>Direct products and classification of abelian groups<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <p>
+      In <xref ref="sec_Functions_CartesianProduct">Section</xref>
+      we introduced the notion of the Cartesian product of sets . The formal definition is given in <xref ref="definition_Functions_cartesianprod">Definition</xref><ndash/>the basic idea is is to take the set of all pairs of elements <m>(a,b)</m> where <m>a</m> is an element of the first set and <m>b</m> is an element of the second.
+      A simple example to keep in mind is <m>{\mathbb R} \times {\mathbb R}</m>,
+      which is the plane with Cartesian coordinates <m>(x,y)</m>.
+      Notice that <m>{\mathbb R} \times {\mathbb R}</m> is an additive group,
+      where the addition is defined by performing addition separately on both coordinates.
+    </p>
+    <p>
+      It turns out that this example can be generalized.
+      Given two groups <m>G</m> and <m>H</m>,
+      it is possible to construct a new group based on the Cartesian product <m>G \times H</m>.
+      Even more exciting, it is sometimes possible to
+      <q>factor</q>
+      a large group by expressing it as the Cartesian product of smaller groups.
+      In this case,
+      all of the properties of the large group can be derived from the properties of the smaller groups,
+      which can lead to tremendous simplification.
+      This process of factoring groups into simpler groups can be compared to the factorization of integers into primes.
+      (We will in fact see some deep connections between these two processes.)
+    </p>
+    <p>
+      We begin by showing that the Cartesian product of groups does inded yield a group.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_Isomorphism_DirectProductsClassificationAbelianGroups_DirectProducts">
+    <title>Direct Products</title>
+    <p>
+      If <m>(G,\cdot)</m> and <m>(H, \circ)</m> are groups,
+      then we can make the Cartesian product of <m>G</m> and <m>H</m> into a new group.
+      As a set, our group is just the ordered pairs
+      <m>(g, h) \in G \times H</m> where <m>g \in G</m> and <m>h \in H</m>.
+      We can define a binary operation on <m>G \times H</m> by
+      <me>
+        (g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2);
+      </me>
+      that is, we just multiply elements in the first coordinate as we do in <m>G</m> and elements in the second coordinate as we do in <m>H</m>.
+      We have specified the particular operations <m>\cdot</m> and <m>\circ</m> in each group here for the sake of clarity;
+      we usually just write <m>(g_1, h_1)(g_2, h_2) = (g_1  g_2, h_1 h_2)</m>.
+    </p>
+    <proposition xml:id="proposition_Isomorphism_isomorph_theorem_7">
+      <statement>
+        <p>
+          Let <m>G</m> and <m>H</m> be groups.
+          The set <m>G \times H</m> is a group under the operation <m>(g_1, h_1)(g_2, h_2) = (g_1 g_2, h_1 h_2)</m> where
+          <m>g_1, g_2 \in G</m> and <m>h_1, h_2 \in H</m>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      The proof is outlined in the following exercise.
+    </p>
+    <exercise xml:id="exercise_Isomorphism_proof_thm_7">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that the set <m>G \times H</m> is closed under the binary operation defined in <xref ref="proposition_Isomorphism_isomorph_theorem_7">Proposition</xref>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>(e_G, e_H)</m> is the identity of <m>G \times H</m>,
+              where <m>e_G</m> and <m>e_H</m> are the identities of the groups <m>G</m> and <m>H</m> respectively.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that the inverse of <m>(g, h) \in G \times H</m> is <m>(g^{-1}, h^{-1})</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that the operation defined in <xref ref="proposition_Isomorphism_isomorph_theorem_7">Proposition</xref> is associative.
+            </p>
+          </li>
+        </ol>
+        <p>
+          (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The group <m>G \times H</m> is called the
+      <term> direct product</term><idx><h>Direct product</h><h>of groups</h></idx>
+          <idx><h>direct product</h></idx>
+      of <m>G</m> and <m>H</m>.
+      Notice the important difference between <sq>Cartesian product</sq> and ' direct product': the direct product is a group whose underlying set is a Cartesian product;
+      but in addition, the direct product has a group operation,
+      which generic off-the-shelf Cartesian products don't ordinarily have.
+    </p>
+    <example xml:id="example_Isomorphism_R2_product">
+      <statement>
+        <p>
+          Let <m>{\mathbb R}</m> be the group of real numbers under addition.
+          The Cartesian product of <m>{\mathbb R}</m> with itself,
+          <m>{\mathbb R} \times {\mathbb R} = {\mathbb R}^2</m>,
+          is also a group,
+          in which the group operation is just addition in each coordinate;
+          that is, <m>(a, b) + (c, d) = (a + c, b + d)</m>.
+          The identity is <m>(0,0)</m> and the inverse of <m>(a, b)</m> is <m>(-a, -b)</m>.
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_Isomorphism_Rstar_product">
+      <statement>
+        <p>
+          Let <m>{\mathbb R}^*</m> be the group of real numbers under multiplication.
+          The Cartesian product of <m>{\mathbb R}^*</m> with itself,
+          <m>{\mathbb R}^* \times {\mathbb R}^*</m>, is also a group,
+          in which the group operation is given by <m>(a, b) \cdot (c, d) = (a \cdot c, b \cdot d)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find the identity of the group
+              <m>{\mathbb R}^* \times {\mathbb R}^*</m> that was introduced in <xref ref="example_Isomorphism_Rstar_product">Example</xref>
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the inverse of the element <m>(a,b) \in {\mathbb R}^* \times {\mathbb R}^*</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Consider the function <m>f: {\mathbb R} \times {\mathbb R} \rightarrow {\mathbb C}</m> defined by <m>f( (a,b) ) = a + bi</m>.
+              Prove or disprove whether <m>f</m> is an isomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              Consider the function <m>g: {\mathbb R}^* \times {\mathbb R}^* \rightarrow {\mathbb C}^*</m> defined by <m>f( (a,b) ) = a + bi</m>.
+              Prove or disprove whether <m>g</m> is an isomorphism. (Note that the function <m>g</m> is almost identical to <m>f</m> as far as sets are concerned,
+              but the group operations behave quite differently.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <example xml:id="example_Isomorphism_D5">
+      <statement>
+        <p>
+          We have previously seen that the elements of the dihedral group <m>D_4</m> can be listed as
+          <m>\{id,
+          r,r^2, r^3, sr,sr^2, sr^3 \}</m> where <m>r</m> is counterclockwise rotation by <m>\pi/2</m> and <m>s</m> is a reflection.
+          We also know that<m>S=\{1,s\}</m> and
+          <m>R_4 = \{id,
+          r, r^2, r^3 \}</m> are subgroups of <m>D_4</m> and thus groups in their own right.
+          It is very tempting to conjecture that <m>D_4</m> can be written as <m>S \times R_4</m>,
+          where the notation <m>(s^j,r^k)</m> is just another way of writing <m>s^j r^k</m> for <m>j=0,1</m> and <m>k = 0,1,2,3</m>.
+          But as it happens, this doesn't work out:
+          things are not so simple
+          (and much more interesting!),
+          as you will show in the following exercise.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Consider the function <m>f: S \times R_r \rightarrow D_4</m> defined by
+          <m>f( (s^j,r^k) ) =s^j r^k</m> for <m>j=0,1</m> and <m>k=0,1,2,3</m>.
+          Give an example of two elements for which the operation preserving property fails.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      One may notice from <xref ref="example_Isomorphism_D5">Example</xref>
+      that <m>S</m> and <m>R_4</m> were abelian groups, and <m>D_4</m> is not.
+      Our experience with this example suggests that this may be a recipe for failure<ndash/>perhaps it's not possible to take the direct product of abelian groups and get a nonabelian group.
+      This time our conjecture is correct,
+      as you will show in the following exercise.
+    </p>
+    <exercise xml:id="exercise_Isomorphism_dirProdAbel">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Suppose that the groups <m>G</m> and <m>H</m> are abelian.
+              Prove that <m>G \times H</m> is also abelian.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show the <em>converse</em> of part (a):
+              that is, given that <m>G \times H</m> is abelian,
+              then <m>G</m> and <m>H</m> must both be abelian. (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      So that takes care of abelian groups.
+      Another important type of group is cyclic groups.
+      We'll talk a lot more later about direct products of cyclic groups.
+      For now, let's consider first of all whether the product of cyclic groups is always cyclic:
+    </p>
+    <example xml:id="example_Isomorphism_Z2xZ2">
+      <statement>
+        <p>
+          Consider
+          <me>
+            {\mathbb Z}_2 \times {\mathbb Z}_2 = \{ (0, 0), (0, 1), (1, 0),(1, 1) \}
+          </me>.
+        </p>
+        <p>
+          Although <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> and
+          <m>{\mathbb Z}_4</m> both contain four elements, they are not isomorphic.
+          We can prove this by noting that <m>{\mathbb Z}_4</m> is cyclic,
+          while every element <m>(a,b)</m> in <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> has order 2
+          (verify this).
+        </p>
+      </statement>
+    </example>
+    <p>
+      So we've shown that the direct product of cyclic groups is not necessarily cyclic.
+      How about the converse: that is,
+      if a direct product is cyclic,
+      are the factor groups necessarily cyclic?
+      This time, the answer is yes:
+    </p>
+    <exercise xml:id="exercise_Isomorphism_prodCycProp">
+      <statement>
+        <p>
+          Prove the following statement: Suppose <m>G</m> and <m>H</m> are groups,
+          and <m>G \times H</m> is cyclic.
+          Then <m>G</m> and <m>H</m> are both cyclic. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Let's now consider a different type of question.
+      What's the difference between
+      <m>G \times H</m> and <m>H \times G</m>?
+      Not much, as the following exercise shows:
+    </p>
+    <exercise xml:id="exercise_Isomorphism_direct_commute">
+      <statement>
+        <p>
+          Show that for any two groups <m>G</m> and <m>H</m>,
+          <m>G \times H \cong H \times G</m>. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      So far we've been considering the products of two groups.
+      But there's no reason to stop with two!
+      The direct product
+      <me>
+        \prod_{i = 1}^n G_i = G_1 \times G_2 \times \cdots \times G_n
+      </me>
+      of the groups <m>G_1, G_2, \ldots, G_n</m> may be defined in a similar way.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          How would you write an element in <m>\prod_{i = 1}^n G_i</m>?
+          Write two different elements of <m>\prod_{i = 1}^n G_i</m>,
+          and show how you would define the group operation in terms of these two elements. (You may denote the group operation on each group <m>G_i</m> by the symbol <sq><m>\cdot</m></sq>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If we're taking the direct product of copies of the same group,
+      we may use power notation:
+      <m>G \times G = G^2, G \times G \times G = G^3</m>, and so on.
+    </p>
+    <example xml:id="example_Isomorphism_Z2_n">
+      <statement>
+        <p>
+          The group <m>{\mathbb Z}_2^n</m>,
+          considered as a set, is just the set of all binary <m>n</m>-tuples.
+          The group operation is the
+          <q>exclusive or</q>
+          of two binary <m>n</m>-tuples.
+          For example,
+          the following equation is true in <m>{\mathbb Z}_2^8</m>:
+          <me>
+            (01011101) + (01001011) = (00010110)
+          </me>.
+        </p>
+        <p>
+          The groups <m>\{ {\mathbb Z}_2^n, n=1,2,3,\ldots\}</m> are important in coding theory and cryptography,
+          as well as other areas of computer science.
+        </p>
+      </statement>
+    </example>
+    <p>
+      The result of <xref ref="exercise_Isomorphism_dirProdAbel">Exercise</xref>
+      is generalized in the following proposition:
+    </p>
+    <proposition xml:id="proposition_Isomorphism_dirProdAbel2">
+      <statement>
+        <p>
+          Let <m>G_1, G_2, \ldots G_n</m> be groups.
+          Then <m>\prod_{i = 1}^n G_i</m> is abelian if and only if all of the groups <m>G_1</m>,
+          <m>G_2</m>,
+          <ellipsis/> <m>G_n</m> are abelian.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_Isomorphism_dirProdAbel2">
+      <statement>
+        <p>
+          Use induction and the results of <xref ref="exercise_Isomorphism_dirProdAbel">Exercise</xref>
+          to prove <xref ref="proposition_Isomorphism_dirProdAbel2">Proposition</xref>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The result of <xref ref="exercise_Isomorphism_prodCycProp">Exercise</xref> may be similarly generalized:
+    </p>
+    <proposition xml:id="proposition_Isomorphism_prodCycProp">
+      <statement>
+        <p>
+          Suppose <m>G_1, \ldots G_n</m> are groups,
+          and <m>\prod_{i = 1}^n G_i</m> is cyclic.
+          Then all of the groups <m>G_1</m>,
+          <m>G_2 \ldots G_n</m> are cyclic.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_Isomorphism_prodCycPropb">
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_prodCycProp">Proposition</xref>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      By extending the results of <xref ref="exercise_Isomorphism_direct_commute">Exercise</xref>,
+      we find that we can rearrange the groups in a direct product arbitrarily and still end up with the
+      <q>same</q>
+      group:
+    </p>
+    <proposition xml:id="proposition_Isomorphism_isomorph_DPorder">
+      <statement>
+        <p>
+          Let <m>G_1,G_2, \ldots G_n</m> be arbitrary groups,
+          and let <m>\sigma \in S_n</m> be any permutation on <m>\{1,2,\ldots n\}</m>.
+          Then
+          <me>
+            G_1 \times G_2 \times \ldots \times G_n \cong G_{\sigma(1)} \times G_{\sigma(2)} \times \ldots \times G_{\sigma(n)}
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      The following exercise outlines the proof of <xref ref="proposition_Isomorphism_isomorph_DPorder">Proposition</xref>.
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              What function would you define in order to prove <xref ref="proposition_Isomorphism_isomorph_DPorder">Proposition</xref>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that the function that you defined in (a) is a bijection by showing that it has an inverse.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that the function that you defined in (a) preserves group operations,
+              and hence is an isomorphism.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Suppose you start out with groups that are isomorphic,
+      and take direct products of them.
+      Are the direct products also isomorphic?
+      It just so happens that they are:
+    </p>
+    <proposition xml:id="proposition_Isomorphism_isomorph_dp_isom">
+      <statement>
+        <p>
+          Suppose that <m>G_1 \cong H_1, G_2 \cong H_2, \ldots, G_n \cong H_n</m>.
+          Then <m>G_1 \times \ldots \times G_n \cong H_1 \times \ldots \times H_n</m>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      We won't give the full proof,
+      but you can get the idea of how it goes by doing the following exercise.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_isomorph_dp_isom">Proposition</xref>
+          for the case where <m>n=2</m>.
+          (Remember that the default method for proving that groups are isomorphic is to define a suitable function and prove that it's an isomorphism.)
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Isomorphism_DirectProductsClassificationAbelianGroups_FiniteAbelianFactor">
+    <title>Classifying finite abelian groups by factorization</title>
+    <p>
+      We have used isomorphisms to classify cyclic groups
+      (<xref ref="proposition_Isomorphism_isomorph_theorem_2">Proposition</xref>),
+      as well as to characterize groups in general (Cayley's theorem,
+      <xref ref="proposition_Isomorphism_isomorph_theorem_6">Proposition</xref>).
+      In this section,
+      we will make use of direct products to prove a classification of finite abelian groups up to isomorphism.
+      The bottom line is that every finite abelian group is isomorphic to a direct product of cyclic groups of prime power oders.
+      To get to this bottom line,
+      we'll have to establish some more properties of direct products,
+      especially in relation to cyclic groups.
+      The following proposition characterizes the order of the elements in a direct product.
+          <idx><h>Abelian group</h><h>classification</h></idx>
+          <idx><h>Classification</h><h>abelian groups</h></idx>
+    </p>
+    <proposition xml:id="proposition_Isomorphism_isomorph_lcm_theorem">
+      <statement>
+        <p>
+          Let <m>(g, h) \in G \times H</m>.
+          If <m>g</m> and <m>h</m> have finite orders <m>r</m> and <m>s</m> respectively,
+          then the order of <m>(g, h)</m> in
+          <m>G \times H</m> is the least common multiple of <m>r</m> and <m>s</m>.
+              <idx><h>Order</h><h>of group elements!in product group</h></idx>
+              <idx><h>Direct product</h><h>of groups!order of elements</h></idx>
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Suppose that <m>m</m> is the least common multiple of <m>r</m> and <m>s</m> and let <m>n = |(g,h)|</m>.
+        Then
+        <md>
+          <mrow>(g,h)^m  = (g^m, h^m) = (e_G,e_H)</mrow>
+          <mrow>(g^n, h^n)  = (g, h)^n = (e_G,e_H)</mrow>
+        </md>.
+      </p>
+      <p>
+        Hence, <m>n</m> must divide <m>m</m>, and <m>n \leq m</m>.
+        However, by the second equation,
+        both <m>r</m> and <m>s</m> must divide <m>n</m>;
+        therefore, <m>n</m> is a common multiple of <m>r</m> and <m>s</m>.
+        Since <m>m</m> is the <em>least</em>
+        common multiple of <m>r</m> and <m>s</m>, <m>m \leq n</m>.
+        Consequently, <m>m</m> must be equal to<nbsp/><m>n</m>.
+      </p>
+    </proof>
+    <p>
+      By applying <xref ref="proposition_Isomorphism_isomorph_lcm_theorem">Proposition</xref> inductively,
+      it is possible to prove an analogous result for direct products of more than two groups.
+      We'll leave it to you to fill in the details of the proof.
+    </p>
+    <proposition xml:id="proposition_Isomorphism_lcm_general">
+      <statement>
+        <p>
+          Let <m>(g_1, \ldots, g_n) \in \prod_{i=1}^n G_i</m>.
+          If <m>g_i</m> has finite order <m>r_i</m> in <m>G_i</m>,
+          then the order of <m>(g_1, \ldots,
+          g_n)</m> is the least common multiple of <m>r_1, \ldots, r_n</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_lcm_general">Proposition</xref> using induction.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      For the rest of the section,
+      we'll be dealing with direct products of <m>\ZZ_n</m>
+      (keep in mind that any cyclic group is isomorphic to <m>\ZZ_n</m> for some <m>n</m>).
+    </p>
+    <example xml:id="example_Isomorphism_Z12xZ60">
+      <statement>
+        <p>
+          Let <m>(8, 56) \in {\mathbb Z}_{12} \times {\mathbb Z}_{60}</m>.
+          Since <m>\gcd(8,12) = 4</m>,
+          the order of 8 is <m>12/4 = 3</m> in <m>{\mathbb Z}_{12}</m>.
+          Similarly, the order of <m>56</m> in <m>{\mathbb Z}_{60}</m> is <m>15</m>.
+          The least common multiple of 3 and 15 is 15;
+          hence, <m>(8, 56)</m> has order 15 in <m>{\mathbb Z}_{12} \times {\mathbb Z}_{60}</m>.
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_Isomorphism_Z2xZ3">
+      <statement>
+        <p>
+          The group <m>{\mathbb Z}_2 \times {\mathbb Z}_3</m> consists of the pairs
+          <me>
+            \begin{array}{cccccc} (0,0),\amp  (0, 1),\amp  (0, 2),\amp  (1,0),\amp  (1, 1),\amp  (1, 2). \end{array}
+          </me>
+        </p>
+        <p>
+          In this case, unlike that of
+          <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> and <m>{\mathbb Z}_4</m>,
+          it is true that <m>{\mathbb Z}_2 \times {\mathbb Z}_3 \cong {\mathbb Z}_6</m>.
+          We need only show that <m>{\mathbb Z}_2 \times {\mathbb Z}_3</m> is cyclic.
+          By trial and error,
+          we may find that <m>(1,1)</m> is a generator for <m>{\mathbb Z}_2 \times {\mathbb Z}_3</m>,
+          so that <m>{\mathbb Z}_2 \times {\mathbb Z}_3 = \langle (1,1)\rangle</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Find the order of each of the following elements.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(3, 4)</m> in <m>{\mathbb Z}_4 \times {\mathbb Z}_6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(6, 15, 4)</m> in <m>{\mathbb Z}_{30} \times {\mathbb Z}_{45} \times {\mathbb Z}_{24}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(5, 10, 15)</m> in <m>{\mathbb Z}_{25} \times {\mathbb Z}_{25} \times {\mathbb Z}_{25}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(8, 8, 8)</m> in <m>{\mathbb Z}_{10} \times {\mathbb Z}_{24} \times {\mathbb Z}_{80}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that <m>\mathbb{Z}_4 \times \mathbb{Z}_9</m> is cyclic,
+              and find 6 different generators for the group.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>\mathbb{Z}_3 \times \mathbb{Z}_5</m> is cyclic.
+              How many different generators does it have?
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>\mathbb{Z}_4 \times \mathbb{Z}_6</m> is <em>not</em>
+              cyclic by showing that none of its elements is a generator (i.e. all elements have order less than 24).
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      The next proposition tells us exactly when the direct product of two cyclic groups is cyclic.
+    </p>
+    <proposition xml:id="proposition_Isomorphism_Z_pq_theorem">
+      <statement>
+        <p>
+          The group <m>{\mathbb Z}_m \times {\mathbb Z}_n</m> is isomorphic to
+          <m>{\mathbb Z}_{mn}</m> if and only if <m>\gcd(m,n)=1</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Assume first that if <m>{\mathbb Z}_m \times {\mathbb Z}_n \cong {\mathbb Z}_{mn}</m>,
+        then <m>\gcd(m, n) = 1</m>.
+        To show this, we will prove the contrapositive;
+        that is, we will show that if <m>\gcd(m, n) = d > 1</m>,
+        then <m>{\mathbb Z}_m \times {\mathbb Z}_n</m> cannot be cyclic.
+        Notice that <m>mn/d</m> is divisible by both <m>m</m> and <m>n</m>;
+        hence, for any element <m>(a,b) \in {\mathbb Z}_m \times {\mathbb Z}_n</m>,
+        <me>
+          \underbrace{(a,b) + (a,b)+ \cdots + (a,b)}_{mn/d \; { times}} = (0, 0)
+        </me>.
+      </p>
+      <p>
+        Therefore, no <m>(a, b)</m> can generate all of <m>{\mathbb Z}_m \times {\mathbb Z}_n</m>.
+      </p>
+      <p>
+        The converse follows directly from <xref ref="proposition_Isomorphism_isomorph_lcm_theorem">Proposition</xref>
+        since <m>\lcm(m,n) = mn</m> if and only if <m>\gcd(m,n)=1</m>.
+      </p>
+    </proof>
+    <p>
+      Recall that <xref ref="proposition_Isomorphism_isomorph_theorem_3">Proposition</xref>
+      says that a group of order <m>mn</m> is cyclic if and only if it is isomorphic to <m>{\mathbb Z_{mn}}</m>.
+      So <xref ref="proposition_Isomorphism_Z_pq_theorem">Proposition</xref>
+      tells us that the product of two cyclic groups is cyclic if and only if their orders are relatively prime.
+    </p>
+    <p>
+      This idea extends directly to arbitrary direct products:
+      a product of cyclic groups is cyclic if and only if the orders of the groups in the product are all relatively prime.
+    </p>
+    <proposition xml:id="proposition_Isomorphism_RelativelyPrime">
+      <statement>
+        <p>
+          Let <m>n_1, \ldots, n_k</m> be positive integers.
+          Then
+          <me>
+            \prod_{i=1}^k {\mathbb Z}_{n_i} \cong {\mathbb Z}_{n_1 \cdots n_k}
+          </me>
+          if and only if <m>\lcm( n_1, \ldots,
+          n_k) =\prod_{i=1}^k n_i</m>
+          (in other words, <m>n_1, \ldots,
+          n_k</m> are all relatively prime).
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Use the argument in <xref ref="proposition_Isomorphism_Z_pq_theorem">Proposition</xref>
+        first with <m>n_1</m> and <m>n_2</m>,
+        then with <m>n_1n_2</m> and <m>n_3</m>,
+        then with <m>n_1n_2n_3</m> and <m>n_4</m>, and so on.
+        (The best way to do this proof is using induction.)
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Isomorphism_RelativelyPrime">Proposition</xref> using induction.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      A special case of this proposition is:
+    </p>
+    <corollary>
+      <statement>
+        <p>
+          If
+          <me>
+            m = p_1^{e_1} \cdots  p_k^{e_k}
+          </me>,
+          where the <m>p_i</m>'s are distinct primes, then
+          <me>
+            {\mathbb Z}_m \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}
+          </me>.
+        </p>
+      </statement>
+    </corollary>
+    <proof>
+      <p>
+        Since <m>\gcd(p_i^{e_i},p_j^{e_j}) = 1</m> for <m>i \neq j</m>,
+        the proof follows from the Corollary to <xref ref="proposition_Isomorphism_RelativelyPrime"></xref>.
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Find three non-isomorphic abelian groups of order 8, and show that they are not isomorphic.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Remember that in the Permutations chapter we showed that every permutation can be
+      <q>factored</q>
+      as the product of disjoint cycles. (At that time,
+      we compared this to the factorization of integers into prime factors).
+      It turns out that finite abelian groups can also be
+      <q>factored</q>. This beautiful and general result is summarized in the following proposition.
+      We will not give a complete proof of the proposition
+      (which uses induction),
+      but we hope that it makes sense to you in light of what we've seen so far.<fn>
+      Many proofs can be found on the web: search for
+      <q>structure of finite abelian groups</q>.
+      </fn>
+    </p>
+    <proposition xml:id="proposition_Isomorphism_FactorabelianGroup">
+      <statement>
+        <p>
+          <term>(Factorization of finite abelian groups)</term><nbsp/><nbsp/><nbsp/><nbsp/> If <m>G</m> is a finite abelian group,
+          then there exist prime numbers
+          <m>p_1 \ldots p_k</m> and exponents <m>e_1 \ldots e_k</m> such that
+          <me>
+            G \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}
+          </me>
+        </p>
+        <p>
+          Note that the prime numbers
+          <m>p_1, \ldots,
+          p_k</m> may not necessarily be distinct.
+        </p>
+      </statement>
+    </proposition>
+    <remark>
+      <p>
+        <xref ref="proposition_Isomorphism_isomorph_DPorder">Proposition</xref>
+        informs us that these factors can be written in any order,
+        because all rearrangements of a direct product are isomorphic to each other.
+      </p>
+    </remark>
+    <exercise xml:id="exercise_Isomorphism_prodfacabel0">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              It turns out that for each <m>k</m>,
+              the number<m>p_k^{e_k}</m> in Proposition<nbsp/> <xref ref="proposition_Isomorphism_FactorabelianGroup"></xref>
+              is the largest power of <m>p_k</m> that divides <m>|G|</m>.
+              How do we know this?
+            </p>
+          </li>
+          <li>
+            <p>
+              For the group <m>G</m> in Proposition<nbsp/> <xref ref="proposition_Isomorphism_FactorabelianGroup"></xref>,
+              if <m>q</m> is any prime number that is not equal to any of the primes <m>p_1, \ldots p_n</m>,
+              then <m>G</m> has no element of order <m>q</m>.
+              How do we know this?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Isomorphism_prodfacabel">
+      <statement>
+        <p>
+          Show that the primes <m>p_1 \ldots p_k</m> and exponents
+          <m>e_1 \ldots e_k</m> in Proposition<nbsp/> <xref ref="proposition_Isomorphism_FactorabelianGroup"></xref>
+          must satisfy <m>|G| = p_1^{e_1} \cdots p_k^{e_k}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref>
+      shows that abelian groups are essentially a souped-up versions of modular addition. (Now do you see why we spent a whole chapter on modular arithmetic?) From this proposition,
+      we may derive a host of consequences.
+      Following are just a few examples.
+    </p>
+    <p>
+      First, we can tell quite a lot about when abelian groups must be cyclic,
+      depending on their orders:
+    </p>
+    <example>
+      <statement>
+        <p>
+          All abelian groups <m>G</m> of order 21 are isomorphic and cyclic.
+          This is because <m>21 = 3^1 \times 7^1</m>,
+          so by <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref>
+          it must be the case that <m>G \cong {\mathbb Z}_3 \times {\mathbb Z}_7</m>.
+          In particular,
+          <m>Z_{21} \cong {\mathbb Z}_3 \times {\mathbb Z}_7</m>.
+          So all groups of order 21 are isomorphic to the cyclic group
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Isomorphism_prodfacabel2">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove or disprove: There is an abelian group of order 22 that is <em>not</em> cyclic.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove: There is an abelian group of order 24 that is <em>not</em> cyclic.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove: There is an abelian group of order 30 that is <em>not</em> cyclic.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove: If <m>G</m> is an abelian group and the order of <m>G</m> is a product of distinct primes,
+              then <m>G</m> must be cyclic.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We know from Euler's theorem
+      (<xref ref="proposition_Cosets_cosets_Eulers_theorem">Proposition</xref>)
+      that the order of a group element <m>g \in G</m> must divide the order of the group.
+      However, this does not necessarily imply that every divisor of <m>|G|</m> has a group element of that order.
+      For abelian groups though,
+      thanks to <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref>
+      we can actually guarantee that for certain divisors of <m>|G|</m>
+    </p>
+    <example xml:id="example_Isomorphism_elementOrders">
+      <statement>
+        <p>
+          Any group <m>G</m> of order 54 must have an element of order 3.
+          This is because <m>54 = 3^3 \cdot 2</m>,
+          and according to <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref>
+          it must be the case that either <m>G \cong {\mathbb Z}_{27} \times {\mathbb Z}_2</m>,
+          or <m>G \cong {\mathbb Z}_9 \times {\mathbb Z}_3 \times {\mathbb Z}_2</m>,
+          or <m>G \cong {\mathbb Z}_{3} \times {\mathbb Z}_{3} \times {\mathbb Z}_{3} \times {\mathbb Z}_2</m>.
+          In the first case,
+          then the isomorphic image of <m>(9,0) \in {\mathbb Z}_{27} \times {\mathbb Z}_2</m> has order 3
+          (verify this).
+          In the second case,
+          the isomorphic image of <m>(3,0,0) \in {\mathbb Z}_{9} \times {\mathbb Z}_3 \times {\mathbb Z}_2</m> has order 3
+          (verify this also).
+          In the third case, the isomorphic image of
+          <m>(1,0,0,0) \in {\mathbb Z}_{3} \times {\mathbb Z}_3 \times {\mathbb Z}_3 \times {\mathbb Z}_2</m> has order 3 (verify this too!)
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Isomorphism_exel">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that <m>\mathbb{Z}_{5^n}</m> contains an element of order 5, for any positive integer <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that every abelian group of order divisible by 7 contains an element of order 7.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      What we've shown for specific primes in <xref ref="example_Isomorphism_elementOrders">Example</xref>
+      and <xref ref="exercise_Isomorphism_exel">Exercise</xref> is true in general:
+      groups with orders divisible by <m>p</m> always contain elements of order <m>p</m>.
+      This is true for nonabelian as well as abelian groups:
+      this fact is known as <term>Cauchy's theorem</term>.
+      At this point we're not able to prove Cauchy's theorem for nonabelian groups,
+      but Cauchy's theorem for abelian groups can be proved using methods similar to those above.
+      We'll state the theorem formally, then ask you to prove it.
+    </p>
+    <proposition xml:id="proposition_Isomorphism_Cauchy">
+      <statement>
+        <p>
+          <term>(Cauchy's theorem for abelian groups)</term><nbsp/><nbsp/><nbsp/><nbsp/>Let <m>G</m> be an abelian group such that <m>|G|</m> is divisible by the prime <m>p</m>.
+          Then <m>G</m> has an element of order <m>p</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise xml:id="exercise_Isomorphism_Cauchy">
+      <statement>
+        <p>
+          Prove Cauchy's theorem for abelian groups.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          (All of the exercises below assume that <m>G</m> is an abelian group.)
+          <ol type="a">
+            <li>
+              <p>
+                Show that if the prime <m>p</m> divides <m>|G|</m>,
+                then <m>G</m> has at least <m>p-1</m> elements of order <m>p</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>p^2</m> divides <m>|G|</m>,
+                then <m>G</m> has at least <m>p^2 - p</m> elements of order <m>p</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>p^n</m> divides <m>|G|</m>,
+                then <m>G</m> has at least <m>p^n - p</m> elements of order <m>p</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>p^n</m> is the largest power of <m>p</m> that divides <m>G</m>.
+                Show that there are at most <m>p-1</m> element in <m>G</m> with order <m>p^n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We may also recall that Lagrange's theorem
+      (<xref ref="proposition_Cosets_LagrangeTheorem">Proposition</xref>)
+      enables us to conclude that the order of any subgroup <m>H \in G</m> must divide <m>|G|</m>.
+      <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref> enables us to go one better.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppse that <m>|G| = 125</m>.
+          Let us show that <m>G</m> has a subgroup of order 25.
+          From <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref>,
+          we know that there are 3 possible cases for <m>G</m>: (i) <m>G \cong {\mathbb Z}_{125}</m>; (ii)
+          <m>G \cong {\mathbb Z}_{25} \times {\mathbb Z}_5</m>; (iii) <m>G \cong {\mathbb Z}_5 \times {\mathbb Z}_5 \times {\mathbb Z}_5</m>.
+          In case (i), then the isomorphic image of
+          <m>\langle 5 \rangle</m> is a subgroup of order 25.
+          In case (ii), then the isomorphic image of
+          <m>\langle (1,0) \rangle</m> is a subgroup of order 25.
+          In case (iii), then the isomorphic image of
+          <m>{\mathbb Z}_5 \times {\mathbb Z}_5 \times \{0\}</m> is a subgroup of order 25.
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_Isomorphism_subgpsAllOrders">
+      <statement>
+        <p>
+          Suppse that <m>7^2</m> divides <m>|G|</m>.
+          Let us show that <m>G</m> has a subgroup of order 49.
+          From <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref>,
+          we know that either(i) <m>G</m> has a factor
+          <m>{\mathbb Z}_{7^k}</m> where <m>k \ge 2</m>;
+          or (ii) <m>G</m> has at least two factors of <m>{\mathbb Z}_7</m>.
+          In case (i),
+          then <m>G</m> can be written as <m>{\mathbb Z}_{7^k} \times H</m>,
+          where <m>k \ge 2</m> and <m>H</m> is a direct product of copies of
+          <m>{\mathbb Z_n}</m> for different values of <m>n</m>.
+          In this case, then the isomorphic image of
+          <m>\langle (7^{k-2},id_H) \rangle</m> is a subgroup of order <m>7^2</m>
+          (verify this).
+          In case (ii),
+          then <m>G</m> can be written as <m>{\mathbb Z}_7 \times {\mathbb Z}_7 \times H</m>,
+          where once again <m>H</m> is a direct product of copies of
+          <m>{\mathbb Z_n}</m> for different values of <m>n</m>.
+          In this case, the isomorphic image of
+          <m>{\mathbb Z}_7 \times {\mathbb Z}_7 \times id_H</m> is a subgroup of order 49
+          (verify this).
+          So in either case, <m>G</m> has a subgroup of order 49.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Isomorphism_subgpsAllOrders">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Let <m>p</m> be a prime.
+              Show that if <m>p^2</m> divides the order of the abelian group <m>G</m>,
+              then <m>G</m> has a subgroup of order <m>p^2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>p</m> be a prime, and let <m>k</m> be a positive integer.
+              Show that if <m>p^k</m> divides the order of the abelian group <m>G</m>,
+              then <m>G</m> has a subgroup of order <m>p^k</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>p_1, p_2</m> be primes such that <m>p_1 \neq p_2</m>.
+              Show that if <m>p_1p_2</m> divides the order of the abelian group <m>G</m>,
+              then <m>G</m> has a subgroup of order <m>p_1p_2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>p_1, p_2</m> be primes such that <m>p_1 \neq p_2</m>,
+              and let <m>k_1,k_2</m> be positive integers.
+              Show that if <m>p_1^{k_1}p_2^{k_2}</m> divides the order of the abelian group <m>G</m>,
+              then <m>G</m> has a subgroup of order <m>p_1^{k_1}p_2^{k_2}</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      The following proposition is the culmination of the train of thought expressed in <xref ref="example_Isomorphism_subgpsAllOrders">Example</xref>
+      and <xref ref="exercise_Isomorphism_subgpsAllOrders">Exercise</xref>
+    </p>
+    <proposition xml:id="proposition_Isomorphism_subgpsAllOrders">
+      <statement>
+        <p>
+          Let <m>G</m> be an abelian group and suppose <m>G</m> is divisible by the positive integer <m>n</m>.
+          Then <m>G</m> has a subgroup of order <m>n</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise>
+      <statement>
+        <p>
+          *prove <xref ref="proposition_Isomorphism_subgpsAllOrders">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

@@ -1,0 +1,1123 @@
+<section xml:id="sec_Permutations_CycleAlgebraicProperties">
+  <title>Algebraic properties of cycles <nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="subsec_Permutations_CycleAlgebraicProperties_DefinitionOfOrder">
+    <title>Powers of cycles: definition of order</title>
+    <p>
+      Let's revisit the product of cycles.
+      We will look at what happens when you compose a cycle with itself multiple times.
+          <idx><h>Cycle</h><h>powers of</h></idx>
+    </p>
+    <example xml:id="example_Permutations_cycle_squared">
+      <statement>
+        <p>
+          Consider the product <m>(1264)(1264)</m>,
+          which we may also write as <m>(1264)^2</m>.
+          As in the previous section, we can use a diagram
+          (see <xref ref="fig_perm_square">Figure</xref>)
+          to compute this product.
+          But let's try to understand better what's really going on.
+        </p>
+        <figure xml:id="fig_perm_square">
+          <caption>Diagram of <m>(1264)^2</m>, showing in particular how the permutation takes 1 to 6.</caption>
+          <image width="37%" source="images/perm_square.png"/>
+        </figure>
+        <ol type="1">
+          <li>
+            <p>
+              Notice for all elements <m>x \neq 1, 2, 6, 4</m>,
+              <m>x</m> stays put in <m>(1264)</m>;
+              hence <m>x</m> stays put in <m>(1264)^2</m>.
+              So the product <m>(1264)^2</m> does not involve any elements except <m>1, 2, 6</m> and <m>4</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Now let's look at what happens when <m>x = 1, 2, 6</m>,
+              or <m>4</m>.
+              By squaring the cycle, we are applying it twice to each input;
+              hence each input is moved two spots around the wheel
+              (see <xref ref="fig_perm_square2">Figure</xref>)
+              .  In other words,
+              <me>
+                1 \to 6;   6 \to 1;  2 \to 4;  4 \to 2
+              </me>,
+              Altogether: <m>(1264)^2 = (16)(24)</m>.
+            </p>
+          </li>
+        </ol>
+        <figure xml:id="fig_perm_square2">
+          <caption><m>(1264)^2</m>: streamlined notation</caption>
+          <image width="15%" source="images/perm_square2.png"/>
+        </figure>
+      </statement>
+    </example>
+    <p>
+      With this methodology in mind,
+      let's explore powers of cycles a bit further.
+    </p>
+    <exercise xml:id="exercise_Permutations_4th_power">
+      <statement>
+        <p>
+          Compute each of the following.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1 2 6 4)^3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 6 4)^4</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 6 4)^5</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_6th_power">
+      <statement>
+        <p>
+          Compute each of the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1 2 5 8 4 3)^2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 5 8 4 3)^3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 5 8 4 3)^4</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 5 8 4 3)^5</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 5 8 4 3)^6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 5 8 4 3)^7</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Do you notice a pattern from these two exercises?
+      Let us investigate in a bit more detail:
+      this will help us build up towards a proof of a general statement.
+    </p>
+    <exercise xml:id="exercise_Permutations_power_of_n-cycle1">
+      <statement>
+        <p>
+          Let <m>X = \{1,2,\ldots,10\}</m>,
+          let <m>A = \{2,5,7,8\}</m>,
+          and let <m>\sigma \in S_X</m> be the cycle <m>\sigma = ( 2 5 7 8 )</m>.
+          <ol type="a">
+            <li>
+              <p>
+                What is <m>\sigma(2)</m>?
+                What is <m>\sigma^2(2)</m>?
+                What is <m>\sigma^3(2)</m>?
+                What is <m>\sigma^4(2)</m> What is <m>\sigma^{3,482,991}(2)?</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                What is <m>\sigma(5)</m>?
+                What is <m>\sigma^2(5)</m>?
+                What is <m>\sigma^3(5)</m>?
+                What is <m>\sigma^4(5)</m> What is <m>\sigma^{3,482,991}(5)?</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                Fill in the blank: If <m>x \in A</m> then <m>\sigma^k(x) = \sigma^{\bmod(k,\underline{~~})}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is <m>\sigma(1)</m>?
+                What is <m>\sigma(3)</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                What general statement can you make about
+                <m>\sigma^k(x)</m> for <m>x \in X \backslash A</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                * Let <m>K = \{k: \sigma^k(x) = x ~~\forall x \in X\}</m>.
+                Is <m>2 \in K</m>?
+                Is <m>3 \in K</m>?
+                Is <m>4 \in K</m>?
+                Given any positive integer <m>k</m>,
+                what's a simple way of telling whether or not <m>k \in K</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Hopefully you're beginning to see the picture!
+      To generalize these results, we need some additional terminology:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defordercycle} The <term>order</term>
+          of a cycle <m>\sigma</m> is the smallest natural number <m>k</m> such that <m>\sigma^k = {\var id}</m>.
+              <idx><h>Cycle</h><h>order of</h></idx>
+              <idx><h>Order</h><h>of a cycle</h></idx>
+          The order of <m>\sigma</m> is denoted by the notation <m>|\sigma|</m>.<fn>
+          This is in keeping with our practice of using <m>|\ldots|</m> to denote the
+          <q>size</q>
+          of things.
+          </fn>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      After that long build-up, we now have (Ta-da!):
+    </p>
+    <proposition xml:id="proposition_Permutations_order_of_cycle">
+      <statement>
+        <p>
+          The order of a cycle is always equal to the cycle's length.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        To prove this, we essentially have to prove two things:
+        <ol type="A">
+          <li>
+            <p>
+              If <m>\sigma</m> is a cycle of length <m>k</m>,
+              then <m>\sigma^k = {\var id}</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>\sigma</m> is a cycle of length <m>k</m>,
+              then <m>\sigma^j \neq {\var id}</m><nbsp/><nbsp/><nbsp/><nbsp/><m>\forall j: 1 \le j \lt k</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        The proof for (A) follows the same lines as our investigations in <xref ref="exercise_Permutations_power_of_n-cycle1">Exercise</xref>.
+        In that exercise,
+        we considered separately the elements of <m>X</m> that are moved by the cycle,
+        and those elements that are not moved by the cycle.
+      </p>
+      <exercise xml:id="exercise_Permutations_length_equals_order">
+        <statement>
+          <p>
+            Prove part (A) by filling in the blanks.
+          </p>
+          <p>
+            Let <m>\sigma \in S_X</m> be an arbitrary cycle of length <m>k</m>.
+            Then <m>\sigma</m> can be written as <m>(a_1 \, a_2 \, \ldots \, a_k)</m>,
+            for some set of elements <m>a_1, a_2, \ldots a_k</m> in <m>X</m>.
+            In order to show that <m>\sigma^k = {\var id}</m>,
+            it is sufficient to show that <m>\sigma^k(x) = \underline{~\lt 1>~} \forall x \in X</m>.
+            Let <m>A</m> be the set <m>\{a_1, a_2, \ldots a_k\}</m>.
+            Now for any <m>x \in X</m>, there are two possibilities:
+            <ol type="i">
+              <li>
+                <p>
+                  <m>x \in X \backslash A</m>;
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>x \in A</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+          <p>
+            We'll deal with these two cases separately
+            (as we did in <xref ref="exercise_Permutations_power_of_n-cycle1">Exercise</xref>).
+            <ol type="i">
+              <li>
+                <p>
+                  In this case,
+                  <m>\sigma(x) = \underline{~\lt 2>~}</m> It follows that <m>\sigma^2(x) = \sigma( \sigma(x)) = \sigma( \underline{~\lt 3>~}) = \underline{~\lt 4>~}</m>.
+                  We can use the same argument to show that <m>\sigma^3(x) = \underline{~\lt 5>~}</m>,
+                  and that <m>\sigma^k(x) = \underline{~\lt 6>~}</m> for any natural number <m>\underline{~\lt 7>~}</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  In this case,
+                  then <m>x = a_j</m> for some integer <m>j, 1 \le j \le \underline{~\lt 8>~}</m>.
+                  It follows from the definition of cycle that <m>\sigma(x) = \sigma(a_j) = a_{\bmod(j+1,k)}</m>.
+                  Furthermore,
+                  <m>\sigma^2(x) = \sigma(a_{\bmod(j+1,k)}) = \underline{~\lt 9>~}</m>.
+                  Similarly it follows that <m>\sigma^{k}(x) = a_{\bmod(j+ \underline{~\lt 10>~},k)} = a_{\underline{~\lt 11>~}} = x</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+          <p>
+            Cases (i) and (ii) establish that <m>\forall x \in X, \underline{~\lt 12>~} = x</m>.
+            It follows that <m>\sigma^k = \underline{~\lt 13>~}</m>.
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        The proof of (B) is also structured as an exercise.
+      </p>
+      <exercise xml:id="exercise_Permutations_length_equals_order2">
+        <statement>
+          <p>.
+            In this exercise we use the same notation as part (A), that is:
+            <m>\sigma \in S_X</m> has length <m>k</m> and is represented as:
+            <m>\sigma = (a_1 \, a_2 \, \ldots \, a_k)</m>.
+            <ol type="a">
+              <li>
+                <p>
+                  What is <m>\sigma(a_1)</m>?
+                  What is <m>\sigma^2(a_1)</m>?
+                  What is <m>\sigma^3(a_1)</m>?
+                  What is <m>\sigma^{k-1}(a_1)</m>?
+                </p>
+              </li>
+              <li>
+                <p>
+                  Conclude from part (a) that
+                  <m>\sigma^j \neq {\var id}</m> for <m>j = 1,2,3, \ldots, k-1</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <example xml:id="example_Permutations_cycle_order">
+      <statement>
+        <p>
+          Here's a nice application of <xref ref="proposition_Permutations_order_of_cycle">Proposition</xref>,
+          which simply uses rules of function composition.
+          This should also give you a good start on the next exercise.
+          <me>
+            (1 2 6 4)^6 = (1 2 6 4)^4 (1 2 6 4)^2 = {\var id} ~(1 6) (2 4) = (1 6)(2 4)
+          </me>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_cycle_order_1">
+      <statement>
+        <p>
+          Compute the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1 2 6 4)^{11}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 5 8 4 3)^{53}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(3 5 2)(1 3 6)(1254)^{102}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(3 4 8) (4 5 6)^5 (1 3 2 5)^{10}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_Ad4">
+      <statement>
+        <p>
+          If <m>\sigma</m> is a cycle of odd length,
+          prove that <m>\sigma^2</m> is also a cycle. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_CycleAlgebraicProperties_PowerAndOrderGeneral">
+    <title>Powers and orders of permutations in general</title>
+    <p>
+      Now that we know the order of cycles,
+      let's see if we can tackle other permutations as well:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {deforder} The <term>order</term>
+          of a permutation <m>\tau</m> is the smallest positive integer <m>k</m> such that <m>\tau^k = {\var id}</m>.
+              <idx><h>Order</h><h>of a permutation</h></idx>
+          As before, the order of <m>\tau</m> is denoted by the notation <m>|\tau|</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      <em>Proposition</em>: Let <m>\tau</m> be a permutation,
+      and let <m>k = |\tau|</m>.
+      Then <m>\tau^{\ell} = {\var id}</m> if and only if <m>\mod(\ell,k)=0</m>.
+    </p>
+    <exercise xml:id="exercise_Permutations_64">
+      <statement>
+        <p>
+          Fill in the blanks with the appropriate variables in the following proof of the proposition. (*Hint*)
+        </p>
+        <p>
+          <em>Proof:</em> For any integer <m>\ell</m> we may write <m>\ell = ak + b</m>,
+          where <m>b \in \mathbb{Z}_{\underline{~\lt 1>~}}</m>.
+          It follows that
+          <me>
+            \tau^{\ell} = \tau^{\lt \underline{2}> \cdot k + \lt \underline{3}>} = (\tau^{\lt \underline{4}> \cdot k})\tau^{\lt \underline{5}>} =   (\tau^k)^{\lt \underline{6}>}\tau^{\lt \underline{7}>} = ({\var id})^{\lt \underline{8}>}\tau^{\lt \underline{9}>} = \tau^{\lt \underline{10}>}
+          </me>.
+        </p>
+        <p>
+          Therefore <m>\tau^{\ell} = {\var id}</m> if and only if <m>\tau^{\lt \underline{11}>} = {\var id}</m>.
+          However, we know that <m>\underline{~\lt 12>~} \lt k</m>,
+          and we also know that <m>\underline{~\lt 13>~}</m> is the smallest positive integer such that <m>\tau^{\lt \underline{14}>} = {\var id}</m>.
+          Hence it must be the case that <m>b= \underline{~\lt 15>~}</m>,
+          which is the same thing as saying that <m>\bmod(\ell,\underline{~\lt 17>~})=0</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Can we characterize the order of a permutation that is a product of disjoint cycles?
+      Let's explore.
+    </p>
+    <example xml:id="example_Permutations_disjoint_squared">
+      <statement>
+        <p>
+          Let <m>\tau = (2 4)(1 6)</m>.
+          Notice that <m>(2 4)</m> and <m>(1 6)</m> are disjoint,
+          so they commute
+          (recall <xref ref="proposition_Permutations_disjoint_cycles_commute">Proposition</xref>).
+          We also know that permutations are associative under composition.
+          So we may compute <m>\tau^2</m> as follows:
+        </p>
+        <p>
+          <m>\tau^2 = \Big( (2 4 )(1 6 ) \Big) \Big( (2 4 )(1 6 ) \Big)</m>
+        </p>
+        <p>
+          <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>=
+          <m>(2 4) {\Big(} (1 6) (2 4 ) {\Big )} (1 6 )</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(associative)
+        </p>
+        <p>
+          <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>=
+          <m>(2 4 ) {\Big(} (2 4 ) (1 6) {\Big )} (1 6 )</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(commutative)
+        </p>
+        <p>
+          <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>=
+          <m>{\Big(} (2 4 ) (2 4 ) {\Big )} {\Big(} (1 6) (1 6 ) {\Big )}</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(associative)
+        </p>
+        <p>
+          <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>=
+          <m>{\var id}~{\var id}</m> <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(2-cycles have order 2)
+        </p>
+        <p>
+          <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>= <m>{\var id}</m>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_disjoint_cube">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Let <m>\sigma = (237)</m> and <m>\tau = (458)</m>.
+              By following the format of <xref ref="example_Permutations_disjoint_squared">Example</xref>,
+              show that <m>(\sigma \tau)^3 = {\var id}</m>
+              (write out each step, and cite the property used).
+            </p>
+          </li>
+          <li>
+            <p>
+              * If <m>\sigma</m> and <m>\tau</m> are disjoint cycles with <m>|\sigma| = |\tau| = k</m>,
+              what may you conclude about
+              <m>| \sigma \tau |</m>? (You don't need to give a proof).
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Associativity and commutativity are powerful tools for rearranging products of disjoint cycles,
+      and bear in mind that any disjoint cycles commute.
+    </p>
+    <exercise xml:id="exercise_Permutations_k_power_disjoint_cycles">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Let <m>\sigma</m> and <m>\tau</m> be <em>any</em>
+              disjoint cycles. using associative and commutative properties (see <xref ref="proposition_Permutations_disjoint_cycles_commute">Proposition</xref>,
+              show that <m>(\sigma \tau)^2 = \sigma^2 \tau^2</m>
+              (write out each step, and cite the property used).
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>\sigma</m> and <m>\tau</m> are disjoint cycles and <m>k</m> is a natural number,
+              what may you conclude about
+              <m>(\sigma \tau)^k</m> in terms of powers of <m>\sigma</m> and <m>\tau</m>? (You don't need to give a proof).
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_disjoint_order_1">
+      <statement>
+        <p>
+          Suppose then <m>\tau = (1 2 3)( 4 5)</m>.
+          Compute each of the following
+          <ol type="a">
+            <li>
+              <p>
+                <m>\tau^2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau^3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau^4</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau^5</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau^6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\tau^7</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Notice what happened to the disjoint cycles in the previous exercise.
+      For instance <m>|(1 2 3)| = 3</m>,
+      and in parts (a)-(f) of the exercise you had the repeating pattern <m>\{(1 3 2), {\var id}, (1 2 3), (1 3 2), {\var id}, \ldots\}</m>.
+      Similarly, the 2-cycle <m>(4 5)</m> yielded the repeating pattern <m>\{{\var id}, (4 5), {\var id}, (4 5) \ldots \}</m>.
+    </p>
+    <p>
+      In <m>\tau^3, \tau^6, \tau^9, \ldots</m> the
+      <m>(1 2 3)^k</m> part of <m>\tau^k</m> becomes <m>{\var id}</m>,while in
+      <m>\tau^2, \tau^4, \tau^6, \ldots</m> the <m>(4 5)^k</m> part becomes <m>{\var id}</m>.
+      In order for <m>\tau^k = {\var id}</m>,
+      we must have both <m>(1 2 3)^k = {\var id}</m> and <m>(4 5)^k = {\var id}</m>,
+      which first happens when <m>k = 6</m>.
+      Which is the least common multiple of 2 and 3.
+      Which makes sense.
+      To visualize this idea,
+      think about the question posed in the following figure:
+    </p>
+    <figure xml:id="fig_wheels_2">
+      <caption>How many times does the small gear (at left) need to turn to return all gears to their original position? (Each turn rotates all  gears clockwise by 1 position.)</caption>
+      <image width="65%" source="images/wheels1.png"/>
+    </figure>
+    <p>
+      Disjoint cycles are like gears,
+      so they should first align back at
+      <q>1</q>, or <m>id</m>, when they've been
+      <q>turned</q>
+      a number of times that is precisely the least common multiple of the number of teeth on the gears.
+      The order of a permutation of disjoint cycles should just be the least common multiple of the orders of it's respective cycles.
+    </p>
+    <p>
+      In fact, we can prove it.
+      We will start with two disjoint cycles:
+    </p>
+    <proposition xml:id="proposition_Permutations_order_of_2disjoint_cycles">
+      <statement>
+        <p>
+          If <m>\sigma</m> and <m>\tau</m> are disjoint cycles, then
+          <me>
+            |\sigma \tau| = \mbox{ lcm } (|\sigma|,|\tau|)
+          </me>,
+          where <sq>lcm</sq> denotes least common multiple.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Let <m>j \equiv |\sigma|, k \equiv |\tau|</m>,
+        and <m>m \equiv \mbox{ lcm } (k,j)</m>.
+        Then it's enough to prove:
+        <ol type="i">
+          <li>
+            <p>
+              <m>(\sigma \tau)^m = {\var id}</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(\sigma \tau)^n \neq {\var id}</m> if <m>n \in \mathbb{N}</m> and <m>n \lt m</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        To prove (i), first note that <m>k</m> divides <m>m</m>,
+        so that <m>m = j \cdot p</m> for some natural number <m>p</m>.
+        Similarly, <m>m = k \cdot q</m> for some <m>q \in \mathbb{N}</m>.
+        It follows:
+      </p>
+      <p>
+        <m>(\sigma \tau )^m = \sigma^m \tau^m</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by <xref ref="exercise_Permutations_k_power_disjoint_cycles">Exercise</xref>)
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><m>= \sigma^{j \cdot p} \tau^{ k \cdot q}</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by definition of lcm)
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>
+        <m>= (\sigma^j)^p (\tau^ k)^q</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by exponentiation rules)<fn>
+        These are the same exponentiation rules you saw in high school algebra:
+        <m>x^{ab} = (x^a)^b</m>
+        </fn>
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><m>= {\var id} ^p {\var id} ^q</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by definition of order)
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><m>= {\var id}</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by definition of <m>{\var id}</m>).
+      </p>
+      <p>
+        To prove (ii), let <m>n \lt m</m>.
+        It follows either <m>k</m> or <m>j</m> does
+        <em>not</em> divide <m>n</m>.
+        Let's suppose it's <m>k</m>
+        (the case where it's <m>j</m> is virtually identical).
+        In this case we must have <m>n = p \cdot k + r</m> where <m>p</m>,r<m>\in \mathbb{N}</m> and <m>r \lt k</m>.
+        It follows:
+      </p>
+      <p>
+        <m>(\sigma \tau )^n = \sigma^n \tau^n</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by <xref ref="exercise_Permutations_k_power_disjoint_cycles">Exercise</xref>)
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><m>= \sigma^{j \cdot p + r} \tau^n</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(substitution)
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>
+        <m>= (\sigma^j)^p \sigma^r \tau^n</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by exponentiation rules)
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><m>= {\var id} ^p \sigma^r \tau^n</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by definition of order)
+      </p>
+      <p>
+        <nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><m>= \sigma^r \tau^n</m><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>(by definition of identity)
+      </p>
+      <p>
+        Now since <m>r \lt k</m>,
+        and <m>|\sigma| = k</m>, it follows that <m>\sigma^r \neq {\var id}</m>.
+        Thus there is some <m>x</m> such that <m>\sigma^r(x) \neq x</m>.
+        But since <m>\sigma</m> and <m>\tau</m> are disjoint,
+        it must be the case that <m>\tau(x) = x</m>.
+        It follows that:
+      </p>
+      <p>
+        <m>\sigma^r \tau^n (x) = \sigma^r (x) \neq x</m>.
+      </p>
+      <p>
+        From this we may conclude that <m>(\sigma \tau )^n</m> is
+        <em>not</em> the identity.
+        This completes the proof of
+        (ii).
+      </p>
+    </proof>
+    <p>
+      What <xref ref="proposition_Permutations_order_of_2disjoint_cycles">Proposition</xref>
+      establishes for two disjoint cycles is also true for multiple disjoint cycles.
+      We state the proposition without proof,
+      because it is similar to that of <xref ref="proposition_Permutations_order_of_2disjoint_cycles">Proposition</xref> except with more details.
+          <idx><h>Disjoint cycles</h><h>powers of</h></idx>
+    </p>
+    <proposition xml:id="proposition_Permutations_order_of_disjoint">
+      <statement>
+        <p>
+              <idx><h>Order</h><h>disjoint cycles</h></idx>
+              <idx><h>Disjoint cycles</h><h>order of</h></idx>
+          Suppose <m>\sigma_1, \sigma_2, \ldots , \sigma_n</m> are <m>n</m> disjoint cycles, where <m>k_1, k_2, \ldots, k_n</m> are the lengths, respectively, of the <m>n</m> disjoint cycles.
+          Then
+          <me>
+            |\sigma_1 \sigma_2  \cdots \sigma_n| = \mbox{ lcm } (k_1, k_2, \ldots, k_n)
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      Now we can find the order of any permutation by first representing it as a product of disjoint cycles.
+    </p>
+    <exercise xml:id="exercise_Permutations_Sn_orders">
+      <statement>
+        <p>
+          What are all the possible orders for the permutations in each of the following sets
+          (look back at your work for <xref ref="exercise_Permutations_cycle_types">Exercise</xref>).
+          <ol type="a">
+            <li>
+              <p>
+                <m>S_6</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>S_7</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>S_8</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_disjoint_order_2">
+      <statement>
+        <p>
+          Compute the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>| (1 2 5 4)^2 |</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>| (1 3 6 5 8)^2 (4 7 3)^2 (1 2 5) |</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>| (1 3 6 5 8)^{13} (1 2 5 4)^{11} (4 7 3) |</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>| (1 2 3 4 5 6 7 8 9)^{300} |</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\sigma</m> be a permutation in <m>S_n</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Show that there exists an integer <m>k>1</m> such that <m>\sigma^k = \sigma</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that there exists an integer <m>\ell>1</m> such that <m>\sigma^{\ell} = \sigma^{-1}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>K</m> be the set of <em>all</em>
+                integers <m>k>1</m> such that <m>\sigma^k = \sigma</m>.
+                Show that <m>K</m> is an infinite set
+                (that is, <m>K</m> has an infinite number of elements).
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>L</m> be the set of <em>all</em>
+                integers <m>\ell>1</m> such that <m>\sigma^{\ell} = \sigma^{-1}</m>.
+                Show that <m>L</m> is an infinite set.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the relationship between the sets <m>K</m> and <m>L</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Permutations_CycleAlgebraicProperties_TranspositionAndInverses">
+    <title>Transpositions and inverses</title>
+    <p>
+      The simplest nontrivial cycles are those of length 2.
+      We will show that these 2-cycles are convenient
+      <q>building blocks</q>
+      which can be used to construct all other cycles.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {Transposition} Cycles of length 2 are called
+          <term>transpositions</term>.
+              <idx><h>Transposition</h><h>definition of</h></idx>
+              <idx><h>Cycle</h><h>transposition</h></idx>
+          We will often denote transpositions by the symbol <m>\tau</m> (the greek letter
+          <q>tau</q>).
+        </p>
+      </statement>
+    </definition>
+    <exercise xml:id="exercise_Permutations_example_transpositions">
+      <statement>
+        <p>
+          Compute the following products:
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1 4)(1 3) (1 2)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 4)(1 8) (1 9)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 6)(1 5) (1 4)(1 3)(1 2)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(4 9)(4 8) (4 7)(4 6)(4 5)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2)(1 3)(1 4)(1 5) (1 6)(1 7)(1 8)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_example_transpositions2">
+      <statement>
+        <p>
+          In light of what you discovered in the previous exercise,
+          write each cycle as a product of transpositions:
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1 4 9 2)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(1 2 3 4 5)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(4 7 2 5 6 3)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a_1 a_2 a_3)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a_1 a_2 a_3 a_5 a_6)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a_1 a_2 a_3 a_5 a_6 a_7 a_8)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The preceding exercises demonstrate the following proposition:
+    </p>
+    <proposition xml:id="proposition_Permutations_transposition_formula">
+      <statement>
+        <p>
+          Every cycle can be written as the product of transpositions:<idx><h>Cycle</h><h>as products of transpositions</h></idx>
+          <me>
+            (a_1, a_2, \ldots, a_n ) = (a_1 a_n ) (a_1 a_{n-1} ) \cdots ( a_1 a_3 ) (a_1 a_2 )
+          </me>
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        The proof involves checking that left and right sides of the equation agree when they act on any <m>a_j</m>.
+        We know that the cycle acting on <m>a_j</m> gives <m>a_{j+1}</m> (or <m>a_1</m>,
+        if <m>j = n</m>);
+        while the product of transpositions sends <m>a_j</m> first to <m>a_1</m>,
+        then to <m>a_{j+1}</m>.
+      </p>
+    </proof>
+    <p>
+      Recall that we also know that any permutation can be written as a product of disjoint cycles,
+      which leads to:
+    </p>
+    <proposition xml:id="proposition_Permutations_trans_perm">
+      <statement>
+        <p>
+          Any permutation of a finite set containing at least two elements can be written as the product of transpositions.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        First write the permutation as a product of cycles:
+        then write each cycle as a product of transpositions.
+      </p>
+    </proof>
+    <exercise xml:id="exercise_Permutations_prod_of_trans_1">
+      <statement>
+        <p>
+          Express the following permutations as products of transpositions.
+          <ol type="a">
+            <li>
+              <p>
+                <m>( 1 4 3 5 6 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 1 5 6 )( 2 3 4 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 1 4 2 6 )( 1 4 2 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 1 7 2 5 4 )( 1 4 2 3 )( 1 5 4 6 3 2 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 1 4 2 6 3 7 )(2 3 5 9)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 1 3 5 7 9 )(2 4 6 8 ) (1 9 7 5 3) (2 8 6 4)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Even the identity permutation
+      <m>{\var id}</m> can be expressed as the product of transpositions:<idx><h>Identity</h><h>of transpositions</h></idx>
+    </p>
+    <exercise xml:id="exercise_Permutations_prod_of_trans_2">
+      <statement>
+        <p>
+          Compute the following products:
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1 2) (1 2)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(5 7)(5 7)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a_1 a_2)(a_1 a_2)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                What can you conclude about the inverse of a transposition?
+                  <idx><h>Inverse</h><h>of transpositions</h></idx>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The preceding exercise amounts to a proof of the following:
+    </p>
+    <proposition xml:id="proposition_Permutations_trans_inv">
+      <statement>
+        <p>
+          If <m>\tau</m> is a transposition, <m>\tau^{-1} = \tau</m>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      We can use the inverses of transpositions to build up the inverses of larger cycles:
+    </p>
+    <proposition xml:id="proposition_Permutations_cycle_inv">
+      <statement>
+        <p>
+          Suppose <m>\mu</m> is a cycle:
+          <m>\mu = (a_1 a_2 \ldots a_n)</m>.
+          Then <m>\mu^{-1} = (a_1 a_n a_{n-1} \ldots a_2 )</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        By <xref ref="proposition_Permutations_transposition_formula">Proposition</xref> we can write
+        <me>
+          \mu = (a_1 a_n ) (a_1 a_{n-1} ) \cdots ( a_1 a_3) (a_1 a_2)
+        </me>.
+      </p>
+      <p>
+        Now consider first just the last two transpositions in this expression.
+        In the Functions chapter,
+        we proved the formula <m>(f \compose g)^{-1} = g^{-1} \compose f^{-1}</m> for invertible functions <m>f</m> and <m>g</m>.
+        Since transpositions are invertible functions, we have
+        <me>
+          {\Big(}(a_1 a_3)(a_1 a_2){\Big)}^{-1} = (a_1 a_2)^{-1} ( a_1 a_3)^{-1} = (a_1 a_2 ) (a_1 a_3 )
+        </me>
+      </p>
+      <p>
+        (the second equality follows because every transposition is its own inverse.)
+      </p>
+      <p>
+        If we apply similar reasoning to the last three transpositions in the expression, we find
+        <me>
+          {\Big(}(a_1 a_4)(a_1 a_3)(a_1 a_2){\Big)}^{-1} = [(a_1 a_3)(a_1 a_2)]^{-1} ( a_1 a_4)^{-1} = (a_1 a_2 ) (a_1 a_3 ) (a_1 a_4)
+        </me>
+      </p>
+      <p>
+        Applying this result inductively, we obtain finally:
+        <me>
+          \mu^{-1} = (a_1 a_2) ( a_1 a_3) \cdots (a_1 a_{n-1} ) (a_1 a_n )
+        </me>,
+        from this expression we may see that <m>a_1 \rightarrow a_n</m>,
+        <m>a_n \rightarrow a_{n-1}, a_{n-1} \rightarrow a_{n-2}, \ldots,
+        a_{2} \rightarrow a_{1}</m>, which corresponds to the cycle we want.
+      </p>
+    </proof>
+    <p>
+      Because the product of permutations is an associative operation,
+      we may find the inverse of any product of cycles by taking the inverses of the cycles in reverse order.
+          <idx><h>Inverse</h><h>of a cycle</h></idx>
+          <idx><h>Cycle</h><h>inverse of</h></idx> (Actually, this is just a special case of the inverse of function composition: <m>(f_1 \circ f_2 \circ \ldots \circ f_{n-1}\circ f_n)^{-1}= f_n^{-1} \circ f_{n-1}^{-1} \circ \ldots \circ f_2 \circ f_1</m>.)
+    </p>
+    <example>
+      <statement>
+        <p>
+          <m>\left[ ( 1 4 9 8 )( 2 4 6 8 ) \right] ^{-1} = ( 2 4 6 8 )^{-1}( 1 4 9 8 )^{-1} = ( 2 8 6 4 )(1 8 9 4) = ( 1 6 4)( 2 8 9)</m>.
+        </p>
+      </statement>
+    </example>
+    <example>
+      <statement>
+        <p>
+          <m>( 1 3 5 7) ^{-2} = \left[ ( 1 3 5 7 )^{-1} \right]^2 = ( 1 7 5 3 )^2 = ( 1 7 5 3 )(1 7 5 3) = ( 1 5 )(3 7)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Permutations_inv_comps">
+      <statement>
+        <p>
+          Calculate each of the following.
+          <ol type="a">
+            <li>
+              <p>
+                <m>(1 2 5 3 7)^{-1}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>[(1 2)(3 4)(1 2)(4 7)]^{-1}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>[( 1 2 3 5 )( 4 6 7 )]^{-2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 1 2 5 4 )^{-1} ( 1 2 3 )( 4 5 ) ( 1 2 5 4 )</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 1 2 3 )( 4 5 ) ( 1 2 5 4 )^{-2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>( 7 4 2 )^{-7} ( 2 8 6)^{-13}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Permutations_cycleSTructureOfInverse">
+      <statement>
+        <p>
+          In <xref ref="subsec_Permutations_CycleNotation_CycleStructure">Section</xref>
+          we introduced the notion of the
+          <q>cycle structure</q>
+          of a permutation.
+          Using some of the ideas that we have introduced in this section,
+          prove that if <m>\sigma</m> is any permutation,
+          then <m>\sigma^{-1}</m> has the <em>same</em>
+          cycle structure as <m>\sigma</m>.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

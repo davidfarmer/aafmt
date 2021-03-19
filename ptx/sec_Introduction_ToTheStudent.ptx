@@ -1,0 +1,70 @@
+<section xml:id="sec_Introduction_ToTheStudent">
+  <title>To the student:</title>
+  <p>
+    Many students start out liking math.
+    Some like it well enough that they even want to teach it.
+    However, when they reach advanced math classes
+    (such as abstract algebra),
+    they become bewildered and frustrated.
+    Their textbooks talk about strange mathematical thingamabobs they've never heard of,
+    which have nonsensical properties that come from who knows where.
+    In lectures, the professor/oracle makes pronouncements (a.k.a
+    <q>theorems</q>
+    ) and utters long incantations (a.k.a
+    <q>proofs</q>
+    ) , but it's hard to see the point of either.
+  </p>
+  <p>
+    If the above paragraph describes you,
+    then this book is meant for you!
+  </p>
+  <p>
+    There's a good reason why higher math classes are bewildering for most students.
+    I believe that we math instructors tend to take too much for granted.<fn>
+    My father always says that trying to understand math is frustrating,
+    but once you've got it it's even more frustrating to try to explain it to others.
+    </fn> It's easy to forget that we're only able to understand abstractions because we have concrete examples that we keep referring back to,
+    consciously or subconsciously.
+    These examples enable us to fit new abstract ideas in with specific behaviors and patterns that we're very familiar with.
+    But students who don't have a firm hold on the examples have nothing to hold on to,
+    and are left grasping
+    (and gasping)
+    for air.
+  </p>
+  <p>
+    To be sure, most students have previously been exposed to various important examples that historically gave rise to abstract algebra.
+    These examples include the complex numbers,
+    integers mod <m>n</m>, symmetries, and so on.
+    They can give definitions and do some basic computations according to the rules.
+    But they haven't been given a chance to internalize these examples.
+    They can kind of follow along, but they aren't
+    <q>fluent</q>.
+  </p>
+  <p>
+    Our hope is that after reading this book students will be able to say,
+    <q>I've seen complex numbers,
+    integers mod <m>n</m> and permutations before,
+    but now I understand what makes them tick.
+    I can see they have deep underlying similarities,
+    which they share with other mathematical structures.</q>
+  </p>
+  <p>
+    This is actually a very good time to be learning abstract algebra.
+    Abstract algebra hs moved from the outer boondocks inhabited by specialists and puzzle enthusiasts out into the center stage of modern science and technology.
+    Two areas where abstract algebra has made strong contributions stand out particularly:
+    information processing and physics.
+    Coding of information is at the heart of information technology,
+    and abstract algebra provides all of the methods of choice for information coding that is both reliable
+    (impervious to errors)
+    and private.
+    On the other hand,
+    many if not most of the great advances in physics in the past 100 years are due to deeper understanding of physical symmetries and the groups that produce them
+    (the Lorentz group in special relativity is just one example).
+    We try as much as possible to make connections with these two areas,
+    and hope to do so increasingly in future editions.
+  </p>
+  <p>
+    We hope you enjoy the book.
+    Send us your comments!
+  </p>
+</section>

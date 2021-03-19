@@ -1,0 +1,761 @@
+<section xml:id="sec_Rings_DefinitionsAndExamples">
+  <title>Definitions and Examples <nbsp/><nbsp/>\vvideohref{xKUyYlAq24c&amp;feature=youtu.be}</title>
+  <introduction>
+    <p>
+      Some of the number systems we've studied in previouos chapters are:
+      <ul>
+        <li>
+          <p>
+            <m>{\mathbb Z}</m>=integers
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb Q}</m>=rational numbers
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb R}</m>=real numbers
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb C}</m>=complex numbers
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb Z}_n</m>=integers mod n.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb Z}[x], {\mathbb Q}[x], {\mathbb R}[x], \ldots</m> = polynomials with coefficients in <m>{\mathbb Z, \mathbb Q, \mathbb R \ldots}</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      When studying rings
+      (and groups),
+      we put a lot of focus on the integers.
+      The integers <m>{\mathbb Z}</m> have two operations:
+      addition(+) and multiplication(<m>\cdot</m>).
+      These operations have the following properties:
+      <ol type="I">
+        <li>
+          <p>
+            Closure: if <m>a, b \in {\mathbb Z}</m> then <m>a+b</m> and
+            <m>a\cdot b</m> are in <m>{\mathbb Z}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Associativity: if <m>a, b, c\in {\mathbb Z}</m> then
+            <m>(a+b)+c=a+(b+c)</m> and <m>(a\cdot b)\cdot c=a\cdot (b\cdot c)</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Zero: there is an element <m>0\in {\mathbb Z}</m> such that for all <m>a\in {\mathbb Z},~a+0=0+a=a</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            One: there is an element <m>1\in {\mathbb Z}</m> such that for all <m>a\in {\mathbb Z},~a\cdot 1=1\cdot a=a</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Commutativity of Addition:
+            if <m>a,~b\in {\mathbb Z}</m>, then <m>a+b=b+a</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Additive Inverses: for every <m>a\in {\mathbb Z}</m>,
+            there exists an element <m>-a\in {\mathbb Z}</m> such that <m>a+(-a)=0</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Distributivity:
+            for every <m>a,~b,~c\in {\mathbb Z}</m> we have that
+            <m>a(b+c)=ab+ac</m> and <m>(b+c)a=ba+ca</m>.
+            <em>Note</em> that commutativity of multiplication is
+            <em>not</em> a property of all rings,
+            so <m>a(b+c)=(b+c)a</m> is not necessarily true for a ring.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      All of the number systems listed at the beginning of this chapter have properties I-VII. Similar properties are found in other number systems.<fn>
+      The reader may recall that some of these same properties were listed in <xref ref="sec_Polynomials_PropertiesAndSigmaNotation">Section</xref>,
+      when we were talking about coefficients of polynomials.
+      </fn>
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defring} Any number system with the two arithmetic operations (+ and <m>\cdot</m>) that satisfy properties I-VII is called a <term>ring</term>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      As well as having properties <m>I-VII</m>,
+      multiplication is commutative in all of the above number systems.
+      This leads us to the following definition:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defcomring} A number system is a
+          <term>commutative ring</term>
+          if it is a ring where multiplication is also commutative.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The properties of a ring are so similar to those of a group that it warrants a short discussion.
+      The main difference between a ring and a group is that a ring has two binary operations
+      (usually called addition and multiplication)
+      while a group has only one operation.
+      In fact, if you consider just the operation of addition,
+      then a ring is a group with respect to addition.
+      As far as multiplication, a ring is
+      <q>almost</q>
+      a group with respect to multiplication except that not all elements have multiplicative inverses.
+    </p>
+    <p>
+      Now that we know what a ring is,
+      how do we prove a number system forms a ring?
+      If you said that we would have to prove that the number system fulfills properties <m>I-VII</m>,
+      then you would be correct!
+      Let's look at some examples that will show us how to prove a number system forms a ring.
+    </p>
+    <p>
+      The rings we've talked about so far (<m>{\mathbb Z},{\mathbb Q},{\mathbb R},{\mathbb C}</m>) have all been infinite rings.
+      But there are finite rings as well.
+      In fact <m>{\mathbb Z}_n</m> is also a ring for any integer <m>n \ge 2</m>.
+      We'll show this in the following example:
+    </p>
+    <example xml:id="example_Rings_Zn_ring">
+      <statement>
+        <p>
+          Prove that <m>{\mathbb Z}_n</m> is a ring for any integer <m>n \ge 2</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Recall that <m>{\mathbb Z}_n=\{0,1,2,\ldots,n-1\}</m>.
+          It is also important to note that the operations of addition and multiplication will be defined as <em>modular sum</em>
+          and <em>modular product</em>,
+          notated as <m>\oplus</m> and <m>\odot</m>, respectively.
+          We should address each of the seven properties listed above to show that we have a ring.
+          It turns out that we have already shown each of these properties in the chapter on modular arithmetic,
+          <xref ref="ModularArithmetic">Chapter</xref>.
+          Let's divide our proof into seven steps,
+          one for each required ring property.
+          <ol type="I">
+            <li>
+              <p>
+                First we must show that <m>{\mathbb Z}_n</m> is closed under <m>\oplus</m> and <m>\odot</m>.
+                In <xref ref="proposition_ModularArithmetic_closed_property_Zn">Proposition</xref>,
+                we showed that the modular sum and modular product of two elements of
+                <m>{\mathbb Z}_n</m> are also in <m>{\mathbb Z}_n</m>.
+                In other words,
+                <m>a\oplus b \in{\mathbb Z}_n</m> and <m>a\odot b\in{\mathbb Z}_n</m>,
+                for all <m>a,b\in{\mathbb Z}_n</m>.
+                So <m>{\mathbb Z}_n</m> is closed under <m>\oplus</m> and <m>\odot</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Second, we must show that the associative property holds for <m>{\mathbb Z}_n</m>.
+                In <xref ref="proposition_ModularArithmetic_Zn_comm_assoc">Proposition</xref> (b),
+                we show that <m>(a \oplus b) \oplus c = a \oplus (b \oplus c)</m> and <m>(a \odot b) \odot c = a \odot (b \odot c)</m>.
+                So the associative property holds for <m>{\mathbb Z}_n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Third, we will show that the zero property holds for <m>{\mathbb Z}_n</m>.
+                In <xref ref="proposition_ModularArithmetic_id_property_Zn">Proposition</xref>,
+                we show that <m>0 \in {\mathbb Z}_n</m> and <m>a\oplus 0=0\oplus a=a</m>,
+                for any <m>a\in{\mathbb Z}_n</m>,
+                so <m>0</m> is the additive identity of
+                <m>{\mathbb Z}_n</m> and the zero property holds.
+              </p>
+            </li>
+            <li>
+              <p>
+                Our next step is to show that
+                <m>{\mathbb Z}_n</m> has the multiplicative identity property
+                (one).
+                Again, we will refer to <xref ref="subsec_ModularArithmetic_ArithWithRems">Section</xref>.
+                In particular,
+                <xref ref="exercise_ModularArithmetic_56">Exercise</xref>
+                showed us that <m>1\in{\mathbb Z}_n</m> and <m>1\odot a=a\odot 1=a</m>,
+                for any <m>a\in{\mathbb Z}_n</m>.
+                So, the identity property of multiplication holds for <m>{\mathbb Z}_n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The commutative property of <m>\oplus</m> for <m>{\mathbb Z}_n</m> must be proven next.
+                <xref ref="proposition_ModularArithmetic_Zn_comm_assoc">Proposition</xref>
+                (a) shows us that <m>a \oplus b = b \oplus a</m> and <m>a \odot b = b \odot a</m>,
+                for all <m>a,b\in{\mathbb Z}_n</m>.
+                Note that for a set to be a ring,
+                we only need to show that commutativity of
+                <em>addition</em> holds.
+                Because commutativity of <em>multiplication</em>
+                also holds for <m>{\mathbb Z}_n</m>,
+                we may also have a <em>commutative</em> ring.
+                Let's continue with our proof that
+                <m>{\mathbb Z}_n</m> is a ring before we jump to that conclusion.
+              </p>
+            </li>
+            <li>
+              <p>
+                The sixth property that we must show is that of the additive inverse.
+                We will refer back to <xref ref="proposition_ModularArithmetic_addinv_property_Zn">Proposition</xref>.
+                Here we let <m>a' = n-a</m>, for any <m>a\in{\mathbb Z}_n</m>.
+                We show that <m>a'\in{\mathbb Z}_n</m> and <m>a \oplus a' = a' \oplus a = 0 \pmod{ n}</m>:
+                that is, <m>a'</m> is the additive inverse of <m>a</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                For our last step,
+                we will show that the distributive property holds true for <m>{\mathbb Z}_n</m>.
+                Once again, we have already shown that this is true.
+                In <xref ref="proposition_ModularArithmetic_Zn_comm_assoc">Proposition</xref> (c),
+                we show that <m>a \odot (b \oplus c) = (a \odot b)\oplus (a \odot c)</m>.
+                Since <m>\odot</m> commutes in <m>{\mathbb Z}_n</m>,
+                it follows that <m>a \odot (b \oplus c) = (b \oplus c) \odot a= (a \odot b)\oplus (a \odot c)</m> and the distributive property holds.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          We have shown that all seven ring properties hold true in
+          <m>{\mathbb Z}_n</m> over <m>\oplus</m> and <m>\odot</m>.
+          Additionally, we have shown that
+          <m>{\mathbb Z}_n</m> commutes over <m>\odot</m>.
+          So, <m>{\mathbb Z}_n</m> is a <em>commutative</em>
+          ring and our proof is complete.
+        </p>
+      </proof>
+    </example>
+    <p>
+      We've already mentioned that <m>{\mathbb Q}</m> is a ring.
+      Sometimes we can use rings to create larger rings by adding additional elements.
+      Such rings are called <term>extension rings</term>.
+      We will discuss these further in <xref ref="sec_Rings_ExtensionRings">Section</xref>.
+      For now, let's look at a particular example.
+    </p>
+    <example xml:id="example_Rings_extension_ring">
+      <p>
+        Prove that <m>{\mathbb Q}[\sqrt[3]{2}]=\{a_0+a_1\sqrt[3]{2}+a_2(\sqrt[3]{4})~|~a_0,a_1,a_2\in {\mathbb Q}\}</m> forms a ring.
+      </p>
+      <p>
+        <em>Note</em>:
+        <m>{\mathbb Q}[\sqrt[3]{2}]</m> is the set of all polynomials of the form:
+      </p>
+      <p>
+        <m>a_0(\sqrt[3]{2})^0+a_1(\sqrt[3]{2})^1+a_2(\sqrt[3]{2})^2+\cdots+a_n(\sqrt[3]{2})^n</m>,
+        where <m>a_0,a_1,a_2,\cdots,a_n\in~{\mathbb Q}</m>.
+      </p>
+      <p>
+        In this case, we have defined
+        <m>{\mathbb Q}[\sqrt[3]{2}]</m> using only the first three terms.
+      </p>
+      <p>
+        (We will explain why three terms is enough later on in the proof.)
+      </p>
+      <proof>
+        <p>
+          To prove that <m>{\mathbb Q}[\sqrt[3]{2}]</m> forms a ring,
+          we must show <m>{\mathbb Q}[\sqrt[3]{2}]</m> has all seven ring properties listed above.
+          It will be useful to define a couple of arbitrary elements in our set:
+          let <m>a,b\in{\mathbb Q}[\sqrt[3]{2}]</m> such that:
+          <m>a=a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4}</m> and <m>b=b_0+b_1\sqrt[3]{2}+b_2\sqrt[3]{4}</m>.
+        </p>
+        <p>
+          Property (1): First, we need to prove that
+          <m>{\mathbb Q}[\sqrt[3]{2}]</m> is closed under addition and multiplication.
+          We will divide this task into two parts:
+          <ol type="a">
+            <li>
+              <p>
+                If <m>a,b\in{\mathbb Q}[\sqrt[3]{2}]</m> then <m>a+b\in {\mathbb Q}[\sqrt[3]{2}]</m>.
+                This is called <em>additive closure</em>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>a,b\in{\mathbb Q}[\sqrt[3]{2}]</m> then <m>ab\in {\mathbb Q}[\sqrt[3]{2}]</m>.
+                This is called <em>multiplicative closure</em>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          First, we will look at additive closure (a).
+        </p>
+        <p>
+          Remember that we have already defined two arbitrary elements in
+          <m>{\mathbb Q}[\sqrt[3]{2}]</m>, <m>a</m> and <m>b</m>.
+          So,
+          <md>
+            <mrow>a+b\amp =(a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4})+(b_0+b_1\sqrt[3]{2}+b_2\sqrt[3]{4})</mrow>
+            <mrow>\amp =(a_0+b_0)+(a_1+b_1)\sqrt[3]{2}+(a_2+b_2)\sqrt[3]{4}</mrow>
+          </md>.
+        </p>
+        <p>
+          Now let <m>c_0=(a_0+b_0)</m>,
+          <m>c_1=(a_1+b_1)</m> and <m>c_2=(a_2+b_2)</m>.
+          Since <m>{\mathbb Q}</m> is closed under addition,
+          then <m>c_0,c_1,c_2\in{\mathbb Q}</m> and <m>a+b=c_0+c_1\sqrt[3]{2}+c_2\sqrt[3]{4}</m>.
+          It should now be clear that this sum is indeed an element of <m>\in{\mathbb Q}[\sqrt[3]{2}]</m>.
+          We have shown that adding any two elements in
+          <m>{\mathbb Q}[\sqrt[3]{2}]</m> will always produce another element of <m>{\mathbb Q}[\sqrt[3]{2}]</m>.
+          So, <m>{\mathbb Q}[\sqrt[3]{2}]</m> is closed under addition.
+        </p>
+        <p>
+          Now let's prove multiplicative closure <m>(b)</m>.
+          We will again use <m>a</m> and <m>b</m> as defined earlier, so that:
+          <md>
+            <mrow>ab\amp =(a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4})(b_0+b_1\sqrt[3]{2}+b_2\sqrt[3]{4})</mrow>
+            <mrow>\amp =(a_0b_0+2a_1b_2+2a_2b_1)+(a_0b_1+a_1b_0+2a_2b_2)\sqrt[3]{2}</mrow>
+            <mrow>\amp  +(a_0b_2+a_1b_1+a_2b_0)\sqrt[3]{4}</mrow>
+          </md>.
+        </p>
+        <p>
+          Again, we must show that this product is also an element of <m>{\mathbb Q}[\sqrt[3]{2}]</m>.
+          Let's use a strategy similar to the one we used for additive closure.
+        </p>
+        <p>
+          Suppose we let <m>d_0,d_1,d_2\in{\mathbb Q}</m> such that <m>d_0=(a_0b_0+2a_1b_2+2a_2b_1)</m>,
+          <m>d_1=(a_0b_1+a_1b_0+2a_2b_2)</m>,
+          and <m>d_2=(a_0b_2+a_1b_1+a_2b_0)</m>.
+          Since <m>{\mathbb Q}</m> is closed under multiplication,
+          then <m>d_0,d_1,d_2\in{\mathbb Q}</m> and <m>ab=d_0+d_1\sqrt[3]{2}+d_2\sqrt[3]{4}\in{\mathbb Q}[\sqrt[3]{2}]</m>.
+          We have shown that multiplying any two elements in
+          <m>{\mathbb Q}[\sqrt[3]{2}]</m> produces another element in <m>{\mathbb Q}[\sqrt[3]{2}]</m>,
+          so <m>{\mathbb Q}[\sqrt[3]{2}]</m> is closed under multiplication.
+        </p>
+        <exercise xml:id="exercise_Rings_threeTermsofQring">
+          <statement>
+            <p>
+              Recall that in our definition of <m>{\mathbb Q}[\sqrt[3]{2}]</m>,
+              we only included three terms in the polynomial expansion.
+              In this exercise, we will see why.
+              <ol type="a">
+                <li>
+                  <p>
+                    Show that if we include 4 terms, then we get the same set.
+                    In other words, show that any polynomial of the form
+                    <m>d_0+d_1\sqrt[3]{2}+d_2\sqrt[3]{4}+d_3(\sqrt[3]{2})^3</m> can also be rewritten in the form
+                    <m>a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4}</m> where <m>a_0, a_1, a_2 \in {\mathbb Q}</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Show similarly that if we include 5 terms, we still get the same set
+                    (use a similar method).
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Given a polynomial of the form <m>d_0+d_1\sqrt[3]{2}+d_2\sqrt[3]{4}+ \ldots + d_n(\sqrt[3]{2})^n</m>,
+                    show that it can be rewritten in the form <m>a_0+a_1\sqrt[3]{2}+a_2\sqrt[3]{4}</m> where
+                    <m>a_0, a_1, a_2 \in {\mathbb Q}</m> by giving explicit formulas for <m>a_0, a_1, a_2</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    In the definition of <m>{\mathbb Q}[\sqrt[3]{2}]</m>,
+                    we included a term proportional to <m>\sqrt[3]{4}</m>.
+                    Show that this term is necessary,
+                    by showing that <m>a_0+a_1\sqrt[3]{2}</m> is <em>not</em>
+                    closed under multiplication.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </statement>
+        </exercise>
+        <p>
+          Let's continue with our proof of <xref ref="example_Rings_extension_ring">Example</xref>.
+          We have shown that <m>{\mathbb Q}[\sqrt[3]{2}]</m> satisfies the first property of rings.
+          Now, let's take a look at property (2).
+          We must show associativity for addition and multiplication.
+          In other words, we must show that:
+          <ol type="a">
+            <li>
+              <p>
+                If <m>a,b,c\in{\mathbb Q}[\sqrt[3]{2}]</m> then <m>(a+b)+c=a+(b+c)</m>, and
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>a,b,c\in{\mathbb Q}[\sqrt[3]{2}]</m> then <m>(ab)c=a(bc)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          For associativity of addition,
+          let <m>a,b,c,\in{\mathbb Q}[ \sqrt[3]{2}]</m>.
+          Since all of the numbers in <m>{\mathbb Q}[\sqrt[3]{2}]</m> are real numbers,
+          and the real numbers are associative,
+          then it follows automatically that numbers in <m>{\mathbb Q}[\sqrt[3]{2}]</m> also associate.
+          We can make a similar argument for associativity of multiplication.
+          Associativity is an example of an
+          <em>inherited property</em>.
+        </p>
+        <definition>
+          <statement>
+            <p>
+              {definherited property} An <term>inherited property</term> is a property such that,
+              if the property is true for a set of numbers <m>S</m>,
+              then it's also true for any subset of <m>S</m>.
+            </p>
+          </statement>
+        </definition>
+        <exercise xml:id="exercise_Rings_addClosureNotInherited">
+          <statement>
+            <p>
+              Show that additive closure is <em>not</em>
+              an inherited property by providing a counterexample.
+            </p>
+          </statement>
+        </exercise>
+        <p>
+          Back to our proof of <xref ref="example_Rings_extension_ring">Example</xref>.
+        </p>
+        <p>
+          Property (3): This is known as the <em>zero property</em>.
+          To prove this property,
+          we must show that <m>0\in{\mathbb Q}[\sqrt[3]{2}]</m> and also that
+          <m>a+0=0+a=0</m> for all <m>a\in{\mathbb Q}[\sqrt[3]{2}]</m>.
+          Notice that <m>0=0+0\sqrt[3]{2}+0\sqrt[3]{4}\in{\mathbb Q}[\sqrt[3]{2}]</m>.
+          Since all numbers,
+          <m>a\in{\mathbb Q}[\sqrt[3]{2}]</m> are real numbers,
+          it follows that <m>a+0=0+a=0</m>.
+          So <m>0</m> is the zero element of
+          <m>{\mathbb Q}[\sqrt[3]{2}]</m> and property (3) holds true.
+        </p>
+        <p>
+          The proof of property (4) is left as an exercise.
+        </p>
+        <exercise xml:id="exercise_Rings_identityQcuberoot2">
+          <statement>
+            <p>
+              Prove that 1 is the identity of <m>{\mathbb Q}[\sqrt[3]{2}]</m>.
+              (You may use the proof of the zero element as a model.)
+            </p>
+          </statement>
+        </exercise>
+        <p>
+          The proofs of properties (5) and (7) resemble the proof of property (2).
+        </p>
+        <exercise xml:id="exercise_Rings_comm_distPropsQcuberoot2">
+          <statement>
+            <p>
+              Prove properties (5) and (7). (You may use the proof of property (2) as a model.)
+            </p>
+          </statement>
+        </exercise>
+        <p>
+          We have shown that <m>{\mathbb Q}[\sqrt[3]{2}]</m> satisfies all seven properties of rings.
+          Therefore, by <xref ref="definition_Rings_defring">Definition</xref>,
+          <m>{\mathbb Q}[\sqrt[3]{2}]</m> is a ring and our proof is complete.
+        </p>
+      </proof>
+    </example>
+    <exercise xml:id="exercise_Rings_Qsqrt2ring">
+      <statement>
+        <p>
+          Let <m>{\mathbb Q}[2^{\frac{1}{2}}]</m> be the set of all numbers
+          <m>\{a+b\cdot2^{\frac{1}{2}}\}</m> with <m>a,b\in {\mathbb Q}</m>.
+          Is <m>{\mathbb Q}[2^{\frac{1}{2}}]</m> a ring?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Rings_ringMatrices">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Let <m>{\mathbb M}_2({\mathbb R})</m> be the set of
+              <m>2\times 2</m> matrices with entries in <m>{\mathbb R}</m>.
+              Show that <m>{\mathbb M}_2({\mathbb R})</m> is a ring under the operations of matrix addition and multiplication.
+            </p>
+          </li>
+          <li>
+            <p>
+              Give an example to show that
+              <m>{\mathbb M}_2({\mathbb R})</m> is not commutative under multiplication.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that although the distributive law holds in <m>{\mathbb M}_2({\mathbb R})</m>,
+              it is <em>not</em> true that
+              <m>X(Y+ Z) = YX + ZX</m> for all <m>a,b,c \in {\mathbb M}_2({\mathbb R})</m>.
+              This shows that you have to be very careful about the order of multiplication when dealing with rings that aren't commutative.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Rings_circulant_matrices">
+      <statement>
+        <p>
+          Define the set <m>C_3({\mathbb R})</m> as the set of all <m>3\times3</m>
+          <term>circulant matrices</term> of the form:
+          <m>\begin{bmatrix}a \amp c \amp b\\ b \amp a \amp c\\ c \amp b \amp a \end{bmatrix}</m>,
+          where <m>a,b,c\in{\mathbb R}</m>.
+          Prove or disprove that <m>C_3({\mathbb R})</m> is a ring.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>R</m> is a ring.
+          Prove that <m>{\mathbb M}_2(R)</m> is also a ring.
+        </p>
+      </statement>
+    </exercise>
+  </introduction>
+  <subsection xml:id="subsec_Rings_DefinitionsAndExamples_polynomialRings">
+    <title>Polynomial rings</title>
+    <p>
+      Take any ring <m>R</m> and the set of polynomials over that ring <m>R[x]</m>.
+      It turns out that <m>R[x]</m> is also a ring.
+      In this section, we will prove this,
+      and explore some properties of <m>R[x]</m>.
+    </p>
+    <p>
+      Actually, we've already completed most of the proof that <m>R[x]</m> is a ring.
+      Recall that in <xref ref="sec_Polynomials_PropertiesAndSigmaNotation">Section</xref>
+      we proved several properties of polynomials <m>R[x]</m>,
+      under very general assumptions about the set of coefficients <m>R</m>.
+      In fact, properties (I)-(V) in <xref ref="sec_Polynomials_PropertiesAndSigmaNotation">Section</xref>
+      are all included in the ring properties listed in <xref ref="sec_Rings_DefinitionsAndExamples">Section</xref>.
+      So all of the properties shown in <xref ref="sec_Polynomials_PropertiesAndSigmaNotation">Section</xref>
+      apply to <m>R[x]</m> as long as <m>R</m> is a ring.
+    </p>
+    <exercise xml:id="exercise_Rings_polyRingProps">
+      <statement>
+        <p>
+          Go back to <xref ref="sec_Polynomials_PropertiesAndSigmaNotation">Section</xref>
+          and identify the propositions that prove that the set <m>R[x]</m> satisfies the ring properties (I,II,III,V,VI,VII) from <xref ref="sec_Rings_DefinitionsAndExamples">Section</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We are still missing property IV, the identity property.
+      We can take care of this in short order.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Show that the polynomial <m>p(x) = 1x^0</m> is a multiplicative identity for the set of polynomials <m>\mathbb{C}[x]</m>.
+        </p>
+      </statement>
+    </exercise>
+    <proposition xml:id="proposition_Rings_ringMultId">
+      <statement>
+        <p>
+          Suppose that <m>R</m> is a ring with a multiplicative identity 1.
+          Then <m>1x^0</m> is a multiplicative identity of <m>R[x]</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Rings_ringMultId">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Putting <xref ref="exercise_Rings_polyRingProps">Exercise</xref>
+      and <xref ref="proposition_Rings_ringMultId">Proposition</xref>
+      together, we have immediately:
+    </p>
+    <proposition xml:id="proposition_Rings_polyringsarerings">
+      <statement>
+        <p>
+          The set of polynomials over a ring is also a ring.
+          That is, if <m>R</m> is a ring,
+          then <m>R[x]</m> is also a ring.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      <xref ref="proposition_Rings_polyringsarerings">Proposition</xref> is a powerful result.
+      We may use this proposition to build larger and larger rings.
+      For example,
+      <xref ref="proposition_Rings_polyringsarerings">Proposition</xref>
+      tells us that <m>((\mathbb{Z}[x])[y])[z]</m> is a ring of polynomials in <m>x,y,z</m>
+      (usually this is written as <m>\mathbb{Z}[x,y,z]</m>).
+      Apparently there are many examples of mathematical structures that are rings,
+      which makes them an interesting and fruitful object of study.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_Rings_DefinitionsAndExamples_RingProofs">
+    <title>Some Ring Proofs</title>
+    <p>
+      Remember that rings must satisfy the multiplicative identity property.
+      For the set of integers, the multiplicative identity is uniquely 1.
+      We can show that the multiplicative identity for any ring is unique.
+    </p>
+    <proposition xml:id="proposition_Rings_mult_idR">
+      <statement>
+        <p>
+          The multiplicative identity of a ring, <m>R</m>, is unique.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We need to show that if <m>x</m> is a multiplicative identity,
+          then <m>x=1</m>.
+          <md>
+            <mrow>\amp \text{ x is a multiplicative identity }  \amp  \text{ Given }</mrow>
+            <mrow>\amp x\cdot1=1\cdot x=1 \amp  \text{ Definition of Multiplicative Identity }</mrow>
+            <mrow>\amp \text{ 1 is a multiplicative identity }  \amp  \text{ Given }</mrow>
+            <mrow>\amp 1\cdot x=x\cdot1=x \amp  \text{ Definition of Multiplicative Identity }</mrow>
+            <mrow>\amp x=1 \amp  \text{ Substitution }</mrow>
+          </md>
+        </p>
+      </proof>
+    </proposition>
+    <exercise xml:id="exercise_Rings_addIdenUnique">
+      <statement>
+        <p>
+          Show that the additive identity of a ring <m>R</m> is unique. (You may model your proof on the proof of <xref ref="proposition_Rings_mult_idR">Proposition</xref>).
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Way back in <xref ref="subsec_Preliminaries_OpsAndRels">Section</xref>
+      we mentioned the <term>zero divisor property</term> for real numbers:
+      the product of two real numbers is zero if and only if at least one of the two numbers is zero.
+      In fact, the
+      <q>only if</q>
+      part of this statement is <em>not true</em> for general rings:
+    </p>
+    <exercise xml:id="exercise_Rings_ModZeroProducts">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that two nonzero numbers can multiply to give zero in <m>{\mathbb Z}_6</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that if <m>n</m> is not prime,
+              then there are two nonzero numbers in
+              <m>{\mathbb Z}_n</m> that multiply to give zero.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We can, however, show the
+      <q>if</q>
+      part:
+    </p>
+    <proposition xml:id="proposition_Rings_add_inverse">
+      <statement>
+        <p>
+          Given a ring, <m>R</m>,
+          for any <m>x\in R</m> we have <m>x\cdot0=0\cdot x=0</m>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We will use properties of rings in our proof.
+          <md>
+            <mrow>\amp 0=0+0 \amp  \text{ Definiton of Additive Identity }</mrow>
+            <mrow>\amp x\cdot0=x\cdot(0+0) \amp  \text{ Substitution }</mrow>
+            <mrow>\amp x\cdot0=x\cdot0+x\cdot0 \amp  \text{ Distributive Property }</mrow>
+            <mrow>\amp x\cdot0+-(x\cdot0)=(x\cdot0+x\cdot0)+-(x\cdot0) \amp  \text{ Substitution }</mrow>
+            <mrow>\amp x\cdot0+-(x\cdot0)=x\cdot0+(x\cdot0+-(x\cdot0)) \amp  \text{ Associativity of Addition }</mrow>
+            <mrow>\amp 0=x\cdot0+(0) \amp  \text{ Additive Inverse }</mrow>
+            <mrow>\amp 0=x\cdot0 \amp  \text{ Additive Identity }</mrow>
+          </md>
+        </p>
+        <p>
+          We have shown that <m>0=x\cdot0</m>.
+          It remains to show that <m>0=0\cdot x</m>,
+          since multiplication in rings is not always commutative.
+        </p>
+        <exercise xml:id="exercise_Rings_MultZeroRing">
+          <statement>
+            <p>
+              Complete the proof of <xref ref="proposition_Rings_add_inverse">Proposition</xref>
+              by showing that <m>0=0\cdot x</m>, for <m>x\in R</m>.
+            </p>
+          </statement>
+        </exercise>
+      </proof>
+    </proposition>
+    <p>
+      In the following proposition,
+      we show that we may construct the additive inverse of any ring element by multiplying the element by the additive inverse of 1.
+    </p>
+    <proposition xml:id="proposition_Rings_inverse">
+      <statement>
+        <p>
+          Let <m>R</m> be a ring, let <m>-1</m> be the additive inverse of <m>1</m>,
+          and let <m>-x</m> denote the additive inverse of <m>x\in R</m>.
+          Then <m>-x=(-1)\cdot x</m>.
+        </p>
+      </statement>
+    </proposition>
+    <exercise>
+      <statement>
+        <p>
+          Prove <xref ref="proposition_Rings_inverse">Proposition</xref>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Since there are many rules that ring operations obey,
+      we can simplify algebraic expressions in rings in much the same way as we do in basic algebra.
+    </p>
+    <exercise xml:id="exercise_Rings_comm_ring">
+      <statement>
+        <p>
+          Given <m>A,B,C\in R</m> where R is a commutative ring,
+          we can show that <m>(B+(-C))\cdot(A\cdot(B+C))=A\cdot(B\cdot B+(-C)\cdot C))</m>.
+          Give the reasons for the following steps in the simplification:
+          <md>
+            <mrow>(B+(-C))\cdot(A\cdot(B+C))\amp =(A\cdot(B+C))\cdot(B+(-C)) \amp  \text{ Comm. prop. }</mrow>
+            <mrow>\amp =A\cdot((B+C)\cdot(B+(-C))) \amp  \text{ Assoc. prop. }</mrow>
+            <mrow>\amp =A\cdot(((B+C)\cdot B)+((B+C)\cdot(-C))) \amp  \underline{\lt ~1~>}</mrow>
+            <mrow>\amp =A\cdot((B\cdot B+C\cdot B)+(B\cdot (-C)+C\cdot (-C))) \amp  \underline{\lt ~2~>}</mrow>
+            <mrow>\amp =A\cdot((B\cdot B+B\cdot C)+((-C)\cdot(B)+(-C)\cdot C))  \amp  \underline{\lt ~3~>}</mrow>
+            <mrow>\amp =A\cdot(B\cdot B+(B\cdot C+(-C)\cdot(B)+(-C)\cdot C))  \amp  \underline{\lt ~4~>}</mrow>
+            <mrow>\amp =A\cdot(B\cdot B+(B\cdot C+B\cdot(-C))+(-C)\cdot C)) \amp  \underline{\lt ~5~>}</mrow>
+            <mrow>\amp =A\cdot(B\cdot B+(B\cdot(C+(-C))+(-C)\cdot C)) \amp  \underline{\lt ~6~>}</mrow>
+            <mrow>\amp =A\cdot(B\cdot B+(B\cdot(0)+(-C)\cdot C)) \amp  \underline{\lt ~7~>}</mrow>
+            <mrow>\amp =A\cdot(B\cdot B+(0+(-C)\cdot C)) \amp  \underline{\lt ~8~>}</mrow>
+            <mrow>\amp =A\cdot(B\cdot B+(-C)\cdot C)) \amp  \underline{\lt ~9~>}</mrow>
+          </md>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

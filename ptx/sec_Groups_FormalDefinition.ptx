@@ -1,0 +1,224 @@
+<section xml:id="sec_Groups_FormalDefinition">
+  <title>Formal definition of a group</title>
+  <p>
+    Historically,
+    the theory of groups first arose from attempts to find the roots of polynomials in terms of their coefficients.
+    But groups have moved far beyond their original application,
+    and now play a central role in such areas as coding theory,
+    counting, and the study of symmetries.
+    Many areas of biology, chemistry,
+    and physics have benefited from group theory.
+    In the preceding chapters we've already worked with a number of different groups,
+    including the integers mod <m>n</m> and the symmetries of a rectangle or regular polygon.
+    Recall that a group basically consists of a set and a
+    <q>compatible</q>
+    operation:
+  </p>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            What operation is the set <m>{\mathbb Z}_n</m> a group under?
+          </p>
+        </li>
+        <li>
+          <p>
+            What operation is the set <m>S_3</m> a group under?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    The following definition formalizes the notion of
+    <q>operation</q>.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {group_op} A <term>binary operation</term>
+            <idx><h>Binary</h><h>operation</h></idx>
+            <idx><h>Operation</h><h>binary</h></idx>
+        or <term>law of composition</term><idx><h>Composition</h><h>law of</h></idx>
+            <idx><h>Operation</h><h>binary</h></idx>
+        on a set <m>G</m> is a function
+        <m>G \times G \rightarrow G</m> that assigns to each pair <m>(a,b) \in G \times G</m> a unique element
+        <m>a \circ b</m>, or <m>ab</m> in <m>G</m>,
+        called the <term>composition</term>
+        of <m>a</m> and <m>b</m>.
+      </p>
+    </statement>
+  </definition>
+  <remark>
+    <ul>
+      <li>
+        <p>
+          Notice that the word ''composition'' is now used to denote any operation on the elements of a set,
+          and not just composition of functions.
+        </p>
+      </li>
+      <li>
+        <p>
+          When the law of composition on a set is a basic algebraic operation such as multiplication or addition,
+          we'll call it with its usual name.
+          When it isn't, we will often refer to <m>a \circ b</m> as the
+          <q>product</q>
+          of <m>a</m> and <m>b</m>
+          (as we did in the Permutations chapter).
+        </p>
+      </li>
+    </ul>
+  </remark>
+  <p>
+    In the Modular Arithmetic chapter we introduced what properties a set and operation must have to be called a group:
+  </p>
+  <exercise xml:id="exercise_Groups_group_prop">
+    <statement>
+      <p>
+        What are the four properties a set <m>G</m> and a binary operation must exhibit in order for the set to be a group under that binary operation?
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Building on our previous discussion,
+    we now proudly present the following formal definition.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {group_definition} A <term>group</term>
+            <idx><h>Group</h><h>definition</h></idx>
+        <m>(G, \circ )</m> is a set <m>G</m> together with a law of composition
+        <m>(a,b) \mapsto a \circ b</m> that satisfies the following axioms.
+        <ol>
+          <li>
+            <p>
+              The set <m>G</m> is <term>closed</term>
+              under the law of composition.
+              That is,
+              <me>
+                \forall a,b \in G, a \circ b = c \mbox{ for some }  c \in G
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists an element <m>e \in G</m>,
+              called the <term>identity element</term>
+                <idx><h>Element</h><h>identity</h></idx>,
+                <idx><h>Identity</h><h>element</h></idx>
+              such that for any element <m>a \in G</m>
+              <me>
+                e \circ a = a \circ e = a
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For each element <m>a \in G</m>,
+              there exists an <term>inverse element</term>
+                <idx><h>Element</h><h>inverse</h></idx>
+                <idx><h>Inverse</h><h>element</h></idx>
+              in G, denoted by <m>a^{-1}</m>, such that
+              <me>
+                a \circ a^{-1} = a^{-1} \circ a = e
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The law of composition is <term>associative</term>.
+              That is,
+              <me>
+                (a \circ b) \circ c = a \circ (b \circ c)
+              </me>
+              for <m>a, b, c \in G</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </definition>
+  <remark>
+    <p>
+      When the group operation is obvious or has been previously specified,
+      we may denote the group by <m>G</m> rather than <m>(G,\circ)</m>.
+      For instance,
+      the group of integers under addition is typically denoted by
+      <m>{\mathbb Z}</m> and not <m>({\mathbb Z},+)</m>,
+      since the operation <m>+</m> is understood.
+    </p>
+  </remark>
+  <p>
+    One very important class of groups is the commutative groups,
+    which are given their own special designation:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {abelian_group} A group <m>(G,\circ)</m> with the property that <m>a \circ b = b \circ a</m> for all
+        <m>a,
+        b \in G</m> is called <term>abelian</term>
+            <idx><h>Abelian group</h></idx>
+            <idx><h>Group</h><h>abelian</h></idx>
+        <fn>
+        In honor of Neils Henrik Abel (1802-1829),
+        an astounding mathematician who sadly died very young of tuberculosis.
+        There is some discussion among mathematicians over whether <sq>abelian</sq> should be capitalized.
+        The word has become so common in mathematics that it's usually treated as a regular word and not a proper name.
+        This should be considered as a special honor to Abel,
+        since his name has become part of the fundamental language of mathematics.
+        </fn> or <term>commutative</term>.
+            <idx><h>Group</h><h>commutative</h></idx>
+        Groups not satisfying this property are said to be <term>non-abelian</term>
+            <idx><h>Group</h><h>non-abelian</h></idx>
+        or <term>noncommutative</term>.
+            <idx><h>Group</h><h>noncommutative</h></idx>
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Finally, based on our discussion before about the order of sets, we have:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {group_order} A group is <term>finite</term>,
+            <idx><h>Group</h><h>finite</h></idx>
+        or has <term>finite order</term>,
+        if it contains a finite number of elements The <em>order</em>
+            <idx><h>Group</h><h>order of</h></idx>
+            <idx><h>Order</h><h>of a group</h></idx>
+        of a finite group is the number of elements that it contains.
+        If <m>G</m> is a group containing <m>n</m> elements, we write <m>|G| = n</m>.
+        A group that is not finite is called <term>infinite</term>,
+        and such a group is said to be of
+        <term>infinite order</term>.
+            <idx><h>Group</h><h>infinite</h></idx>
+      </p>
+    </statement>
+  </definition>
+  <p>
+    The group <m>{\mathbb Z}_5</m> is a finite group of order 5, so <m>|{\mathbb Z}|_5=5</m>;
+    while the integers <m>{\mathbb Z}</m> form an infinite group under addition,
+    and we sometimes write <m>|{\mathbb Z}| = \infty</m>.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {trivial_group} The <term>trivial group</term>,
+            <idx><h>Group</h><h>trivial</h></idx>
+        consists of the single element <m>e</m>
+        (or <m>{\var id}</m>, in our previous notation).
+      </p>
+    </statement>
+  </definition>
+  <exercise xml:id="exercise_Groups_trivial">
+    <statement>
+      <p>
+        Prove that the trivial group is in fact a group according to <xref ref="definition_Groups_group_definition">Definition</xref>.
+      </p>
+    </statement>
+  </exercise>
+</section>

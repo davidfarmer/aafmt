@@ -1,0 +1,78 @@
+<section xml:id="sec_Isomorphism_Hints">
+  <title>Hints for
+  <q>Isomorphisms</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_Isomorphism_iso_4">Exercise</xref>: Show a counterexample where the sum of two complex numbers is not the same as the sum of their corresponding ordered pairs.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_InvCompIso">Exercise</xref>(a): According to <xref ref="definition_Isomorphism_isomorph_defn">Definition</xref>,
+    this involves proving two things about <m>\phi^{-1}</m>.
+    What are they?
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_InvCompIso">Exercise</xref>(b): You need to prove the same two things as in part (a).
+    Use results from the Functions chapter.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_GpEquivRel">Exercise</xref>: Recall that this involves proving the three properties:
+    reflexive, symmetric, and transitive.
+    You may find that <xref ref="exercise_Isomorphism_InvCompIso">Exercise</xref> is useful.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_cyclic_noncyclic">Exercise</xref>:
+    the proof follows <xref ref="proposition_Isomorphism_not_isomorph_cyclic">Proposition</xref> very closely.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_PhiBij">Exercise</xref>(a): Use <xref ref="exercise_Isomorphism_InvCompIso">Exercise</xref>.<nbsp/><nbsp/><nbsp/><nbsp/>(b): Use <xref ref="proposition_Isomorphism_abelian_non-abelian">Proposition</xref>.
+    <nbsp/><nbsp/><nbsp/><nbsp/>(c): Use <xref ref="proposition_Isomorphism_cyclic_noncyclic">Proposition</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_cyclic_inf_isomorph3">Exercise</xref>(a): Use <xref ref="proposition_Isomorphism_cyclic_noncyclic">Proposition</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_zp_isomorph">Exercise</xref>: This is a direct result of <xref ref="proposition_Cosets_cosets_theorem_7">Proposition</xref> in the Cosets chapter..
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_proof_thm_7">Exercise</xref>: For each group property to be proved,
+    use the corresponding group property for <m>G</m> and <m>H</m> independently.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_dirProdAbel">Exercise</xref>: To show that <m>G</m> is abelian,
+    for arbitrary group elements
+    <m>g_1, g_2 \in G</m> consider the elements <m>(g_1, id_H)</m> and
+    <m>(g_2,id_H)</m> in <m>G \times H</m>,
+    where <m>id_H</m> is the identity of the group <m>H</m>.
+    Show that if <m>(g_1, id_H)</m> and <m>(g_2,id_H)</m> commute,
+    then <m>g_1</m> and <m>g_2</m> must also commute.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_prodCycProp">Exercise</xref>: Since <m>G \times H</m> is cyclic,
+    it must have a generator <m>(g,h)</m>.
+    Show that <m>g</m> is a generator for <m>G</m> and <m>h</m> is a generator for <m>H</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_direct_commute">Exercise</xref>: Define a function <m>\phi:G \times H \rightarrow H \times G</m> by:
+    <m>\phi(g,h) = \underline{~~~~}</m>
+    (you fill in the blank).
+    Show that this function is in fact an isomorphism.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_exel">Exercise</xref>(c): Consider 2 cases: (i) 9 divides one of the factors
+    <m>p_i^{e_i}</m> in <xref ref="proposition_Isomorphism_FactorabelianGroup">Proposition</xref>; (ii) 9 does not divide any of the factors.
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_isomex">Exercise</xref>: Show that
+    <m>G \times {\var id}_K</m> is a subgroup of <m>G \times K</m>,
+    and that <m>G \times {\var id}_K \cong G</m>;
+    and similarly for <m>H</m>.
+  </p>
+  <p>
+    <em>Additional exercises</em>
+  </p>
+  <p>
+    <xref ref="exercise_Isomorphism_eoc">Exercise</xref>: If you take every other vertex in a hexagon,
+    you get an equilateral triangle.
+    Also note that 180-degree rotation is an element of order 2.
+  </p>
+</section>

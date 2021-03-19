@@ -1,0 +1,75 @@
+<section xml:id="sec_ExploringPolynomials_PolynomialsAreVectors">
+  <title>Polynomials are also vectors</title>
+  <p>
+    At this point the
+    <q>abstract</q>
+    of abstract algebra comes into play.
+    Once we have defined vector space,
+    then <em>any</em> set of any objects that satisfies all ten requirements qualifies as a bona fide vector space,
+    and objects in the set can be called vectors.
+    Do polynomials qualify?
+    We already know that we can add polynomials together,
+    and we can also multiply polynomials by scalars.
+    To see whether or not the set of polynomials with real coefficients
+    (that is, <m>\RR[x]</m>)
+    is a vector space, we will need to check all 10 conditions:
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>p(x)</m>, <m>q(x)</m>,
+        and <m>r(x)</m> be polynomials in <m>\mathbb{R}[x]</m>,
+        and let <m>\alpha</m>, <m>\beta\in\mathbb{R}</m> be scalars.
+        Write the 10 conditions in terms of <m>p(x)</m>,
+        <m>q(x)</m>, <m>r(x)</m>, <m>\alpha</m>, <m>\beta</m>.
+        For example, we have:
+      </p>
+      <p>
+        1. (Closure under +) <m>p(x)+q(x)</m> is in the set <m>\mathbb{R}[x]</m>.
+      </p>
+      <p>
+        5. (Additive inverse) <m>p(x)+(-1)\cdot p(x)=0</m>
+      </p>
+      <p>
+        8. <m>\alpha(p(x)+q(x))=\alpha p(x)+\alpha q(x)</m>
+      </p>
+      <p>
+        To complete the exercise, write conditions 2,3,4,6,7,9,10.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Use summation notation to prove properties 5,7,8 for polynomials.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The preceding exercises show that the set
+    <m>\mathbb{R}[x]</m> over <m>\mathbb{R}</m> is a vector space,
+    using the standard operations on polynomials.
+    In fact, the polynomial ring <m>\mathbb{R}[x]</m> is an
+    <term>infinite-dimensional</term> vector space.
+        <idx><h>Vector space</h><h>inifinite dimensional</h></idx>
+    It's true that each individual polynomial has finite degree,
+    but the set has no single bound on the degree of all of its members.
+    For instance, We can think of
+    <m>1 + 4x + 7x^2</m> as corresponding to the vector <m>( 1, 4, 7, 0, 0,...)</m>.
+  </p>
+  <p>
+    Another vector space that we will want to examine is the set of
+    <m>n \times n</m> matrices with real entries.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>M</m> be the set of
+        <m>n \times n</m> matrices with real entries.
+        Let <m>A</m>, <m>B</m>, and <m>C</m> be elements of <m>M</m>,
+        and let <m>\alpha</m>, <m>\beta\in\mathbb{R}</m> be scalars.
+        Write the 10 vector space conditions in terms of <m>A,B,C,\alpha,\beta</m>.
+      </p>
+    </statement>
+  </exercise>
+</section>

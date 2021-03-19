@@ -1,0 +1,283 @@
+<section xml:id="sec_Rings_Subrings">
+  <title>Subrings</title>
+  <p>
+    Earlier we mentioned that two important topics studied in Abstract Algebra are groups and rings.
+    Just like groups have subgroups,
+    rings have <em>subrings</em>.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {subring} A ring that is a subset of another ring is called a <term>subring</term>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Suppose <m>R</m> is a ring, and <m>S\subset R</m>.
+    To prove <m>S</m> is a subring,
+    we must show that <m>S</m> satisfies all seven ring properties.
+    <m>S</m> will inherit certain properties (associativity,
+    commutativity,
+    and distributive) from <m>R</m>,
+    making lighter work of our proof that <m>S</m> is also a ring.
+  </p>
+  <p>
+    To show that <m>S\subset R</m> is a ring,
+    we must show the following:
+    <ul>
+      <li>
+        <p>
+          Additive Inverse: <m>a\in S\implies-a\in S</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Closure: <m>a,b\in S\implies~a+b\in S</m> and <m>ab\in S</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Zero: <m>0\in S</m>, such that
+          <m>0+a=a+0=a</m>, for all <m>a\in S</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          One: <m>1\in S</m>, such that
+          <m>1\cdot a=a\cdot 1=a</m>, for all <m>a\in S</m>.
+          Note that for <m>S</m> to be a subring of <m>R</m>,
+          the multiplicative identities must be the <em>same</em>.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    If <m>S</m> is a subring of <m>R</m>
+    <em>except</em> that <m>1\notin S</m>,
+    then <m>S</m> is a <em>subring</em>
+    of <m>R</m> <em>without unity</em>.
+        <idx><h>Subring</h><h>Without unity</h></idx>
+  </p>
+  <p>
+    Examples of subrings:
+    <ol type="a">
+      <li>
+        <p>
+          <m>{\mathbb Z}</m> is a subring in <m>{\mathbb Q}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>{\mathbb R}</m> is a subring of <m>{\mathbb C}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          If <m>R</m> is a ring, then <m>R</m> is a subring of <m>R[x]</m>.
+        </p>
+      </li>
+    </ol>
+  </p>
+  <p>
+    Let's look at a subring proof together:
+  </p>
+  <example>
+    <statement>
+      <p>
+        Given two rings <m>R_1</m> and <m>R_2</m> which share the same + and <m>\cdot</m> operations,
+        show that <m>R_1 \cap R_2</m> is a subring of both <m>R_1</m> and <m>R_2</m>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Let's begin by showing that <m>R_1 \cap R_2\subset R_1</m> and <m>R_2</m>.
+        By definition of <m>\cap, ~a\in R_1\cap R_2\implies a\in R_1</m> and <m>a\in R_2</m>.
+        So <m>R_1 \cap R_2\subset R_1</m> and <m>R_2</m>.
+      </p>
+      <p>
+        Next, we will show the additive inverse property.
+        Let <m>a</m> be an arbitrary element in <m>R_1 \cap R_2</m>.
+        Then <m>a\in R_1</m> and <m>R_2</m>,
+        by the definition of <m>\cap</m>.
+        Remember that <m>R_1</m> and <m>R_2</m> are rings with the same + operation,
+        so <m>-a\in R_1</m> and <m>R_2</m>.
+        This means that <m>-a\in R_1 \cap R_2</m> and the additive inverse property holds.
+      </p>
+      <p>
+        Our next task is to show that
+        <m>R_1 \cap R_2</m> contains the zero element.
+        Since <m>R_1</m> and <m>R_2</m> are rings with the same + operation,
+        then <m>0\in R_1</m> and <m>R_2</m>.
+        By definition of <m>\cap, ~0\in R_1 \cap R_2</m>,
+        and the zero property holds.
+      </p>
+      <p>
+        In the following exercise,
+        you will complete the proof that
+        <m>R_1\cap R_2</m> is a subring by showing that it has a multiplicative identity.
+      </p>
+      <exercise>
+        <statement>
+          <p>
+            Given rings <m>R_1</m> and <m>R_2</m>,
+            with the same <m>\cdot</m> operation, Show that <m>1\in R_1 \cap R_2</m>.
+            You can model your proof after the zero property proof.
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+  </example>
+  <p>
+    We have shown in <xref ref="exercise_Rings_ringMatrices">Exercise</xref>
+    that <m>{\mathbb M}_2({\mathbb R})</m>, forms a ring.
+    In the following exercise,
+    we will consider some subrings of <m>{\mathbb M}_2({\mathbb R})</m>.
+  </p>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Show that the set of all matrices of the form:
+            <me>
+              \begin{bmatrix}a \amp  0\\ 0 \amp  0 \end{bmatrix}
+            </me>
+            is a subring of all 2x2 matrices,
+            <m>{\mathbb M}_2({\mathbb R})</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Show that the set of all matrices of the form:
+            <me>
+              \begin{bmatrix}a \amp  0\\ 0 \amp  b \end{bmatrix}
+            </me>
+            is a subring of <m>{\mathbb M}_2({\mathbb R})</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove or disprove: The set of all matrices of the form:
+            <me>
+              \begin{bmatrix}a \amp  0\\ b \amp  d \end{bmatrix}
+            </me>
+            is a subring of  <m>{\mathbb M}_2({\mathbb R})</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    In <xref ref="sec_Rings_DefinitionsAndExamples">Section</xref>,
+    we learned that <m>{\mathbb C}</m>,
+    the set of all complex numbers, forms a ring.
+    Consider the following subset of <m>{\mathbb C}</m>:
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Prove or disprove:
+        <m>\{1,-1,i,-i\}</m> forms a subring of <m>{\mathbb C}</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>{\mathbb Z}+{\mathbb Z}i</m> denote the set of complex numbers with real and imaginary parts that are both integers.
+        Prove or disprove <m>{\mathbb Z}+{\mathbb Z}i</m> is a subring of <m>{\mathbb C}</m>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The set <m>n{\mathbb Z}</m> represents the set of all integers,
+    <m>n\cdot k\in{\mathbb Z}</m>,
+    such that <m>n</m> is some integer and <m>k\in{\mathbb Z}</m>.
+    For example,
+    <m>2{\mathbb Z}</m> represents the set of all even integers.
+    It should be clear that <m>n{\mathbb Z}\subset{\mathbb Z}</m>,
+    for all <m>n\in{\mathbb N}</m>,
+    but is it a subring as well?
+  </p>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Prove or disprove: <m>2{\mathbb Z}</m> is a subring
+            (with or without unity)
+            of <m>{\mathbb Z}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove or disprove: <m>3{\mathbb Z}</m> is a subring
+            (with or without unity)
+            of <m>{\mathbb Z}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Show that <m>m{\mathbb Z}</m> is a subring
+            (without unity)
+            of <m>n{\mathbb Z}</m> iff n divides m.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    If <m>R</m> is a finite ring,
+    the addition and multiplication Cayley tables for <m>S</m> can be obtained from the corresponding tables of <m>R</m>.
+    We can cross out the rows and columns with heading elements in <m>R</m> that are
+    <em>not</em> also in <m>S</m>.
+    Let's look at an example.
+  </p>
+  <example>
+    <statement>
+      <p>
+        <m>\{0,2,4\}</m> is a subring of <m>{\mathbb Z}_6</m> without unity.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        The Cayley tables for modular addition and modular multiplication of <m>{\mathbb Z}_6</m> are:
+      </p>
+      <figure>
+        <image width="65%" source="images/origTables.png"/>
+      </figure>
+      <p>
+        Now, we are wanting only <m>\{0,2,4\}</m> of <m>{\mathbb Z}_6</m>.
+        We will keep those values and cross out all rows and columns that are not <m>\{0,2,4\}</m>.
+      </p>
+      <figure>
+        <image width="65%" source="images/crossOutTables.png"/>
+      </figure>
+      <p>
+        This results in the following:
+      </p>
+      <figure>
+        <image width="43%" source="images/newCayleyTables.png"/>
+      </figure>
+      <p>
+        Since all the rows and columns have all the elements
+        <m>\{0,2,4\}</m> in the modular addition and modular multiplication tables,
+        then all four subring properties are satisfied and
+        <m>\{0,2,4\}</m> is a subring of <m>{\mathbb Z}_6</m>
+      </p>
+    </proof>
+  </example>
+  <p>
+    We can generalize this idea with the following exercise.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        If <m>R={\mathbb Z}_{mn}</m> and <m>S=\{0,m,2m,...(n-1)m\}</m>,
+        then <m>S</m> is a subring of <m>R</m> without unity.
+        (<m>{\mathbb Z}_6={\mathbb Z}_{mn}</m>,
+        where <m>m=2</m> and <m>n=3</m>.)
+      </p>
+    </statement>
+  </exercise>
+</section>

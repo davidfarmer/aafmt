@@ -1,0 +1,939 @@
+<section xml:id="sec_EquivalenceRelations_PartitionsAndProperties">
+  <title>Partitions and properties of binary relations</title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    We've defined binary relations in general.
+    In this section we present one very important situation where binary relations are very useful.
+    It turns out that the binary relations which arise in this situation have some very special properties,
+    which will become very important later.
+  </p>
+  <p>
+    Given any set <m>A</m> with 2 or more elements,
+    it's possible to split up the elements of <m>A</m> into disjoint subsets.
+    We call such a division a <term>partition</term>.
+    The mathematical definition is:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {defPartition} A <term>partition</term>
+            <idx><h>Partition</h></idx>
+        <m>\mathcal{P}</m> of a set<nbsp/><m>A</m> is a collection of nonempty subsets of<nbsp/><m>A</m>,
+        such that each element of<nbsp/><m>A</m> is in exactly one of the subsets in <m>\mathcal{P}</m>.
+        In other words:
+        <ol type="a">
+          <li>
+            <p>
+              the union of the subsets in
+              <m>\mathcal{P}</m> is all of<nbsp/><m>A</m>, and
+            </p>
+          </li>
+          <li>
+            <p>
+              the subsets in <m>\mathcal{P}</m> are pairwise disjoint:
+              that is the intersection of any two subsets is empty.
+                <idx><h>Partition</h><h>definition of</h></idx>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Conditions (a) and (b) imply that every element of <m>A</m> is in exactly one subset in <m>\mathcal{P}</m>.
+      </p>
+    </statement>
+  </definition>
+  <remark>
+    <p>
+      Note that <m>\mathcal{P}</m> is defined as a set of subsets of <m>A</m>.
+      This means that the elements of <m>\mathcal{P}</m> are <em>subsets</em>
+      which may contain multiple elements of <m>A</m>.
+      The examples below with make this clearer.
+    </p>
+  </remark>
+  <example xml:id="example_EquivalenceRelations_partition1">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Consider the set of real numbers <m>\mathbb{R}</m>.
+            We know that every element of
+            <m>\mathbb{R}</m> belongs to one of two sets:
+            the set of rational numbers, <m>\mathbb{Q}</m>,
+            or the set of irrational numbers, <m>\mathbb{I}</m>.
+            The union of these two subsets,
+            <m>\mathbb{Q} \cup \mathbb{I}=\mathbb{R}</m>,
+            and <m>\mathbb{Q}</m> and <m>\mathbb{I}</m> are disjoint sets,
+            so based on the definition
+            <m>\{\mathbb{Q},\mathbb{I}\}</m> is a partition of <m>\mathbb{R}</m>.
+            Alternatively the word
+            <q>partition</q>
+            can be used as a verb, so we could also say that <m>\mathbb{Q}</m> and
+            <m>\mathbb{I}</m> partition <m>\mathbb{R}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>\mathbb{E}</m> and <m>\mathbb{O}</m> be the even and odd integers,
+            respectively.
+            Then <m>\{\mathbb{E},\mathbb{O}\}</m> is a partition of <m>\mathbb{Z}</m>.
+            Alternatively we could also say that <m>\mathbb{E}</m> and
+            <m>\mathbb{O}</m> partition <m>\mathbb{Z}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>S</m> be the set of all single-element subsets of <m>\mathbb{Z}</m>,
+            so that for example <m>\{-552\}</m>,
+            <m>\{7\}</m>, <m>\{1492\}</m> are all elements of <m>S</m>.
+            Then <m>S</m> is also a partition of <m>\mathbb{Z}</m>.
+            Here <m>S</m> has an infinite number of elements
+            (all the single-element subsets of <m>\mathbb{Z}</m>),
+            but each element of <m>S</m> is a finite set.
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the set of complex numbers <m>\mathbb{C}</m>.
+            Every element of <m>\mathbb{C}</m> has a real part which we denote as Re<m>[z]</m>
+            (as in Chapter 2).
+            Let <m>R_a</m> be the set of all complex numbers with real part <m>a</m>, i.e.
+            <m>R_a:=\{z \in \mathbb{C} \mid \text{ Re } [z]=a\}</m>.
+            Let <m>\mathcal{P}</m> be the set consisting of all of the <m>R_a</m>'s, i.e.
+            <m>\mathcal{P}:=\{R_a \forall a \in \mathbb{R}\}</m>.
+            Then <m>\mathcal{P}</m> is a partition of <m>\mathbb{C}</m>.
+            Here <m>\mathcal{P}</m> has an infinite number of elements,
+            where each element of <m>\mathcal{P}</m> is an infinite set.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </example>
+  <p>
+    From the previous example you can see how partitions of sets of numbers are collections of subsets that divide up bigger sets.
+    You could imagine it's like a little kid with a bucket of LEGO<sup>\textcircled{{ R}}</sup> bricks who's sorting them out into different piles.
+    The LEGOs could be sorted by color, shape,
+    number of studs, or the original set in which they were bought.
+    Similarly there are lots of different ways to sort out sets of numbers,
+    mathematical objects, or any arbitrary sets with elements of any kind.
+    Each different way of sorting gives rise to a different partition.
+  </p>
+  <example xml:id="example_EquivalenceRelations_partition2">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            When making an inventory of the animals in a zoo,
+            we may wish to count the number of antelopes,
+            the number of baboons, the number of cheetahs, and so forth.
+            In this case,
+            all of the animals of the same species might be grouped together in a single set.
+            Each species give rise to a different set and these sets form a partition of the animals in that zoo.
+          </p>
+        </li>
+        <li>
+          <p>
+            If we are concerned only with people's given names
+            (what Americans would call
+            <q>first name</q>),
+            we can partition any set of people according to given name.
+            Each set in the partition consists of all people who share a particular given name.
+          </p>
+        </li>
+        <li>
+          <p>
+            In geometry,
+            sometimes we are interested only in the shape of a triangle and not its location or orientation.
+            In this case, we talk about <em>congruent</em> triangles,
+            where congruent means that corresponding sides of the two triangles are equal,
+            and corresponding angles are also equal.
+            For any triangle we may define the set of all triangles congruent to that triangle.
+            There are an infinite number of such sets which form a partition of the set of all triangles.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </example>
+  <p>
+    What do partitions have to do with relations?
+    We will illustrate with the following example.
+  </p>
+  <p>
+    Let <m>A=\{1,2,3,4,5,6\}</m> and partition these six numbers into evens and odds.
+    Then we would have two subsets each with three elements.
+    Suppose we use a six-sided die to determine a random outcome:
+    where if we get an even number we win a dollar,
+    but an odd number we lose a dollar.
+    We don't care whether we get a 2, 4, or 6 <mdash/> only that we get an even number because we win the same amount regardless.
+    In this way, rolling a 2, 4, or 6 are <em>related</em>.
+    Formally we can define a relation on <m>A</m> as follows: Given <m>a,b \in A</m>,
+    then <m>a \rel b</m> iff <m>a</m> and <m>b</m> are either both even or both odd.
+  </p>
+  <p>
+    We generalize the previous example in the following definition.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {partitionrelation} Given a partition <m>\mathcal{P}</m> on <m>A</m>,
+        we may define a binary relation <m>\rel_\mathcal{P}\,\subset A \times A</m> as follows:
+        for <m>a,b \in A</m>,
+        <m>a \rel_\mathcal{P} b</m> iff <m>a</m> and <m>b</m> are both contained in the same subset in the partition.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    We already know that binary relations can be represented graphically.
+    In the following exercise,
+    we investigate graphical representations of some binary relations that come from partitions.
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_RelGraphR2">
+    <statement>
+      <p>
+        In the following parts we will considering partitions of
+        <m>\mathbb{R}</m> and the associated binary relations defined by <xref ref="definition_EquivalenceRelations_partitionrelation">Definition</xref>.
+      </p>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>\mathcal{P}=\{R_1, R_2\}</m> where
+            <m>R_1=\{x \mid x \in \mathbb{R}, x \geq 0\}</m> and <m>R_2=\{x \mid x \in \mathbb{R}, x \lt 0\}</m>.
+          </p>
+          <ol type="i">
+            <li>
+              <p>
+                Draw the real number line from <m>-5</m> to 5, and indicate the sets <m>R_1, R_2 \in \mathcal{P}</m>
+                (you may indicate the two sets by circling them separately).
+              </p>
+            </li>
+            <li>
+              <p>
+                Graph the associated binary relation <m>\rel_\mathcal{P}</m>.
+                You only need to graph from <m>-5</m> to 5. (Recall that the graph of a binary relation is a set in the Cartesian plane,
+                as in <xref ref="fig_graphrelations">Figure</xref>.)
+              </p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p>
+            Let <m>\mathcal{P}=\{\ldots, R_{-2}, R_{-1}, R_0, R_1, R_2, \ldots \}</m> where
+            <m>R_n=\{x \mid x \in \mathbb{R}, \lfloor x \rfloor = n \}</m> for any integer <m>n</m>.<fn>
+            The <sq>L</sq> brackets <m>\lfloor \cdots \rfloor</m>,
+            represent the <term>floor function</term>,
+              <idx><h>Floor function</h></idx>
+            also known as the greatest integer function.
+            The floor function takes a real number,
+            <m>x \in \mathbb{R}</m> as input and outputs the greatest integer that is less than or equal to <m>x</m>.
+            For example: <m>\lfloor 4 \rfloor = 4</m>,
+            <m>\lfloor \pi \rfloor = 3</m>,
+            and <m>\lfloor -2.3 \rfloor = -3</m>.
+            </fn>
+            <ol type="i">
+              <li>
+                <p>
+                  Draw the real number line from <m>-5</m> to 5, and indicate the visible sets in <m>\mathcal{P}</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Graph the associated binary relation <m>\rel_\mathcal{P}</m>.
+                  You only need to graph from <m>-5</m> to 5.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>\mathcal{P}=\{\mathbb{E},\mathbb{O}\}</m> where
+            <m>\mathbb{E}=\{x \mid x \in \mathbb{R}, \lfloor x \rfloor \text{ is even } \}</m> and <m>\mathbb{O}=\{x \mid x \in \mathbb{R}, \lfloor x \rfloor \text{ is odd } \}</m>.
+            <ol type="i">
+              <li>
+                <p>
+                  Draw the real number line from <m>-5</m> to 5, and indicate the sets
+                  <m>\mathbb{E},\mathbb{O} \in \mathcal{P}</m> (a good way to do this is to color the intervals belonging to <m>\mathbb{E}</m> and
+                  <m>\mathbb{O}</m> with different colors).
+                </p>
+              </li>
+              <li>
+                <p>
+                  Graph the associated binary relation <m>\rel_\mathcal{P}</m>.
+                  You only need to graph from <m>-5</m> to 5.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    To further explore <xref ref="definition_EquivalenceRelations_partitionrelation">Definition</xref>,
+    we let <m>A=\{a,b,c,\ldots,i\}</m> which has been partitioned into subsets <m>A_1, \ldots, A_5</m>.
+    <xref ref="fig_partition_discrete">Figure</xref> has a drawing of <m>A</m>.
+  </p>
+  <figure xml:id="fig_partition_discrete">
+    <caption>A partition of<nbsp/><m>A</m> into subsets <m>A_1, \ldots, A_5</m>.
+    (Each element of<nbsp/><m>A</m> is in one and only one of the subsets.)</caption>
+    <image width="35%" source="images/partition_discrete.png"/>
+  </figure>
+  <p>
+    From <xref ref="fig_partition_discrete">Figure</xref>,
+    we can tell some properties of <m>\rel_\mathcal{P}</m>:
+    <ul>
+      <li>
+        <p>
+          Each element of <m>A</m> is related to itself, that is:
+          <me>
+            a \rel_\mathcal{P} a
+          </me>
+          (this is called the <em>reflexive</em><idx><h>Reflexive</h><h>property of relations</h></idx>
+            <idx><h>Relation</h><h>reflexive</h></idx>
+          property).
+          We know this is true because <m>a</m> is certainly in the same set of the partition as itself.
+        </p>
+      </li>
+      <li>
+        <p>
+          If an element is related to another element the relation also goes in the other direction.
+          That is:
+          <me>
+            a \rel_\mathcal{P} b \implies b \rel_\mathcal{P} a
+          </me>
+          (this is called the <em>symmetric</em><idx><h>Symmetric</h><h>property of relations</h></idx>
+            <idx><h>Relation</h><h>symmetric</h></idx>
+          property We know this is true because if <m>a</m> is related to <m>b</m>,
+          then that means that <m>a</m> and <m>b</m> are in the same set of the partition.
+          Since they are in the same set of the partition as each other <m>b</m> is also related to <m>a</m>.
+          This argument can easily be repeated in the other direction.
+        </p>
+      </li>
+      <li>
+        <p>
+          If an element is related to another element and that element is related to a third element,
+          then the first element is related to the third.
+          That is:
+          <me>
+            a \rel_\mathcal{P} b \text{ and }  b \rel_\mathcal{P} c \Rightarrow a \rel_\mathcal{P} c
+          </me>
+          (this is called the <em>transitive</em>
+          property<idx><h>Transitive</h><h>property of relations</h></idx>
+            <idx><h>Relation</h><h>transitive</h></idx>) We know this is true because if <m>a</m> is related to <m>b</m> then they are in the same set of the partition, and if <m>b</m> is related to <m>c</m> then they too are in the same set of the partition.
+          This means that <m>a</m>, <m>b</m>,
+          and <m>c</m> are all in the same set of the partition,
+          therefore <m>a</m> is related to <m>c</m>.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    We have seen that the partition depicted in <xref ref="fig_partition_discrete">Figure</xref>
+    produces a binary relation with three distinctive properties.
+    What about other partitions?
+    Let's consider some of the partitions that we've defined previously.
+  </p>
+  <example xml:id="example_EquivalenceRelations_relfrompart1">
+    <statement>
+      <p>
+        In this example we will define a binary relation from the given partition,
+        and show that the relation has the above three properties.
+        <ol type="a">
+          <li>
+            <p>
+              Given the partition in <xref ref="example_EquivalenceRelations_partition1">Example</xref>(a),
+              we can define a binary relation <m>\rel_R</m> on <m>\mathbb{R}</m> by
+              <me>
+                x \rel_R y  \text{   iff   }   (x,y \in \mathbb{Q} \text{ or } x,y \in \mathbb{I})
+              </me>.
+              <ul>
+                <li>
+                  <p>
+                    First property (reflexive):
+                    <m>x \rel_R x</m> (<m>x</m> is always in the same set,
+                    <m>\mathbb{Q}</m> or <m>\mathbb{I}</m>, as itself);
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Second property (symmetric):
+                    <m>x \rel_R y \implies y \rel_R x</m> (<m>x</m> is in the same set as <m>y</m> implies <m>y</m> is in the same set as <m>x</m>);
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Third property (transitive):
+                    <m>x \rel_R y</m> and <m>y \rel_R z \eif x \rel_R z</m> (if <m>x</m> is in the same set as <m>y</m> and <m>y</m> is in the same set as <m>z</m>,
+                    then <m>x</m> is in the same set as <m>z</m>);
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Given the partition in <xref ref="example_EquivalenceRelations_partition2">Example</xref>(a),
+              we can define a binary relation <m>\rel_S</m> on the set of animals in the zoo by
+              <me>
+                x \rel_S y  \text{   iff   }   x \text{ and }  y \text{ are animals in the same species }
+              </me>.
+              <ul>
+                <li>
+                  <p>
+                    Reflexive: <m>x \rel_S x</m> (<m>x</m> is always the same species as itself);
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Symmetric: <m>x \rel_S y \implies y \rel_S x</m> (<m>x</m> is the same species as <m>y</m> implies <m>y</m> is the same species as <m>x</m>);
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Transitive: <m>x \rel_S y</m> and
+                    <m>y \rel_S z \eif x \rel_S z</m> (if <m>x</m> is the same species as <m>y</m> and <m>y</m> is the same species as <m>z</m>,
+                    then <m>x</m> is the same species as <m>z</m>);
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_EquivalenceRelations_relfrompart2">
+    <statement>
+      <p>
+        Define a binary relation from the given partition,
+        and show that the relation has the above three properties.
+        <ol type="a">
+          <li>
+            <p>
+              The partition in <xref ref="example_EquivalenceRelations_partition1">Example</xref>(b)
+            </p>
+          </li>
+          <li>
+            <p>
+              The partition in <xref ref="example_EquivalenceRelations_partition1">Example</xref>(c)
+            </p>
+          </li>
+          <li>
+            <p>
+              The partition in <xref ref="example_EquivalenceRelations_partition1">Example</xref>(d)
+            </p>
+          </li>
+          <li>
+            <p>
+              The partition in <xref ref="example_EquivalenceRelations_partition2">Example</xref>(b)
+            </p>
+          </li>
+          <li>
+            <p>
+              The partition in <xref ref="example_EquivalenceRelations_partition2">Example</xref>(c)
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    The three properties seem to pop up whenever we define a binary relation from a patirtion.
+    It's time to prove it.
+  </p>
+  <proposition xml:id="proposition_EquivalenceRelations_partbinrel">
+    <statement>
+      <p>
+        Given a partition <m>\mathcal{P}</m> on set <m>A</m>,
+        define a binary relation of <m>A</m> as
+        <m>a \rel b</m> iff there exists a subset
+        <m>C \in \mathcal{P}</m> such that <m>a</m> and <m>b</m> are both elements of <m>C</m>,
+        then the binary relation, <m>\rel</m>,
+        satisfies the following 3 properties:
+        <ol type="a">
+          <li>
+            <p>
+              <term>reflexivity</term>:
+              <me>
+                \rel \text{ is reflexive }  \iff \forall a \in A, a \rel a
+              </me>.
+                <idx><h>Relation</h><h>reflexive</h></idx>
+                <idx><h>Reflexive</h></idx>
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>symmetry</term>:
+              <me>
+                \rel \text{ is symmetric }  \iff \bigl( \forall a,b \in A,  (a \rel b) \implies (b \rel a)\, \bigr)
+              </me>.
+                <idx><h>Relation</h><h>symmetric</h></idx>
+                <idx><h>Symmetric</h></idx>
+            </p>
+          </li>
+          <li>
+            <p>
+              <term>transitivity</term>:
+              <me>
+                \rel \text{ is transitive }  \iff  \forall a,b,c \in A,  \bigl( (a \rel b) \mbox{ and }  (b \rel c) \bigr) \eif (a \rel c)
+              </me>.
+                <idx><h>Relation</h><h>transitive</h></idx>
+                <idx><h>Transitive</h></idx>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      Earlier in the chapter we showed that the binary relation
+      <m>\rel_\mathcal{P}</m> from the partition in <xref ref="fig_partition_discrete">Figure</xref> was reflexive,
+      symmetric, and transitive.
+      The arguments that we used are generally applicable,
+      and can be used for any partition.
+    </p>
+  </proof>
+  <remark>
+    <ul>
+      <li>
+        <p>
+          In <xref ref="proposition_EquivalenceRelations_partbinrel">Proposition</xref> parts (a),(b),
+          and (c) we used mathematical symbolism to express the concepts that were explained verbally in the discussion prior to <xref ref="example_EquivalenceRelations_relfrompart1">Example</xref>.
+          Increasingly,
+          you'll be expected to understand symbolism without verbal explanation.
+          Here's a chance for you to practice:
+          what does the following symbolism mean,
+          and where have you seen it before?
+          <me>
+            a \sim b  \iff  \exists C \in \mathcal{P}, ( a \in C \text{ and }  b \in C )
+          </me>.
+          (Answer: this is the definition of  the relation <m>\sim</m>  defined in <xref ref="proposition_EquivalenceRelations_partbinrel">Proposition</xref>,
+          expressed symbolically.
+          We'll be using this symbolism in later propositions, e.g.
+          <xref ref="proposition_EquivalenceRelations_parteqrel">Proposition</xref>.)
+        </p>
+      </li>
+      <li>
+        <p>
+          Even though the definition of symmetry begins with
+          <q><m>\forall a,b \in A \ldots</m></q>
+          (
+          <q>for every <m>a</m> and <m>b</m> in <m>A \ldots</m></q>
+          ) symmetry doesn't require <em>every</em>
+          pair of elements to be related to each other:
+          symmetry only requires that whenever the <em>if</em>
+          clause (<m>a \rel b</m>) is true,
+          the <em>then</em> clause (<m>b \rel a</m>) must also be true.
+          A similar caveat applies to transitivity.
+        </p>
+      </li>
+    </ul>
+  </remark>
+  <p>
+    These properties are so important that we have a special term for binary relations that satisfy all three properties:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {equivalencerelation} An <term>equivalence relation</term>
+            <idx><h>Equivalence relation</h></idx>
+        on a set<nbsp/><m>A</m> is a binary relation on<nbsp/><m>A</m> that is reflexive,
+        symmetric, and transitive.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    The following is a restatement of <xref ref="proposition_EquivalenceRelations_partbinrel">Proposition</xref>,
+    using our new terminology.
+  </p>
+  <proposition xml:id="proposition_EquivalenceRelations_parteqrel">
+    <statement>
+      <p>
+        Given a partition <m>\mathcal{P}</m> on set <m>A</m>,
+        define a binary relation <m>\sim</m> on <m>A</m> as follows:
+        <me>
+          a \sim b  \iff  \exists C \in \mathcal{P}, ( a \in C \text{ and }  b \in C )
+        </me>.
+      </p>
+      <p>
+        Then the binary relation, <m>\rel</m>,
+        is an equivalence relation.
+      </p>
+    </statement>
+  </proposition>
+  <p>
+    At one stroke,
+    this proposition immediately proves that all the relations defined from partitions in <xref ref="example_EquivalenceRelations_partition1">Examples</xref>
+    and <xref ref="example_EquivalenceRelations_partition2"></xref> are equivalence relations.
+  </p>
+  <p>
+    In the following sections we'll consider more examples of equivalence relations , but first let's make sure we understand reflexivity,
+    symmetry and transitivity:
+  </p>
+  <example xml:id="example_EquivalenceRelations_binrelR">
+    <statement>
+      <p>
+        Consider the following binary relations on <m>{\mathbb R}</m>:
+        <ol type="a">
+          <li>
+            <p>
+              <m>=</m> is reflexive, symmetric, and transitive.
+              <ul>
+                <li>
+                  <p>
+                    Reflexive: any real number <m>x</m> equals itself,
+                    so <m>x=x~\forall x \in {\mathbb R}</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Symmetric: for any real numbers <m>x</m> and <m>y</m>,
+                    if <m>x = y</m>, then <m>y = x</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Transitive: for any real numbers <m>x</m>, <m>y</m>, and <m>z</m>,
+                    if <m>x = y</m> and <m>y = z</m>, then <m>x = z</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Therefore <m>=</m> on <m>\mathbb{R}</m> is an equivalence relation because <m>=</m> is reflexive,
+                    symmetric, and transitive.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\lt</m> is transitive, but neither reflexive nor symmetric.
+              <ul>
+                <li>
+                  <p>
+                    Not Reflexive: For example, it is not true that <m>1 \lt 1</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Not Symmetric: For example,
+                    <m>1 \lt 2</m> but it is not true that <m>2 \lt 1</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Transitive: given three real numbers <m>x</m>, <m>y</m>,
+                    and <m>z</m>,
+                    if <m>x \lt y</m> and <m>y \lt z</m>, then <m>x \lt z</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Therefore <m>\lt</m> on <m>\mathbb{R}</m> is not an equivalence relation.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              The binary relation <m>a \rel b</m> iff <m>a = b + 1</m> [for instance
+              <m>(3.5,2.5) \in {\mathbb R}_\rel</m>] is neither reflexive,
+              symmetric,
+              or transitive.
+              <ul>
+                <li>
+                  <p>
+                    Not Reflexive: <m>3 \neq 3 + 1</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Not Symmetric: <m>4 \rel 3</m>, since <m>4 = 3 + 1</m>,
+                    but <m>3 \not\rel 4</m>, since <m>3 \neq 4 + 1</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Not Transitive: <m>4 \rel 3</m> and
+                    <m>3 \rel 2</m>, but <m>4 \not\rel 2</m>
+                    (<m>4 \neq 2 + 1</m>).
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Therefore <m>\rel</m> when
+                    <m>a \rel b</m> iff <m>a = b + 1</m> on
+                    <m>\mathbb{R}</m> is not an equivalence relation.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </example>
+  <p>
+    Notice that in the above examples,
+    we used specific counterexamples to demonstrate when properties were not true.
+    We recommend that you do the same<ndash/>and remember,
+    it only takes <em>one</em> counterexample to show a property is not true!
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_17">
+    <statement>
+      <p>
+        For each of the following, explain your answers.
+        <ol type="a">
+          <li>
+            <p>
+              Is the binary relation <m>\leq</m> defined on the set <m>\mathbb{R}</m> reflexive?
+              Is it symmetric?
+              Is it transitive?
+              Is it an equivalence relation? (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Is the binary relation <m>\subset</m> defined on the set <m>\mathcal{P}(\mathbb{N})</m> reflexive?
+              Is it symmetric?
+              Is it transitive?
+              Is it an equivalence relation? (Recall that
+              <m>\mathcal{P}(\mathbb{N})</m> is the set of subsets of <m>\mathbb{N}</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Define the binary relation <m>\rel</m> on <m>\mathbb{C}</m> as follows:
+              <m>z_1 \rel z_2</m> iff <m>z_1 = |z_2|</m>.
+              Is <m>\rel</m> reflexive?
+              Is it symmetric?
+              Is it transitive?
+              Is it an equivalence relation? (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Define the binary relation <m>\rel</m> on <m>\mathbb{Z}</m> as follows:
+              <m>a \rel b</m> iff <m>|a - b|\lt 4</m>.
+              Is <m>\rel</m> reflexive?
+              Is it symmetric?
+              Is it transitive?
+              Is it an equivalence relation?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <example xml:id="example_EquivalenceRelations_relonB">
+    <statement>
+      <p>
+        Given the set <m>B = \{1,2,3\}</m>,
+        consider the relation <m>\rel</m> on <m>B</m> defined by
+        <me>
+          B_\rel = \{(1,1), (2,2), (3,3), (1,2), (2,1), (2,3), (3,2) \}
+        </me>
+      </p>
+      <p>
+        The relation is shown in <xref ref="fig_relonB">Figure</xref>.
+      </p>
+      <figure xml:id="fig_relonB">
+        <caption>Diagram of the relation in <xref ref="example_EquivalenceRelations_relonB">Example</xref></caption>
+        <image width="37%" source="images/relonB.png"/>
+      </figure>
+      <ul>
+        <li>
+          <p>
+            <m>\rel</m> is reflexive, because <m>1 \rel 1</m>, <m>2 \rel 2</m>,
+            and <m>3 \rel 3</m> (Note we had to check <em>all</em>
+            elements of the set <m>B</m>),
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\rel</m> is symmetric, because,
+            for each <m>(a,b) \in \mathord{\rel}</m>,
+            the reversal <m>(b,a)</m> is also in<nbsp/><m>\rel</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\rel</m> is <em>not</em> transitive,
+            because <m>1 \rel 2</m> and
+            <m>2 \rel 3</m>, but <m>1 \not\rel 3</m>.
+          </p>
+        </li>
+      </ul>
+    </statement>
+  </example>
+  <p>
+    Transitivity can sometimes be a little tricky,
+    as the following examples show.
+  </p>
+  <example xml:id="example_EquivalenceRelations_transnotrefsym">
+    <statement>
+      <p>
+        Let's think about binary relations on
+        <m>\{1,2,3\}</m> as seen in <xref ref="fig_transnotrefsym">Figure</xref>.
+        Which of the binary relations, A, B, or C, are transitive?
+        Why or why not?
+      </p>
+      <figure xml:id="fig_transnotrefsym">
+        <caption>Digraphs to correspond with <xref ref="example_EquivalenceRelations_transnotrefsym">Example</xref></caption>
+        <image width="92.5%" source="images/transnotrefsym.png"/>
+      </figure>
+      <p>
+        Is the relation in A transitive?
+        Let's consider Remember how transitivity is defined:
+        if <m>a \rel b</m> and <m>b \rel c</m> then <m>a \rel c</m>.
+        In more prosaic terms,
+        if there's an arrow from <m>a</m> to <m>b</m> and another arrow from <m>b</m> to <m>c</m>,
+        then there's an arrow directly from <m>a</m> to <m>c</m>.
+        We may conceptualize this as follows.
+        Suppose <m>a</m>, <m>b</m>,
+        and <m>c</m> represent airports,
+        and arrows represent flights between airports.
+        In terms of this example,
+        transitivity means that whenever there's an indirect route between airports
+        (with multiple stops),
+        then there's also a direct route.
+        So in the case of relation A, we may notice there's an indirect route from 3 to 2 by going through 1, but there's also a direct route from 3 to 2
+        (or more formally, <m>3 \rel 1</m>,
+        <m>1 \rel 2</m>, and <m>3 \rel 2</m>).
+        Furthermore this is the only example in A of an indirect route.
+        Therefore this relation is transitive.
+        If <m>3 \rel 2</m> is removed from this binary relation,
+        then the relation isn't transitive because it's still be possible to get from 3 to 2 via 1, but there's no longer a direct route.
+      </p>
+      <p>
+        How about the relation in digraph B? This may be the most confusing of the bunch.
+        One might think that B is not transitive,
+        since there's only a single arrow<ndash/>but think again.
+        The definition of transitive says : <em><em>if</em></em>
+        <m>a \rel b</m> and <m>b \rel c</m> then <m>a \rel c</m>.
+        You may also read the
+        <q>if</q>
+        as
+        <q>whenever</q>: <em>Whenever</em> <m>a \rel b</m> and
+        <m>b \rel c</m> then it's also true that <m>a \rel c</m>.
+        But in relation B, the
+        <q>whenever</q>
+        <em>never holds</em>,
+        because there are no cases of <m>a \rightarrow b</m> and
+        <m>b\rightarrow c</m> (i.e. there are no indirect routes).
+        This being the case, the
+        <q>if</q>
+        statement is considered true by default, so B is transitive.
+        This is an important point worth remembering:
+        in mathematical logic,
+        a statement is considered true if no counterexample exists.
+        In other words, if you can <em>prove</em>
+        that there's no counterexample to a mathematical statement,
+        then the statement is true!<fn>
+        Here are some
+        <q>true statements</q>, according to this rule : (i) If you see a rainbow in the sky and follow it to where it touches the ground,
+        you will find a leprechaun with a pot of gold; (ii) If you pick up an ordinary guinea pig by its tail,
+        then its eyes will fall out. (iii) If you give a correct proof that 1=0, then Bill Gates will give you his entire fortune.
+        </fn>
+      </p>
+      <p>
+        Lastly, the relation in digraph C is
+        <em>not</em> transitive.
+        At first glance it seems like it should be transitive because so many transitivity conditions are satisfied (e.g.
+        <m>1 \rel 2</m> and <m>2 \rel 3 \Rightarrow 1 \rel 3</m>, etc),
+        however we can also find transitivity conditions that fail (see part (a) of the following exercise)<ndash/>and it only takes one counterexample to disprove a statement.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_EquivalenceRelations_trickyTransitive">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Give a counterexample that proves that the binary relation C in <xref ref="fig_transnotrefsym">Figure</xref>
+            is <em>not</em> transitive. (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            Explain why the binary relation
+            <me>
+              R_{\sim} = \{(1,4), (1,1),(4,1) \}
+            </me>
+            is <em>not</em> transitive. (*Hint*)
+          </p>
+        </li>
+        <li>
+          <p>
+            Explain why the binary relation
+            <me>
+              R_{\sim} = \{(1,2), (1,3),(1,4) \}
+            </me>
+            <em>is</em> transitive. (*Hint*)
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_EquivalenceRelations_BinRelSomePropsEx">
+    <statement>
+      <p>
+        Find binary relations on <m>\{1,2,3\}</m> that meet each of the following conditions.
+        Express each relation as a set of ordered pairs,
+        and draw the corresponding digraph.
+        (Note: each part can have more than one answer,
+        but you only need to find one.)
+        <ol type="a">
+          <li xml:id="BinRelSomePropsEx-symmonly">
+            <p>
+              symmetric, but neither reflexive nor transitive.
+            </p>
+          </li>
+          <li xml:id="BinRelSomePropsEx-refonly">
+            <p>
+              reflexive, but neither symmetric nor transitive.
+            </p>
+          </li>
+          <li xml:id="BinRelSomePropsEx-transandsymm">
+            <p>
+              transitive and symmetric, but not reflexive.
+            </p>
+          </li>
+          <li xml:id="BinRelSomePropsEx-none">
+            <p>
+              neither reflexive, nor symmetric, nor transitive.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Digraphs are useful because they represent the relation in such a way that it is easy to deduce the relation's properties:
+  </p>
+  <exercise xml:id="exercise_EquivalenceRelations_21">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            How can you tell from looking at a digraph whether or not the corresponding relation is reflexive?
+          </p>
+        </li>
+        <li>
+          <p>
+            How can you tell from looking at a digraph whether or not the corresponding relation is symmetric?
+          </p>
+        </li>
+        <li>
+          <p>
+            *How can you tell from looking at a digraph whether or not the corresponding relation is transitive?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+</section>

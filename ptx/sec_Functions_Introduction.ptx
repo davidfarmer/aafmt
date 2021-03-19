@@ -1,0 +1,1011 @@
+<section xml:id="sec_Functions_Introduction">
+  <title>Introduction to functions <nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="subsec_Functions_Introduction_InformalLook">
+    <title>Informal look at functions</title>
+    <p>
+      You have seen many examples of functions in your previous math classes.
+      Most of these were probably given by formulas,
+      for example <m>f(x) = x^3</m>.
+      But functions can also be given in other ways.
+      The key property of a function is that it accepts inputs,
+      and provides a corresponding output value for each possible input.
+    </p>
+    <example xml:id="example_Functions_xcubed">
+      <statement>
+        <p>
+          For the function <m>f(x) = x^3</m>,
+          the input<nbsp/><m>x</m> can be any real number.
+          Plugging a value for<nbsp/><m>x</m> into the formula yields an output value,
+          which is also a real number.
+          For example,
+          using <m>x = 2</m> as the input yields the output value <m>f(2) = 2^3 = 8</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      The following properties are true of
+      <em>any</em> function <m>f</m>:
+      <ol>
+        <li>
+          <p>
+            Any function has a set of allowable inputs,
+            which we call the <term>domain</term> of the function.
+              <idx><h>Domain</h></idx>
+          </p>
+        </li>
+        <li>
+          <p>
+            Any function also has a a set that contains all of the possible outputs,
+            which we call the <term>codomain</term> of the function.
+              <idx><h>Codomain</h></idx>
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      In <xref ref="example_Functions_xcubed">Example</xref>,
+      any real number can be used as the input<nbsp/><m>x</m>,
+      so the domain is<nbsp/><m>\mathbb{R}</m>,
+      the set of all real numbers.
+      Similarly, any output is a real number,
+      so the codomain can also be taken as<nbsp/><m>\mathbb{R}</m>.
+    </p>
+    <example xml:id="example_Functions_X2">
+      <statement>
+        <p>
+          For the function <m>f(x) = x^2</m>,
+          the input<nbsp/><m>x</m> can be any real number.
+          The output is always a real number,
+          so we can use <m>\mathbb{R}</m> as the codomain.
+          So we can take the domain and the codomain as the same set <mdash/> but we don't have to.
+          You may have already noticed that the output of<nbsp/><m>f</m> is never a negative number,
+          so we could have used the interval <m>[0,\infty) = \{\, x \in \mathbb{R} \mid x \ge 0 \,\}</m> as the codomain.
+          This shows that <em>the codomain of a function is not unique</em>
+          <mdash/> you can choose a different codomain and not change the function.
+          However, <em>the domain of a function is unique</em>.
+          If the set of allowable inputs is changed,
+          then the function is changed in an essential fashion.
+        </p>
+      </statement>
+    </example>
+    <example>
+      <statement>
+        <p>
+          <m>g(x) = 1/x</m> is <em>not</em>
+          a function from<nbsp/><m>\mathbb{R}</m> to<nbsp/><m>\mathbb{R}</m>.
+          This is because <m>0</m> is an element of<nbsp/><m>\mathbb{R}</m>,
+          but the formula does not define a value for <m>g(0)</m>.
+          Thus, <m>0</m><nbsp/>cannot be in the domain of<nbsp/><m>g</m>.
+          To correct this problem,
+          one could say that <m>g</m> is a function from the set <m>\{\, x \in \mathbb{R} \mid x \neq 0\,\}</m> of
+          <em>nonzero</em> real numbers,
+          to<nbsp/><m>\mathbb{R}</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Intuitively,
+      a function from<nbsp/><m>A</m> to<nbsp/><m>B</m> can be thought of being any process that accepts inputs from the set<nbsp/><m>A</m>,
+      and assigns an element of the set<nbsp/><m>B</m> to each of these inputs.
+      The process need not be given by a formula.
+      Indeed, most of the functions that arise in science or in everyday life are not given by exact formulas,
+      as illustrated in the following exercise.
+    </p>
+    <example xml:id="example_Functions_nonnumfuncs">
+      <statement>
+        <ol>
+          <li>
+            <p>
+              Each point on the surface of the earth has a particular temperature right now,
+              and the temperature
+              (in degrees centigrade)
+              is a real number.
+              Thus, temperature defines a function
+              <m>\var{temp}</m> from the surface of the earth to<nbsp/><m>\mathbb{R}</m>:
+              <m>\var{temp}(x)</m> is the temperature at the point<nbsp/><m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The items in a grocery store each have a particular price,
+              which is a certain number of cents,
+              so <m>\var{price}</m> can be thought of as a function from the set of items for sale to the set
+              <m>\mathbb{N}</m> of all natural numbers:
+              <m>\var{price}(x)</m> is the price of item<nbsp/><m>x</m>
+              (in cents).
+            </p>
+          </li>
+          <li>
+            <p>
+              If we let <m>\var{People}</m> be the set of all people
+              (alive or dead),
+              then <m>\var{mother}</m> (i.e. biological mother) is a function from
+              <m>\var{People}</m> to <m>\var{People}</m>.
+              For example,
+              <me>
+                \var{mother}(\var{Prince\ Charles}) = \var{Queen\ Elizabeth}
+              </me>.
+              (To avoid ambiguity, we need to say that, by
+              <q>mother,</q>
+              we mean
+              <q>biological mother.</q>
+              )
+            </p>
+          </li>
+          <li>
+            <p>
+              In contrast, <m>\var{grandmother}</m> is <em>not</em>
+              a function from <m>\var{People}</m> to <m>\var{People}</m>.
+              This is because people have not just one grandmother,
+              but two (a maternal grandmother and a paternal grandmother).
+              For example,
+              if we say that Prince Charles wrote a poem for his grandmother,
+              we do not know whether he wrote the poem for the Queen Mother,
+              or for his other grandmother.
+              A function is not ever allowed to have such an ambiguity. (In technical terms,
+              <m>\var{grandmother}</m> is a
+              <q>relation,</q>
+              not a function.
+              This will be explained in a later section)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </example>
+    <p>
+      Functions are often represented as a
+      <em>table</em> of values.
+    </p>
+    <example xml:id="example_Functions_InformalFuncPriceList">
+      <statement>
+        <p>
+          The following table represents the prices of items in a grocery store:
+        </p>
+        <tabular>
+          <row>
+            <cell>item</cell>
+            <cell>price (in cents)</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>\var{apple}</m></cell>
+            <cell>65</cell>
+          </row>
+          <row>
+            <cell><m>\var{banana}</m></cell>
+            <cell>83</cell>
+          </row>
+          <row>
+            <cell><m>\var{cherry}</m></cell>
+            <cell>7</cell>
+          </row>
+          <row>
+            <cell><m>\var{donut}</m></cell>
+            <cell>99</cell>
+          </row>
+          <row>
+            <cell><m>\var{eggs}</m></cell>
+            <cell>155</cell>
+          </row>
+        </tabular>
+        <p>
+          This table represents a function
+          <m>\var{price}</m> with the following properties:
+          <ul>
+            <li>
+              <p>
+                The domain of <m>\var{price}</m> is <m>\{ \var{apple} , \var{banana} , \var{cherry} , \var{donut} , \var{eggs}\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\var{price}(\var{banana}) = 83</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\var{price}(\var{guava})</m> does not exist,
+                because <m>\var{guava}</m> is not in the domain of the function.
+              </p>
+            </li>
+            <li>
+              <p>
+                The codomain of <m>\var{price}</m> can be taken as <m>\mathbb{N}</m>,
+                since all our prices are natural numbers.
+                Now of course we don't really need all of <m>\mathbb{N}</m>:
+                we can kick some numbers out of
+                <m>\mathbb{N}</m> that aren't actual prices,
+                and the resulting set would still be a codomain.
+                In fact, we could keep kicking numbers out until we get the set <ellipsis/>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{ 65, 83, 7, 99, 155 \}</m>.
+                This
+                <q>smallest possible codomain</q>
+                is what we call the <term>range</term>
+                  <idx><h>Range</h></idx>
+                of <m>\var{price}</m>.
+                The range is the set of <em>actual</em> outputs of a function.
+                No matter what codomain we choose,
+                it is always true that the range is a subset of the codomain.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </example>
+    <p>
+      It is also possible to represent each row of the table by an ordered pair.
+      For example,
+      the first row of the table is <m>\var{apple} \mid 65</m>.
+      This has <m>\var{apple}</m> on the left and <m>65</m> on the right,
+      so we represent it by the ordered pair <m>(\var{apple}, 65)</m>,
+      which has <m>\var{apple}</m> on the left and <m>65</m> on the right.
+      The second row is represented by <m>(\var{banana}, 83)</m>.
+      Continuing in this way yields a total of <m>5</m><nbsp/>ordered pairs
+      (one for each row).
+      To keep them gathered together,
+      we can put the 5 ordered pairs into a single set:
+      <me>
+        \bigl\{\, (\var{apple}, 65), (\var{banana}, 83), (\var{cherry}, 7), (\var{donut}, 99), (\var{eggs}, 155) \,\bigr\}
+      </me>.
+    </p>
+    <p>
+      This set of ordered pairs contains exactly the same information as a table of values,
+      but the set is a more convenient form for mathematical manipulations.
+    </p>
+    <exercise xml:id="exercise_Functions_funtable">
+      <statement>
+        <p>
+          Here is a function<nbsp/><m>f</m> given by a table of values.
+        </p>
+        <tabular>
+          <row>
+            <cell><m>x</m></cell>
+            <cell><m>f(x)</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>7</cell>
+          </row>
+          <row>
+            <cell>2</cell>
+            <cell>3</cell>
+          </row>
+          <row>
+            <cell>3</cell>
+            <cell>2</cell>
+          </row>
+          <row>
+            <cell>4</cell>
+            <cell>4</cell>
+          </row>
+          <row>
+            <cell>5</cell>
+            <cell>9</cell>
+          </row>
+        </tabular>
+        <ol type="a">
+          <li xml:id="FunctionByTableEx-domain">
+            <p>
+              What is the domain of<nbsp/><m>f</m>?
+            </p>
+          </li>
+          <li xml:id="FunctionByTableEx-range">
+            <p>
+              What is the range of<nbsp/><m>f</m>?
+            </p>
+          </li>
+          <li xml:id="FunctionByTableEx-f_3_">
+            <p>
+              What is <m>f(3)</m>?
+            </p>
+          </li>
+          <li xml:id="FunctionByTableEx-pairs">
+            <p>
+              Represent <m>f</m> as a set of ordered pairs.
+            </p>
+          </li>
+          <li xml:id="FunctionByTableEx-formula">
+            <p>
+              Find a formula to represent<nbsp/><m>f</m>. (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <example xml:id="example_Functions_nottablefunc">
+      <statement>
+        <p>
+          Not every table of values represents a function.
+          For example, suppose we have the following price list,
+          which is a slight change from <xref ref="example_Functions_InformalFuncPriceList">Example</xref>:
+        </p>
+        <tabular>
+          <row>
+            <cell>item</cell>
+            <cell>price (in cents)</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>\var{apple}</m></cell>
+            <cell>65</cell>
+          </row>
+          <row>
+            <cell><m>\var{banana}</m></cell>
+            <cell>83</cell>
+          </row>
+          <row>
+            <cell><m>\var{cherry}</m></cell>
+            <cell>7</cell>
+          </row>
+          <row>
+            <cell><m>\var{donut}</m></cell>
+            <cell>99</cell>
+          </row>
+          <row>
+            <cell><m>\var{banana}</m></cell>
+            <cell>155</cell>
+          </row>
+        </tabular>
+        <p>
+          There's a problem here.
+          Lines 2 and 5 of the table list two different prices for a banana.
+          So you might pick up a banana,
+          expecting to pay 83<nbsp/>cents,
+          and end up having the cashier charge you $1.55.
+          This is not allowed in a function:
+          each input must have exactly one output.
+          So if a table represents a function,
+          and an item appears in the left side of more than one row,
+          then all of those rows must have the same output listed on the right side.
+          (In such a case,
+          the duplicate rows are unnecessary because they add no new information.)
+        </p>
+      </statement>
+    </example>
+    <p>
+      The following remark summarizes the characteristics that a 2-column table must possess if it does indeed correspond to a function.
+    </p>
+    <remark>
+      <p>
+        A 2-column table represents a function from<nbsp/><m>A</m> to<nbsp/><m>B</m> if and only if:
+        <ol>
+          <li>
+            <p>
+              every value that appears in the left column of the table is an element of<nbsp/><m>A</m>,
+            </p>
+          </li>
+          <li>
+            <p>
+              every value that appears in the right column of the table is an element of<nbsp/><m>B</m>,
+            </p>
+          </li>
+          <li>
+            <p>
+              every element of<nbsp/><m>A</m> appears in the left side of the table, and
+            </p>
+          </li>
+          <li>
+            <p>
+              no two rows of the table have the same left side,
+              but different right sides.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </remark>
+    <p>
+      Just as with tables, not all sets of ordered pairs represent functions.
+      For instance,
+      if we convert the table in <xref ref="example_Functions_nottablefunc">Example</xref>
+      into a set of ordered pairs, we get:
+      <me>
+        \bigl\{\, (\var{apple}, 65), (\var{banana}, 83), (\var{cherry}, 7), (\var{donut}, 99), (\var{banana}, 155) \,\bigr\}
+      </me>.
+    </p>
+    <p>
+      Do you see why this set of ordered pairs doesn't represent a function?
+      It's because the input "banana" has two different outputs: 83 and 155<nbsp/>cents.
+    </p>
+    <p>
+      Suppose on the other hand we start with the set of ordered pairs from <xref ref="example_Functions_InformalFuncPriceList">Example</xref>
+      and delete the ordered pair containing
+      <q>donut</q>. Our set of ordered pairs then becomes
+      <me>
+        C := \bigl\{\, (\var{apple}, 65), (\var{banana}, 83), (\var{cherry}, 7), (\var{eggs}, 155) \,\bigr\}
+      </me>.
+    </p>
+    <p>
+      In <xref ref="example_Functions_InformalFuncPriceList">Example</xref>
+      the domain was <m>A:=\{ \var{apple} , \var{banana} , \var{cherry} , \var{donut} , \var{eggs} \}</m>.
+      However, the set <m>C</m> no longer tells us the price of a donut,
+      which is one of the items in <m>A</m>.
+      Therefore <m>C</m> doesn't specify a function on the domain <m>A</m> because it doesn't define an output for all possible inputs in <m>A</m>.
+      This is similar to the case of <m>g(x) = 1/x</m>,
+      which we previously saw was not a function from<nbsp/><m>\mathbb{R}</m> to<nbsp/><m>\mathbb{R}</m> because the input 0 had no output in <m>\mathbb{R}</m>. (However,
+      you should note that <m>g(x)</m> is a function if we change the domain to <m>\mathbb{R} \setminus \{0\}.)</m>
+    </p>
+    <exercise xml:id="exercise_Functions_ExOrderPairs">
+      <statement>
+        <p>
+          Let <m>A = \{ \var{a}, \var{b}, \var{c}, \var{d} \}</m> and <m>B = \{1,3,5,7,9\}</m>.
+          Which of the following sets of ordered pairs represent functions from<nbsp/><m>A</m> to<nbsp/><m>B</m>?
+          <ol type="a">
+            <li xml:id="WhichAreFuncsEx-a1b3c5d7e9">
+              <p>
+                <m>\{ (\var{a}, 1), (\var{b}, 3), (\var{c}, 5), (\var{d}, 7) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-a1b2c3d4e5">
+              <p>
+                <m>\{ (\var{a}, 1), (\var{b}, 2), (\var{c}, 3), (\var{d}, 4) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-a1b3c5d3e1">
+              <p>
+                <m>\{ (\var{a}, 1), (\var{b}, 3), (\var{c}, 5), (\var{d}, 3) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-a1b3c5d7e9a11">
+              <p>
+                <m>\{ (\var{a}, 1), (\var{b}, 3), (\var{c}, 5), (\var{d}, 7), (\var{a},9) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-a1b3c5e7">
+              <p>
+                <m>\{ (\var{a}, 1), (\var{b}, 3), (\var{c}, 5) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-a1b1c1d1e1">
+              <p>
+                <m>\{ (\var{a}, 1), (\var{b}, 1), (\var{c}, 1), (\var{d}, 1) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-aabacadaea">
+              <p>
+                <m>\{ (\var{a}, \var{a}), (\var{b}, \var{a}), (\var{c}, \var{a}), (\var{d}, \var{a}) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-a1b3c5d5e3a1">
+              <p>
+                <m>\{ (\var{a}, 1), (\var{b}, 3), (\var{c}, 5), (\var{d}, 5), (\var{e}, 3) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-1a3a5a7a9a11a">
+              <p>
+                <m>\{ (1, \var{a}), (3, \var{a}), (5, \var{a}), (7, \var{a}), (9, \var{a}) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsEx-c1b3e5a7d9">
+              <p>
+                <m>\{ (\var{c}, 1), (\var{b}, 3), (\var{a}, 7), (\var{d},9) \}</m>
+              </p>
+            </li>
+            <li xml:id="WhichAreFuncsExACrossB">
+              <p>
+                <m>A \times B</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          In <xref ref="exercise_Functions_ExOrderPairs">Exercise</xref>,
+          those sets that correspond to functions from <m>A</m> to <m>B</m> are subsets of <m>A \times B</m>.
+          Explain why the set of ordered pairs describing a function from <m>A</m> to <m>B</m> must necessarily be a subset of <m>A \times B</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In summary, a set of ordered pairs <m>C</m> is a function from <m>A</m> to <m>B</m> if and only if :<idx><h>Ordered pair</h><h>as a function</h></idx>
+      <ul>
+        <li>
+          <p>
+            <m>C \subset A \times B</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            each input <m>a \in A</m> is part of an ordered pair in <m>C</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            and each input <m>a \in A</m> is paired with only one output <m>b \in B</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      It is sometimes helpful to represent a function <m>f \colon A \to B</m> by drawing an
+      <term>arrow diagram</term>:
+          <idx><h>Arrow diagram</h></idx>
+      <ul>
+        <li>
+          <p>
+            a dot is drawn for each element of<nbsp/><m>A</m> and each element of<nbsp/><m>B</m>, and
+          </p>
+        </li>
+        <li>
+          <p>
+            an arrow is drawn from<nbsp/><m>a</m> to<nbsp/><m>f(a)</m>,
+            for each <m>a \in A</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      For example, suppose
+      <ul>
+        <li>
+          <p>
+            <m>A = \{\var{a}, \var{b}, \var{c}, \var{d}, \var{e}\}</m>,
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>B = \{1, 2, 3, 4\}</m>, and
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>f = \{ (\var{a},1), (\var{b}, 3), (\var{c}, 4), (\var{d},4), (\var{e}, 3) \}</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      An arrow diagram of<nbsp/><m>f</m> is shown in <xref ref="fig_arrowDiag">Figure</xref>
+    </p>
+    <figure xml:id="fig_arrowDiag">
+      <caption>Arrow diagram for function <m>f</m>.</caption>
+      <image width="37%" source="images/arrowdiageg.png"/>
+    </figure>
+    <p>
+      Notice that:
+      <ol>
+        <li>
+          <p>
+            There is exactly one arrow coming out of each element of<nbsp/><m>A</m>.
+            This is true for the arrow diagram of any function.
+          </p>
+        </li>
+        <li>
+          <p>
+            There can be any number of arrows coming into each element of<nbsp/><m>B</m>
+            (perhaps none, perhaps one, or perhaps many).
+            The elements of<nbsp/><m>B</m> that do have arrows into them are precisely the elements of the range of<nbsp/><m>f</m>.
+            In this example, the range of<nbsp/><m>f</m> is <m>\{1,3,4\}</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_Functions_Introduction_OffiicialDefinition">
+    <title>Official definition of functions</title>
+    <p>
+      The preceding section provided some intuition about how and why functions are represented as sets of ordered pairs,
+      and since ordered pairs are elements created by a Cartesian product,
+      we learned how to view a function from <m>A</m> to <m>B</m> as a particular subset of <m>A \times B</m>.
+      This view leads to our official definition of a function:<idx><h>Function</h><h>formal definition</h></idx>
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {functionDef} Suppose <m>A</m> and<nbsp/><m>B</m> are sets.
+        </p>
+        <p>
+          A set<nbsp/><m>f</m> is a <term>function from<nbsp/><m>A</m> to<nbsp/><m>B</m></term> if
+          <ol type="a">
+            <li xml:id="FunctionDefn-func-pair">
+              <p>
+                <m>f \subset A \times B</m>
+              </p>
+            </li>
+            <li xml:id="FunctionDefn-func-unique">
+              <p>
+                <m>\forall a \in A, \exists \mbox{ a unique } b \in B \mbox{ s.t. } (a, b) \in f</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          (Condition (b) can also be stated as follows:
+          every <m>a \in A</m> is in one and only one ordered pair in <m>f</m>).
+        </p>
+        <p>
+          We write
+          <q><m>f \colon A \to B</m></q>
+          to denote that <m>f</m> is a function from<nbsp/><m>A</m> to<nbsp/><m>B</m>.
+          We also call <m>A</m> the <term>domain</term><idx><h>Domain</h><h>of a function</h></idx> of<nbsp/><m>f</m>,
+          and <m>B</m> the <term>codomain</term><idx><h>Codomain</h><h>of a function</h></idx> of<nbsp/><m>f</m>.
+        </p>
+        <p>
+          If the pair <m>(a, b) \in f</m>,
+          then we say that <m>b</m> is the
+          <term>image</term><idx><h>Image</h><h>of an element under a function</h></idx> of <m>a</m> under the function <m>f</m>.
+        </p>
+      </statement>
+    </definition>
+    <notation xml:id="FunctionNotation">
+      <p>
+        Suppose <m>f \colon A \to B</m>.
+        <ol>
+          <li>
+            <p>
+              For <m>a \in A</m>,
+              it is convenient to have a name for the element<nbsp/><m>b</m> of<nbsp/><m>B</m>,
+              such that <m>(a,b) \in f</m>.
+              The name we use is <m>f(a)</m>:
+              <m>f(a) = b</m> if and only if <m>(a,b) \in f</m>.
+            </p>
+          </li>
+          <li xml:id="FunctionNotation-range">
+            <p>
+              Each element<nbsp/><m>a</m> of<nbsp/><m>A</m> provides us with an element <m>f(a)</m> of<nbsp/><m>B</m>.
+              The <term>range</term> of<nbsp/><m>f</m> is the set that includes all of these elements <m>f(a)</m>.
+              That is,
+              <me>
+                \mbox{Range of } f = \{b \in B : \exists a \in A \mbox{ with }  f(a)=b\}
+              </me>.
+              The range is always a subset of the codomain.
+              The range can be denoted <m>\{\, f(a) \mid a \in A \, \}</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </notation>
+    <example>
+      <statement>
+        <p>
+          Suppose that the function <m>f</m> is defined by <m>f(x)=x^2</m>,
+          on the domain <m>\{0,1,2,4\}</m>.
+          Then
+          <ol>
+            <li>
+              <p>
+                to represent <m>f</m> as a set of ordered pairs,
+                each element of the domain must appear exactly once as a first coordinate,
+                with the corresponding output given in the second coordinate.
+                Since there are four elements in the domain,
+                there will be four ordered pairs:
+                <m>\{(0,0), (1,1), (2,4), (4,16)\}</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                to give a table for <m>f</m>,
+                we include one row for every element of the domain.
+                The table will be:
+                <tabular>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>n</m></cell>
+                    <cell><m>f(n)</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell>0</cell>
+                    <cell>0</cell>
+                  </row>
+                  <row>
+                    <cell>1</cell>
+                    <cell>1</cell>
+                  </row>
+                  <row>
+                    <cell>2</cell>
+                    <cell>4</cell>
+                  </row>
+                  <row>
+                    <cell>4</cell>
+                    <cell>16</cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                if we are asked what is <m>f(3)</m>,
+                the answer is that <m>f(3)</m> is <em>undefined</em>,
+                because 3 is not in the domain of <m>f</m>.
+                Even though we know that <m>3^2=9</m>,
+                the formula we gave for <m>f</m> only applies to elements that are in the domain of <m>f</m>!
+                It is not true that <m>f(3)=9</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                the range of <m>f</m> is the set of possible outputs:
+                in this case, <m>\{0,1,4,16\}</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                if we are asked what is <m>f(2)</m>,
+                the answer is <m>f(2)=4</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                is <m>f</m> a function from
+                <m>\{n \in \mathbb{N} \mid n \le 4\}</m> to <m>\{0,1,4,16\}</m>?
+                The answer is no, because the first set is <m>\{0,1,2,3,4\}</m>,
+                which includes the value <m>3</m>,
+                but <m>3</m> is not in the domain of <m>f</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                is <m>f</m> a function from
+                <m>\{0,1,2,4\}</m> to <m>\{ n \in \mathbb{N} \mid n \le 16\}</m>?
+                The answer is yes;
+                even though the second set has many values that are not in the range,
+                it is a possible codomain for <m>f</m>.
+                A codomain can be any set that contains all of the elements of the range.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Functions_23">
+      <statement>
+        <p>
+          The following table describes a certain function<nbsp/><m>g</m>.
+        </p>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>n</m></cell>
+            <cell><m>g(n)</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>2</cell>
+            <cell>7</cell>
+          </row>
+          <row>
+            <cell>4</cell>
+            <cell>9</cell>
+          </row>
+          <row>
+            <cell>6</cell>
+            <cell>11</cell>
+          </row>
+          <row>
+            <cell>8</cell>
+            <cell>13</cell>
+          </row>
+          <row>
+            <cell>10</cell>
+            <cell>15</cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+        <ol type="a">
+          <li xml:id="FunctionsChapExers-gTable-domain">
+            <p>
+              What is the domain of<nbsp/><m>g</m>?
+            </p>
+          </li>
+          <li xml:id="FunctionsChapExers-gTable-range">
+            <p>
+              What is the range of<nbsp/><m>g</m>?
+            </p>
+          </li>
+          <li xml:id="FunctionsChapExers-gTable-g_6_">
+            <p>
+              What is <m>g(6)</m>?
+            </p>
+          </li>
+          <li xml:id="FunctionsChapExers-gTable-g_7_">
+            <p>
+              What is <m>g(7)</m>?
+            </p>
+          </li>
+          <li xml:id="FunctionsChapExers-gTable-pairs">
+            <p>
+              Represent<nbsp/><m>g</m> as a set of ordered pairs.
+            </p>
+          </li>
+          <li xml:id="FunctionsChapExers-gTable-arrow">
+            <p>
+              Draw an arrow diagram to represent<nbsp/><m>g</m>.
+            </p>
+          </li>
+          <li xml:id="FunctionsChapExers-gTable-formula">
+            <p>
+              Write down a formula that describes<nbsp/><m>g</m>. (Express <m>g(n)</m> in terms of<nbsp/><m>n</m>.)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Suppose
+          <ul>
+            <li>
+              <p>
+                <m>f</m> is a function whose domain is <m>\{0,2,4,6\}</m>, and
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(x) = 4x - 5</m>, for every<nbsp/><m>x</m> in the domain.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Describe the function in each of the following ways:
+          <ol type="a">
+            <li xml:id="FunctionsChapExers-fFormula-table">
+              <p>
+                Make a table.
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-fFormula-pairs">
+              <p>
+                Use ordered pairs.
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-fFormula-arrow">
+              <p>
+                Draw an arrow diagram involving two sets.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_16">
+      <statement>
+        <p>
+          Which of the following sets of ordered pairs are functions from
+          <m>\{\var{x}, \var{y}, \var{z}\}</m> to <m>\{\var{a},\var{b},\var{c},\var{d},\var{e}\}</m>?
+          <ul>
+            <li>
+              <p>
+                If it is such a function, then what is its range?
+              </p>
+            </li>
+            <li>
+              <p>
+                If it is not such a function, then explain why not.
+              </p>
+            </li>
+          </ul>
+          <ol type="a">
+            <li xml:id="FunctionsChapExers-Whichxy-yaxbyc">
+              <p>
+                <m>\{(\var{y}, \var{a}), (\var{x}, \var{b}), (\var{y},\var{c})\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-Whichxy-yaxbzc">
+              <p>
+                <m>\{(\var{y}, \var{a}), (\var{x},\var{b}), (\var{z},\var{c})\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-Whichxy-yaxcza">
+              <p>
+                <m>\{(\var{y}, \var{a}), (\var{x},\var{c}), (\var{z},\var{a})\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Which of the following are functions from <m>\{1, 2, 3\}</m> to
+          <m>\{\var{w},\var{h},\var{o}\}</m>? (If it is not such a function,
+          then explain why not.)
+          <ol type="a">
+            <li xml:id="FunctionsChapExers-Which123-1w1h1o">
+              <p>
+                <m>\{(1, \var{w}), (1, \var{h}), (1,\var{o})\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-Which123-1h2h3h">
+              <p>
+                <m>\{(1, \var{h}), (2,\var{h}), (3,\var{h})\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-Which123-1h2o3w">
+              <p>
+                <m>\{(1, \var{h}), (2,\var{o}), (3,\var{w})\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-Which123-w1h2o3">
+              <p>
+                <m>\{(\var{w},1), (\var{h},2), (\var{o},3)\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_27">
+      <statement>
+        <p>
+          For the given sets <m>A</m> and<nbsp/><m>B</m>,
+          write each function from<nbsp/><m>A</m> to<nbsp/><m>B</m> as a set of ordered pairs. (It turns out that if <m>|A| = m</m> and <m>|B| = n</m>,
+          then the number of functions from<nbsp/><m>A</m> to<nbsp/><m>B</m> is<nbsp/><m>n^m</m>.
+          Do you see why?)
+          <ol>
+            <li xml:id="FunctionsChapExers-FindAll-abc_d">
+              <p>
+                <m>A = \{\var{a},\var{b},\var{c}\}</m>, <m>B = \{\var{d}\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-FindAll-ab_cd">
+              <p>
+                <m>A = \{\var{a},\var{b}\}</m>,
+                <m>B = \{\var{c},\var{d}\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-FindAll-a_bcd">
+              <p>
+                <m>A = \{\var{a}\}</m>, <m>B = \{\var{b},\var{c},\var{d}\}</m>
+              </p>
+            </li>
+            <li xml:id="FunctionsChapExers-FindAll-ab_cde">
+              <p>
+                <m>A = \{\var{a},\var{b}\}</m>,
+                <m>B = \{\var{c},\var{d},\var{e}\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A = \{\var{a},\var{b},\var{c}\}</m>,
+                <m>B = \{\var{d},\var{e}\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

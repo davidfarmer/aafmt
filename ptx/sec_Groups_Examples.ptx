@@ -1,0 +1,1524 @@
+<section xml:id="sec_Groups_Examples">
+  <title>Examples</title>
+  <introduction>
+    <p>
+      There are multitudes upon multitudes of groups besides those we've seen so far.
+      Some are modifications of groups we are very familiar with.
+    </p>
+    <example xml:id="example_Groups_Rstar_group">
+      <statement>
+      <p>
+        The set <m>{\mathbb R} \setminus \{0 \}</m> of non-zero real numbers is written as <m>{\mathbb R}^{\ast}</m>.
+        Let's prove that <m>({\mathbb R}^{\ast}, \cdot)</m> is a group.
+        <ol type="1">
+          <li>
+            <p>
+              Closure: Suppose <m>a, b \in {\mathbb R}^{\ast}</m>.
+              Then to prove closure we must show <m>ab \in {\mathbb R}^{\ast}</m>;
+              that is, we must show (i) <m>ab \in {\mathbb R}</m> and (ii)
+              <m>ab \neq 0</m>: (i): Since <m>a, b \in {\mathbb R}</m>,
+              and we know <m>{\mathbb R}</m> is closed under multiplication,
+              then <m>ab \in {\mathbb R}</m>. (ii): Suppose <m>ab = 0</m>.
+              Then as we noted in <xref ref="subsec_Preliminaries_OpsAndRels">Section</xref>,
+              we know either <m>a = 0</m> or <m>b = 0</m>.
+              But <m>a, b \in {\mathbb R}^{\ast}</m>; i.e.
+              <m>a, b \neq 0</m>.
+              So we have a contradiction.
+              Hence <m>ab \neq 0</m>.
+              Therefore <m>ab \in {\mathbb R}^{\ast}</m>;
+              and so <m>{\mathbb R}^{\ast}</m> is closed under multiplication.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        To finish the proof that <m>{\mathbb R}^{\ast}</m> is a group,
+        we must establish axioms (2) through (4) in <xref ref="definition_Groups_group_definition">Definition</xref>.
+        We leave this up to you in the following exercise:
+      </p>
+      <exercise xml:id="exercise_Groups_Rstar_group">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Finish proving that <m>({\mathbb R}^{\ast}, \cdot)</m> is a group.
+              </p>
+            </li>
+            <li>
+              <p>
+                Either prove or disprove that <m>({\mathbb R}^{\ast}, +)</m> is a group.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the order of <m>({\mathbb R}^{\ast}, \cdot)</m>?
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Groups_C_star">
+      <statement>
+        <p>
+          Let <m>{\mathbb C}^{\ast}</m> be the set of non-zero complex numbers.
+          <ol type="a">
+            <li>
+              <p>
+                Why is <m>{\mathbb C}^{\ast}</m> not a group under the operation of complex addition?
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove <m>{\mathbb C}^{\ast}</m> is a group under the operation of (complex) multiplication.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is <m>| ({\mathbb C}^{\ast}, \cdot) |</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is <m>({\mathbb C}^{\ast}, \cdot)</m> an abelian group?
+                Justify your answer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <remark>
+      <p>
+        Groups based on sets of numbers that <em>include</em> 0
+        (such as <m>{\mathbb R}, {\mathbb C}, {\mathbb Q}</m>)
+        are assumed to have the group operation <m>+</m>
+        (unless otherwise stated).
+        For groups based on sets of numbers that <em>exclude</em>
+        <m>0</m> such as <m>{\mathbb R^\ast}, {\mathbb C^\ast}, {\mathbb Q^\ast}</m>,
+        the group operation is assumed to be multiplication
+        (unless otherwise stated).
+      </p>
+    </remark>
+    <exercise xml:id="exercise_Groups_15">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Why is it impossible for a set of complex numbers <m>S</m> which has more than one element and includes 0 to be a group under multiplication?
+              Why is the condition <m>|S|>1</m> necessary?
+            </p>
+          </li>
+          <li>
+            <p>
+              Why is it impossible for a set of complex numbers <m>S</m> that excludes 0 to be a group under addition?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Some groups use exotic operations that you may never have seen before:
+    </p>
+    <example xml:id="example_Groups_S_group">
+      <statement>
+      <p>
+        Let <m>S = {\mathbb R} \setminus \{ -1 \}</m> and define a binary operation on <m>S</m> by <m>a \ast b = a + b +ab</m>.
+        It turns out that <m>(S, \ast)</m> is an abelian group.
+        We will prove closure and the commutative property;
+        the rest of the proof will be left to you.
+      </p>
+      <ol type="1">
+        <li>
+          <p>
+            Closure: Suppose <m>a, b \in S</m>.
+            We need to show that <m>a \ast b \in S</m>;
+            i.e. that (i) <m>a \ast b \in {\mathbb R}</m> and (ii) <m>a \ast b \neq -1</m>.
+          </p>
+          <ol type="i">
+            <li>
+              <p>
+                By the closure of <m>({\mathbb R}, +), (a + b) \in {\mathbb R}</m>.
+                By the closure of <m>({\mathbb R}, \ast), (ab) \in {\mathbb R}</m>.
+                Finally, by the closure of <m>({\mathbb R}, +), ((a + b) + (ab)) \in {\mathbb R}</m>.
+                It follows that <m>a \ast b \in {\mathbb R}</m>,
+                so <m>S</m> is closed under <m>\ast</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>a \ast b = -1</m>.
+                Then by definition of <m>\ast</m>, <m>a + b +ab = -1</m>.
+                Solving for <m>a</m>, we get <m>a = \dfrac{-1(b + 1)}{b + 1}</m>,
+                or <m>a = -1</m> But since <m>a \in S, a \neq -1</m>.
+                So we have a contradiction.
+                Hence <m>a \ast b \neq -1</m>.
+                This completes the proof that <m>(S, \ast)</m> is closed.
+              </p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p>
+            Commutativity: Suppose <m>a, b \in S</m>.
+            We need to show that <m>a \ast b = b \ast a</m>:
+            <ul>
+              <li>
+                <p>
+                  First, by the definition of the operation <m>\ast</m> we have <m>a \ast b = a + b +ab</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Next, since <m>{\mathbb R}</m> is commutative under addition and multiplication,
+                  it follows that <m>a + b = b + a</m> and <m>ab = ba</m>.
+                  Adding these two equations, we have <m>(a + b) + (ab) = (b + a) + (ba)</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  By the definition of <m>\ast</m>,
+                  <m>(b + a) + (ba) = b \ast a</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Putting all these equalities together,
+                  we have <m>a \ast b = a + b +ab = b + a + ba = b \ast a</m>
+                </p>
+              </li>
+            </ul>
+          </p>
+          This completes the proof that <m>(S, \ast)</m> is commutative.
+        </li>
+      </ol>
+      <exercise xml:id="exercise_Groups_S_group">
+        <statement>
+          <p>
+            Finish the proof that <m>(S, \ast)</m> is an abelian group.
+          </p>
+        </statement>
+      </exercise>
+      </statement>
+    </example>
+    <p>
+      The following example shows a famous
+      (among mathematicians!)
+      group that has important applications in physics:
+    </p>
+    <example xml:id="example_Groups_quaternions">
+      <statement>
+        <p>
+          The <em>quaternion group</em><idx><h>Quaternion group (<m>Q_8</m>)</h></idx>
+          (denoted by <m>Q_8</m>)
+          consists of 8 elements, which are commonly denoted as follows:
+          <m>1</m>, <m>i</m>, <m>j</m>,
+          <m>k</m>, <m>-1</m>, <m>-i</m>, <m>-j</m>, <m>-k</m>.
+          The Cayley table of <m>Q_8</m> is determined by the following relations:
+          <ul>
+            <li>
+              <p>
+                1 is the identity;
+              </p>
+            </li>
+            <li>
+              <p>
+                -1 commutes with all other elements, and <m>(-1)^2=1</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>-1 \cdot i = -i, -1 \cdot j = -j, -1 \cdot k = -k</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>i^2 = j^2=k^2 = -1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>i \cdot j = k, j \cdot k = i, k \cdot i=j</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>j \cdot i = -k, k \cdot j=-i, i \cdot k = -j</m> .
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Groups_QuatEx">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Use the information given above to complete the Cayley table for <m>Q_8</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the inverses of all of the elements of <m>Q_8</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Other groups use operations that are in built up from other groups.
+    </p>
+    <exercise xml:id="exercise_Groups_integer_coordinate_plane">
+      <statement>
+        <p>
+          Let <m>H = {\mathbb Z} \times {\mathbb Z}</m>
+          (all integer coordinate-pairs).
+          <ol type="a">
+            <li>
+              <p>
+                Define a binary operation <m>\circ</m> on <m>H</m> by <m>(a,b) \circ (c,d) = (a + c , b + d)</m>,
+                for <m>(a,b), (c,d) \in H</m>.
+                This operation is in fact just coordinate-pair addition.
+                Is <m>(H , \circ)</m> a group?
+                If so, is <m>(H , \circ)</m> abelian?
+                Justify your answers.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define a binary operation <m>\circ</m> on <m>H</m> by <m>(a,b) \circ (c,d) = (ac , bd)</m>,
+                for <m>(a,b), (c,d) \in H</m>.
+                This is just coordinate-pair multiplication.
+                Is <m>(H , \circ)</m> a group?
+                If so, is <m>(H , \circ)</m> abelian?
+                Justify your answers.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_19">
+      <statement>
+        <p>
+          Let <m>G = {\mathbb R}^{\ast} \times {\mathbb Z}</m> (all pairs such that the first element is a nonzero real number,
+          and the second is an integer)
+          <ol type="a">
+            <li>
+              <p>
+                Define a binary operation <m>\circ</m> on <m>G</m> by <m>(a,m) \circ (b,n) = (a+b, m+n)</m>.
+                Is <m>(G , \circ)</m> a group?
+                If so, is <m>(G , \circ)</m> abelian?
+                Justify your answers.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define a binary operation <m>\circ</m> on <m>G</m> by <m>(a,m) \circ (b,n) = (ab, mn)</m>.
+                Is <m>(G , \circ)</m> a group?
+                If so, is <m>(G , \circ)</m> abelian?
+                Justify your answers.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define a binary operation <m>\circ</m> on <m>G</m> by <m>(a,m) \circ (b,n) = (ab,
+                m+n)</m>.
+                Is <m>(G , \circ)</m> a group?
+                If so, is <m>(G , \circ)</m> abelian?
+                Justify your answers.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The previous two exercises follow a pattern that we may generalize:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defProductOfGroups} Given two groups <m>G</m> and <m>H</m>,
+          we define the <em>product</em>
+              <idx><h>Product</h><h>of groups</h></idx>
+          of groups <m>G</m> and <m>H</m>
+          (denoted by <m>G \times H</m>)
+          as the set of pairs <m>\left\{(g,h),
+          g \in G, h \in H \right\}</m>.
+          If <m>(g_1, h_1)</m> and <m>(g_2,h_2)</m> are two elements of <m>G \times H</m>,
+          then we define the group operation <m>(g_1, h_1) \circ (g_2, h_2)</m> as follows:
+          <me>
+            (g_1, h_1) \circ (g_2, h_2) := (g_1g_2, h_1h_2)
+          </me>,
+          where <m>g_1g_2</m> uses the group operation in <m>G</m> and <m>h_1h_2</m> uses the group operation in <m>H</m>.
+        </p>
+      </statement>
+    </definition>
+    <exercise xml:id="exercise_Groups_prod_of_groups">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Consider <m>(3,6)</m> and <m>(2,4)</m> as elements of <m>{\mathbb Z}_7 \times {\mathbb Z}_7</m>.
+              Compute <m>(3,6) \circ (2,4)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Consider <m>(3,6)</m> and <m>(2,4)</m> as elements of <m>{\mathbb R}^{\ast} \times {\mathbb Z}_{10}</m>.
+              Compute <m>(3,6) \circ (2,4)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Consider <m>(3,6)</m> and <m>(2,4)</m> as elements of <m>{\mathbb Q}^{\ast} \times {\mathbb Q}^{\ast}</m>.
+              Compute <m>(3,6) \circ (2,4)</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_prod_group">
+      <statement>
+        <p>
+          Show that the product of two groups is a group.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_Z_2_n">
+      <statement>
+        <p>
+          Let <m>{\mathbb Z}_2^n = \{ (a_1, a_2, \ldots,
+          a_n) : a_i \in {\mathbb Z}_2 \}</m>.
+          Define a binary operation on <m>{\mathbb Z}_2^n</m>
+          (which we will denote as <sq>+</sq>)
+          by
+          <me>
+            (a_1, a_2, \ldots, a_n) + (b_1, b_2, \ldots, b_n) = (a_1 \oplus  b_1, a_2 \oplus b_2, \ldots, a_n+b_n)
+          </me>,
+          where <m>\oplus</m> denotes addition in <m>{\mathbb Z}_2</m>.
+          Prove that <m>{\mathbb Z}_2^n</m> is a group under this operation.
+          This group is important in algebraic coding theory.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In previous chapters we've used Cayley tables
+          <idx><h>Cayley table</h></idx>
+      to describe group operations.
+      With Cayley tables we can prove a set and operation are a group even when we don't know what the elements in the set really are or what the binary operation is.
+    </p>
+    <p>
+      The next two exercises are very useful in the subsequent exercises.
+    </p>
+    <exercise xml:id="exercise_Groups_ident">
+      <statement>
+        <p>
+          Given two elements <m>g,h</m> of a group
+          (<m>G,\circ</m>).
+          Show that <m>g</m> is the identity element of <m>G</m> if and only if <m>g \circ h = h</m>. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_cayley">
+      <statement>
+        <p>
+          Show that if <m>G</m> is a group,
+          then for every row of the Cayley table for <m>G</m> no two entries are the same.
+          Show also that for every column of the Cayley table no two entries are the same. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_Cayley_groups">
+      <statement>
+        <p>
+          For each of the following multiplication tables defined on the set
+          <m>G = \{ a, b, c, d \}</m> tell whether <m>(G, \circ)</m> represents a group,
+          and if so, whether it is abelian.
+          Support your answer in each case.
+          Assume that the associative property holds in each case.
+          <em>Note</em> the identity is not always the first element listed!
+          <ol type="a">
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>c</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>c</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>a</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>a</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_Cayley_groups2">
+      <statement>
+        <p>
+          For each of the following multiplication tables,
+          fill in the blanks to make a Cayley table for a group.
+          <ol type="a">
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                </tabular>
+                (There are two different ways to complete this one: find both)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_Cayley_groups3">
+      <statement>
+        <p>
+          * Show that it is <em>impossible</em>
+          to complete the following Cayley tables to make a group.
+          <ol type="a">
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+            <li>
+              <p>
+                <tabular>
+                  <row>
+                    <cell><m>\circ</m></cell>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>d</m></cell>
+                  </row>
+                  <row bottom="minor">
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                  </row>
+                  <row>
+                    <cell><m>a</m></cell>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>b</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>c</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>d</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                    <cell><m>\_</m></cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </introduction>
+  <subsection xml:id="subsec_Groups_Examples_GroupOfUnits">
+    <title>The group of units of <m>{\mathbb Z}_n</m></title>
+    <p>
+      Back in the Modular Arithmetic chapter,
+      we used the addition table for <m>{\mathbb Z}_8</m> to show that
+      <m>{\mathbb Z}_8</m> with modular addition was a group.
+      We extended this and showed that
+      <m>{\mathbb Z}_n</m> under modular addition is a group for any <m>n</m>.
+      But we ran into problems with modular multiplication on <m>{\mathbb Z}_8</m>,
+      as we can see from the Cayley table (reproduced below),
+    </p>
+    <table xml:id="CayleyZ8mult">
+      <title>Cayley table for <m>({\mathbb Z}_8, \cdot)</m></title>
+      {
+      <tabular>
+        <row>
+          <cell><m>\odot</m></cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>5</cell>
+          <cell>6</cell>
+          <cell>7</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>5</cell>
+          <cell>6</cell>
+          <cell>7</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>0</cell>
+          <cell>2</cell>
+          <cell>4</cell>
+          <cell>6</cell>
+          <cell>0</cell>
+          <cell>2</cell>
+          <cell>4</cell>
+          <cell>6</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>0</cell>
+          <cell>3</cell>
+          <cell>6</cell>
+          <cell>1</cell>
+          <cell>4</cell>
+          <cell>7</cell>
+          <cell>2</cell>
+          <cell>5</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>4</cell>
+          <cell>0</cell>
+          <cell>4</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>0</cell>
+          <cell>5</cell>
+          <cell>2</cell>
+          <cell>7</cell>
+          <cell>4</cell>
+          <cell>1</cell>
+          <cell>6</cell>
+          <cell>3</cell>
+        </row>
+        <row>
+          <cell>6</cell>
+          <cell>0</cell>
+          <cell>6</cell>
+          <cell>4</cell>
+          <cell>2</cell>
+          <cell>0</cell>
+          <cell>6</cell>
+          <cell>4</cell>
+          <cell>2</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>0</cell>
+          <cell>7</cell>
+          <cell>6</cell>
+          <cell>5</cell>
+          <cell>4</cell>
+          <cell>3</cell>
+          <cell>2</cell>
+          <cell>1</cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      From <xref ref="CayleyZ8mult">Table</xref> we can see several problems.
+      Notice that <m>0,2,4,6</m> have no inverses.
+      In fact, from <xref ref="CayleyZ8mult">Table</xref>
+      we see that only numbers that are relatively prime to 8 have inverses in <m>{\mathbb Z}_8</m>.
+      The same is true for any <m>{\mathbb Z}_n</m>.
+      It follows that in order to get a group under modular multiplication using the elements of <m>{\mathbb Z}_n</m>,
+      we'll have to kick out the non-relatively prime numbers in order to guarantee that every element has an inverse.
+      For instance,<xref ref="CayleyU8">Table</xref>
+      is the result when Table<nbsp/> <m><xref ref="CayleyZ8mult"></xref></m> is restricted to the rows and columns labeled <m>(1, 3, 5, \mbox{ and } 7)</m>.
+    </p>
+    <table xml:id="CayleyU8">
+      <title>Multiplication table for <m>U(8)</m></title>
+      <tabular>
+        <row>
+          <cell><m>\odot</m></cell>
+          <cell>1</cell>
+          <cell>3</cell>
+          <cell>5</cell>
+          <cell>7</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>1</cell>
+          <cell>3</cell>
+          <cell>5</cell>
+          <cell>7</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>3</cell>
+          <cell>1</cell>
+          <cell>7</cell>
+          <cell>5</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>5</cell>
+          <cell>7</cell>
+          <cell>1</cell>
+          <cell>3</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>7</cell>
+          <cell>5</cell>
+          <cell>3</cell>
+          <cell>1</cell>
+        </row>
+      </tabular>
+    </table>
+    <exercise xml:id="exercise_Groups_27">
+      <statement>
+        <p>
+          Prove that the Cayley table in <xref ref="CayleyU8">Table</xref> represents a group.
+          (Note that associativity holds because we already know that modular multiplication is associative.)
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_28">
+      <statement>
+        <p>
+          Is the group in <xref ref="CayleyU8">Table</xref> abelian?
+          Justify your answer.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      For convenience, let's define some notation:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {DefnOfUnits} The set of nonzero numbers in
+          <m>{\mathbb Z}_n</m> that are relatively prime to <m>n</m> is called the
+          <term>set of units of <m>{\mathbb Z}_n</m></term>,
+          denoted by <term><m>U(n)</m></term><idx><h>Units</h><h>group of (<m>U(n)</m>)</h></idx>.
+              <idx><h>Group</h><h>of units <m>U(n)</m></h></idx>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      We have just seen that <m>U(8)</m> is a group under modular multiplication.
+      One might suspect that <m>U(n)</m> is a group for any <m>n</m>.
+      For starters,
+      it is clear that <m>1</m> serves as an identity element,
+      because <m>1\cdot k \equiv k \cdot 1 \equiv k</m> mod <m>n</m> for any <m>n</m>.
+      In fact, <m>U(n)</m> is an abelian group,
+      as you will show in the following exercises.
+    </p>
+    <exercise xml:id="exercise_Groups_U_n__abgroup">
+      <statement>
+        <p>
+          In this exercise,
+          we prove that <m>U(n)</m> is a group under multiplication mod <m>n</m> for any <m>n</m>.
+          We know that modular multiplication is associative,
+          so it remains to show the closure and inverse properties.
+          <ol type="a">
+            <li>
+              <p>
+                Fill in the blanks to show that <m>U(n)</m> is closed under modular multiplication: Let <m>k,m</m> be arbitrary elements of <m>U(n)</m>.
+                It follows that both <m>k</m> and
+                <em><m>~\lt 1>~</m></em>
+                are relatively prime to <em><m>~\lt 2>~</m></em>.
+                So neither <m>k</m> nor <em><m>~\lt 3>~</m></em>
+                has any prime factors in common with
+                <em><m>~\lt 4>~</m></em>.
+                It follows that the product <em><m>~\lt 5>~</m></em>
+                also has no prime factors in common with
+                <em><m>~\lt 6>~</m></em>.
+                Furthermore, the remainder of <em><m>~\lt 7>~</m></em>
+                under division by <em><m>~\lt 8>~</m></em>
+                also has no prime factors in common with
+                <em><m>~\lt 9>~</m></em>.
+                Therefore the product of <em><m>~\lt 10>~</m></em>
+                and <em><m>~\lt 11>~</m></em>
+                under modular multiplication is also an element of
+                <em><m>~\lt 12>~</m></em>,
+                so <em><m>~\lt 13>~</m></em> is closed under modular multiplication.
+              </p>
+            </li>
+            <li>
+              <p>
+                It remains to show that <m>U(n)</m> is closed under inverse.
+                Suppose that <m>m \in U(n)</m> and <m>x</m> is the inverse of <m>m</m>.
+                What modular equation must <m>x</m> satisfy? (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that the equation in <m>x</m> that you wrote in part (b) has a solution as long as <m>m</m> is relatively prime to <m>n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_UnAbel">
+      <statement>
+        <p>
+          Show that <m>U(n)</m> is abelian.
+        </p>
+      </statement>
+    </exercise>
+    <remark xml:id="UnMul">
+      <p>
+        Whenever we talk about the group <m>U(n)</m>,
+        we always assume the operation is multiplication.
+        Similarly, whenever we talk about <m>{\mathbb Z}_n</m>,
+        we always assume the operation is addition.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Groups of matrices</title>
+    <p>
+      Matrices provide many examples of interesting groups.
+    </p>
+    <exercise xml:id="exercise_Groups_M2x2_group">
+      <statement>
+        <p>
+              <idx><h>Matrix groups</h><h><m>M_2</m></h></idx>
+          We use <m>{\mathbb M}_2 ( {\mathbb C})</m> to denote the set of all <m>2 \times 2</m> matrices with complex entries.
+          That is
+          <me>
+            {\mathbb M}_2 ( {\mathbb C}) = \left\{ \begin{pmatrix}a \amp  b \\ c \amp  d \end{pmatrix}  ~|~ a,b,c,d \in {\mathbb C} \right\}
+          </me>
+          <ol type="a">
+            <li>
+              <p>
+                Show that <m>{\mathbb M}_2 ( {\mathbb C})</m> a group under matrix addition.
+                Is it abelian?
+                If so, prove it: if not, find a counterexample.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the order of this group?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is <m>{\mathbb M}_2 ( {\mathbb C})</m> a group under matrix multiplication?
+                Is it abelian?
+                Justify your answers.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Groups_Mn_group">
+      <statement>
+        <p>
+          Let <m>{\mathbb M}_n ( {\mathbb C})</m> be the set of all
+          <m>n\times n</m> matrices with complex entries.
+          Show that <m>{\mathbb M}_n ( {\mathbb C})</m> is a group under matrix addition.
+          What is the order of this group?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      There are multiplicative groups of <m>2 \times 2</m> matrices as well,
+      but not all matrices can be included.
+      To specify those which are included,
+      we need the following definition
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {MatDet} For the <m>2\times 2</m> matrix <m>A = \begin{pmatrix}a \amp b \\ c \amp d \end{pmatrix}</m>,
+          the quantity <m>ad-bc</m> is called the
+          <em>determinant</em><idx><h>Determinant</h><h>of a 2 <times/> 2 matrix</h></idx> of <m>A</m> and is denoted by <m>\det(A)</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The following exercise is algebraically a little complicated,
+      but turns out to be essential in order to prove properties of multiplicative groups of matrices.
+    </p>
+    <exercise xml:id="exercise_Groups_detMult">
+      <statement>
+        <p>
+          Using matrix multiplication and the definition of determinant,
+          prove that if <m>A = \begin{pmatrix}a \amp  b \\ c \amp  d \end{pmatrix}</m> and <m>B = \begin{pmatrix}e \amp  f \\ g \amp  h \end{pmatrix}</m>, then
+          <me>
+            \det(AB) =  \det(A)\det(B)
+          </me>
+        </p>
+        <p>.
+          This is known as the <term>determinant product formula</term>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We're now ready to define a set of
+      <m>2\times 2</m> matrices which is suitable to form a multiplicative group.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {GL2} Let <m>GL_2({\mathbb C})</m> be the subset of
+          <m>{\mathbb M}_2 ( {\mathbb C})</m> consisting of matrices <m>A</m> such that
+          <me>
+            A = \begin{pmatrix}a \amp  b \\ c \amp  d \end{pmatrix}  \text{ and }  \det(A) \neq 0
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The proof that <m>GL_2({\mathbb C})</m> is a group is contained in the following exercise.
+    </p>
+    <exercise xml:id="exercise_Groups_GL2_group">
+      <statement>
+        <p>
+              <idx><h>Matrix groups</h><h><m>GL_2</m></h></idx>
+              <idx><h>Matrices</h><h>invertible</h></idx>
+          <ol type="a">
+            <li>
+              <p>
+                Show that for any matrix <m>A \in GL_2(\mathbb{C})</m>,
+                the matrix
+                <me>
+                  B = \frac{1}{\det(A)}\begin{pmatrix}d \amp  -b \\ -c \amp  a \end{pmatrix}
+                </me>
+                satisfies
+                <me>
+                  AB = BA = I
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using <xref ref="exercise_Groups_detMult">Exercise</xref>,
+                show that <m>GL_2(\mathbb{C})</m> is closed under matrix multiplication.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that matrix multiplication in <m>GL_2(\mathbb{C})</m> is associative.
+              </p>
+            </li>
+            <li>
+              <p>
+                Complete the proof that <m>GL_2(\mathbb{C})</m> is a group under matrix multiplication.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          <m>GL_2(\mathbb C)</m> is called the 2-dimensional
+          <term>general linear group</term>
+          over the complex numbers.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove or disprove: <m>GL_2(\mathbb C)</m> is abelian.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      It turns out that we can define a multiplicative group of
+      <m>n \times n</m> matrices for any positive integer <m>n</m>,
+      in similar fashion as we defined <m>GL_2(\mathbb{C})</m>.
+      Rather than using determinant,
+      we present an alternative way of characterizing the
+      <m>n \times n</m> matrices that are suitable members of a multiplicative group.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {inversibleMatrix} An <m>n \times n</m> matrix <m>A</m> is called <em>invertible</em>
+              <idx><h>Matrix</h><h>nvertible</h></idx>
+          if there exists a <m>n \times n</m> matrix <m>B</m> such that <m>AB = BA = I_n</m>,
+          where <m>I_n</m> is the <m>n \times n</m> identity matrix.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      It is fairly straightforward to prove the group properties under matrix multiplication for this limited set of matrices:
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Show that the set of <m>n \times n</m> invertible matrices with complex entries form a group under matrix multiplication.
+          You may assume that matrix multiplication is associative
+          (this is proved in another chapter).
+        </p>
+      </statement>
+    </exercise>
+    <definition>
+      <statement>
+        <p>
+          {Gln} The set of <m>n \times n</m> invertible matrices is called the <m>n</m> dimensional
+          <term>general linear group</term>,
+          and is denoted by <m>GL_n(\mathbb{C})</m>.
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+</section>

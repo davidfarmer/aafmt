@@ -1,0 +1,27 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Polynomials">
+  <title>Polynomials</title>
+  <introduction>
+    <p>
+      In this chapter we'll be looking at polynomials from an algebraic point of view.
+      First we'll review basic polynomial arithmetic that you've seen in high school;
+      then we'll jump off from there and see how far we can generalize.
+      We'll look at polynomial long division,
+      and show that there are many striking resemblances with integer division.
+      Finally, we'll say something about factoring of polynomials.
+    </p>
+    <p>
+      This chapter is by Jennifer Lazarus,
+      based on preliminary work by David Weathers, Johnny Watts,
+      and Semi Harrison
+      (edited by C.T.).
+      Thanks to Tom Judson for the original chapter source.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Polynomials_WhyStudyPolynomials.ptx"/>
+  <xi:include  href="sec_Polynomials_PolynomialArithmetic.ptx"/>
+  <xi:include  href="sec_Polynomials_OperationsAndSigmaNotation.ptx"/>
+  <xi:include  href="sec_Polynomials_ExoticPolynomials.ptx"/>
+  <xi:include  href="sec_Polynomials_PropertiesAndSigmaNotation.ptx"/>
+  <xi:include  href="sec_Polynomials_PolynomialsAndDivision.ptx"/>
+  <xi:include  href="sec_Polynomials_Hints.ptx"/>
+</chapter>

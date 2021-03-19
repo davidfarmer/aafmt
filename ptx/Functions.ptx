@@ -1,0 +1,31 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Functions">
+  <title>Functions: Basic Concepts</title>
+  <introduction>
+    <p>
+      The idea of a function should be familiar to you from previous math classes.
+      Your calculus class no doubt was all about functions defined on real numbers.
+      In this book,
+      we will be more interested in functions on <em>finite</em> sets.
+      Rather than
+      <q>doing things</q>
+      to these functions
+      (such as integrating and differentiating),
+      instead we will dig more deeply into the basic nature of functions themselves.
+      This will eventually lead us to discover profound connections between groups and functions
+      (see the Permutations chapter).
+    </p>
+    <p>
+      This chapter is an adapted and expanded version of a chapter by D. and J. Morris.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Functions_CartesianProduct.ptx"/>
+  <xi:include  href="sec_Functions_Introduction.ptx"/>
+  <xi:include  href="sec_Functions_OneToOne.ptx"/>
+  <xi:include  href="sec_Functions_Onto.ptx"/>
+  <xi:include  href="sec_Functions_Bijections.ptx"/>
+  <xi:include  href="sec_Functions_Composition.ptx"/>
+  <xi:include  href="sec_Functions_Inverse.ptx"/>
+  <xi:include  href="sec_Functions_functions_group.ptx"/>
+  <xi:include  href="sec_Functions_Hints.ptx"/>
+  <xi:include  href="sec_Functions_StudyGuide.ptx"/>
+</chapter>

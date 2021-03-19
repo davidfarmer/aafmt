@@ -1,0 +1,142 @@
+<section xml:id="sec_Polynomials_PolynomialArithmetic">
+  <title>Review of polynomial arithmetic<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    Let's briefly review what you've previously learned about polynomial arithmetic in earlier algebra classes.
+    In this section we'll cover polynomial addition,
+    subtraction, and multiplication.
+    Polynomial division is a bit more complicated,
+    so we'll talk about that later.
+  </p>
+  <p>
+    In your earlier classes,
+    most likely you considered polynomials with integer,
+    rational, or real coefficients.
+    But everything we do in this chapter also applies to polynomials with complex coefficients.
+    And in fact,
+    there are even more exotic types of polynomials to which the same formulas and results apply.
+    We'll consider these later in the chapter.
+  </p>
+  <p>
+    We'll begin with an example.
+    Let
+    <me>
+      p(x)  = x^3 -3x +2   \text{ and }   q(x)  = 5x^3+3x^2 -6x +5
+    </me>.
+  </p>
+  <p>
+    Then we can add <m>p(x)</m> and <m>q(x)</m> as follows:
+    <md>
+      <mrow>p(x) + q(x) \amp  =  ( x^3 - 3 x + 2 ) + ( 5x^3+3 x^2 - 6 x + 5 )</mrow>
+      <mrow>\amp  =   (1+5)x^3 +3x^2+(-3-6)x + (2+5)</mrow>
+      <mrow>\amp  = 6x^3 + 3 x^2 - 9 x + 7</mrow>
+    </md>
+  </p>
+  <p>
+    Notice, we first grouped together terms with the same power of <m>x</m>,
+    and then we added the coefficients.
+  </p>
+  <p>
+    Multiplication of polynomials is a bit more involved,
+    so we'll start with polynomials of single terms (monomials) and work our way up from there.
+    Suppose we have:
+    <md>
+      <mrow>p(x)  = 5x^3\text{ and } q(x)  = 3x^2</mrow>
+    </md>.
+  </p>
+  <p>
+    Then their product is
+    <md>
+      <mrow>p(x)  q(x) \amp  =  5x^3 3 x^2</mrow>
+      <mrow>\amp  = (5 \cdot 3)x^{(3 + 2)},</mrow>
+      <mrow>\amp  = 15x^5</mrow>
+    </md>,
+    where we combined the coefficients and the exponents
+    (remember your exponent rules!).
+  </p>
+  <p>
+    Let's extend ourselves a bit and multiply a polynomial of two terms by a monomial:
+    <md>
+      <mrow>p(x)  = 5x^3 + 2x \text{ and } q(x)  = 3x^2</mrow>
+    </md>.
+  </p>
+  <p>
+    According to the distributive law,
+    we multiply each term in the first polynomial with the second polynomial:
+    <md>
+      <mrow>p(x)  q(x) \amp  = ( 5x^3 +2x)  3x^2</mrow>
+      <mrow>\amp = 5x^3 3x^2 + 2x 3x^2</mrow>
+      <mrow>\amp  = (5 \cdot 3)x^{(3 + 2)} + (2 \cdot 3)x^{(1+2)}</mrow>
+      <mrow>\amp  = 15x^5 + 6x^3</mrow>
+    </md>.
+  </p>
+  <p>
+    In order to multiply a two term polynomial by another two term polynomial, e.g.
+    <md>
+      <mrow>p(x)  = 5x^3 + 2x \text{ and }  q(x)  = 3x^2 - 6x</mrow>
+    </md>,
+    we extend the distributive law even further.
+    Like before,
+    each term in the first polynomial is being multiplied by the second polynomial.
+    Then the product is
+    <md>
+      <mrow>p(x)  q(x) \amp  = ( 5x^3 +2x)  (3x^2 - 6x)</mrow>
+      <mrow>\amp  = 5x^3 (3x^2 - 6x) +2x(3x^2 - 6x)</mrow>
+    </md>
+  </p>
+  <p>
+    At this point we just have the sum of two terms,
+    each involving a monomials times a two-term polynomial,
+    which we now know can be calculated using the distributive property,
+    <md>
+      <mrow>\amp  = 5x^3 (3x^2 - 6x) +2x(3x^2 - 6x)</mrow>
+      <mrow>\amp  = (15x^5 -30x^4) + (6x^3-12x^2)</mrow>
+      <mrow>\amp = 15x^5 - 30x^4 + 6x^3 - 12x^2</mrow>
+    </md>
+  </p>
+  <p>
+    This is just the same result as the FOIL method
+        <idx><h>FOIL (FLOI) method</h></idx>
+    you learned in high school,
+    but thinking in terms of the distributive property has the advantage of being applicable to polynomials that have more than just two terms each.
+    For instance, with
+    <md>
+      <mrow>p(x)  = 5x^3 + 4x^2 - 2x \text{ and }  q(x)  = 3x^2 - 6x</mrow>
+    </md>,
+    we obtain
+    <md>
+      <mrow>p(x) q(x) \amp  = 5x^3 (3x^2 - 6x) +4x^2(3x^2 - 6x)-2x(3x^2 - 6x)</mrow>
+      <mrow>\amp  = (15x^5 -30x^4) + (12x^4 - 24x^3)  + (-6x^3 + 12x^2)</mrow>
+      <mrow>\amp = 15x^5 - 30x^4 + 12x^4-24x^3 - 6x^3 + 12x^2</mrow>
+      <mrow>\amp = 15x^5 + (-30+12)x^4 + (-24-6)x^3 +12x^2</mrow>
+      <mrow>\amp = 15x^5 - 18x^4 - 30x^3 +12x^2</mrow>
+    </md>.
+  </p>
+  <p>
+    Again notice that we are grouping like terms by exponent.
+    Later, when we give a more general way of multiplying polynomials,
+    this method of distribution is what you need to have in mind.
+  </p>
+  <exercise xml:id="exercise_Polynomials_poly2">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>p(x)=4x^2+7x</m> and <m>q(x)=-2x^2-3x+2</m>.
+            Using polynomial arithmetic,
+            compute both the sum and the product of <m>p(x)</m> and <m>q(x)</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>p(x)=3x^2+8x-2</m> and <m>q(x)=2x^2-5x+9</m>.
+            Using polynomial arithmetic,
+            compute both the sum and the product of <m>p(x)</m> and <m>q(x)</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+</section>

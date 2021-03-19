@@ -1,0 +1,743 @@
+<section xml:id="sec_Homomorphism_Introduction">
+  <title>Preliminary examples</title>
+  <p>
+    In the previous chapter we talked about isomorphisms,
+    which are bijections between two groups that also preserve the group operation.
+    We've seen that isomorphic groups are essentially the
+    <q>same</q>
+    group
+    (thinking groupwise).
+  </p>
+  <p>
+    For instance,
+    we saw that the integers mod 4 and the <m>4^{th}</m> roots of unity were isomorphic (<m>{\mathbb Z_4} \cong \langle i \rangle</m>) by the following bijection (isomorphism):
+    <md>
+      <mrow>0 \rightarrow 1 ,~~     1 \rightarrow i,~~    2 \rightarrow -1,~~   3 \rightarrow -i</mrow>
+    </md>.
+  </p>
+  <p>
+    The group operation is preserved by this bijection:
+    for instance,
+    <m>1  \oplus 2=3</m> maps to <m>i \cdot -1 = -i</m>.
+    In general, for <m>a,b \in {\mathbb Z_4}</m> we have
+    <me>
+      f(a \oplus b) = f(a) \cdot f(b)
+    </me>.
+  </p>
+  <p>
+    Now let us think about the groups
+    <em><m>{\mathbb Z_8}</m></em>
+    and <m>\langle i \rangle</m>.
+    Do they have the same relationship?
+    Are they isomorphic?
+  </p>
+  <p>
+    Well, there is <em>one</em> immediate problem that comes up:
+    <m>|{\mathbb Z_8}| \neq |\langle i \rangle|</m>.
+    And as we saw in the Isomorphism chapter,
+    there's no way then to create a bijection from
+    <m>{\mathbb Z_8}</m> to <m>\langle i \rangle</m>:
+    specifically,
+    there is just no way to create a one-to-one function from a domain of 8 elements to a codomain of 4 elements;
+    the number of elements have to match.
+    But let's look at their Cayley tables:
+  </p>
+  <table xml:id="groups_Z8_add_table2">
+    <title>Addition table for <m>{\mathbb Z}_8</m></title>
+    <tabular>
+      <row>
+        <cell><m>\oplus</m></cell>
+        <cell>0</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0</cell>
+        <cell>0</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+      </row>
+      <row>
+        <cell>1</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+        <cell>0</cell>
+      </row>
+      <row>
+        <cell>2</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+        <cell>0</cell>
+        <cell>1</cell>
+      </row>
+      <row>
+        <cell>3</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+        <cell>0</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+      </row>
+      <row>
+        <cell>4</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+        <cell>0</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+      </row>
+      <row>
+        <cell>5</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+        <cell>0</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+      </row>
+      <row>
+        <cell>6</cell>
+        <cell>6</cell>
+        <cell>7</cell>
+        <cell>0</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+      </row>
+      <row>
+        <cell>7</cell>
+        <cell>7</cell>
+        <cell>0</cell>
+        <cell>1</cell>
+        <cell>2</cell>
+        <cell>3</cell>
+        <cell>4</cell>
+        <cell>5</cell>
+        <cell>6</cell>
+      </row>
+    </tabular>
+  </table>
+  <table xml:id="x4_roots_table2">
+    <title>Cayley table for <m>\langle i \rangle</m></title>
+    <tabular>
+      <row>
+        <cell><m>\cdot</m></cell>
+        <cell>1</cell>
+        <cell><m>i</m></cell>
+        <cell>-1</cell>
+        <cell><m>-i</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>1</cell>
+        <cell>1</cell>
+        <cell><m>i</m></cell>
+        <cell>-1</cell>
+        <cell><m>-i</m></cell>
+      </row>
+      <row>
+        <cell><m>i</m></cell>
+        <cell><m>i</m></cell>
+        <cell>-1</cell>
+        <cell><m>-i</m></cell>
+        <cell>1</cell>
+      </row>
+      <row>
+        <cell>-1</cell>
+        <cell>-1</cell>
+        <cell><m>-i</m></cell>
+        <cell>1</cell>
+        <cell><m>i</m></cell>
+      </row>
+      <row>
+        <cell><m>-i</m></cell>
+        <cell><m>-i</m></cell>
+        <cell>1</cell>
+        <cell><m>i</m></cell>
+        <cell>-1</cell>
+      </row>
+    </tabular>
+  </table>
+  <p>
+    While we can't say that <m>{\mathbb Z_8}</m> and <m>\langle i \rangle</m> are isomorphic,
+    there are some similarities in the patterns of their Cayley tables.
+    Notice for instance the pattern of 2's in the upper left portion of the <m>{\mathbb Z_8}</m> table.
+    This matches exactly with the pattern of -1's in the <m>\langle i \rangle</m> table.
+    In fact, we can see that in both tables the entries in each
+    <q>anti-diagonal</q>
+    are all the same.
+    This similarity in structure suggests a similarity in the behavior of the group operations.
+    So although we can't create a bijection,
+    could we possibly create another function that preserves the group operations?
+  </p>
+  <example xml:id="example_Homomorphism_Z_8_i_homomorph">
+    <statement>
+      <p>
+        Let's try to create a function from <m>{\mathbb Z_8}</m> to
+        <m>\langle i \rangle</m> which preserves group operations.
+        Since there are twice as many elements in
+        <m>{\mathbb Z_8}</m> as in <m>\langle i \rangle</m>,
+        it seems natural that 2 elements from
+        <m>{\mathbb Z_8}</m> should each go to one element in <m>\langle i \rangle</m>.
+        The question then is, Which two?
+        Because of the nature of modular addition,
+        it makes some sense to pick elements of
+        <m>{\mathbb Z_8}</m> that are spaced evenly throughout
+        <m>{\mathbb Z_8}</m> if we want them to correspond to the same action in <m>\langle i \rangle</m>.
+        So let's look at the function <m>g: {\mathbb Z}_8 \rightarrow \langle i \rangle</m> that takes
+        <md>
+          <mrow>0,4 \overset{g}{\longrightarrow} 1 ,~~     1,5 \overset{g}{\longrightarrow} i,~~    2,6 \overset{g}{\longrightarrow} -1,~~   3,7 \overset{g}{\longrightarrow} -i</mrow>
+        </md>,
+        as shown in <xref ref="fig_homomorph1">Figure</xref>.
+      </p>
+      <figure xml:id="fig_homomorph1">
+        <caption>Function <m>g</m> between <m>\ZZ_8</m> and <m>\langle i \rangle</m>.</caption>
+        <image width="75%" source="images/homomorph1.png"/>
+      </figure>
+      <p>
+        Let's take the <m>{\mathbb Z_8}</m> table then and start transforming it according to <m>g</m>.
+        First we replace all the elements of
+        <m>{\mathbb Z_8}</m> with their counterparts in <m>\langle i \rangle</m>:
+      </p>
+      <table xml:id="groups_Z8_transfom1">
+        <title>First Transformation of <m>{\mathbb Z}_8</m> into <m>\langle i \rangle</m>.</title>
+        <tabular>
+          <row>
+            <cell><m>\oplus</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell><m>-1</m></cell>
+            <cell><m>-i</m></cell>
+          </row>
+          <row>
+            <cell><m>i</m></cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+          </row>
+          <row>
+            <cell>-1</cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+          </row>
+          <row>
+            <cell><m>-i</m></cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+          </row>
+          <row>
+            <cell><m>i</m></cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+          </row>
+          <row>
+            <cell>-1</cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+          </row>
+          <row>
+            <cell><m>-i</m></cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+          </row>
+        </tabular>
+      </table>
+      <p>
+        Then we remove redundant rows/columns and change the group operation,
+        and voil&#xe0;:
+      </p>
+      <table xml:id="groups_Z8_transfom2">
+        <title>Second Transformation of <m>{\mathbb Z}_8</m> into <m>\langle i \rangle</m>.</title>
+        <tabular>
+          <row>
+            <cell><m>\cdot</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>1</cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+          </row>
+          <row>
+            <cell><m>i</m></cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+          </row>
+          <row>
+            <cell>-1</cell>
+            <cell>-1</cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+          </row>
+          <row>
+            <cell><m>-i</m></cell>
+            <cell><m>-i</m></cell>
+            <cell>1</cell>
+            <cell><m>i</m></cell>
+            <cell>-1</cell>
+          </row>
+        </tabular>
+      </table>
+      <p>
+        This is exactly the Cayley table for <m>\langle i \rangle</m>
+        (see <xref ref="x4_roots_table2">Table</xref>).
+        So <m>g</m> does it!
+        It preserves the group operations:
+        if we take any two elements of <m>{\mathbb Z}_8</m> and add them
+        (say <m>3 \oplus 5 = 0</m>),
+        the result is the same as taking their corresponding elements in <m>\langle i \rangle</m> and multiplying them
+        (<m>-i \cdot i = 1</m>).
+        In other words, for all <m>a,b \in {\mathbb Z}_8</m>,
+        <me>
+          g(a \oplus b) = g(a) \cdot g(b)
+        </me>.
+      </p>
+      <p>
+        A bijection that preserved group operations was called an isomorphism.
+        So what do we call <m>g</m>?
+        We say that <m>g</m> is a <em>homomorphism</em>
+        from <m>{\mathbb Z}_8</m> to <m>\langle i \rangle</m>,
+        and that <m>{\mathbb Z}_8</m> is
+        <em>homomorphic</em> to <m>\langle i \rangle</m>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    We see some interesting things in <xref ref="example_Homomorphism_Z_8_i_homomorph">Example</xref>.
+    The elements in <m>{\mathbb Z}_8</m> that map to 1 are <m>0</m> and <m>4</m>.
+    The set <m>\{0,4\}</m> is a subgroup of <m>{\mathbb Z}_8</m>.
+    Naturally it's a normal subgroup,
+    since <m>\mathbb{Z}_8</m> is abelian.
+    On the other hand, the sets <m>\{1,5\}, \{2,6\}</m>,
+    and <m>\{3,7\}</m> which map to <m>i, -1</m>,
+    and <m>-i</m> respectively are <em>not</em>
+    subgroups of <m>{\mathbb Z}_8</m>.
+    Instead, we may recognize them as the <em>cosets</em>
+    of <m>\{0,4\}</m> in <m>{\mathbb Z}_8</m>.
+    We saw in <xref ref="subsec_Cosets_NormalSubAndFactorGroup_NormalSubgroups">Section</xref>
+    that the cosets of a normal subgroup themselves form a group called the
+    <em>quotient group</em>.
+    You may want to go back and refresh your memory on the contents of that section before attempting the following exercise.
+  </p>
+  <exercise xml:id="exercise_Homomorphism_verify_Z8_04">
+    <statement>
+      <p>
+        Compute the Cayley table for <m>{\mathbb Z}_8/ \{0,4\}</m>.
+        Label the rows and columns in the following order:
+        <m>\{0,4\}</m>,<m>\{1,5\}</m>,
+        <m>\{2,6\}</m>, <m>\{3,7\}</m>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    This table possesses an eery similarity to another table that we've seen before:
+  </p>
+  <exercise xml:id="exercise_Homomorphism_Z8_04_i_iso">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Compute the Cayley table for <m>\langle i \rangle</m>.
+            Label the rows and columns in the following order:
+            <m>1</m>,<m>i</m>, <m>-1</m>, <m>-i</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            By comparing Cayley tables,
+            show that the function <m>h: {\mathbb Z}_8/\{0,4\} \longrightarrow \langle i \rangle</m> is an isomorphism, where
+            <md>
+              <mrow>\{0,4\} \overset{h}{\longrightarrow} 1 ,~~     \{1,5\}  \overset{h}\longrightarrow i,~~    \{2,6\}  \overset{h}\longrightarrow -1,~~   \{3,7\}  \overset{h}\longrightarrow -i</mrow>
+            </md>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    So <m>{\mathbb Z}_8/ \{0,4\} \cong \langle i \rangle</m>! (See <xref ref="fig_homomorph2">Figure</xref>.)
+  </p>
+  <figure xml:id="fig_homomorph2">
+    <caption>Isomorphism <m>h</m> between <m>\ZZ_8/\{0,4\}</m> and <m>\langle i \rangle</m>.</caption>
+    <image width="56%" source="images/homomorph2.png"/>
+  </figure>
+  <p>
+    <xref ref="example_Homomorphism_Z_8_i_homomorph">Example</xref>
+    exhibited lots of interesting properties.
+    Let's see if these properties hold for other examples as well.
+    We may then formalize our observations and provide proofs.
+  </p>
+  <example xml:id="example_Homomorphism_Z_8_isub_homomorph">
+    <statement>
+    <p>
+      The function <m>g</m> which we constructed in <xref ref="example_Homomorphism_Z_8_i_homomorph">Example</xref>
+      was not one-to-one, but it was onto.
+      Is
+      <q>onto</q>
+      necessary?
+      Or could we possibly find a function from <m>{\mathbb Z}_8</m> to
+      <m>\langle i \rangle</m> that still preserves the group operation,
+      whose range is not all of <m>\langle i \rangle</m>?
+    </p>
+    <p>
+      Let's consider the function <m>q: {\mathbb Z}_8 \longrightarrow \langle i \rangle</m> defined by:
+      <md>
+        <mrow>0,2,4,6\overset{q}{\longrightarrow} 1 ,~~     1,3,5,7 \overset{q}{\longrightarrow} -1</mrow>
+      </md>.
+    </p>
+    <exercise xml:id="exercise_Homomorphism_1_-1_subgroup">
+      <statement>
+        <p>
+          Prove that <m>\{1,-1\}</m> is a subgroup of <m>\langle i \rangle</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If we relabel the Cayley table for
+      <m>{\mathbb Z}_8</m> according to <m>1</m>, we get the following:
+    </p>
+    <table xml:id="x1_-1_Z8_transfom1">
+      <title>First Transformation of <m>{\mathbb Z}_8</m> into <m>\{1,-1\}</m>.</title>
+      <tabular>
+        <row>
+          <cell><m>\cdot</m></cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+        </row>
+        <row>
+          <cell>-1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+        </row>
+        <row>
+          <cell>-1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+        </row>
+        <row>
+          <cell>-1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+        </row>
+        <row>
+          <cell>-1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      And then if we remove the redundant rows and columns, we get:
+    </p>
+    <table xml:id="x1_-1_Z8_transfom2">
+      <title>Second Transformation of <m>{\mathbb Z}_8</m> into <m>\{1,-1\}</m>.</title>
+      <tabular>
+        <row>
+          <cell><m>\cdot</m></cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>1</cell>
+          <cell>-1</cell>
+        </row>
+        <row>
+          <cell>-1</cell>
+          <cell>-1</cell>
+          <cell>1</cell>
+        </row>
+      </tabular>
+    </table>
+    <p>
+      Now this isn't the <em>whole</em>
+      Cayley table for <m>\langle i \rangle</m>
+      (<xref ref="groups_Z8_transfom2">Table</xref>),
+      but it <em>is</em> the part of the Cayley table that corresponds to the elements 1 and -1
+      (remove rows 2 and 4 as well as columns 2 and 4).
+      So <m>q</m> preserves the operations between <m>\ZZ_8</m> and <m>\langle i \rangle</m>,
+      since for all <m>a,b \in {\mathbb Z}_8</m> we have
+      <me>
+        q(a \oplus b) = q(a) \cdot q(b)
+      </me>.
+    </p>
+    <p>
+      In other words, <m>q</m> is a homomorphism.
+    </p>
+    </statement>
+  </example>
+  <p>
+    In <xref ref="example_Homomorphism_Z_8_isub_homomorph">Example</xref>
+    we find several similarities to <xref ref="example_Homomorphism_Z_8_i_homomorph"></xref>:
+    <ul>
+      <li>
+        <p>
+          The set <m>\{0,2,4,6\} \subset {\mathbb Z}_8</m> which maps to the identity of
+          <m>\langle i \rangle</m> is a normal subgroup of <m>{\mathbb Z}_8</m>.
+          (We will use <m>H</m> to denote this subgroup.)
+        </p>
+      </li>
+      <li>
+        <p>
+          The set <m>\{1,3,5,7\}</m> which maps to <m>-1</m> is a coset of <m>H</m> in
+          <m>{\mathbb Z}_8</m>. (We may write <m>\{1,3,5,7\}</m> as <m>1+H</m>).
+        </p>
+      </li>
+      <li>
+        <p>
+          We may use the homomorphism <m>q</m> to construct an isomorphism,
+          as you will show in the following exercise.
+        </p>
+      </li>
+    </ul>
+    <exercise xml:id="exercise_Homomorphism_Z8_0246_1-1_iso">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Create the Cayley Table for the quotient group <m>{\mathbb Z}_8/ H</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that the function from
+              <m>{\mathbb Z}_8/ H</m>  to <m>\langle i \rangle</m>  which maps
+              <md>
+                <mrow>H \longrightarrow 1 ,~~     1+H \longrightarrow -1</mrow>
+              </md>
+              is an isomorphism from <m>{\mathbb Z}_8/ H</m> to the subgroup
+              <m>\{1,-1\}</m> of <m>\langle i \rangle</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </p>
+</section>

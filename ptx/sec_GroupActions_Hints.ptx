@@ -1,0 +1,69 @@
+<section xml:id="sec_GroupActions_Hints">
+  <title>Hints for
+  <q>Group Actions, with Applications</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_GroupActions_Action7">Exercise</xref>(b): Notice <m>0 \in 2\mathbb{Z}</m>,
+    but <m>1+0</m> is not in <m>2\mathbb{Z}</m>.
+    So the action of <m>\mathbb{Z}</m> on
+    <m>2\mathbb{Z}</m> is not well-defined. (d) Note that the group operation of <m>\mathbb{C}</m> is addition.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Stabilizers2">Exercise</xref>: Note there are two rows for stabilizers of faces,
+    because some stabilizers of faces have order 2 and some have order 4.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_CountingFormula2">Exercise</xref>(a): There are two elements.<nbsp/><nbsp/><nbsp/><nbsp/>(d): There are three elements.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_CubeCounts">Exercise</xref>(a): Express <m>|G|</m> two different ways by applying the Counting Formula to edges,
+    and then to faces.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_CubeCounts">Exercise</xref>(c): You may take the ratio (faces/edges) /
+    (vertices/edges).
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Stabilizers2">Exercise</xref>: There are two rows for faces,
+    because there are two kinds of stabilizers for faces.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Tetra5">Exercise</xref>(b): It may be helpful to calculate the rotation using cycle notation.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Tetra5a">Exercise</xref> For example,
+    <m>R_{Bb}</m> and <m>R_{Bb}^2</m> are the 120- and 240- degree rotations around the axis
+    <m>\overset{\leftrightarrow}{Bb}</m>, Both stabilize face <m>b</m>.
+    So <m>G_b = \{ {\var id}, R_{Bb}, R_{Bb}^2 \}</m>.
+    The same group stabilizes another set as well<ndash/>can you figure out which one?
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Octa5a">Exercise</xref>: How many group elements (rotations) are in <m>G_{x_+}</m>?
+    What else do they stabilize?
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Dodeca5">Exercise</xref>(b): What is <m>|G|</m> according to the counting formula?
+    How many stabilizers have we found so far?
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Soccer1">Exercise</xref>(b): Use the Counting Formula.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Soccer2">Exercise</xref>(b): See the previous hint.
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_IntLatNotGset">Exercise</xref>: Does <m>a+h</m> have to be in <m>H</m>?
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_RtCosetAction">Exercise</xref>:
+    <m>H</m> itself is a coset, and take <m>g_1=(123)</m> and <m>g_2=(23)</m>.
+    Is it true that acting on <m>H</m> by <m>g_1</m> followed by <m>g_2</m> is the same as acting on <m>H</m> by <m>g_2 g_1</m>?
+  </p>
+  <p>
+    <xref ref="exercise_GroupActions_Conj13">Exercise</xref>: (b) Take the answer to part (a),
+    and apply the rotation <m>r_x^2</m>
+    (why does this work?)
+    (c) Find a rotation that map the fixed point set of
+    <m>r_y\compose r_z</m> to the fixed point set of <m>r_z\compose r_y</m>.
+  </p>
+</section>

@@ -1,0 +1,31 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Sets">
+  <title>Set Theory</title>
+  <introduction>
+    <blockquote>
+      <q>A set is a Many that allows itself to be thought of as a One.</q>
+      (Georg Cantor)
+    </blockquote>
+    <blockquote>
+      <q>(<em>Set theory is</em>) the finest product of mathematical genius and one of the supreme achievements of purely intellectual human activity.</q>
+      (David Hilbert)
+    </blockquote>
+    <p>
+      <q>Set</q>
+      is one of the most fundamental concepts in mathematics,
+      and sets have been a part of mathematics since ancient times.
+      However, a truly rigorous theory of sets was only developed about a hundred years ago.
+      We won't get into the difficulties involved in coming up with a rigorous theory
+      (we'll just mention
+      <q>Russell's paradox</q>
+      in passing).
+      Instead, we'll focus on the algebraic properties of sets:
+      in particular the operations of intersection, union,
+      and complement, and proving identities involving these operations.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Sets_Basics.ptx"/>
+  <xi:include  href="sec_Sets_Properties.ptx"/>
+  <xi:include  href="sec_Sets_SetGroup.ptx"/>
+  <xi:include  href="sec_Sets_Hints.ptx"/>
+  <xi:include  href="sec_Sets_StudyGuide.ptx"/>
+</chapter>

@@ -1,0 +1,106 @@
+<section xml:id="sec_FurtherCryptography_References">
+  <title>References and suggested reading</title>
+  <ol type="1">
+    <li xml:id="Azad">
+      <p>
+        Azad, Saiful,
+        and Pathan, Al-Sakib Khan. "Elliptic Curve Cryptography" in Practical Cryptography, CRC Press, January 2015.
+      </p>
+    </li>
+    <li xml:id="Bidgoli">
+      <p>
+        Bidgoli, Hossein. "Diffie-Hellman Key Exchange" in
+        <em>Handbook of Information Security: Information Warfare, Social, Legal,
+        and International Issues and Security Foundations, Volume 2</em>, John Wiley and Sons, January 2006.
+      </p>
+    </li>
+    <li xml:id="Bos">
+      <p>
+        Bos, Joppe, Kaihara, Marcelo, Kleinjung, Thorsten, Lenstra,Arjen,and Montgomery, Peter. (2009, September 01).
+        <em>On the Security of 1024-bit RSA and 160-bit Elliptic Curve Cryptography</em>.
+        Retrieved from \url{https://eprint.iacr.org/2009/389.pdf}.
+      </p>
+    </li>
+    <li xml:id="Caldwell">
+      <p>
+        Caldwell, Chris. (2016, January 07).
+        <em>The Prime Pages</em>.
+        Retrieved from \url{http://www.primes.utm.edu}.
+      </p>
+    </li>
+    <li xml:id="Certicom">
+      <p>
+        "Certicom Announces Elliptic Curve Cryptosystem (ECC) Challenge Winner", 2002.
+        Retrieved from \url{https://www.certicom.com/content/certicom/en/about/news/release/2002/certicom-announces-elli} \url{ptic-curve-cryptosystem<ndash/>ecc<ndash/>challenge-w.html}
+      </p>
+    </li>
+    <li xml:id="Christensen">
+      <p>
+        Christensen, Chris. (2015, November 14).
+        <em>Key Exchanges</em>.
+        Retrieved from \url{http://www.nku.edu/<nbsp/>christensen/092mat483}.
+      </p>
+    </li>
+    <li xml:id="Corbellini">
+      <p>
+        Corbellini, Andrea. (2015, May).
+        <em>Elliptic Curve Cryptogrphy: A Gentle Introduction</em>.
+        Retrieved from \url{http://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/}.
+      </p>
+    </li>
+    <li xml:id="mobile">
+      <p>
+        "ECC: A Case for Mobile Encryption", 2014.
+        Retrieved from \url{http://resources.infosecinstitute.com/ecc-case-mobile-encryption/#gref}
+      </p>
+    </li>
+    <li xml:id="wikipedia2017">
+      <p>
+        "Elliptic Curve", 2017.
+        Retrieved from \url {https://en.wikipedia.org/wiki/Elliptic_curve}.
+      </p>
+    </li>
+    <li xml:id="Franco">
+      <p>
+        Franco, Pedro. "Elliptic Curve Cryptography" in
+        <em>Understanding Bitcoin: Cryptography, Engineering and Economics</em>, John Wiley and Sons, February 2015.
+      </p>
+    </li>
+    <li xml:id="Kumar">
+      <p>
+        Kumar, Suneetha, Chandrasekhar. (2012, January).
+        <em>Encryption of Data Using Elliptic Curve Over Finite Fields</em>.
+        Retrieved from \url{https://arxiv.org/ftp/arxiv/papers/1202/1202.1895.pdf}.
+      </p>
+    </li>
+    <li xml:id="Mandal">
+      <p>
+        Mandal, Surajit, Manna, Nilotpal,
+        and Saha, Arijit. "Diffie-Hellman Key Exchange" in
+        <em>Information Theory, Coding,
+        and Cryptography</em>, Pearson India, May 2013.
+      </p>
+    </li>
+    <li xml:id="Pomerance">
+      <p>
+        Pomerance, Carls. (n.d.).
+        <em>Discrete Logarithms</em>.
+        Retrieved from \url{https://math.dartmouth.edu/<nbsp/>carlp/dltalk09.pdf}.
+      </p>
+    </li>
+    <li xml:id="Sullivan">
+      <p>
+        Sullivan, Nick. (2013, October).
+        <em>A (relatively easy to understand) primer on elliptic curve cryptography</em>.
+        Retrieved from \url{https://arstechnica.com/security/2013/10/a-relatively-easy-to-understand-primer-on}\url{-elliptic-curve-cryptography}.
+      </p>
+    </li>
+    <li xml:id="Wolframalpha">
+      <p>
+        Weisstein, Eric W. (2017, March).
+        <em>Elliptic Curve</em>.
+        Retrieved from \url{http://mathworld.wolfram.com/EllipticCurve.html}
+      </p>
+    </li>
+  </ol>
+</section>

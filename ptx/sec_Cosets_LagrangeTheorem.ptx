@@ -1,0 +1,490 @@
+<section xml:id="sec_Cosets_LagrangeTheorem">
+  <title>Lagrange's theorem, and some consequences</title>
+  <subsection xml:id="subsec_Cosets_LagrangeTheorem_LagrangeTheorem">
+    <title>Lagrange's theorem</title>
+    <p>
+      At the beginning of the chapter,
+      we compared cosets to layers of an onion.
+      Indeed, as we saw in the last section,
+      this is a good analogy because the cosets of a subgroup partition the group.
+      However, an even better analogy is to slices of a loaf of sandwich bread<ndash/>because as we'll see in this section,
+      every coset of a particular subgroup within a given group has exactly the same size.
+    </p>
+    <p>
+      What may we conclude from this?
+      Let's push our analogy with sandwich bread a little farther.
+      Suppose the bread has raisins in it,
+      and each slice has exactly the same number of raisins.
+      Then the number of raisins in the loaf must be equal to the sum of all raisins in all the slices, that is:
+    </p>
+    <p>
+      <m>|</m>raisins in loaf<m>|</m> = <m>|</m>raisins in each slice<m>| \cdot |</m>slices<m>|</m>,
+    </p>
+    <p>
+      where as usual the <m>| \cdots |</m> notation signifies
+      <q>size</q>
+      or
+      <q>number of</q>. Applying this same reasoning to groups and their subgroups leads to a very general result called
+      <em>Lagrange's theorem</em>.
+      This far-reaching theorem will enable us to prove some surprising properties of subgroups,
+      their elements, and even some results in number theory.
+      So let's get started.
+    </p>
+    <remark xml:id="left_is_right">
+      <p>
+        In the following discussion,
+        for specificity's sake we will use left coset notation.
+        However, just lke we saw in the last section
+        (<xref ref="right_is_left">Remark</xref>),
+        everything we say about left cosets is also true for right cosets.
+        Indeed, to prove the cases for the right cosets,
+        you simply need to take the left coset proofs given below and switch around each coset expression and group operation.
+      </p>
+    </remark>
+    <p>
+      As mentioned above,
+      to prove Lagrange's theorem we first need to prove that every left coset of a subgroup has the exactly the same size:
+    </p>
+    <proposition xml:id="proposition_Cosets_cosets_theorem_4">
+      <statement>
+        <p>
+          Let <m>H</m> be a subgroup of <m>G</m> with <m>g \in G</m> and define a map
+          <m>\phi:H \rightarrow gH</m> by <m>\phi(h) = gh</m>.
+          The map <m>\phi</m> is a bijection;
+          hence, the number of elements in <m>H</m> is the same as the number of elements in <m>gH</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        We first show that the map <m>\phi</m> is one-to-one.
+        Suppose that <m>\phi(h_1) = \phi(h_2)</m> for elements <m>h_1, h_2 \in H</m>.
+        We must show that <m>h_1 = h_2</m>,
+        but <m>\phi(h_1) = gh_1</m> and <m>\phi(h_2) = gh_2</m>.
+        So <m>gh_1 = gh_2</m>, and by left cancellation <m>h_1= h_2</m>.
+        To show that <m>\phi</m> is onto is easy.
+        By definition every element of <m>gH</m> is of the form <m>gh</m> for some <m>h \in H</m> and <m>\phi(h) = gh</m>.
+      </p>
+    </proof>
+    <p>
+      Given this proposition Lagrange's theorem falls right out:
+    </p>
+    <proposition xml:id="proposition_Cosets_LagrangeTheorem">
+      <statement>
+        <p>
+          (<term>Lagrange's theorem</term>) Let <m>G</m> be a finite group and let <m>H</m> be a subgroup of <m>G</m>.
+          Then <m>|G|/|H| = [G : H]</m> is the number of distinct left cosets of <m>H</m> in <m>G</m>.
+          In particular,
+          the number of elements in <m>H</m> must divide the number of elements in <m>G</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        The group <m>G</m> is partitioned into <m>[G : H]</m> distinct left cosets.
+        Each left coset has <m>|H|</m> elements;
+        therefore, <m>|G| = [G : H] |H|</m>.
+      </p>
+    </proof>
+    <p>
+      Consider for a moment what we've just proven.
+      The number of elements in a subgroup <em>must</em>
+      divide evenly into the number of elements in the group;
+      you can't have just any number of elements in a subgroup.
+      This is a very powerful tool to give insight into the structure of groups.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>G</m> be a group with <m>|G|=25</m>.
+          Then since <m>2</m> doesn't divide 25 evenly, Lagrange's theorem implies that <m>G</m> can't possibly have a subgroup with 2 elements.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Cosets_order5and7">
+      <statement>
+        <p>
+          Suppose that <m>G</m> is a finite group with an element <m>g</m> of order 5 and an element <m>h</m> of order 7.
+          <ol type="a">
+            <li>
+              <p>
+                Show that <m>G</m> has subgroups of order 5 and 7. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Why must <m>|G| \geq 35</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Cosets_finite_60">
+      <statement>
+        <p>
+          Suppose that <m>G</m> is a finite group with 60 elements.
+          What are the possible orders for subgroups of <m>G</m>?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can take the result in Lagrange's theorem a step farther by considering subgroups of subgroups.
+      We can prove a multiplication rule for indices:
+    </p>
+    <proposition xml:id="proposition_Cosets_cosets_theorem_8">
+      <statement>
+        <p>
+          Let <m>H</m> and <m>K</m> be subgroups of a finite group <m>G</m> such that <m>G \supset H \supset K</m>.
+          Then
+          <me>
+            [G:K] = [G:H][H:K]
+          </me>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Observe that
+        <me>
+          [G:K] = \frac{|G|}{|K|} = \frac{|G|}{|H|} \cdot \frac{|H|}{|K|} = [G:H][H:K]
+        </me>.
+      </p>
+    </proof>
+    <remark>
+      <p>
+        (<em>historical background</em>) Joseph-Louis Lagrange
+            <idx><h>Lagrange, Joseph-Louis</h></idx>
+        (1736<ndash/>1813), born in Turin, Italy,
+        was of French and Italian descent.
+        His talent for mathematics became apparent at an early age.
+        Leonhard Euler
+            <idx><h>Euler, Leonhard</h></idx>
+        recognized Lagrange's abilities when Lagrange, who was only 19,
+        communicated to Euler some work that he had done in the calculus of variations.
+        That year he was also named a professor at the Royal Artillery School in Turin.
+        At the age of 23 he joined the Berlin Academy.
+        Frederick the Great had written to Lagrange proclaiming that the
+        <q>greatest king in Europe</q>
+        should have the
+        <q>greatest mathematician in Europe</q>
+        at his court.
+        For 20 years Lagrange held the position vacated by his mentor, Euler.
+        His works include contributions to number theory,
+        group theory, physics and mechanics,
+        the calculus of variations,
+        the theory of equations, and differential equations.
+        Along with Laplace and Lavoisier, Lagrange was one of the people responsible for designing the metric system.
+        During his life Lagrange profoundly influenced the development of mathematics,
+        leaving much to the next generation of mathematicians in the form of examples and new problems to be solved.
+      </p>
+    </remark>
+  </subsection>
+  <subsection xml:id="sec_Cosets_Fermat">
+    <title>Orders of elements, Euler's theorem, Fermat's little theorem, and prime order</title>
+    <p>
+      Now let's really put Lagrange's theorem to work.
+      Note that Lagrange's theorem is an extremely general result<ndash/>it applies to <em>any</em>
+      subgroup of <em>any</em> finite group.
+      So let's consider one particular type of subgroup,
+      namely cyclic subgroups of the form
+      <m>\langle g \rangle</m> where <m>g</m> is an element of a given group <m>G</m>. (See <xref ref="proposition_Groups_OrbitIsSubgroup">Proposition</xref>
+      in <xref ref="subsec_Groups_GroupProperties_CyclicSubgroups">Section</xref>
+      for the definition of <m>\langle g \rangle</m> and the proof that it is indeed a group).
+    </p>
+    <proposition xml:id="proposition_Cosets_cosets_theorem_6">
+      <statement>
+        <p>
+          Suppose that <m>G</m> is a finite group and <m>g \in G</m>.
+          Then the order of <m>g</m> must divide the number of elements in <m>G</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        The order of a group element <m>g</m>,
+        which is denoted as <m>|g|</m>,
+        is defined in <xref ref="definition_Groups_DefOrder">Definition</xref>
+        in <xref ref="subsec_Groups_GroupProperties_CyclicSubgroups">Section</xref>.
+        We indicated in <xref ref="exercise_Groups_OrderEltCyclic">Exercise</xref>
+        in that same section that <m>|g|</m> is equal to <m>|\langle g \rangle|</m>,
+        which is the order of the cylic subgroup generated by <m>g</m>.
+        It follows immediately from Lagrange's theorem that <m>|g|</m> must divide <m>|G|</m>.
+      </p>
+    </proof>
+    <p>
+      To show the power of this result,
+      we'll apply it to the group of units <m>U(n)</m> which was introduced in <xref ref="subsec_Groups_Examples_GroupOfUnits">Section</xref>.
+    </p>
+    <p>
+      But before we do this, let's do some exploration.
+      Recall that the elements of <m>U(n)</m> are the positive integers that are less than <m>n</m> and relatively prime to <m>n</m> (we showed in <xref ref="exercise_Groups_U_n__abgroup">Exercise</xref>
+      of <xref ref="subsec_Groups_Examples_GroupOfUnits">Section</xref>
+      that these elements actually form a group.
+      There is a special notation for the number of elements in <m>U(n)</m>:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          For <m>n>1</m>,
+          define <m>\phi(n)</m> as the number of natural numbers that are less than <m>n</m> and relatively prime to <m>n</m>.
+          Alternatively,
+          we can say that <m>\phi(n)</m> is the number of natural numbers <m>m</m> where <m>m \lt n</m> and <m>\gcd(m,n) = 1</m>.
+          In order to make <m>\phi</m> a function on the natural numbers,
+          we also define <m>\phi(1)=1</m>.
+          The function <m>\phi</m> is called the
+          <term>Euler <m>\phi</m>-function</term>.
+              <idx><h>Euler <m>\phi</m>-function</h></idx>
+        </p>
+      </statement>
+    </definition>
+    <exercise xml:id="exercise_Cosets_phivals">
+      <statement>
+        <p>
+          Evaluate the following:
+          <ol type="a">
+            <li>
+              <p>
+                <m>\phi(12)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi(16)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi(20)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi(23)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi(51)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi(p)</m>, where <m>p</m> is prime.
+              </p>
+            </li>
+            <li xml:id="p2">
+              <p>
+                <m>\phi(p^2)</m>, where <m>p</m> is prime
+                (<em>justify</em> your answer).
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi(p^n)</m>,
+                where <m>p</m> is prime and <m>n \in {\mathbb N}</m>
+                (<em>justify</em> your answer).
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\phi(pq)</m>,
+                where <m>p</m> and <m>q</m> are primes and <m>p \neq q</m>
+                (<em>justify</em> your answer).
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If we now apply Lagrange's theorem to <m>U(n)</m>,
+      we obtain an important result in number theory which was first proved by Leonhard Euler in 1763.
+    </p>
+    <proposition xml:id="proposition_Cosets_cosets_Eulers_theorem">
+      <statement>
+        <p>
+          (<em>Euler's theorem</em>)
+              <idx><h>Euler's theorem</h></idx>
+          Let <m>a</m> and <m>n</m> be integers such that <m>n>0</m> and <m>\gcd(a, n) = 1</m>.
+          Then <m>a^{\phi(n)} \equiv 1 \pmod{n}</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        First, let <m>r</m> be the remainder when <m>a</m> is divided by <m>n</m>.
+        We may consider <m>r</m> as an element of <m>U(n)</m>.
+      </p>
+      <p>
+        As noted above, the order of <m>U(n)</m> is <m>\phi(n)</m>.
+        Lagrange's theorem then tells us that <m>|r|</m> divides <m>\phi(n)</m>,
+        so we can write:
+        <m>\phi(n) = k|r|</m>, where <m>k \in {\mathbb N}</m>.
+        Consequently, considering <m>r</m> as an element of <m>U(n)</m>,
+        we have <m>r^{\phi(n)} = r^{k|r|} = (r^{|r|})^k = (1)^k=1</m>
+        (take note that the multiplication that is being used here is
+        <em>modular</em> multiplication,
+        not regular multiplication).
+      </p>
+      <p>
+        Finally, we may use the fact that
+        <m>a \equiv r \pmod{n}</m> and apply <xref ref="exercise_ModularArithmetic_ModPower">Exercise</xref>
+        in <xref ref="subsec_ModularArithmetic_ArithWithRems">Section</xref>
+        to conclude that <m>a^{\phi(n)} \equiv 1 \pmod{n}</m>.
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Verify Euler's theorem for <m>n = 15</m> and <m>a = 4</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Verify Euler's theorem for <m>n = 22</m> and <m>a = 3</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Cosets_modvals">
+      <statement>
+        <p>
+          Evaluate the following,
+          using the results of <xref ref="exercise_Cosets_phivals">Exercise</xref>
+          <ol type="a">
+            <li>
+              <p>
+                <m>\mod(5^{200},12)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mod(13^{48},16)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mod(15^{221},23)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mod(9^{111},121)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mod(10^{195},221)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mod \left( \left( \frac{p+1}{2} \right)^p,p\right)</m>,
+                where <m>p</m> is prime.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mod ( (p+1)^{p^2},p^2)</m>, where <m>p</m> is prime.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In the following exercise you will prove
+      <em>Fermat's little theorem</em>,
+          <idx><h>Fermat</h><h>little theorem</h></idx>
+      which may be thought of as a special case of Euler's theorem:
+    </p>
+    <exercise xml:id="exercise_Cosets_FermatLittle">
+      <statement>
+        <p>
+          Suppose that <m>p</m> is a prime number,
+          and <m>a</m> is a natural number which is relatively prime to <m>p</m>.
+          Show that <m>a^{p-1} \equiv 1 \bmod{p}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can also apply <xref ref="proposition_Cosets_cosets_theorem_6">Proposition</xref> to groups of prime order,
+      as in the following exercise.
+    </p>
+    <exercise xml:id="exercise_Cosets_primeGroups">
+      <statement>
+        <p>
+          Let <m>G</m> be a group such that <m>|G| = p</m>,
+          where <m>p</m> is a prime number.
+          <ol type="a">
+            <li>
+              <p>
+                Let <m>a</m> be an element of <m>G \setminus \{e\}</m>.
+                What does <xref ref="proposition_Cosets_cosets_theorem_6">Proposition</xref>
+                tell us about <m>|a|</m>? (Recall that <sq><m>\setminus</m></sq> is the set difference operation,
+                defined in <xref ref="definition_Sets_setDifference">Definition</xref>). (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>G</m> is cyclic.
+              </p>
+            </li>
+            <li>
+              <p>
+                Describe the set of generators of <m>G</m> (recall that <m>g \in G</m> is a generator of <m>G</m> if <m>\langle g \rangle = G</m>.)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The results of the preceding exercise can be summarized as follows:
+    </p>
+    <proposition xml:id="proposition_Cosets_cosets_theorem_7">
+      <statement>
+        <p>
+          Let <m>|G| = p</m> with <m>p</m> a prime number.
+          Then <m>G</m> is cyclic and any <m>g \in G</m> such that <m>g \neq e</m> is a generator.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      Later we will use this proposition to show that all groups of prime order <m>p</m> are the
+      <q>same</q>
+      in some sense
+      (see <xref ref="subsec_Isomorphism_Classification_CylicGroup">Section</xref>).
+    </p>
+    <p>
+      Finally, we can use Lagrange's theorem to show that groups of prime order have a very simple structure:
+    </p>
+    <exercise xml:id="exercise_Cosets_prime_simple">
+      <statement>
+        <p>
+          Let <m>G</m> be a group of prime order.
+          Use <xref ref="proposition_Cosets_cosets_theorem_7">Proposition</xref>
+          to show that the only proper subgroup of <m>G</m> is the trivial subgroup <m>\{e\}</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="exercise_Cosets_prime_simple">Exercise</xref>
+      shows that groups of prime order
+      (such as <m>{\mathbb Z}_p</m>)
+      are
+      <q>simple</q>
+      in the sense that they don't contain any nontrivial subgroups.
+      In <xref ref="subsec_Cosets_FactoringSimpleGroups_Concept">Section</xref> we will talk more about
+      <q>simple</q>
+      groups.
+    </p>
+  </subsection>
+</section>

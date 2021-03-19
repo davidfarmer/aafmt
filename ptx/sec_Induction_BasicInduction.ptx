@@ -1,0 +1,52 @@
+<section xml:id="sec_Induction_BasicInduction">
+  <title>Basic examples of induction proofs</title>
+  <p>
+    Below is a complete proof of the formula for the sum of the first <m>n</m> integers,
+    that can serve as a model for proofs of similar sum/product formulas.<fn>
+    This section was taken
+    (with permission!)
+    from A. J. Hildebrand's excellent notes on induction
+    (reformatted and minor edits by C.T.).
+    </fn>
+  </p>
+  <proposition xml:id="proposition_Induction_Induction1">
+    <statement>
+      <p>
+        For all <m>n\in\NN</m>,
+        the following equation (which we denote as <m>P(n)</m>) is true:
+        <me>
+          \sum_{i=1}^n i=\frac{n(n+1)}{2}. \tag{\(P(n)\)}
+        </me>
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      <em>(By induction)</em>:
+    </p>
+    <p>
+      <em>Base case:</em> When <m>n=1</m>,
+      the left side of <m>P(n)</m> is <m>1</m>,
+      and the right side is <m>1(1+1)/2=1</m>,
+      so both sides are equal and <m>P(n)</m> holds for <m>n=1</m>.
+    </p>
+    <p>
+      <em>Induction step:</em> Let <m>k\in\NN</m> be given and suppose formula <m>P(n)</m> holds for <m>n=k</m>.
+      Then
+      <md>
+        <mrow>\sum_{i=1}^{k+1}i\amp =\sum_{i=1}^k i + (k+1)\text{ (by definition of \(\sum\) notation) }</mrow>
+        <mrow>\amp =\frac{k(k+1)}{2}+(k+1) \text{ (by induction hypothesis) }</mrow>
+        <mrow>\amp =\frac{k(k+1)+2(k+1)}{2} \text{ (by algebra) }</mrow>
+        <mrow>\amp =\frac{(k+1)((k+1)+1)}{2} \text{ (by algebra) } </mrow>
+      </md>.
+    </p>
+    <p>
+      Thus, <m>P(n)</m> holds for <m>n=k+1</m>,
+      and the proof of the induction step is complete.
+    </p>
+    <p>
+      <em>Conclusion:</em> By the principle of induction,
+      we have proved that <m>P(n)</m> holds for all <m>n\in\NN</m>.
+    </p>
+  </proof>
+</section>

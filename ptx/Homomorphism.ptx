@@ -1,0 +1,20 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Homomorphism">
+  <title>Homomorphisms of Groups</title>
+  <introduction>
+    <p>
+      In this chapter we will introduce homomorphisms,
+      which are a powerful tool in the study of the structure of abstract groups.
+      Our brief treatment only gives the reader a taste of this important topic,
+      and the reader wanting to go deeper is encouraged to look at other algebra texts.
+    </p>
+    <p>
+      Thanks to Tom Judson for material used in this chapter.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Homomorphism_Introduction.ptx"/>
+  <xi:include  href="sec_Homomorphism_Definitions.ptx"/>
+  <xi:include  href="sec_Homomorphism_ProofProperties.ptx"/>
+  <xi:include  href="sec_Homomorphism_FirstIsomorphismTheorem.ptx"/>
+  <xi:include  href="sec_Homomorphism_AdditionalExercises.ptx"/>
+  <xi:include  href="sec_Homomorphism_Hints.ptx"/>
+</chapter>

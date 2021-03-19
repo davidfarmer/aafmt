@@ -1,0 +1,843 @@
+<section xml:id="sec_FurtherCryptography_EllipticalCurve">
+  <title>Elliptic curve cryptography</title>
+  <introduction>
+    <p>
+      In the previous section we saw that the longer the key,
+      the greater the security.
+      Unfortunately longer keys require sending more information,
+      thus slowing down communication.
+      Elliptic curve cryptography (ECC) is one approach to the public key sharing dilemma that offers greater security with smaller keys.
+      The table in <xref ref="fig_DH_DHKE_9">Figure</xref>
+      shows the relationship between key length and security for three different cryptosystems: RSA, Diffie-Hellman,
+      and ECC. In the table,
+      <sq>key length</sq> refers to the number of binary bits in the key:
+      for comparison, a 160 bit key has 49 decimal digits,
+      while a 1024 bit key has 309 decimal digits.
+      The 'security level' is also measured in bits (80, 128, 192, 256) where these bits refer to the size of the number of computational steps necessary to break the code.
+      For example,
+      a security level of 80 means that <m>2^{80}</m> computations are required to break the code
+      (from reference<xref ref="Certicom"/>).
+      To give you an idea of what this means practically,
+      in 2002 it took <m>10,000</m> computers
+      (mainly PCs)
+      running 24 hours a day for 549 days to break an ECC system with a 109 bit key length.
+      A 160-bit ECC would be <m>2^{25}</m> times more secure:
+      which means that (with 2002 technology) it would take one billion computers over 500 years to crack it.
+    </p>
+    <figure xml:id="fig_DH_DHKE_9">
+      <caption>Key bit lengths of cryptosystems for different security levels recommended by the National Institute of Standards and Technology, (from reference <xref ref="mobile"/>)</caption>
+      <image width="93%" source="images/DHKE_9.png"/>
+    </figure>
+    <p>
+      Referencing the table in <xref ref="fig_DH_DHKE_9">Figure</xref>,
+      we can see that an ECC cryptosystem with a 160 bit key has a similar security level to RSA and Diffie-Hellman with 1024-bit keys.
+      This means the same security with 6 times less information<ndash/>a significant difference!
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          How long would it take to crack a cryptosystem with a 128 bit security,
+          using a billion modern computers with 2 GHz processors? (<em>Note:</em>
+          A 2 GHz processor is able to perform
+          <m>2 \cdot 10^9</m> computations per second.)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Now that we've described the benefits of ECC, let's see what elliptic curves are all about.
+      Our discussion will be quite wide-ranging,
+      and touch on several areas of mathematics.
+      Although we will not go into the background,
+      elliptic curves originally arose from the study of polynomial equations in multiple variables.
+      Elliptic curves also have deep connections to the theory of complex functions.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_FurtherCryptography_EllipticalCurve_Definition">
+    <title>Definition of elliptic curves</title>
+    <p>
+      An Elliptic Curve (EC) is the set of solutions <m>(x,y)</m> of an equation of the form <m>y^2 = x^3 + ax + b</m>,
+      where <m>a</m> and <m>b</m> are real coefficients.
+      See <xref ref="fig_DH_DHKE_5">Figure</xref>
+      below for graphs of some elliptic curves.
+    </p>
+    <figure xml:id="fig_DH_DHKE_5">
+      <caption>Geometric shapes of elliptic curves, (from reference <xref ref="Wolframalpha"/>)</caption>
+      <image width="93%" source="images/DHKE_5.png"/>
+    </figure>
+    <p>
+      Additionally, ECs are not allowed to have double or triple roots in the variable <m>x</m>.
+      A triple root produces a cusp in the graph,
+      and a double root produces a self-intersection
+      (see graphs in <xref ref="fig_DH_DHKE_10">Figure</xref>).
+      See graphs in <xref ref="fig_DH_DHKE_10">Figure</xref>
+      for examples of elliptic curves with double and triple roots.
+    </p>
+    <figure xml:id="fig_DH_DHKE_10">
+      <caption>(Left) E: <m>y^2</m> = <m>x^3</m> and (Right) E: <m>y^2</m> = <m>x^3-3x+2</m>, (From reference <xref ref="Corbellini"/></caption>
+      <image width="56%" source="images/DHKE_10.png"/>
+    </figure>
+    <p>
+      It turns out that we can guarantee that the EC has no double or triple roots if the coefficients <m>a</m> and <m>b</m> satisfy the following equation:
+      <m>4a^3 + 27b^2 \neq 0</m>.
+    </p>
+    <exercise xml:id="exercise_FurtherCryptography_dubroots">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove that if the equation
+              <m>y^2 = x^3 + ax + b</m> has a double or triple root,
+              then <m>4a^3+27b^2=0</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove the converse to part (a),
+              that is show that if <m>4a^3 + 27b ^2=0</m>,
+              then the equation has a double or triple root. (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      All of the cryptosystems that we have studied so far have been based on group operations associated with a particular group.
+      For example, Diffie-Hellman used discrete exponentiation (which is repeated multiplication in <m>U(p)</m>) to construct a one-way function.
+      In order to use elliptic curves to construct cryptosystems,
+      we'll need to show that we can associate a group with each elliptic curve.
+      In the following sections we'll define an arithmetic operation on the points of any elliptic curve,
+      an show that this operation is in fact a group operation.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_FurtherCryptography_EllipticalCurve_ECA">
+    <title>Elliptic curve arithmetic</title>
+    <p>
+      In this section, we show how to do arithmetic on elliptic curves.
+      Specifically, we define an operation
+      (denoted by <sq>+</sq>)
+      which acts on two points of an elliptic curve,
+      to give another point on the same curve.
+    </p>
+    <p>
+      Suppose that <m>P_1</m> and <m>P_2</m> are two points on an EC. We will consider first the case where <m>P_1 \neq P_2</m>:
+      later we will consider the case where <m>P_1= P_2</m>.
+      Geometrically, if the two points are different then
+      <m>P_1 + P_2</m> is given by drawing a line from point <m>P_1</m> to point <m>P_2</m> and continuing the line until it intersects the elliptic curve,
+      then reflect that point about the <m>x</m>-axis.
+      See <xref ref="fig_DH_DHKE_6">Figure</xref>
+      for a geometric representation of the operation <m>P_1+P_2</m>.
+    </p>
+    <figure xml:id="fig_DH_DHKE_6">
+      <caption>Adding two distinct points, <m>P_1 + P_2</m> on the EC (from reference <xref ref="wikipedia2017"/>).</caption>
+      <image width="46%" source="images/DHKE_6.png"/>
+    </figure>
+    <p>
+      It turns out that <m>P_1 + P_2</m> is always defined on the EC
+      (except in one special case which we will explain a little bit later),
+      even though sometimes the result of
+      <m>P_1 + P_2</m> is quite far away from both <m>P_1</m> and <m>P_2</m>.
+      For instance, take E: <m>y^2</m> = <m>x^3 - x</m>,
+      and points <m>P_1 = (2, \sqrt{6})</m> and <m>P_2 = (3, -\sqrt{24})</m>.
+      Then <m>P_1 + P_2 = (49,342.93)</m> (we'll show this later in <xref ref="example_FurtherCryptography_findP3">Example</xref>),
+      as illustrated in <xref ref="fig_DH_DHKE_16">Figure</xref>.
+    </p>
+    <figure xml:id="fig_DH_DHKE_16">
+      <caption><m>P_1 + P_2</m> is always defined on the EC (from reference <xref ref="wikipedia2017"/>).</caption>
+      <image width="37%" source="images/DHKE_16.png"/>
+    </figure>
+    <example xml:id="example_FurtherCryptography_ec_realplus">
+      <statement>
+        <p>
+          Given E: <m>y^2 = x^3 + ax + b</m>, <m>P_1 = (x_1, y_1)</m>,
+          <m>P_2 = (x_2, y_2)</m>, and <m>P_3 = (x_3, y_3)</m>.
+          Find <m>P_3</m>, where <m>P_3 = P_1 + P_2</m>.
+        </p>
+        <p>
+          The steps of this calculation are as follows:
+          <ol type="a">
+            <li>
+              <p>
+                Compute the slope of the line <m>m</m> through <m>P_1</m> and <m>P_2</m> as follows:
+                <me>
+                  m =(y_2 - y_1) \cdot (x_2- x_1)^{-1}, \text{ for }  P_1 \neq P_2
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                Use the point-slope formula
+                <m>y - y_1 = m(x-x_1)</m>  in order to find equation of the line that passes through the two points.
+                Rewrite as:
+                <me>
+                  y  = m(x-x_1) + y_1
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                It turns out that the sum of the roots is <m>m^2</m>
+                (see <xref ref="exercise_FurtherCryptography_root3">Exercise</xref>).
+                So we have
+                <me>
+                  x_1 + x_2 + x_3 = m^2, \text{ which implies }  x_3 =   m^2 -  x_1 - x_2
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The third point of intersection is <m>(x_3, -y_3)</m>.
+                So we may plug <m>x_3</m> into
+                <m>(-y_3) = m(x_3-x_1) + y_1</m> to obtain <m>y_3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Finished!
+                <m>P_3 = (x_3,y_3)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_FurtherCryptography_root3">
+      <statement>
+        <p>
+          In part (c) of <xref ref="example_FurtherCryptography_ec_realplus">Example</xref>
+          we mentioned that <m>x_1+x_2+x_3=m^2</m>,
+          where <m>x_1,x_2,x_3</m> are the x-coordinates of three intersections of the a with the EC and <m>m</m> is the slope of the line.
+          In this exercise, we will prove this.
+          <ol type="a">
+            <li>
+              <p>
+                Substitute the equation for <m>y</m> in (b) of <xref ref="example_FurtherCryptography_ec_realplus">Example</xref>
+                into equation E. The resulting equation can be rearranged to form a cubic equation in <m>x</m> of the form:
+                <m>0 = x^3 + c_2 x^2 + c_1 x + c_0</m>,
+                where <m>c_0,c_1, c_2</m> depend on the parameters <m>a,b,m,x_1,y_1</m>.
+                Express the coefficient <m>c_2</m> in terms of these parameters.
+              </p>
+            </li>
+            <li>
+              <p>
+                The cubic equation <m>0 = x^3 + c_2 x^2 + c_1 x + c_0</m> has three roots,
+                so the cubic equation can be factored:
+                <m>x^3 + c_2 x^2 + c_1 x + c_0 = (x-x_1)(x-x_2)(x-x_3)</m>.
+                Use this equality to express <m>c_2</m> in terms of <m>x_1, x_2, x_3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Based on your results in (a) and (b),
+                show that <m>m^2 = x_1 + x_2 + x_3</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <example>
+      <statement>
+        <p>
+          Given E: <m>y^2 = x^3 - 2x</m>,
+          <m>P_1 = (0,0)</m>, <m>P_2 = (-1,1)</m>, Find <m>P_3=P_1 + P_2</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Slope : <m>m =(1 - 0) \cdot (-1- 0)^{-1}=-1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Equation of line: <m>y - 0 = -1(x- 0)</m> or <m>y =-x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use <m>x_3 = m^2 - x_1 - x_2</m> to obtain:
+                <m>x_3 = (-1)^2 - 0 - (-1) = 2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use equation of line with <m>y=-y_3</m> and <m>x=x_3</m>:
+                <m>-y_3 = -2</m> or <m>y_3=2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P_3 = (2,2)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <example xml:id="example_FurtherCryptography_findP3">
+      <statement>
+        <p>
+          Given E: <m>y^2 = x^3 - x</m>,
+          <m>P_1 = (2, \sqrt{6})</m>,
+          <m>P_2 = (3, -\sqrt{24})</m> from <xref ref="fig_DH_DHKE_16">Figure</xref> above.
+          Find <m>P_3</m>, where <m>P_3 = P_1 + P_2</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Slope: <m>m =( -\sqrt{24}-\sqrt{6})</m> <m>\cdot</m> <m>(3-2)^{-1} = -3\sqrt{6}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                Line: <m>y + \sqrt{24} = -3\sqrt{6}(x - 3)</m>,
+                which simplifies to <m>y = -3\sqrt{6}x + 7\sqrt{6}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use <m>x_3 = m^2 - x_1 - x_2</m> to obtain:
+                <m>x_3 = (-3\sqrt{6})^2 - 2 - 3 = 49</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Plug <m>(1,-y_3)</m> in for <m>(x,y)</m> in the equation for the line:
+                <m>-y_3 = -3\sqrt{6}\cdot 49+7 \sqrt{6}</m>,
+                which implies <m>y_3 = 140\sqrt{6}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P_3 = (49,140\sqrt{6}) \approx (49,342.93)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Given E: <m>y^2 = x^3 - 2x</m>, <m>P_1 = (2, 2)</m>,
+          <m>P_2 = (-1, 1)</m>, find <m>P_3</m>,
+          where <m>P_3 = P_1 + P_2</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Given E: <m>y^2 = x^3 - x + 1</m>, <m>P_1 = (3, 5)</m>,
+          <m>P_2 = (1, 1)</m>, find <m>P_3</m>,
+          where <m>P_3 = P_1 + P_2</m>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If the two points are the same,
+      <m>P_1 = P_2 = (x_1,y_1)</m>,
+      then a tangent line to the point is drawn and the point of intersection to the EC is then reflected about the x-axis.
+      This is often referred to as <term>point doubling</term>.
+          <idx><h>Point doubling</h><h>in elliptic curves</h></idx>
+      The slope for this line is,
+      <me>
+        m = (3x_1^2 + a) \cdot (2y_1)^{-1}
+      </me>,
+      which may be found using implicit differentiation
+      (note that <m>a</m> refers to the coefficient of <m>x</m> in the elliptic curve equation<ndash/>see <xref ref="example_FurtherCryptography_ec_realplus">Example</xref>).
+      See <xref ref="fig_DH_DHKE_7">Figure</xref>
+      below for a geometrical representation of point doubling.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Derive the equation for <m>m</m> by taking derivatives of both sides of equation E and solving for <m>\frac{dy}{dx}</m>.
+          Show your steps.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In the case of point doubling,
+      once <m>m</m> is found the expression for the <m>x</m> coordinate of the other intersection of the tangent line with the curve is:
+      <me>
+        x_3 = m^2 - x_1 - x_1
+      </me>
+    </p>
+    <p>
+      (this is because <m>x_1</m> is a double root of the cubic expression which gives the x-coordinates of the intersections between the EC and the tangent line).
+      Once we have <m>x_3</m>, then we may find <m>y_3</m> as before:
+      <me>
+        -y_3 = m(x_3-x_1) + y_1
+      </me>
+      and <m>2P_1</m> is given by <m>(x_3,y_3)</m>.
+    </p>
+    <figure xml:id="fig_DH_DHKE_7">
+      <caption>Point doubling on the EC (from reference <xref ref="Corbellini"/>).</caption>
+      <image width="46%" source="images/DHKE_7.png"/>
+    </figure>
+    <p>
+      There is one scenario where addition of two points doesn't give a point on the curve.
+      Given a point <m>P</m>,
+      we define <m>-P</m> as the reflection of <m>P</m> about the x axis:
+      so if <m>P = (x, y)</m>, then <m>-P = (x, -y)</m>.
+      The line through <m>P</m> and <m>-P</m> is vertical,
+      and does not intersect the curve at any other point.
+      In order to make addition well-defined in this case we may create a notional
+      <term>point at infinity</term>.
+      See <xref ref="fig_DH_DHKE_19">Figure</xref>
+      below for a geometrical representation of the point at infinity.
+    </p>
+    <figure xml:id="fig_DH_DHKE_19">
+      <caption>The point at infinity located at <m>(0,\infty)</m> (from reference <xref ref="wikipedia2017"/>).</caption>
+      <image width="65%" source="images/DHKE_19.png"/>
+    </figure>
+    <p>
+      The point at infinity can be thought of as located at the point <m>(0,\infty)</m>,
+      so that the line through any point <m>(x, y)</m> and the point at infinity is a vertical line with infinite slope.
+      Additionally, the point at infinity is its own reflection,
+      so we consider <m>(0,\infty)</m> and <m>(0,-\infty)</m> as a single point,
+      which we denote by the symbol <m>\infty</m>.
+      You may think of the y axis
+      <q>wrapping around</q>
+      so that when you keep moving in the +y direction eventually you wrap around to the -y axis.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Elliptic curve groups</title>
+    <p>
+      Remarkably, it turns out that the <sq>+</sq> operation turns the elliptic curve
+      (plus the point at infinity)
+      into a group.
+      In this section we'll verify all of the group properties.
+      <ol type="1">
+        <li>
+          <p>
+            <em>Identity</em>: The point at infinity serves as the identity element.
+            The line connecting <m>\infty</m> with <m>P</m> intersects <m>-P</m>,
+            so its reflection about the x-axis is <m>P</m>.
+            Therefore, <m>P + \infty = P</m> and <m>\infty + P = P</m>.
+            <figure xml:id="fig_DH_DHKE_13">
+              <caption>Identity property for EC: <m>\infty + P = P + \infty = P</m> (from reference <xref ref="wikipedia2017"/>).</caption>
+              <image width="37%" source="images/DHKE_13.png"/>
+            </figure>
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Inverse</em>: A line through <m>P</m> and<m>-P</m> goes through <m>\infty</m>,
+            and <m>\infty</m> is its own reflection
+            (see <xref ref="fig_DH_DHKE_13">Figure</xref>).
+            Another way of saying this is,
+            <m>P + (- P) = \infty</m>.
+            In the same way, we can show that <m>(-P) + P = \infty</m>.
+            Therefore the inverse of <m>P</m> is <m>-P</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Closure</em>:
+            if <m>P_1</m> and <m>P_2</m> are points on the elliptic curve then
+            <m>P_1 + P_2</m> is also a point on the curve;
+            as stated (without proof) in <xref ref="subsec_FurtherCryptography_EllipticalCurve_ECA">Section</xref>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Associativity</em>:<m>(P_1 + P_2) + P_3 = P_1 + (P_2 + P_3)</m>.
+            This is always true
+            (for an example,
+            see <xref ref="fig_DH_DHKE_12">Figure</xref> below),
+            but it is not at all easy to prove.
+            See for example \url{math.rice.edu/<nbsp/>friedl/papers/AAELLIPTIC.PDF}, which gives a 5-page
+            <q>elementary</q>
+            proof.
+            <figure xml:id="fig_DH_DHKE_12">
+              <caption>Associative property for EC (from reference <xref ref="wikipedia2017"/>).</caption>
+              <image width="46%" source="images/DHKE_12.png"/>
+            </figure>
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      These properties are sufficient to establish the fact that the <sq>+</sq> operation on an elliptic curve defines a group.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Does the '+' operation define an Abelian group?
+          Prove your answer.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_FurtherCryptography_EllipticalCurve_ECA2">
+    <title>Elliptic curves over <m>\mathbb{Z}_p</m></title>
+    <p>
+      Thus far we have looked at elliptic curves whose coefficients are real numbers.
+      Unfortunately,
+      computer calculations with real numbers are prone to rounding errors,
+      so real number arithmetic is not suitable for modern cryptography.
+      To avoid this problem,
+      instead of using real numbers we use <em>finite fields</em>,
+          <idx><h>Finite fields</h><h>in EC cryptography</h></idx>
+      which are finite additive groups that also have a multiplication operation with inverse.
+      The simplest finite fields are <m>\mathbb{Z}_p</m>
+      (integers mod <m>p</m>),
+      where <m>p</m> is prime.
+      In this section we will demonstrate how to do arithmetic with elliptic curves over <m>\mathbb{Z}_p</m>.
+    </p>
+    <p>
+      At the end of the previous section,
+      we showed that our new <sq>+</sq> operation allows us to define a group on the set of points of an elliptic curve,
+      when the curve is a subset of <m>R^2</m> and is defined using real coefficients.
+      It turns out that exactly the same argument can be used to show the very same group property for curves with coefficients in <m>\mathbb{Z}_p</m>,
+      which are subsets of <m>\mathbb{Z}_p \times \mathbb{Z}_p</m>.
+    </p>
+    <p>
+      We saw in <xref ref="subsec_Groups_GroupProperties_CyclicSubgroups">Section</xref>
+      that every element of a group defines a
+      <term>cyclic subgroup</term>.
+          <idx><h>Cyclic subgroup</h><h>in EC cryptography</h></idx>
+      Specifically, if the group <m>G</m> is finite,
+      then for any element <m>g \in G</m> the set
+      <me>
+        {\var id}, g, g^2, g^3, \ldots, g^{n-1} \
+      </me>
+      is a subgroup of <m>G</m>,
+      where <m>n</m> is the <em>order</em>
+      of <m>g</m> and satisfies <m>g^n = {\var id}</m>.
+      In EC cryptography, extensive use is made of cyclic subgroups.
+      Any EC cyptosystem is based on a single group element,
+      which is referred to as a <term>generator</term>.
+          <idx><h>Generator</h><h>in EC cryptography</h></idx>
+      In practice, the generator is added to itself repeatedly.
+      Follow the examples below to see how this works.
+    </p>
+    <p>
+      <em>Note</em> that in the following examples we will use <sq>+</sq> and <sq><m>\cdot</m></sq> to denote addition and multiplication in the particular
+      <m>\mathbb{Z}_p</m> that we are working with:
+      in other words,
+      <sq>+</sq> and <sq><m>\cdot</m></sq> in the following are the same as <sq><m>\oplus</m></sq> and <sq><m>\odot</m></sq> which we used in <xref ref="ModularArithmetic">Chapter</xref>
+      (it's simpler to write this way,
+      and this is how it's done in most references.) You'll have to pay attention to what <sq>+</sq> is operating on in order to discern its meaning:
+      for example,
+      in the expression <m>P+P</m> we're referring to the elliptic curve operation defined in the previous section,
+      while in the polynomial <m>x^3 + 2x + 2</m> the <sq>+</sq> refers to modular addition.
+    </p>
+    <example xml:id="example_FurtherCryptography_P1_P2">
+      <statement>
+        <p>
+          In this example we'll use arithmetic mod 17,
+          so all coefficients and variables take values on <m>\mathbb{Z}_{17}</m>.
+        </p>
+        <p>
+          Given E: <m>y^2 = x^3 + 2x + 2</m>, and <m>P = (5,1)</m>,
+          we want to find <m>2P</m>, where <m>2P = P + P</m>.
+        </p>
+        <p>
+          First we use the slope of the tangent line,
+          using the same formula we did for the real case in <xref ref="example_FurtherCryptography_ec_realplus">Example</xref>:
+          <me>
+            m = (3x_1^2 + a) \cdot (2y_1)^{-1}
+          </me>
+        </p>
+        <p>
+          We may then calculate (remember we're doing arithmetic in <m>\mathbb{Z}_{17}</m>!)
+          <md>
+            <mrow>m \amp \equiv ( (3 \cdot 5^2) + 2) \cdot (2 \cdot 1)^{-1}</mrow>
+            <mrow>\amp \equiv  (77) \cdot (2)^{-1}</mrow>
+            <mrow>\amp \equiv (9) \cdot (9)</mrow>
+            <mrow>\amp \equiv 81</mrow>
+            <mrow>\amp \equiv 13 \pmod{17}</mrow>
+          </md>
+        </p>
+        <p>
+          Next we use the following formulas
+          (which we used before for reall elliptic curves)
+          to find <m>x_3</m> and <m>y_3</m>:
+          <me>
+            x_3 = m^2 - 2x_1  , \text{ and~ }  y_3 =-(  m(x_3 - x_1)+y_1)
+          </me>
+          where once again, arithmetic is in <m>\mathbb{Z}_{17}</m>:
+          <md>
+            <mrow>x_3 \amp \equiv  (13^2 - 5 - 5 )</mrow>
+            <mrow>\amp \equiv 159</mrow>
+            <mrow>\amp \equiv 6 \pmod{17}</mrow>
+          </md>
+          <md>
+            <mrow>y_3 \amp \equiv - (13(6 - 5) +1)</mrow>
+            <mrow>\amp \equiv -14</mrow>
+            <mrow>\amp \equiv 3 \pmod{17}</mrow>
+          </md>
+        </p>
+        <p>
+          Therefore, <m>2P = (6,3)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_FurtherCryptography_P">
+      <statement>
+        <p>
+          Using the equations from <xref ref="example_FurtherCryptography_ec_realplus">Example</xref>
+          parts (c) and (d), find the following:
+          <m>3P, 4P, 5P, ..., 20P</m> for the point <m>P=(5,1)</m> that was used in <xref ref="example_FurtherCryptography_P1_P2">Example</xref>.
+          Note that <m>3P = 2P + P, 4P = 3P +P</m>, and so on.
+          Note also that arithmetic operations are to be performed in mod 17.
+          What do you notice about <m>18P, 19P</m>, and <m>20P?</m>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In view of what we have just discussed,
+      let's reconsider the Diffie-Hellman key exchange which we described in <xref ref="sec_FurtherCryptography_DiffieHellmanKeyExchange">Section</xref>.
+      A little thought should convince you that in that section we made use of cyclic subgroups as well.
+      So using <xref ref="example_FurtherCryptography_P1_P2">Example</xref>
+      and <xref ref="exercise_FurtherCryptography_P">Exercise</xref>,
+      let's revise the Diffie-Hellman key exchange,
+      but this time we'll use the cyclic group associated with the elliptic curve.
+      Use <xref ref="fig_DH_DHKE_8">Figure</xref>
+      as a guide to help you answer the following exercise.
+    </p>
+    <figure xml:id="fig_DH_DHKE_8">
+      <caption>Elliptic Curve key exchange between Moses and Rachael</caption>
+      <image width="93%" source="images/DHKE_8.png"/>
+    </figure>
+    <exercise>
+      <statement>
+        <p>
+          Using <xref ref="example_FurtherCryptography_P1_P2">Example</xref>
+          and <xref ref="exercise_FurtherCryptography_P">Exercise</xref>,
+          what is the shared key exchange if Moses chooses <m>n = 9</m> and Rachael chooses <m>m = 3</m>?
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_FurtherCryptography_EllipticalCurve_EncryptionSystem">
+    <title>An encryption system using elliptic curves</title>
+    <p>
+      In <xref ref="Cryptography">Chapter</xref>
+      we explained how to use RSA with a shared key to exchange secret messages.
+      We can construct a similar cryptosystem on the basis of elliptic curves.
+      In this section, we'll describe one way that this may be done.
+      The following discussion is a simplified version of reference <xref ref="Kumar"/>.
+    </p>
+    <p>
+      Suppose Moses and Rachael would like to communicate a message using ECC, then they should first agree upon an elliptic curve and a code table.
+      Each character of the encrypted message will correspond to a point on the elliptic curve.
+    </p>
+    <p>
+      Next, Rachael and Moses construct public and private keys as follows.
+      First, Rachael and Moses agree upon an elliptic curve, modulus,
+      and a random point <m>C</m> on the EC: in general,
+      this will be public knowledge.
+      Additionally, Rachael selects at random a large positive integer <m>\alpha</m> which is Rachael's private key.
+      She computes <m>A = \alpha C</m> which is her public key
+      (recall that <m>\alpha C</m> denotes adding the point <m>C</m> <m>\alpha</m> times,
+      using EC addition).
+      Moses similarly takes a large positive integer <m>\beta</m> as his private key,
+      and computes <m>B = \beta C</m> as his public key.
+    </p>
+    <p>
+      Now if Moses wants to encrypt a message,
+      he may do so one character at a time as follows.
+      Suppose the character that he wants to encrypt corresponds to the point <m>M</m> on the elliptic curve.
+      He chooses a random number <m>\gamma</m>
+      (which will be different for each character in the message).
+      He then computes:
+      <me>
+        E_1=\gamma C \text{   and   } E_2 = M +  \gamma A
+      </me>.
+    </p>
+    <p>
+      Moses then communicates <m>E_1</m> and <m>E_2</m> to Rachael.
+      After receiving this information, Rachael may decrypt the message by computing <m>E_2 - \alpha E_1</m>.
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that by computing <m>E_2 - \alpha E_1</m>, Rachael will correctly recover the character <m>M</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose a third party knows <m>E_1, E_2, A</m>, and <m>C</m>.
+              What else would a third party have to find out in order to obtain <m>M</m>?
+              Explain why it is difficult for the third party to gain this knowledge.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Suppose Rachael wants to send a character to Moses.
+              What information should she send?
+            </p>
+          </li>
+          <li>
+            <p>
+              What equation should Moses use to decode the information from Rachael?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      To see how this works in practice,
+      let's consider a simple example
+      (reader beware:
+      the modulus is way too small to make this a practical cryptosystem).
+      We will consider the elliptic curve in <m>Z_{37}</m> <times/> <m>Z_{37}</m> given by the equation
+      <m>y^2 = x^3 + 2x + 9</m> which is shown in <xref ref="fig_DH_DHKE_11">Figure</xref> below.
+      Notice how the graph of the function using modular arithmetic is a collection of discrete points on the curve rather than based on a continuous graph like the elliptic curves over the real numbers.
+    </p>
+    <figure xml:id="fig_DH_DHKE_11">
+      <caption>Elliptic Curve, <m>(y^2 = x^3 + 2x + 9)</m> in <m>Z_{37}</m> x <m>Z_{37}</m>, (from reference <xref ref="Kumar"/>)</caption>
+      <image width="93%" source="images/DHKE_11.png"/>
+    </figure>
+    <p>
+      In order to encode letters and numbers,
+      we first need to assign different characters to different points on the curve.
+      The table in <xref ref="fig_DH_DHKE_17">Figure</xref>
+      gives the character assignment that we'll use.
+      Notice the order of points in the table:
+      we start with (5,25), then the second number <m>(1,30) =(5,25)+(5,25)</m>,
+      the third number <m>(21,32)=(5,25)+(5,25)+(5,25)=3(5,25)</m>,
+      and so on.
+      The information required to create this table is public knowledge,
+      so anyone can duplicate it
+      (for a practical code, the table would be much,
+      much larger and impossible to compute even with the fastest computers)
+      . Note that in the case of a very large modulus,
+      there is no difficulty in assigning a single character to multiple points on the curve,
+      as long as each point has no more than one character assigned to it.
+    </p>
+    <figure xml:id="fig_DH_DHKE_17">
+      <caption>Code table using the EC agreed upon by Moses and Rachael, (from reference <xref ref="Kumar"/>)</caption>
+      <image width="98%" source="images/DHKE_17.png"/>
+    </figure>
+    <example xml:id="example_FurtherCryptography_26">
+      <statement>
+      <p>
+        Moses will send the message,
+        <q>attack</q>
+        using the code table above.
+        The point <m>C</m> is chosen as <m>(9,4)</m>.
+      </p>
+      <p>
+        First, Rachael must establish her private and public key (Moses doesn't have to,
+        because he's only sending and not receiving).
+        Rachael chooses <m>\alpha= 5</m>,
+        so that <m>A = 5C = 5(9,4)</m>.
+        In this simple case,
+        we may use the table in <xref ref="fig_DH_DHKE_17">Figure</xref>
+        to facilitate the calculation of <m>A</m>.
+        Notice that the point <m>C=(9,4)</m> is the
+        <m>11^{\textrm{th} }</m> point in the table (counting <m>\infty</m> as the zeroth point, (5,25) as the first point, (1,30) as the second point, etc).
+        This means that <m>C = 11(5,25)</m>,
+        and thus <m>5C = 5\cdot11(5,25) = 55(5,25)</m>.
+        However the point <m>(5,25)</m> generates a cyclic group of order 37,
+        and <m>\mod(55,37)=18</m>, so <m>55(5,25)=18(5,25)</m>.
+        The <m>18^{\textrm{th} }</m> entry in the table is (35,21),
+        which is Rachael's public key <m>A</m>.
+      </p>
+      <p>
+        Now Moses must encrypt his message one character at a time.
+        The first character of
+        <q>attack</q>
+        is
+        <q>a</q>, which according to the table corresponds to <m>M=(5,25)</m>.
+        Let's suppose that Moses chooses <m>\gamma = 8</m> for this character.
+        We thus obtain:
+        <me>
+          E_1=\gamma C = 8(9,4)=(33,14)  \text{   and   } E_2 = M +  \gamma A=(5,25) + 8(35,21) = (15,11)
+        </me>.
+      </p>
+      <p>
+        Thus Moses should send the pair of points <m>(33,14)</m> and <m>(15,11)</m> to Rachael.
+        Since <m>(33,14)</m> and <m>(15,11)</m> are the <m>18^{\textrm{th} }</m> and
+        <m>34^{\textrm{th} }</m> entries of the table respectively,
+        it's easier for him simply to send the numbers 18 and 34,
+        because Rachael can easily recover the points from these numbers.
+      </p>
+      <exercise>
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Verify the values of <m>E_1</m> and <m>E_2</m> computed above.
+                Show your calculation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Verify that using these values of <m>E_1</m> and <m>E_2</m> and
+                <m>\alpha=5</m>, Rachael can correctly decode the character.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            To encode t, t, a, c, k Moses chooses <m>\gamma = 12,19,2,3,23</m> respectively.
+            <ol type="a">
+              <li>
+                <p>
+                  Give the 5 pairs of numbers that Moses sends as cyphertext
+                </p>
+              </li>
+              <li>
+                <p>
+                  Verify that Rachael decodes each pair of numbers correctly.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          There is a serious drawback with the above encryption scheme.
+          Another person could easily impersonate Moses,
+          and send a message to Rachael.
+          Come up with a strategy whereby Moses and Rachael can ensure that the messages actually come from each other,
+          and not from someone else
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_FurtherCryptography_EllipticalCurve_NextSteps">
+    <title>Next steps</title>
+    <p>
+      The examples we've given show the basic idea of ECC, but genuinely practical ECC systems are somewhat more complicated.
+      Notice the progression from <xref ref="subsec_FurtherCryptography_EllipticalCurve_ECA">Section</xref>
+      to <xref ref="subsec_FurtherCryptography_EllipticalCurve_ECA2"></xref>.
+      We first introduced elliptic curves as solution sets in
+      <m>\mathbb{R}^2</m> for a certain type of polynomial equation.
+      But we then remarked that unfortunately these curves are not suitable for practical cryptography,
+      because computers have trouble with real numbers.
+      So in the next section we looked at elliptic curves that are subsets of
+      <m>\mathbb{Z}_p \times \mathbb{Z}_p</m> where <m>p</m> is a prime,
+      as in <xref ref="fig_DH_DHKE_11">Figure</xref>.
+      But there are disadvantages to <m>\mathbb{Z}_p</m> as well:
+      finding enormous primes is not all that easy.
+      It turns out there is yet another alternative for sets for elliptic curves to live in:
+      these sets are called <term>Galois Fields</term>.
+      Galois fields are derived from polynomials,
+      where the polynomials have coefficients in <m>\mathbb{Z}_p</m>
+      (in practice, usually <m>p=2</m>).
+      Since we haven't really looked into polynomials yet,
+      we're not quite ready to dive into this aspect of ECC just yet.
+      So, you have something to look forward to!
+    </p>
+  </subsection>
+</section>

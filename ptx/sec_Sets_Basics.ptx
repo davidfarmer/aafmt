@@ -1,0 +1,959 @@
+<section xml:id="sec_Sets_Basics">
+  <title>Set Basics <nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <p>
+      You've probably seen sets,
+      set relations, and set operations in previous classes.
+      In fact, in the previous two chapters of this book you've already been working with sets.
+      So we'll review them quickly before moving on to further properties and proofs concerning sets and their accessories.
+    </p>
+    <p>
+      This chapter is an adapted and expanded version of a chapter by D. and J. Morris.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_Sets_DefinitionAndExamples">
+    <title>Definition and examples</title>
+    <p>
+      First of all, let's give a precise mathematical definition for
+      <q>set</q>:
+    </p>
+    <definition xml:id="sets_membership">
+      <statement>
+        <p>
+          {defSet} A <term>set</term>
+              <idx><h>Set</h><h>definition of</h></idx>
+          is a well-defined collection of objects:
+          that is, it is defined in such a manner that we can determine for any given object <m>x</m> whether or not <m>x</m> belongs to the set.
+          The objects that belong to a set are called its <term>elements</term>
+              <idx><h>Element</h><h>of a set</h></idx>
+              <idx><h>Set</h><h>elements</h></idx>
+          or <term>members</term>.
+          We will denote sets by capital letters,
+          such as <m>A</m> or <m>X</m>;
+          if <m>a</m> is an element of the set <m>A</m>, we write <m>a \in A</m> .
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Two common ways of specifying sets are:
+      <ul>
+        <li>
+          <p>
+            by listing all of its elements inside a pair of braces; or
+          </p>
+        </li>
+        <li>
+          <p>
+            by stating the property that determines whether or not an object <m>x</m> belongs to the set.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      For example,
+      we could define a particular set <m>E</m> by listing its elements:
+      <me>
+        E = \{2, 4, 6, \ldots \}
+      </me>,
+      or by specifying properties which characterize its elements:
+      <me>
+        E = \{ x :  x > 0  \textrm{ and }  x \textrm{ is divisible by 2} \}
+      </me>.
+    </p>
+    <p>
+      (here the
+      <q>:</q>
+      signifies
+      <q>such that</q>).
+      We can also describe <m>E</m> in a less mathy way by simply calling it
+      <q>the set of positive even numbers</q>.
+    </p>
+    <p>
+      We write <m>2 \in E</m> when we want to say that 2 is in the set <m>E</m>,
+      and <m>-3 \notin E</m> to say that <m>-3</m> is not in the set <m>E</m>.
+    </p>
+    <p>
+      Sets don't have to involve numbers.
+      For example, we could define a certain set <m>X</m> by listing:
+      <me>
+        X = \{\textrm{Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday}  \}
+      </me>,
+      or by property:
+      <me>
+        X = \{ x :x \text{ is the name of a weekday (in English) } \}
+      </me>.
+    </p>
+    <p>
+      For the purposes of this book,
+      it would be good enough to say,
+      <q><m>X</m> is the set of weekday names (in English)</q>
+      (we're not so snobby about set brackets).
+    </p>
+    <exercise xml:id="exercise_Sets_set1">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              What elements are in the following set:
+              <me>
+                S = \{x : x  \textrm{ is the name of a U.S. state and }  x  \textrm{ begins with `W'}  \}
+              </me>
+              Write the set as a list of objects.
+            </p>
+          </li>
+          <li>
+            <p>
+              Rewrite the following as a list =<m>\{x : x \textrm{ is a type of regular polygon with less than 6 sides} \}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Rewrite the following set of dates by using a property:
+              <me>
+                T = \{ \textrm{Jan. 4th  2011, Jan. 11th  2011, Jan. 18  2011, Jan. 25  2011} , \ldots, \textrm{Dec. 27 2011}  \}
+              </me>
+              (Note: January 1 2011 was on a Saturday).
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the set of odd integers <m>O</m>: (i) as a list,
+              and (ii) by using a property.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      It is possible for the elements of a set to be sets in their own right.
+      For instance, we could define
+      <me>
+        T = \{ x : x \mathrm{~is~a~National~League~baseball~team} \}
+      </me>.
+    </p>
+    <p>
+      A more mathematical
+      (but less interesting)
+      example would be
+      <me>
+        S = \{ x : x \mathrm{~is~a~set~of~integers} \}
+      </me>.
+    </p>
+    <p>
+      Then elements of <m>S</m> would include the sets <m>\{1,2,3,4\}</m>,
+      <m>\{\textrm{the set of odd integers} \}</m>,
+      <m>\{ 0 \}</m>, and so on.
+    </p>
+    <p>
+      We can even go farther, and define sets of sets of sets.
+      For instance,
+      the set <m>L</m> of major baseball leagues in the U.S. has two elements:
+      <me>
+        L = \{ \text{ American League, National League }  \}
+      </me>.
+    </p>
+    <p>
+      However, the American League <m>A</m> consists of a set of teams:
+      <me>
+        A = \{ \text{ Yankees, Red Sox, }  \ldots \}
+      </me>,
+      whle the National League <m>N</m> also consists of a set of teams:
+      <me>
+        N = \{ \text{ Cubs, Phillies, }  \ldots \}
+      </me>.
+    </p>
+    <p>
+      Each of these teams consists of a set of players:
+      so altogether the set <m>L</m> is a set of sets of sets!
+    </p>
+    <exercise xml:id="exercise_Sets_SetSet">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Describe the <m>21^{st}</m> century as a set of sets of sets of sets of sets of sets of sets. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              (For you biologists out there) Describe the animal kingdom as a set of sets of sets of sets of sets of sets of sets of sets (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      This notion of
+      <q>sets of sets</q>
+      can bring us into dangerous territory.
+      For example, consider the set
+      <me>
+        S = \{ x : x \mathrm{~is~a~set~which~is~not~an~element~of~itself} \}
+      </me>.
+    </p>
+    <p>
+      We may then pose the question:
+      is <m>S</m> an element of itself?<fn>
+      This question is called <term>Russell's paradox</term>,
+      and plays an important role in the history of set theory.
+      </fn>
+    </p>
+    <p>
+      Let us consider the possibilities:
+      <ul>
+        <li>
+          <p>
+            Suppose first that <m>S</m> is an element of itself.
+            Then <m>S</m> must satisfy the defining property of elements of  <m>S</m> <mdash/> that is,
+            <m>S</m> must be an example of a set <m>x</m> for which
+            <q><m>x</m> is  not an element of itself.</q>
+            It follows that <m>S</m> is not an element of itself.
+            This contradicts our supposition <mdash/> so apparently our supposition is wrong,
+            and <m>S</m> must not be an element of itself.
+          </p>
+        </li>
+        <li>
+          <p>
+            On the other hand, suppose that <m>S</m> is not an element of itself.
+            Then <m>S</m> satisfies the defining property of elements of  <m>S</m> <mdash/> that is,
+            <m>S</m> is an example of a set <m>x</m> for which
+            <q><m>x</m> is  not an element of itself.</q>
+            It follows that <m>S</m> is an element of <m>S</m>.
+            Once again this contradicts our supposition <mdash/> so apparently <m>S</m> must be an element of itself!
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      How do we get out of this mess?
+      No matter what we assume, we end up with a contradiction!
+      The problem, as is often the case,
+      lies in <em>hidden assumptions</em> that we have made.
+      Our definition of <m>S</m> makes reference to the unknown <m>x</m>,
+      where <m>x</m> is an
+      <q>arbitrary</q>
+      set.
+      Herein lies the rub: the notion of
+      <q>arbitrary</q>
+      set is <em>not well-defined</em>.
+      Put another way: the set of
+      <q>all possible sets</q>
+      is NOT a set!
+    </p>
+    <p>
+      In the following discussion we will avoid this problem by always starting out with a well-defined set that contains all the sets and elements of interest in a particular example or problem.
+      Such an all-encompassing set is referred to as a
+      <term>universal set</term>.
+          <idx><h>Universal set</h></idx>
+      Note each particular problem will have its own universal set.
+      For instance,
+      if we are talking about public opinion polls in the United States,
+      an appropriate universal set might be the set of American citizens.
+      If we're talking about sets of prime and composite numbers,
+      our universal set could be either the set of integers,
+      or the set of natural numbers.
+      If we are talking about roots of algebraic equations,
+      depending on our particular interest we might choose the universal set to be the set of real numbers,
+      or the set of complex numbers.
+      When we talk about sets in a general way,
+      we often denote sets by captial letters
+      <m>A, B, C,..</m>., and it's assumed that all these sets are subsets of some universal set <m>U</m>.
+    </p>
+  </subsection>
+  <subsection xml:id="subset_Sets_ImportantSets">
+    <title>Important sets of numbers</title>
+    <p>
+      We will refer often to the following sets of numbers.
+      Although we are presuming that these sets are
+      <q>given</q>, the reader should be aware that it's not at all easy to formally define them in a mathematically precise way.
+      (Although we won't give any definitions here,
+      you may encounter them in other mathematics courses,
+      such as logic or analysis.)
+      <ul>
+        <li>
+          <p>
+            <m>{\mathbb N} = \{n: n \text{ is a natural number } \} = \{1, 2, 3, \ldots \};</m> (Note that according to our definition the natural numbers do
+            <em><em>not</em></em> include <m>0</m>.
+            Some books include <m>0</m> as a natural number.)
+              <idx><h>Number</h><h>natural</h></idx>
+              <idx><h>Natural number</h></idx>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb Z} = \{n : n \text{ is an integer } \} = \{\ldots, -1, 0, 1, 2, \ldots \};</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb Q} = \{r : r \text{ is a rational number } \};</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>{\mathbb R} = \{ x : x \text{ is a real number } \};</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      You may recall that in <xref ref="ComplexNumbers">Chapter</xref>,
+      we defined the set of complex numbers <m>{\mathbb C}</m> as
+      <me>
+        {\mathbb C} := \{ x + iy, \text{ such that }  x,y \in {\mathbb R} \}
+      </me>.
+    </p>
+    <p>
+      This is just one example of a favorite gambit of mathematicians,
+      namely creating new sets from existing sets in various imaginative ways.
+      You'll be seeing many more examples of this as we go along.
+    </p>
+  </subsection>
+  <subsection xml:id="subset_Sets_SubsetsAndProperSubsets">
+    <title>Subsets and proper subsets</title>
+    <definition xml:id="setcontain">
+      <statement>
+        <p>
+          {subset} A set <m>A</m> is a <term>subset</term><idx><h>Subset</h><h>definition of</h></idx> of <m>B</m>,
+          written <m>A \subset B</m> or <m>B \supset A</m>,
+          if every element of <m>A</m> is also an element of <m>B</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      For example, using this notation we may write:
+      <me>
+        \{\text{ sons of John and Jane Doe } \} \subset \{\text{ children of John and Jane Doe\ }}
+      </me>
+      and
+      <me>
+        \{4,5,8\} \subset \{2, 3, 4, 5, 6, 7, 8, 9 \}
+      </me>
+      and
+      <me>
+        {\mathbb N} \subset {\mathbb Z} \subset {\mathbb Q} \subset {\mathbb R} \subset {\mathbb C}
+      </me>.
+    </p>
+    <p>
+      According to <xref ref="definition_Sets_subset">Definition</xref>,
+      every set is a subset of itself.
+      That is, for any set <m>A</m>,
+      <m>A \subset A</m>, since every element in <m>A</m> is
+      (of course)
+      in <m>A</m>.
+      Sometimes though we may want to take about subsets of <m>A</m> that really are strictly contained in <m>A</m>,
+      without being all of <m>A</m>.
+      Such subsets are called <em>proper subsets</em>.
+          <idx><h>Subset</h><h>proper</h></idx>
+      Formally, a set <m>B</m> is a <term>proper subset</term>
+      of a set <m>A</m> if <m>B \subset A</m> and <m>B \neq A</m>.
+      For instance, if John and Jane Doe had only sons,
+      then <m>\{\textrm{sons of John and Jane Doe} \}</m> is not a proper subset of \{ children of John and Jane Doe\}.
+    </p>
+    <remark>
+      <p>
+        In this book, we use <sq><m>\subset</m></sq> for subset,
+        and we have no special symbol to distinguish
+        <q>proper subset</q>
+        from
+        <q>subset</q>. Some authors use <sq><m>\subseteq</m></sq> to denote subset,
+        and <sq><m>\subset</m></sq> to denote proper subset.
+        This has the advantage that then <sq><m>\subseteq</m></sq> and <sq><m>\supseteq</m></sq> are similar to <sq><m>\le</m></sq> and <sq><m>\ge</m></sq>,
+        while <sq><m>\subset</m></sq> and <sq><m>\supset</m></sq> are like <sq><m>\lt</m></sq> and <sq><m>></m></sq>.
+        But we rarely have to distinguish the case of proper subsets,
+        so it's not worth defining a special symbol for them.
+      </p>
+    </remark>
+    <p>
+      If <m>A</m> is not a subset of <m>B</m>,
+      we write <m>A \not \subset B</m>;
+      for example,
+      <m>\{4, 7, 9\} \not \subset \{2, 4, 5, 8, 9 \}</m>.
+      Two sets are <term>equal</term>, written <m>A = B</m>,
+      if we can show that <m>A \subset B</m> and <m>B \subset A</m>.
+    </p>
+    <p>
+      It is convenient to have a set with no elements in it.
+      This set is called the <term>empty set</term>
+          <idx><h>Empty set</h></idx>
+          <idx><h>Set</h><h>empty set</h></idx>
+      and is denoted by <m>\emptyset</m> . For instance,
+      if John and Jane Doe had only daughters, then
+      <me>
+        \mbox{\{sons of John and Jane Doe\}}  = \emptyset
+      </me>
+    </p>
+    <p>
+      Note that the empty set is a subset of every set.
+    </p>
+    <exercise xml:id="exercise_Sets_s16">
+      <statement>
+        <p>
+          Let <m>S</m> be a set with a single element.
+          <ol type="a">
+            <li>
+              <p>
+                How many subsets does it have?
+              </p>
+            </li>
+            <li>
+              <p>
+                How many proper subsets does it have?
+              </p>
+            </li>
+            <li>
+              <p>
+                How many nonempty subsets does it have?
+              </p>
+            </li>
+            <li>
+              <p>
+                How many nonempty proper subsets does it have?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Sets_7">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Can you give an example of a set with exactly three subsets?
+              How about exactly three proper subsets?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the smallest number of elements a set must have in order to have at least eight proper subsets?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subset_Sets_Operations">
+    <title>Operations on sets</title>
+    <p>
+      In our halcyon days of youth,
+      we were introduced to <term>operations</term>
+      on integers, rational numbers,
+      etc.. An operation on the integers takes two integers and always comes up with another integer.
+      For instance, the '+' operation gives <m>2+3=5</m>
+      (of course, we know now that this means that + has the property of <em>closure</em>).
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          What's wrong with the following statement:
+          <q>Subtraction is an operation on the natural numbers.</q>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In a similar way, we can construct new sets out of old sets using
+      <em>set operations</em>.
+          <idx><h>Set operations</h></idx>
+      The mathematical definitions of the basic set operations are as follows:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {union} The <term>union</term>
+          <m>A \cup B</m> of two sets <m>A</m> and <m>B</m> is defined as<idx><h>Set operations</h><h>union</h></idx>
+              <idx><h>Union</h></idx>
+          <men xml:id="union">
+            A \cup B = \{x : x \in A \text{ or }  x \in B \};
+          </men>
+        </p>
+      </statement>
+    </definition>
+    <definition>
+      <statement>
+        <p>
+          {intersection} the <term>intersection</term>
+          of <m>A</m> and <m>B</m> is defined by <idx><h>Set operations</h><h>intersection</h></idx>
+              <idx><h>Intersection</h></idx>
+          <men xml:id="intersection">
+            A \cap B = \{x :  x \in A \text{ and }  x \in B \}
+          </men>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      For example:
+      if <m>A = \{1, 3, 5\}</m> and <m>B = \{ 1, 2, 3, 9 \}</m>, then
+      <me>
+        A \cup B = \{1, 2, 3, 5, 9 \} \text{ and } A \cap B = \{ 1, 3 \}
+      </me>.
+    </p>
+    <p>
+      We may also consider the union and the intersection of more than two sets.
+      For instance, the union of three sets <m>A_1, A_2</m>,
+      and <m>A_3</m> can be written
+      <m>A_{1} \cup A_2 \cup A_3</m> or <m>\bigcup_{i = 1}^{3} A_{i}</m>.
+    </p>
+    <p>
+      Similarly, the intersection of the same three sets can be written as
+      <m>A_{1} \cap A_2 \cap A_3</m> or <m>\bigcap_{i = 1}^{3} A_i</m>.
+    </p>
+    <remark>
+      <p>
+        There's actually a technical difficulty with our notations for
+        <m>A_{1} \cup A_2 \cup A_3</m> and <m>A_{1} \cap A_2 \cap A_3</m>.
+        The problem is that the notation is ambiguous:
+        does <m>A_{1} \cup A_2 \cup A_3</m> mean
+        <m>(A_{1} \cup A_2) \cup A_3</m> or <m>A_{1} \cup (A_2 \cup A_3)</m>?
+        As it turns out, it doesn't make any difference
+        (we'll show this in the next section).
+        Since it doesn't matter which order we do the <m>\cup</m>,
+        we just leave off the parentheses
+        (and the same for <m>\cap</m>).
+        This is really nothing new:
+        you're used to writing <m>3 + 4 + 7 + 9</m> instead of <m>((3+4)+7)+9</m>,
+        because it doesn't matter what order you add the numbers.
+      </p>
+    </remark>
+    <exercise xml:id="exercise_Sets_12">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find three sets <m>A_1, A_2, A_3</m> such that
+              <m>A_{1} \cup A_2 \cup A_3 = {\mathbb Z}</m> and <m>A_{1} \cap A_2 \cap A_3 = \emptyset</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Find three sets <m>A_1, A_2, A_3</m> such that (i)
+              <m>A_1, A_2, A_3 \subset {\mathbb C}</m>; (ii) <m>A_1 \cap A_2 \neq \emptyset, A_2 \cap A_3 \neq \emptyset, A_1 \cap A_3 \neq \emptyset</m>;
+              and (iii) <m>A_{1} \cap A_2 \cap A_3 = \emptyset</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Find three sets that satisfy all conditions of part (b) and in addition satisfy <m>A_{1} \cup A_2 \cup A_3 = {\mathbb C}</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We may generalize to intersections and unions of collections of <m>n</m> sets by writing:
+      <me>
+        \bigcup_{i = 1}^{n} A_{i} = A_{1} \cup \ldots \cup A_n
+      </me>
+      and
+      <me>
+        \bigcap_{i = 1}^{n} A_{i} = A_{1} \cap \ldots \cap A_n
+      </me>
+      for the union and intersection,
+      respectively, of the collection of sets <m>A_1, \ldots A_n</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Specify the following sets, either by:
+          <ul>
+            <li>
+              <p>
+                listing the elements;
+              </p>
+            </li>
+            <li>
+              <p>
+                describing with a property; or
+              </p>
+            </li>
+            <li>
+              <p>
+                giving another set that we've already defined that has the same elements.
+              </p>
+            </li>
+          </ul>
+          <ol type="a">
+            <li>
+              <p>
+                <m>\bigcup_{i = 1}^{n} \{i\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcup_{i = 1}^{n} \{1, \ldots, i\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcup_{i = 1}^{\infty} \{1, \ldots, i\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Solutions:
+          <ol type="a">
+            <li>
+              <p>
+                <m>\bigcup_{i = 1}^{n} \{i\} = \{1\} \bigcup \{2\} \bigcup \{ 3 \} \bigcup \ldots \bigcup \{n\}</m>
+                <m>\qquad = \{1, \ldots , n\} \qquad \qquad [list~of~elements]</m> <m>\qquad = \text{ all integers from 1 to } n. [property]</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcup_{i = 1}^{n} \{1, \ldots,
+                i\} = \{1\} \bigcup \{1, 2\} \bigcup \{1, 2, 3 \} \bigcup \ldots \bigcup \{1, \ldots , n\}</m>
+                <m>\qquad = \{1, \ldots , n\} \qquad \qquad [list~of~elements]</m> <m>\qquad = \text{ all integers from 1 to } n. [property]</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcup_{i = 1}^{\infty} \{1, \ldots,
+                i\} = \textrm{[by part (b)] } \{1, \ldots , \infty\} = {\mathbb N}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Sets_14">
+      <statement>
+        <p>
+          Specify the following sets, either by:
+          <ul>
+            <li>
+              <p>
+                listing the elements;
+              </p>
+            </li>
+            <li>
+              <p>
+                describing with a property; or
+              </p>
+            </li>
+            <li>
+              <p>
+                giving another set that we've already defined that has the same elements.
+              </p>
+            </li>
+          </ul>
+          <ol type="a">
+            <li>
+              <p>
+                <m>\bigcap_{i = 1}^{n} \{i\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcap_{i = 1}^{n} \{1, \ldots, i\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcap_{i = 1}^{\infty} \{1, \ldots, i\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcup_{r = 0}^{n-1} \{\mbox{Integers that have remainder } r \mbox{ when divided by } n\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcap_{r = 0}^{n-1} \{\mbox{Integers that have remainder } r \mbox{ when divided by } n\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Sets_15">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find an infinite collection of sets <m>\{A_i\}, i = 1,2,3,\ldots</m> such that (i)
+              <m>A_i \subset {\mathbb R}, i = 1,2,3, \dots</m>; (ii) each <m>A_i</m> is a closed interval of length 1 (that is,
+              <m>A_i = [a_i, a_i+1]</m> for some <m>a_i</m>;
+              and (iii) <m>\bigcup_{i = 1}^{\infty} A_{i} = [0, \infty)</m>.
+              (That is, the union of all the <m>A_i</m>'s is the set of all nonnegative real numbers.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Find an infinite collection of sets <m>\{A_i\}, i = 1,2,3,\ldots</m> such that (i)
+              <m>A_i \subset {\mathbb R}, i = 1,2,3, \dots</m>; (ii) each <m>A_i</m> is an open interval of length 1 (that is,
+              <m>A_i = (a_i, a_i+1)</m> for some <m>a_i</m>;
+              and (iii) <m>\bigcup_{i = 1}^{\infty} A_{i} = (0, \infty)</m>.
+              (That is, the union of all the <m>A_i</m>'s is the set of all positive real numbers.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Find an infinite collection of sets <m>\{A_n\}, n = 1,2,3,\ldots</m> such that (i)
+              <m>A_n \subset [-1/2,1/2], n = 1,2,3, \dots</m>; (ii) each <m>A_n</m> is an open interval of length <m>1/n</m>;
+              and (iii) <m>\bigcap_{n = 1}^{\infty} A_{n} = \{0\}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              *Find an infinite collection of sets <m>\{A_n\}, n = 1,2,3,\ldots</m> such that (i)
+              <m>A_n \subset [0,1], n = 1,2,3, \dots</m>; (ii) each <m>A_n</m> is an open interval of length <m>1/n</m>; (iii) <m>A_{n+1} \subset A_{n}, n = 1,2,3, \dots</m>;
+              and (iv) <m>\bigcap_{n = 1}^{\infty} A_{n} = \emptyset</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      When two sets have no elements in common,
+      they are said to be <term>disjoint</term>
+          <idx><h>Sets</h><h>disjoint</h></idx>
+          <idx><h>Set operations</h><h>disjoint</h></idx>
+      ;
+          <idx><h>Disjoint</h><h>definition of</h></idx>
+      for example,
+      if <m>E</m> is the set of even integers and <m>O</m> is the set of odd integers,
+      then <m>E</m> and <m>O</m> are disjoint.
+      Two sets <m>A</m> and <m>B</m> are disjoint exactly when <m>A \cap B = \emptyset</m>.
+    </p>
+    <exercise xml:id="exercise_Sets_16">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find disjoint nonempty sets
+              <m>A_1, A_2, A_3, A_4</m> such that <m>\bigcup_{i = 1}^{4} A_i = {\mathbb Z}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find disjoint nonempty sets
+              <m>A_1, A_2, A_3, A_4</m> such that <m>\bigcup_{i = 1}^{4} A_i = {\mathbb R}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find disjoint nonempty sets
+              <m>A_1, A_2, A_3, A_4</m> such that <m>\bigcup_{i = 1}^{4} A_i = {\mathbb C}</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      If we are working within the universal set <m>U</m> and <m>A \subset U</m>,
+      we define the <term>complement</term><fn>
+      Please note the spelling: 'complement', not 'compliment', thank you!
+      </fn> of <m>A</m> (denoted by <m>A'</m>)<idx><h>Complement</h><h>definition</h></idx>,
+          <idx><h>Set operations</h><h>complement</h></idx>
+      to be the set
+      <me>
+        A' = \{ x : x \in U \text{ and }  x \notin A \}
+      </me>.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {setDifference}<idx><h>Set operations</h><h>set difference</h></idx> The <term>difference</term>
+          of two sets <m>A</m> and <m>B</m> is defined as
+              <idx><h>Set difference</h></idx>
+          <me>
+            A \setminus B = A \cap B'  = \{ x : x \in A \text{ and }  x \notin B \}
+          </me>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      <em>Note</em> that it's not necessary for <m>B</m> to be inside <m>A</m> to define <m>A \setminus B</m>.
+      In fact, <m>A \setminus (A \cap B)</m> is exactly the same thing as <m>A \setminus B</m>
+      (you may draw a picture to see why this is true).
+    </p>
+    <exercise xml:id="exercise_Sets_18">
+      <statement>
+        <p>
+          Suppose that <m>A \subset B</m>.
+          What is the largest subset of <m>B</m> that is disjoint from <m>A</m>?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The set difference concludes our set operations for now.
+      The following example and exercises will give you an opportunity to sharpen your set operation skillls.
+    </p>
+    <example xml:id="example_Sets_operations">
+      <statement>
+        <p>
+          Let <m>{\mathbb N}</m> be the universal set, and suppose that
+          <md>
+            <mrow>A = \{ x \in {\mathbb N} : x \text{ is divisible by 2 } \}</mrow>
+            <mrow>B = \{ x \in {\mathbb N} : x \text{ is divisible by 3 } \}</mrow>
+            <mrow>C = \{ x \in {\mathbb N} : x \text{ is divisible by 6 } \}</mrow>
+            <mrow>D = \{\text{ the odd natural numbers } \}</mrow>
+          </md>
+        </p>
+        <p>
+          Then specify the following sets:
+          <ol type="a">
+            <li>
+              <p>
+                <m>A \cap B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>C \cup A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>D \setminus B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>B'</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Solutions:
+          <ol type="a">
+            <li>
+              <p>
+                <md>
+                  <mrow>A \cap B \amp = \{ x \in {\mathbb N} : x \text{ is divisible by 2 }  \text{ and }  x \text{ is divisible by 3 } \}</mrow>
+                  <mrow>\amp  = \{ x \in {\mathbb N} : x \text{ is divisible by 6 } \}</mrow>
+                  <mrow>\amp  = C</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                <md>
+                  <mrow>C \cup A \amp = \{ x \in {\mathbb N} : x \text{ is divisible by 6 }  \text{ or }  x \text{ is divisible by 2 } \}</mrow>
+                  <mrow>\amp = \{2, 4, 6, 8, 10, 12, \ldots \}</mrow>
+                  <mrow>\amp = A</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                <md>
+                  <mrow>D \setminus B \amp = \{ x \in {\mathbb N} : x \in D \text{ and }  x \notin B \}</mrow>
+                  <mrow>\amp = \{ x \in {\mathbb N} : x \text{ is an odd natural number and }  x \text{ is }  not \text{ divisible by }  3 \}</mrow>
+                  <mrow>\amp = \{  x \in {\mathbb N} : x \text{ is an odd natural number that is not divisible by 3 }  \}</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                <md>
+                  <mrow>B' \amp = \{ x \in {\mathbb N} : x \text{ is divisible by 3 } \}'</mrow>
+                  <mrow>\amp = \{ x \in {\mathbb N} : x \text{ is not divisible by 3 } \}</mrow>
+                </md>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Sets_20">
+      <statement>
+        <p>
+          Let <m>{\mathbb N}</m> be the universal set and suppose that
+          <md>
+            <mrow>A = \{ x \in {\mathbb N} : x \text{ is divisible by 2 } \}</mrow>
+            <mrow>B = \{ x \in {\mathbb N} : x \text{ is divisible by 3 } \}</mrow>
+            <mrow>C = \{ x \in {\mathbb N} : x \text{ is divisible by 6 } \}</mrow>
+            <mrow>D = \{\text{ the odd natural numbers } \}</mrow>
+          </md>
+        </p>
+        <p>
+          Specify each of the following sets.
+          You may specify a set either by describing a property,
+          by enumerating the elements, or as one of the four sets <m>A, B, C, D</m>:
+          <ol type="a">
+            <li>
+              <p>
+                <m>(A \cap B) \setminus C</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \cap B \cap C \cap D</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \cup B \cup C \cup D</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Sets_21">
+      <statement>
+        <p>
+          Let <m>{\mathbb N}</m> be the universal set and suppose that
+          <md>
+            <mrow>A \amp  = \{ x : \mbox{\(x \in {\mathbb N}\) and \(x\) is even}  \},</mrow>
+            <mrow>B \amp  = \{x : \mbox{\(x \in {\mathbb N}\) and \(x\) is prime} \},</mrow>
+            <mrow>C \amp  = \{ x : \mbox{\(x \in {\mathbb N}\) and \(x\) is a multiple of \(5\)} \}</mrow>
+          </md>.
+        </p>
+        <p>
+          Describe each of the following sets.
+          Make your description as concise as possible.
+          <ol type="a">
+            <li>
+              <p>
+                <m>A \cap B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(A \cap B)'</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A' \cap B'</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \cup B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(A \cup B)'</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A' \cup B'</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>B \cap C</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \cap (B \cup C)'</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

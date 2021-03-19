@@ -1,0 +1,991 @@
+<section xml:id="sec_Rings_PolynomialOverFields">
+  <title>Polynomials over fields</title>
+  <introduction>
+    <p>
+      We saw in the previous section that <m>R[x]</m> is a ring whenever <m>R</m> is a ring.
+      We may ask a similar question about fields: If <m>F</m> is a field,
+      then is <m>F[x]</m> also a field?
+      We investigate this question in the following exercises.
+    </p>
+    <exercise xml:id="exercise_Rings_poly12">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Give the zero divisors of <m>{\mathbb Z}_4</m> and <m>{\mathbb Z}_{15}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find two nonzero polynomials in
+              <m>\mathbb{Z}_4[x]</m> of degree 1 and 3 respectively whose product is 0.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose <m>n=pq</m>,
+              where <m>p</m> and <m>q</m> are integers greater than 1.
+              Show that there exist two nonzero polynomials in
+              <m>\mathbb{Z}_n[x]</m> with degree greater than 1 whose product is 0.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Do polynomials have multiplicative inverses?
+      Be careful here.
+      In high-school algebra or in calculus,
+      the polynomial <m>p(x)</m> has a perfectly good multiplicative inverse,
+      namely <m>1/p(x)</m>.
+      But <m>1/p(x)</m> is not a polynomial,
+      so for us it doesn't count!
+      For a set of polynomials to be a field,
+      the nonzero elements must have inverses that are polynomials themselves.
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Consider the polynomial <m>p(x)= 1x</m> as an element of <m>\mathbb{R}[x]</m>.
+              Show there is no polynomial in
+              <m>\mathbb{R}[x]</m> that is a multiplicative inverse of <m>p(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove: Polynomial rings over fields are also commutative groups over multiplication.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Which elements of <m>\mathbb{R}[x]</m> have multiplicative inverses?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Given a field <m>F</m>,
+          which elements of <m>F[x]</m> have multiplicative inverses?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Rings_fieldexercise">
+      <statement>
+        <p>
+          Suppose that <m>F</m> is a field.
+          Does this mean that <m>F[x]</m> is also a field?
+          Either prove the implication, or give a counterexample.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We may ask the question, Can <m>F[x]</m> have zero divisors if <m>F</m> is a field?
+      First let's look at an example.
+    </p>
+    <exercise xml:id="exercise_Rings_zdzpa">
+      <statement>
+        <p>
+          Let <m>p(x)=\sum_{i=0}^{5} a_ix^i</m> and
+          <m>q(x)=\sum_{j=0}^{3} b_jx^j</m> be polynomials in <m>\mathbb{Z}_p[x]</m>,
+          where <m>a_5\neq 0</m> and <m>b_3\neq 0</m>.
+          <ol type="a">
+            <li>
+              <p>
+                What is the degree of <m>p(x)q(x)</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an expression for the highest order term in <m>p(x)q(x)</m>.
+                How do you know that this expression is not zero? (*Hint*)
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Note that since <m>p(x)q(x)</m> has a nonzero term,
+          then it can't be the zero polynomial.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We may generalize the results of the previous exercise:
+    </p>
+    <exercise xml:id="exercise_Rings_zdzp">
+      <statement>
+        <p>
+          Let <m>p(x)=\sum_{i=0}^{n} a_ix^i</m> and
+          <m>q(x)=\sum_{j=0}^{m} b_jx^j</m> be polynomials in <m>F[x]</m>,
+          where <m>F</m> is a field and <m>a_n\neq 0</m>, <m>b_m\neq 0</m>.
+          <ol type="a">
+            <li>
+              <p>
+                What is the degree of <m>p(x)q(x)</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an expression for the highest order term in <m>p(x)q(x)</m>.
+                How do you know that this expression is not zero?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <xref ref="exercise_Rings_zdzp">Exercise</xref>
+      establishes the following proposition:
+    </p>
+    <proposition xml:id="proposition_Rings_nozerodiv">
+      <statement>
+        <p>
+          If <m>F</m> is a field, then <m>F[x]</m> has no zero divisors.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      The property of having no zero divisors turns out to be a very important consideration in the process of polynomial division,
+      which we discuss in the next section.
+    </p>
+    <p>
+      And here's the result we've been waiting for.
+      Now that we've prepared the ground,
+      it's not so difficult to prove.
+    </p>
+    <proposition xml:id="proposition_Rings_FTOA">
+      <statement>
+        <p>
+          (<em>Fundamental Theorem of Algebra:
+          easy part</em>) Let <m>F</m> be a field and let <m>f(x)</m> be a polynomial in <m>F[x]</m> of degree <m>n</m>.
+          Then the equation <m>f(x)=0</m> has at most <m>n</m> solutions:
+          that is, there are at most <m>n</m> distinct elements
+          <m>\{x_1,\ldots x_n\}</m> of <m>F</m> such that
+          <m>f(x_m)=0</m> for <m>1 \le m \le n</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Suppose <m>a_1</m> is a solution to <m>f(x)=0</m>.
+        Then by <xref ref="proposition_Polynomials_polydivides">Proposition</xref>
+        it follows that <m>x-a_1</m> divides <m>f(x)</m>.
+        Therefore <m>f(x) = (x-a_1) g_{n-1}(x)</m> where the degree of <m>g_{n-1}(x)=n-1</m>.
+      </p>
+      <p>
+        Now if <m>a_2 \neq a_1</m> is another solution then using our above result we have
+        <me>
+          f(a_2) = (a_2 - a_1)g_{n-1}(a_2) = 0
+        </me>.
+      </p>
+      <p>
+        Since <m>a_2 - a_1 \neq 0</m>,
+        it follows that <m>g_{n-1}(a_2) = 0</m>.
+        So we can write <m>g_{n - 1}(x) = (x-a_2)g_{n-2}(x)</m> where the degree of <m>g_2(x) = n-2</m>.
+      </p>
+      <p>
+        Continuing in the same way,
+        if there are distinct roots <m>a_1,a_2,...,a_n</m> then
+        <me>
+          f(x) = (x - a_1)(x - a_2)...(x - a_n)g_0
+        </me>,
+        where the degree of <m>g_0</m> is 0
+        (in other words, <m>g_0</m> is a constant.).
+        So there can't be any more solutions, <m>a_{n+1}</m>,
+        because <m>(x-a_{n+1})</m> doesn't divide <m>g_0</m>.
+      </p>
+    </proof>
+    <p>
+      The previous theorem immediately gives us an extremely important general property of fields:
+    </p>
+    <proposition xml:id="proposition_Rings_atmostnroots">
+      <statement>
+        <p>
+          Let <m>F</m> be a field, and let <m>c</m> be any element <m>F</m>.
+          Then <m>c</m> has at most <m>n</m> <m>n^{\text{ th } }</m> roots.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Given the field <m>F</m> let <m>F[x]</m> be the associated polynomial ring over the field <m>F</m>.
+        The polynomial <m>x^n-c</m> is an element of <m>F[x]</m>.
+        By <xref ref="proposition_Rings_FTOA">Proposition</xref>,
+        the equation <m>x^n-c=0</m> has at most <m>n</m> solutions.
+        This is exactly the same thing as saying that <m>c</m> has at most <m>n</m> <m>n^{\text{ th } }</m> roots.
+      </p>
+    </proof>
+    <exercise xml:id="exercise_Rings_roots">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find all fourth roots of 5625 in <m>\mathbb{R}[x]</m>.
+              Give exact solutions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all fifth roots of <m>3125i</m> in <m>\mathbb{C}[x]</m>.
+              Give exact solutions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all fifth roots of 5 in <m>\mathbb{Z}_7</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find all sixth roots of 1 in <m>\mathbb{Z}_7</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Take note of the
+      <q>at most</q>
+      qualification in <xref ref="proposition_Rings_FTOA">Proposition</xref>.
+      There are cases of polynomials in <m>F[x]</m> which do not have
+      <em>any</em> roots in <m>F</m>.
+      For example, there are polynomials in
+      <m>\mathbb{R}[x]</m> that have no roots at all in <m>\mathbb{R}[x]</m>,
+      as the next examples illustrate.
+    </p>
+    <example xml:id="example_Rings_poly_complex">
+      <statement>
+        <p>
+          Find the roots of <m>p(x)=2x^2+2x+5</m>.
+        </p>
+        <p>
+          Since this is a quadratic polynomial we can use the famous quadratic formula:
+          <me>
+            x=\frac {-b \pm \sqrt{b^2-4ac}}{2a}
+          </me>
+        </p>
+        <p>
+          In <m>p(x), a=2, b=2</m>, and <m>c=5</m>.
+          We substitute those values into the formula and obtain the following:
+          <md>
+            <mrow>x\amp =\frac {-2 \pm \sqrt{2^2-4\cdot 2\cdot 5}}{2\cdot 2}=\frac {-2 \pm \sqrt{-36}}{4}=\frac {-2 \pm 6i}{4}</mrow>
+            <mrow>\amp =\frac {-1 \pm 3i}{2}</mrow>
+          </md>.
+        </p>
+        <p>
+          So the roots of <m>p(x)</m> are <m>x</m> ={<m>-\frac{1}{2}+\frac{3}{2}i, -\frac{1}{2}-\frac{3}{2}i</m>}.
+        </p>
+      </statement>
+    </example>
+    <p>
+      The next example is a cubic polynomial in <m>\mathbb{Z}[x]</m>.
+      To find the rational roots, we will make use of the following proposition.
+    </p>
+    <proposition xml:id="proposition_Rings_Rationalroots">
+      <statement>
+        <p>
+          Let <m>f(x) = a_{n}x^n+a_{n-1}x^{n-1}+...+a_{0}</m> be a polynomial in <m>\mathbb{Z}[x]</m>.
+          Any rational roots of <m>f(x)</m> expressed in lowest terms have numerators,
+          <m>p</m>,
+          which are factors of <m>a_{0}</m> and denominators, <m>q</m>,
+          which are factors of <m>a_{n}</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Let <m>f(x) = a_{n}x^n+a_{n-1}x^{n-1}+...+a_{0}</m> be a polynomial in
+        <m>\mathbb{Z}[x]</m> and suppose that <m>p/q</m> is a root of <m>f(x)</m>,
+        where the fraction <m>p/q</m> is in lowest terms
+        (so <m>p</m> and <m>q</m> are relatively prime).
+      </p>
+      <p>
+        First we will show that <m>p</m> is a factor of <m>a_{0}</m>.
+        Since <m>p/q</m> is a root of <m>f(x)</m> we have <m>f\left(\frac {p}{q}\right)=0</m>,
+        which implies
+        <me>
+          a_{n}\left(\frac {p}{q}\right)^n+a_{n-1}\left(\frac {p}{q}\right)^{n-1}+...+a_{0}=0
+        </me>.
+      </p>
+      <p>
+        Multiplying both sides by <m>q^n</m>, we have,
+        <me>
+          \left(a_{n}\left(\frac {p}{q}\right)^n+a_{n-1}\left(\frac {p}{q}\right)^{n-1}+...+a_{0}\right)q^n=0
+        </me>,
+        which simplifies to
+        <me>
+          a_{n}p^n+a_{n-1}(p^{n-1}q)+...+a_{0}q^n=0
+        </me>.
+      </p>
+      <p>
+        This expression can be rearranged to obtain:
+        <me>
+          p\left(-a_{n}p^{n-1}-a_{n-1}(p^{n-2}q)-...-a_{1}q^{n-1}\right)=a_{0}q^n
+        </me>.
+      </p>
+      <p>
+        Since <m>f(x) \in \mathbb{Z}[x]</m>,
+        all the coefficients <m>a_i</m> are also integers.
+        <m>p</m> and <m>q</m> are also integers.
+        Since integers are closed under addition and multiplication,
+        it follows that both sides of the above equation are integers.
+        Since <m>p</m> divides the left-hand side,
+        it must also divide the right-hand side.
+        Therefore <m>p</m> divides <m>a_{0}q^n</m>.
+        Now <m>p</m> and <m>q</m> are relatively prime:
+        so in order for <m>p</m> to divide <m>a_{0}q^n</m>,
+        it must divide <m>a_0</m>.
+        In other words,
+        <m>p</m> is a factor of <m>a_{0}</m><mdash/>which is just what we wanted to prove.
+      </p>
+      <p>
+        It turns out the proof that <m>q</m> is a factor of <m>a_{n}</m> is basically the same,
+        if we use a little trick.
+        The first equation that we wrote down above was:
+        <me>
+          a_{n}\left(\frac {p}{q}\right)^n+a_{n-1}\left(\frac {p}{q}\right)^{n-1}+...+a_{0}=0
+        </me>.
+      </p>
+      <p>
+        Let's multiply both sides by <m>(q/p)^n</m>.
+        After simplifying, and rearranging we get:
+        <me>
+          a_{0}\left(\frac {q}{p}\right)^n+a_{1}\left(\frac {q}{p}\right)^{n-1}+...+a_{n}=0
+        </me>.
+      </p>
+      <p>
+        Now, this new equation corresponds exactly to the first equation with the following replacements:
+        <me>
+          a_n  \rightarrow a_0;\,\, a_{n-1} \rightarrow a_1;\,\, \ldots;\,\, a_0 \rightarrow a_n; \,\, p  \leftrightarrow q
+        </me>.
+      </p>
+      <p>
+        We can then go through the entire previous argument,
+        making these replacements.
+        We concluded previously that <m>p</m> is a factor of <m>a_0</m><mdash/>so if we apply the identical argument to the equation with replacements,
+        we obtain that <m>q</m> is a factor of <m>a_n</m>.
+        You may fill in the details in the following exercise.
+      </p>
+      <exercise>
+        <statement>
+          <p>
+            Starting with the equation <m>a_{0}\left(q/p\right)^n+a_{1}\left(q/p\right)^{n-1}+...+a_{n}=0</m>,
+            give the complete argument which shows that <m>q</m> is a factor of <m>a_n</m>.
+          </p>
+        </statement>
+      </exercise>
+    </proof>
+    <p>
+      Now let's get some practice using <xref ref="proposition_Rings_Rationalroots">Proposition</xref>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Find the roots of <m>f(x)=3x^3+10x^2+11x+6</m>.
+        </p>
+        <p>
+          Since this is a cubic polynomial,
+          we can't use the quadratic formula,
+          at least not to begin with.
+          The coefficients are integers,
+          so we may use <xref ref="proposition_Rings_Rationalroots">Proposition</xref>,
+          which says that <em>any</em> rational roots of <m>p(x)</m> have numerators that are factors of <m>a_{0}</m> and denominators that are factors of <m>a_{n}</m>.
+          This does not guarantee that there are rational roots:
+          sometimes polynomials are irreducible,
+          but we still try every method possible to find those roots unless we know that we can't reduce the polynomial.
+          So we will proceed with trying to find the roots of <m>f(x)</m> using <xref ref="proposition_Rings_Rationalroots">Proposition</xref>.
+        </p>
+        <p>
+          In <m>f(x)</m>, possible numerators of any rational roots are:
+          <m>p=\pm1, \pm2, \pm3, \pm6</m>.
+          The possible denominators are: <m>q=\pm1, \pm3</m>.
+          So we have as possible rational roots the following:
+          <m>p/q= \pm1, \pm\frac{1}{3}, \pm2, \pm\frac{2}{3},\pm3, \pm6</m>.
+          By <xref ref="proposition_Polynomials_polydivides">Proposition</xref>,
+          if <m>f(p/q)=0</m> then <m>(x-p/q)</m> is a factor of <m>f(x)</m>;
+          which would make <m>p/q</m> a root of <m>f(x)</m>.
+          After testing all possibilities we find the following rational root:
+          <m>f(-2)=3(-2)^3+10(-2)^2+11(-2)+6=0</m>.
+          Therefore, <m>x=-2</m> is a root of <m>f(x)</m> and <m>(x+2)</m> is a factor of <m>f(x)</m>.
+          We then use long division to factor <m>f(x)</m>.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell><m>3x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>4x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>3</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>x + 2</m></cell>
+            <cell><m>3x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>10x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>11x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>3x^3</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6 x^2</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>11x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>4x^2</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>8x</m></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>3 x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>3x</m></cell>
+            <cell><m>+</m></cell>
+            <cell><m>6</m></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell><m>0</m></cell>
+          </row>
+        </tabular>
+        <p>
+          So now we have <m>f(x)=(x+2)(3x^2+4x+3)</m>.
+          We use the quadratic formula to find the following roots for <m>3x^2+4x+3</m>.
+          <m>x=\frac{-2\pm \sqrt{5}i}{3}</m>.
+          So there are two complex roots and one real root.
+          They are <m>x={\frac{-2 - \sqrt{5}i}{3}, -2, \frac{-2+ \sqrt{5}i}{3}}</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Rings_complexroots">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find the roots of <m>f(x)=2x^2+x+1</m>.
+              Give exact solutions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the roots of <m>f(x)=5x^3+17x^2+7x+3</m>.
+              Give exact solutions.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      In the exercises above, the leading coefficient is not 1.
+      The situation is especially simple if the leading coefficient is 1.
+      In such a case, the rational roots are integers:
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Given that <m>p(x) \in \mathbb{Z}[x]</m>,
+              and <m>p(x)</m> has leading coefficient 1, show that all rational roots of <m>p(x)</m> are integers.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the roots of <m>f(x)=x^3-13x+12</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </introduction>
+  <subsection xml:id="subsec_Rings_PolynomialOverFields_ClosureOfField">
+    <title>Algebraic closure of fields</title>
+    <p>
+      In <xref ref="subsec_Rings_PolynomialOverFields_FieldExtension">Section</xref>
+      we discussed the so-called <term>Fundamental Theorem of Algebra (hard part)</term>, (<xref ref="proposition_Polynomials_FTOAhard">Proposition</xref>)which states that any polynomial in
+      <m>\mathbb{C}[x]</m> has a root in <m>\mathbb{C}[x]</m>.
+      This property leads to a host of important consequences.
+      Since this property is so important, it's been given a name:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defalgclosed} A field <m>F</m> is
+          <em>algebraically closed</em><idx><h>Field</h><h>algebraically closed</h></idx>
+              <idx><h>Algebraically closed</h><h>field</h></idx>
+          if and only if every nonconstant polynomial in <m>F[x]</m> has a root in <m>F</m>
+          (see <xref ref="algebraicallyclosed">Figure</xref>).
+        </p>
+      </statement>
+    </definition>
+    <figure xml:id="algebraicallyclosed">
+      <caption><m>F</m> is algebraically closed: every <m>p(x)\in F[x]</m> has an <m>a\in F</m> such  <m>p(a)=0</m>.</caption>
+      <image width="35%" source="images/algebraically_closed.png"/>
+    </figure>
+    <p>
+      With this new definition in mind,
+      we can restate <xref ref="proposition_Polynomials_FTOAhard">Proposition</xref> as follows:
+    </p>
+    <proposition xml:id="proposition_Rings_complexalgclosed">
+      <statement>
+        <p>
+          <m>\mathbb{C}</m> is algebraically closed.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      There are fields besides <m>\mathbb{C}</m> that are algebraically closed,
+      but there are also lots of fields that aren't:
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Are the rational numbers algebraically closed?
+              Justify your answer.
+            </p>
+          </li>
+          <li>
+            <p>
+              Are the real numbers algebraically closed?
+              Justify your answer.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              In the field <m>\mathbb{Z}_5</m>,
+              evaluate the polynomial <m>x^4+2</m> for all elements of <m>\mathbb{Z}_5</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using part (a),
+              show that <m>\mathbb{Z}_5</m> is not algebraically closed.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the polynomial <m>x^6 + 2</m> to determine whether or not
+              <m>\mathbb{Z}_7</m> is algebraically closed.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      In <xref ref="subsec_Polynomials_PolynomialsAndDivision_FTOAhard">Section</xref>
+      we proved polynomial factorization
+      (<xref ref="proposition_Polynomials_complexlinear">Proposition</xref>),
+      namely that any polynomial in
+      <m>\mathbb{C}[x]</m> factors as a product of linear factors.
+      The very same proof goes through for any algebraically closed field <m>F</m>.
+      Thus we have:
+    </p>
+    <proposition xml:id="proposition_Rings_algClosedLinear">
+      <statement>
+        <p>
+          Let <m>F</m> be an algebraically closed field.
+          Then any polynomial <m>p(x)</m> of degree <m>n</m> in <m>F[x]</m> can be completely factored as a constant times a product of <m>n</m> linear terms,
+          as follows:
+          <men>
+            p(x) = b(x -a_1)(x-a_2) \ldots (x - a_n)
+          </men>,
+          where <m>b,a_1,\ldots,a_n \in F</m>.
+        </p>
+      </statement>
+    </proposition>
+  </subsection>
+  <subsection xml:id="subsec_Rings_PolynomialOverFields_FieldExtension">
+    <title>Field extensions and algebraic elements</title>
+    <p>
+      We've seen quite a few fields that are not algebraically closed.
+      For example, the rational numbers
+      <m>\mathbb{Q}</m> are not algebraically closed, because e.g.
+      <m>x^2 - 2</m> has no roots in <m>\mathbb{Q}</m>.
+      However, we were able to find a larger field
+      (namely <m>\mathbb{R}</m>)
+      that contains <m>\mathbb{Q}</m> which has the root that <m>\mathbb{Q}</m> is lacking.
+      In this section,
+      we'll talk about situations like this in a general context.
+    </p>
+    <p>
+      First we need some terminology to describe the case where one field is contained in another:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defsubfield} Given a field <m>E</m> and <m>F\subset E</m>,
+          then <m>F</m> is called a <term>subfield</term>
+          of <m>E</m> if <m>F</m> is also a field with the same field operations as <m>E</m>.
+          Conversely, <m>E</m> is called an
+          <term>extension field</term>
+              <idx><h>Field</h><h>extension</h></idx>
+          of <m>F</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The following exercise should bolster your understanding of <xref ref="definition_Rings_defsubfield">Definition</xref>
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Give an example of a field <m>F</m> that has a nontrivial extension field
+              (that is, the extension field contains elements that are not in <m>F</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Give an example of a field,
+              <m>F</m> that is a subset of a field <m>E</m>,
+              but is not a subfield of <m>E</m>.
+              Explain.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      We also need terminology to describe roots of polynomials in <m>F[x]</m> that aren't in <m>F</m>:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defalgover} Let <m>F</m> be a subfield of <m>E</m>, and let <m>a\in E</m>.
+          If <m>p(a)=0</m> for some <m>p(x) \in F[x]</m>,
+          then <m>a</m> is <em>algebraic</em><idx><h>Algebraic</h><h>element,
+          of a field</h></idx>
+              <idx><h>Field</h><h>algebraic element of</h></idx>
+          over <m>F</m>
+          (see <xref ref="algebraicelement">Figure</xref>).
+          Otherwise, <m>a</m> is <em>transcendental</em><idx><h>Transcendental</h><h>element,
+          of a field</h></idx>
+              <idx><h>Field</h><h>transcendental element of</h></idx>
+          over <m>F</m>.
+        </p>
+      </statement>
+    </definition>
+    <figure xml:id="algebraicelement">
+      <caption><m>a\in E</m> is algebraic over <m>F</m>:  there exists <m>p(x)\in F[x]</m> such that <m>p(a)=0</m>.</caption>
+      <image width="35%" source="images/algebraic_element.png"/>
+    </figure>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Give an example of a complex number
+              <m>z \in \mathbb{C}\setminus \mathbb{R}</m> which is algebraic over <m>\mathbb{Q}</m> (in other words,
+              <m>z</m> satisfies <m>f(z)=0</m> where <m>f(x) \in \mathbb Q[x]</m>).
+              Justify your answer.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that <m>z \in \mathbb{C}</m> is algebraic over <m>\mathbb{R}</m>.
+              Show that <m>\bar{z}</m> is also algebraic over <m>\mathbb{R}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that every element of
+              <m>\mathbb{C}</m> is algebraic over <m>\mathbb{R}</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Given that <m>a \in \mathbb{C}</m> is algebraic over <m>\mathbb{Q}</m>,
+              show that <m>\sqrt{a}</m> is also algebraic over <m>\mathbb{Q}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Given that <m>a \in \mathbb{C}</m> is algebraic over <m>\mathbb{Q}</m>,
+              show that <m>a^{1/n}</m> is also algebraic over
+              <m>\mathbb{Q}</m> for any natural number <m>n</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <remark xml:id="remark_Polynomials_transcendental">
+      <p>
+        It's not so easy to show that elements are transcendental.
+        This is because to show that <m>a</m> is transcendental over <m>F</m>,
+        you need to show that there's no polynomial whatsoever in <m>F[x]</m> which has <m>a</m> as a root.
+        Let's consider in particular the case <m>F = \mathbb{Q}</m>.
+        We saw in <xref ref="ComplexNumbers">Chapter</xref>
+        that <m>\mathbb{R}</m> has lots of
+        <em>irrational</em> numbers,
+        but so far we haven't definitely identified any real number that is transcendental over <m>\mathbb{Q}</m>.
+      </p>
+      <p>
+        In 1844, Joseph Liouville gave the first proof that a transcendental number exists.
+        Liouville constructed a number
+        (using infinite series)
+        with special properties,
+        and was able to show that it's impossible to construct a polynomial in
+        <m>\mathbb{Q}[x]</m> that has that number as a root.
+        Hermite showed about 30 years later that <m>e</m> was transcendental,
+        and <m>\pi</m> was added to the list
+        (by Lindemann)
+        10 years after that.
+      </p>
+      <p>
+        Even today, only a handful of classes of numbers have been shown to be transcendental.
+        This is not to say that there aren't lots of them.
+        In fact, Georg Cantor in 1874 was able to show that
+        <q>almost all</q>
+        real numbers are transcendental over <m>\mathbb{Q}</m>.
+        This is a fascinating topic,
+        and there's lots of information on the Internet if you're interested in pursuing it further
+        (one place to look is \url{http://mathworld.wolfram.com/TranscendentalNumber.html}).
+      </p>
+    </remark>
+    <p>
+      For field extensions which have no transcendental elements,
+      the following definition applies:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defalgfieldextension} Suppose <m>E</m> is an extension field of <m>F</m>.
+          Then <m>E</m> is called an <term>algebraic extension</term><idx><h>Field</h><h>algebraic extension</h></idx> of <m>F</m> if every <m>a\in E</m> is algebraic over <m>F</m>.
+        </p>
+      </statement>
+    </definition>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Give an example of a extension field that is algebraic.
+              Justify your answer.
+            </p>
+          </li>
+          <li>
+            <p>
+              Give an example of a field extension that is not algebraic.
+              Justify your answer.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      A field extension may be algebraic,
+      but still contain polynomials that have no roots.
+      There's a special term for field extensions which contain roots for
+      <em>all</em> their polynomials:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {defalgclosure} Let <m>E</m> be an algebraic extension field of <m>F</m>.
+          Suppose that for every <m>p(x) \in E[x]</m>,
+          there exists <m>a \in E</m> such that <m>p(a)=0</m>.
+          Then <m>E</m> is an <em>algebraic closure</em><idx><h>Field</h><h>algebraic closure of</h></idx>
+              <idx><h>Algebraic closure</h><h>of a field</h></idx>
+          of <m>F</m>
+          (see <xref ref="algebraicclosure">Figure</xref>).
+        </p>
+      </statement>
+    </definition>
+    <figure xml:id="algebraicclosure">
+      <caption><m>E</m> is an algebraic closure of <m>F</m>:  every <m>p(x)\in E[x]</m> has an <m>a\in E</m> such that <m>p(a)=0</m>; and every <m>b\in E</m> has an <m>f(x)\in F[x]</m> such that <m>f(b)=0</m>.</caption>
+      <image width="35%" source="images/algebraic_closure.png"/>
+    </figure>
+    <p>
+      Here's an example of an algebraic closure:
+    </p>
+    <proposition xml:id="proposition_Rings_realalgclosure">
+      <statement>
+        <p>
+          <m>\mathbb{C}</m> is an algebraic closure of <m>\mathbb{R}</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Let <m>a+bi \in \mathbb{C}</m> be arbitrary and let <m>p(x)=(x-(a+bi))(x-(a-bi))= x^2-2ax+a^2+b^2\in\mathbb{R}[x]</m>.
+        We see that <m>a+bi</m> is a root of <m>p(x)</m>.
+        Since <m>a+bi</m> is arbitrary,
+        we can say that any element of
+        <m>\mathbb{C}</m> is a root of some polynomial in <m>\in\mathbb{R}[x]</m>.
+        By <xref ref="definition_Rings_defalgfieldextension">Definition</xref>
+        this makes <m>\mathbb{C}</m> an algebraic extension of <m>\mathbb{R}</m>.
+        Additionally,
+        by <xref ref="proposition_Rings_complexalgclosed">Proposition</xref>,
+        <m>\mathbb{C}</m> is algebraically closed.
+        Therefore, by <xref ref="definition_Rings_defalgclosure">Definition</xref>,
+        <m>\mathbb{C}</m> is the algebraic closure of <m>\mathbb{R}</m>.
+      </p>
+    </proof>
+    <p>
+      Does every field have an algebraic closure?
+      Let's look at some field extensions we're already familiar with:
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Give an example that shows that
+              <m>\mathbb{C}</m> is not an algebraic closure of <m>\mathbb{Q}</m> . Explain.
+            </p>
+          </li>
+          <li>
+            <p>
+              Give an example that shows that
+              <m>\mathbb{R}</m> is not an algebraic closure of <m>\mathbb{Q}</m> . Explain.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      Although we won't prove it here,
+      it can be shown that every field has an algebraic closure.<fn>
+      see \url{https://soffer801.wordpress.com/2011/10/25/every-field-has-an-algebraic-closure/} for a nice discussion.
+      </fn> In particular,
+      there is a subfield of <m>\mathbb{C}</m> which is an algebraic closure of <m>\mathbb{Q}</m>:
+      this subfield is called the field of
+      <term>algebraic numbers</term>.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Draw a set diagram that shows the relationships between the sets
+          <m>\mathbb{Q}, \mathbb{R}, \mathbb{C}</m>, and <m>\mathbb{A}</m>,
+          where <m>\mathbb{A}</m> denotes the set of algebraic numbers.
+          (For example, the
+          <q>set bubble</q>
+          representing <m>\mathbb{Q}</m> should be inside the bubble representing <m>\mathbb{C}</m>,
+          since <m>\mathbb{Q} \subset \mathbb{C}</m>.)
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Rings_PolynomialOverFields_AppFieldExtension">
+    <title>Applications of algebraic field extensions</title>
+    <p>
+      We've already seen how field extensions play an important role in mathematics.
+      The irrational numbers were first introduced using an algebraic field extension of <m>\mathbb{Q}</m>
+      (although later it was discovered that not all irrational numbers are algebraic over <m>\mathbb{Q}</m>).
+      Similarly, the complex numbers were created as an algebraic field extension of the real numbers.
+      But this is just the beginning.
+      Algebraic field extensions have played a pivotal role in a great number of deep mathematical results obtained over the last 200 years.
+      Here is a short list of results which make use of algebraic field extensions:
+      <ul>
+        <li>
+          <p>
+            The quadratic formula expresses the roots of quadratic polynomials  in terms of algebraic operations on the coefficients plus a square root.
+            There are similar
+            (but vastly more complicated)
+            formulas for solving cubic and quartic (3rd and 4th degree)  polynomial equations,
+            which involve algebraic operations and  taking <m>n</m>th roots,
+            for different values of <m>n</m>.
+            How about quintic (5th degree) polynomials?
+            Amazingly, it is possible to prove that there is no general formula for the solution of a quintic equation in terms of roots and algebraic operations.
+            Not just the formula is not known<ndash/>there is <em>no formula</em>.
+            Period.
+            This stupendous result is associated with the mathematicians Evariste Galois, Niels Henrik Abel,
+            and Paolo Ruffini, and was proved in the mid-19th century.
+            This result relates to field extensions because every solution to an equation that involves only roots and algebraic operations must belong to certain type of field extension of the rationals.
+            This fact imposes conditions on the type of numbers that can be expressed in such a form.
+            It can be shown that there are roots of 5th-degree equations that don't meet these conditions<mdash/>hence they can't possibly satisfy such an equation.
+          </p>
+        </li>
+        <li>
+          <p>
+            Beginning with the Greeks,
+            mathematicians tried for thousands of years to find a way to trisect an angle,
+            using only straightedge and compass.
+            In 1837, Pierre Wantzel finally showed that it is <em>impossible</em>.
+            His proof built on previous results of Galois. (Think of how many hours over how many centuries were spent on a futile quest!) This result relates to field extensions in similar fashion as the previous one.
+            Geometrical points in the plane are identified as complex numbers
+            (as we described in <xref ref="sec_ComplexNumbers_ComplexRoots">Section</xref>).
+            Every point constructed based on a set of points is an algebraic combination of the corresponding complex numbers,
+            together with square roots.
+            This means that every constructable point must be contained in a series of field extensions created by successively adding square roots to an existing field.
+            It can be shown that trisecting an angle involves finding a cube root which cannot possibly belong to such a series of extensions.
+            You may consult: {\url{https://terrytao.wordpress.com/2011/08/10/a-geometric-proof-of-the-}} {\url{impossibility-of-angle-trisection-by-straightedge-and-compass/}} to get a flavor of how this proof goes.
+          </p>
+        </li>
+        <li>
+          <p>
+            A similar constructability problem is known as
+            <q>squaring the circle</q>: Given a square of side 1, find a circle with the same area using only straightedge and compass.
+            This can be shown to be impossible,
+            as a consequence of the transcendence of <m>\pi</m> alluded to in <xref ref="remark_Polynomials_transcendental">Remark</xref>.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+</section>

@@ -1,0 +1,45 @@
+<section xml:id="sec_Induction_PracticeNonFormulaInduction">
+  <title>Practice problems for non-formula induction</title>
+  <ol>
+    <li>
+      <p>
+        <em>Number of subsets with an even
+        (or odd)
+        number of elements:</em> Using induction,
+        prove that an <m>n</m>-element set has <m>2^{n-1}</m> subsets with an even number of elements and <m>2^{n-1}</m> subsets with an odd number of elements.
+      </p>
+    </li>
+    <li>
+      <p>
+        <em>Number of regions created by <m>n</m> lines:</em>
+        How many regions are created by <m>n</m> lines in the plane such that no two lines are parallel and no three lines intersect at the same point?
+        Guess the answer from the first few cases,
+        then use induction to prove your guess.
+      </p>
+    </li>
+    <li>
+      <p>
+        <em>Sum of angles in a polygon:</em>
+        The sum of the interior angles in a triangle is <m>180</m> degrees,
+        or <m>\pi</m>.
+        Using this result and induction,
+        prove that for any <m>n\ge3</m>,
+        the sum of the interior angles in an <m>n</m>-sided polygon is <m>(n-2)\pi</m>.
+      </p>
+    </li>
+    <li>
+      <p>
+        <em>Pie-throwing problem:</em> Here is a harder, but fun problem.
+        Consider a group of <m>n</m> fraternity members standing in a yard,
+        such that their mutual distances are all distinct.
+        Suppose each of throws a pie at his nearest neighbor.
+        Show that if <m>n</m> is odd,
+        then there is one person in the group who does not get hit by a pie.
+        (<em>Hint</em>: Let <m>n=2m+1</m> with <m>m\in\NN</m>,
+        and use <m>m</m> as the induction variable.
+        Consider first some small cases,
+        e.g., <m>n=3</m> and <m>n=5</m>.)
+      </p>
+    </li>
+  </ol>
+</section>

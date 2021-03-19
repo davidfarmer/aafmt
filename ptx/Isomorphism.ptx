@@ -1,0 +1,19 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Isomorphism">
+  <title>Isomorphisms of Groups<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <introduction>
+    <p>
+      Thanks to Tom Judson for providing the foundational material for this chapter.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Isomorphism_Introduction.ptx"/>
+  <xi:include  href="sec_Isomorphism_FormalDefinition.ptx"/>
+  <xi:include  href="sec_Isomorphism_ExampleAndGeneralization.ptx"/>
+  <xi:include  href="sec_Isomorphism_Classification.ptx"/>
+  <xi:include  href="sec_Isomorphism_DirectProductsClassificationAbelianGroups.ptx"/>
+  <xi:include  href="sec_Isomorphism_UpIsCyclic.ptx"/>
+  <xi:include  href="sec_Isomorphism_AdditionalExercises.ptx"/>
+  <xi:include  href="sec_Isomorphism_Hints.ptx"/>
+</chapter>

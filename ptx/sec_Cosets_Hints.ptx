@@ -1,0 +1,113 @@
+<section xml:id="sec_Cosets_Hints">
+  <title>Hints for
+  <q>Cosets</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_Cosets_left_right_cosets">Exercise</xref>:
+  </p>
+  <p>
+    For part (f),
+    consider that any even permutation times <m>A_4</m> will produce a set of even permutations with 12 elements (Why?), and there are exactly 12 even permutations in <m>S_4</m>.
+    Similar reasoning applies when you take any odd permutation times <m>A_4</m>.
+  </p>
+  <p>
+    For part (g), generalize your result in part (f).
+  </p>
+  <p>
+    For part (h),
+    your task will be simplified if you notice that all elements in a given coset produce the same coset.
+    So once you've found a coset,
+    you don't need to do any work to find the cosets of elements in the coset that you've found.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_abelian_cosets">Exercise</xref>: (<em>Hint</em>: You're trying to show that the two sets <m>gH</m> and <m>Hg</m> are equal.
+    One way to do this is to show every element of <m>gH</m> is an element of <m>Hg</m>,
+    and vice versa.)
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_CosetEquiv">Exercise</xref>(a): The hypothesis
+    <m>g_1 H = g_2 H</m> implies that there exists <m>h \in H</m> such that <m>g_1 h = g_2 e</m>,
+    where <m>e</m> is the group identity.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_CosetEquiv">Exercise</xref>(b):
+    <m>g_1^{-1} g_2 \in H</m> means that
+    <m>g_1^{-1} g_2 = h</m> for some <m>h \in H</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_CosetEquiv">Exercise</xref>(c): You need to show that <m>g_2 H \subset g_1 H</m>.
+    From (3), deduce that <m>g_2 = g_1 h</m> for some <m>h \in H</m>.
+    Then, show that any element of the form <m>g_2 h'</m> for
+    <m>h' \in H</m> can be expressed as <m>g_1 h''</m> where <m>h'' \in H</m>.
+    You should be able to express <m>h''</m> in terms of <m>h</m> and <m>h'</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_CosetEquiv">Exercise</xref>(d): You need to show that (4) implies <m>g_1H \subset g_2H</m>.
+    It's enough to show that for any <m>h \in H</m>, <m>g_1 h \in g_2 H</m>.
+    To do this, express <m>g_1</m> in terms of <m>g_2</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_CosetEquiv">Exercise</xref>(e): Condition (2) implies that
+    <m>g_1^{-1} g_2 = h</m> for some <m>h \in H</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_SL2_cosets">Exercise</xref>: You may use the equivalence of conditions (3) and (2) in <xref ref="proposition_Cosets_cosets_theorem_1">Proposition</xref>.
+    You will also need the following facts about determinants: (a) <m>\det(AB) = \det(A)\det(B)</m> and (b)
+    <m>\det(A^{-1}) = 1/\det(A)</m> (note that (b) follows from (a)).
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_order5and7">Exercise</xref>: Remember cyclic subgroups.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_phivals">Exercise</xref>: For part (g),
+    use the fact that the numbers less than <m>p^2</m> that are <em>not</em>
+    relatively prime to <m>p^2</m> are <m>p, 2p, 3p, \ldots (p-1)p</m>:
+    how many numbers remain?
+    For parts (h) and (i) use a similar logic.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_primeGroups">Exercise</xref>: You may refer to <xref ref="proposition_Groups_OrderEltCyclic">Proposition</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_SL2_normal">Exercise</xref>: Look back at your work on <xref ref="exercise_Cosets_SL2_cosets">Exercise</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_i_normal">Exercise</xref>: Compute the left and right cosets.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_abelian_normal">Exercise</xref>: Use <xref ref="exercise_Cosets_abelian_cosets">Exercise</xref> earlier in this chapter.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_ghg-1_prove">Exercise</xref>: Let <m>H</m> be a subgroup of the group <m>G</m> that satisfies the property that for any <m>g \in G</m> and any <m>h \in H</m>,
+    then <m>ghg^{-1}</m> is also in <m>H</m>.
+    Show that every right coset of <m>H</m> in <m>G</m> is also a left coset,
+    and vice versa (and hence <m>H</m> is a normal subgroup of <m>G</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_normalk">Exercise</xref>: Use part (a) and <xref ref="definition_Cosets_normal_alt">Definition</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_normal_mult">Exercise</xref>(c): We may write
+    <m>x_1 = g_1 h_1</m> and <m>x_2 = g_2 h_2</m>,
+    so that <m>x_1 x_2 = g_1 h_1 g_2 h_2</m>.
+    Use part (b) with <m>h=h_1</m>, <m>g=g_2</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cosets_Sn_NotSimple">Exercise</xref>:
+    <m>S_n</m> has a subgroup of index 2.
+    This shows <m>S_n</m> is not simple
+    (why?).
+  </p>
+  <p>
+    <em>Additional exercises</em>
+  </p>
+  <p>
+    <xref ref="eoc_Cosets_1">Exercise</xref>: Define an equivalence relation on <m>G</m> as follows:
+    <m>g_1 \sim g_2</m> if and only if either
+    <m>g_1 = g_2</m> or <m>g_1 = g_2^{-1}</m>.
+    Prove that this is indeed an equivalence relation;
+    and show that the equivalence class of <m>g</m> has an odd number of elements if and only if <m>g = g^{-1}</m>.
+    Use the partition of <m>G</m> to show that there must be an even number of equivalence classes with an odd number of elements
+    (including the equivalence class of the identity).
+  </p>
+</section>

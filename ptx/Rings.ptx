@@ -1,0 +1,37 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="Rings">
+  <title>Introduction to Rings and Fields</title>
+  <introduction>
+    <blockquote>
+      The integers are like a golden ring in a chain, whose beginning is a glance and whose ending is eternity.
+      <em>(Source:  Khalil Gibran (<em>paraphrase</em>))</em>
+    </blockquote>
+    <blockquote>
+      The kingdom of heaven is like treasure hidden in a field. When a man found it, he hid it again, and then in his joy went and sold all he had and bought that field.(Source:  Jesus of Nazareth (quoted by Matthew))
+    </blockquote>
+    <p>
+      Groups and <em>rings</em> are the two basic abstract structures in study of abstract algebra, These are not the only abstract structures studied,but most others are modifications of these two. groups and rings are basic in the areas of particle physics,
+      cryptography, and coding theory
+      (see <xref ref="sec_Rings_References">Section</xref> for more information).
+      They also creep into other areas of mathematics like analysis and number theory.
+      As we proceed,
+      you may notice many similarities between the properties of rings and those of groups.
+      Let's begin with a review of common number systems.
+    </p>
+    <p>
+      This chapter is by Christy Douglass and Chris Thron,
+      with contributions by Jennifer Lazarus and Adam McDonald.
+    </p>
+  </introduction>
+  <xi:include  href="sec_Rings_DefinitionsAndExamples.ptx"/>
+  <xi:include  href="sec_Rings_Subrings.ptx"/>
+  <xi:include  href="sec_Rings_ExtensionRings.ptx"/>
+  <xi:include  href="sec_Rings_ProductRings.ptx"/>
+  <xi:include  href="sec_Rings_IsomorphicRings.ptx"/>
+  <xi:include  href="sec_Rings_RingHomomorphismKernelsIdeals.ptx"/>
+  <xi:include  href="sec_Rings_FurtherProperties.ptx"/>
+  <xi:include  href="sec_Rings_QuotientRings.ptx"/>
+  <xi:include  href="sec_Rings_IntegralDomainsPrincipalIdealDomains.ptx"/>
+  <xi:include  href="sec_Rings_PolynomialOverFields.ptx"/>
+  <xi:include  href="sec_Rings_References.ptx"/>
+  <xi:include  href="sec_Rings_Hints.ptx"/>
+</chapter>

@@ -1,0 +1,369 @@
+<section xml:id="sec_Rings_QuotientRings">
+  <title>Quotient Rings</title>
+  <p>
+    <em>Quotient rings</em> allow us to form a ring of equivalence classes,
+    much like quotient groups studied in <xref ref="Cosets">Chapter</xref>.
+    Follow the next example to make sense of this concept.
+  </p>
+  <example>
+    <p>
+      Define <m>f: {\mathbb Z}_{10}\rightarrow {\mathbb Z}_5</m> by <m>f(n)=\bmod(n,5)</m>.
+      <ol type="a">
+        <li>
+          <p>
+            Show that <m>f</m> is a ring homomorphism.
+          </p>
+        </li>
+        <li>
+          <p>
+            Find the kernel of <m>f</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Find <m>f^{-1}(m)</m> for all <m>m\in{\mathbb Z}_5</m>.
+          </p>
+        </li>
+      </ol>
+      <ol type="a">
+        <li>
+          <p>
+            <md>
+              <mrow>f(a+b)=\bmod(a+b,5)\amp =\bmod(a,5)+\bmod(b,5)=f(a)+f(b)</mrow>
+              <mrow>\text{ and }  f(ab)=\bmod(ab,5)\amp =\bmod(a,5)\bmod(b,5)=f(a)f(b)</mrow>
+            </md>.
+            So <m>f</m> is a ring homomorphism.
+          </p>
+        </li>
+        <li>
+          <p>
+            The <m>Ker(f)</m> is <m>f^{-1}(0)=\{0,5\}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <md>
+              <mrow>f^{-1}(0)\amp =\text{the set of all \(n\in{\mathbb Z}_{10}\) such that}  f(n)=0=\{0,5\}</mrow>
+              <mrow>f^{-1}(1)\amp =\text{the set of all \(n\in{\mathbb Z}_{10}\) such that}  f(n)=1=\{1,6\}</mrow>
+              <mrow>f^{-1}(2)\amp =\text{the set of all \(n\in{\mathbb Z}_{10}\) such that}  f(n)=2=\{2,7\}</mrow>
+              <mrow>f^{-1}(3)\amp =\text{the set of all \(n\in{\mathbb Z}_{10}\) such that}  f(n)=3=\{3,8\}</mrow>
+              <mrow>f^{-1}(4)\amp =\text{the set of all \(n\in{\mathbb Z}_{10}\) such that}  f(n)=4=\{4,9\}</mrow>
+            </md>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Notice that <m>f^{-1}(0)\cup f^{-1}(1)\cup f^{-1}(2)\cup f^{-1}(3)\cup f^{-1}(4)={\mathbb Z}_{10}</m> and <m>f^{-1}(m)\cap f^{-1}(n)=\emptyset</m> if <m>m\neq n</m>.
+    </p>
+    <p>
+      We may recall the definition of <term>partition</term>
+      from <xref ref="sec_EquivalenceRelations_PartitionsAndProperties">Section</xref>
+      (<xref ref="definition_EquivalenceRelations_defPartition">Definition</xref>),
+      which we repeat here for convenience.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {partition} A <term>partition</term>
+          of a set <m>S</m> is a set of subsets <m>A_1,\dots A_n</m> such that:
+          <ol type="a">
+            <li>
+              <p>
+                <m>\cup_{m=1}^n A_m=S</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_i\cap A_j=\emptyset</m> whenever <m>i\neq j</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The sets <m>f^{-1}(0)\dots f^{-1}(4)</m> are called
+      <em>inverse images</em>.
+      The inverse images of <m>f</m> divide
+      <m>{\mathbb Z}_{10}</m> into <em>equivalence classes</em>.
+      (Review <xref ref="definition_EquivalenceRelations_DefEquivRel">Definition</xref>.)
+      (Actually, we showed in <xref ref="proposition_EquivalenceRelations_FuncIsRange">Proposition</xref>
+      that the inverse images of a function always divide the domain into equivalence classes.)
+    </p>
+    <figure xml:id="fig_equiv_class">
+      <caption>Equivalence classes</caption>
+      <image width="65%" source="images/Equivalence Class Image.png"/>
+    </figure>
+    <p>
+      We can create an addition and multiplication table on the equivalence classes.
+      For example: <m>\{4,9\}+\{1,6\}</m>:
+      <md>
+        <mrow>4+1\amp =5</mrow>
+        <mrow>9+1\amp =0</mrow>
+        <mrow>4+6\amp =0</mrow>
+        <mrow>9+6\amp =5</mrow>
+      </md>
+    </p>
+    <p>
+      Addition table:
+    </p>
+    <tabular>
+      <row>
+        <cell>+</cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+      </row>
+    </tabular>
+    <p>
+      Multiplication table:
+    </p>
+    <tabular>
+      <row>
+        <cell><m>\cdot</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{0,5\}</m></cell>
+        <cell><m>\{4,9\}</m></cell>
+        <cell><m>\{3,8\}</m></cell>
+        <cell><m>\{2,7\}</m></cell>
+        <cell><m>\{1,6\}</m></cell>
+      </row>
+    </tabular>
+  </example>
+  <p>
+    The equivalence classes form a ring.
+    This is our first example of a <term>quotient ring</term>.
+    We write this ring as <m>{\mathbb Z}_{10}/{\mathbb Z}_5</m>.
+    (Recall we used a similar notation for quotient groups.)
+    We will formally define quotient rings below.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {quotient ring} Let <m>J</m> be an ideal of ring <m>R</m>.
+        The <term>quotient ring</term> of <m>R</m> by <m>D</m> is the set <m>R/J</m> consisting of all equivalence classes modulo <m>J</m> in <m>R</m>,
+        together with binary operations <m>+</m> and <m>\cdot</m> defined by the following:
+        <md>
+          <mrow>(x+J)+(y+J)\amp =(x+y)+J \text{ and }</mrow>
+          <mrow>(x+J)\cdot(y+J)\amp =(x\cdot y)+J</mrow>
+        </md>.
+      </p>
+    </statement>
+  </definition>
+  <exercise xml:id="exercise_Rings_Iso_Z10_to_Z5">
+    <statement>
+      <p>
+        The quotient ring <m>{\mathbb Z}_{10}/{\mathbb Z}_5</m> is isomorphic to another ring that we are familiar with.
+        Can you identify this familiar ring? (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    In the example above, we can say that
+    <m>{\mathbb Z}_{10}/{\mathbb Z}_5</m> is a quotient ring of
+    <m>{\mathbb Z}_{10}</m> by <m>{\mathbb Z}_5</m> with four elements:
+    <m>{\mathbb Z}_{10}/{\mathbb Z}_5=\{0+{\mathbb Z}_5, 1+{\mathbb Z}_5, 2+{\mathbb Z}_5, 3+{\mathbb Z}_5, 4+{\mathbb Z}_5\}</m>.
+  </p>
+  <exercise xml:id="exercise_Rings_Z3_homo">
+    <statement>
+      <p>
+        Define <m>f:{\mathbb Z}_3\times {\mathbb Z}_3\rightarrow {\mathbb Z}_3</m> by <m>f(a,b)=a</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Show that <m>f</m> is a ring homomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the kernel of <m>f</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              What are the inverse images of <m>f</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the definition of partition to show that the inverse images form a partition of the domain of <m>f</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Make an addition and multiplication tables for the quotient ring,
+              which consist of the inverse images.
+            </p>
+          </li>
+          <li>
+            <p>
+              What ring is isomorphic to the quotient ring? (*Hint*)
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

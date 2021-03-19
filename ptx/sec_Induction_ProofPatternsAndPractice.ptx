@@ -1,0 +1,496 @@
+<section xml:id="sec_Induction_ProofPatternsAndPractice">
+  <title>Induction proof patterns &amp; practice problems</title>
+  <subsection xml:id="subsec_Induction_ProofPatternsAndPractice_TypeISumProd">
+    <title>Induction proofs, type I: Sum/product formulas</title>
+    <p>
+      The most common, and the easiest,
+      application of induction is to prove formulas for sums or products of <m>n</m> terms.
+      Many of these proofs follow the same pattern.
+      Here are some examples of formulas that can be proved by induction:
+      <ol type="i">
+        <li>
+          <p>
+            <m>\sum_{i=1}^n i(i+1)=\frac{n(n+1)(n+2)}{3}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\sum_{i=0}^n i! i = (n+1)!-1</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\sum_{i=0}^n r^i=\frac{1-r^{n+1}}{1-r}</m> (<m>r\not=1</m>) (sum of finite geometric series)
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\sum_{i=0}^n 2^i=2^{n+1}-1</m> (sum of powers of <m>2</m>)
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      In the following exercises, we will guide you through the proofs of (i) and
+      (ii).
+      For parts (iii) and (iv), you're on your own!
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Fill in the blanks for the following induction proof of formula (i) above.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We seek to show that, for all <m>n\in\NN</m>,
+          <me>
+            \sum_{i=1}^n i(i+1)=\frac{n(n+1)(n+2)}{3}. \tag{   \(P(n)\)}
+          </me>
+        </p>
+        <p>
+          <em>Base case:</em> When <m>n=1</m>,
+          the left side of <m>P(1)</m> is equal to
+          <m>\underline{~\lt 1>~}</m> , and the right side is equal to
+          <m>\underline{~\lt 2>~}</m> , so both sides are equal and <m>P(1)</m> is true.
+        </p>
+        <p>
+          <em>Induction step:</em> Let <m>k\in\NN</m> be given and suppose <m>P(k)</m> is true.
+          Then
+          <md>
+            <mrow>\sum_{i=1}^{k+1}i(i+1) \amp = \sum_{i=1}^{k}i(i+1) +\underline{~\lt 3>~}</mrow>
+            <mrow>\amp =\frac{k(k+1)(k+2)}{3} +\underline{~\lt 4>~} \text{ (by induction hypothesis) }</mrow>
+            <mrow>\amp =\frac{(k+1)(k+2)(k+3)}{3}</mrow>
+          </md>.
+        </p>
+        <p>
+          Thus, <m>P(\underline{~\lt 5>~})</m> holds,
+          and the proof of the induction step is complete,
+        </p>
+        <p>
+          <em>Conclusion:</em> By the principle of induction,
+          it follows that <m>\underline{~\lt 6>~}</m> is true for all <m>n\in\NN</m>.
+        </p>
+      </proof>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Provide an outline for the proof of formula (ii) by responding to each of the parts below.
+          <ol type="a">
+            <li>
+              <p>
+                What is the equation that must be shown for all <m>n\in\NN</m>? (Call this equation
+                <q><m>P(n)</m></q>).
+              </p>
+            </li>
+            <li>
+              <p>
+                Identify the base case,
+                and show that equation <m>P(n)</m> holds for the base case.
+              </p>
+            </li>
+            <li>
+              <p>
+                Write the left-hand side of <m>P( k+1)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Separate off the last term in the sum,
+                so that you have a sum from 1 to <m>k</m> plus an additional term.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use the induction hypothesis to replace the sum from 1 to <m>k</m> with a simpler expression.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use algebra to obtain <m>P(k+1)</m>,
+                which completes the proof of the induction step.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the final conclusion which can be drawn from the above argument?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove formula (iii) above using induction.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove formula (iv) above using induction.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Induction_ProofPatternsAndPractice_TypeII_Ineq">
+    <title>Induction proofs, type II: inequalities</title>
+    <p>
+      A second general type of application of induction is to prove inequalities involving a natural number <m>n</m>.
+      These proofs also tend to be on the routine side;
+      in fact, the algebra required is usually very minimal,
+      in contrast to some of the summation formulas.
+    </p>
+    <p>
+      In some cases the inequalities don't
+      <q>kick in</q>
+      until <m>n</m> is large enough.
+      By checking the first few values of <m>n</m> one can usually quickly determine the first <m>n</m>-value,
+      say <m>n_0</m>,
+      for which the inequality holds.
+      Then one may use <m>n=n_0</m> as the base case, instead of <m>n=0</m>.
+    </p>
+    <p>
+      Here are some examples of integer inequalities that can be proved using induction:
+      <ol type="i">
+        <li>
+          <p>
+            <m>2^n>n</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>2^n\ge n^2</m> (<m>n\ge4</m>)
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>n!> 2^n</m> (<m>n\ge4</m>)
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>(1-x)^n\ge 1-nx</m> (<m>0\lt x\lt 1</m>)
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>(1+x)^n\ge 1+nx</m> (<m>x>0</m>)
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      In the following exercises, we will guide you through the proofs of (iii) and
+      (iv).
+      For the others, you'll have to wing it.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Fill in the blanks in the following proof of
+          (iii).
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We are trying to show that
+          <me>
+            n!>2^n \tag{\(P(n)\)}
+          </me>
+          holds for all <m>n\ge4</m>.
+          (Note that the inequality fails for <m>n=1,2,3</m>.
+          But this doesn't matter,
+          because we only have to show that it works for for all <m>n</m> from <m>4</m> onwards.)
+        </p>
+        <p>
+          <em>Base case:</em> For <m>n=4</m>,
+          the left and right sides of <m>P(4)</m> are equal to <m>\underline{~\lt 1>~}</m> and
+          <m>\underline{~\lt 2>~}</m> , respectively, so <m>P(4)</m> is true.
+        </p>
+        <p>
+          <em>Induction step:</em> Let <m>k\ge4</m> be given and suppose <m>\underline{~\lt 3>~}</m> is true.
+          Then
+          <md>
+            <mrow>(k+1)!\amp =k! \cdot (k+1)</mrow>
+            <mrow>\amp >2^k \cdot \underline{~\lt 4>~} \qquad (\text{ by }  \underline{~\lt 5>~} )</mrow>
+            <mrow>\amp \ge 2^k\cdot 2 \qquad \qquad \text{ (since \(k\ge4\) and so \(k+1\ge2\))) }</mrow>
+            <mrow>\amp =\underline{~\lt 6>~}</mrow>
+          </md>.
+        </p>
+        <p>
+          Thus, <m>\underline{~\lt 7>~}</m> holds,
+          and the proof of the induction step is complete.
+        </p>
+        <p>
+          <em>Conclusion:</em> By the principle of induction,
+          it follows that <m>P(n)</m> is true for all <m>n\ge4</m>.
+        </p>
+      </proof>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Provide an outline for the proof of the inequality (iv) by giving answers for each of the parts below.
+        </p>
+      </statement>
+      <proof>
+        <ol type="a">
+          <li>
+            <p>
+              What statement do you need to prove for every real number
+              <m>0\lt x\lt 1</m> and any <m>n\in\NN</m>?
+              Call this statement
+              <q><m>P(n)</m></q>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Base case:</em> Show that the left and right sides of <m>P(n)</m> are equal in the base case.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Induction step:</em> Let <m>k\in\NN</m> be given and suppose <m>P(k)</m> is true for any real number <m>0\lt x\lt 1</m>.
+              What do we seek to show?
+            </p>
+          </li>
+          <li>
+            <p>
+              Rewrite <m>(1-x)^{k+1}</m> as <m>(1-x)^k \cdot (1-x)</m>.
+              Then use <m>P(k)</m> to obtain an inequality.
+              Using basic algebra,
+              simplify the right-hand side until you obtain a quantity that is greater than <m>1-(k+1)x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              What may you conclude about <m>P(k+1)</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Conclusion:</em> What is the ultimate conclusion of the argument?
+            </p>
+          </li>
+        </ol>
+      </proof>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Prove inequality (i) above using induction.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove inequality (ii) above using induction.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove inequality (v) above using induction.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Induction_ProofPatternsAndPractice_TypeIII_NVariables">
+    <title>Induction proofs, type III:
+    Extension of theorems from <m>2</m> variables to <m>n</m> variables</title>
+    <p>
+      Another very common and usually routine application of induction is to extend general results that have been proved for the case of <m>2</m> variables to the case of <m>n</m> variables.
+      Below are some examples.
+      In proving these results, use the case <m>n=2</m> as base case.
+      To see how to carry out the general induction step
+      (from the case <m>n=k</m> to <m>n=k+1</m>),
+      it may be helpful to first try to see how get from the base case <m>n=2</m> to the next case <m>n=3</m>.
+    </p>
+    <p>
+      Here are some examples of mulitple-variable theorems that can be proved using induction:
+      <ol type="i">
+        <li>
+          <p>
+            Show that if <m>x_1,\dots,x_n</m> are odd,
+            then <m>x_1x_2\dots x_n</m> is odd.
+          </p>
+        </li>
+        <li>
+          <p>
+            Show that if <m>a_i</m> and <m>b_i</m> (<m>i=1,2,\dots,n</m>) are real numbers such that
+            <m>a_i\le b_i</m> for all <m>i</m>, then
+            <me>
+              \sum_{i=1}^na_i\le \sum_{i=1}^nb_i
+            </me>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Show that if <m>x_1,\dots,x_n</m> are real numbers, then
+            <me>
+              \left|\sin\left(\sum_{i=1}^n x_i\right)\right| \le \sum_{i=1}^n\left|\sin x_i\right|
+            </me>.
+            (Use the trig identity for <m>\sin(\alpha+\beta)</m>.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Show that if <m>A_1,\dots, A_n</m> are sets, then
+            <me>
+              \left(A_1\cup \dots \cup A_n\right)^c =A_1^c\cap\dots \cap A_n^c
+            </me>.
+            (This is a generalization of De Morgan's Law to unions of <m>n</m> sets.
+            Use De Morgan's Law for two sets (<m>(A\cup B)^c=A^c\cap B^c</m>) and induction to prove this result.)
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      We'll give outlines of the proofs of (i) and
+      (ii).
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          This exercise will provide a proof of (i).
+          <p>
+            We will need the following assertion in the proof:
+            <me>
+              \text{ If } x \text{ and }  y \text{ are odd, then }  xy \text{ is also odd. }
+            </me>
+            We know that <m>x</m> is odd if and only if mod(<m>x</m>,2)=1.
+            Use this and facts from modular arithmetic to prove the needed assertion.
+          </p>
+          <p>
+            Fill in the blanks in the following proof of (i).
+          </p>
+          <proof>
+            <p>
+              We will prove by induction on <m>n</m> the following statement:
+              <me>
+                \tag{\(P(n)\)} \text{ If \(x_1,\dots,x_n\) are odd numbers, then \(x_1x_2\dots x_n\) is odd. }
+              </me>
+            </p>
+            <p>
+              <em>Base case:</em> For <m>n=1</m>,
+              the product <m>x_1\dots x_n</m> reduces to <m>\underline{~\lt 1>~}</m>,
+              which is odd whenever <m>x_1</m> is odd.
+              Hence <m>P(n)</m> is true for <m>n=1</m>.
+            </p>
+            <p>
+              <em>Induction step.</em>
+            </p>
+            <ul>
+              <li>
+                <p>
+                  Let <m>k\ge 1</m>, and suppose (<m>*</m>) is true for <m>n=k</m>,
+                  i.e., suppose that any product of
+                  <m>\underline{~\lt 2>~}</m> odd numbers is again odd.
+                </p>
+              </li>
+              <li>
+                <p>
+                  We seek to show that <m>\underline{~\lt 3>~}</m> is true,
+                  i.e., that any product of <m>\underline{~\lt 4>~}</m> odd numbers is odd.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Let <m>x_1,\dots,x_{k+1}</m> be odd numbers.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Applying the induction hypothesis to <m>x_1,\dots,x_k</m>,
+                  we obtain that the product <m>\underline{~\lt 5>~}</m> is odd.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Since <m>x_{k+1}</m> is <m>\underline{~\lt 6>~}</m> and,
+                  by part (a) the product of two odd numbers is again odd,
+                  it follows that <m>x_1x_2\dots x_{k+1} = (x_1\dots x_k)x_{k+1}</m> is odd.
+                </p>
+              </li>
+              <li>
+                <p>
+                  As <m>x_1,\dots,x_{k+1}</m> were arbitrary odd numbers,
+                  we have proved <m>\underline{~\lt 7>~}</m>,
+                  so the induction step is complete.
+                </p>
+              </li>
+            </ul>
+            <p>
+              <em>Conclusion:</em> By the principle of induction,
+              it follows that <m>P(n)</m> is true for all <m>n\in\NN</m>.
+            </p>
+          </proof>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Complete an outline of a proof of (ii) by responding to the following items.
+          <ol type="a">
+            <li>
+              <p>
+                What statement do we want to prove for all natural numbers <m>n</m> and for all real numbers <m>a_i</m> and <m>b_i</m> (<m>i=1,\dots,n</m>) such that <m>a_i\le b_i</m>?
+                Call this statement
+                <q>P(n)</q>. (Note that the condition
+                <q>for all real numbers <m>a_i</m> and <m>b_i</m></q>
+                must be part of the induction statement we seek to prove.)
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Base case:</em> Show that <m>P(1)</m> is true.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Induction step:</em> Let <m>k\ge 1</m>.
+                Write <m>P(k)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We seek to prove that <m>P(k)</m> implies <m>P(k+1)</m>.
+                We may rewrite <m>P(k+1)</m> as follows
+                (fill in the blanks):
+                Let <m>a_1,\dots,a_{k+1}</m> and
+                <m>b_1,\dots,b_{k+1}</m> be given real numbers such that
+                <em><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/></em> for each <m>i</m>.
+                Then
+                <md>
+                  <mrow>\sum_{i=1}^{k+1}a_i \amp =\underline{~~~~~} + a_{k+1}</mrow>
+                </md>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Assuming that <m>P(k)</m> is true,
+                use <xref ref="proposition_Preliminaries_sumIneq">Proposition</xref>
+                to show that <m>P(k+1)</m> is also true.
+                This is equivalent to showing that <m>P(k)</m> implies <m>P(k+1)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Conclusion:</em> What is the final conclusion?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

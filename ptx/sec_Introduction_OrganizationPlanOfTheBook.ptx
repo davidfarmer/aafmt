@@ -1,0 +1,184 @@
+<section xml:id="sec_Introduction_OrganizationPlanOfTheBook">
+  <title>Organization plan of the book</title>
+  <figure xml:id="fig_organization">
+    <caption>Interdependence of chapters</caption>
+    <image width="73%" source="images/chapterdependence.png"/>
+  </figure>
+  <p>
+    A chapter organization diagram is given in <xref ref="fig_organization">Figure</xref>.
+    Brief descriptions of the chapters and their dependencies are as follows:
+    <ol>
+      <li>
+        <p>
+          Preliminaries: A review of properties of integers, rationals,
+          and reals, at the high school level.
+          We only review the properties <mdash/> we do not formally construct these number systems.
+          Some remedial exercises are included.
+          Used in: All other chapters.
+        </p>
+      </li>
+      <li>
+        <p>
+          Complex numbers: Basic properties of complex arithmetic,
+          polar form, exponentiation and roots.
+          Some exercises require proofs of complex number properties.
+          The last section presents applications to signal processing and fractals.
+          Used in: Symmetries (10); all theory chapters (
+        </p>
+      </li>
+      <li>
+        <p>
+          Modular arithmetic: The gold-standard example of finite groups and rings.
+          Arithmetic properties, Euclidean algorithm, Diophantine equations; We bring out homomorphism properties
+          (without the terminology).
+          Used in: all subsequent chapters
+        </p>
+      </li>
+      <li>
+        <p>
+          Modular arithmetic, decimals, and divisibility:
+          application of modular arithmetic to decimal representation of real numbers
+          (in arbitrary bases)
+          and divisibility rules.
+        </p>
+      </li>
+      <li>
+        <p>
+          Sets.
+          Basic set properties.
+          Can be skipped if students have an adequate background in discrete math.
+          Used in: functions
+        </p>
+      </li>
+      <li>
+        <p>
+          Functions.
+          Basic ideas of domain, range, into, onto, bijection.
+          This chapter can be skipped if students have an adequate background.
+          Used in: all subsequent chapters
+        </p>
+      </li>
+      <li>
+        <p>
+          Introduction to cryptography: Explains the concepts of public and private key cryptography,
+          and describes some classic cyphers as well as RSA. Used in: Further topics in Cryptography (13)
+        </p>
+      </li>
+      <li>
+        <p>
+          Sigma notation: This chapter prepares for the
+          <q>polynomials</q>
+          chapter.
+          Sigma notation is useful in linear algebra as well.
+          Can be skipped if students are already familiar with this notation.
+          Used in: Polynomials (9)
+        </p>
+      </li>
+      <li>
+        <p>
+          Polynomials: fundamental example of rings.
+          Euclidean algorithm for polynomials over fields.
+          FTOA, prove easy part and discuss the hard part.
+          Will cover this again more rigorously in later chapter.
+          Used in: Introduction to Groups (12), Introduction to Rings (20)
+        </p>
+      </li>
+      <li>
+        <p>
+          Symmetries: Symmetries are a special case of permutations.
+          They are treated first because they are easily visualizable,
+          and because they connect algebraic aspects to geometry as well as complex numbers.
+          Used in: Permutations (11)
+        </p>
+      </li>
+      <li>
+        <p>
+          Permutations: In light of Cayley's theorem,
+          this example is key to the understanding of finite groups.
+          Students are introduced to the mechanics of working with permutations,
+          including cycle multiplication.
+          Cycle structure is explored, as are even and odd permutations.
+          Used in: Introduction to Groups (12)
+        </p>
+      </li>
+      <li>
+        <p>
+          Introduction to Groups: This chapter introduced basic properties of groups,
+          subgroups, and cyclic groups,
+          drawing heavily on the examples presented in previous chapters.
+          Used in: all subsequent chapters
+        </p>
+      </li>
+      <li>
+        <p>
+          Further topics in cryptography.
+          Diffie-Hellman key exchange,
+          elliptic curve cryptography over
+          <m>{\mathbb R}</m> and over <m>{\mathbb Z}_p</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Equivalence relations and equivalence classes.
+          This is necessary for understanding cosets.
+          This chapter may be skipped if studentshave seen them before.
+          Used in: Cosets and Factor Groups (15)
+        </p>
+      </li>
+      <li>
+        <p>
+          Cosets and Factor Groups: Introductory properties, Lagrange's theorem, Fermat's Theorem,
+          simple groups.
+          Used in: all subsequent chapters.
+        </p>
+      </li>
+      <li>
+        <p>
+          Error Detecting and Correcting Codes.
+          A discussion of block codes.
+          Some knowledge of linear algebra is required.
+        </p>
+      </li>
+      <li>
+        <p>
+          Isomorphisms of Groups: Examples and basic properties;
+          direct products (internal and external);
+          classification of abelian groups up to isomorphism.
+          Used in: all subsequent chapters
+        </p>
+      </li>
+      <li>
+        <p>
+          Homomorphisms of Groups: Kernel of homomorphism; properties;
+          first isomorphism theorem.
+          Used in: all subsequent chapters
+        </p>
+      </li>
+      <li>
+        <p>
+          Group Actions: Besides basic definitions,
+          this chapter contains a long discussion of group actions applied to regular polyhedral,
+          as well as the universal covering space of the torus.
+        </p>
+      </li>
+      <li>
+        <p>
+          Introduction to Rings: Includes definitions and examples;
+          subrings and product rings; extending polynomial rings to fields;
+          isomorphisms and homomorphisms;
+          ideals; principal ideal domains;
+          prime ideals and unique factorization domains;
+          division rings; fields;
+          algebraic extensions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Appendix: Induction Proofs <mdash/> patterns and examples.
+          Some proofs in the book require induction.
+          This section gives the background needed for students to write formal induction proofs.
+        </p>
+      </li>
+    </ol>
+  </p>
+</section>

@@ -1,0 +1,255 @@
+<section xml:id="sec_Functions_CartesianProduct">
+  <title>The Cartesian product: a different type of set operation  <nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    In the previous chapter,
+    we introduced set operations such as <m>\cup</m> and <m>\cap</m>.
+    In this chapter we are going to need yet another set operation.
+    This operation is called the "Cartesian product", and is denoted by the symbol <times/>.
+    In order to define the Cartesian product,
+    we will first need a preliminary definition:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {orderedpair} For any objects x and y, mathematicians use (x, y) to denote the
+        <term>ordered pair</term><idx><h>Ordered pair</h><h>definition of</h></idx> whose first coordinate is <m>x</m> and whose second coordinate is <m>y</m>.
+        Two ordered pairs are equal if and only if both coordinates are equal:
+        <me>
+          (x_1,y_1) = (x_2,y_2)~ \mbox{ iff }   x_1 = x_2 \mbox{ and }  y_1 = y_2
+        </me>.
+      </p>
+    </statement>
+  </definition>
+  <example xml:id="example_Functions_R2">
+    <statement>
+      <p>
+        The
+        <q>coordinate plane</q>
+        (or
+        <q><m>xy</m>-plane</q>
+        ) that is used for graphing functions is one example of a set of ordered pairs.
+        The <m>xy</m>-plane corresponds to <m>{\mathbb R} \times {\mathbb R}</m>
+        (sometimes written as <m>{\mathbb R}^2</m>),
+        and is the set of ordered pairs of real numbers:
+        <me>
+          {\mathbb R} \times {\mathbb R} = \{ (x, y) | x \in {\mathbb R}, y \in {\mathbb R} \}
+        </me>
+      </p>
+      <p>
+        Notice that the elements of <m>{\mathbb R}^2</m> are
+        <em>not</em> real numbers,
+        but rather ordered pairs of real numbers.
+        In other words,
+      </p>
+      <p>
+        <m>x \in {\mathbb R}</m> and <m>y \in {\mathbb R}</m>,
+        but <m>(x, y) \notin {\mathbb R}</m>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    We arrive at our general definition of Cartesian product by replacing <m>{\mathbb R}</m> and
+    <m>{\mathbb R}</m> in our previous example with arbitrary sets <m>A</m> and <m>B</m>:
+  </p>
+  <definition>
+    <statement>
+      <p>
+        {cartesianprod} For any sets <m>A</m> and <m>B</m>,
+        we define the <term>Cartesian product</term>
+        of <m>A</m> and <m>B</m> (denoted
+        <m>A \times B</m> as:<idx><h>Cartesian product</h><h>formal definition</h></idx>
+        <me>
+          A \times B = \{ (a, b) | a \in A, b \in B \}
+        </me>
+      </p>
+      <p>
+        In other words, <m>x</m> is an element of
+        <m>A \times B</m> if and only if <m>x</m> is an ordered pair of the form <m>(a,b)</m>,
+        where <m>a</m> is an element of <m>A</m> and <m>b</m> is an element of <m>B</m>.
+      </p>
+    </statement>
+  </definition>
+  <example xml:id="example_Functions_4">
+    <statement>
+      <ol>
+        <li>
+          <p>
+            <m>\{2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A \} \times \{ \clubsuit, \heartsuit, \spadesuit, \diamondsuit \} = \mbox{ \{a standard deck of cards \}}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\{1, 2, 3\} \times \{a, b\} = \{ (1, a), (1, b), (2, a), (2, b), (3, a), (3, b) \}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\{a, b\} \times \{1, 2, 3\} = \{ (a, 1), (a, 2), (a, 3), (b, 1), (b, 2), (b, 3) \}</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </example>
+  <exercise>
+    <statement>
+      <p>
+        In view of the previous example, is <times/> commutative?
+        <em>Explain</em> your answer.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Functions_6">
+    <statement>
+      <p>
+        Specify each set by listing its elements.
+        <ol type="a">
+          <li>
+            <p>
+              <m>\{a, i\} \times \{n, t\}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\{Q, K\} \times \{ \clubsuit, \heartsuit, \spadesuit, \diamondsuit \}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\{1, 2, 3\} \times \{3, 4, 5\}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\{y,g,Y,G\} \times \{y,g,Y,G\}</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Now <m>A \times B</m> can be considered an operation on the sets <m>A</m> and <m>B</m>,
+    just like <m>A \cup B</m> and <m>A \cap B</m>.
+    But there is a very significant difference.
+    Recall that if <m>A</m> and <m>B</m> are both subsets of the same universal set <m>U</m>,
+    then so are <m>A \cup B</m> and <m>A \cap B</m>.
+    This is <em>not</em> the case for <m>A \times B</m>!
+    The operation <m>A \times B</m> takes the sets <m>A</m> and <m>B</m> and creates another set with a
+    <em>completely new</em> type of element!
+  </p>
+  <exercise xml:id="exercise_Functions_7">
+    <statement>
+      <p>
+        Let <m>A = \{a,b\}</m> and let <m>B = \{b,c\}</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Write the elements of <m>A \times B</m>
+              (there are four).
+            </p>
+          </li>
+          <li>
+            <p>
+              What is <m>A \cap (A \times B)</m>? (Another way of thinking about this is:
+              what elements of <m>A</m> are also elements of <m>A \times B</m>?)
+            </p>
+          </li>
+          <li>
+            <p>
+              What is <m>B \cap (A \times B)</m>? (Another way of thinking about this is:
+              what elements of <m>B</m> are also elements of <m>A \times B</m>?)
+            </p>
+          </li>
+          <li>
+            <p>
+              We have shown in the previous chapter that the subsets of
+              <m>\{a,b,c\}</m> are closed under <m>\cup</m> and <m>\cap</m>.
+              Are the subsets of <m>\{a,b,c\}</m> also closed under <times/>?
+              <em>Explain</em> your answer.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    We have been trying to emphasize that
+    <m>A \times B</m> is a very different set from the sets <m>A</m> and <m>B</m>.
+    One question we could ask is:
+    how does the number of elements in
+    <m>A \times B</m> compare with the numbers of elements in the sets <m>A</m> and <m>B</m>?
+    By considering the above examples,
+    you may be able to figure out a formula for yourself.
+    Go ahead and try, before reading the answer below.
+  </p>
+  <proposition xml:id="proposition_Functions_prop1">
+    <statement>
+      <p>
+        Given any sets <m>A</m> and <m>B</m>, then:
+        <me>
+          |A \times B|= |A| \cdot |B|
+        </me>.
+      </p>
+      <p>
+        Here the notation ''<m>|S|</m>" means the number of elements in <m>S</m>.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      We can prove this formula by some creative arranging.
+      Suppose the sets <m>A</m> and <m>B</m> have <m>m</m> and <m>n</m> elements,
+      respectively.
+      We may list these elements as follows:
+      <me>
+        A = \{a_1,a_2,a_3,...,a_m\} \mbox{ and }  B = \{b_1,b_2,b_3,...,b_n\}
+      </me>.
+    </p>
+    <p>
+      It follows that the elements of <m>A \times B</m> are:
+      <me>
+        \begin{array}{ccccc} (a_1, b_1), \amp  (a_1, b_2), \amp  (a_1, b_3), \amp  \cdots \amp  (a_1, b_n), \\ (a_2, b_1), \amp  (a_2, b_2), \amp  (a_2, b_3), \amp  \cdots \amp  (a_2, b_n), \\ (a_3, b_1), \amp  (a_3, b_2), \amp  (a_3, b_3), \amp  \cdots \amp  (a_3, b_n), \\ \cdots \amp  \cdots \amp  \cdots \amp  \cdots \amp  \cdots \\ \cdots \amp  \cdots \amp  \cdots \amp  \cdots \amp  \cdots \\ \cdots \amp  \cdots \amp  \cdots \amp  \cdots \amp  \cdots \\ (a_m, b_1), \amp  (a_m, b_2), \amp  (a_m, b_3), \amp  \cdots \amp  (a_m, b_n). \end{array}
+      </me>
+    </p>
+    <p>
+      In the above table that represents the elements of <m>A \times B</m>:
+      <ul>
+        <li>
+          <p>
+            each row has exactly n elements, and
+          </p>
+        </li>
+        <li>
+          <p>
+            there are m rows,
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      It follows that the number of entries in the table is <m>m \cdot n</m>.
+    </p>
+  </proof>
+  <exercise xml:id="exercise_Functions_9">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            If <m>B = \{\mbox{vanilla, chocolate,
+            strawberry} \}</m>, then what is <m>B \times \emptyset</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Using the definition of Cartesian product,
+            show that for any set <m>A</m>,
+            <m>A \times \emptyset = \emptyset</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+</section>

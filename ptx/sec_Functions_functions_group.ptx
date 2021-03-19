@@ -1,0 +1,192 @@
+<section xml:id="sec_Functions_functions_group">
+  <title>Do functions from <m>A</m> to <m>B</m> form a group?</title>
+  <p>
+    At the end of the Sets chapter in <xref ref="sec_Sets_SetGroup">Section</xref>
+    we considered the question, Do the subsets of a set form a group?
+    Let's consider a similar question,
+    but this time with functions.
+  </p>
+  <p>
+    Recall (once again) from <xref ref="subsec_ModularArithmetic_DefOfGroup">Section</xref>
+    that a group is a set together with an operation defined on that set such that:
+    <ol>
+      <li>
+        <p>
+          The set is <em>closed</em> under the operation (in other words,
+          the operation has the property of <em>closure</em>);
+        </p>
+      </li>
+      <li>
+        <p>
+          The set has a unique <em>identity</em>;
+        </p>
+      </li>
+      <li>
+        <p>
+          Every element of the set has its own <em>inverse</em>;
+        </p>
+      </li>
+      <li>
+        <p>
+          The set elements satisfy the <em>associative property</em>
+          under the group operation;
+        </p>
+      </li>
+    </ol>
+  </p>
+  <p>
+    If we're going to make a group out the set of functions from <m>A</m> to <m>B</m>,
+    the first thing we need to do is define an operation.
+    So far, the only operation we have on functions is composition.
+    But this gives us a problem,
+    because the composition of two functions that have the same domain and the same codomain isn't always well-defined:
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Give an example of sets <m>A</m> and <m>B</m> and two functions <m>f: A \rightarrow B</m> and
+        <m>g: A \rightarrow B</m> such that the composition <m>f \compose g</m> is
+        <em>not</em> well-defined.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    For <m>f \compose g</m> to be well-defined,
+    the domain of <m>f</m> must contain the range of <m>g</m>.
+    We can guarantee this by taking <m>B=A</m>,
+    so we consider only functions from a set <m>A</m> to itself:
+  </p>
+  <exercise xml:id="exercise_Functions_AAclosed">
+    <statement>
+      <p>
+        Given that <m>f: A \rightarrow A</m> and <m>g: A \rightarrow A</m>,
+        show that <m>f \compose g</m> and
+        <m>g \compose f</m> are both well-defined functions from <m>A</m> to <m>A</m>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    <xref ref="exercise_Functions_AAclosed">Exercise</xref>
+    confirms that the set of functions from <m>A</m> to <m>A</m> is closed under the operation of composition.
+    So far, so good<ndash/>but we still have more fish to fry.
+    We still need to find an identity for our set.
+    This one's not hard:
+    <xref ref="definition_Functions_identityMap">Definition</xref>
+    gives us the identity map <m>\Id_A</m>.
+  </p>
+  <p>
+    That takes care of two group properties<ndash/>we have two more to go.
+    Let's look at inverses.
+    We've seen that not all functions have inverses under composition.
+    So to make this part work,
+    we'll have to further restrict ourselves to the set of <em>invertible</em>
+    functions from <m>A</m> to <m>A</m>.
+  </p>
+  <p>
+    The last thing we need to verify is the associtive property.
+    Fortunately,
+    you already showed that function composition is associative in <xref ref="exercise_Functions_func_comp_assoc">Exercise</xref>.
+  </p>
+  <p>
+    The foregoing discussion amounts to a proof of the following proposition.
+  </p>
+  <proposition xml:id="proposition_Functions_functionGroup">
+    <statement>
+      <p>
+        Let <m>A</m> be a set,
+        and let <m>G</m> be the set of all invertible functions from <m>A</m> to <m>A</m>.
+        Then <m>G</m> is a group under composition.
+      </p>
+    </statement>
+  </proposition>
+  <p>
+    In the following exercise we look at some particular sets of functions,
+    and investigate whether or not these sets form groups under composition.
+    Recall that to show whether or not a set with binary operation is a group,
+    you just need to show the properties:
+    closure, identity, inverse, and associative.
+    We're lucky in this case that we don't have to prove associative in every single case,
+    because the operation of function composition is always associative,
+    as we've proven before.
+    So it's enough just to prove closure, identity, and inverse.
+  </p>
+  <exercise xml:id="exercise_Functions_GpCompFun">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Let <m>G_1</m> be the set of all nonzero functions from <m>\mathbb{R}</m> to
+            <m>\mathbb{R}</m> of the form <m>f(x)=ax</m>,
+            where <m>a</m> is a nonzero real number. (For example,
+            the functions <m>g(x) = -7x</m> and
+            <m>h(x) = \sqrt{2}x</m> are both elements of <m>G_1</m>.) Prove or disprove:
+            <m>G_1</m> is a group under composition.
+            (Note: <m>G_1</m> is the set of nonzero
+            <term>linear functions</term>
+            from <m>\mathbb{R}</m> to <m>\mathbb{R}</m>.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>G_2</m> be the set of all nonzero functions from
+            <m>\mathbb{R}</m> to <m>\mathbb{R}</m> of the form
+            <m>f(x)=ax+b</m> where <m>a</m> and <m>b</m> are real numbers which are not both zero. (For example,
+            the functions <m>p(x) = 29.4x + 42.3</m>,
+            <m>q(x) = 15</m> and <m>r(x) = -\pi x</m> are all elements of <m>G_2</m>.) Prove or disprove:
+            <m>G_2</m> is a group under composition.
+            (Note: <m>G_2</m> is called the set of all nonzero
+            <term>affine functions</term>
+            from <m>\mathbb{R}</m> to <m>\mathbb{R}</m>.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>G_3</m> be the set of all nonconstant functions from
+            <m>\mathbb{R}</m> to <m>\mathbb{R}</m> of the form
+            <m>f(x)=ax+b</m> where <m>a</m> is a nonzero real number and <m>b</m> can be any real number.
+            Prove or disprove: <m>G_3</m> is a group under composition.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>G_4</m> be the set of all functions from
+            <m>\mathbb{R}</m> to <m>\mathbb{R}</m> of the form
+            <m>f(x)=ax^3</m>,where <m>a</m> is a nonzero real number.
+            Prove or disprove: <m>G_4</m> is a group under composition.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>G_5</m> be the set of all functions  from
+            <m>\mathbb{R}</m> to <m>\mathbb{R}</m> of the form
+            <me>
+              f(x)= \begin{cases}ax, \qquad \text{ for }  x \text{ rational } \\ bx, \qquad \text{ for }  x \text{ irrational } \end{cases}
+            </me>
+            where <m>a</m> and <m>b</m> are nonzero
+            <em>rational</em> numbers.
+            Prove or disprove: <m>G_5</m> is a group under composition.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    Finally, recall that some groups are commutative
+    (commutative groups are also called
+    <term>abelian</term> groups).
+    Are groups under composition always abelian?
+    Let's find out:
+  </p>
+  <exercise xml:id="exercise_Functions_abelian_ex">
+    <statement>
+      <p>
+        For each of the examples in <xref ref="exercise_Functions_GpCompFun">Exercise</xref> which are groups,
+        prove or disprove that the group is abelian.
+        To check this, you just need to check whether or not the formula
+        <m>f \compose g = g \compose f</m> for all <m>f,g</m> in the set.
+        What this means is that if the group is not abelian,
+        all you need to do is provide a single counterexample.
+      </p>
+    </statement>
+  </exercise>
+</section>

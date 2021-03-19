@@ -1,0 +1,237 @@
+<section xml:id="sec_Induction_FallaciesAndPitfalls">
+  <title><nbsp/>Fallacies and pitfalls</title>
+  <p>
+    By now, induction proofs should feel routine to you,
+    to the point that you could almost do them in your sleep.
+    However, it is important not to become complacent and careless,
+    for example,
+    by skipping seemingly minor details in the write-up,
+    omitting quantifiers, or neglecting to check conditions and hypotheses.
+  </p>
+  <p>
+    Below are some examples of false induction proofs that illustrate what can happen when some minor details are left out.
+    In each case,
+    the statement claimed is clearly nonsensical (e.g., that all numbers are equal),
+    but the induction argument sounds perfectly fine,
+    and in some cases the errors are quite subtle and hard to spot.
+    Try to find them!
+  </p>
+  <example xml:id="example_Induction_fall1">
+    <statement>
+      <p>
+        Let us
+        <q>prove</q>
+        that for all <m>n\in\NN</m>,
+        <me>
+          \tag{\(P(n)\)} \sum_{i=1}^n i=\frac12(n+\frac12)^2
+        </me>
+      </p>
+      <p>
+        <em>Proof:</em> We prove the claim by induction.
+      </p>
+      <p>
+        <em>Base step:</em> When <m>n=1</m>, <m>P(n)</m> holds.
+      </p>
+      <p>
+        <em>Induction step:</em> Let <m>k\in\NN</m> and suppose <m>P(k)</m> holds.
+        Then
+        <md>
+          <mrow>\sum_{i=1}^{k+1} i \amp =\sum_{i=1}^k i + (k+1)</mrow>
+          <mrow>\amp =\frac12\left(k+\frac12\right)^2+ (k+1) \text{ (by ind. hypothesis) }</mrow>
+          <mrow>\amp =\frac12\left(k^2+k+\frac14+2k+2\right) \text{ (by algebra) }</mrow>
+          <mrow>\amp =\frac12\left(\left(k+1+\frac12\right)^2-3k-\frac94 +k+\frac14+2k+2\right) \text{ (more algebra) }</mrow>
+          <mrow>\amp =\frac12\left((k+1)+\frac12\right)^2 \text{ (simplifying). }</mrow>
+        </md>
+      </p>
+      <p>
+        Thus, <m>P(k+1)</m> holds, so the induction step is complete.
+      </p>
+      <p>
+        <em>Conclusion:</em> By the principle of induction,
+        <m>P(n)</m> holds for all <m>n\in\NN</m>.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_Induction_fall2">
+    <statement>
+      <p>
+        Now we will
+        <q>prove</q>
+        that all real numbers are equal.
+        To prove the claim, we will prove by induction that,
+        for all <m>n\in\NN</m>, the following statement holds:
+        <me>
+          \text{ For any real numbers \(a_1,a_2,\dots, a_n\), we have \(a_1=a_2=\dots=a_n\). } \tag{\(P(n)\)}
+        </me>
+      </p>
+      <p>
+        <em>Base step:</em> When <m>n=1</m>,
+        the statement is trivially true, so <m>P(1)</m> holds.
+      </p>
+      <p>
+        <em>Induction step:</em> Let <m>k\in\NN</m> be given and suppose <m>P(k)</m> is true,
+        i.e., that any <m>k</m> real numbers must be equal.
+        We seek to show that <m>P(k+1)</m> is true as well,
+        i.e., that any <m>k+1</m> real numbers must also be equal.
+      </p>
+      <p>
+        Let <m>a_1,a_2,\dots,a_{k+1}</m> be given real numbers.
+        Applying the induction hypothesis to the first <m>k</m> of these numbers,
+        <m>a_1,a_2,\dots,a_k</m>, we obtain
+        <me>
+          \tag{1} a_1=a_2=\dots=a_k
+        </me>.
+      </p>
+      <p>
+        Similarly, applying the induction hypothesis to the last <m>k</m> of these numbers,
+        <m>a_2,a_3,\dots,a_k,a_{k+1}</m>, we get
+        <me>
+          \tag{2} a_2=a_3=\dots=a_k=a_{k+1}
+        </me>.
+      </p>
+      <p>
+        Combining (1) and (2) gives
+        <me>
+          \tag{3} a_1=a_2=\dots=a_k=a_{k+1}
+        </me>,
+        so the numbers <m>a_1,a_2,\dots,a_{k+1}</m> are equal.
+        Thus, we have proved <m>P(k+1)</m>,
+        and the induction step is complete.
+      </p>
+      <p>
+        <em>Conclusion:</em> By the principle of induction,
+        <m>P(n)</m> is true for all <m>n\in\NN</m>.
+        Thus, any <m>n</m> real numbers must be equal.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_Induction_fall3">
+    <statement>
+      <p>
+        Here is a
+        <q>proof</q>
+        that for every nonnegative integer <m>n</m>,
+        <me>
+          \tag{\(P(n)\)} 5n=0
+        </me>.
+      </p>
+      <p>
+        <em>Proof:</em> We prove that <m>P(n)</m> holds for all <m>n=0,1,2,\dots</m>,
+        using strong induction with the case <m>n=0</m> as base case.
+      </p>
+      <p>
+        <em>Base step:</em> When <m>n=0</m>,
+        <m>5n=5\cdot0=0</m>, so <m>P(n)</m> holds in this case.
+      </p>
+      <p>
+        <em>Induction step:</em> Suppose <m>P(n)</m> is true for all integers <m>n</m> in the range <m>0\le n\le k</m>,
+        i.e., that for all integers in this range <m>5n=0</m>.
+        We will show that <m>P(k+1)</m> also holds, so that
+        <me>
+          \tag{\(P(k+1)\)} 5(k+1)=0
+        </me>.
+      </p>
+      <p>
+        Write <m>k+1=i+j</m> with integers <m>i,j</m> satisfying <m>0\le i,j\le k</m>.
+        Applying the induction hypothesis to <m>i</m> and <m>j</m>,
+        we get <m>5i=0</m> and <m>5j=0</m>.
+        Then
+        <me>
+          5(k+1)=5(i+j)=5i+5j=0+0=0
+        </me>,
+        proving <m>P(k+1)</m>.
+        Hence the induction step is complete.
+      </p>
+      <p>
+        <em>Conclusion:</em> By the principle of strong induction,
+        <m>P(n)</m> holds for all nonnegative integers <m>n</m>.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_Induction_fall4">
+    <statement>
+      <p>
+        Let's
+        <q>prove</q>
+        that for every nonnegative integer <m>n</m>,
+        <me>
+          \tag{\(P(n)\)} 2^n=1
+        </me>
+      </p>
+      <p>
+        <em>Proof:</em> We prove that <m>P(n)</m> holds for all <m>n=0,1,2,\dots</m>,
+        using strong induction with the case <m>n=0</m> as base case.
+      </p>
+      <p>
+        <em>Base step:</em> When <m>n=0</m>,
+        <m>2^0=1</m>, so <m>P(0)</m> holds.
+        (Note: it is perfectly OK to begin with a base case of <m>n=0</m>.)
+      </p>
+      <p>
+        <em>Induction step:</em> Suppose <m>P(n)</m> is true for all integers <m>n</m> in the range <m>0\le n\le k</m>,
+        i.e., assume that for all integers in this range <m>2^n=1</m>.
+        We will show that <m>P(k+1)</m> also holds, i.e.,
+        <me>
+          \tag{\(P(k+1)\)} 2^n=1
+        </me>
+      </p>
+      <p>
+        We have
+        <md>
+          <mrow>2^{k+1}\amp =\frac{2^{2k}}{2^{k-1}} ~\text{ (by algebra) }</mrow>
+          <mrow>\amp =\frac{2^k\cdot 2^k}{2^{k-1}} \text{ (by algebra) }</mrow>
+          <mrow>\amp =\frac{1\cdot 1}{1} ~~\text{ (by strong ind. hypothesis applied to each term) }</mrow>
+          <mrow>\amp =1 \qquad~~~\text{ (simplifying), }</mrow>
+        </md>
+        proving <m>P(k+1)</m>.
+        Hence the induction step is complete.
+      </p>
+      <p>
+        <em>Conclusion:</em> By the principle of strong induction,
+        <m>P(n)</m> holds for all nonnegative integers <m>n</m>.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_Induction_fall5">
+    <statement>
+      <p>
+        We will
+        <q>prove</q>
+        that all positive integers are equal.
+        To prove this claim, we will prove by induction that,
+        for all <m>n\in\NN</m>, the following statement holds:
+        <me>
+          \text{ For any \(x,y\in\NN\), if \(\max(x,y)=n\), then \(x=y\). } \tag{\(P(n)\)}
+        </me>
+      </p>
+      <p>
+        (Here <m>\max(x,y)</m> denotes the larger of the two numbers <m>x</m> and <m>y</m>,
+        or the common value if both are equal.)
+      </p>
+      <p>
+        <em>Base step:</em> When <m>n=1</m>,
+        the condition in <m>P(1)</m> becomes <m>\max(x,y)=1</m>.
+        But this forces <m>x=1</m> and <m>y=1</m>, and hence <m>x=y</m>.
+      </p>
+      <p>
+        <em>Induction step:</em> Let <m>k\in\NN</m> be given and suppose <m>P(k)</m> is true.
+        We seek to show that <m>P(k+1)</m> is true as well.
+      </p>
+      <p>
+        Let <m>x,y\in\NN</m> such that <m>\max(x,y)=k+1</m>.
+        Then <m>\max(x-1,y-1)=\max(x,y)-1=(k+1)-1=k</m>.
+        By the induction hypothesis,
+        it follows that <m>x-1=y-1</m>, and therefore <m>x=y</m>.
+        This proves <m>P(k+1)</m>, so the induction step is complete.
+      </p>
+      <p>
+        <em>Conclusion:</em> By the principle of induction,
+        <m>P(n)</m> is true for all <m>n\in\NN</m>.
+        In particular,
+        since <m>\max(1,n)=n</m> for any positive integer <m>n</m>,
+        it follows that <m>1=n</m> for any positive integer <m>n</m>.
+        Thus, all positive integers must be equal to <m>1</m>
+      </p>
+    </statement>
+  </example>
+</section>

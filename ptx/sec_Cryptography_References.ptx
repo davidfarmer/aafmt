@@ -1,0 +1,64 @@
+<section xml:id="sec_Cryptography_References">
+  <title>References and suggested readings</title>
+  <ul>
+    <li>
+      <p>
+        [<em>[1]</em>] Bressoud, D. M. <em>Factorization and Primality Testing</em>.
+        Springer-Verlag, New York, 1989.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[2]</em>] Diffie, W. and Hellman, M. E.
+        <q>New Directions in Cryptography,</q>
+        <em>IEEE Trans.
+        Inform.
+        Theory</em> <em>22</em> (1976), 644<ndash/>54.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[3]</em>] Gardner, M.
+        <q>A New Kind of Cipher that Would Take a Million Years to Break,</q>
+        <em>Scientific American</em> <em>237</em> (1977), 120<ndash/>24.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[4]</em>] Granville, A.
+        <q>Primality Testing and Carmichael Numbers,</q>
+        <em>Notices of the American Mathematical Society</em>
+        <em>39</em>(1992), 696<ndash/>700.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[5]</em>] Hellman, M. E.
+        <q>The Mathematics of Public Key Cryptography,</q>
+        <em>Scientific American</em> <em>241</em> (1979), 130<ndash/>39.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[6]</em>] Koblitz, N. <em>A Course in Number Theory and Cryptography</em>.
+        Springer-Verlag, New York, 1987.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[7]</em>] Pomerance, C., ed.
+        <em>Cryptology and Computational Number Theory</em>.
+        Proceedings of Symposia in Applied Mathematics, vol. 42.
+        American Mathematical Society, Providence, RI, 1990.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[8]</em>] Rivest, R. L., Shamir, A., and Adleman, L.,
+        <q>A Method for Obtaining Signatures and Public-key Cryptosystems,</q>
+        <em>Comm.
+        ACM</em> <em>21</em>(1978), 120<ndash/>26.
+      </p>
+    </li>
+  </ul>
+</section>

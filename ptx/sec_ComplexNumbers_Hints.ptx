@@ -1,0 +1,149 @@
+<section xml:id="sec_ComplexNumbers_Hints">
+  <title>Hints for
+  <q>Complex Numbers</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_ComplexNumbers_m2even">Exercise</xref>(b) Start your proof this way:
+    <q>Given that <m>m</m> is an integer and <m>m^2</m> is even.
+    Suppose that <m>m</m> is odd.
+    Then <m>\ldots</m></q>
+    (complete the proof by obtaining a contradiction.
+    You should make use of part (a) in your proof.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_m2even">Exercise</xref>(c) The proof is similar to that in (b).
+    What modifications do you need to make?
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_6">Exercise</xref>(a) Start out your proof this way:
+    <q>Let <m>x</m> be the cube root of 2.
+    Then <m>x</m> satisfies the equation <m>x^3 = 2</m>.</q>
+    For the rest of the proof,
+    follow closely the proof of <xref ref="proposition_ComplexNumbers_irrational">Proposition</xref>. (Or use the statement<m>-</m>reason format,
+    if you prefer.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_2">Exercise</xref> Since <m>3 | n</m>,
+    it follows that <m>n=3j</m> for some integer <m>j</m>.
+    Obtain a similar equation from <m>4|m</m>,
+    and multiply your equations together.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_3">Exercise</xref> Since <m>n | 4m</m>,
+    it follows that <m>4m=n\cdot j</m> for some integer <m>j</m>.
+    Since <m>12 | n</m>, then what can you substitute for <m>n</m>?
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_root3">Exercise</xref> Try using contradiction.
+    Suppose <m>n</m> is even, so that <m>n = 2k</m> for some integer <m>k</m>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_complex_mult_inv">Exercise</xref> To show <m>zz^{-1}=1</m>,
+    rewrite <m>z^{-1}</m> as <m>(a-bi) \cdot \frac{1}{a^{2}+b^{2}}</m>.
+    This is justified by the distributive law.
+    Remember also that showing
+    <m>z^{-1}z=1</m> requires its own proof.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_9">Exercise</xref>(i) In the answer <m>x + yi</m>,
+    <m>x</m> and <m>y</m> both turn out to be integers!
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_9">Exercise</xref>(n) Yes,
+    you can do it!
+    Find the first few powers of <m>i</m>, and see the pattern.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_9">Exercise</xref>(o) It's easiest to compute <m>(1+i)^2 \cdot (1+i)^2</m>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_10">Exercise</xref>
+    If you have trouble with this one, do some examples.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_cxprops">Exercise</xref>(f) Use part (e).
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_cxprops">Exercise</xref>(g) and (h) See <xref ref="exercise_ComplexNumbers_complex_mult_inv">Exercise</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_abs2">Exercise</xref>
+    Use part (b) of the previous exercise,
+    plus some of the results from <xref ref="exercise_ComplexNumbers_cxprops">Exercise</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_abs3">Exercise</xref>(a) Use the formula
+    <m>|w|^2 = w\cdot \overline{w}</m>. (d) This one requires calculus.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_29">Exercise</xref>
+    Just make minor changes to the previous exercise.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_cos_form">Exercise</xref>(a) Replace <m>\cis \ldots</m> with
+    <m>\cos \ldots + i \sin \ldots</m> on both sides of the de Moivre equation.
+    Then do the algebra on the right-hand side,
+    and separate the real and imaginary parts.
+    Recall that two complex numbers are equal iff their real parts and imaginary parts are equal separately. (b) Use a basic identity involving cosine and sine.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_42">Exercise</xref>(b) What left shifts will change a cosine curve into a sine curve?
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_43">Exercise</xref>
+    Use <xref ref="proposition_ComplexNumbers_polar_mult">Proposition</xref>
+    to evaluate <m>\cis\theta \cdot \cis( t)</m>,
+    and recall that <m>\cis(\alpha)</m> means the same as as <m>\cos(\alpha) + i \sin(\alpha)</m>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_50">Exercise</xref>(a) We have already shown in <xref ref="proposition_ComplexNumbers_nonzero_complex_product">Proposition</xref>
+    that the product of two nonzero complex numbers is never equal to 0.
+    Use this to show that the product of four nonzero complex numbers is never equal to 0.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_50">Exercise</xref>(b) Multiply out the inequality that you proved in (a).
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_51">Exercise</xref>(a) It's easier to multiply the numbers in polar form,
+    you don't have to convert to Cartesian.
+    Note that <m>\cis\left(\frac{4\pi}{3}\right)</m> is the complex conjugate of <m>\cis\left(\frac{2\pi}{3}\right)</m>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_53">Exercise</xref>
+    Besides showing that all sides are equal,
+    you also have to show that they are perpendicular.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_54">Exercise</xref>
+    Draw lines from each point to the origin, forming 6 triangles.
+    What can you say about these triangles?
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_57">Exercise</xref>(c) Note that
+    <m>OA = |z|, OC = |w|</m>. and <m>AC = |z-w|</m>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_58">Exercise</xref>(c) Use your answer to part (b).
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_60">Exercise</xref>(c) To find the polar form of this number,
+    try squaring it.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_62">Exercise</xref>(b) If <m>r</m> is a solution to the above equation,
+    then <m>z-r</m> divides <m>z^4 + a_{3}z^{3} + a_{2} z^{2}+ a_1 z + a_0</m>.
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_conjugate_root2">Exercise</xref>
+    Let <m>M</m> be the number of distinct solutions with positive imaginary part.
+    Then how many distinct solutions are there with negative imaginary part?
+    And how many non-real solutions are there altogether?
+  </p>
+  <p>
+    <xref ref="exercise_ComplexNumbers_mandel2">Exercise</xref>
+    You may show that <m>(|z+w|)^2 \le (|z| + |w|)^2</m>.
+    When you take the square,
+    use the identity that expresses <m>|z|^2</m> in terms of <m>z</m> and its complex conjugate.
+    After simplification, use polar form.
+  </p>
+</section>

@@ -1,0 +1,377 @@
+<section xml:id="sec_Polynomials_ExoticPolynomials">
+  <title>More exotic polynomials</title>
+  <introduction>
+    <p>
+      So far we've performed algebraic operations on polynomials with integer,
+      rational, real, or complex coefficients.
+      We may identify different sets of polynomials according to the type of coefficient used.
+      For instance we may define:
+      <ul>
+        <li>
+          <p>
+            <m>\mathbb{Z}[x]</m> is the set of polynomials in the variable <m>x</m> with integer coefficients;
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\mathbb{Q}[x]</m> is the set of polynomials in the variable <m>x</m> with rational coefficients;
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\mathbb{R}[x]</m> is the set of polynomials in the variable <m>x</m> with real coefficients;
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\mathbb{C}[x]</m> is the set of polynomials in the variable <m>x</m> with complex coefficients.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      We refer to <m>\mathbb{Z}[x]</m> as
+      <q>the set of polynomials over <m>\mathbb{Z}</m></q>, <m>\mathbb{Q}[x]</m> as
+      <q>the set of polynomials over <m>\mathbb{Q}</m></q>, and so on.
+    </p>
+    <p>
+      However, we can generalize polynomials far beyond these cases.
+      In this section,
+      we introduce several new types of polynomials and define arithmetic operations
+      (addition and multiplication)
+      on these new types.
+      In order to do this,
+      we'll make use of the summation notation formulas in the last section (reproduced here for convenience):
+      <me>
+        p(x)  = \sum^{M}_{m=0} a_m x^m ; \qquad q(x)  = \sum^{N}_{n=0} b_n x^n
+      </me>,
+      <md>
+        <mrow>p(x) + q(x) \amp =  \sum_{k=0}^{\max(M,N)} (a_k + b_k) x^k,</mrow>
+        <mrow>p(x) q(x) \amp = \sum_{k=0}^{M+N} c_k x^k, \text{ where } c_k=  \sum_{j = 0}^k a_j b_{k - j}</mrow>
+      </md>.
+    </p>
+    <p>
+      We'll just need to replace conventional addition and multiplication
+      (using real or complex numbers)
+      with other addition and multiplication operations that are appropriate to the coefficients that we are working with.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_Polynomials_ExoticPolynomials_PolynomialsZn">
+    <title>Polynomials over <m>\mathbb{Z}_n</m></title>
+    <p>
+          <idx><h>Polynomials</h><h>over <m>\mathbb{Z}_n</m></h></idx>
+      Consider first <m>\mathbb{Z}_n[x]</m>, where <m>\mathbb{Z}_n</m> denotes the integers mod <m>n</m>.
+      For example,
+      two polynomials <m>p(x)</m> and <m>q(x)</m> in <m>\mathbb{Z}_4[x]</m> are
+      <md>
+        <mrow>p(x) \amp  = 1+3x+x^3</mrow>
+        <mrow>q(x) \amp  = 2+2x+3x^2+3x^3</mrow>
+      </md>.
+    </p>
+    <p>
+      In this case,
+      we should consider the variable <m>x</m> as representing an unknown element in <m>\mathbb{Z}_4</m>,
+      so the '+' operation in these expressions should be interpreted as addition in <m>\mathbb{Z}_4</m>.
+      All operations on coefficients will also make use of addition mod <m>\mathbb{Z}_4</m>.
+      So for polynomial addition we may use the above formulas for polynomial addition only use <m>+</m> in <m>Z_4</m> instead of ordinary <m>+</m>.
+      For example,
+      using <m>p(x)</m> and <m>q(x)</m> defined above we have:
+      <md>
+        <mrow>p(x) + q(x) \amp =(1+ 2)+(3+ 2)x+(0+ 3)x^2+ (1+ 3)x^3</mrow>
+        <mrow>\amp = 3+x+3x^2</mrow>
+      </md>.
+    </p>
+    <p>
+      To multiply, we can use the same strategy,
+      namely, use the previous formula for polynomial multiplication,
+      but replace both <m>+</m> and <m>\cdot</m> with their counterparts in <m>Z_4</m>.
+      Alternatively,
+      we may use the distributive law as in <xref ref="sec_Polynomials_PolynomialArithmetic">Section</xref>,
+      with the understanding that we are distributing modular multiplication over modular addition.
+      As before, we group together all terms with like powers of <m>x</m> and use modular arithmetic to combine these terms into a single term.
+      The result is:
+      <md>
+        <mrow>p(x)  q(x)  =  \amp 1\cdot 2+(3 \cdot 2 + 1 \cdot 2)x+(3 \cdot 2 +  1 \cdot 3)x^2+</mrow>
+        <mrow>\amp (1\cdot 2 + 3\cdot 3 +  1 \cdot 3)x^3+ (1\cdot 2 +  3\cdot 3)x^4 +</mrow>
+        <mrow>\amp (1 \cdot 3)x^5+ (1 \cdot 3)x^6</mrow>
+        <mrow>= \amp 2+1x^2 + 2x^3+ 3x^4+ 3x^5+3x^6</mrow>
+      </md>.
+    </p>
+    <exercise xml:id="exercise_Polynomials_poly7">
+      <statement>
+        <p>
+          Compute the sum and product of <m>p(x)</m> and <m>q(x)</m>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>p(x)=1+x+2x^2</m>,
+                <m>q(x)=3x^2+x^3</m>,where both polynomials are in <m>\mathbb{Z}_5[x]</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>p(x)= 1+4x^2+3x^3+2x^4</m>, <m>q(x)=5+2x^2+x^3</m>,
+                where both polynomials are in <m>\mathbb{Z}_6[x]</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      It turns out that <m>\mathbb{Z}_2[x]</m> in particular is of great practical use
+      (in polynomial codes),
+      so we include some exercises to get you warmed up for what's coming.
+    </p>
+    <exercise xml:id="exercise_Polynomials_poly6">
+      <statement>
+        <p>
+          Compute the sum and product of <m>p(x)</m> and <m>q(x)</m>,
+          where both polynomials are in <m>\mathbb{Z}_2[x]</m>.
+          <ol type="a">
+            <li>
+              <p>
+                <m>p(x)= 1+ x +x^2</m>, <m>q(x)= 1+x+x^2+x^3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>p(x)= 1 + x^2+x^4</m>, <m>q(x)=x^2+x^3+x^4</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>p(x)= 1 +x+x^2+x^3+x^4</m>, <m>q(x)=p(x)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Polynomials_ExoticPolynomials_nZ">
+    <title>Polynomials over <m>n\mathbb{Z}</m></title>
+    <p>
+          <idx><h>Polynomials</h><h>over <m>n\mathbb{Z}</m></h></idx>
+      Recall that <m>n\mathbb{Z}</m> consists of all integer multiples of <m>n</m>: for example, <m>5\mathbb{Z} = \{\ldots, -15,-10,-5,0,5,10,15,\ldots\}</m>.
+      We may consider the set <m>n\mathbb{Z}[x]</m>,
+      the set of all polynomials whose coefficents are all multiples of <m>n</m>.
+      Certainly it is possible to add and multiply these polynomials,
+      because any such polynomial is also in <m>\mathbb{Z}[x]</m>.
+      But it is important to note that any sum or product of polynomials in
+      <m>n\mathbb{Z}[x]</m> is also in <m>n\mathbb{Z}[x]</m>:
+      in other words, <m>n\mathbb{Z}[x]</m> is <em>closed</em>
+      under addition and multiplication.
+    </p>
+    <exercise xml:id="exercise_Polynomials_5Z">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Suppose that <m>p(x) = a_2 x^2 + a_1 x + a_0</m> and <m>q(x) = b_1 x + b_0</m>,
+              and both <m>p(x)</m> and <m>q(x)</m> are elements of <m>5\mathbb{Z}[x]</m>.
+              Prove that <m>p(x) + q(x)</m> and
+              <m>p(x) q(x)</m> are also elements of <m>5\mathbb{Z}[x]</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Repeat the proof of (a),
+              except replace <m>5\mathbb{Z}[x]</m> with <m>n\mathbb{Z}[x]</m>,
+              where <m>n</m> is an arbitrary positive integer.
+            </p>
+          </li>
+          <li>
+            <p>
+              Repeat the proof of (b),
+              except use general polynomials
+              <m>p(x) = \sum_{j=1}^n a_jx^j</m> and <m>q(x) = \sum_{k=1}^m b_k x^k</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Polynomials_ExoticPolynomials_PolynomialsR">
+    <title>Polynomials over <m>\mathbb{R}[x]</m></title>
+    <p>
+          <idx><h>Polynomials</h><h>over <m>\mathbb{R}[x]</m></h></idx>
+      Our next example is <m>\mathbb{R}[x][y]</m>, which represents polynomials in the variable <m>y</m> whose coefficients are polynomials in a different variable <m>x</m>.
+      For example,
+      the following two polynomials are elements of <m>\mathbb{R}[x][y]</m>:
+      <md>
+        <mrow>p(x,y) \amp  = (1+3x)+(1+x^2)y+(5x)y^2</mrow>
+        <mrow>q(x,y) \amp  = (3x)+(2+2x)y+(4x^2)y^2</mrow>
+      </md>.
+    </p>
+    <p>
+      We may add them as follows:
+      <md>
+        <mrow>p(x,y) + q(x,y) \amp =((1+3x)+3x)+((1+x^2)+(2+2x))y+(5x+4x^2)y^2</mrow>
+        <mrow>\amp = (1+6x)+(3+2x+x^2)y+(5x+4x^2 )y^2</mrow>
+      </md>.
+    </p>
+    <p>
+      We will multiply <m>p(x,y)</m> and <m>q(x,y)</m> using the summation formula for coefficients found in <xref ref="definition_Polynomials_defprodpoly">Definition</xref>.
+      <md>
+        <mrow>c_0 = \sum_{i = 0}^0 a_i b_{0 - i} = a_0b_0= (1+3x) \cdot (3x)= 3x+9x^2</mrow>
+      </md>.
+      <md>
+        <mrow>c_1 = \sum_{i = 0}^1 a_i b_{0 - i} = a_0b_1+a_1b_0\amp = ((1+3x) \cdot (2+2x))+((1+x^2)\cdot (3x))</mrow>
+        <mrow>\amp =(1+8x+6x^2)+(2+2x+2x^2+2x^3)</mrow>
+        <mrow>\amp =3+10x+8x^2+2x^3</mrow>
+      </md>.
+      <md>
+        <mrow>c_2 = \sum_{i = 0}^2 a_i b_{0 - i} = a_0b_2+a_1b_1+a_2b_0\amp =((1+3x) \cdot (4x^2))+(1+x^2)\cdot(2+2x)+((5x)\cdot(3x)</mrow>
+        <mrow>\amp = (4x^2+12x^3)+(2+2x+2x^2+2x^3)+15x^2</mrow>
+        <mrow>\amp =2+2x+21x^2+14x^3</mrow>
+      </md>.
+      <md>
+        <mrow>c_3 = \sum_{i = 0}^3 a_i b_{0 - i} = a_1b_2+a_2b_1\amp = ((1+x^2) \cdot (4x^2))+((5x)\cdot(2+2x)</mrow>
+        <mrow>\amp =  (4x^2+4x^4)+(10x+10x^2)</mrow>
+        <mrow>\amp =10x+14x^2+4x^4</mrow>
+      </md>.
+    </p>
+    <md>
+      <mrow>c_4 = \sum_{i = 0}^4 a_i b_{0 - i} = a_2b_2= 5x \cdot 4x^2= 20x^3</mrow>
+    </md>.
+    <p>
+      Therefore, we have the following:
+      <md>
+        <mrow>p(x,y)q(x,y)=\amp  c_0+c_1y+c_2y^2+c_3y^3+c_4y^4</mrow>
+        <mrow>=\amp (3x+9x^2)+(3+10x+8x^2+2x^3)y+(2+2x+21x^2+14x^3)y^2</mrow>
+        <mrow>\amp +(10x+14x^2+4x^4)y^3+(20x^3)y^4</mrow>
+      </md>.
+    </p>
+    <exercise xml:id="exercise_Polynomials_poly8">
+      <statement>
+        <p>
+          Compute the sum and product of <m>p(x,y)</m> and <m>q(x,y)</m> where:
+        </p>
+        <p>
+          <m>p(x,y)= (1+8x)+(3-2x)y^2</m> and
+        </p>
+        <p>
+          <m>q(x,y)= (5x+6x^2)y-(2+6x)y^2</m>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Polynomials_ExoticPolynomials_Mn">
+    <title>Polynomials over <m>\mathbb{M}_n</m></title>
+    <p>
+          <idx><h>Polynomials</h><h>over <m>\mathbb{M}_n</m></h></idx>
+      Next we consider <m>\mathbb{M}_n[x]</m>, the set of polynomials in the variable <m>x</m> with coefficients that are <m>n{\times}n</m> matrices with real entries.
+      Consider the two polynomials <m>p(x),
+      q(x) \in \mathbb{M}_2[x]</m> given by:
+      <me>
+        p(x)=  \begin{bmatrix}-1 \amp  5  \\ -2 \amp  4 \end{bmatrix} +\begin{bmatrix}4 \amp  3 \\ 2 \amp  -4 \end{bmatrix} x+\begin{bmatrix}-1 \amp  0 \\ 2 \amp  1 \end{bmatrix} x^2
+      </me>
+      <me>
+        q(x)=  \begin{bmatrix}4 \amp  2 \\ -3 \amp  6 \end{bmatrix} +\begin{bmatrix}2 \amp  -1 \\ 0 \amp  9 \end{bmatrix} x+\begin{bmatrix}9 \amp  -1 \\ 8 \amp  1 \end{bmatrix} x^2
+      </me>
+    </p>
+    <p>
+      We add <m>p(x)</m> and <m>q(x)</m> as follows:
+      <md>
+        <mrow>p(x) + q(x) =\amp \bigg( \begin{bmatrix} -1 \amp  5</mrow>
+        <mrow>-2 \amp  4 \end{bmatrix} +\begin{bmatrix} 4 \amp  3</mrow>
+        <mrow>2 \amp  -4 \end{bmatrix} x+\begin{bmatrix} -1 \amp  0</mrow>
+        <mrow>2 \amp  1 \end{bmatrix} x^2\bigg)</mrow>
+        <mrow>\amp +\bigg(\begin{bmatrix} 4 \amp  2</mrow>
+        <mrow>-3 \amp  6 \end{bmatrix} +\begin{bmatrix} 2 \amp  -1</mrow>
+        <mrow>0 \amp  9 \end{bmatrix} x+\begin{bmatrix} 9 \amp  -1</mrow>
+        <mrow>8 \amp  1 \end{bmatrix} x^2\bigg)</mrow>
+        <mrow>= \amp \bigg(\begin{bmatrix} -1 \amp  5</mrow>
+        <mrow>-2 \amp  4 \end{bmatrix} +\begin{bmatrix} 4 \amp  2</mrow>
+        <mrow>-3 \amp  6 \end{bmatrix}\bigg) +\bigg(\begin{bmatrix} 4 \amp  3</mrow>
+        <mrow>2 \amp  -4 \end{bmatrix} +\begin{bmatrix} 2 \amp  -1</mrow>
+        <mrow>0 \amp  9 \end{bmatrix}\bigg)x</mrow>
+        <mrow>\amp +\bigg(\begin{bmatrix} -1 \amp  0</mrow>
+        <mrow>2 \amp  1 \end{bmatrix} +\begin{bmatrix} 9 \amp  -1</mrow>
+        <mrow>8 \amp  1 \end{bmatrix}\bigg) x^2</mrow>
+        <mrow>=\amp \begin{bmatrix} 3 \amp  7</mrow>
+        <mrow>-5 \amp  10 \end{bmatrix} +\begin{bmatrix} 6 \amp  2</mrow>
+        <mrow>2 \amp  5 \end{bmatrix}x +\begin{bmatrix} 8 \amp  -1</mrow>
+        <mrow>10 \amp  2\end{bmatrix}x^2</mrow>
+      </md>.
+    </p>
+    <p>
+      Again, we will use the summation formula for the coefficients to compute the product of <m>p(x)</m> and <m>q(x)</m>.
+      <me>
+        c_0 = \sum_{i = 0}^0 a_i b_{0 - i} = a_0b_0= \begin{bmatrix}-1 \amp  5 \\ -2 \amp  4 \end{bmatrix}  \cdot \begin{bmatrix}4 \amp  2 \\ -3 \amp  6 \end{bmatrix} = \begin{bmatrix}-19\amp  28\\ -20 \amp  20 \end{bmatrix}
+      </me>.
+      <md>
+        <mrow>c_1 = \sum_{i = 0}^1 a_i b_{1 - i} = a_0b_1+a_1b_0\amp =\begin{bmatrix} -1 \amp  5</mrow>
+        <mrow>-2 \amp  4 \end{bmatrix} \cdot \begin{bmatrix} 2 \amp  -1</mrow>
+        <mrow>0 \amp  9 \end{bmatrix}+ \begin{bmatrix} 4 \amp  3</mrow>
+        <mrow>2 \amp  -4 \end{bmatrix} \cdot\begin{bmatrix} 4 \amp  2</mrow>
+        <mrow>-3 \amp  6 \end{bmatrix}</mrow>
+        <mrow>\amp =\begin{bmatrix} -2 \amp  46</mrow>
+        <mrow>-4 \amp  38 \end{bmatrix}+\begin{bmatrix} 7 \amp  26</mrow>
+        <mrow>20 \amp  -20 \end{bmatrix}=\begin{bmatrix} 5 \amp  72</mrow>
+        <mrow>16 \amp  18 \end{bmatrix}</mrow>
+      </md>.
+      <md>
+        <mrow>c_2 = \sum_{i = 0}^2 a_i b_{2 - i} = a_0b_2+a_1b_1+a_2b_0\amp = \begin{bmatrix} -1 \amp  5</mrow>
+        <mrow>-2 \amp  4 \end{bmatrix} \cdot \begin{bmatrix} 9 \amp  -1</mrow>
+        <mrow>8 \amp  1 \end{bmatrix}+ \begin{bmatrix} 4 \amp  3</mrow>
+        <mrow>2 \amp  -4 \end{bmatrix} \cdot\begin{bmatrix} 2 \amp  -1</mrow>
+        <mrow>0 \amp  9 \end{bmatrix}</mrow>
+        <mrow>\amp  +\begin{bmatrix} -1 \amp  0</mrow>
+        <mrow>2 \amp  1 \end{bmatrix}\cdot \begin{bmatrix} 4 \amp  2</mrow>
+        <mrow>-3 \amp  6 \end{bmatrix}</mrow>
+        <mrow>\amp =\begin{bmatrix} 31 \amp  6</mrow>
+        <mrow>14 \amp  6 \end{bmatrix}+\begin{bmatrix} 8 \amp  23</mrow>
+        <mrow>4 \amp  -38 \end{bmatrix}+\begin{bmatrix} -4 \amp  -2</mrow>
+        <mrow>5 \amp  10 \end{bmatrix}=\begin{bmatrix} 35 \amp  27</mrow>
+        <mrow>23 \amp  -22 \end{bmatrix}</mrow>
+      </md>.
+      <md>
+        <mrow>c_3 = \sum_{i = 0}^3 a_i b_{3 - i} = a_1b_2+a_2b_1\amp = \begin{bmatrix} 4 \amp  3</mrow>
+        <mrow>2 \amp  -4 \end{bmatrix} \cdot \begin{bmatrix} 9 \amp  -1</mrow>
+        <mrow>8 \amp  1 \end{bmatrix}+ \begin{bmatrix} -1 \amp  0</mrow>
+        <mrow>2 \amp  1 \end{bmatrix} \cdot\begin{bmatrix} 2 \amp  -1</mrow>
+        <mrow>0 \amp  9 \end{bmatrix}</mrow>
+        <mrow>\amp =\begin{bmatrix} 60 \amp  -1</mrow>
+        <mrow>-14 \amp  -6 \end{bmatrix}+\begin{bmatrix} -2 \amp  1</mrow>
+        <mrow>4 \amp  7 \end{bmatrix}=\begin{bmatrix} 58 \amp  0</mrow>
+        <mrow>-10 \amp  1 \end{bmatrix} </mrow>
+      </md>.
+    </p>
+    <me>
+      c_4 = \sum_{i = 0}^4 a_i b_{4 - i} = a_2b_2= \begin{bmatrix}-1 \amp  0 \\
+      2 \amp  1
+      \end{bmatrix}  \cdot \begin{bmatrix}9 \amp  -1\\
+      8 \amp  1
+      \end{bmatrix} =\begin{bmatrix}-9 \amp  1\\
+      26 \amp  -1
+      \end{bmatrix}
+    </me>.
+    <p>
+      Therefore, we have the following:
+      <md>
+        <mrow>p(x)q(x) \amp =c_0+c_1x+c_2x^2+c_3x^3+c_4x^4</mrow>
+        <mrow>\amp =\begin{bmatrix} -19 \amp  28</mrow>
+        <mrow>-20 \amp  20 \end{bmatrix}+ \begin{bmatrix} 5 \amp  72</mrow>
+        <mrow>16 \amp  18 \end{bmatrix}x+ \begin{bmatrix} 35 \amp 27</mrow>
+        <mrow>23 \amp  -22 \end{bmatrix}x^2+ \begin{bmatrix} 58 \amp  0</mrow>
+        <mrow>-10 \amp  1 \end{bmatrix}x^3+ \begin{bmatrix} -9 \amp  1</mrow>
+        <mrow>26 \amp  -1 \end{bmatrix}x^4</mrow>
+      </md>
+    </p>
+    <exercise xml:id="exercise_Polynomials_poly9">
+      <statement>
+        <p>
+          Compute the sum and product of <m>p(x)</m> and <m>q(x)</m>, where:
+          <me>
+            p(x)=  \begin{bmatrix}1 \amp  2 \\ 3 \amp  4 \end{bmatrix} +\begin{bmatrix}1 \amp  0 \\ 2 \amp  4 \end{bmatrix} x+\begin{bmatrix}1 \amp  0 \\ 0 \amp  1 \end{bmatrix} x^2
+          </me>
+          <me>
+            q(x)=  \begin{bmatrix}1 \amp  0 \\ 0 \amp  1 \end{bmatrix} +\begin{bmatrix}1 \amp  2 \\ 3 \amp  4 \end{bmatrix} x^2
+          </me>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

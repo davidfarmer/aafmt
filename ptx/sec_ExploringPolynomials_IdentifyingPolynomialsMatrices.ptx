@@ -1,0 +1,667 @@
+<section xml:id="sec_ExploringPolynomials_IdentifyingPolynomialsMatrices">
+  <title>Identifying polynomials with matrices</title>
+  <p>
+    We have seen that both vectors and matrices define vectors spaces.
+    But matrices
+    (in particular, square matrices)
+    have something that vectors don't have:
+    namely, two square matrices of the same size can be multiplied together to get a square matrix of the same size.
+    In contrast,
+    we don't know of any way in general to multiply two
+    <m>n \times 1</m> vectors to obtain another <m>n \times 1</m> vector.
+  </p>
+  <p>
+    Now recall that two polynomials can be multiplied together to obtain another polynomial.
+    This suggests that polynomials are more like matrices than column vectors.
+    In fact, we will show in this section that the polynomials <m>\RR[x]</m> are
+    <q>isomorphic</q>
+    to a particular set of matrices.
+    We put
+    <q>isomorphic</q>
+    in quotes because the isomorphism doesn't merely preserve a single operation,
+    like the group isomorphisms that we've seen up till now.
+    Rather, this will be an <term>isomorphism of rings</term><idx><h>Isomorphism</h><h>of rings</h></idx>
+    (or <term>ring isomorphism</term>
+        <idx><h>Ring isomorphism</h></idx>
+    )
+    that preserves both addition and multiplication.
+  </p>
+  <p>
+    Let's begin with an example that shows how polynomials can be related to matrices:
+  </p>
+  <example xml:id="example_PolyVec_multx2">
+    <statement>
+      <p>
+        Let <m>p(x) = 3x^2 - 7x + 2</m>.
+        We may represent <m>p(x)</m> as a column vector:
+        <me>
+          p(x) \rightarrow  \left[\begin{array}{c}2\\-7\\3\\0\\0\\0 \end{array} \right]
+        </me>,
+        where the coefficients of <m>1,x,x^2 \ldots</m> are listed from top to bottom.
+        (We have added some extra zeros to the bottom of the vector for a reason that will become clear later.)
+        Now notice that
+        <me>
+          x \cdot p(x) \rightarrow \left[\begin{array}{c}0\\2\\-7\\3\\0\\0 \end{array} \right] = \left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  0 \amp  0\amp  0\\1 \amp  0 \amp  0 \amp  0 \amp  0\amp  0\\0 \amp  1 \amp  0 \amp  0 \amp  0\amp  0\\0 \amp  0 \amp  1 \amp  0 \amp  0\amp  0\\0 \amp  0 \amp  0 \amp  1 \amp  0\amp  0\\0 \amp  0 \amp  0 \amp  0 \amp  1\amp  0 \end{array} \right] \left[\begin{array}{c}2\\-7\\3\\0\\0\\0 \end{array} \right]
+        </me>.
+      </p>
+      <p>
+        Thus it seems that when we represent polynomials as column vectors,
+        multiplying a polynomial by <m>x</m> corresponds to matrix multiplication by a matrix with 1's on the
+        <term>subdiagonal</term><idx><h>Subdiagonal</h><h>of a matrix</h></idx>
+        (that is, the entries lying just below the diagonal).
+        We may similarly verify that
+        <me>
+          x^2 \cdot p(x) \rightarrow  \left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  0 \amp  0\amp  0\\0 \amp  0 \amp  0 \amp  0 \amp  0\amp  0\\1 \amp  0 \amp  0 \amp  0 \amp  0\amp  0\\0 \amp  1 \amp  0 \amp  0 \amp  0\amp  0\\0 \amp  0 \amp  1 \amp  0 \amp  0\amp  0\\0 \amp  0 \amp  0 \amp  1 \amp  0\amp  0 \end{array} \right]   \left[\begin{array}{c}2\\-7\\3\\0\\0\\0 \end{array} \right]
+        </me>,
+        where this time the 1's are on the sub-subdiagonal.
+        You may check that this matrix is in fact the square of the matrix that represents multiplication by <m>x</m>.
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_PolyVec_multx3">
+    <statement>
+      <p>
+        Compute the vector representation of
+        <m>x^3 \cdot p(x)</m> for the polynomial in the previous example,
+        and show that this vector can be obtained as a matrix-vector multiplication,
+        where the matrix is the cube of the subdiagonal matrix that represents multiplication by <m>x</m> and the vector represents <m>p(x)</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            What matrix can we multiply the vector representation of <m>p(x)</m> by to give the vector representation of <m>5 \cdot p(x)</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            What matrix can we multiply the vector representation of <m>p(x)</m> by to give the vector representation of <m>-8x \cdot p(x)</m>?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Describe what happens when you try to represent
+        <m>x^4 \cdot p(x)</m> as a <m>6 \times 1</m> vector,
+        as in the previous exercises.
+        How may the vector be changed to correct this?
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Let's generalize the previous example.
+    Given any polynomial <m>p(x)=a_0+a_1x+a_2x^2+...+a_nx^n</m>,
+    we can represent <m>p(x)</m> as a column vector with <m>m</m> entries <m>(m>n)</m> as follows:
+    <me>
+      p(x) \rightarrow \left[\begin{array}{c}a_0\\a_1\\a_2\\\vdots\\a_n\\0\\\vdots\\0 \end{array} \right]
+    </me>
+  </p>
+  <p>
+    Then in order to multiply <m>p(x)</m> by <m>x</m>,
+    we can represent <m>x</m> as a
+    <m>m\times m</m> square matrix with 1's on the subdiagonal:
+    <me>
+      x \rightarrow \left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  \cdots \amp  0 \amp  0\\1 \amp  0 \amp  0 \amp  \cdots \amp  0 \amp  0\\0 \amp  1 \amp  0 \amp  \cdots \amp  0 \amp  0\\\vdots \amp  \vdots \amp  \vdots \amp  \ddots \amp  \vdots \amp  \vdots\\0 \amp  0 \amp  0 \amp  \cdots \amp  0 \amp  0\\0 \amp  0 \amp  0 \amp  \cdots \amp  1 \amp  0 \end{array} \right]
+    </me>.
+  </p>
+  <p>
+    Now what do we really mean by
+    <q><m>\rightarrow</m></q>? Really we're talking about a mapping from polynomials to matrices<ndash/>in other words,
+    a <em>function</em>.
+    Accordingly we'll define a function
+    <m>\phi_m: \RR[x] \rightarrow M_{m,m}</m> such that <m>\phi_m(x)</m> is the
+    <m>m\times m</m> subdiagonal matrix that represents polynomial <m>x</m>:
+    <me>
+      \phi_m(x) = \left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  \cdots \amp  0 \amp  0\\1 \amp  0 \amp  0 \amp  \cdots \amp  0 \amp  0\\0 \amp  1 \amp  0 \amp  \cdots \amp  0 \amp  0\\\vdots \amp  \vdots \amp  \vdots \amp  \ddots \amp  \vdots \amp  \vdots\\0 \amp  0 \amp  0 \amp  \cdots \amp  0 \amp  0\\0 \amp  0 \amp  0 \amp  \cdots \amp  1 \amp  0 \end{array} \right]
+    </me>.
+  </p>
+  <p>
+    (Note that the Greek letter <m>\phi</m> is pronounced
+    <q>fee</q>
+    or
+    <q>fie</q>.<fn>
+    But not
+    <q>fo</q>
+    or
+    <q>fum</q>.
+    </fn> The subscript
+    <q><m>m</m></q>
+    emphasizes that technically there is a different map for each matrix size.)
+  </p>
+  <p>
+    So far we've only defined <m>\phi_m</m> for the polynomial <m>x</m>,
+    but we'd certainly like to define it for any polynomial.
+    There is a natural way to do this.
+    First let's consider the simplest nonzero polynomial we can think of,
+    namely the constant <m>1</m>.
+    Since <m>1</m> is the multiplicative identity for polynomials,
+    it stands to reason that <m>\phi_m(1)</m> should be the multiplicative identity for matrices.
+    Accordingly we define
+    <me>
+      \phi_m(1) := I_{m \times m}
+    </me>,
+    where <m>I_{m \times m}</m> is the <m>m \times m</m> identity matrix.
+  </p>
+  <p>
+    Constant polynomials are the next simplest case.
+    It makes sense to map the constant polynomial <m>a</m> to the matrix <m>aI_{m \times m}</m>, so that
+    <me>
+      \phi_m(a) := aI_{m \times m}
+    </me>,
+  </p>
+  <p>
+    In view of the exercises that we did a little while ago,
+    the next reasonable step is to define <m>\phi_m(ax)</m> as:
+    <me>
+      \phi_m(ax) = \phi_m(a) \cdot \phi_m(x) = a \phi_m(x)
+    </me>.
+  </p>
+  <p>
+    We also saw in <xref ref="example_ExploringPolynomials_multx2">Example</xref>
+    and <xref ref="exercise_ExploringPolynomials_multx3">Exercise</xref>
+    that <m>\phi_m(x^2) = \phi_m(x)^2</m> and;
+    <m>\phi_m(x^3) =   \phi_m(x)^3</m>.
+    This suggests the following general rule:
+    <me>
+      \phi_m(ax^n) :=   \phi_m(a) \cdot \phi_m(x)^n =   a\phi_m(x)^n
+    </me>.
+  </p>
+  <p>
+    Finally, in light of our previous experience with isomorphisms of groups,
+    it's reasonable to impose the following requirement on <m>\phi_m</m>:
+    <me>
+      \phi_m( p(x) + q(x)) = \phi_m( p(x)) +\phi_m(q(x))
+    </me>
+  </p>
+  <p>
+    We now have enough rules so that we can build up
+    <m>\phi_m(p(x))</m> for any polynomial <m>p(x)</m>.
+  </p>
+  <example>
+    <statement>
+      <p>
+        We may find the <m>6\times 6</m> matrix which represents the polynomial <m>x^2+3x-7</m> as follows:
+        <md>
+          <mrow>\phi_6(x^2 + 3x -7) \amp =\phi_6(x^2) + \phi_6(3x) + \phi_6(-7)</mrow>
+          <mrow>\amp =\phi_6(x^2) + 3\phi_6(x) + -7 \phi_6(1))</mrow>
+          <mrow>\amp = \left[\begin{array}{cccccc}-7 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0</mrow>
+          <mrow>3 \amp  -7 \amp  0 \amp  0 \amp  0 \amp  0</mrow>
+          <mrow>1 \amp  3 \amp  -7 \amp  0 \amp  0 \amp  0</mrow>
+          <mrow>0 \amp  1 \amp  3 \amp  -7 \amp  0 \amp  0</mrow>
+          <mrow>0 \amp  0 \amp  1 \amp  3 \amp  -7 \amp  0</mrow>
+          <mrow>0 \amp  0 \amp  0 \amp  1 \amp  3 \amp  -7\end{array}\right]</mrow>
+        </md>
+      </p>
+    </statement>
+  </example>
+  <exercise>
+    <statement>
+      <p>
+        Find the matrix <m>\phi_6(p(x))</m> related to each polynomial <m>p(x)</m>.
+        <ol type="a">
+          <li>
+            <p>
+              <m>p(x) = 7x^2 - 2x + 3</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x) = 3x^4 + 5x^2 - 2</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x) = 3x^5</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x) = -4x^3 + 4</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        In each case, find the polynomial <m>p(x)</m> such that
+        <m>\phi(p(x))</m> equals the given matrix:
+        <ol type="a">
+          <li>
+            <p>
+              <me>
+                \left[\begin{array}{cccccc}3 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\1 \amp  3 \amp  0 \amp  0 \amp  0 \amp  0\\6 \amp  1 \amp  3 \amp  0 \amp  0 \amp  0\\4 \amp  6 \amp  1 \amp  3 \amp  0 \amp  0\\8 \amp  4 \amp  6 \amp  1 \amp  3 \amp  0\\0 \amp  8 \amp  4 \amp  6 \amp  1 \amp  3 \end{array} \right]
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              <me>
+                \left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\1 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\0 \amp  1 \amp  0 \amp  0 \amp  0 \amp  0\\4 \amp  0 \amp  1 \amp  0 \amp  0 \amp  0\\9 \amp  4 \amp  0 \amp  1 \amp  0 \amp  0\\0 \amp  9 \amp  4 \amp  0 \amp  1 \amp  0 \end{array} \right]
+              </me>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Notice the special structure of all these matrices.
+    They all have no entries above the main diagonal.
+    Furthermore they are constant along the subdiagonal, sub-subdiagonal,
+    sub-sub-subdiagonal, and so on.
+    By working with examples,
+    you may see that these same properties will hold in general for any matrix that can be written as
+    <m>\phi_m(p(x))</m> for some polynomial <m>p(x)</m>.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        For each of the following matrices,
+        determine whether or not it corresponds to a polynomial.
+        If it does, give the polynomial;
+        and if not, explain why not.
+        <ol type="a">
+          <li>
+            <p>
+              <me>
+                \left[\begin{array}{cccc}5 \amp  0 \amp  0 \amp  1\\1 \amp  3 \amp  0 \amp  0\\5 \amp  1 \amp  3 \amp  0\\0 \amp  5 \amp  1 \amp  3 \end{array} \right]
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              <me>
+                \left[\begin{array}{cccc}9 \amp  0 \amp  0 \amp  0\\1 \amp  9 \amp  0 \amp  0\\7 \amp  1 \amp  9 \amp  0\\0 \amp  7 \amp  1 \amp  9 \end{array} \right]
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              <me>
+                \left[\begin{array}{ccccc}-1 \amp  0 \amp  0 \amp  0 \amp  0\\2 \amp  -1 \amp  0 \amp  0 \amp  0\\4 \amp  2 \amp  -1 \amp  0 \amp  0\\0 \amp  4 \amp  2 \amp  -1 \amp  0\\0 \amp  0 \amp  0 \amp  2 \amp  -1 \end{array} \right]
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              <me>
+                \left[\begin{array}{cccccc}3 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\1 \amp  3 \amp  0 \amp  0 \amp  0 \amp  0\\5 \amp  1 \amp  3 \amp  0 \amp  0 \amp  0\\0 \amp  3 \amp  1 \amp  3 \amp  0 \amp  0\\0 \amp  0 \amp  3 \amp  1 \amp  3 \amp  0\\0 \amp  0 \amp  0 \amp  5 \amp  1 \amp  3 \end{array} \right]
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              <me>
+                \left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\0 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\1 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\ 2 \amp  1 \amp  0 \amp  0 \amp  0 \amp  0\\0 \amp  2 \amp  1 \amp  0 \amp  0 \amp  0\\-1 \amp  0 \amp  2 \amp  1 \amp  0 \amp  0 \end{array} \right]
+              </me>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Now let's play around with polynomial arithmetic.
+    Remember our basic rule for polynomial addition:
+    <me>
+      \phi_m( p(x) + q(x)) = \phi_m( p(x)) +\phi_m(q(x))
+    </me>.
+  </p>
+  <p>
+    We may use this rule to easily find the matrix for the sum of polynomials by adding the matrices for the individual polynomials.
+  </p>
+  <example>
+    <statement>
+      <p>
+        Let <m>p(x)=2x^2+x+1</m> and <m>q(x)=5x+6</m>:
+        then <m>p(x)+q(x)=2x^2+6x+7</m>.
+        We get the same result when we add the matrices that represent <m>p(x)</m> and <m>q(x)</m>:
+        <me>
+          \left[\begin{array}{cccc}1 \amp  0 \amp  0 \amp  0\\1 \amp  1 \amp  0 \amp  0\\2 \amp  1 \amp  1 \amp  0\\0 \amp  2 \amp  1 \amp  1 \end{array} \right]+\left[\begin{array}{cccc}6 \amp  0 \amp  0 \amp  0\\5 \amp  6 \amp  0 \amp  0\\0 \amp  5 \amp  6 \amp  0\\0 \amp  0 \amp  5 \amp  6 \end{array} \right]=\left[\begin{array}{cccc}7 \amp  0 \amp  0 \amp  0\\6 \amp  7 \amp  0 \amp  0\\2 \amp  6 \amp  7 \amp  0\\0 \amp  2 \amp  6 \amp  7 \end{array} \right]
+        </me>
+      </p>
+    </statement>
+  </example>
+  <exercise>
+    <statement>
+      <p>
+        Find the matrices that represent the polynomials <m>p(x)</m> and <m>q(x)</m> in each case,
+        and verify that the sum is equal to
+        <m>\phi_m(p(x)+q(x))</m> for the given <m>m</m>.
+        <ol type="a">
+          <li>
+            <p>
+              <m>p(x)=x^5+1</m> and <m>q(x)=x^3+5^2 (m=7)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x)=7x^4+1</m> and <m>q(x)=x^3+5^2+10x-3 (m=5)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x)=2x^2-2x+5</m> and <m>q(x)=x^2+2x-5 (m=3)</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    It would be nice to do the same with multiplication.
+    Our previous examples suggest the following rule:
+    <me>
+      \phi_m( p(x))\phi_m(q(x))=\phi_m( p(x)q(x))
+    </me>
+  </p>
+  <p>
+    Let's see if this works.
+  </p>
+  <example>
+    <statement>
+      <p>
+        You can see that <m>\phi_3(x)\phi_3(x) = \phi_3(x^2)</m>:
+        <me>
+          \left[\begin{array}{ccc}0 \amp  0 \amp  0 \\1 \amp  0 \amp  0 \\0 \amp  1 \amp  0 \end{array} \right] \left[\begin{array}{ccc}0 \amp  0 \amp  0 \\1 \amp  0 \amp  0 \\0 \amp  1 \amp  0 \end{array} \right] =\left[\begin{array}{ccc}0 \amp  0 \amp  0 \\0 \amp  0 \amp  0 \\1 \amp  0 \amp  0 \end{array} \right]
+        </me>
+      </p>
+    </statement>
+  </example>
+  <example>
+    <statement>
+      <p>
+        You can see that <m>\phi_4(x^2)\phi_4(x) = \phi_4(x^3)</m>.
+        <me>
+          \left[\begin{array}{cccc}0 \amp  0 \amp  0 \amp  0 \\0 \amp  0 \amp  0 \amp  0 \\1 \amp  0 \amp  0 \amp  0\\ 0 \amp  1 \amp  0 \amp  0 \end{array} \right] \left[\begin{array}{cccc}0 \amp  0 \amp  0 \amp  0 \\1 \amp  0 \amp  0 \amp  0 \\0 \amp  1 \amp  0 \amp  0\\0 \amp  0 \amp  1 \amp  0 \end{array} \right] = \left[\begin{array}{cccc}0 \amp  0 \amp  0 \amp  0 \\0 \amp  0 \amp  0 \amp  0 \\0 \amp  0 \amp  0 \amp  0\\1 \amp  0 \amp  0 \amp  0 \end{array} \right]
+        </me>
+      </p>
+    </statement>
+  </example>
+  <p>
+    The previous 2 examples show that <m>\phi_m(x^k) \phi_m(x) = \phi(x^{k+1})</m>.
+  </p>
+  <example>
+    <statement>
+      <p>
+        Let <m>p(x)=-4x^2 + 3x - 2</m> and <m>q(x)=7x^2 - 2x - 5</m>.
+        Then multiplying <m>\phi_6(p(x))\phi_6(q(x))</m> gives.
+        <me>
+          \left[\begin{array}{cccccc}-2 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\3 \amp  -2 \amp  0 \amp  0 \amp  0 \amp  0\\-4 \amp  3 \amp  -2 \amp  0 \amp  0 \amp  0\\0 \amp  -4 \amp  3 \amp  -2 \amp  0 \amp  0\\0 \amp  0 \amp  -4 \amp  3 \amp  -2 \amp  0\\0 \amp  0 \amp  0 \amp  -4 \amp  3 \amp  -2 \end{array} \right]\left[\begin{array}{cccccc}-5 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\-2 \amp  -5 \amp  0 \amp  0 \amp  0 \amp  0\\7 \amp  -2 \amp  -5 \amp  0 \amp  0 \amp  0\\0 \amp  7 \amp  -2 \amp  -5 \amp  0 \amp  0\\0 \amp  0 \amp  7 \amp  -2 \amp  -5 \amp  0\\0 \amp  0 \amp  0 \amp  7 \amp  -2 \amp  -5 \end{array} \right]
+        </me>
+        <me>
+          = \left[\begin{array}{cccccc}10 \amp  0 \amp  0 \amp  0 \amp  0 \amp  0\\-11 \amp  10 \amp  0 \amp  0 \amp  0 \amp  0\\0 \amp  -11 \amp  10 \amp  0 \amp  0 \amp  0\\29 \amp  0 \amp  -11 \amp  10 \amp  0 \amp  0\\-28 \amp  29 \amp  0 \amp  -11 \amp  10 \amp  0\\0 \amp  -28 \amp  29 \amp  0 \amp  -11 \amp  10 \end{array} \right]
+        </me>,
+        which is the matrix that corresponds to <m>-28x^4 + 29 x^3 - 11x + 10</m>.
+        You may verify that this polynomial is equal to the product of the two polynomials that we started out with.
+      </p>
+    </statement>
+  </example>
+  <exercise>
+    <statement>
+      <p>
+        Find the <m>m\times m</m> matrices that represent the polynomials <m>p(x)</m> and <m>q(x)</m> and verify that the product of these two matrices is the matrix which represents <m>p(x)q(x)</m>.
+        <ol type="a">
+          <li>
+            <p>
+              <m>p(x)=x^5+1</m> and <m>q(x)=x^3+5^2</m> (with <m>m=10</m>)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x)=7x^4+1</m> and <m>q(x)=x^3+5^2+10x-3</m> (with <m>m=8</m>)
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>p(x)=2x^2-2x+5</m> and <m>q(x)=x^2+2x-5</m> (with <m>m=7</m>)
+            </p>
+          </li>
+          <li>
+            <p>
+              Can you choose different value of <m>m</m> in part (a), (b), and (c)?
+              What is the minimum value you can choose for <m>m</m> in each part?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    One problem with our investigations so far is that <m>\phi_m</m> can't accommodate polynomials of degree greater than or equal to <m>m</m>.
+    The only way to deal with this is to make the matrices infinitely large.
+    So let's define <m>\phi : P[x] \mapsto M_{\infty \times \infty}</m> as follows: given
+    <me>
+      p(x) =\sum^ {N}_{m=0} a_{m}x^{m}
+    </me>
+    then we define <m>\phi(p(x))</m> as a matrix with entries:
+    <me>
+      [\phi(p)]_{i,j} = \left\{\begin{array}{rcl}\ a_m  \amp \mbox{if} \amp    i - j = m,   m=0,... N \\  0 \amp \mbox{otherwise} \amp \end{array} \right.
+    </me>
+  </p>
+  <p>
+    We may give an algebraic proof that the map <m>\phi</m> is 1-1 as follows.
+    Suppose <m>p(x)</m> and <m>q(x)</m> are polynomials and <m>p(x) \neq q(x)</m>.
+    Then we can write
+    <me>
+      p(x) = \sum^ {N}_{m=0} a_{m}x^{m}\qquad \text{ and }  \qquad q(x) = \sum^ {N'}_{m'=0} b_{m'}x^{m'}
+    </me>.
+  </p>
+  <p>
+    Since <m>p(x) \neq q(x)</m>,
+    there must be some <m>k</m> such that <m>a_k \neq b_k</m>.
+    But then according to the definition it follows that:
+    <me>
+      [\phi(p)]_{k+1, 1} = a_k \qquad \text{ and }  \qquad [\phi(q)]_{k+1, 1} = b_k
+    </me>.
+  </p>
+  <p>
+    Therefore, <m>\phi(p) \neq \phi(q)</m> since <m>a_k \neq b_k</m>.
+  </p>
+  <p>
+    Is <m>\phi</m> onto?
+    That's for you to find out:
+  </p>
+  <exercise>
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Find an infinite matrix <m>M</m> such that
+            <m>M \neq \phi(p(x))</m> for any polynomial <m>p(x)</m>.
+            What does this tell you about whether or not <m>\phi</m> is onto?
+          </p>
+        </li>
+        <li>
+          <p>
+            Using the definition of <m>\phi</m>,
+            show that if <m>M = \phi(p(x))</m> for some polynomial <m>p(x)</m> then <m>M</m> is
+            <term>lower triangular</term><idx><h>Matrix</h><h>lower triangular</h></idx>
+              <idx><h>Lower-triangular matrix</h></idx>
+            that is, all entries above the diagonal are 0.
+          </p>
+        </li>
+        <li>
+          <p>
+            Using the definition of <m>\phi</m>,
+            show that if <m>M = \phi(p(x))</m> then <m>M</m> is <term>banded</term>,
+              <idx><h>Matrix</h><h>banded</h></idx>
+              <idx><h>Banded matrix</h></idx>
+            that is, <m>M_{i+k, j+k} = M_{i, j}</m> for any positive integers <m>i,
+            j, k</m>.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    Let's define <m>B\subset M_{\infty \times \infty}</m> as the set of all banded subdiagonal matrices.
+    The previous exercise (parts (c),(d)) have shown that <m>\phi</m> maps <m>P[x]</m> into <m>B</m>.
+    In fact, <m>\phi</m> maps <m>P[x]</m> onto <m>B</m>:
+  </p>
+  <exercise xml:id="exercise_PolyVec_phi_onto">
+    <statement>
+      <p>
+        Let <m>M</m> be an arbitrary matrix in <m>B</m>.
+        Suppose the first column of <m>M</m> is the column vector:
+        <me>
+          \left(\begin{array}{c}v_1\\v_2\\v_3\\\vdots \end{array} \right)
+        </me>.
+      </p>
+      <p>
+        Find a polynomial <m>p(x)</m> such that <m>\phi(p(x)) = M</m>. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    So we have that <m>\phi:P[x]\to B</m> is a 1-1 and onto map.
+    In fact, <m>\phi</m> is an isomorphism between the additive group of polynomials and the subdiagonal banded matrices <m>B</m>.
+    To finish proving this,
+    we need to show the operation-preserving property of <m>\phi</m>:
+  </p>
+  <proposition>
+    <statement>
+      <p>
+        Let
+        <me>
+          p(x) = \sum^ {N}_{m=0} a_{m}x^{m}\qquad \text{ and } \qquad q(x) = \sum^ {N'}_{m'=0} b_{m'}x^{m'}
+        </me>
+      </p>
+      <p>
+        Then <m>\phi(p + q) = \phi(p) + \phi(q)</m>.
+      </p>
+      <p>
+        Proof : We can suppose that <m>N \geq N'</m> ( if <m>N'> N</m>,
+        we just exchange <m>p</m> and <m>q</m> in the proof).
+        For all <m>b_j</m> when <m>j>N'</m>, we have <m>b_j=0</m>.
+        Then we will have:
+        <me>
+          p(x) + q(x) = \sum^ {N}_{m=0} a_{m}x^{m} + \sum^{N}_{m=0} b_{m}x^{m}
+        </me>
+        <me>
+          =\sum^{N}_{m=0}(a_{m} + b_{m})x^{m}
+        </me>.
+      </p>
+      <p>
+        Now, using our formula for <m>\phi</m> we have
+        <me>
+          [\phi(p + q)]_{i, j} = \left\{\begin{array}{rcl}\ a_m + b_m   \amp \mbox{if} \amp    i - j = m,  m = 0,...N \\ 0   \amp \mbox{otherwise} \amp \end{array} \right.
+        </me>
+      </p>
+      <p>
+        Comparing this with the 2 formulas
+        <me>
+          [\phi(p)]_{i, j} = \left\{\begin{array}{rcl}\ a_m   \amp \mbox{if} \amp    i - j = m,  m = 0,...N \\ 0   \amp \mbox{otherwise} \amp \end{array} \right.
+        </me>
+        and
+        <me>
+          [\phi(q)]_{i, j} = \left\{\begin{array}{rcl}\ b_m   \amp \mbox{if} \amp    i - j = m,  m = 0,...N \\ 0   \amp \mbox{otherwise} \amp \end{array} \right.
+        </me>
+      </p>
+      <p>
+        It's clear that <m>[\phi(p + q)]_{i, j} = [\phi(p)]_{i, j} + [\phi(q)]_{i, j}</m> for every <m>i</m> and <m>j</m>.
+        In other words, all of the matrix entries of
+        <m>\phi(p + q)</m> are equal to the sum of corresponding entries of <m>\phi(p)</m> and <m>\phi(q)</m>.
+      </p>
+      <p>
+        Therefore <m>\phi(p + q) = \phi(p) + \phi(q)</m>.
+      </p>
+    </statement>
+  </proposition>
+  <exercise>
+    <statement>
+      <p>
+        Show that <m>B</m>
+        (that is, the lower-triangular banded matrices)
+        is a group under addition.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Show that <m>\phi : P[x] \mapsto B</m> is an isomorphism between the addition groups <m>( P[x] , +)</m> and <m>(B, +)</m>.
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    So it's true that <m>\phi</m> is an additive isomorphism.
+    It would be nice if it were a multiplicative isomorphism as well.
+    Unfortunately this is impossible,
+    since polynomials don't form a multiplicative group.
+    Still, let's see if <m>\phi</m> has any special properties under multiplication.
+  </p>
+  <example>
+    <statement>
+      <p>
+        This example can shows that <m>\phi(x)\phi(x) = \phi(x^2)</m> is still true
+        (just as it was for <m>\phi_m</m>)
+        if we represent <m>x</m> by an infinite matrix:
+        <me>
+          \left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  \cdots\\1 \amp  0 \amp  0 \amp  \cdots\\0 \amp  1 \amp  0 \amp  \cdots\\\vdots \amp  \vdots \amp  \vdots \amp  \ddots \end{array} \right]\left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  \cdots \\1 \amp  0 \amp  0 \amp  \cdots\\0 \amp  1 \amp  0 \amp  \cdots\\\vdots \amp  \vdots \amp  \vdots \amp  \ddots \end{array} \right]=\left[\begin{array}{cccccc}0 \amp  0 \amp  0 \amp  \cdots\\0 \amp  0 \amp  0 \amp  \cdots\\1 \amp  0 \amp  0 \amp  \cdots\\\vdots \amp  \vdots \amp  \vdots \amp  \ddots \end{array} \right]
+        </me>
+      </p>
+    </statement>
+  </example>
+  <p>
+    In general, we have <m>\phi(x^m)\phi(x^n) = \phi(x^{m+n})</m>.
+    This suggests that <m>\phi</m> preserves the operation of multiplication that is,
+    <m>\phi(pq) = \phi(p)\phi(q)</m>.
+  </p>
+  <p>
+    Be careful here!
+    On the left-hand side we're taking the product of polynomials and taking <m>\phi</m> of the result.
+    On the right-hand side, we're converting two polynomials into matrices,
+    and multiplying the matrices.
+    So there are two different multiplication operations on the two sides of the equation.
+  </p>
+  <p>
+    Now, with the following proposition,
+    we can show that <m>\phi</m> does preserve multiplication operation.
+  </p>
+  <proposition>
+    <statement>
+      <p>
+        Let
+        <me>
+          p(x) = \sum^ {N}_{m=0} a_{m}x^{m}\qquad \text {and}  \qquad q(x) = \sum^ {N'}_{m'=0} b_{m'}x^{m'}
+        </me>
+      </p>
+      <p>
+        Then <m>\phi(pq) = \phi(p) \phi(q)</m>.
+      </p>
+      <p>
+        Proof : we'll start from the left-hand side of the equation
+        <m>\phi(pq) = \phi(p) \phi(q)</m> and show it's equal to the right-hand side as in the next exercise.
+      </p>
+    </statement>
+  </proposition>
+  <exercise xml:id="exercise_PolyVec_propPhi">
+    <statement>
+      <p>
+        Fill in the blanks the following proof. (*Hint*)
+        <md>
+          <mrow>\phi(pq) \amp = \phi\Bigg(\Big(\sum^ {N}_{m=0} a_{m}x^{m}\Big)\Big( \sum^{N'}_{m'=0} b_{m'}x^{m'}\Big)\Bigg)</mrow>
+          <mrow>\amp = \phi\Bigg(\sum^ {N}_{m=0}\sum^{N'}_{m'=0} a_{m}b_{m'} x^{\underline{\text{ \(\lt 1>\) } }} \Bigg)</mrow>
+          <mrow>\amp = \sum^ {N}_{m=0}\sum^{N'}_{m'=0}\phi\big( a_{m}b_{m'} x^{\underline{\text{ \(\lt 2>\) } }} \big)</mrow>
+          <mrow>\amp = \sum^ {N}_{m=0}\sum^{N'}_{m'=0}\phi\big( \underline{\text{ \(\lt 3>\) } } \big)\phi\big(\underline{\text{ \(\lt 4>\) } }\big)</mrow>
+          <mrow>\amp = \Big(\sum^ {N}_{m=0}\phi(\underline{\text{ \(\lt 5>\) } })\Big)\Big( \sum^{N'}_{m'=0}\phi(\underline{\text{ \(\lt 6>\) } })\Big)</mrow>
+          <mrow>\amp = \phi \Big(\sum^ {N}_{m=0}(\underline{\text{ \(\lt 7>\) } })\Big)\phi\Big( \sum^{N'}_{m'=0}(\underline{\text{ \(\lt 8>\) } })\Big)</mrow>
+          <mrow>\amp = \phi(\underline{\text{ \(\lt 9>\) } }) \phi(\underline{\text{ \(\lt 10>\) } })</mrow>
+        </md>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    So we finally proved that <m>\phi</m> preserves the operation of multiplication.
+  </p>
+</section>

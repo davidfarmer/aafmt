@@ -1,0 +1,311 @@
+<section xml:id="sec_Permutations_SwitchyardAndGenerators">
+  <title>
+  <q>Switchyard</q>
+  and generators of the permutation group<nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <p>
+    Switchyards are used by railroads to rearrange the order of train cars in a train
+    (see <xref ref="fig_grandview">Figure</xref>).
+    In this section we will study a
+    <q>switchyard</q>
+    of sorts.
+    The design of our mathematical
+    <q>switchyard</q>
+    is not realistic,
+    but the example will help us understand some important fundamental properties of permutations.
+  </p>
+  <figure xml:id="fig_grandview">
+    <caption>Grandview Yard (Pennsylvania Railorad) in Grandview Heights, OH around 1900 (source: \url{http://www.ghmchs.org/thisweek/photo-listing10.htm}.</caption>
+    <image width="75%" source="images/GrandviewYard.png"/>
+  </figure>
+  <p>
+    <xref ref="fig_switchyard">Figure</xref>
+    shows how the switchyard works.
+    The figure shows the particular case of a switchyard with 12 positions.
+    A railroad train with 12 cars pulls in from the right,
+    and circles around until it fills the circular track.
+  </p>
+  <figure xml:id="fig_switchyard">
+    <caption>
+    <q>Switchyard</q>
+    diagram</caption>
+    <image width="84%" source="images/switchyard.png"/>
+  </figure>
+  <p>
+    The positions (we'll call them <em>slots</em>
+    for short) are numbered 1 through 12 as are the railroad cars.
+    At the <em>starting position</em>,
+    each railroad car is at the corresponding numbered slot:
+    car 1 is in slot 1, <m>\ldots</m> car 12 is in slot 12.
+  </p>
+  <p>
+    From the starting position, the train can move in one of two ways:
+    <ul>
+      <li>
+        <p>
+          The train can move circularly around the track,
+          so that car 1 can end up at any one of the 12 slots.
+        </p>
+      </li>
+      <li>
+        <p>
+          Alternatively, the cars in slots 1 and 2 can switch places.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    These two types of motions can be represented as permutations.
+    In tableau notation,
+    the first row of the tableau corresponds to the train car,
+    while the second row corresponds to the slot it moves to.
+    For example, if the train cars
+    <m>1,2,3, \ldots ,11, 12</m> move counterclockwise one slot to occupy slots
+    <m>2,3,4,\ldots ,12,1</m> respectively, then the permutation
+    (in tableau notation)
+    is:
+    <me>
+      \left( \begin{array}{cccccccccccc} 1 \amp  2 \amp  3 \amp  4 \amp  5 \amp  6 \amp  7 \amp  8 \amp  9 \amp  10 \amp  11 \amp  12 \\ 2 \amp  3 \amp  4 \amp  5 \amp  6 \amp  7 \amp  8 \amp  9 \amp  10 \amp  11 \amp  12 \amp  1 \end{array}  \right)
+    </me>
+  </p>
+  <p>
+    In cycle notation,
+    the same permutation would be <m>(1 \; 2 \; 3 \; 4 \; \ldots \; 12)</m>.
+    We will denote this permutation by <m>r</m>.
+    On the other hand, if cars 1 and 2 are switched,
+    then this corresponds to the permutation <m>(1 2)</m>.
+    We will denote this permutation by <m>t</m>.
+    In summary:
+    <me>
+      r = (1 \; 2 \; \ldots \; 12);\qquad  t = (1 \, 2)
+    </me>.
+  </p>
+  <p>
+    Let's look at some other motions of the train.
+    Suppose for example we shift the train counterclockwise by two positions.
+    This corresponds to performing the permutation <m>r</m> twice in succession,
+    which is <m>r \compose r</m> or <m>r^2</m>.
+    If we think about the process of composition,
+    what's going on is the first <m>r</m> moves car 1
+    (which occupies slot 1)
+    to slot 2;
+    while the second <m>r</m> moves whatever's in slot 2
+    (which happens to be car 1)
+    to slot 3.
+    The resulting composition can be interpreted as showing where each of the cars end up after both moves.
+    The same thing will be true if we compose any number of permutations.
+  </p>
+  <p>
+    It follows that all rearrangements of the cars that can be accomplished by the switchyard may be obtained as compositions of the permutations <m>r</m> and <m>t</m>.
+    So what rearrangements are possible?
+    I'm glad you asked that question!
+    The following exercises are designed to help you figure this out.
+    But first, let's consider one type of rearrangement that's particularly important.
+    Suppose we want to switch two consecutive cars that are not 1 and 2:
+    say for example we want to switch cars 5 and 6, and leave the rest of the cars unchanged.
+    Can we do this?
+  </p>
+  <p>
+    At this point,
+    in order to follow along the reader may find it helpful to make his/her own model of a switchyard.<fn>
+    The models in this section
+    (and photos)
+    were made by Holly Webb.
+    </fn> <xref ref="fig_switchyardHome">Figure</xref>
+    shows a simple model made out of a jar lid with numbers stuck on with putty.
+  </p>
+  <figure xml:id="fig_switchyardHome">
+    <caption>
+    <q>Switchyard</q>
+    model in home position</caption>
+    <image width="46%" source="images/switchyardHomeposition.png"/>
+  </figure>
+  <p>
+    We'll illustrate the motions necessary to switch cars 5 and 6 using the model.
+    First, we rotate cars 5 and 6 to slots 1 and 2 by rotating 4 slots clockwise.
+    This permutation is shown in <xref ref="fig_switchyardCl4">Figure</xref>,
+    and is written mathematically as <m>r^{-4}</m>.
+  </p>
+  <figure xml:id="fig_switchyardCl4">
+    <caption>First stage in switching cars 5 and 6: clockwise rotation <m>r^{-4}</m>.</caption>
+    <image width="46%" source="images/switchyardCl4.png"/>
+  </figure>
+  <p>
+    Next, we exchange the two cars
+    (which we can do since they're in the first two positions).
+    <xref ref="fig_switchyard_t">Figure</xref> shows the switch,
+    which is denoted by <m>t</m>.
+  </p>
+  <figure xml:id="fig_switchyard_t">
+    <caption>Second stage in switching cars 5 and 6: switch <m>t</m>.</caption>
+    <image width="46%" source="images/switchyard_t.png"/>
+  </figure>
+  <p>
+    Finally, all we need to do is rotate counterclockwise 4 slots (<m>r^4</m>),
+    as shown in <xref ref="fig_switchyardCCL4">Figure</xref>.
+  </p>
+  <figure xml:id="fig_switchyardCCL4">
+    <caption>Third stage in switching cars 5 and 6: counterclockwise rotation <m>r^{4}</m>.</caption>
+    <image width="46%" source="images/switchyardCCL4.png"/>
+  </figure>
+  <p>
+    Altogether, these three steps give the composition <m>r^4 \compose t \compose r^{-4}</m>
+    (remember that permutations are applied right to left,
+    just like functions).
+    Note also that in the case of a 12-slot switchyard,
+    <m>r^{-4}</m> could also be written <m>r^8</m>,
+    since a clockwise rotation of 4 slots is the same as a counterclockwise rotation of 8 slots.
+    (If the switchyard has <m>n</m> positions,
+    the general rule is that <m>r^{-m} = r^{n-m}</m>,
+    as we saw in the Symmetries chapter.)
+  </p>
+  <exercise xml:id="exercise_Permutations_switchyard1">
+    <statement>
+      <p>
+        First we'll look at a switchyard with 4 positions.
+        As above, <m>r</m> = counterclockwise rotation by 1 position = <m>(1 \, 2 \, 3 \, 4)</m>;
+        while <m>t</m> exchanges two cars: <m>t = (1 \, 2)</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Write <m>(2 \, 3)</m>, <m>(3 \, 4)</m>,
+              and <m>(4 \, 1)</m> as products of powers of <m>r</m> and <m>t</m>. (Together with <m>(1 \, 2)</m>,
+              these are all the consecutive 2-cycles.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Write <m>(1 \, 2 \, 3)</m>,
+              <m>(2 \, 3 \, 4)</m>, <m>(3 \, 4 \, 1)</m>,
+              <m>(4 \, 1 \, 2)</m> as products of powers of <m>r</m> and <m>t</m>.
+              (These are all the counterclockwise consecutive 3-cycles.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Write <m>(1 \, 3 \, 2)</m>,
+              <m>(2 \, 4 \, 3)</m>, <m>(3 \, 1 \, 4)</m>,
+              <m>(4 \, 2 \, 1)</m> as products of powers of <m>r</m> and <m>t</m>.
+              (These are all the clockwise consecutive 3-cycles.)
+              (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Write <m>(1 \, 3)</m> as products of powers of <m>r</m> and <m>t</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that any transposition can be written as products of powers of <m>r</m> and <m>t</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that any permutation on 4 elements
+              (that is, any permutation in <m>S_4</m>)
+              can be obtained as a product of powers of <m>r</m> and <m>t</m>).
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_Permutations_switchyard2">
+    <statement>
+      <p>
+        Now we'll look at a general switchyard with <m>n</m> positions.
+        In this case,
+        rotation by 1 position is given by <m>r= (1 \; 2 \; \ldots \; n)</m>.
+        We use the same switch transposition, <m>t = (1 \; 2)</m>.
+        <ol type="a">
+          <li>
+            <p>
+              Write the transposition <m>(k \enspace k\oplus 1)</m> as a product of powers of <m>r</m> and <m>t</m>.
+              Here <m>\oplus</m> denotes addition mod <m>n</m>. (Note that we use <m>(k \enspace k\oplus 1)</m> instead of
+              <m>(k \enspace k+ 1)</m> because we want to count
+              <m>(n \enspace 1)</m> as a consecutive transposition.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that any consecutive cycle of the form
+              <m>(m \enspace m\oplus 1 \enspace \ldots \enspace m \oplus p )</m> can be written as a product of powers of <m>r</m> and <m>t</m> by filling in the blanks:
+              <ul>
+                <li>
+                  <p>
+                    First, <m>(m \enspace m \oplus 1 \enspace \ldots \enspace m \oplus p )</m> can be written as a product of consecutive transpositions as ________________. (*Hint*)
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Then, by replacing each transposition in this expression with its expression in terms of products of ________________, then we obtain an expression for ________________ as a product of ________________.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the transposition <m>(1 \, k)</m> as a product of a consecutive cycle of length <m>k</m> and the inverse of a consecutive cycle of length <m>k-1</m>. (*Hint*)
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that any transposition
+              <m>(1 \, k)</m> can be written as a product of consecutive transpositions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that any transposition
+              <m>(1 \, k)</m> can be written as a product of powers of <m>r</m> and <m>t</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that any transposition
+              <m>(p \, q)</m> can be written as a product of powers of <m>r</m> and <m>t</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that any permutation in <m>S_n</m> can be obtained as a product of powers of <m>r</m> and <m>t</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    What we have shown in the previous exercise is that the two permutations <m>r</m> and <m>t</m>
+    <em>generate</em> the group <m>S_n</m>.
+    In other words,
+    all of the information contained in the huge and complicated group <m>S_n</m> is characterized in just two permutations!
+    The study of group generators is an important part of group theory,
+    but unfortunately it is beyond the level of this course.
+  </p>
+  <exercise>
+    <statement>
+      <p>
+        Using
+        <q>switchyard</q>, we proved that <m>S_n</m> is generated by the permutations <m>(12)</m> and <m>(12 \ldots n)</m>.
+        Prove that the group <m>S_n</m> is generated by the following sets of permutations.
+        <ol>
+          <li>
+            <p>
+              <m>(1 2), (13), \ldots, (1n)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(1 2), (23), \ldots, (n- 1,n)</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

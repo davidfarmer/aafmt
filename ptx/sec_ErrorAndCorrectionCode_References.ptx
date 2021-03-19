@@ -1,0 +1,67 @@
+<section xml:id="sec_ErrorAndCorrectionCode_References">
+  <title>References and Suggested Readings</title>
+  <ul>
+    <li>
+      <p>
+        [<em>[1]</em>] Blake, I. F.
+        <q>Codes and Designs,</q>
+        <em>Mathematics Magazine</em> <em>52</em> (1979), 81<ndash/>95.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[2]</em>] Hill, R. <em>A First Course in Coding Theory</em>.
+        Oxford University Press, Oxford, 1986.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[3]</em>] Levinson, N.
+        <q>Coding Theory: A Counterexample to G. H. Hardy's Conception of Applied Mathematics,</q>
+        <em>American Mathematical Monthly</em>
+        <em>77</em> (1970), 249<ndash/>58.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[4]</em>] Lidl, R. and Pilz, G.
+        <em>Applied Abstract Algebra</em>.
+        Springer-Verlag, New York, 1984.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[5]</em>] MacWilliams, F. J. and Sloane, N. J. A.
+        <em>The Theory of Error-Correcting Codes</em>.
+        North Holland, Amsterdam, 1977.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[6]</em>] Roman, S. <em>Coding and Information Theory</em>.
+        Springer-Verlag, New York, 1992.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[7]</em>] Shannon, C. E.
+        <q>A Mathematical Theory of Communication,</q>
+        <em>Bell System Technical Journal</em> <em>27</em>
+        (1948), 379<ndash/>423, 623<ndash/>56.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[8]</em>] Thompson, T. M. <em>From Error-Correcting Codes through Sphere Packing to Simple Groups</em>.
+        Carus Monograph Series, No. 21.
+        Mathematical Association of America, Washington, DC, 1983.
+      </p>
+    </li>
+    <li>
+      <p>
+        [<em>[9]</em>] van Lint, J. H. <em>Introduction to Coding Theory</em>.
+        Springer-Verlag, New York, 1982.
+      </p>
+    </li>
+  </ul>
+</section>

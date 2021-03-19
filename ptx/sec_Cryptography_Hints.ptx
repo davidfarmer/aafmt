@@ -1,0 +1,45 @@
+<section xml:id="sec_Cryptography_Hints">
+  <title>Hints for
+  <q>Applications (I): Introduction to Cryptography</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_Cryptography_mat1">Exercise</xref>: Prove by contradiction.
+    If <m>A</m> has an inverse,
+    then there exists a matrix <m>B</m> such that <m>AB = I</m>.
+    Take the determinant of this equation,
+    and show that it produces a contradiction to the fact that <m>(a \odot d) \ominus (b \odot c)</m> has no inverse.
+  </p>
+  <p>
+    <xref ref="exercise_Cryptography_primes">Exercise</xref>: It is possible to list all of the numbers between <m>1</m> and <m>pq</m> which are <em>not</em>
+    relatively prime to <m>pq</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cryptography_power">Exercise</xref>(c): Remember your exponent rules!
+  </p>
+  <p>
+    <xref ref="exercise_Cryptography_brute">Exercise</xref>: Consider the case where <m>n</m> is the product of two <em>equal</em>
+    factors: <m>n=a \cdot a</m>.
+    Then how large must <m>a</m> be?
+    Compare this with the general case where <m>n</m> is the product of two unequal factors:
+    <m>n = xy</m>.
+    Show that the <em>smaller</em> of these two factors must be smaller than <m>a</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Cryptography_Fermat">Exercise</xref>: Suppose <m>n=ab</m>.
+    Choose <m>a</m> to be the smaller factor.
+    Write <m>a = x-y</m> and <m>b = x+y</m>,
+    and solve for <m>x</m> and <m>y</m>.
+    To finish the proof,
+    you need to prove that <m>x</m> and <m>y</m> must both be integers.
+  </p>
+  <p>
+    <xref ref="exercise_Cryptography_smallest_value">Exercise</xref>: Solve for <m>x</m>.
+    What value of <m>y</m> makes <m>x</m> as small as possible?
+  </p>
+  <p>
+    <xref ref="exercise_Cryptography_FermatEfficient">Exercise</xref>(a): Prove by contradiction.<nbsp/><nbsp/><nbsp/><nbsp/>(b): Write
+    <m>m = 2k+1</m>.<nbsp/><nbsp/><nbsp/><nbsp/>(d): Use part (c),
+    part (b),
+    and the distributive law.<nbsp/><nbsp/><nbsp/><nbsp/>(e): This is similar to part(b).
+  </p>
+</section>

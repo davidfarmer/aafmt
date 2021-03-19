@@ -1,0 +1,151 @@
+<section xml:id="sec_ErrorAndCorrectionCode_AdditionalCodingExercises">
+  <title>Additional algebraic coding exercises</title>
+  <exercise xml:id="exercise_ErrorAndCorrectionCode_lincode0">
+    <statement>
+      <p>
+        Let <m>C</m> be a linear code.
+        Show that either the <m>i</m>th coordinates in the codewords of <m>C</m> are all zeros or exactly half of them are zeros. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_ErrorAndCorrectionCode_linlin">
+    <statement>
+      <p>
+        Show that the codewords of even weight in a linear code <m>C</m> are also a linear code. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exercise_ErrorAndCorrectionCode_lineven">
+    <statement>
+      <p>
+        Let <m>C</m> be a linear code.
+        Show that either every codeword has even weight or exactly half of the codewords have even weight. (*Hint*)
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>C</m> be an <m>(n,k)</m>-linear code.
+        Define the <term> dual</term>
+            <idx><h>Code</h><h>dual</h></idx>
+        or <term>Orthogonal code</term>
+            <idx><h>Code</h><h>orthogonal</h></idx>
+        of <m>C</m> to be
+        <me>
+          C^\perp = \{ {\bold x} \in \mathbb{Z}_2^n :  {\bold x} \cdot {\bold y} = 0 \mbox{ for all }  {\bold y} \in C \}
+        </me>.
+        <ol type="a">
+          <li>
+            <p>
+              Find the dual code of the linear code <m>C</m> where <m>C</m> is given by the matrix
+              <me>
+                \left( \begin{array}{ccccc} 1 \amp  1 \amp  1 \amp  0 \amp  0 \\ 0 \amp  0 \amp  1 \amp  0 \amp  1 \\ 1 \amp  0 \amp  0 \amp  1 \amp  0 \end{array} \right)
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>C^\perp</m> is an <m>(n, n-k)</m>-linear code.
+            </p>
+          </li>
+          <li>
+            <p>
+              Find the standard generator and parity-check matrices of <m>C</m> and <m>C^\perp</m>.
+              What happens in general?
+              Prove your conjecture.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let <m>H</m> be an <m>m \times n</m> matrix over <m>\mathbb{Z}_2</m>,
+        where the <m>i</m>th column is the number <m>i</m> written in binary with <m>m</m> bits.
+        The null space of such a matrix is called a
+        <term>Hamming code</term><idx><h>Hamming code</h><h>definition</h></idx>.
+            <idx><h>Code</h><h>Hamming</h></idx>
+        <ol type="a">
+          <li>
+            <p>
+              Show  that the matrix
+              <me>
+                H = \left( \begin{array}{cccccc} 0 \amp  0 \amp  0 \amp  1 \amp  1 \amp  1 \\ 0 \amp  1 \amp  1 \amp  0 \amp  0 \amp  1 \\ 1 \amp  0 \amp  1 \amp  0 \amp  1 \amp  0 \end{array} \right)
+              </me>
+              generates a Hamming code.
+              What are the error-correcting properties of a Hamming code?
+            </p>
+          </li>
+          <li>
+            <p>
+              The column corresponding to the syndrome also marks the bit that was in error;
+              that is, the <m>i</m>th column of the matrix is <m>i</m> written as a binary number,
+              and the syndrome immediately tells us which bit is in error.
+              If the received word is <m>(101011)</m>, compute the syndrome.
+              In which bit did the error occur in this case,
+              and what codeword was originally transmitted?
+            </p>
+          </li>
+          <li>
+            <p>
+              Give a binary matrix <m>H</m> for the Hamming code with six information positions and four check positions.
+              What are the check positions and what are the information positions?
+              Encode the messages <m>(101101)</m> and <m>(001001)</m>.
+              Decode the received words <m>(0010000101)</m> and <m>(0000101100)</m>.
+              What are the possible syndromes for this code?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the number of check bits and the number of information bits in an <m>(m,n)</m>-block Hamming code?
+              Give both an upper and a lower bound on the number of information bits in terms of the number of check bits.
+              Hamming codes having the maximum possible number of information bits with <m>k</m> check bits are called <term> perfect</term>.
+                <idx><h>Hamming code</h><h>perfect</h></idx>
+            Every possible syndrome except <m>{\bold 0}</m> occurs as a column.
+              If the number of information bits is less than the maximum,
+              then the code is called <term> shortened</term>.
+                <idx><h>Hamming code</h><h>shortened</h></idx>
+            In this case,
+              give an example showing that some syndromes can represent multiple errors.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Write a program to implement a <m>(16, 12)</m>-linear code.
+        Your program should be able to encode and decode messages using coset decoding.
+        Once your program is written,
+        write a program to simulate a binary symmetric channel with transmission noise.
+        Compare the results of your simulation with the theoretically predicted error probability.
+      </p>
+    </statement>
+  </exercise>
+  <remark>
+    <p>
+      (<em>historical background</em>) Modern coding theory began in 1948 with C. Shannon's
+          <idx><h>Shannon, C.</h></idx>
+      paper,
+      <q>A Mathematical Theory of Information</q>
+      [7]. This paper offered an example of an algebraic code,
+      and Shannon's Theorem proclaimed exactly how good codes could be expected to be.
+      Richard Hamming
+          <idx><h>Hamming, R.</h></idx>
+      began working with linear codes at Bell Labs in the late 1940s and early 1950s after becoming frustrated because the programs that he was running could not recover from simple errors generated by noise.
+      Coding theory has grown tremendously in the past several years.
+      <em>The Theory of Error-Correcting Codes</em>,
+      by MacWilliams and Sloane [5], published in 1977,
+      already contained over 1500 references.
+      Linear codes (Reed-Muller <m>(32, 6)</m>-block codes) were used on NASA's Mariner space probes.
+      More recent space probes such as Voyager have used what are called convolution codes.
+      Currently, very active research is being done with Goppa codes,
+      which are heavily dependent on algebraic geometry.
+    </p>
+  </remark>
+</section>

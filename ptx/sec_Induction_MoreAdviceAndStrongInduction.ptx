@@ -1,0 +1,89 @@
+<section xml:id="sec_Induction_MoreAdviceAndStrongInduction">
+  <title>More advice on induction and strong induction proofs</title>
+  <p>
+    <term>Should I use ordinary induction or strong induction?</term>
+    With some standard types of problems (e.g., sum formulas) it is clear ahead of time what type of induction is
+    <em>likely</em> to be required,
+    but usually this question answers itself during the exploratory/scratch phase of the argument.
+    In the induction step you will need to reach the <m>k+1</m> case,
+    and you should ask yourself which of the previous cases you need to get there.
+    If all you need to prove the <m>k+1</m> case is the case <m>k</m> of the statement,
+    then ordinary induction is appropriate.
+    If two preceding cases, <m>k-1</m> and <m>k</m>,
+    are necessary to get to <m>k+1</m>,
+    then (a weak form of) strong induction is appropriate.
+    If one needs the full range of preceding cases (i.e., all cases <m>n=1,2,\dots,k</m>),
+    then the full force of strong induction is needed.
+  </p>
+  <p>
+    <term>How many base cases are needed?</term>
+    The number of base cases to be checked depends on how far back one needs to
+    <q>look</q>
+    in the induction step.
+    In standard induction proofs (e.g., for summation formulas) the induction step requires only the immediately preceding case (i.e., the case <m>n=k</m>),
+    so a single base case is enough to start the induction.
+    <ul>
+      <li>
+        <p>
+          For Fibonacci-type problems,
+          the induction step usually requires the result for the two preceding cases,
+          <m>n=k</m> and <m>n=k-1</m>.
+          To get the induction started,
+          one therefore needs to know the result for two consecutive cases,
+          e.g., <m>n=1</m> and <m>n=2</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          In postage stamp type problems,
+          getting the result for <m>n=k+1</m> might require knowing the result for <m>n=k-2</m> and <m>n=k-6</m>, say.
+          This amounts to
+          <q>looking back</q>
+          <m>7</m> steps
+          (namely <m>n=k,k-1,\dots,k-6</m>),
+          so <m>7</m> consecutive cases are needed to get the induction started.
+        </p>
+      </li>
+      <li>
+        <p>
+          On the other hand,
+          in problems involving the full strength of the strong induction hypothesis (i.e., if in the induction step one needs to assume the result for <em>all</em>
+          preceding cases <m>n=k,k-1,\dots,1</m>),
+          a single base case may be sufficient.
+          An example is the Fundamental Theorem of Arithmetic.
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    <term>How do I write the induction step?</term>
+    As in the case of ordinary induction,
+    at the beginning of the induction step
+    <em>state precisely what you are assuming,
+    including any constraints on the induction variable <m>k</m></em>.
+    Without an explicitly stated assumption,
+    the argument is incomplete.
+    The appropriate induction hypothesis depends on the nature of the problem and the type of induction used.
+    Here are some common ways to start out an induction step:
+    <ul>
+      <li>
+        <p>
+          <q>Let <m>k\in \NN</m> be given and assume <m>P(k)</m> is true.</q>
+          (typical form for standard induction proofs)
+        </p>
+      </li>
+      <li>
+        <p>
+          <q>Let <m>k\ge 2</m> be given and assume <m>P(n)</m> holds for <m>n=k-1</m> and <m>n=k</m>.</q>
+          (typical form for induction involving recurrences)
+        </p>
+      </li>
+      <li>
+        <p>
+          <q>Let <m>k\in \NN</m> be given and assume <m>P(n)</m> holds for <m>n=1,2,\dots,k</m>.</q>
+          (typical form for representation problems)
+        </p>
+      </li>
+    </ul>
+  </p>
+</section>

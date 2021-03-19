@@ -1,0 +1,729 @@
+<section xml:id="sec_ErrorAndCorrectionCode_EncodingBlockLinearCodes">
+  <title>Code words and encoding in block linear codes</title>
+  <introduction>
+    <p>
+      We have shown how to define a set of codewords for a block linear code.
+      But so far we don't understand too well what code words look like,
+      and we haven't considered encoding and decoding.
+      One of the great advantages of linear codes is that they enable very efficient methods of encoding and decoding.
+      It's easiest to see how this works in the case where <m>H</m> has a special form,
+      which we will now define.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_ErrorAndCorrectionCode_EncodingBlockLinearCodes_ParityCheck">
+    <title>Canonical Parity-check matrices<nbsp/><nbsp/></title>
+    <figure>
+      <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+    </figure>
+    <definition>
+      <statement>
+        <p>
+          {CanonicalParityCheckMatrix} Suppose that <m>H</m> is a
+          <m>k \times n</m> matrix with entries in <m>\mathbb{Z}_2</m> and <m>n > k</m>.
+          If the last <m>k</m> columns of the matrix form the
+          <m>k \times k</m> identity matrix, <m>I_k</m>,
+          then the matrix is called a <term>canonical parity-check matrix</term><idx><h>Matrix</h><h>parity-check</h></idx>.
+              <idx><h>Parity</h><h>canonical parity-check matrix</h></idx>
+          More specifically, <m>H= (A \mid I_k )</m>,
+          where <m>A</m> is the <m>k \times (n-k)</m> matrix
+          <me>
+            \left( \begin{array}{cccc} a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1,n-k} \\ a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2,n-k} \\ \vdots \amp  \vdots \amp  \ddots \amp  \vdots    \\ a_{k1} \amp  a_{k2} \amp  \cdots \amp  a_{k,n-k} \end{array} \right)
+          </me>
+          and <m>I_k</m> is the <m>k \times k</m> identity matrix
+          <me>
+            \left( \begin{array}{cccc} 1 \amp  0 \amp  \cdots \amp  0 \\ 0 \amp  1 \amp  \cdots \amp  0 \\ \vdots \amp  \vdots \amp  \ddots \amp  \vdots \\ 0 \amp  0 \amp  \cdots \amp  1 \end{array} \right)
+          </me>.
+        </p>
+      </statement>
+    </definition>
+    <exercise>
+      <statement>
+        <p>
+          Only one of the matrices in <xref ref="exercise_ErrorAndCorrectionCode_LinearCodes">Exercise</xref>
+          is a canonical parity-check matrix.
+          Which one is it?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Readers who have had a class in linear algebra may notice the similarity between canonical parity-check matrices and reduced row-echelon form.
+      The only difference is that reduced row-echelon matrices have the identity submatrix on the <em>left</em>,
+      while the canonical parity-check matrix has it on the <em>right</em>.
+    </p>
+    <p>
+      In the following example,
+      we will explore the relation between the canonical parity-check matrix <m>H</m> and the structure of the codewords.
+    </p>
+    <example xml:id="example_ErrorAndCorrectionCode_ParityCheck">
+      <statement>
+        <p>
+          Suppose the matrix <m>A</m> is given by
+          <me>
+            A = \left( \begin{array}{ccc} 0 \amp  1 \amp  1 \\ 1 \amp  1 \amp  0 \\ 1 \amp  0 \amp  1 \end{array} \right)
+          </me>,
+          then the associated canonical parity-check matrix is
+          <me>
+            H = \left( \begin{array}{cccccc} 0 \amp  1 \amp  1 \amp  1 \amp  0 \amp  0 \\ 1 \amp  1 \amp  0 \amp  0 \amp  1 \amp  0 \\ 1 \amp  0 \amp  1 \amp  0 \amp  0 \amp  1 \end{array} \right)
+          </me>,
+        </p>
+        <p>
+          Observe that the rows in <m>H</m> represent the parity checks on certain bit positions in a 6-tuple.
+          The 1's in the identity matrix serve as parity checks for the 1's in the same row.
+          If <m>{\bold x} = (x_1, x_2, x_3, x_4, x_5, x_6)</m>, then
+          <me>
+            {\bold 0} = H{\bold x}^{\mathrm{T}} = \left( \begin{array}{l} x_2 + x_3 + x_4 \\ x_1 + x_2 + x_5\\ x_1 + x_3 + x_6 \end{array} \right)
+          </me>,
+          which yields a system of equations:
+          <md>
+            <mrow>x_2 + x_3 + x_4 \amp  = \amp  0</mrow>
+            <mrow>x_1 + x_2 + x_5 \amp  = \amp  0</mrow>
+            <mrow>x_1 + x_3 + x_6 \amp  = \amp  0</mrow>
+          </md>
+        </p>
+        <p>
+          (remember that all of these equations are using binary arithmetic!) Here each of the bits in
+          <m>\{x_4, x_5, x_6\}</m> serves as a parity check bit for two of the bits in the set <m>\{x_1, x_2, x_3\}</m>.
+          Hence, <m>x_1</m>, <m>x_2</m>,
+          and <m>x_3</m> can be arbitrary but <m>x_4</m>,
+          <m>x_5</m>, and <m>x_6</m> must be chosen to ensure parity.
+          By following this method, we find that the vectors in Null(<m>H</m>) are
+          <me>
+            \begin{array}{cccc} (000000) \amp  (001101) \amp  (010110) \amp  (011011) \\ (100011) \amp  (101110) \amp  (110101) \amp  (111000). \end{array}
+          </me>
+        </p>
+      </statement>
+    </example>
+    <p>
+      The following proposition generalizes some of our findings from <xref ref="example_ErrorAndCorrectionCode_ParityCheck">Example</xref>.
+    </p>
+    <proposition xml:id="proposition_ErrorAndCorrectionCode_RowEchelon">
+      <statement>
+        <p>
+          Let <m>H \in \mathbb{M}_{k \times n}(\mathbb{Z}_2)</m> be a canonical parity-check matrix.
+          Then <m>{ Null}(H)</m> consists of all
+          <m>{\bold x} \in {\Bbb Z}_2^n</m> whose first <m>n-k</m> bits are arbitrary but whose last <m>k</m> bits are determined by <m>H{\bold x}^{\mathrm{T}} = {\bold 0}</m>.
+          Each of the last <m>k</m> bits serves as an even parity check bit for some of the first <m>n-k</m> bits.
+          Hence, <m>H</m> gives rise to an <m>(n, n-k)</m>-block code
+              <idx><h>Block code</h></idx>
+              <idx><h>Code</h><h>block code</h></idx> (according to the notation that we introduced in <xref ref="definition_ErrorAndCorrectionCode_BlockCode">Definition</xref>).
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      The proof of <xref ref="proposition_ErrorAndCorrectionCode_RowEchelon">Proposition</xref>
+      simply follows the same steps as in <xref ref="example_ErrorAndCorrectionCode_ParityCheck">Example</xref>,
+      except that instead of 3 equations in 6 unknowns we have <m>k</m> equations in <m>n</m> unknowns.
+      Readers who've had linear algebra may recognize that this is exactly the same as the method for solving linear equations using row-echelon form:
+      the <m>k</m> equations in <m>n</m> unknowns give rise to <m>n-k</m> free variables,
+      that determine the other variables in the solution.
+    </p>
+    <p>
+      <xref ref="proposition_ErrorAndCorrectionCode_RowEchelon">Proposition</xref>
+      motivates the following definitions.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {InformBits} Let <m>H</m> be a canonical parity-check matrix,
+          and let <m>{\bold x}</m> be a codeword in Null(<m>H</m>).
+          Then the first <m>n-k</m> bits of <m>{\bold x}</m> are called
+          <term> information bits</term>
+          <idx><h>Bits</h><h>information bits</h></idx>
+              <idx><h>Information bits</h></idx>
+          and the last <m>k</m> bits are called <term>check bits</term>
+              <idx><h>Bits</h><h>check bits</h></idx>.
+              <idx><h>Check bits</h></idx>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      In <xref ref="example_ErrorAndCorrectionCode_ParityCheck">Example</xref>,
+      the first three bits are the information bits and the last three are the check bits.
+    </p>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Find the canonical parity-check matrix for a code that performs a single even parity check for three information bits (i.e. 3 information bits, 1 check bit).
+            </p>
+          </li>
+          <li>
+            <p>
+              Same as (a), except with seven information bits.
+            </p>
+          </li>
+          <li>
+            <p>
+              Is it possible to implement the odd parity-check code using a parity-check matrix?
+              <em>Explain</em> your answer.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_ErrorAndCorrectionCode_EncodingBlockLinearCodes_StandardGeneratorMatrix">
+    <title>Standard Generator Matrices</title>
+    <p>
+      We now have a relatively straightforward way to generate the codewords in Null(<m>H</m>),
+      if <m>H</m> is a canonical parity-check matrix.
+      But there's an even easier way <mdash/> and one that gives us an encoding function in the bargain.
+    </p>
+    <p>
+      Before jumping into this discussion,
+      we should simplify our notation.
+      Up to now we've been very careful to identify code words as row vectors,
+      as opposed to column vectors:
+      so for instance we've always written the parity check condition as <m>H \textbf{x}^\textrm{T} = 0</m>,
+      in order to ensure that <m>\textbf{x}</m> is interpreted as a column vector.
+      But when you come right down to it, vectors are vectors,
+      no matter whether they're written horizontally or vertically.
+      In the following discussion we'll be more casual,
+      and simply denote the codeword by
+      <m>\textbf{x}</m> whether it's arranged as a row or column vector.
+      So for instance,
+      we'll simply write <m>H \textbf{x} = \textbf{0}</m> instead of
+      <m>H \textbf{x}^\textrm{T} = \textbf{0}</m> . The context will determine whether the row or column vector is meant.
+    </p>
+    <p>
+      Now that that's out of the way,
+      let's begin on our new code generation method.
+      First, a definition:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {GeneratorMatrix} With each
+          <m>k \times n</m> canonical parity-check matrix
+          <m>H= (A \mid I_k)</m> we can associate an <m>n \times (n-k)</m>
+          <term>standard generator matrix</term>
+              <idx><h>Matrix</h><h>generator</h></idx>
+              <idx><h>Standard generator matrix</h></idx> <m>G</m>, given by
+          <me>
+            G = \left( \begin{array}{c} I_{n-k} \\ A \end{array}  \right)
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      In order to explore the connection between parity-check and generator matrices,
+      we continue our previous example of a particular <m>3 \times 3</m> matrix <m>A</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          (<em><xref ref="example_ErrorAndCorrectionCode_ParityCheck">Example</xref>
+          continued</em>) For the matrix <m>A</m> used in <xref ref="example_ErrorAndCorrectionCode_ParityCheck">Example</xref>,
+          you may check that the associated generator matrix is:
+          <me>
+            G= \left( \begin{array}{ccc} 1 \amp  0 \amp  0 \\ 0 \amp  1 \amp  0 \\ 0 \amp  0 \amp  1 \\ 0 \amp  1 \amp  1 \\ 1 \amp  1 \amp  0 \\ 1 \amp  0 \amp  1 \end{array} \right)
+          </me>
+        </p>
+        <p>
+          By comparing <m>G</m> with the list of vectors in Null(<m>H</m>),
+          we find that all the columns of <m>G</m>
+          <q>just happen</q>
+          to be contained in Null(<m>H</m>)
+          (this is no accident, as we shall see!).
+          In fact, any linear combination of the columns of <m>G</m> will also be in Null(<em>H</em>).
+          To see this,
+          denote the columns of <m>G</m> by <m>{\bold g}_1, {\bold g}_2, {\bold g}_3</m>,
+          and let <m>x_1, x_2, x_3 \in \mathbb{Z}_2</m>.
+          Then we have (by ordinary matrix multiplication,
+          except all operations are binary)
+          <me>
+            H (x_1 {\bold g}_1 + x_2{\bold g}_2 + x_3{\bold g}_3) = x_1H {\bold g}_1 + x_2H{\bold g}_2 + x_3H{\bold g}_3 = x_1 {\bold 0} + x_2{\bold 0} + x_3{\bold 0} = {\bold 0}
+          </me>.
+        </p>
+        <p>
+          The linear combination of columns of <m>G</m> can in fact be represented more simply using matrix-vector multiplication:
+          <me>
+            x_1 {\bold g}_1 + x_2{\bold g}_2 + x_3{\bold g}_3 = G{\bold x}
+          </me>
+        </p>
+        <p>
+          This gives us another way to generate codewords that are in Null(<m>H</m>)<ndash/>namely,
+          take any element in <m>\mathbb{Z}_2^3</m> and multiply it by <m>G</m>.
+          In fact, this gives us our long-sought encoding function!
+          For any message word in <m>\mathbb{Z}_2^3</m> we multiply on the left by <m>G</m> and voil&#xe0;! The result is a codeword.
+          <xref ref="table_ErrorAndCorrectionCode_generator">Table</xref>
+          shows the results of this procedure.
+          From the table,
+          we find that this method of generating codewords gives us all of the vectors in Null(<em>H</em>).
+          Furthermore,
+          each different message word produces a different codeword,
+          as a proper encoding function should.
+        </p>
+        <table xml:id="table_ErrorAndCorrectionCode_generator">
+          <title>A matrix-generated code</title>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Message Word</cell>
+              <cell>Codeword</cell>
+            </row>
+            <row>
+              <cell><m>{\bold x}</m></cell>
+              <cell><m>G {\bold x}</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>000</cell>
+              <cell>000000</cell>
+            </row>
+            <row>
+              <cell>001</cell>
+              <cell>001101</cell>
+            </row>
+            <row>
+              <cell>010</cell>
+              <cell>010110</cell>
+            </row>
+            <row>
+              <cell>011</cell>
+              <cell>011011</cell>
+            </row>
+            <row>
+              <cell>100</cell>
+              <cell>100011</cell>
+            </row>
+            <row>
+              <cell>101</cell>
+              <cell>101110</cell>
+            </row>
+            <row>
+              <cell>110</cell>
+              <cell>110101</cell>
+            </row>
+            <row>
+              <cell>111</cell>
+              <cell>111000</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </table>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_ErrorAndCorrectionCode_StandardGenerator">
+      <statement>
+        <p>
+          For each of the following canonical parity-check matrices,
+          find the corresponding standard generator matrix.
+          Use the standard generator matrix to compute codewords
+          (make a table similar to <xref ref="table_ErrorAndCorrectionCode_generator">Table</xref>),
+          and verify that the codewords are in the null space of the canonical parity-check matrix.
+          <ol type="a">
+            <li>
+              <p>
+                <me>
+                  \left( \begin{array}{ccccc} 1 \amp  1 \amp  0 \amp  0 \amp  0 \\ 0 \amp  0 \amp  1 \amp  0 \amp  0 \\ 0 \amp  0 \amp  0 \amp  1 \amp  0 \\ 1 \amp  0 \amp  0 \amp  0 \amp  1 \end{array} \right)
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                <me>
+                  \left( \begin{array}{cccccc} 0 \amp  1 \amp  1 \amp  0 \amp  0 \amp  0 \\ 1 \amp  1 \amp  0 \amp  1 \amp  0 \amp  0 \\ 0 \amp  1 \amp  0 \amp  0 \amp  1 \amp  0 \\ 1 \amp  1 \amp  0 \amp  0 \amp  0 \amp  1 \end{array} \right)
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                <me>
+                  \left( \begin{array}{cccc} 1 \amp  1 \amp  1 \amp  0 \\ 1 \amp  0 \amp  0 \amp  1 \end{array} \right)
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                <me>
+                  \left( \begin{array}{cccccc} 0 \amp  1 \amp  1 \amp  0 \amp  0 \amp  0 \\ 1 \amp  1 \amp  0 \amp  1 \amp  0 \amp  0 \\ 0 \amp  1 \amp  0 \amp  0 \amp  1 \amp  0 \\ 1 \amp  1 \amp  0 \amp  0 \amp  0 \amp  1 \end{array} \right)
+                </me>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The following proposition generalizes what we found in the previous example.
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          Suppose that <m>G</m> is an
+          <m>n \times m</m> standard generator matrix.
+          Then <m>C = \{ \textbf{y} : G \textbf{x} =\textbf{y}</m> for
+          <m>\textbf{x} \in {\Bbb Z}_2^m \}</m> is an <m>(n,m)</m>-block code.
+          More specifically, <m>C</m> is a group code.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Let <m>G {\bold x}_1 = {\bold y}_1</m> and <m>G {\bold x}_2 ={\bold y}_2</m> be two codewords.
+        Then <m>{\bold y}_1 + {\bold y}_2</m> is in <m>C</m> since
+        <me>
+          G( {\bold x}_1 + {\bold x}_2) = G {\bold x}_1 + G {\bold x}_2 = {\bold y}_1 + {\bold y}_2
+        </me>.
+      </p>
+      <p>
+        We must also show that two message blocks
+            <idx><h>Message block</h></idx>
+        can't be encoded into the same codeword.
+        That is, we must show that if <m>G {\bold x} = G {\bold y}</m>,
+        then <m>{\bold x} = {\bold y}</m>.
+        Suppose that <m>G {\bold x} = G {\bold y}</m>.
+        Then
+        <me>
+          G {\bold x} - G {\bold y} = G( {\bold x} - {\bold y}) = {\bold 0}
+        </me>.
+      </p>
+      <p>
+        However, the first <m>k</m> coordinates in
+        <m>G( {\bold x} - {\bold y})</m> are exactly <m>x_1 -y_1, \ldots,
+        x_k - y_k</m>,
+        since they are determined by the identity matrix,
+        <m>I_k</m>, part of <m>G</m>.
+        Hence, <m>G( {\bold x} - {\bold y}) = {\bold 0}</m> exactly when <m>{\bold x} = {\bold y}</m>.
+      </p>
+    </proof>
+    <p>
+      In order to complete the link between canonical parity-check matrices and standard generating matrices,
+      we first need the following useful result.
+    </p>
+    <proposition xml:id="proposition_ErrorAndCorrectionCode_HGEquals0">
+      <statement>
+        <p>
+          Let <m>H = (A \mid I_k )</m> be an
+          <m>k \times n</m> canonical parity-check matrix and <m>G = \left( \begin{array}{c} I_{n-k} \\ A \end{array} \right)</m> be the corresponding
+          <m>n \times (n-k)</m> standard generator matrix.
+          Then <m>HG = {\bold 0}</m>,
+          where <m>{\bold 0}</m> denotes the <m>k \times (n-k)</m> matrix of all 0's.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        It is possible to prove this by writing out the matrix product <m>HG</m> using summation notation
+        (see <xref ref="SigmaNotation">Chapter</xref>).
+        This is however somewhat long-winded.
+        A much easier way is to multiply <m>H</m> and <m>G</m> as
+        <em>block matrices</em>.<fn>
+        see for example \url{mathworld.wolfram.com/BlockMatrix.html}.
+        </fn> Since the block sizes are compatible, we have
+        <me>
+          HG = (A \mid I_k )\left( \begin{array}{c} I_{n-k} \\ A \end{array}  \right) = (A + A)
+        </me>,
+        but since we are adding in binary,
+        it follows that <m>A + A</m> is the <m>k \times (n-k)</m> matrix of all 0's.
+      </p>
+    </proof>
+    <p>
+      We now top things off by establishing equality between Null(<m>H</m>) and the code generated by <m>G</m>.
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>H = (A \mid I_k )</m> be a
+          <m>k \times n</m> canonical parity-check matrix and let <m>G = \left( \begin{array}{c} I_{n-k} \\ A \end{array} \right)</m> be the
+          <m>n \times (n-k)</m> standard generator matrix associated with <m>H</m>.
+          Let <m>C</m> be the code generated by <m>G</m>.
+          Then <m>{\bold y}</m> is in <m>C</m> if and only if <m>H {\bold y} = {\bold 0}</m>.
+          In particular,
+          <m>C</m> is a linear code with canonical parity-check matrix <m>H</m>.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        First suppose that <m>{\bold y} \in C</m>.
+        Then <m>G {\bold x} = {\bold y}</m> for some <m>{\bold x} \in \mathbb{Z}_2^{n-k}</m>.
+        By <xref ref="proposition_ErrorAndCorrectionCode_HGEquals0">Proposition</xref>,
+        <m>H {\bold y} = HG {\bold x} = {\bold 0}</m>.
+      </p>
+      <p>
+        Conversely, suppose that <m>{\bold y} = (y_1, \ldots,
+        y_n)</m> is in the null space of <m>H</m>.
+        We can split <m>{\bold y}</m> into two parts as follows:
+        <me>
+          {\bold y} =  \left(  {\bold y}_a \,\, {\bold y}_b \right), \text{ where }  {\bold y}_a := (y_1, \ldots, y_{n-k}) \text{ and }  {\bold y}_b := (y_{n-k+1}, \ldots, y_n)
+        </me>.
+      </p>
+      <p>
+        Since <m>{\bold y}</m> is in the null space of <m>H</m> we have <m>H {\bold y} = {\bold 0}</m>,
+        which we can also write as (using partitioned matrix multiplication)
+        <me>
+          H {\bold y} = ( A \mid I_m) \left( \begin{array}{c} {\bold y}_a \\ {\bold y}_b \end{array}  \right) = A {\bold y}_a + {\bold y}_b = {\bold 0}
+        </me>.
+      </p>
+      <p>
+        Since we are adding in binary,
+        it follows that <m>A {\bold y}_a = {\bold y}_b</m>, so that we may write
+        <me>
+          {\bold y} = \left( \begin{array}{c} {\bold y}_a \\ {\bold y}_b \end{array}  \right) = \left( \begin{array}{c} I_{n-k} \\ A \end{array}  \right) {\bold y}_a
+        </me>,
+        so that <m>{\bold y}</m> is in <m>C</m>.
+      </p>
+    </proof>
+  </subsection>
+  <subsection xml:id="subsec_ErrorAndCorrectionCode_EncodingBlockLinearCodes_DetectCorrectError">
+    <title>Error detection and correction</title>
+    <p>
+      In this section,
+      we will show how to obtain the error correction and detection properties of a code directly from its matrix <m>H</m>.
+      First, we will look at detection and correction of single errors.
+    </p>
+    <p>
+      Suppose that a codeword <m>{\bold x}</m> is transmitted with a single error.
+      Then the resulting transmitted word can be written as <m>{\bold x} + {\bold e}_j</m>,
+      where <m>{\bold e}_j</m> has a nonzero entry only in the <m>j</m>'th position:
+      <md>
+        <mrow>{\bold e}_1 \amp  = \amp  (100 \cdots 00)</mrow>
+        <mrow>{\bold e}_2 \amp  = \amp  (010 \cdots 00)</mrow>
+        <mrow>\amp  \vdots \amp</mrow>
+        <mrow>{\bold e}_n \amp  = \amp  (000 \cdots 01)</mrow>
+      </md>
+    </p>
+    <p>
+      In this case,
+      when we apply the parity check matrix to the transmitted codeword we obtain
+      <me>
+        H({\bold x} + {\bold e}_j) = H{\bold x} + H{\bold e}_j = {\bold 0} + H{\bold e}_j  = H{\bold e}_j
+      </me>.
+    </p>
+    <p>
+      It appears that <m>H{\bold e}_j</m> plays an important role in determining the error detection and correction properties of the code.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>H</m> be the parity-check matrix given by
+          <me>
+            H = \left( \begin{array}{ccccc} 1 \amp  1 \amp  1 \amp  0 \amp  0 \\ 1 \amp  0 \amp  0 \amp  1 \amp  0 \\ 1 \amp  1 \amp  0 \amp  0 \amp  1 \end{array} \right)
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Compute <m>H {\bold e}_j</m> for <m>j = 1,2,3,4,5</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the relationship between your answers in (a) and the columns of <m>H</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We generalize our findings in this exercise as follows:
+    </p>
+    <proposition xml:id="proposition_ErrorAndCorrectionCode_BasisVectors">
+      <statement>
+        <p>
+          Let <m>{\bold e}_i</m> be the binary <m>n</m>-tuple with a <m>1</m> in the <m>i</m>th coordinate and <m>0</m>'s elsewhere and suppose that <m>H \in \mathbb{M}_{m \times n}(\mathbb{Z}_2)</m>.
+          Then <m>H{\bold e}_i</m> is the <m>i</m>th column of the matrix <m>H</m>.
+        </p>
+      </statement>
+    </proposition>
+    <p>
+      <xref ref="proposition_ErrorAndCorrectionCode_BasisVectors">Proposition</xref>
+      is a well-known fact in linear algebra,
+      so we refer the reader to a linear algebra textbook for proof.<fn>
+      See for example: David C. Lay,
+      <q>Linear Algebra and its Applications</q>
+      (Third Edition), Section 1.4.
+      </fn>
+    </p>
+    <p>
+      This result leads immediately to a simple rule for single error detection.
+    </p>
+    <proposition xml:id="proposition_ErrorAndCorrectionCode_SingleErrorDetect">
+      <statement>
+        <p>
+          Let <m>H</m> be an <m>m \times n</m> binary matrix.
+          Then the null space of <m>H</m> is a single error-detecting code if and only if no column of <m>H</m> consists entirely of zeros.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        Suppose that <m>{ Null}(H)</m> is a single error-detecting code.
+        Then the minimum distance of the code must be at least 2.
+        Since the null space is a group code,
+        it is sufficient to require that the code contain no codewords of less than weight 2 other than the zero codeword.
+        That is, <m>{\bold e}_i</m> must not be a codeword for <m>i = 1, \ldots, n</m>.
+        Since <m>H{\bold e}_i</m> is the <m>i</m>th column of <m>H</m>,
+        the only way in which <m>{\bold e}_i</m> could be in the null space of <m>H</m> would be if the <m>i</m>th column of <m>H</m> were all zeros,
+        which is impossible;
+        hence, the code must have the capability to detect at least single errors.
+      </p>
+      <p>
+        Conversely, suppose that no column of <m>H</m> is the zero column.
+        By <xref ref="proposition_ErrorAndCorrectionCode_BasisVectors">Proposition</xref>,
+        <m>H{\bold e}_i \neq {\bold 0}</m>.
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Which of the following parity-check matrices determine single error-detecting codes?
+          <em>Explain</em> your answer.
+          <me>
+            H_1 = \left( \begin{array}{ccccc} 1 \amp  1 \amp  1 \amp  0 \amp  0 \\ 1 \amp  0 \amp  0 \amp  1 \amp  0 \\ 1 \amp  1 \amp  0 \amp  0 \amp  1 \end{array} \right) ; H_2 = \left( \begin{array}{ccccc} 1 \amp  1 \amp  1 \amp  0 \amp  0 \\ 1 \amp  0 \amp  0 \amp  0 \amp  0 \\ 1 \amp  1 \amp  0 \amp  0 \amp  1 \end{array} \right)
+          </me>.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Using similar reasoning,
+      we can also come up with a method for determining single error-correction from the parity-check matrix.
+    </p>
+    <example xml:id="example_ErrorAndCorrectionCode_DoubleError">
+      <statement>
+        <p>
+          Consider the parity-check matrix
+          <me>
+            H = \left( \begin{array}{cccc} 1 \amp  1 \amp  1 \amp  0 \\ 1 \amp  0 \amp  0 \amp  1 \\ 1 \amp  1 \amp  0 \amp  0 \end{array} \right)
+          </me>
+        </p>
+        <p>
+          The corresponding code is single error-correcting if all nonzero codewords have weight greater than two.
+          Since there are no zero columns,
+          <xref ref="proposition_ErrorAndCorrectionCode_SingleErrorDetect">Proposition</xref>
+          tells us that no codewords have weight 1.
+          We thus only need to check that
+          <m>{ Null}(H)</m> does not contain any 4-tuples of weight 2, so that <m>(1100)</m>,
+          <m>(1010)</m>, <m>(1001)</m>, <m>(0110)</m>,
+          <m>(0101)</m>,
+          and <m>(0011)</m> must not be in <m>{ Null}(H)</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <p>
+          Does the code in <xref ref="example_ErrorAndCorrectionCode_DoubleError">Example</xref> correct single errors?
+          <em>Explain</em> your answer.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      For larger codewords,
+      the task of checking all tuples of weight 2 can be tedious.
+      Fortunately,
+      there is a much easier way that avoids exhausting checking:
+    </p>
+    <proposition>
+      <statement>
+        <p>
+          Let <m>H</m> be a binary matrix.
+          The null space of <m>H</m> is a single error-correcting code if and only if <m>H</m> does not contain any zero columns and no two columns of <m>H</m> are identical.
+        </p>
+      </statement>
+    </proposition>
+    <proof>
+      <p>
+        The <m>n</m>-tuple <m>{\bold e}_{i} +{\bold e}_{j}</m> has 1's in the <m>i</m>th and <m>j</m>th entries and 0's elsewhere,
+        and <m>w( {\bold e}_{i} +{\bold e}_{j}) = 2</m> for <m>i \neq j</m>.
+        Since
+        <me>
+          {\bold 0} = H({\bold e}_{i} +{\bold e}_{j}) = H{\bold e}_{i} + H{\bold e}_{j}
+        </me>
+        can only occur if the <m>i</m>th and <m>j</m>th columns are identical,
+        the null space of <m>H</m> is a single error-correcting code.
+      </p>
+    </proof>
+    <exercise>
+      <statement>
+        <p>
+          Which of the parity-check matrices in <xref ref="exercise_ErrorAndCorrectionCode_StandardGenerator">Exercise</xref>
+          produce codes that can correct single errors?
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Suppose now that we have a canonical parity-check matrix <m>H</m> with three rows.
+      Then we might ask how many more columns we can add to the matrix and still have a null space that is a single error-detecting and single error-correcting code.
+      Since each column has three entries,
+      there are <m>2^3 = 8</m> possible distinct columns.
+      We can't add the columns
+      <me>
+        \left( \begin{array}{c} 0 \\ 0 \\ 0 \end{array} \right), \left( \begin{array}{c} 1 \\ 0 \\ 0 \end{array} \right), \left( \begin{array}{c} 0 \\ 1 \\ 0 \end{array} \right), \left( \begin{array}{c} 0 \\ 0 \\ 1 \end{array} \right)
+      </me>.
+    </p>
+    <p>
+      So we can add as many as four columns and still maintain a minimum distance of 3.
+    </p>
+    <p>
+      In general, if <m>H</m> is an
+      <m>k \times n</m> canonical parity-check matrix,
+      then there are <m>n-k</m> information bits in each codeword.
+      Each column has <m>k</m> bits,
+      so there are <m>2^k</m> possible distinct columns.
+      It is necessary that the columns <m>{\bold 0}, {\bold e}_1, \ldots, {\bold e}_n</m> be excluded,
+      leaving <m>2^k - (1 + n)</m> remaining columns for information if we are still to maintain the ability not only to detect but also to correct single errors.
+    </p>
+    <exercise xml:id="exercise_ErrorAndCorrectionCode_code_dsn">
+      <statement>
+        <p>
+          Suppose we want to design a code that encodes each of the 128 ASCII characters as a single codeword,
+          such that the code also can detect and/or correct single-bit errors.
+          We also want codewords to be as short as possible to speed up transmission.
+          <ol type="a">
+            <li>
+              <p>
+                How many information bits are in each codeword?
+              </p>
+            </li>
+            <li>
+              <p>
+                In order to <em>detect</em> single-bit errors,
+                what is the smallest possible codeword size?
+              </p>
+            </li>
+            <li>
+              <p>
+                In order to <em>correct</em> single-bit errors,
+                what is the smallest possible codeword size? (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Redo parts (a), (b), (c) if we want instead to encode the extended ASCII character set of 256 characters.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              What is the smallest possible codeword size for a single error-correcting code with 20 information bits per codeword?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the smallest possible codeword size for a single error-correcting code with 32 information bits per codeword?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

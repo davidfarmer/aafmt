@@ -1,0 +1,267 @@
+<section xml:id="sec_Symmetry_Composition">
+  <title>Composition of symmetries</title>
+  <p>
+    Since the symmetries of a figure are functions,
+    we can do anything with symmetries that we can do with functions<ndash/>including composition.
+    That is, we can perform two symmetries on a figure back-to-back,
+    and since they are both functions,
+    by definition of function composition the result is a function.
+    In fact, we saw in the Functions chapter that the composition of two bijections is a bijection.
+    So the composition
+    (or net motion)
+    resulting from two symmetries is a bijection.
+    But a bijection of a figure is not necessarily a symmetry. as we showed in <xref ref="exercise_Symmetry_bijectnotsym">Exercise</xref> above.
+    This raises the question: is the composition of two symmetries a symmetry?
+    That is: if one symmetry is followed by another on a figure,
+    is the net motion a symmetry?
+    You will investigate this question in the following exercise.
+  </p>
+  <exercise xml:id="exercise_Symmetry_SymmComposition">
+    <statement>
+      <p>
+        With reference to the symmetries of a rectangle in <xref ref="example_Symmetry_rectsymmetries">Example</xref>,
+        let <m>r_{180}</m> be the <m>180^\circ</m> counterclockwise rotation and let <m>s_v</m> be the reflection across the vertical axis. (Note that reflection across the vertical axis is sometimes called
+        <q>horizontal reflection,</q>
+        since the figure
+        <q>flips</q>
+        from left to right.
+        Admittedly this is confusing,
+        but that's what people call it so what can you do?)
+        <ol type="a">
+          <li>
+            <p>
+              Write the function <m>r_{180}</m> in ordered pair notation.
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the function <m>s_v</m> in ordered pair notation.
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the function <m>r_{180} \compose s_v</m> in ordered pair notation.
+              Is it a symmetry of the rectangle?
+              If so, then which one?
+            </p>
+          </li>
+          <li>
+            <p>
+              Write the function <m>s_v \compose r_{180}</m> in ordered pair notation.
+              Is it a symmetry of the rectangle?
+              If so, then which one?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    At this point let us introduce an alternative notation for symmetries that's easier to write.
+    This notation is called <term>tableau form</term>,
+    and for <m>r_{180}</m> it looks like the following:
+  </p>
+  <p>
+    <m>r_{180} = \begin{pmatrix}A \amp B \amp C \amp D \\ C \amp D \amp A \amp B \end{pmatrix}</m>
+  </p>
+  <p>
+    To form these,
+    we simply put the inputs of our function on the top row and their corresponding outputs on the bottom row.
+  </p>
+  <example xml:id="example_Symmetry_sym_tableau">
+    <statement>
+      <p>
+        For example, since
+        <me>
+          s_v = \{(A, D), (B,C), (C, B), (D, A) \}
+        </me>,
+        then the top row of the tableau for <m>s_v</m> would read,
+        <q><m>A  B  C  D</m></q>, and the bottom row of the tableau would read,
+        <q><m>D  C  B  A</m></q>. Hence
+        <me>
+          s_v = \begin{pmatrix}A \amp  B \amp  C \amp  D \\ D \amp  C \amp  B \amp  A \end{pmatrix}
+        </me>.
+      </p>
+    </statement>
+  </example>
+  <example xml:id="example_Symmetry_sym_comp_tableau">
+    <statement>
+      <p>
+        Suppose we wanted to find <m>r_{180} \compose s_v</m> using the tableau forms for <m>r_{180}</m> and <m>s_v</m> above.
+        That is
+        <me>
+          r_{180} \compose s_v = \begin{pmatrix}A \amp  B \amp  C \amp  D \\ C \amp  D \amp  A \amp  B \end{pmatrix}  \compose  \begin{pmatrix}A \amp  B \amp  C \amp  D \\ D \amp  C \amp  B \amp  A \end{pmatrix}  = ?
+        </me>
+      </p>
+      <p>
+        To see how this works, let's
+        <q>follow</q>
+        each possible input (<m>A, B, C, D</m>) as we put it into the composition.
+        Remember that the composition of functions works right to left;
+        we are first reflecting the rectangle and then rotating it.
+        So starting from the right,
+        <ul>
+          <li>
+            <p>
+              <m>s_v</m> takes <m>A \to D</m>,
+              and <m>r_{180}</m> takes <m>D \to B</m>.
+              Therefore <m>r_{180} \compose f_h</m> takes <m>A \to B</m>; i.e.
+              <m>(r_{180} \compose s_v)(A) = B</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>s_v</m> takes <m>B \to C</m>,
+              and <m>r_{180}</m> takes <m>C \to A</m>;
+              therefore <m>r_{180} \compose s_v</m> takes <m>B \to A</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>s_v</m> takes <m>C \to B</m>,
+              and <m>r_{180}</m> takes <m>B \to D</m>;
+              therefore <m>r_{180} \compose s_v</m> takes <m>C \to D</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>s_v</m> takes <m>D \to A</m>,
+              and <m>r_{180}</m> takes <m>A \to C</m>;
+              therefore <m>r_{180} \compose s_v</m> takes <m>D \to C</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <figure xml:id="fig_ChangingRoom">
+        <caption>Composition of symmetries using tableaus.</caption>
+        <image width="60%" source="images/ChangingRoom.png"/>
+      </figure>
+      <p>
+        <xref ref="fig_ChangingRoom">Figure</xref>
+        shows this process using tableaus.
+        If you think about it, it's really just a variation on an arrow diagram.
+      </p>
+      <p>
+        In summary we have
+        <me>
+          r_{180} \compose s_v = \begin{pmatrix}A \amp  B \amp  C \amp  D \\ C \amp  D \amp  A \amp  B \end{pmatrix}  \compose  \begin{pmatrix}A \amp  B \amp  C \amp  D \\ D \amp  C \amp  B \amp  A \end{pmatrix}  = \begin{pmatrix}A \amp  B \amp  C \amp  D \\ B \amp  A \amp  D \amp  C \end{pmatrix}
+        </me>
+      </p>
+    </statement>
+  </example>
+  <exercise xml:id="exercise_Symmetry_CompSymm">
+    <statement>
+      <ol type="a">
+        <li>
+          <p>
+            Write <m>s_h</m> in tableau form,
+            where <m>s_h</m> is reflection across the horizontal axis.
+            (Note <m>s_h</m> is sometimes referred to as
+            <q>vertical reflection,</q>, since the two reflected halves are stacked on top of each other.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Does <m>r_{180} \compose s_v = s_h</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute <m>s_h \compose s_v</m>.
+            Is this a symmetry?
+            If so, which one?
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute <m>s_v \compose r_{180}</m>.
+            Is this a symmetry?
+            If so, which one?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <p>
+    <xref ref="exercise_Symmetry_CompSymm">Exercises</xref>
+    and <xref ref="exercise_Symmetry_SymmComposition"></xref>
+    seem to indicate that the composition of two symmetries of a figure is a symmetry of the figure.
+    We can actually prove that this is always true.
+  </p>
+  <proposition xml:id="proposition_Symmetry_symcompclosed">
+    <statement>
+      <p>
+        Suppose <m>f</m> and <m>g</m> are both symmetries of a figure.
+        Then <m>f \compose g</m> is itself a symmetry of the same figure.
+      </p>
+    </statement>
+  </proposition>
+  <proof>
+    <p>
+      Recall that composition works from right to left.
+      Since <m>g</m> is a symmetry,
+      <m>g</m> takes the points of the figure and rearranges them so that the angles and distances of points in the figure are preserved.
+      The symmetry<m>f</m> then takes the points of this preserved figure and moves them in such a way that the angles,
+      and distances of points in the figure are preserved.
+      Hence the net result of <m>f \compose g</m> preserves angles and distances between points in the figure.
+      Therefore by definition, <m>f \compose g</m> is a symmetry of the figure.
+    </p>
+  </proof>
+  <exercise xml:id="exercise_Symmetry_16">
+    <statement>
+      <p>
+        With reference to the hexagon in <xref ref="fig_hex60rot">Figure</xref>,
+        for the symmetries <m>f</m> and <m>g</m> in parts (a)-(d) below:
+        <ol type="i">
+          <li>
+            <p>
+              Write the symmetries <m>f</m> and <m>g</m> in tableau form.
+            </p>
+          </li>
+          <li>
+            <p>
+              Compute <m>f \compose g</m> and <m>g \compose f</m>,
+              expressing your answers in tableau form.
+            </p>
+          </li>
+          <li>
+            <p>
+              Describe the symmetries that correspond to
+              <m>f \compose g</m> and <m>g \compose f</m>, respectively.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Note <m>{\var id}</m> denotes the identity symmetry,
+        that is the symmetry that leaves all points unchanged.
+        Also, all rotations are counterclockwise.
+        <ol type="a">
+          <li>
+            <p>
+              <m>f=</m> rotation by <m>240^\circ,
+              g=</m> rotation by <m>120^\circ</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>f={\var id}, g=</m> rotation by <m>120^\circ</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>f=</m>rotation by <m>240^\circ,
+              g=</m>reflection across the line <m>BE</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>f=</m>rotation by <m>180^\circ,
+              g=</m>reflection across the line <m>CF</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</section>

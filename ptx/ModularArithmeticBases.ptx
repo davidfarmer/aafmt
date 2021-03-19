@@ -1,0 +1,22 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="ModularArithmeticBases">
+  <title>Modular Arithmetic, Decimals, and Divisibility</title>
+  <introduction>
+    <p>
+      "I'm all about that, all about that bass I'm all about that,
+      all about that bass I'm all about that bass,
+      no treble We gon' take it to a whole another level" (Source: "All About That Bass", Meghan Trainor)
+    </p>
+    <p>
+      We grew up working with numbers in base <m>10</m>. so let's explore the how we represent numbers,
+      find the <m>k'th</m> decimal of integer and non-integer numbers,
+      and deriving divisibility rules of integers all in base 10.
+      The problem is that bases come in all different sizes,
+      so we will also delve into converting integers and non-integers from base <m>10</m> to other bases and vice versa!
+    </p>
+    <p>
+      This chapter is by Adam McDonald and Chris Thron.
+    </p>
+  </introduction>
+  <xi:include  href="sec_ModularArithmeticBases_DecimalRepresentation.ptx"/>
+  <xi:include  href="sec_ModularArithmeticBases_DecimalRepresentationOtherBases.ptx"/>
+</chapter>

@@ -1,0 +1,976 @@
+<section xml:id="sec_Cryptography_PublicKey">
+  <title>Public key cryptography</title>
+  <introduction>
+    <p>
+      If traditional cryptosystems are used,
+      anyone who knows enough to encode a message will also know enough to decode an intercepted message.
+      In 1976, W.<nbsp/>Diffie
+          <idx><h>Diffie, W.</h></idx>
+      and M.<nbsp/>Hellman
+          <idx><h>Hellman, M.</h></idx>
+      proposed public key cryptography,
+      which is based on the observation that the encryption and decryption procedures need not have the same key.
+      This removes the requirement that the encoding key be kept secret.
+      The encoding function <m>f</m> must be relatively easy to compute,
+      but <m>f^{-1}</m> must be extremely difficult to compute without some additional information,
+      so that someone who knows only the encrypting key cannot find the decrypting key without prohibitive computation.
+      It is interesting to note that to date,
+      no system has been proposed that has been proven to be
+      <q>one-way;</q>
+      that is, for any existing public key cryptosystem,
+      it has never been shown to be computationally prohibitive to decode messages with only knowledge of the encoding key.
+    </p>
+  </introduction>
+  <subsection xml:id="subsec_Cryptography_PublicKey_RSA">
+    <title>The RSA cryptosystem<nbsp/><nbsp/></title>
+    <figure>
+      <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+    </figure>
+    <p>
+      The RSA cryptosystem introduced by R.<nbsp/>Rivest,
+          <idx><h>Rivest, R.</h></idx>
+      A.<nbsp/>Shamir,
+          <idx><h>Shamir, A.</h></idx>
+      and L.<nbsp/>Adleman
+          <idx><h>Adleman, L.</h></idx>
+      in 1978, is based on the difficulty of factoring large numbers.
+      Though it is not a difficult task to find two large random primes and multiply them together,
+      factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 billion instructions per second about 50,000 years under the fastest algorithms currently known.
+    </p>
+    <p>
+      Let us look at how RSA works in a practical context.
+      Suppose that Jennifer is running an online boutique,
+      and wants to receive credit card information from customers over the internet.
+      Unfortunately it's all too easy to snoop the internet,
+      and it certainly wouldn't be good for Jennifer's customers if their credit card numbers were stolen.
+      So she needs a suitable code for the credit card information in order to protect her customer's privacy.
+      The code may be constructed as follows:
+      <ol type="a">
+        <li>
+          <p>
+            Choose two random 150-digit prime numbers <m>p</m> and <m>q</m>.
+            (This is easier said than done!
+            We will consider some possible ways of doing this in <xref ref="subsec_Cryptography_PublicKey_Primality">Section</xref>.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute the product <m>n= pq</m> as well as <m>m = (p - 1)(q-1)</m>.
+            (It can be shown that <m>m</m> is actually the number of positive integers in
+            <m>\mathbb{Z}_n</m> that are relatively prime to <m>n</m>.)
+          </p>
+        </li>
+        <li>
+          <p>
+            Find a large random integer <m>E</m> that is relatively prime to <m>m</m>.
+            This is done by making a guess for <m>E</m>,
+            then using the Euclidean algorithm to check whether <m>\gcd(E, m) = 1</m>.
+            If not, then keep guessing until you find an <m>E</m> that works.
+            In general relatively prime numbers are not uncommon,
+            and the Euclidean algorithm is pretty quick
+            (especially for a computer),
+            so <m>E</m> is not too difficult to find.
+          </p>
+        </li>
+        <li>
+          <p>
+            Using the Euclidean algorithm,
+            find <m>D</m> such that <m>\mbox{DE} \equiv 1 \pmod{m}</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Now, let's say that Jennifer has a customer whose credit card number is <m>x</m>.
+      Before requesting the credit card information, Jennifer's computer sends the numbers <m>E</m> and <m>n</m> to the customer's computer,
+      which then calculates <m>y = x^E \mod n</m> and sends <m>y</m> to Jennifer's computer, Jennifer recovers <m>x</m> by computing <m>y^D \bmod n</m>, which
+      (as we shall show in a minute)
+      turns out to be <m>x</m>, as long as <m>x</m> is less than <m>n</m>.
+    </p>
+    <p>
+      Notice some amazing things here.
+      First, <m>E</m> and <m>n</m> are sent out
+      <em>openly</em> over the internet.
+      Jennifer doesn't care if snoopers find out this information.
+      In fact, she sends the <em>same</em>
+      <m>E</m> and <m>n</m> to each customer!
+      But this does not compromise her customers' security,
+      because only Jennifer knows <m>m</m>,
+      and it takes both <m>E</m> and <m>m</m> to find <m>D</m>.
+      As long as no one can figure out <m>m</m>,
+      the credit card numbers are safe!
+    </p>
+    <p>
+      To summarize:
+      once the public key <m>(E,n)</m> and the private key <m>D</m> have been constructed,
+      the process of encoding and decoding is simple:
+      <ul>
+        <li>
+          <p>
+            To encode a numerical plaintext <m>x</m>:
+            compute <m>\mod (x^E,n)</m> .
+          </p>
+        </li>
+        <li>
+          <p>
+            To decode a numerical ciphertext <m>y</m>:
+            compute <m>\mod(y^D,n)</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <example>
+      <statement>
+        <p>
+          Before exploring the theory behind the RSA cryptosystem or attempting to use large integers,
+          we will use some small integers just to see that the system does indeed work.
+          Suppose that we wish to send some message,
+          which when digitized is 395.
+          Let <m>p = 23</m> and <m>q = 29</m>.
+          Then
+          <me>
+            n = pq = 667 \qquad \textrm{and}  \qquad m = (p - 1)(q - 1) = 616
+          </me>.
+        </p>
+        <p>
+          We can let <m>E = 487</m>, since <m>\gcd(616, 487) = 1</m>.
+          The encoded message is computed to be
+          <me>
+            \bmod(395^{487},  667) = 570
+          </me>.
+        </p>
+        <p>
+          (This may seem like a very long computation,
+          but there are fast ways of doing this:
+          see <xref ref="exercise_Cryptography_power">Exercise</xref>
+          below.) Using the Euclidean algorithm,
+          we determine that <m>191 E = 1 + 151 m</m>;
+          therefore, the decrypting key is <m>(n, D) = ( 667, 191)</m>.
+          We can recover the original message by calculating
+          <me>
+            \bmod(570^{191}, 667) = 395
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      This really seems like magic.
+      How in the world does it work?
+      First of all, we know that <m>DE \equiv 1 \bmod{ m}</m>;
+      so there exists a <m>k</m> such that
+      <me>
+        DE = km + 1
+      </me>.
+    </p>
+    <p>
+      This means that
+      <me>
+        y^D = (x^E)^D = x^{DE} = x^{km+1} = (x^m)^k x
+      </me>.
+    </p>
+    <p>
+      At this point we need <em>Euler's theorem</em>
+      from <xref ref="Cosets">Chapter</xref>,
+      which states the following.
+      Suppose <m>m</m> is the number of positive integers less than <m>n</m> that are relatively prime to <m>n</m>.
+      Then it is true that:
+      <me>
+        x^m \equiv 1 \pmod n
+      </me>.
+      for <em>any</em> <m>x</m> that is relatively prime to <m>n</m>.
+    </p>
+    <p>
+      We can use this to simplify our previous expression for <m>y^D</m>:
+      <me>
+        y^D =  (x^m)^k x \equiv (1)^k x  \equiv x \bmod n
+      </me>,
+      and presto!
+      We have our result.
+    </p>
+    <p>
+      We can now ask how one would go about breaking the RSA cryptosystem.
+      To find <m>D</m> given <m>n</m> and <m>E</m>,
+      we simply need to factor <m>n</m> and solve for <m>D</m> by using the Euclidean algorithm.
+      If we had known that <m>667 = 23 \cdot 29</m> in Example<nbsp/>5,
+      we could have recovered <m>D</m>.
+    </p>
+    <exercise xml:id="exercise_Cryptography_primes">
+      <statement>
+        <p>
+          Show that if <m>p</m> and <m>q</m> are primes,
+          then the number of positive integers less than <m>pq</m> which are relatively prime to <m>pq</m> is <m>(p-1)(q-1)</m>. (*Hint*)
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Cryptography_PublicKey_MessageVerification">
+    <title>Message verification</title>
+    <p>
+      There is a problem of message verification in public key cryptosystems.
+      Since the encoding key is public knowledge,
+      anyone has the ability to send an encoded message.
+      If Alice receives a message from Bob,
+      she would like to be able to verify that it was Bob who actually sent the message.
+      Suppose that Bob's encrypting key is
+      <m>(n', E')</m> and his decrypting key is <m>(n', D')</m>.
+      Also, suppose that Alice's encrypting key is <m>(n, E)</m> and her decrypting key is <m>(n, D)</m>.
+      Since encryption keys are public information,
+      they can exchange coded messages at their convenience.
+      Bob wishes to assure Alice that the message he is sending is authentic.
+      Before Bob sends the message <m>x</m> to Alice,
+      he decrypts <m>x</m> with his own key:
+      <me>
+        x' =  \bmod(x ^{D'}, n')
+      </me>.
+    </p>
+    <p>
+      Anyone can change <m>x'</m> back to <m>x</m> just by encryption,
+      but only Bob has the ability to form <m>x'</m>.
+      Now Bob encrypts <m>x'</m> with Alice's encryption key to form
+      <me>
+        y' = \bmod({x'}^E,   n)
+      </me>,
+      a message that only Alice can decode.
+      Alice decodes the message and then encodes the result with Bob's key to read the original message,
+      a message that could have only been sent by Bob.
+    </p>
+  </subsection>
+  <subsection xml:id="subsec_Cryptography_PublicKey_RSAExercises">
+    <title>RSA exercises<nbsp/><nbsp/></title>
+    <figure>
+      <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+    </figure>
+    <exercise xml:id="exercise_Cryptography_power">
+      <statement>
+        <p>
+          This problem demonstrates a fast method for computing very large powers of numbers in modular arithmetic using a spreadsheet.
+          You will need this method in order to do the subsequent problems.
+          We will demonstrate the method by computing <m>\bmod(23^{485} ,617)</m>.
+          <ol type="a">
+            <li>
+              <p>
+                Use a spreadsheet to compute the following sequence of numbers:
+                <me>
+                  23, \bmod(23^2 ,617),\bmod(23^4 ,617),\ldots,\bmod(23^{256} ,617)
+                </me>
+                Note that each power of 23 in this series is the
+                <em>square</em> of the previous power.
+                So to compute any number in this series,
+                square the previous number and reduce mod 617.
+                You may use the MOD spreadsheet function.
+                It is easiest to put all the numbers in a single column.
+                (This way, you can use the spreadsheet's
+                <q>Fill down</q>
+                feature.)
+              </p>
+            </li>
+            <li>
+              <p>
+                Write 485 as a sum of powers of 2. (This is the same thing as finding the
+                <em>binary expansion</em> of 485.)
+              </p>
+            </li>
+            <li>
+              <p>
+                Using the results of (b),
+                identify a set of entries from the table you found in part (a),
+                such that the product of these entries is equivalent to <m>23^{485} \pmod{617}</m>. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Use your result from (c) to compute <m>\bmod(23^{485} ,617)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Cryptography_powerplus">
+      <statement>
+        <p>
+          Building off the previous exercise,
+          create a spreadsheet that can compute
+          <m>\bmod(x^{q},n)</m> for general <m>x,q,n</m>.
+          You may follow the pattern of the spreadsheet in <xref ref="fig_LargePowMod">Figure</xref>.
+          Some of the formulas in the spreadsheet are:
+          <ul>
+            <li>
+              <p>
+                Cell A8: <nbsp/><nbsp/><nbsp/><nbsp/>=B3
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell B8: <nbsp/><nbsp/><nbsp/><nbsp/>=MOD(A8,2)
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell A9: <nbsp/><nbsp/><nbsp/><nbsp/>=(A8 - B8)/2
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell D9: <nbsp/><nbsp/><nbsp/><nbsp/> = D8*2
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell E9: <nbsp/><nbsp/><nbsp/><nbsp/> = MOD(E8*E8, $B$4)
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell F8: <nbsp/><nbsp/><nbsp/><nbsp/> = B8
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell G8: <nbsp/><nbsp/><nbsp/><nbsp/> = E8<m>\widehat{~~}</m>F8
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell H8: <nbsp/><nbsp/><nbsp/><nbsp/> = G8
+              </p>
+            </li>
+            <li>
+              <p>
+                Cell H9: <nbsp/><nbsp/><nbsp/><nbsp/> = MOD(G9*H8,$B$4)
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          You may obtain the rest of the formulas using the spreadsheet's
+          <q>fill down</q>
+          capability.
+        </p>
+        <figure xml:id="fig_LargePowMod">
+          <caption>Spreadsheet for taking large powers modulo a given base.</caption>
+          <image width="92.5%" source="images/LargePowMod.png"/>
+        </figure>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Cryptography_RSA_E">
+      <statement>
+        <p>
+          Using your spreadsheet from the previous exercise,
+          encrypt each of the following plaintexts using RSA. Before encoding,
+          divide the plaintext into blocks of integers of length 2;
+          that is, if the plaintext is <m>142528</m>,
+          encode 14, 25, and 28 separately.
+          <ol type="a">
+            <li>
+              <p>
+                <m>n = 3551, E = 629</m>, plaintext = 31
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 2257, E = 47</m>, plaintext = 23
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 120979, E = 13251</m>, plaintext = 142371
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 45629, E = 781</m>, plaintext = 231561
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Cryptography_RSA_D">
+      <statement>
+        <p>
+          Decrypt each of the following RSA messages <m>y</m>.
+          (In this case,
+          do not break <m>y</m> into blocks<ndash/>decode the entire number.)
+          <ol type="a">
+            <li>
+              <p>
+                <m>n = 3551, D = 1997, y = 2791</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 5893, D = 81, y = 34</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 120979, D = 27331, y = 112135</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n = 79403, D = 671, y = 129381</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Encrypted messages are often divided into blocks of <m>n</m> letters.
+          A message such as THE WORLD WONDERS WHY might be encrypted as JIW OCFRJ LPOEVYQ IOC but sent as JIW OCF RJL POE VYQ IOC. What are the advantages of using blocks of <m>n</m> letters?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Construct an RSA cryptosystem as follows:
+          <ol type="a">
+            <li>
+              <p>
+                On the web, find two four-digit primes
+              </p>
+            </li>
+            <li>
+              <p>
+                Use these primes to compute <m>n</m> and <m>m</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Choose a value of <m>E</m> which is less than <m>m</m>,
+                and use you Diophantine Equation spreadsheet
+                (<xref ref="exercise_ModularArithmetic_DiophantineSS">Exercise</xref>
+                in the Modular Arithmetic chapter)
+                to find the inverse <m>D</m> under multiplication mod <m>m</m>.
+                If it turns out that <m>E</m> is not relatively prime to <m>m</m>,
+                try again.
+              </p>
+            </li>
+            <li>
+              <p>
+                Test your cryptosystem by encoding <sq>123</sq>, and then decoding it.
+                To encode, use the spreadsheet that you created in <xref ref="exercise_Cryptography_powerplus">Exercise</xref> earlier in this chapter.
+                To decode, make another copy of the same sheet.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Cryptography_PublicKey_Primality">
+    <title>Additional exercises: identifying prime numbers<nbsp/><nbsp/></title>
+    <figure>
+      <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+    </figure>
+    <introduction>
+      <p>
+        We saw in <xref ref="subsec_Cryptography_PublicKey_RSA">Section</xref>
+        that the RSA algorithm depends on finding very large primes.
+        In practice, large primes are found using trial and error.
+        That is, we choose a large random number and test to see whether it's prime.
+        If the test fails, then try, try again.
+      </p>
+      <p>
+        So it all comes down to figuring out how to test whether a number is prime.
+        In this section, we consider some possible ways of doing this.
+      </p>
+    </introduction>
+    <subsubsection>
+      <title><em>
+      <q>Brute force</q>
+      method, and sieve of Eratosthenes</em></title>
+      <p>
+        On way to do this is sheer brute force:
+        try dividing by 2,3,4, <m>\ldots</m>,
+        and if nothing divides then the number is prime.
+        There are various ways to make this process more efficient,
+        as we will see in the following exercises.
+      </p>
+      <exercise xml:id="exercise_Cryptography_brute">
+        <statement>
+          <p>
+            To test whether the number <m>n</m> is a prime,
+            you divide <m>n</m> all the integers <m>1,2,3, \dots</m> up to <m>a</m>,
+            and see if any of them divides evenly.
+            How large does <m>a</m> have to be in order to guarantee that <m>n</m> really is a prime? (*Hint*)
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        When testing whether <m>n</m> is prime, by the
+        <q>brute force</q>
+        method, as long as <m>n</m> is odd we don't need to divide by even numbers (Why?).
+        This means that you only need to test about half of the numbers up to <m>a</m><ndash/>more precisely,
+        we only need to test <m>\lceil a/2 \rceil</m> numbers,
+        where <m>\lceil x \rceil</m> means
+        <q>the next integer larger than <m>x</m></q>. (<m>\lceil x \rceil</m> is called the
+        <em>ceiling</em> of <m>x</m>.
+            <idx><h>Ceiling</h><h>of a real number</h></idx>
+        )
+      </p>
+      <p>
+        We can pull the same trick with factors that are divisible by 3.
+        Once we've tested 3 as a factor,
+        we don't need to check <m>9, 15, 21, \ldots</m> or any other number that is divisible by 3. (Why?) So it seems that this reduces the number of factors that we need to check by about a third,
+        since every third integers are divisible by 3.
+        However, we need to be careful here.
+        We've already ruled out the numbers that are divisible by 2, so the numbers that are divisible by both 2 and 3 have already been ruled out.
+        In other words (using <m>m</m> to denote a positive integer,
+        and using the the notation
+        <m>| \{ \cdots \} |</m> to denote the size of sets):
+        <md>
+          <mrow>\amp | \{ m \le a \text{ and }  (2 \mid m \text{ or }  3 \mid m) \}| =</mrow>
+          <mrow>\amp ~~~| \{ m \le a  \text{ and }  2 \mid m \}| + | \{ m \le a  \text{ and }  3 \mid m \}| - | \{ m \le a  \text{ and }  6 \mid m \}|</mrow>
+        </md>.
+      </p>
+      <p>
+        If we are not so careful with the
+        <q>ceiling function</q>
+        (which changes the result by at most 1 anyway), this tells us:
+        <md>
+          <mrow>| \{ m \le a \text{ and }  2 \mid m \text{ or }  3 \mid m \}| \amp \approx \frac{a}{2} + \frac{a}{3} -\frac{a}{6}</mrow>
+        </md>.
+      </p>
+      <p>
+        We can turn this around and find the number of integers which are
+        <em>not</em> divisible by 2 or 3:
+        <md>
+          <mrow>| \{ m \le a \text{ and }  2 \nmid m \text{ and }  3 \nmid m \}| \amp \approx a - \frac{a}{2} - \frac{a}{3} + \frac{a}{6}</mrow>
+          <mrow>\amp \approx a\left(1 - \frac{1}{2}\right) \left(1 - \frac{1}{3}\right)</mrow>
+          <mrow>\amp \approx \frac{a}{3}</mrow>
+        </md>.
+      </p>
+      <p>
+        This gives the number of trial divisions required to test whether <m>n</m> is prime.
+        (Of course we also need to test divisibility by 2 and 3, which are 2 additional divisions.)
+      </p>
+      <p>
+        The same reasoning can be extended to take into account divisibility by 5, 7, 11, and so on:
+      </p>
+      <exercise xml:id="exercise_Cryptography_EulerTotient">
+        <statement>
+          <p>
+            Using the same reasoning as above,
+            show that after dividing by <m>2,3,5</m> the number of additional divisions required to test for primality is approximately:
+            <me>
+              a\left(1 - \frac{1}{2}\right) \left(1 - \frac{1}{3}\right)\left( 1 - \frac{1}{5} \right)
+            </me>.
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        The technique of eliminating numbers to check based on previous divisibility is called the
+        <term>sieve of Eratosthenes</term>.
+            <idx><h>Sieve of Eratosthenes</h></idx>
+      </p>
+    </subsubsection>
+    <subsubsection>
+      <title><em>Fermat's test for primality</em></title>
+      <p>
+        Even using various tricks to reduce the number of computations,
+        the brute force method requires far too many calculations to be useful for RSA encoding.
+        A different algorithm for testing primality is
+        <term> Fermat's factorization algorithm</term>,
+            <idx><h>Fermat</h><h>factorization algorithm</h></idx>
+        which depends on the following fact:
+      </p>
+      <exercise xml:id="exercise_Cryptography_Fermat">
+        <statement>
+          <p>
+            Let <m>n= ab</m> be an odd composite number where <m>a,b \in \mathbb{N}</m>.
+            Prove that <m>n</m> can be written as the difference of two perfect squares :
+            <me>
+              n = x^2 - y^2 = (x-y)(x+y)
+            </me>,
+            where both <m>x</m> and <m>y</m> are greater than 1.
+            Consequently,
+            a positive odd integer can be factored exactly when we can find integers <m>x</m> and <m>y</m> such that <m>n = x^2 - y^2</m>. (*Hint*)
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        We can use this fact to factor <m>n</m> by trying different pairs of squares in order to get <m>n</m> as the difference of the two.
+        Of course, we want to do this systematically.
+        So we want to see what values of <m>x</m> and <m>y</m> we actually need to check:
+      </p>
+      <exercise xml:id="exercise_Cryptography_smallest_value">
+        <statement>
+          <p>
+            In the formula <m>n = x^2 - y^2 = (x-y)(x+y)</m>,
+            what is the smallest possible value for <m>x</m> that needs to be tested? (*Hint*)
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        There are other special conditions that <m>x</m> and <m>y</m> must satisfy:
+      </p>
+      <exercise xml:id="exercise_Cryptography_FermatEfficient">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Assuming that <m>n</m> is an odd number,
+                show that if <m>x</m> is odd then <m>y</m> is even,
+                and if <m>x</m> is even then <m>y</m> is odd. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that for any odd number <m>m</m>,
+                then <m>\mod(m^2,4) = 1</m>. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>m = x + y</m>.
+                Show that <m>m</m> is odd,
+                and that we can rewrite <m>n = (x-y)(x+y)</m> as: <m>n = m(m-2y)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>\mod(n,4)=1</m>,
+                then <m>y</m> must be even. (*Hint*)
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>\mod(n,4)=3</m>,
+                then <m>y</m> must be odd. (*Hint*)
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <p>
+        The Fermat primality testing scheme is better for finding factors that are nearly equal.
+        The brute force method of <xref ref="exercise_Cryptography_brute">Exercise</xref>
+        is much better when one factor is much bigger than the other one.
+      </p>
+      <exercise xml:id="exercise_Cryptography_bruteb">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Create a spreadsheet that factors large numbers using the brute force scheme.
+                You may use the spreadsheet in <xref ref="fig_bf">Figure</xref> for inspiration.
+                Some of the formulas in the spreadsheet are:
+                <ul>
+                  <li>
+                    <p>
+                      Cell A7: <nbsp/><nbsp/><nbsp/><nbsp/>=A6+2
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell B6: <nbsp/><nbsp/><nbsp/><nbsp/>=$B$2/A6
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell C6: <nbsp/><nbsp/><nbsp/><nbsp/>=IF(B6=FLOOR(B6,1),A6,0)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell E2: <nbsp/><nbsp/><nbsp/><nbsp/>=MAX(C6:C99999)
+                    </p>
+                  </li>
+                </ul>
+              </p>
+              You may obtain the rest of the formulas using the spreadsheet's
+              <q>fill down</q>
+              capability.
+            </li>
+            <li>
+              <p>
+                Use this spreadsheet to factor <m>n=3551</m>.
+                Then, use your result to find the decoding key <m>D</m> for <xref ref="exercise_Cryptography_RSA_E">Exercise</xref> part (a).
+              </p>
+            </li>
+            <li>
+              <p>
+                Use this spreadsheet to find the decoding key <m>D</m> for <xref ref="exercise_Cryptography_RSA_E">Exercise</xref> part (b).
+              </p>
+            </li>
+            <li>
+              <p>
+                Use this spreadsheet to find the decoding key <m>D</m> for <xref ref="exercise_Cryptography_RSA_E">Exercise</xref> part (c).
+              </p>
+            </li>
+            <li>
+              <p>
+                Use this spreadsheet to find the decoding key <m>D</m> for <xref ref="exercise_Cryptography_RSA_E">Exercise</xref> part (d).
+              </p>
+            </li>
+            <li>
+              <p>
+                Given the encryption key <m>(n,E) = (451,231)</m>, find <m>D</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Given the encryption key <m>(n,E) = (3053,1921)</m>, find <m>D</m>.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <figure xml:id="fig_bf">
+        <caption>Spreadsheet for brute force factoring method</caption>
+        <image width="75%" source="images/bf.png"/>
+      </figure>
+      <exercise xml:id="exercise_Cryptography_FermatSpreadsheet">
+        <statement>
+          <ol type="a">
+            <li>
+              <p>
+                Make a spreadsheet for Fermat's factoring method.
+                You may use the spreadsheet in <xref ref="fig_FermaFact">Figure</xref> for inspiration.
+                Some of the formulas in the spreadsheet are:
+                <ul>
+                  <li>
+                    <p>
+                      Cell A7: <nbsp/><nbsp/><nbsp/><nbsp/>=A6+1
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell B6: <nbsp/><nbsp/><nbsp/><nbsp/>=SQRT(A6*A6 - $B$2)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell C6: <nbsp/><nbsp/><nbsp/><nbsp/>=IF(B6=FLOOR(B6,1),A6-B6,0)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell D6: <nbsp/><nbsp/><nbsp/><nbsp/>=IF(B6=FLOOR(B6,1),A6+B6,0)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell E2: <nbsp/><nbsp/><nbsp/><nbsp/>=MAX(C6:C99999)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Cell E3: <nbsp/><nbsp/><nbsp/><nbsp/>=MAX(D6:D99999)
+                    </p>
+                  </li>
+                </ul>
+              </p>
+              You may obtain the rest of the formulas using the spreadsheet's
+              <q>fill down</q>
+              capability.
+            </li>
+            <li>
+              <p>
+                Use this spreadsheet to factor <m>n=7433551</m>.
+                Then, use your result to find the decoding key <m>D</m> for <m>(n,E) = (7433551,12345)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use this spreadsheet to factor <m>n=16394854313</m>.
+                Then, use your result to find the decoding key <m>D</m> for <m>(n,E) = (16394854313,34578451)</m>.
+              </p>
+            </li>
+          </ol>
+        </statement>
+      </exercise>
+      <figure xml:id="fig_FermaFact">
+        <caption>Spreadsheet for Fermat difference-of-squares factoring method</caption>
+        <image width="75%" source="images/FermaFact.png"/>
+      </figure>
+      <exercise>
+        <statement>
+          <p>
+            * Using the results from <xref ref="exercise_Cryptography_FermatEfficient">Exercise</xref> parts (d) and (e),
+            modify the spreadsheet that you created in <xref ref="exercise_Cryptography_FermatSpreadsheet">Exercise</xref>
+            to make it twice as efficient.
+            In other words,
+            modify the formula in cell A6 so that you can replace the formula in A7 with the formula:
+            <sq>=A6+2</sq>.
+          </p>
+        </statement>
+      </exercise>
+    </subsubsection>
+    <subsubsection>
+      <title><em>Probabilistic methods using the
+      <q>little Fermat theorem</q>
+      </em></title>
+      <p>
+        In practice,
+        neither the brute force nor the Fermat method is used to verify large prime numbers.
+        Instead, <em>probabilistic methods</em> are used:
+        these methods can show that it's very,
+        very likely that <m>n</m> is a prime,
+        but they don't prove for certain.
+        The principal test of this type is the
+        <term>Miller-Rabin test</term> for primality.
+            <idx><h>Prime</h><h>Miller-Rabin test for</h></idx>
+        This test uses some of the principles described below.
+      </p>
+      <p>
+        In <xref ref="exercise_Cosets_FermatLittle">Exercise</xref>
+        in <xref ref="sec_Cosets_Fermat">Section</xref>,
+        we will prove the following fact (which is widely known as
+        <em>Fermat's little theorem</em>):
+            <idx><h>Fermat</h><h>little theorem</h></idx>
+      </p>
+      <p>
+        If <m>p</m> is any prime number and <m>a</m> is any nonzero integer,
+        then <m>a^{p-1} \equiv 1 \pmod{p}</m>.
+      </p>
+      <p>
+        We can use Fermat's little theorem as a screening test for primes.
+        For example, 15 cannot be prime since
+        <me>
+          2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}
+        </me>.
+      </p>
+      <p>
+        However, 17 is a potential prime since
+        <me>
+          2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}
+        </me>.
+      </p>
+      <p>
+        We say that an odd composite number <m>n</m> is a <term> pseudoprime</term>
+            <idx><h>Pseudoprime</h></idx>
+        if
+        <me>
+          2^{n-1} \equiv 1 \pmod{n}
+        </me>.
+      </p>
+      <exercise xml:id="exercise_Cryptography_prime_pseudo">
+        <statement>
+          <p>
+            Which of the following numbers are primes and which are pseudoprimes?
+          </p>
+          <sidebyside>
+            <ul>
+              <li>
+                <title>\textbf{(a)}</title>
+                <p>
+                  341
+                </p>
+              </li>
+              <li>
+                <title>\textbf{(c)}</title>
+                <p>
+                  601
+                </p>
+              </li>
+              <li>
+                <title>\textbf{(e)}</title>
+                <p>
+                  771
+                </p>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <title>\textbf{(b)}</title>
+                <p>
+                  811
+                </p>
+              </li>
+              <li>
+                <title>\textbf{(d)}</title>
+                <p>
+                  561
+                </p>
+              </li>
+              <li>
+                <title>\textbf{(f)}</title>
+                <p>
+                  631
+                </p>
+              </li>
+            </ul>
+          </sidebyside>
+        </statement>
+      </exercise>
+      <p>
+        Let <m>n</m> be an odd composite number and <m>b</m> be a positive integer such that <m>\gcd(b, n) = 1</m>.
+        If <m>b^{n-1} \equiv 1 \pmod{n}</m>,
+        then <m>n</m> is a <term>pseudoprime base</term> <m>b</m>.
+        We can get a more accurate test for the primality of <m>n</m> if we test <m>n</m> versus a number of prime bases.
+        If <m>n</m> is a pseudoprime for several prime bases,
+        then we can say with high confidence that <m>n</m> is most probably a prime.
+      </p>
+      <exercise>
+        <statement>
+          <p>
+            Show that 341 is a pseudoprime base 2 but not a pseudoprime base 3.
+          </p>
+        </statement>
+      </exercise>
+      <p>
+        There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime.
+        These numbers are called <term> Carmichael numbers</term>.
+            <idx><h>Carmichael numbers</h></idx>
+        The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.
+        In 1992, Alford, Granville,
+        and Pomerance proved that there are an infinite number of Carmichael numbers [4]. However, Carmichael numbers are very rare.
+        There are only <m>2163</m> Carmichael numbers less than <m>25 \times 10^9</m>.
+        For more sophisticated primality tests, see [1], [6], or [7].
+      </p>
+      <remark>
+        <p>
+          (<em>historical background</em>) Encrypting secret messages goes as far back as ancient Greece and Rome.
+          As we know, Julius Caesar used a simple shift code to send and receive messages.
+          However, the formal study of encoding and decoding messages probably began with the Arabs in the 1400s.
+          In the fifteenth and sixteenth centuries mathematicians such as Alberti and Viete discovered that monoalphabetic cryptosystems offered no real security.
+          In the 1800s, F. W. Kasiski established methods for breaking ciphers in which a ciphertext letter can represent more than one plaintext letter,
+          if the same key was used several times.
+          This discovery led to the use of cryptosystems with keys that were used only a single time.
+          Cryptography was placed on firm mathematical foundations by such people as W. Friedman and L. Hill in the early part of the twentieth century.
+        </p>
+        <p>
+          During World War II mathematicians were very active in cryptography.
+          Efforts to penetrate the cryptosystems of the Axis nations were organized in England and in the United States by such notable mathematicians as Alan Turing and A. A. Albert.
+          The period after World War I saw the development of special-purpose machines for encrypting and decrypting messages.
+          The Allies gained a tremendous advantage in World War II by breaking the ciphers produced by the German Enigma machine and the Japanese Purple ciphers.
+        </p>
+        <p>
+          By the 1970s, interest in commercial cryptography had begun to take hold.
+          There was a growing need to protect banking transactions,
+          computer data, and electronic mail.
+          In the early 1970s, IBM developed and implemented LUZIFER, the forerunner of the National Bureau of Standards' Data Encryption Standard (DES).
+        </p>
+        <p>
+          The concept of a public key cryptosystem,
+          due to Diffie and Hellman, is very recent (1976).
+          It was further developed by Rivest, Shamir,
+          and Adleman with the RSA cryptosystem (1978).
+          It is not known how secure any of these systems are.
+          The trapdoor knapsack cryptosystem,
+          developed by Merkle and Hellman, has been broken.
+          It is still an open question whether or not the RSA system can be broken.
+          As of 2014, 360-digit numbers have been factored<ndash/>in practice, RSA keys of more than 1000 digits may be used.
+        </p>
+        <p>
+          There's been a great deal of controversy about research in cryptography in recent times:
+          the National Security Agency would like to keep information about cryptography secret,
+          whereas the academic community has fought for the right to publish basic research.
+          What's not controversial is that cryptography has come a long way since 1929,
+          when Henry Stimson, Secretary of State under Herbert Hoover,
+          dismissed the Black Chamber
+          (the State Department's cryptography division)
+          in 1929 on the ethical grounds that
+          <q>gentlemen do not read each other's mail.</q>
+        </p>
+      </remark>
+    </subsubsection>
+  </subsection>
+</section>

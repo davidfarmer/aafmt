@@ -1,0 +1,24 @@
+<section xml:id="sec_Rings_Hints">
+  <title>Hints for
+  <q>Introduction to Rings</q>
+  exercises</title>
+  <p>
+    <xref ref="exercise_Rings_Iso_Z10_to_Z5">Exercise</xref>: Look at the Cayley tables and imagine that the tables contain only the first element in each pair.
+  </p>
+  <p>
+    <xref ref="exercise_Rings_Z3_homo">Exercise</xref>: This is similar to <xref ref="exercise_Rings_Iso_Z10_to_Z5">Exercise</xref>.
+  </p>
+  <p>
+    <xref ref="exercise_Rings_abc_iso">Exercise</xref>: Part (b): Check if <m>f</m> has an inverse.
+  </p>
+  <p>
+    <xref ref="exercise_Rings_ringIsPrId">Exercise</xref>: Can you think of an element in <m>R</m> that generates all of <m>R</m>?
+  </p>
+  <p>
+    <xref ref="exercise_Rings_zerodivisor">Exercise</xref>: Take the expression <m>ab=0</m> and multiply both sides on the left by <m>a^{-1}</m>.
+  </p>
+  <p>
+    <xref ref="exercise_Rings_zdzp">Exercise</xref>: Use <xref ref="proposition_Rings_zerodivisor">Proposition</xref>
+    part b and remember that <m>\mathbb{Z}_p</m> is a field.
+  </p>
+</section>

@@ -1,0 +1,866 @@
+<section xml:id="sec_Functions_OneToOne">
+  <title>One-to-one functions <nbsp/><nbsp/></title>
+  <figure>
+    <video youtubeplaylist="PL2uooHqQ6T7PW5na4EX8rQX2WvBBdM8Qo"/>
+  </figure>
+  <subsection xml:id="subsec_Functions_OneToOne_ConceptsAndDefinition">
+    <title>Concept and definition</title>
+    <p>
+      We begin this section with an example.
+    </p>
+    <example>
+      <statement>
+        <ul>
+          <li>
+            <p>
+              Suppose Inspector Gadget knows two facts:
+              <ol>
+                <li>
+                  <p>
+                    Alice is the thief's wife, and
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Alice is Bob's wife.
+                  </p>
+                </li>
+              </ol>
+            </p>
+            Then the inspector can arrest Bob for theft,
+            because a person cannot (legally) be the wife of more than one husband.<fn>
+            According to U.S. law as of 2017.
+            </fn>
+          </li>
+          <li>
+            <p>
+              On the other hand, suppose the inspector knows:
+              <ol>
+                <li>
+                  <p>
+                    Alice is the forger's mother, and
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Alice is Charlie's mother.
+                  </p>
+                </li>
+              </ol>
+            </p>
+            Then the inspector does not know enough to be sure who the forger is,
+            because it could be some other child of Alice.
+          </li>
+        </ul>
+        <p>
+          This example illustrates a fundamental difference between the
+          <m>\var{wife}</m> function and the <m>\var{mother}</m> function:
+          two different people can have the same mother,
+          but only one person can have any particular person as their legal wife.
+          In mathematical terms, this important property of the
+          <m>\var{wife}</m> function is expressed by saying that the
+          <m>\var{wife}</m> function is <em>one-to-one</em>.
+              <idx><h>One-to-one</h><h>informal definition</h></idx>
+        </p>
+      </statement>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Now let's revisit the function we saw in <xref ref="example_Functions_nonnumfuncs">Example</xref> part (1).
+          <m>\var{Temp}</m> is the function from the set of points on the earth to the set of measured temperatures at those points.
+          Is <m>\var{Temp}</m> a one-to-one function?
+          Not at all: it's very likely that at any given time,
+          at least two points on the equator have exactly the same temperature (to arbitrary precision).<fn>
+          It's not only likely: it's a sure thing.
+          This can be proven mathematically,
+          given that <m>\var{Temp}</m> is a continuous function.
+          Can you prove it?
+          </fn>
+        </p>
+        <p>
+          Another way to say this is that at any given time,
+        </p>
+        <p>
+          there exists a temperature <m>b</m> for which we can find two points on earth <m>x</m> and <m>y</m> such that <m>\var{Temp}(x) = \var{Temp}(y) = b</m>.
+        </p>
+      </statement>
+    </example>
+    <exercise xml:id="exercise_Functions_atomic">
+      <statement>
+        <p>
+          Is the function <m>\var{Atomic Number}</m> from the set of chemical elements to the set of natural numbers a one-to-one function?
+          Explain why or why not.
+        </p>
+      </statement>
+    </exercise>
+    <remark>
+      <p>
+        If you have an arrow diagram of a function,
+        then it is easy to tell whether or not the function is one-to-one.
+        For example:
+        <ol>
+          <li>
+            <p>
+              The function<nbsp/><m>f</m> in <xref ref="arrow11">Figure</xref>(a) is
+              <em>not</em> one-to-one.
+              This is because the arrow from<nbsp/><m>\var{b}</m> and the arrow from<nbsp/><m>\var{c}</m> go to the same place,
+              so <m>f(\var{b}) = f(\var{c})</m>.
+              In general, if arrows from two different elements of the domain go to the same element of the range,
+              then the function is not one-to-one.
+            </p>
+          </li>
+          <li>
+            <p>
+              The function<nbsp/><m>g</m> of <xref ref="arrow11">Figure</xref>(b) is one-to-one.
+              This is because the arrows from two different elements of the domain never go to the same element of the range.
+              In short, there is only <em>one</em>
+              element of the domain that goes <em>to</em>
+              any <em>one</em> element of the range.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </remark>
+    <figure xml:id="arrow11">
+      <caption>Arrow diagrams of three functions <m>f</m>, <m>g</m>, and<nbsp/><m>h</m>.</caption>
+      <image width="84%" source="images/arrow11.png"/>
+    </figure>
+    <exercise xml:id="exercise_Functions_arrow">
+      <statement>
+        <p>
+          Is function<nbsp/><m>h</m> of <xref ref="arrow11">Figure</xref> one-to-one?
+          Explain why or why not.
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      This concept of one-to-one is very useful.
+      If we know <m>A</m> is a function,
+      we know that every input of <m>A</m> has exactly one output.
+      But if we know that <m>A</m> is a one-to-one function,
+      then we also know that every output in the range of <m>A</m> is caused by
+      <em>exactly</em> one input.
+      Alternatively,
+      we can say that every potential output in the codomain has
+      <em>at most one</em> input.
+    </p>
+    <p>
+      We have given an informal idea of the meaning of one-to-one<ndash/>now it's time for a formal definition.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {121defn} Suppose <m>f</m> is a function with domain <m>A</m> and codomain <m>B</m>.
+          We say <m>f</m> is <term>one-to-one</term>
+          iff for all <m>a_1,a_2 \in A</m> such that
+          <m>f(a_1) = f(a_2)</m>, we have <m>a_1 = a_2</m>.
+              <idx><h>One-to-one</h><h>definition</h></idx>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Some higher math books use the fancy term <term>injective</term>
+          <idx><h>Injective (one-to-one)</h></idx>
+      instead of one-to-one.
+      It means the same thing.
+    </p>
+    <exercise xml:id="exercise_Functions_11Exers-pairs">
+      <statement>
+        <p>
+          Each of the following sets of ordered pairs is a function from
+          <m>\{1,2,3,4\}</m> to <m>\{\var{a},\var{b},\var{c},\var{d},\var{e}\}</m>.
+          Either prove that the function is one-to-one, or prove that it is not.
+          <ol type="a">
+            <li xml:id="x11Exers-pairs-f">
+              <p>
+                <m>f = \{ (1,\var{a}), (2,\var{b}), (3,\var{d}), (4,\var{e})\}</m>
+              </p>
+            </li>
+            <li xml:id="x11Exers-pairs-g">
+              <p>
+                <m>g = \{ (1,\var{c}), (2,\var{d}), (3,\var{d}), (4,\var{e})\}</m>
+              </p>
+            </li>
+            <li xml:id="x11Exers-pairs-h">
+              <p>
+                <m>h = \{ (1,\var{e}), (2,\var{d}), (3,\var{c}), (4,\var{b})\}</m>
+              </p>
+            </li>
+            <li xml:id="x11Exers-pairs-i">
+              <p>
+                <m>i = \{ (1,\var{e}), (2,\var{e}), (3,\var{e}), (4,\var{e})\}</m>
+              </p>
+            </li>
+            <li xml:id="x11Exers-pairs-j">
+              <p>
+                <m>j = \{ (1,\var{a}), (2,\var{c}), (3,\var{e}), (4,\var{c})\}</m>
+              </p>
+            </li>
+            <li xml:id="x11Exers-pairs-k">
+              <p>
+                <m>k = \{ (1,\var{a}), (2,\var{c}), (3,\var{e}), (4,\var{d})\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_11Exers-pairs2">
+      <statement>
+        <p>
+          Notice that in part (a) of the previous problem,
+          it's not true that every element in the codomain is the image of an element of the domain.
+          Explain why this doesn't prevent the function <m>f</m> from being one-to-one.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+  <subsection xml:id="subsec_Functions_OneToOne_ProvingOneToOne">
+    <title>Proving that a function is one-to-one</title>
+    <p>
+      The concept of one-to-one will be very important in this course,
+      and one of the tools we will need is the ability to prove that a function is one-to-one.
+      Though many of the functions we will encounter throughout this book are not algebraic,
+      we will learn this style of proof using algebraic functions,
+      as they are a bit easier to deal with.
+      Here are some examples of this type of proof.
+    </p>
+    <example xml:id="example_Functions_1_to_1_or_not">
+      <statement>
+        <p>
+          Determine which of the following functions are one-to-one.
+          If so, give a proof.
+          If not, give a counterexample.
+          <ol type="a">
+            <li>
+              <p>
+                <m>f\colon \mathbb{R} \to \mathbb{R}</m>,
+                defined by <m>f(x)=x +1</m>.
+                Let's go back to the definition of one-to-one.
+                Suppose we know that <m>f(x) = f(y)</m>,
+                where <m>x,y</m> are real numbers.
+                Can we conclude that <m>x=y</m>?
+                If so, then that means that <m>f</m> is one-to-one.
+                So let's follow through on this.
+                <m>f(x)=f(y)</m> means that <m>x+1=y+1</m>.
+                Subtracting 1 from both sides of the equation,
+                we find that indeed, <m>x=y</m>.
+                Hence, <m>f</m> is one-to-one,
+                according to the definition.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f\colon \mathbb{C} \to \mathbb{R}</m> by <m>f(z) = \text{ Re } [z]</m>.
+                Let's start the same way as the previous example.
+                Suppose we know that <m>f(z) = f(w)</m>,
+                where <m>w,z</m> are complex numbers.
+                Can we conclude that <m>w=z</m>?
+                In this case,
+                <m>f(z) = f(w)</m> simply means that the real parts of <m>z</m> and <m>w</m> are equal.
+                But there are many complex numbers in
+                <m>\mathbb{C}</m> which have the same real part:
+                for example, <m>2 + i</m> and <m>2 + 2i</m>.
+                Since <m>f(2+i) = f(2+2i)</m>,
+                it's not always true that <m>f(z) = f(w)</m> implies <m>z=w</m>.
+                This single counterexample is enough to prove that <m>f</m> is not one-to-one.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f\colon \mathbb{A} \to \mathbb{R}</m>,
+                where <m>f(z) = \text{ Re } [z]</m> and
+                <m>A = \{z \in \mathbb{C}: \text{ Im } [z] = 4</m> \}. Notice that the function is the same as in the previous example,
+                but the domain is different.
+                This makes a big difference,
+                and we don't get the same answer with this new domain.
+                How can that be?
+                Well, let's try to do the same as before,
+                and see what goes haywire.
+                Once again, suppose we know that
+                <m>f(z) = f(w)</m>, where <m>w,z \in A</m>.
+                As before, this means that <m>\text{ Re } [z]=\text{ Re } [w]</m>.
+                But since <m>z,w \in A</m>,
+                we also know that <m>\text{ Im } [z]=\text{ Im } [w]=4</m>.
+                Since <m>z</m> and <m>w</m> have the same real and imaginary parts,
+                they are equal.
+                So <m>f</m> is one-to-one.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g\colon \mathbb{R} \to \mathbb{R}</m>,
+                defined by <m>g(x)= |x|</m>.
+                We demonstrate this by finding two distinct real numbers whose image is the same:
+                <me>
+                  g(1)=|1|=1=|-1|=g(-1)
+                </me>,
+                but <m>1\neq -1</m>.
+                This shows that <m>g</m> is <em>not</em> one-to-one.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>h\colon \mathbb{N} \to \mathbb{N}</m>,
+                defined by <m>h(x)=|x|</m>.
+                Since all natural numbers are nonnegative,
+                we have <m>|x|=x</m> for every natural number<nbsp/><m>x</m>.
+                So given that <m>h(x)=h(y)</m>, we can argue as follows:
+                <me>
+                  h(x)=h(y) \implies |x| = |y| \implies x=y
+                </me>.
+                Hence <m>h</m> is one-to-one.
+                (Note that the function <m>h</m> agrees with <m>g</m> in the previous example,
+                but the result is different because the domains are different.)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>h\colon \mathbb{R} \to \mathbb{R}</m>,
+                defined by <m>h(x)= -x^2 + 7x  - 4</m>.
+                If we try to apply the definition directly as above,
+                we run into complications.
+                So we try an indirect approach.
+                We know how to solve <m>h(x)=y</m> using the quadratic formula:
+                <me>
+                  h(x)=y \implies -x^2 + 7x  - 4 = y  \implies x = \frac{7 \pm \sqrt{33 - 4y}}{2}
+                </me>.
+                The <m>\pm</m> is a tipoff that in some cases there may be two values of <m>x</m> that give the same <m>y</m>.
+                We're free to choose <m>y</m>,
+                so let's choose a value that gives a simple result.
+                Take <m>y=8</m> for instance, which gives us:
+                <me>
+                  x = \frac{7 \pm 1}{2} \text{ or }  x=3,4
+                </me>.
+                We can verify that in fact <m>h(3) = 8</m> and <m>h(4)=8</m>.
+                Since in this case two different <m>x</m>'s give the same <m>y</m>,
+                it follows that <m>h</m> is not one-to-one.
+                This example gives us a chance to point out a common mistake.
+                Suppose we chose <m>y = 33/4</m> instead of <m>y=8</m>.
+                Then we would get <m>x = 7/2</m> as the unique value <m>x</m> such that <m>f(x) = 33/4</m>.
+                But this is <em>not</em> enough to prove that <m>h</m> is one-to-one.
+                In order to be one-to-one,
+                each <m>y</m> be the image of at most one  <m>x</m> for <em>all</em>
+                possible values of <m>y</m> in the codomain.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <remark xml:id="rem_onetoone">
+      <p>
+        In previous classes you may have seen the
+        <em>horizontal line test</em><idx><h>Horizontal line test</h><h>for one-to-one functions</h></idx>
+            <idx><h>One-to-one</h><h>horizontal line test</h></idx>
+        to show whether or not a function <m>f: \mathbb{R} \rightarrow \mathbb{R}</m> was one-to-one.
+        We may show how this works using the function <m>f(x)=x +1</m>
+        (which we already know is one-to-one from <xref ref="example_Functions_1_to_1_or_not">Example</xref> above).
+        <xref ref="fig_xplus1">Figure</xref> is the graph of <m>f</m>,
+        together with the graph of a horizontal line
+        (dotted line).
+      </p>
+      <figure xml:id="fig_xplus1">
+        <caption>Graph of function <m>f(x)=x +1</m> (with horizontal line used for horizontal line test).</caption>
+        <image width="65%" source="images/xplus1.png"/>
+      </figure>
+      <p>
+        Now, the the horizontal line has an equation of the form <m>y=c</m> (Why is this?).
+        Any solution of the equation <m>f(x)=c</m> corresponds to a point of intersection between the graphs of <m>y=c</m> and <m>y=f(x)</m>.
+        Now here's the key point.
+        If for <em>every</em> horizontal line there's at most one intersection for
+        <em>every</em> horizontal line,
+        then for <em>every</em> real number <m>c</m>,
+        the equation <m>f(x)=c</m> has at most one solution <ndash/>which is the same thing as saying that <m>f(x)</m> is one-to-one.
+        We may state this result in general as follows:
+      </p>
+      <p>
+        (<em>Horizontal line test for one-to-oneness</em>)<nbsp/><nbsp/><nbsp/><nbsp/>The function
+        <m>f:\mathbb{R} \rightarrow \mathbb{R}</m> is one-to-one if and only if the graph of <m>f(x)</m> intersects every horizontal line <em>at most once</em>.
+      </p>
+      <p>
+        So the horizontal line test proves that <m>f</m> is a one-to-one function, right?
+        Alas, pictures are not proofs<ndash/>although they can be pretty convincing.
+        Typically, a mathematician will use pictures to convince herself of what's true before attempting a real proof.
+        (It's a lot easier to prove something when you're confident that it must be true.)
+      </p>
+      <p>
+        On the other hand, to disprove a function is one-to-one,
+        you only need a single counterexample.
+        Consider the function <m>g(x)= |x|</m> from Part 2 of <xref ref="example_Functions_1_to_1_or_not">Example</xref>,
+        which is graphed in <xref ref="fig_absx">Figure</xref>.
+        Using the graph we can easily identify two values in the domain that produce the same value in the codomain.
+        However, while the horizontal line test here suggests our counterexample,
+        we still need to verify that the counterexample works.
+        So again we need the disproof in Part 2 of <xref ref="example_Functions_1_to_1_or_not">Example</xref>,
+        not just a picture.
+      </p>
+      <figure xml:id="fig_absx">
+        <caption>Graph of function <m>f(x)=|x|</m>  (with horizontal lines used for horizontal line test).</caption>
+        <image width="65%" source="images/absx.png"/>
+      </figure>
+      <p>
+        In summary, the horizontal line test can only <em>suggest</em>
+        whether or not a function is one-to-one.
+        In the end, you still need to prove or disprove.
+        Furthermore,
+        the horizontal line test is usually only a good tool for functions whose domain and codomain are <m>{\mathbb R}</m>
+        (or subsets of <m>{\mathbb R}</m>).
+      </p>
+    </remark>
+    <exercise>
+      <statement>
+        <p>
+          Suppose that the function <m>f</m> has domain <m>[a,b]</m> and codomain <m>[c,d]</m>
+          (where for example <m>[a,b]</m> signifies the interval <m>\{ a \le x \le b, x \in \mathbb{R} \}</m>).
+          Restate the horizontal line test for one-to-one functions in this case.
+          What changes need to be made in the statement?
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_horizontal">
+      <statement>
+        <p>
+          Graph each function and use the horizontal line test to determine whether or not the following functions are one-to-one.
+          <ol type="a">
+            <li>
+              <p>
+                <m>f:[0,\pi] \rightarrow \mathbb{R}</m>, <m>f(x) = \cos(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f:[0,\pi] \rightarrow [-1,1]</m>, <m>f(x) = \sin(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f:[-\pi,\pi] \rightarrow [-1,1]</m>, <m>f(x) =\cos(x/2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f:[-\pi,\pi] \rightarrow [-10,10]</m>, <m>f(x) = \sin(x/2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f:[1,3] \rightarrow [0,5]</m>, <m>f(x) = 6 - 2x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f:[1,4] \rightarrow [0,5]</m>,
+                <m>f(x) = 6 - 2x</m> (be careful!)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_horizontal2">
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Sketch the function <m>f:\mathbb{R} \rightarrow \mathbb{R}</m>,
+              where <m>f(x) = x(x-2)(x+2)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using the horizontal line test,
+              determine whether <m>f</m> is a one-to-one function.
+            </p>
+          </li>
+          <li>
+            <p>
+              Now consider the same function <m>f</m>,
+              but restricted to the domain <m>[-1,1]</m>
+              (that is, the interval <m>-1 \le x \le 1</m>).
+              Is the function still one-to-one?
+              <em>Explain</em> your answer.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <p>
+      When you don't know whether or not a particular function is one-to-one,
+      a good strategy is to try to prove that it's one-to-one.
+      If the proof works, then great you're done.
+      If the proof fails,
+      the manner in which it fails may indicate an example to show that the function is not one-to-one.
+      Here's an example of this technique.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>f\colon \mathbb{N} \to \mathbb{N}</m> be defined by <m>f(n)=(n-2)^2 + 1</m>.
+          Is <m>f</m> one-to-one?
+        </p>
+        <p>
+          (Aside: Please take note of the domain in this problem.
+          As we've noted previously,
+          a function may be one-to-one on one domain,
+          and not on a different domain.)
+        </p>
+        <p>
+          First let's try to prove that <m>f</m> is one-to-one.
+          Start with arbitrary elements
+          <m>m,
+          n \in \mathbb{N}</m>, and suppose that <m>f(m)=f(n)</m>.
+          By the definition of <m>f</m>,
+          this means that <m>(m-2)^2 + 1=(n-2)^2 + 1</m>,
+          or <m>(m-2)^2 =(n-2)^2</m>.
+          Two numbers have the same square,
+          if and only if they are equal in absolute value,
+          so it follows that <m>m-2 = \pm (n-2)</m>.
+          There are now two cases:
+          <ul>
+            <li>
+              <p>
+                If <m>m-2=+(n-2)</m> then adding 2 to each side, we get <m>m=n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>m-2 = -(n-2) = -n+2</m>,
+                then adding 2 to each side, we get <m>m=-n+4</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Since <m>m,n \in \mathbb{N}</m>,
+          it's not hard to see that if <m>n \ge 4</m>,
+          then <m>-n+4</m> is not a natural number.
+          But if <m>n</m> is 1,2,3 then <m>-n+4 \in \mathbb{N}</m>.
+          For example <m>n=1</m> gives <m>m = 3</m>,
+          which suggests that <m>f(1) = f(3)</m>.
+          We may indeed check that <m>f(1) = f(3)</m>.
+        </p>
+        <p>
+          Now the great thing about cases where <m>f</m> is not one-to-one is that the writeup of the solution is very simple.
+          All you have to do is give one example of two different values that return the same function value.
+          In the current example we have:
+        </p>
+        <p>
+          <em>Solution:</em> <m>f</m> is <em>not</em>
+          one-to-one because <m>f(1) = 2</m> and <m>f(3) = 2</m>.
+        </p>
+        <p>
+          So the writeup is easy: two values is all it takes.
+          The hard thing is finding the two values!
+        </p>
+      </statement>
+    </example>
+    <p>
+      There is an equivalent way to show functions are one-to-one that is also useful.
+      To see it, recall the <m>\var{wife}</m> function from the beginning of the section.
+      The <m>\var{wife}</m> function is one-to-one because one woman can't be (legally) married to two different husbands.
+      We can express the same thing in a different way by saying that two different husbands must be married to two different wives.
+      These two statements are <term>contrapositives</term>
+          <idx><h>Contrapositive</h></idx>
+      of each other, and are in fact equivalent. (
+      <q>contrapositive</q>
+      is a logical term<ndash/>you may have run across it before in other math classes.)
+    </p>
+    <p>
+      If we generalize this reasoning to arbitrary one-to-one functions,
+      we have the following two equivalent statements:
+      <ul>
+        <li>
+          <p>
+            A function is one-to-one iff any element of the range is mapped from only one element of the domain;
+          </p>
+        </li>
+        <li>
+          <p>
+            A function is one-to-one iff two different elements of the domain always map to two different elements of the range.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      We formalize this equivalence in the following alternative definition of one-to-one:
+    </p>
+    <definition>
+      <statement>
+        <p>
+          {121defn2}<term>(Alternate)</term>
+          Suppose <m>f \colon A \to B</m>.
+          We say <m>f</m> is a <term>one-to-one function</term><idx><h>One-to-one</h><h>alternate definition</h></idx> iff for all
+          <m>a_1,a_2 \in A</m> such that <m>a_1 \neq a_2</m>,
+          we have <m>f(a_1) \neq f(a_2)</m>.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          We know from calculus that the function <m>e^x: \mathbb{R} \rightarrow \mathbb{R}</m> is a
+          <em>strictly increasing</em>
+          function<idx><h>Function</h><h>strictly increasing</h></idx> since its derivative is always positive.
+          In mathematical terms, we can say
+          <me>
+            x > y \text{ implies  }  e^x > e^y
+          </me>.
+        </p>
+        <p>
+          We can use this fact and <xref ref="definition_Functions_121defn2">Definition</xref>
+          to prove that <m>e^x</m> is a one-to-one function as follows:
+        </p>
+        <p>
+          Take any two real numbers <m>x_1</m> and <m>x_2</m> where <m>x_1 \neq x_2</m>.
+          If <m>x_1 > x_2</m>,
+          then by the above equation it follows that <m>e^{x_1} > e^{x_2}</m>.
+          On the other hand, if <m>x_1 \lt x_2</m>,
+          then by the above equation it follows that <m>e^{x_1} \lt e^{x_2}</m>.
+          In either case, we have <m>e^{x_1} \neq e^{x_2}</m>.
+          By <xref ref="definition_Functions_121defn2">Definition</xref>,
+          it follows that <m>e^x</m> must be one-to-one.
+        </p>
+      </statement>
+    </example>
+    <exercise>
+      <statement>
+        <ol type="a">
+          <li>
+            <p>
+              Show that any strictly increasing function from
+              <m>\mathbb{R}</m> to <m>\mathbb{R}</m> is one-to-one.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that any strictly decreasing function from
+              <m>\mathbb{R}</m> to <m>\mathbb{R}</m> is one-to-one.
+            </p>
+          </li>
+          <li>
+            <p>
+              Does the answer to (a) or (b) change if we change the domain and codomain to <m>[0,1]</m>?
+              <em>Explain</em> your answer.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>f:\mathbb{Q} \rightarrow \mathbb{R}</m> is a function such that
+          <m>f(q_1) - f(q_2)</m> is irrational whenever <m>q_1 \neq q_2</m>.
+          Show that this implies that <m>f</m> is one-to-one.
+          (Recall that <m>\mathbb{Q}</m> is the set of rational numbers.)
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We close this section with a bevy of exercises.
+      Use whatever method you like,
+      but make sure they're solid proofs.
+    </p>
+    <exercise xml:id="exercise_Functions_11Exers">
+      <statement>
+        <p>
+          For each of the following functions,
+          either prove the function is one-to-one, or prove that it is not.
+          <ol type="a">
+            <li xml:id="x11Exers-formula-f">
+              <p>
+                <m>f:[0,1] \rightarrow [0,1], f(x) = 1</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-g">
+              <p>
+                <m>g:\mathbb{R}^+ \rightarrow \mathbb{R}, g(x) = x</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-h">
+              <p>
+                <m>h:\mathbb{R} \rightarrow \mathbb{R},h(x) = x^2</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-j">
+              <p>
+                <m>h:\mathbb{R}^+ \rightarrow \mathbb{R}, h(x) = x^2</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-p">
+              <p>
+                <m>p:[a,b] \rightarrow [3a,3b+10], p(x) = 3x + 2</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-q">
+              <p>
+                <m>q:\mathbb{R} \rightarrow \mathbb{R}, q(x) = 1/ \bigl( |x+1| + 1 \bigr)</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-r">
+              <p>
+                <m>r:[-5,1] \rightarrow [0,1], r(x) = 1/ \bigl( |x+1| + 1 \bigr)</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-s">
+              <p>
+                <m>s:\mathbb{R} \rightarrow \mathbb{R}, s(x) = (x+1)(x+2)(x+3)</m>.
+              </p>
+            </li>
+            <li xml:id="x11Exers-formula-t">
+              <p>
+                <m>t:\mathbb{R}^+ \rightarrow \mathbb{R}^+, t(x) = (x+1)(x+2)(x+3)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_40">
+      <statement>
+        <p>
+          For each function,
+          either prove that it is one-to-one, or prove that it is not.
+          <ol type="a">
+            <li xml:id="IsIt11-linear">
+              <p>
+                <m>f \colon \rational \to \rational</m> defined by <m>f(r)=3r/5 - 2</m>.
+              </p>
+            </li>
+            <li xml:id="IsIt11-square0">
+              <p>
+                <m>f \colon {\mathbb R} \to {\mathbb R}</m> defined by <m>f(x)=(x+2)^2</m>.
+              </p>
+            </li>
+            <li xml:id="IsIt11-square">
+              <p>
+                <m>f \colon {\mathbb N} \to {\mathbb N}</m> defined by <m>f(n)=(n+2)^2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f \colon {\mathbb Z} \to {\mathbb Z}</m> defined by <m>f(n)=(n-1)n(n+1)+1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f \colon {\mathbb N} \to {\mathbb N}</m> defined by <m>f(n)=(n-1)n(n+1)+1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f \colon A \to A</m> defined by <m>f(x)=(x-1)(x(x+1)</m> ,where
+                <m>A =\{x \in \mathbb{R} \text{ and } x >1 \}</m><nbsp/><nbsp/><nbsp/><nbsp/>(requires calculus).
+              </p>
+            </li>
+            <li xml:id="IsIt11-abs">
+              <p>
+                <m>g \colon \real \to \real</m> defined by <m>g(x)= \left|(x+1)/2 \right|</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_40modular">
+      <statement>
+        <p>
+          For each function,
+          either prove that it is one-to-one, or prove that it is not.
+          <ol type="a">
+            <li xml:id="modular_g">
+              <p>
+                <m>g \colon {\mathbb Z}_6 \to {\mathbb Z}_6</m> defined by <m>g(n)= n \oplus 2</m> .
+              </p>
+            </li>
+            <li xml:id="modular_g1">
+              <p>
+                <m>g \colon {\mathbb Z}_6 \to {\mathbb Z}_{6}</m> defined by <m>g(x) = x \oplus x</m> .
+              </p>
+            </li>
+            <li xml:id="modular_m">
+              <p>
+                <m>g \colon {\mathbb Z}_8 \to {\mathbb Z}_8</m> defined by <m>g(n) = n \odot 2</m> .
+              </p>
+            </li>
+            <li xml:id="modular_m2">
+              <p>
+                <m>g \colon {\mathbb Z}_{11} \to {\mathbb Z}_{11}</m> defined by <m>g(n) = n \odot 2</m> .
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g_a \colon {\mathbb Z}_7 \to {\mathbb Z}_7</m> defined by
+                <m>g_a(n)= n \odot a</m> , where <m>a</m> can be any fixed element of <m>{\mathbb Z}_7</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f_b \colon {\mathbb Z}_{32} \to {\mathbb Z}_{32}</m> defined by <m>f_b(n)= n \odot b</m> ,
+                <m>b \in {\mathbb Z}_{32}</m>, and <m>b</m> is odd.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f_b \colon {\mathbb Z}_{188} \to {\mathbb Z}_{188}</m> defined by <m>f_b(n)= n \odot b</m> ,
+                <m>b \in {\mathbb Z}_{188}</m>, and <m>b</m> is even.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g \colon {\mathbb Z}_8 \to {\mathbb Z}_8</m> defined by <m>g(n)= n \odot n \odot n</m> .
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g \colon {\mathbb Z}_7 \to {\mathbb Z}_7</m> defined by <m>g(n)= n \odot n \odot n</m> .
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exercise_Functions_40complex">
+      <statement>
+        <p>
+          For each function,
+          either prove that it is one-to-one, or prove that it is not.
+          <ol type="a">
+            <li>
+              <p>
+                <m>g \colon {\mathbb C}\setminus \{0\} \to {\mathbb C}\setminus \{0\}</m> defined by <m>g(z) = z^{-1}</m> .
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r \colon A \to {\mathbb R}</m> defined by <m>r(z) = \text{ Re } [z] + \text{ Im } [z]</m>,
+                where <m>A = \{ z \in \mathbb{C}: \text{ Im } [z] > 0 \}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f: {\mathbb C} \to {\mathbb C}</m> defined by
+                <m>g(z) = az + b</m> where <m>a</m> and <m>b</m> are fixed complex numbers and <m>a \neq 0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g: {\mathbb C} \to {\mathbb C}</m> defined by <m>g(z) = z^3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>n \in {\mathbb Z}</m> and let
+                <m>h_n: \mathbb{C} \setminus \{0\} \to \mathbb{C} \setminus \{0\}</m> be defined by <m>h_n(z) = z^n</m>.
+                For which values of <m>n</m> is the function <m>h(z)</m> a one-to-one function?
+                <em>Prove</em> your answer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

@@ -1,0 +1,37 @@
+<section xml:id="sec_Symmetry_ForFurtherInvestigation">
+  <title>For further investigation</title>
+  <p>
+    In this chapter,
+    we have looked at the groups involved with symmetries of plane figures.
+    But really, there is no need to restrict ourselves to two dimensions.
+    Three-dimensional regular figures
+    (such as the tetrahedron, cube,
+    icosahedron, and dodecahedron)
+    also have symmetry groups associated with them.We will say more about the symmetries of regular polyhedra in <xref ref="GroupActions">Chapter</xref>.
+  </p>
+  <p>
+    Neither do we need to restrict ourselves to symmetries of objects.
+    The symmetries of <em>patterns</em>
+    also play an important role in art and architecture.
+    For instance,
+    every possible regular repeating pattern that can be put on wallpaper
+    (or used as floor tiling)
+    is associated with a symmetry group.
+    It turns out that there are exactly 17 of these symmetry groups:
+    they are called the <em>wallpaper groups</em>.
+        <idx><h>Wallpaper groups</h></idx>
+        <idx><h>Group</h><h>wallpaper</h></idx>
+    For an excellent elementary reference on this subject, I highly recommend
+    <q>17 Plane Symmetry Groups</q>
+    by Anna Nelson, Holli Newman,
+    and Molly Shipley, available on the web
+    (as of January 2014)
+    at \url{http://caicedoteaching.files.wordpress.com/2012/05/nelson-newman-shipley.pdf}.
+  </p>
+  <p>
+    In physics, symmetry groups are used to describe the regular three-dimensional patterns associated with crystals.
+    Many references for the crystallographic groups can also be found on the web:
+    one I recommend is "Crystallographic Point Groups (short review)" by Mois I. Aroyo,
+    available on the web at: \url{http://www.crystallography.fr/mathcryst/pdf/uberlandia/Aroyo_Point.pdf}.
+  </p>
+</section>
